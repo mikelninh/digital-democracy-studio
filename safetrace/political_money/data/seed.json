@@ -1,0 +1,52 @@
+{
+  "case_id": "political-money-dvag-2026",
+  "title": "DVAG: disclosed donations and declared lobbying interests",
+  "reviewed_at": "2026-07-23T23:25:00+02:00",
+  "publication_boundary": "These are documented financial and registry events. No causal conclusion has been established between a donation, lobbying activity or political decision.",
+  "sources": {
+    "donations_2026": {
+      "source_id": "bundestag-large-donations-2026",
+      "source_url": "https://www.bundestag.de/parlament/praesidium/parteienfinanzierung/fundstellen50000/2026",
+      "source_title": "Parteispenden über 35.000 € — Jahr 2026",
+      "retrieved_or_checked_at": "2026-07-23",
+      "source_anchor": "January and February 2026 entries"
+    },
+    "lobby_entry": {
+      "source_id": "lobbyregister-r005553",
+      "source_url": "https://www.lobbyregister.bundestag.de/suche/R005553",
+      "source_title": "Deutsche Vermögensberatung Aktiengesellschaft DVAG — R005553",
+      "retrieved_or_checked_at": "2026-07-23",
+      "source_anchor": "Current public register entry"
+    }
+  },
+  "organisation": {
+    "id": "org:dvag",
+    "label": "Deutsche Vermögensberatung Aktiengesellschaft DVAG",
+    "entity_match": {
+      "state": "human_reviewed_match",
+      "basis": [
+        "The Bundestag donation disclosure and Lobby Register entry use the same distinctive legal name.",
+        "The published Frankfurt address agrees across the reviewed official records; SafeTrace does not republish the street address."
+      ]
+    }
+  },
+  "lobby_entry": {
+    "id": "lobby:R005553",
+    "register_number": "R005553",
+    "label": "DVAG Lobby Register entry"
+  },
+  "donations": [
+    {"id": "donation:2026-01-27:gruene:50000", "party_id": "party:gruene", "party": "Bündnis 90/Die Grünen", "amount_eur": "50000.00", "received_date": "2026-01-27", "reported_date": "2026-01-29", "document": "BT-Drs. 21/5085"},
+    {"id": "donation:2026-01-27:fdp:50000", "party_id": "party:fdp", "party": "FDP", "amount_eur": "50000.00", "received_date": "2026-01-27", "reported_date": "2026-01-28", "document": "BT-Drs. 21/5085"},
+    {"id": "donation:2026-01-27:spd:100000", "party_id": "party:spd", "party": "SPD", "amount_eur": "100000.00", "received_date": "2026-01-27", "reported_date": "2026-01-28", "document": "BT-Drs. 21/5085"},
+    {"id": "donation:2026-01-27:cdu:100000", "party_id": "party:cdu", "party": "CDU", "amount_eur": "100000.00", "received_date": "2026-01-27", "reported_date": "2026-01-28", "document": "BT-Drs. 21/5085"},
+    {"id": "donation:2026-02-02:cdu:40000", "party_id": "party:cdu", "party": "CDU", "amount_eur": "40000.00", "received_date": "2026-02-02", "reported_date": "2026-02-25", "document": "BT-Drs. 21/5550"}
+  ],
+  "declared_policy_interests": [
+    {"id": "interest:public-finance-tax", "label": "Public finances, taxes and levies"},
+    {"id": "interest:pensions", "label": "Pensions and retirement provision"},
+    {"id": "interest:banking-finance", "label": "Banking and finance"},
+    {"id": "interest:consumer-protection", "label": "Consumer protection"},
+    {"id": "interest:insurance", "label": "Insurance"}
+  ]
+}
