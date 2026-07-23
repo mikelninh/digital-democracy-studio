@@ -1,0 +1,160 @@
+{
+  "assessment_date": "2026-07-23",
+  "system_state": {
+    "sensitive_evidence_intake_enabled": false,
+    "qualified_partner_named": false,
+    "production_claim": false
+  },
+  "controls": [
+    {
+      "id": "scope-public-records-only",
+      "category": "data_governance",
+      "title": "Public-record-only operating boundary",
+      "state": "implemented_self_verified",
+      "required_for_pilot": true,
+      "evidence": "Current public cases use official institutional records and no real victim evidence."
+    },
+    {
+      "id": "data-minimisation",
+      "category": "privacy",
+      "title": "Data minimisation and purpose limitation",
+      "state": "implemented_self_verified",
+      "required_for_pilot": true,
+      "evidence": "Public graphs omit private addresses and case packs expose a redaction profile."
+    },
+    {
+      "id": "source-provenance",
+      "category": "evidence",
+      "title": "Source provenance and immutable snapshot design",
+      "state": "implemented_self_verified",
+      "required_for_pilot": true,
+      "evidence": "v0.3 records canonical URL, retrieval time, SHA-256 and parser version."
+    },
+    {
+      "id": "human-publication-gate",
+      "category": "governance",
+      "title": "Human review before consequential publication",
+      "state": "implemented_self_verified",
+      "required_for_pilot": true,
+      "evidence": "v0.5 blocks AI-only claims and applies stronger gates to sensitive claims."
+    },
+    {
+      "id": "proposal-only-monitoring",
+      "category": "governance",
+      "title": "Monitoring cannot silently alter public status",
+      "state": "implemented_self_verified",
+      "required_for_pilot": true,
+      "evidence": "v0.7 source changes remain pending review."
+    },
+    {
+      "id": "portable-case-packs",
+      "category": "evidence",
+      "title": "Reviewed PDF and JSON case packs",
+      "state": "implemented_self_verified",
+      "required_for_pilot": true,
+      "evidence": "v0.8 validates reviewed findings, sources, redaction and limitations."
+    },
+    {
+      "id": "threat-model-review",
+      "category": "security",
+      "title": "Independent threat-model review",
+      "state": "pending_independent_review",
+      "assurance_type": "independent_security",
+      "required_for_pilot": true,
+      "evidence": "Draft threat model exists; no independent reviewer has approved it."
+    },
+    {
+      "id": "authentication-rbac",
+      "category": "security",
+      "title": "Authentication and least-privilege role-based access",
+      "state": "documented_not_implemented",
+      "required_for_pilot": true,
+      "evidence": "Required roles and permissions are specified; no sensitive-data system is deployed."
+    },
+    {
+      "id": "encryption-key-management",
+      "category": "security",
+      "title": "Encryption and managed key lifecycle",
+      "state": "documented_not_implemented",
+      "required_for_pilot": true,
+      "evidence": "No production evidence store or key-management service exists."
+    },
+    {
+      "id": "immutable-audit-logs",
+      "category": "security",
+      "title": "Tamper-evident audit logs and access review",
+      "state": "documented_not_implemented",
+      "required_for_pilot": true,
+      "evidence": "Git history covers public code; sensitive-case access auditing is not implemented."
+    },
+    {
+      "id": "retention-deletion",
+      "category": "privacy",
+      "title": "Retention, deletion and legal-hold controls",
+      "state": "documented_not_implemented",
+      "required_for_pilot": true,
+      "evidence": "Draft policy exists; no enforceable production lifecycle exists."
+    },
+    {
+      "id": "lawful-basis-consent",
+      "category": "privacy",
+      "title": "Lawful-basis, consent and data-subject workflow",
+      "state": "pending_independent_review",
+      "assurance_type": "data_protection",
+      "required_for_pilot": true,
+      "evidence": "Must be scoped with the partner, case type and competent data-protection reviewer."
+    },
+    {
+      "id": "dpia",
+      "category": "privacy",
+      "title": "Data-protection impact assessment where required",
+      "state": "pending_independent_review",
+      "assurance_type": "data_protection",
+      "required_for_pilot": true,
+      "evidence": "Cannot be completed until the actual partner, data and processing purpose are defined."
+    },
+    {
+      "id": "defamation-journalistic-review",
+      "category": "legal",
+      "title": "Independent privacy, defamation and publication review",
+      "state": "pending_independent_review",
+      "assurance_type": "independent_legal",
+      "required_for_pilot": true,
+      "evidence": "Methodology defines legal and reply gates; no qualified external reviewer has approved the operating model."
+    },
+    {
+      "id": "incident-response-exercise",
+      "category": "operations",
+      "title": "Incident-response plan tested through an exercise",
+      "state": "documented_not_implemented",
+      "required_for_pilot": true,
+      "evidence": "Draft response plan exists; no tabletop exercise or external test has occurred."
+    },
+    {
+      "id": "backup-recovery-test",
+      "category": "operations",
+      "title": "Backup, recovery and evidence-integrity restoration test",
+      "state": "documented_not_implemented",
+      "required_for_pilot": true,
+      "evidence": "No production data store exists to test."
+    },
+    {
+      "id": "qualified-pilot-partner",
+      "category": "partnership",
+      "title": "Qualified pilot partner with signed roles and escalation routes",
+      "state": "partner_required",
+      "assurance_type": "qualified_partner",
+      "required_for_pilot": true,
+      "evidence": "No partner has yet accepted responsibility for a controlled case workflow."
+    },
+    {
+      "id": "independent-security-assessment",
+      "category": "security",
+      "title": "Independent security assessment of deployed pilot",
+      "state": "pending_independent_review",
+      "assurance_type": "independent_security",
+      "required_for_pilot": true,
+      "evidence": "Must evaluate the actual deployment, not only the repository design."
+    }
+  ]
+}
