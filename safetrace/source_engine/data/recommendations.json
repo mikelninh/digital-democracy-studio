@@ -1,0 +1,149 @@
+{
+  "schema_version": "safetrace.greco-recommendations/0.3",
+  "source_report": "GrecoRC5(2025)8",
+  "status_date": "2025-03-19",
+  "published_date": "2025-08-08",
+  "owner_mapping_note": "Responsible institutions are SafeTrace editorial mappings for public navigation, not formal assignments made by GRECO.",
+  "recommendations": [
+    {
+      "id": "i",
+      "domain": "top_executive_functions",
+      "title": "Integrity rules with dedicated enforcement",
+      "recommendation": "Adopt a specific code of conduct for top executive functions with guidance on conflicts, gifts, outside activities and lobbying, coupled with control and enforcement.",
+      "status": "partly_implemented",
+      "status_reason": "The guidance and code were accepted, but GRECO found no dedicated procedure to monitor compliance or sanction non-compliance.",
+      "responsible_institutions": ["Federal Government", "Federal Chancellery", "Federal ministries"],
+      "source_anchor": "Second Compliance Report, paras. 6-11"
+    },
+    {
+      "id": "ii",
+      "domain": "top_executive_functions",
+      "title": "Regular integrity briefings",
+      "recommendation": "Give ministers and parliamentary state secretaries systematic integrity briefings when taking office and at regular intervals.",
+      "status": "partly_implemented",
+      "status_reason": "Initial letters were a positive start, but no new progress toward regular briefings was reported.",
+      "responsible_institutions": ["Federal Chancellery", "Federal ministries"],
+      "source_anchor": "Second Compliance Report, paras. 12-15"
+    },
+    {
+      "id": "iii",
+      "domain": "top_executive_functions",
+      "title": "Independent review of access to information",
+      "recommendation": "Conduct an independent, thorough analysis of the Freedom of Information Act and improve federal access to information where necessary.",
+      "status": "not_implemented",
+      "status_reason": "GRECO found no new development beyond work described as in progress.",
+      "responsible_institutions": ["Federal Ministry of the Interior", "Federal Government", "Bundestag"],
+      "source_anchor": "Second Compliance Report, paras. 16-19"
+    },
+    {
+      "id": "iv",
+      "domain": "top_executive_functions",
+      "title": "Legislative footprint",
+      "recommendation": "Identify, document and disclose substantive external inputs to draft legislation, including inputs received before formal consultation.",
+      "status": "implemented_satisfactorily",
+      "status_reason": "GRECO accepted the executive footprint introduced through amended ministerial rules.",
+      "responsible_institutions": ["Federal Government", "Federal ministries"],
+      "source_anchor": "Second Compliance Report, paras. 20-26"
+    },
+    {
+      "id": "v",
+      "domain": "top_executive_functions",
+      "title": "Transparent meetings with lobbyists",
+      "recommendation": "Set detailed rules for contacts between top executive officials and lobbyists, and disclose who met whom, on whose behalf and about what.",
+      "status": "partly_implemented",
+      "status_reason": "The Lobby Register framework was strengthened, but sufficient information on direct contacts and meetings is still not disclosed.",
+      "responsible_institutions": ["Federal Government", "Federal Chancellery", "Federal ministries", "Bundestag administration"],
+      "source_anchor": "Second Compliance Report, paras. 27-32"
+    },
+    {
+      "id": "vi",
+      "domain": "top_executive_functions",
+      "title": "Ad hoc conflict-of-interest disclosure",
+      "recommendation": "Provide clear conflict-management guidance and require top executive officials to disclose conflicts between private interests and official functions when they occur.",
+      "status": "partly_implemented",
+      "status_reason": "GRECO found no new measures and no unequivocal ad hoc disclosure obligation.",
+      "responsible_institutions": ["Federal Government", "Federal Chancellery", "Federal ministries"],
+      "source_anchor": "Second Compliance Report, paras. 33-37"
+    },
+    {
+      "id": "vii",
+      "domain": "top_executive_functions",
+      "title": "Revolving-door controls",
+      "recommendation": "Make post-public-employment decisions consistent and transparent and consider stronger cooling-off rules, advisory arrangements and sanctions.",
+      "status": "partly_implemented",
+      "status_reason": "Rules for former senior civil servants improved, but the issues concerning ministers and parliamentary state secretaries were not fully addressed.",
+      "responsible_institutions": ["Federal Ministry of the Interior", "Federal Government", "Advisory body on post-office employment"],
+      "source_anchor": "Second Compliance Report, paras. 38-46"
+    },
+    {
+      "id": "viii",
+      "domain": "top_executive_functions",
+      "title": "Public financial-interest declarations",
+      "recommendation": "Require regular public declarations of financial interests, consider family information with privacy safeguards, and subject declarations to appropriate review.",
+      "status": "not_implemented",
+      "status_reason": "GRECO found no tangible progress or new information.",
+      "responsible_institutions": ["Federal Government", "Bundestag"],
+      "source_anchor": "Second Compliance Report, paras. 47-51"
+    },
+    {
+      "id": "ix",
+      "domain": "law_enforcement",
+      "title": "Police-specific integrity codes",
+      "recommendation": "Tailor anti-corruption conduct standards to the Federal Criminal Police Office and Federal Police, with examples, oversight and enforcement.",
+      "status": "implemented_satisfactorily",
+      "status_reason": "GRECO accepted the agency-specific codes and the available disciplinary and criminal enforcement mechanisms.",
+      "responsible_institutions": ["Federal Criminal Police Office", "Federal Police", "Federal Ministry of the Interior"],
+      "source_anchor": "Second Compliance Report, paras. 52-57"
+    },
+    {
+      "id": "x",
+      "domain": "law_enforcement",
+      "title": "Risk-tailored integrity training",
+      "recommendation": "Enhance initial and in-service integrity training for the Federal Police and tailor it to the needs and risks of different staff categories.",
+      "status": "implemented_satisfactorily",
+      "status_reason": "GRECO's 2025 conclusion records recommendation x as implemented satisfactorily; it had been resolved before the outstanding recommendations were re-examined.",
+      "responsible_institutions": ["Federal Police", "Federal Ministry of the Interior"],
+      "source_anchor": "Evaluation Report, para. 119; Second Compliance Report, conclusion para. 82"
+    },
+    {
+      "id": "xi",
+      "domain": "law_enforcement",
+      "title": "Repeated screening of police personnel",
+      "recommendation": "Strengthen screening of new Federal Police recruits and repeat screening at regular intervals throughout police careers.",
+      "status": "not_implemented",
+      "status_reason": "Proposed checks remained one-off recruitment checks and did not provide comprehensive recurring screening.",
+      "responsible_institutions": ["Federal Police", "Federal Ministry of the Interior", "Bundestag"],
+      "source_anchor": "Second Compliance Report, paras. 58-63"
+    },
+    {
+      "id": "xii",
+      "domain": "law_enforcement",
+      "title": "Proactive internal oversight",
+      "recommendation": "Provide stricter internal oversight in the Federal Police using a proactive approach with comprehensive monitoring capacity.",
+      "status": "not_implemented",
+      "status_reason": "GRECO found no significant development toward proactive internal oversight.",
+      "responsible_institutions": ["Federal Police", "Federal Ministry of the Interior"],
+      "source_anchor": "Second Compliance Report, paras. 64-68"
+    },
+    {
+      "id": "xiii",
+      "domain": "law_enforcement",
+      "title": "Whistleblower protection",
+      "recommendation": "Strengthen whistleblower protection in the Federal Criminal Police Office and Federal Police.",
+      "status": "implemented_satisfactorily",
+      "status_reason": "GRECO accepted the Whistleblower Protection Act, reporting channels and protection against retaliation.",
+      "responsible_institutions": ["Federal Ministry of Justice", "Federal Ministry of the Interior", "Federal Police", "Federal Criminal Police Office"],
+      "source_anchor": "Second Compliance Report, paras. 69-75"
+    },
+    {
+      "id": "xiv",
+      "domain": "law_enforcement",
+      "title": "Public complaints and sanctions data",
+      "recommendation": "Publish information on complaints, actions and sanctions concerning Federal Police and Federal Criminal Police Office staff while protecting anonymity.",
+      "status": "partly_implemented",
+      "status_reason": "Federal integrity reports provide some information, but not proactive agency-specific statistics for the two police bodies.",
+      "responsible_institutions": ["Federal Ministry of the Interior", "Federal Police", "Federal Criminal Police Office"],
+      "source_anchor": "Second Compliance Report, paras. 76-80"
+    }
+  ]
+}
