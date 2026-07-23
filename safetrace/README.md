@@ -1,58 +1,66 @@
-# SafeTrace v0.2 — Public Baseline
+# SafeTrace v1.0 — Pilot-Ready Public-Interest Investigation Infrastructure
 
-**Infrastructure for justice: victim-centred, evidence-led and human-reviewed.**
+**Victim-centred. Evidence-led. Human-reviewed. Germany first.**
 
 > Empathy for every victim. Evidence for every claim. Due process for every accused. Accountability for every proven crime.
 
-SafeTrace is a Germany-first public-interest investigation project. It helps citizens and qualified investigators understand fragmented official records without turning correlations, allegations or economic relationships into automated accusations.
+SafeTrace helps citizens and qualified investigators understand fragmented public records without turning correlations, allegations or economic relationships into automated accusations.
 
-## Public monitor
-
-Once this release is merged and GitHub Pages updates, open:
+## Public portal
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/**
 
-## The first three cases
+## What is implemented
 
-1. **Germany’s 14 Anti-Corruption Promises** — track each GRECO recommendation, the institution responsible, accepted progress, missing implementation and supporting sources.
-2. **Political Money Explorer** — connect large disclosed donations to official lobbying interests, published meetings, legislative footprints, contracts and later outcomes, while explicitly avoiding causal claims unsupported by evidence.
-3. **Arms & Influence Monitor — Germany** — trace public decisions from budgets and procurement through contractors, export authorisations, recipients, oversight, end-use controls and documented human consequences.
+- **v0.3 Source Engine** — official-source snapshots, SHA-256 receipts, parser versions and change detection.
+- **v0.4 Political Money Graph** — provenance-first relationship records that never treat sequence as causation.
+- **v0.5 Human Review Desk** — supporting and contradicting evidence, reviewer decisions, legal and right-of-reply gates.
+- **v0.6 Arms & Influence Monitor** — structured authority, procurement, benefit, oversight and human-consequence records.
+- **v0.7 Monitoring & Alerts** — material-change and missed-deadline proposals that cannot alter public status without approval.
+- **v0.8 Investigator Case Packs** — public-redacted PDF and machine-readable JSON exports.
+- **v0.9 Governance** — default-deny roles, tamper-evident audit records, threat model, incident response and executable readiness controls.
+- **v1.0 Controlled Pilot Framework** — measurable quality, safety and impact gates plus a partner operating template.
+
+## Exact release status
+
+**SafeTrace v1.0 is pilot-ready for public and synthetic evaluation. It is not authorised for real victim data or restricted partner deployment.**
+
+The synthetic benchmark is transparent test data, not claimed real-world impact. A live pilot remains blocked until there is:
+
+- a named qualified partner and narrowly scoped case type;
+- production authentication, encryption and secrets management;
+- independent security assessment and remediation;
+- partner-specific privacy documentation, lawful basis and retention controls;
+- qualified legal/editorial approval;
+- observed partner measurements replacing synthetic fixtures.
 
 ## Non-negotiable boundaries
 
 - No hacking, credential testing, covert access, impersonation, harassment or doxxing.
-- No automated guilt decisions or public suspect lists.
-- No claim is presented without its evidentiary status and source trail.
-- Official allegations, court-established facts, analytical red flags and unresolved gaps remain separate.
-- Human editorial and legal review is required before referrals or sensitive publication.
+- No automated guilt decisions, public suspect lists, publication or referrals.
+- Every material claim keeps its source, evidence state and review trail.
+- Facts, court findings, official allegations, analytical red flags and unresolved gaps remain separate.
 - Private addresses and unnecessary personal data are not republished.
 - Corrections remain visible.
 
-## v0.2 includes
+## Run the release gates
 
-- A public, mobile-friendly citizen baseline.
-- The three Germany-first investigation tracks.
-- Evidentiary labels and plain-language safeguards.
-- Primary-source links to GRECO, OECD and German Bundestag records.
-- A visible monitoring status rather than pretend live intelligence.
-- A roadmap from source ingestion to a controlled v1.0 pilot.
-
-## Current limitations
-
-This is a public portfolio prototype, not a production evidence system. It does not accept real victim data. Authentication, encryption, retention controls, consent management, secure evidence storage, independent security review, legal review and a qualified pilot partner are required before that boundary can change.
+```bash
+python -m pip install reportlab
+python -m unittest discover -s safetrace/source_engine/tests -v
+python -m unittest discover -s safetrace/political_money/tests -v
+python -m unittest discover -s safetrace/review_desk/tests -v
+python -m unittest discover -s safetrace/arms_monitor/tests -v
+python -m unittest discover -s safetrace/monitoring/tests -v
+python -m unittest discover -s safetrace/case_packs/tests -v
+python -m unittest discover -s safetrace/governance/tests -v
+python -m unittest discover -s safetrace/pilot/tests -v
+python -m unittest discover -s safetrace/v1/tests -v
+python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
+```
 
 ## Career positioning
 
-SafeTrace demonstrates the role Michael is targeting:
+> **AI Engineer for Public-Interest Investigations** — building evidence-grounded systems that structure unorganised records, preserve provenance, expose accountability gaps and help human investigators produce reviewable conclusions.
 
-> **AI Engineer for Public-Interest Investigations** — building evidence-grounded systems that structure unorganised records, connect documented relationships, expose accountability gaps and help human investigators produce reviewable conclusions.
-
-## Status
-
-- Release: **v0.2 Public Baseline**
-- Jurisdiction: Germany first
-- Publication: human-reviewed
-- Monitoring cadence: weekly
-- Released: 23 July 2026
-
-See [ROADMAP.md](ROADMAP.md) and [METHODOLOGY.md](METHODOLOGY.md).
+Read the [methodology](METHODOLOGY.md), [release history](ROADMAP.md), [governance controls](governance/), and [pilot readiness](pilot/).

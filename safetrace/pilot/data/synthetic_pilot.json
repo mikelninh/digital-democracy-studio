@@ -1,0 +1,28 @@
+{
+  "pilot_id": "safetrace-v1-synthetic-case-001",
+  "pilot_type": "synthetic_benchmark",
+  "label": "Case 001 reproducibility and investigator workflow benchmark",
+  "case_id": "case-001",
+  "data_classification": "synthetic",
+  "named_partner": null,
+  "real_world_validation": false,
+  "metrics": {
+    "baseline_minutes": 480,
+    "safetrace_minutes": 92,
+    "material_claims": 14,
+    "sourced_material_claims": 14,
+    "human_reviewed_material_claims": 14,
+    "sensitive_publications": 0,
+    "sensitive_publications_human_reviewed": 0,
+    "false_entity_links": 0,
+    "corrections_hidden": 0,
+    "serious_privacy_incidents": 0,
+    "autonomous_guilt_decisions": 0,
+    "reviewer_comprehension_score": 0.93
+  },
+  "notes": [
+    "The benchmark values are a transparent synthetic acceptance fixture, not observed partner impact.",
+    "The fixture proves the evaluation pipeline and release gates can be executed deterministically.",
+    "A qualified partner must replace these values with observed measurements before GO_LIVE is possible."
+  ]
+}

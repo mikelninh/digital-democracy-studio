@@ -1,185 +1,87 @@
-# SafeTrace Roadmap — v0.3 to v1.0
+# SafeTrace Release History and Next Boundary
 
-The roadmap prioritises trustworthiness before scale. A feature does not count as complete merely because the interface exists; its evidence, security and review process must also work.
+SafeTrace now has a complete internal prototype path from public source ingestion to controlled-pilot evaluation. Version numbers describe implemented capabilities, not permission to handle sensitive data.
 
-## v0.3 — Source Engine
+## Shipped
 
-**Goal:** turn Case 001 into a reproducible, auditable investigation rather than a curated page.
+### v0.3 — Source Engine
 
-### Deliverables
+Official-source snapshots, retrieval timestamps, canonical URLs, SHA-256 receipts, parser versions, source manifests and material-change detection.
 
-- Connector for the official GRECO Germany evaluation and compliance pages.
-- Connector for OECD integrity indicators and country notes.
-- Source snapshots with retrieval timestamp, canonical URL, content hash and parser version.
-- Change detection showing what changed between official versions.
-- Source health dashboard for unavailable, moved or materially changed records.
-- Complete 14-recommendation tracker with owner, deadline, status, evidence and unresolved question.
-- Exportable source manifest.
+### v0.4 — Political Money Graph
 
-### Exit test
+Provenance-first entity and relationship records for donations, lobbying and public decisions, with explicit safeguards against unsupported causal conclusions.
 
-A reviewer can reproduce every visible Case 001 status from the retained official snapshots and identify exactly which parser and human decision produced it.
+### v0.5 — Human Review Desk
 
----
+Claim-level evidence roles, supporting and contradicting material, reviewer rationale, correction history, legal-review requirements and right-of-reply gates.
 
-## v0.4 — Political Money Graph
+### v0.6 — Arms & Influence Monitor
 
-**Goal:** make documented influence relationships understandable without implying causation.
+Structured public records for formal authority, procurement, contractors, authorisations, oversight, end-use questions and documented human consequences.
 
-### Deliverables
+### v0.7 — Monitoring and Alerts
 
-- Bundestag large-donation importer.
-- Lobby Register Open Data/API importer.
-- Versioned entity resolution for companies, associations, people, parties and public institutions.
-- Relationship provenance: every graph edge explains its identifier, source and confidence.
-- Timeline view for donations, declared policy interests, meetings, legislative events, contracts and official outcomes.
-- Gap view showing missing meeting disclosures, unresolved entity matches and inaccessible records.
-- Side-by-side source inspection.
+Source-change and missed-deadline proposals that remain pending until a human reviewer approves any public effect.
 
-### Exit test
+### v0.8 — Investigator Case Packs
 
-A citizen can inspect a donation, understand the officially documented surrounding relationships and clearly see that no causal conclusion has been established.
+Human-readable PDF and machine-readable JSON exports containing chronology, reviewed findings, source manifests, redaction metadata, limitations and unresolved questions.
 
----
+### v0.9 — Governance and Security Gates
 
-## v0.5 — Review Desk
+Default-deny role permissions, tamper-evident audit events, machine-readable readiness controls, threat model, incident response and separate public/synthetic versus restricted-partner decisions.
 
-**Goal:** keep humans responsible for conclusions and publication.
+### v1.0 — Pilot-Ready Release
 
-### Deliverables
+An integrated release validator, transparent synthetic benchmark, measurable impact and safety gates, public pilot status page, partner pilot template and CI workflow across the full v0.3–v1.0 stack.
 
-- Claim-by-claim editorial review queue.
-- Supporting and contradicting evidence attached to the same claim.
-- Separate fields for fact, official allegation, analytical inference and unresolved gap.
-- Reviewer identity, decision, rationale and timestamp.
-- Correction history and public changelog.
-- Right-of-reply workflow for organisations or people materially discussed.
-- Legal-review gate for sensitive publication.
+## Exact v1.0 status
 
-### Exit test
+**Ready:** public records, synthetic evaluation, portfolio demonstrations, partner discovery and workflow evaluation planning.
 
-No sensitive claim can reach the public monitor without a recorded human decision, source trail and correction path.
+**Not ready:** real victim evidence, witness data, unrestricted personal data or production partner operations.
 
----
+The restricted partner gate remains closed until all of the following exist:
 
-## v0.6 — Arms & Influence Monitor
+1. A qualified named partner and narrowly scoped case type.
+2. Signed roles, data boundaries, escalation and retention rules.
+3. Production authentication, encryption and secrets management.
+4. Independent security assessment and remediated findings.
+5. Partner-specific DPIA, lawful basis and data-processing terms.
+6. Qualified legal/editorial approval for evidence handling, publication and right of reply.
+7. Observed measurements replacing synthetic acceptance fixtures.
 
-**Goal:** trace formal decisions, economic beneficiaries, oversight and human consequences using neutral standards.
+## Next milestone — external validation
 
-### Deliverables
+The next meaningful version is not v1.1 simply because more features can be added. The next milestone is one controlled, qualified partner evaluation.
 
-- Import German arms-export reports and parliamentary records.
-- Import major procurement and budget records.
-- Contractor, subcontractor and beneficial-ownership mapping where lawfully available.
-- Lobbying, donation and revolving-door connections sourced from official registers.
-- Clear distinction between authorisation, contract, delivery and operational use.
-- End-use control, diversion, audit, litigation and human-rights source fields.
-- Citizen page answering: what was decided, who had authority, who benefited, what risks were assessed and what remains unknown.
+Candidate partners include:
 
-### Exit test
+- investigative journalism and data teams;
+- transparency and anti-corruption organisations;
+- fraud-prevention and victim-support teams;
+- public-sector digital-investigation units;
+- academic public-interest technology laboratories.
 
-A reviewer can follow one major decision from formal authority to documented oversight without SafeTrace describing lawful profit, advocacy or temporal proximity as corruption.
+## Real pilot success measures
 
----
+- At least 30% reduction in the defined investigation or review workflow.
+- 100% source coverage for material claims.
+- 100% human review for material and sensitive publication.
+- Zero autonomous guilt decisions.
+- Zero hidden corrections.
+- Zero serious privacy or security incidents.
+- False entity links do not increase versus the partner baseline.
+- Reviewers correctly understand evidence status and limitations.
+- The partner reports meaningful workflow improvement and wants to continue.
 
-## v0.7 — Monitoring and Alerts
+## Deliberately excluded
 
-**Goal:** let AI reduce information overload while humans decide significance.
-
-### Deliverables
-
-- Scheduled official-source checks.
-- Deduplication and material-change detection.
-- Suggested case updates with source quotations and confidence.
-- Human approval before public status changes.
-- Alerts for missed deadlines, new judgments, new disclosures and corrected records.
-- Public “last checked / last changed / last reviewed” fields.
-
-### Exit test
-
-The system catches a real official update, proposes the correct affected claims and publishes nothing until a reviewer approves it.
-
----
-
-## v0.8 — Investigator Case Packs
-
-**Goal:** make SafeTrace outputs useful beyond the public dashboard.
-
-### Deliverables
-
-- Human-readable PDF case summary.
-- Machine-readable JSON conforming to a published schema.
-- Evidence inventory and source manifest.
-- Chronology, entity graph and financial/decision trail.
-- Confidence, legal-status and review labels.
-- Redacted public edition and restricted partner edition.
-- Explicit statement of limitations and unresolved questions.
-
-### Exit test
-
-A qualified investigator can understand the evidence package without reverse-engineering the dashboard, while every conclusion remains traceable to a source and reviewer.
-
----
-
-## v0.9 — Security and Governance Readiness
-
-**Goal:** prepare for a controlled real-world partnership without accepting uncontrolled sensitive submissions.
-
-### Deliverables
-
-- Authentication and role-based access control.
-- Encryption in transit and at rest.
-- Data minimisation, retention and deletion policies.
-- Consent and lawful-basis records.
-- Threat model and incident-response plan.
-- Audit logs and access review.
-- Defamation, privacy, evidence-handling and journalistic/legal review.
-- Independent security assessment.
-- Governance charter and conflict-of-interest policy.
-
-### Exit test
-
-Independent reviewers agree that the defined pilot data, users and workflows can be handled within the documented risk controls.
-
----
-
-## v1.0 — Controlled Partner Pilot
-
-**Goal:** prove that SafeTrace improves real accountability work for one qualified organisation.
-
-### Candidate partners
-
-- Investigative journalism or data teams.
-- Anti-corruption or transparency organisations.
-- Fraud prevention and victim-support teams.
-- Public-sector digital investigation or forensic units.
-- Academic public-interest technology labs.
-
-### Deliverables
-
-- One formally scoped partner and case type.
-- Signed roles, data boundaries and escalation routes.
-- Trained reviewers and documented operating procedure.
-- Measured time saved, evidence completeness and reviewer accuracy.
-- False-connection and correction metrics.
-- Pilot retrospective with public lessons where safe.
-- Go/no-go decision for broader deployment.
-
-### v1.0 success measures
-
-- Every published material claim has a primary source or explicitly justified secondary source.
-- 100% of sensitive publications have human review.
-- No automated guilt classifications.
-- Corrections are visible and measurable.
-- The pilot partner reports a meaningful improvement in investigation or review workflow.
-- No serious privacy or security incident.
-
-## What is deliberately out of scope before v1.0
-
-- Open public uploads of sensitive victim evidence.
+- Open uploads of sensitive victim material.
 - Automated naming of alleged criminals.
 - Facial-recognition identification.
 - Covert investigation or contact with subjects.
-- Predictive “corruption scores” for people.
+- Predictive corruption scores for people.
 - Publishing private addresses or unnecessary personal data.
 - Fully automated referrals to police, prosecutors or media.
