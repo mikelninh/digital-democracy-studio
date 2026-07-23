@@ -1,0 +1,38 @@
+name: SafeTrace Monitoring Proposals
+
+on:
+  push:
+    paths:
+      - "safetrace/monitoring/**"
+      - ".github/workflows/safetrace-monitoring.yml"
+  pull_request:
+    paths:
+      - "safetrace/monitoring/**"
+      - ".github/workflows/safetrace-monitoring.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "29 7 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  propose-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test human approval boundary
+        run: python -m unittest discover -s safetrace/monitoring/tests -v
+      - name: Build pending monitoring proposals
+        run: python -m safetrace.monitoring.build_status
+      - name: Upload proposal bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-monitoring-${{ github.run_id }}
+          path: artifacts/monitoring/
+          if-no-files-found: error
+          retention-days: 90
