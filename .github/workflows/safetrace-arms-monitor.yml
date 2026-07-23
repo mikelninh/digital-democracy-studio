@@ -1,0 +1,40 @@
+name: SafeTrace Arms Monitor
+
+on:
+  push:
+    paths:
+      - "safetrace/arms_monitor/**"
+      - ".github/workflows/safetrace-arms-monitor.yml"
+  pull_request:
+    paths:
+      - "safetrace/arms_monitor/**"
+      - ".github/workflows/safetrace-arms-monitor.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "11 7 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test stage distinctions
+        run: python -m unittest discover -s safetrace/arms_monitor/tests -v
+      - name: Build reviewed arms monitor feed
+        run: python -m safetrace.arms_monitor.build_monitor
+      - name: Snapshot official sources
+        run: python -m safetrace.source_engine.cli --registry safetrace/arms_monitor/data/sources.json --output artifacts/arms-monitor/source-snapshots
+      - name: Upload auditable monitor bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-arms-monitor-${{ github.run_id }}
+          path: artifacts/arms-monitor/
+          if-no-files-found: error
+          retention-days: 90
