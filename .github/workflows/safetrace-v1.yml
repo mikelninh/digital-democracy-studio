@@ -33,11 +33,14 @@ jobs:
           python -m unittest discover -s safetrace/arms_monitor/tests -v
           python -m unittest discover -s safetrace/monitoring/tests -v
           python -m unittest discover -s safetrace/case_packs/tests -v
+          python -m unittest discover -s safetrace/law_fairness/tests -v
       - name: Run governance and pilot tests
         run: |
           python -m unittest discover -s safetrace/governance/tests -v
           python -m unittest discover -s safetrace/pilot/tests -v
           python -m unittest discover -s safetrace/v1/tests -v
+      - name: Build law fairness public assessment
+        run: python -m safetrace.law_fairness.build_public_status
       - name: Generate synthetic pilot report
         run: python -m safetrace.pilot.run_pilot --output safetrace/pilot/public
       - name: Validate v1.0 release boundary
@@ -49,5 +52,6 @@ jobs:
           path: |
             safetrace/pilot/public/
             safetrace/v1/status.json
+            safetrace/law_fairness/public_status.json
           if-no-files-found: error
           retention-days: 90
