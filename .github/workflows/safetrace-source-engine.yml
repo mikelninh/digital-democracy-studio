@@ -5,6 +5,10 @@ on:
     paths:
       - "safetrace/source_engine/**"
       - ".github/workflows/safetrace-source-engine.yml"
+  pull_request:
+    paths:
+      - "safetrace/source_engine/**"
+      - ".github/workflows/safetrace-source-engine.yml"
   workflow_dispatch:
   schedule:
     - cron: "17 6 * * 1"
