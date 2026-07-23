@@ -1,0 +1,28 @@
+{
+  "schema_version": "safetrace.monitor-config/0.7",
+  "configured_at": "2026-07-23T23:35:00+02:00",
+  "cadence": "weekly",
+  "scheduler": "GitHub Actions configuration committed; repository action execution must be verified separately.",
+  "publication_rule": "Detected changes create pending proposals only. Public claims and case statuses remain unchanged until a human review approves the proposal.",
+  "sources": [
+    {"id": "greco-germany-fifth-round-page", "case": "Case 001", "title": "GRECO Germany Fifth Round page", "url": "https://www.coe.int/en/web/greco/evaluations/germany", "watch_for": ["new compliance report", "changed implementation status", "new deadline"]},
+    {"id": "oecd-germany-integrity-2026", "case": "Case 001", "title": "OECD Germany integrity country note", "url": "https://www.oecd.org/en/publications/anti-corruption-and-integrity-outlook-2026_0c8910f8-en/germany_d57a73fc-en.html", "watch_for": ["revised indicators", "new country note"]},
+    {"id": "bundestag-large-donations-2026", "case": "Case 002", "title": "Bundestag 2026 large donations", "url": "https://www.bundestag.de/parlament/praesidium/parteienfinanzierung/fundstellen50000/2026", "watch_for": ["new disclosed donation", "corrected entry", "new parliamentary document"]},
+    {"id": "lobbyregister-r005553", "case": "Case 002", "title": "Lobby Register R005553", "url": "https://www.lobbyregister.bundestag.de/suche/R005553", "watch_for": ["new version", "changed declared interests", "new legislative project"]},
+    {"id": "bundestag-arms-export-authorisations-2025", "case": "Case 003", "title": "2025 arms-export authorisations", "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1155890", "watch_for": ["correction", "follow-up response", "new audit or parliamentary record"]},
+    {"id": "bundeswehr-meko-a200-2026", "case": "Case 003", "title": "MEKO A-200 DEU project update", "url": "https://www.bundeswehr.de/de/beschaffung/meko-a-200-deu", "watch_for": ["contract clarification", "delivery update", "cost or schedule change"]}
+  ],
+  "deadline_monitors": [
+    {
+      "id": "greco-progress-report-2026",
+      "case": "Case 001",
+      "deadline": "2026-03-31",
+      "last_manual_check": "2026-07-23",
+      "state": "passed_unresolved_in_public_record",
+      "question": "Did Germany submit the requested progress report, and has GRECO assessed it?",
+      "source_url": "https://www.coe.int/en/web/greco/evaluations/germany",
+      "careful_interpretation": "The absence of a newer public Fifth Round report does not prove non-submission; it may be pending, confidential, unadopted or unpublished.",
+      "review_state": "approved_as_unresolved_gap"
+    }
+  ]
+}
