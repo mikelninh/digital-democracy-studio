@@ -1,0 +1,12 @@
+{
+  "questions": [
+    {
+      "id": "gap-progress-report-2026",
+      "question": "Did Germany submit the progress report requested by GRECO for 31 March 2026, and has GRECO assessed it?",
+      "state": "unresolved_publication_gap",
+      "last_checked": "2026-07-23",
+      "basis": "GRECO's 2025 report set the deadline, while the public Germany Fifth Round page still lists the August 2025 Second Compliance Report as the latest public report.",
+      "safe_interpretation": "The absence of a newer public report does not prove non-submission or non-compliance; it may be pending, confidential, unadopted or unpublished."
+    }
+  ]
+}

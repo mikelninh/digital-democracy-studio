@@ -1,0 +1,11 @@
+{
+  "state": "approved_public_baseline",
+  "reviewer_role": "project maintainer",
+  "reviewed_at": "2026-07-23T22:30:00+02:00",
+  "scope": "Official institutional statuses and source metadata only",
+  "limitations": [
+    "No finding of corruption or criminal conduct is made.",
+    "Institutional owner mappings are editorial and remain subject to confirmation.",
+    "The public GRECO page is monitored for a newer Fifth Round report."
+  ]
+}
