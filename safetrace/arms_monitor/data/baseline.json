@@ -1,0 +1,134 @@
+{
+  "case": {
+    "id": "arms-monitor-germany-baseline",
+    "title": "Arms & Influence Monitor — Germany",
+    "jurisdiction": "Germany",
+    "publication_boundary": "SafeTrace distinguishes budget authority, parliamentary approval, procurement contracts, export authorisations, production, delivery and operational use. A lawful approval, contract or company benefit is not evidence of corruption or unlawful conduct."
+  },
+  "sources": {
+    "exports_2025": {
+      "id": "bundestag-arms-export-authorisations-2025",
+      "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1155890",
+      "title": "Rüstungsexportgenehmigungen im Jahr 2025",
+      "publisher": "Deutscher Bundestag",
+      "checked_at": "2026-07-23",
+      "anchor": "Bundestag hib 192/2026; government response 21/4607"
+    },
+    "procurement_process": {
+      "id": "bundeswehr-procurement-process",
+      "url": "https://www.bundeswehr.de/de/beschaffung/beschaffung-planungsprozess",
+      "title": "Planung: Der Weg zu Großprojekten in der Beschaffung",
+      "publisher": "Bundeswehr",
+      "checked_at": "2026-07-23",
+      "anchor": "Projects over EUR 25 million require Budget Committee approval before contract conclusion"
+    },
+    "meko": {
+      "id": "bundeswehr-meko-a200-2026",
+      "url": "https://www.bundeswehr.de/de/beschaffung/meko-a-200-deu",
+      "title": "Neue Fregatten des Typs MEKO A-200 DEU für die Marine",
+      "publisher": "Bundeswehr",
+      "checked_at": "2026-07-23",
+      "anchor": "Published 8 July 2026"
+    }
+  },
+  "events": [
+    {
+      "id": "event:exports-2025-total",
+      "type": "export_authorisation",
+      "date": "2025",
+      "title": "Germany authorised approximately EUR 13.1 billion in arms exports during 2025",
+      "evidence_state": "verified_fact",
+      "source_key": "exports_2025",
+      "actor": "Federal Government",
+      "recipient_or_beneficiary": "Multiple recipient states",
+      "amount_eur": "13100000000",
+      "status": "authorised",
+      "attributes": {
+        "war_weapons_eur": "5600000000",
+        "other_military_goods_eur": "7500000000",
+        "largest_named_recipient": "Ukraine",
+        "largest_named_recipient_authorised_eur": "2300000000",
+        "delivered": false,
+        "interpretation": "Authorisation values do not by themselves establish completed delivery or operational use."
+      }
+    },
+    {
+      "id": "event:meko-consideration",
+      "type": "policy_or_budget_authority",
+      "date": "2025-08",
+      "title": "Initial consideration of introducing MEKO A-200 DEU",
+      "evidence_state": "verified_fact",
+      "source_key": "meko",
+      "actor": "Federal defence procurement system",
+      "status": "recorded",
+      "attributes": {}
+    },
+    {
+      "id": "event:meko-production-start",
+      "type": "production_activity",
+      "date": "2026-02",
+      "title": "Construction activity reportedly began in Bremerhaven",
+      "evidence_state": "verified_fact",
+      "source_key": "meko",
+      "actor": "TKMS / shipyard production",
+      "recipient_or_beneficiary": "TKMS",
+      "status": "recorded",
+      "attributes": {
+        "company_benefit_interpretation": "Commercial participation and expected revenue are not evidence of wrongdoing."
+      }
+    },
+    {
+      "id": "event:meko-keel-laying",
+      "type": "production_activity",
+      "date": "2026-05",
+      "title": "Keel laying reportedly occurred",
+      "evidence_state": "verified_fact",
+      "source_key": "meko",
+      "actor": "TKMS / shipyard production",
+      "recipient_or_beneficiary": "TKMS",
+      "status": "recorded",
+      "attributes": {}
+    },
+    {
+      "id": "event:meko-parliamentary-approval",
+      "type": "parliamentary_approval",
+      "date": "2026-07-08",
+      "title": "Budget Committee approved final financing for the first four frigates",
+      "evidence_state": "verified_fact",
+      "source_key": "meko",
+      "actor": "Budget Committee of the German Bundestag",
+      "recipient_or_beneficiary": "MEKO A-200 DEU procurement project / TKMS",
+      "amount_eur": "6300000000",
+      "status": "approved",
+      "attributes": {
+        "quantity": 4,
+        "option_quantity": 4,
+        "amount_description": "nearly EUR 6.3 billion"
+      }
+    },
+    {
+      "id": "event:meko-planned-delivery",
+      "type": "planned_delivery",
+      "date": "2029-12",
+      "title": "First ship planned for handover to the Bundeswehr",
+      "evidence_state": "verified_fact",
+      "source_key": "meko",
+      "actor": "TKMS / BAAINBw",
+      "recipient_or_beneficiary": "German Navy",
+      "status": "planned",
+      "attributes": {
+        "interpretation": "This is a planned date, not a completed delivery."
+      }
+    }
+  ],
+  "unresolved_questions": [
+    {
+      "id": "gap:meko-work-before-final-approval",
+      "evidence_state": "unresolved_gap",
+      "question": "Which contractual, pre-contractual or risk-bearing arrangement permitted construction activity before the final parliamentary financing approval?",
+      "basis": "The Bundeswehr states that construction began in February 2026 and that final financing was approved on 8 July 2026, calling the sequence unusual because approval is normally a prerequisite for construction to begin.",
+      "responsible_information_holders": ["Federal Ministry of Defence", "BAAINBw", "Budget Committee", "TKMS"],
+      "safe_interpretation": "The timing warrants clarification but does not establish an unlawful contract, unauthorised spending, corruption or improper influence."
+    }
+  ]
+}
