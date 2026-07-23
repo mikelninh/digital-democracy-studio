@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SafeTrace v0.3 — Germany's 14 Anti-Corruption Promises</title>
+<meta name="description" content="A source-backed, human-reviewed tracker of Germany's 14 GRECO anti-corruption recommendations.">
+<style>
+:root{--bg:#f1efe8;--paper:#fffdf7;--ink:#171915;--muted:#62675f;--line:#d6d4ca;--green:#315d48;--lime:#d4ed82;--amber:#e7b85d;--red:#c86b62;--dark:#151d18}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}header{padding:24px 0;border-bottom:1px solid var(--line)}header .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-weight:900;letter-spacing:-.03em;text-decoration:none}.brand small{display:block;color:var(--muted);font-size:.72rem;font-weight:600}.back{font-size:.85rem;color:var(--muted)}.hero{padding:80px 0 45px;display:grid;grid-template-columns:1.35fr .65fr;gap:42px;align-items:end}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:900;color:var(--green)}h1{font-size:clamp(3rem,7vw,7rem);line-height:.92;letter-spacing:-.065em;margin:12px 0 24px}.lede{font-size:clamp(1.05rem,2vw,1.35rem);color:#484d46;max-width:760px}.statusbox{background:var(--dark);color:white;border-radius:22px;padding:25px}.statusbox strong{font-size:2rem}.statusbox p{color:#bbc4bd;margin-bottom:0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 55px}.metric{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}.metric b{font-size:3rem;display:block;letter-spacing:-.06em}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filters button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:750}.filters button.active{background:var(--ink);color:white;border-color:var(--ink)}.grid{display:grid;gap:12px;padding-bottom:70px}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;grid-template-columns:75px 1fr 260px;gap:20px}.roman{font-size:2rem;font-weight:900;color:var(--green)}.card h2{margin:0 0 8px;font-size:1.45rem}.card p{margin:0 0 10px;color:var(--muted)}.tag{display:inline-block;border-radius:999px;padding:6px 10px;font-size:.75rem;font-weight:850}.implemented_satisfactorily{background:var(--lime)}.partly_implemented{background:#f3db9f}.not_implemented{background:#f1b0aa}.meta{font-size:.82rem}.meta strong{display:block;margin-top:9px}.gap{background:var(--dark);color:white;border-radius:22px;padding:28px;margin-bottom:80px}.gap p{color:#c2cac4}.gap .tag{background:var(--amber);color:var(--ink)}footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.84rem}@media(max-width:850px){.hero,.card{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.roman{font-size:1rem}.meta{border-top:1px solid var(--line);padding-top:12px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="../">SafeTrace <small>Evidence before accusation</small></a><a class="back" href="../">← Public baseline</a></div></header>
+<main class="wrap">
+<section class="hero"><div><div class="eyebrow">Case 001 · v0.3 Source Engine</div><h1>Germany's 14 anti-corruption promises.</h1><p class="lede">GRECO's official findings, made readable. Every status stays tied to a source and a human review. Institutional non-compliance is not evidence that an individual committed corruption.</p></div><aside class="statusbox"><div class="eyebrow" style="color:var(--lime)">Auditable baseline</div><strong>Official records only</strong><p>Source registry · snapshot hashes · parser versions · change detection · publication gate</p></aside></section>
+<section class="metrics" id="metrics"></section>
+<div class="filters" id="filters"><button class="active" data-filter="all">All 14</button><button data-filter="implemented_satisfactorily">Implemented</button><button data-filter="partly_implemented">Partly</button><button data-filter="not_implemented">Not implemented</button></div>
+<section class="grid" id="grid" aria-live="polite"></section>
+<section class="gap" id="gap"><span class="tag">Unresolved public gap</span><h2>Checking the latest official status…</h2></section>
+</main>
+<footer><div class="wrap">Brave enough to investigate. Disciplined enough not to prejudge. Compassionate enough never to forget the victims.</div></footer>
+<script>
+const labels={implemented_satisfactorily:'Implemented satisfactorily',partly_implemented:'Partly implemented',not_implemented:'Not implemented'};
+let items=[];
+function render(filter='all'){
+ const shown=filter==='all'?items:items.filter(x=>x.status===filter);
+ document.querySelector('#grid').innerHTML=shown.map(x=>`<article class="card"><div class="roman">${x.id.toUpperCase()}</div><div><span class="tag ${x.status}">${labels[x.status]}</span><h2>${x.title}</h2><p>${x.recommendation}</p><p><strong>GRECO status:</strong> ${x.status_reason}</p></div><div class="meta"><strong>SafeTrace owner map</strong>${x.responsible_institutions.join(' · ')}<strong>Source anchor</strong>${x.source_anchor}<strong>Boundary</strong>Owner mapping is editorial, not a formal GRECO assignment.</div></article>`).join('');
+}
+Promise.all([fetch('data/recommendations.json').then(r=>r.json()),fetch('data/unresolved_questions.json').then(r=>r.json())]).then(([data,gaps])=>{
+ items=data.recommendations;
+ const counts=items.reduce((a,x)=>(a[x.status]=(a[x.status]||0)+1,a),{});
+ document.querySelector('#metrics').innerHTML=[['implemented_satisfactorily','Implemented'],['partly_implemented','Partly implemented'],['not_implemented','Not implemented']].map(([k,l])=>`<div class="metric"><b>${counts[k]||0}</b><span>${l}</span></div>`).join('');
+ const g=gaps.questions[0];document.querySelector('#gap').innerHTML=`<span class="tag">Unresolved public gap</span><h2>${g.question}</h2><p>${g.basis}</p><p><strong>Careful interpretation:</strong> ${g.safe_interpretation}</p><small>Last checked: ${g.last_checked}</small>`;
+ render();
+}).catch(e=>{document.querySelector('#grid').innerHTML=`<p>Data could not be loaded: ${e.message}</p>`});
+document.querySelector('#filters').addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');render(e.target.dataset.filter)});
+</script>
+</body>
+</html>
