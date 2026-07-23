@@ -1,0 +1,53 @@
+name: SafeTrace Investigator Case Packs
+
+on:
+  push:
+    paths:
+      - "safetrace/case_packs/**"
+      - "safetrace/source_engine/data/**"
+      - ".github/workflows/safetrace-case-packs.yml"
+  pull_request:
+    paths:
+      - "safetrace/case_packs/**"
+      - "safetrace/source_engine/data/**"
+      - ".github/workflows/safetrace-case-packs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PDF dependency
+        run: python -m pip install --disable-pip-version-check -r safetrace/case_packs/requirements.txt
+      - name: Test pack completeness and redaction
+        run: python -m unittest discover -s safetrace/case_packs/tests -v
+      - name: Generate Case 001 PDF and JSON
+        run: |
+          python -m safetrace.case_packs.generate_case_pack \
+            --data-dir safetrace/source_engine/data \
+            --json-output artifacts/case-packs/SafeTrace_Case_001_v0.8.json \
+            --pdf-output artifacts/case-packs/SafeTrace_Case_001_v0.8.pdf
+      - name: Verify PDF signature
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          pdf = Path('artifacts/case-packs/SafeTrace_Case_001_v0.8.pdf')
+          assert pdf.read_bytes().startswith(b'%PDF-')
+          assert pdf.stat().st_size > 5000
+          print(pdf, pdf.stat().st_size)
+          PY
+      - name: Upload investigator case pack
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-case-001-v0.8-${{ github.run_id }}
+          path: artifacts/case-packs/
+          if-no-files-found: error
+          retention-days: 90
