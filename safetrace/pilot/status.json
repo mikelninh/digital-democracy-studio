@@ -1,0 +1,56 @@
+{
+  "evaluation": {
+    "decision": "GO_SYNTHETIC",
+    "gates": [
+      {"explanation": "At least 30% workflow time reduction.", "id": "time_saved", "observed": 0.8083, "passed": true, "target": 0.3},
+      {"explanation": "Every material claim has a source.", "id": "source_coverage", "observed": 1.0, "passed": true, "target": 1.0},
+      {"explanation": "Every material claim is human reviewed.", "id": "human_review", "observed": 1.0, "passed": true, "target": 1.0},
+      {"explanation": "All sensitive publications receive human review.", "id": "sensitive_review", "observed": 0, "passed": true, "target": 0},
+      {"explanation": "No false entity link in the evaluated set.", "id": "false_links", "observed": 0, "passed": true, "target": 0},
+      {"explanation": "Corrections are never hidden.", "id": "visible_corrections", "observed": 0, "passed": true, "target": 0},
+      {"explanation": "No serious privacy incident.", "id": "privacy", "observed": 0, "passed": true, "target": 0},
+      {"explanation": "No autonomous guilt decision.", "id": "no_automated_guilt", "observed": 0, "passed": true, "target": 0},
+      {"explanation": "Reviewers understand evidence status and limitations.", "id": "comprehension", "observed": 0.93, "passed": true, "target": 0.8}
+    ],
+    "limitations": [
+      "Results are synthetic benchmark measurements, not partner-validated impact.",
+      "No real victim, witness or restricted partner data was processed.",
+      "A live pilot remains blocked by partner, security, privacy and legal gates."
+    ],
+    "passed_gates": 9,
+    "pilot_id": "safetrace-v1-synthetic-case-001",
+    "real_world_validated": false,
+    "total_gates": 9
+  },
+  "metrics": {
+    "autonomous_guilt_decisions": 0,
+    "baseline_minutes": 480,
+    "corrections_hidden": 0,
+    "false_entity_links": 0,
+    "human_review_coverage": 1.0,
+    "human_reviewed_material_claims": 14,
+    "material_claims": 14,
+    "reviewer_comprehension_score": 0.93,
+    "safetrace_minutes": 92,
+    "sensitive_publications": 0,
+    "sensitive_publications_human_reviewed": 0,
+    "serious_privacy_incidents": 0,
+    "source_coverage": 1.0,
+    "sourced_material_claims": 14,
+    "time_saved_ratio": 0.8083333333333333
+  },
+  "pilot": {
+    "case_id": "case-001",
+    "data_classification": "synthetic",
+    "label": "Case 001 reproducibility and investigator workflow benchmark",
+    "notes": [
+      "The benchmark values are a transparent synthetic acceptance fixture, not observed partner impact.",
+      "The fixture proves the evaluation pipeline and release gates can be executed deterministically.",
+      "A qualified partner must replace these values with observed measurements before GO_LIVE is possible."
+    ],
+    "pilot_id": "safetrace-v1-synthetic-case-001",
+    "pilot_type": "synthetic_benchmark",
+    "real_world_validation": false
+  },
+  "schema_version": "safetrace.pilot-evaluation/1.0"
+}
