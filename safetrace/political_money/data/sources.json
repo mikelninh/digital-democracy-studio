@@ -1,0 +1,32 @@
+{
+  "schema_version": "safetrace.source-registry/0.4",
+  "sources": [
+    {
+      "source_id": "bundestag-large-donations-2026",
+      "title": "Parteispenden über 35.000 € — Jahr 2026",
+      "url": "https://www.bundestag.de/parlament/praesidium/parteienfinanzierung/fundstellen50000/2026",
+      "publisher": "Deutscher Bundestag",
+      "source_type": "official_donation_disclosure",
+      "parser": "bundestag_large_donations_v1",
+      "expected_content_type": "text/html"
+    },
+    {
+      "source_id": "lobbyregister-r005553",
+      "title": "Deutsche Vermögensberatung Aktiengesellschaft DVAG — R005553",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R005553",
+      "publisher": "Deutscher Bundestag — Lobbyregister",
+      "source_type": "official_lobby_register_entry",
+      "parser": "lobbyregister_entry_v2",
+      "expected_content_type": "text/html"
+    },
+    {
+      "source_id": "lobbyregister-open-data-api",
+      "title": "Lobby Register Open Data/API documentation",
+      "url": "https://www.lobbyregister.bundestag.de/informationen-und-hilfe/open-data-1049716",
+      "publisher": "Deutscher Bundestag — Lobbyregister",
+      "source_type": "official_api_documentation",
+      "parser": "lobbyregister_api_docs_v2",
+      "expected_content_type": "text/html"
+    }
+  ]
+}
