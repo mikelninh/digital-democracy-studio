@@ -1,0 +1,395 @@
+{
+  "case_id": "case-004",
+  "title": "Macht die Regierung Merz Politik für Reiche auf Kosten armer Familien?",
+  "jurisdiction": "Germany",
+  "last_reviewed_at": "2026-07-24",
+  "question": "Welche unmittelbar belegbaren Verteilungswirkungen haben zentrale Unternehmens-, Grundsicherungs- und Familienmaßnahmen, und welche politischen Zuschreibungen sind übertrieben oder falsch?",
+  "methodology": {
+    "aggregate_fairness_score": null,
+    "principle": "SafeTrace bewertet keine Regierung mit einer einzigen moralischen Zahl. Es zeigt getrennt, wer unmittelbar profitiert, wer belastet wird, welche Wirkung nur indirekt erwartet wird und wer die Maßnahme politisch verantwortet.",
+    "dimensions": [
+      "direct_cash_or_tax_effect",
+      "access_and_conditionality",
+      "public_revenue",
+      "reach_and_need_targeting",
+      "indirect_investment_or_employment_effect",
+      "policy_origin_and_attribution"
+    ]
+  },
+  "overall_claim_verdict": "partly_supported",
+  "overall_explanation": "Die Regierung Merz hat große und langfristige Steuerentlastungen für profitable Unternehmen beschlossen und die Bedingungen der Grundsicherung deutlich verschärft. Eine nominale Kürzung der Grundsicherungs-Regelsätze für 2026 ist dagegen nicht belegt; sie blieben unverändert. Die Kindergelderhöhung 2026 ist eine reale, aber kleine Familienentlastung und wurde bereits im Dezember 2024 vor Amtsantritt der Regierung Merz beschlossen. Die pauschale Behauptung ist deshalb zu grob, ihr zentraler Verteilungskonflikt ist aber real und überprüfbar.",
+  "publication_boundary": {
+    "allowed": [
+      "officially enacted measures",
+      "documented fiscal estimates",
+      "clearly labelled independent economic analysis",
+      "documented lobbying positions",
+      "explicit unresolved questions"
+    ],
+    "forbidden": [
+      "claiming that lobbying purchased a decision",
+      "presenting expected growth or employment effects as proven",
+      "attributing inherited measures to the current government",
+      "describing benefit recipients or companies as morally deserving or undeserving"
+    ]
+  },
+  "sources": [
+    {
+      "id": "bundestag-investment-booster-vote",
+      "title": "Bundestag stimmt für Investitionssofortprogramm der Koalition",
+      "publisher": "Deutscher Bundestag",
+      "url": "https://www.bundestag.de/dokumente/textarchiv/2025/kw26-pa-finanzen-investitionsprogramm-1093498",
+      "source_type": "official_parliamentary_record"
+    },
+    {
+      "id": "bundestag-investment-booster-fiscal",
+      "title": "Koalition will Wirtschaft entlasten",
+      "publisher": "Deutscher Bundestag",
+      "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1084334",
+      "source_type": "official_bill_summary"
+    },
+    {
+      "id": "bmf-investment-programme",
+      "title": "Investitionssofortprogramm Deutschland: Mehr Wachstum und Wettbewerbsfähigkeit",
+      "publisher": "Bundesministerium der Finanzen",
+      "url": "https://www.bundesfinanzministerium.de/Monatsberichte/Ausgabe/2025/08/Inhalte/Kapitel-2-Fokus/investitionssofortprogramm-deutschland.html",
+      "source_type": "official_government_explanation"
+    },
+    {
+      "id": "ifo-investment-analysis",
+      "title": "Geplante Unternehmensteuerreformen: Eine modellbasierte Simulation der Auswirkungen auf Investitionen und Steuereinnahmen",
+      "publisher": "ifo Institut",
+      "url": "https://www.ifo.de/publikationen/2025/aufsatz-zeitschrift/geplante-unternehmensteuerreformen",
+      "source_type": "independent_economic_analysis"
+    },
+    {
+      "id": "bmas-basic-security-in-force",
+      "title": "Umgestaltung der Grundsicherung: Änderungen treten in Kraft",
+      "publisher": "Bundesministerium für Arbeit und Soziales",
+      "url": "https://www.bmas.de/DE/Service/Presse/Pressemitteilungen/2026/umgestaltung-der-grundsicherung-tritt-in-kraft.html",
+      "source_type": "official_government_explanation"
+    },
+    {
+      "id": "bmas-basic-security-rates",
+      "title": "Leistungen und Bedarfe in der Grundsicherung für Arbeitsuchende",
+      "publisher": "Bundesministerium für Arbeit und Soziales",
+      "url": "https://www.bmas.de/DE/Arbeit/Grundsicherung-fuer-Arbeitsuchende/Leistungen-und-Bedarfe-in-der-Grundsicherung-fuer-Arbeitsuchende/leistungen-und-bedarfe-in-der-grundsicherung-fuer-arbeitsuchende.html",
+      "source_type": "official_current_rules"
+    },
+    {
+      "id": "bmas-rule-rate-2026",
+      "title": "Fortschreibung der Regelbedarfe in der Sozialhilfe und beim Bürgergeld",
+      "publisher": "Bundesministerium für Arbeit und Soziales",
+      "url": "https://www.bmas.de/DE/Service/Presse/Pressemitteilungen/2025/fortschreibung-regelbedarfe-sozialhilfe-und-buergergeld.html",
+      "source_type": "official_rate_decision"
+    },
+    {
+      "id": "bundestag-family-tax-2026",
+      "title": "Bundestag erhöht Kindergeld und Steuerfreibeträge",
+      "publisher": "Deutscher Bundestag",
+      "url": "https://www.bundestag.de/dokumente/textarchiv/2024/kw51-de-steuerfortentwicklung-1034400",
+      "source_type": "official_parliamentary_record"
+    },
+    {
+      "id": "lobby-idw-investment-programme",
+      "title": "Regelungsvorhaben zum steuerlichen Investitionssofortprogramm",
+      "publisher": "Lobbyregister beim Deutschen Bundestag / IDW",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0017447",
+      "source_type": "official_lobby_register_record"
+    },
+    {
+      "id": "lobby-bertelsmann-investment-programme",
+      "title": "Wirksame Ausgestaltung des Investitionssofortprogramms",
+      "publisher": "Lobbyregister beim Deutschen Bundestag / Bertelsmann",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0017508",
+      "source_type": "official_lobby_register_record"
+    },
+    {
+      "id": "lobby-family-basic-security",
+      "title": "Reform der Grundsicherung",
+      "publisher": "Lobbyregister beim Deutschen Bundestag / Verband binationaler Familien und Partnerschaften",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0022623",
+      "source_type": "official_lobby_register_record"
+    }
+  ],
+  "measures": [
+    {
+      "id": "investment-booster-depreciation",
+      "title": "Degressive Abschreibung von bis zu 30 Prozent",
+      "status": "in_force",
+      "effective_date": "2025-07-01",
+      "origin": "merz_coalition",
+      "attributable_to_current_government": true,
+      "evidence_state": "verified_fact",
+      "description": "Für bestimmte bewegliche Wirtschaftsgüter können Unternehmen für Investitionen nach dem 30. Juni 2025 und vor dem 1. Januar 2028 eine degressive Abschreibung von bis zu 30 Prozent nutzen.",
+      "source_ids": [
+        "bundestag-investment-booster-vote",
+        "bmf-investment-programme",
+        "ifo-investment-analysis"
+      ],
+      "impacts": [
+        {
+          "dimension": "direct_cash_or_tax_effect",
+          "group": "investing_businesses",
+          "effect": "positive",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Die Maßnahme verschiebt Steuerzahlungen nach hinten und verbessert kurzfristig Liquidität und Investitionsanreize für Unternehmen mit förderfähigen Investitionen."
+        },
+        {
+          "dimension": "public_revenue",
+          "group": "federal_state_and_local_budgets",
+          "effect": "negative",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Der Gesetzentwurf erwartete erhebliche Steuermindereinnahmen für Bund, Länder und Kommunen; tatsächliche spätere Einnahmen können abweichen."
+        },
+        {
+          "dimension": "indirect_investment_or_employment_effect",
+          "group": "workers_and_wider_economy",
+          "effect": "positive",
+          "confidence": "medium",
+          "directness": "indirect",
+          "explanation": "Modell- und Literaturanalysen erwarten zusätzliche Investitionen. Ausmaß, Beschäftigungswirkung und Verteilung sind jedoch nicht bereits durch das Gesetz selbst bewiesen."
+        }
+      ],
+      "unresolved_questions": [
+        "Wie stark steigen reale zusätzliche Investitionen gegenüber bloß vorgezogenen Investitionen?",
+        "Welche Branchen und Unternehmensgrößen nutzen die Förderung tatsächlich?"
+      ]
+    },
+    {
+      "id": "corporate-tax-cut-2028-2032",
+      "title": "Körperschaftsteuer sinkt von 15 auf 10 Prozent",
+      "status": "enacted",
+      "effective_date": "2028-01-01",
+      "origin": "merz_coalition",
+      "attributable_to_current_government": true,
+      "evidence_state": "verified_fact",
+      "description": "Der Körperschaftsteuersatz sinkt ab 2028 jährlich um einen Prozentpunkt und erreicht 2032 zehn Prozent. Daneben sinkt der Thesaurierungssteuersatz für Personenunternehmen.",
+      "source_ids": [
+        "bundestag-investment-booster-vote",
+        "bundestag-investment-booster-fiscal",
+        "bmf-investment-programme",
+        "ifo-investment-analysis"
+      ],
+      "impacts": [
+        {
+          "dimension": "direct_cash_or_tax_effect",
+          "group": "profitable_corporations_and_retained_business_income",
+          "effect": "positive",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Profitablen Kapitalgesellschaften und begünstigten Personenunternehmen verbleibt nach Inkrafttreten unmittelbar mehr Nachsteuergewinn."
+        },
+        {
+          "dimension": "public_revenue",
+          "group": "public_budgets",
+          "effect": "negative",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Ohne gegenläufiges Wachstum reduziert der niedrigere Tarif dauerhaft Steuereinnahmen. Das ifo Institut bewertet die Tarifsenkung fiskalisch teurer als die degressive Abschreibung."
+        },
+        {
+          "dimension": "indirect_investment_or_employment_effect",
+          "group": "workers_consumers_and_future_investment",
+          "effect": "uncertain",
+          "confidence": "medium",
+          "directness": "indirect",
+          "explanation": "Mögliche Wirkungen auf Investitionen, Löhne, Preise und Standortentscheidungen sind plausibel, ihre Größenordnung und Verteilung können heute nicht als erwiesen gelten."
+        }
+      ],
+      "unresolved_questions": [
+        "Wie verteilen sich die langfristigen Vorteile zwischen Eigentümern, Beschäftigten und Konsumenten?",
+        "Welche öffentlichen Leistungen oder Investitionen werden durch Mindereinnahmen beeinflusst?"
+      ]
+    },
+    {
+      "id": "basic-security-reform-2026",
+      "title": "Neue Grundsicherung mit strengeren Pflichten und Sanktionen",
+      "status": "in_force",
+      "effective_date": "2026-07-01",
+      "origin": "merz_coalition",
+      "attributable_to_current_government": true,
+      "evidence_state": "verified_fact",
+      "description": "Die Reform stärkt Vermittlungsvorrang und Mitwirkungspflichten, verändert Minderungen bei Pflichtverletzungen, fördert frühere Arbeitsmarktintegration Erziehender und reduziert Schutzregeln bei Vermögen und teilweise bei Wohnkosten.",
+      "source_ids": [
+        "bmas-basic-security-in-force",
+        "bmas-basic-security-rates",
+        "lobby-family-basic-security"
+      ],
+      "impacts": [
+        {
+          "dimension": "access_and_conditionality",
+          "group": "working_age_basic_security_recipients",
+          "effect": "negative",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Leistungsbeziehende müssen strengere Mitwirkungs- und Vermittlungsanforderungen erfüllen; bei Pflichtverletzungen können finanzielle Minderungen entstehen."
+        },
+        {
+          "dimension": "access_and_conditionality",
+          "group": "parents_of_young_children_receiving_basic_security",
+          "effect": "conditional",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Erziehende werden früher und verbindlicher in Richtung Arbeitsmarkt angesprochen. Ob dies unterstützt oder belastet, hängt besonders von Kinderbetreuung, Gesundheit und passender Arbeit ab."
+        },
+        {
+          "dimension": "indirect_investment_or_employment_effect",
+          "group": "recipients_and_labour_market",
+          "effect": "uncertain",
+          "confidence": "medium",
+          "directness": "indirect",
+          "explanation": "Die Regierung erwartet schnellere und nachhaltigere Integration. Ob die Reform Beschäftigung, Einkommen und soziale Stabilität tatsächlich verbessert, muss empirisch gemessen werden."
+        }
+      ],
+      "unresolved_questions": [
+        "Wie verändern sich Sanktionen, Leistungsabbrüche und Erwerbsaufnahmen nach Haushaltsform?",
+        "Welche Auswirkungen entstehen für Kinder, obwohl sie nicht selbst Adressaten arbeitsmarktbezogener Pflichten sind?",
+        "Stehen ausreichend Kinderbetreuung, Qualifizierung und passende Arbeitsplätze zur Verfügung?"
+      ]
+    },
+    {
+      "id": "basic-security-rate-freeze-2026",
+      "title": "Grundsicherungs-Regelsätze bleiben 2026 nominal unverändert",
+      "status": "in_force",
+      "effective_date": "2026-01-01",
+      "origin": "preexisting_statutory_formula",
+      "attributable_to_current_government": false,
+      "evidence_state": "verified_fact",
+      "description": "Die Regelbedarfe für 2026 entsprechen nominal den Beträgen von 2024 und 2025. Die Festsetzung erfolgte nach der bestehenden Fortschreibungsregelung.",
+      "source_ids": [
+        "bmas-rule-rate-2026",
+        "bmas-basic-security-rates"
+      ],
+      "impacts": [
+        {
+          "dimension": "direct_cash_or_tax_effect",
+          "group": "basic_security_households",
+          "effect": "neutral",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Es gab 2026 keine nominale Senkung, aber auch keine nominale Erhöhung der Regelsätze."
+        },
+        {
+          "dimension": "direct_cash_or_tax_effect",
+          "group": "basic_security_households_real_purchasing_power",
+          "effect": "uncertain",
+          "confidence": "high",
+          "directness": "indirect",
+          "explanation": "Die reale Kaufkraft hängt von der tatsächlichen Preisentwicklung und dem individuellen Warenkorb ab. Eine Nullrunde kann real belasten, ist aber nicht dasselbe wie eine nominale Leistungskürzung."
+        }
+      ],
+      "unresolved_questions": [
+        "Wie entwickelte sich die reale Kaufkraft verschiedener Haushaltstypen im Verlauf von 2026?",
+        "Welche neue Regelbedarfsermittlung folgt auf Basis aktueller Verbrauchsdaten?"
+      ]
+    },
+    {
+      "id": "child-benefit-and-allowance-2026",
+      "title": "Kindergeld steigt 2026 auf 259 Euro",
+      "status": "in_force",
+      "effective_date": "2026-01-01",
+      "origin": "prior_legislature",
+      "attributable_to_current_government": false,
+      "evidence_state": "verified_fact",
+      "description": "Das Kindergeld stieg um vier Euro je Kind und Monat; auch der steuerliche Kinderfreibetrag stieg. Der Bundestag beschloss dies im Dezember 2024, also vor Amtsantritt der Regierung Merz.",
+      "source_ids": [
+        "bundestag-family-tax-2026"
+      ],
+      "impacts": [
+        {
+          "dimension": "direct_cash_or_tax_effect",
+          "group": "families_receiving_child_benefit",
+          "effect": "positive",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Die direkte Kindergelderhöhung entspricht 48 Euro pro Kind und Jahr."
+        },
+        {
+          "dimension": "reach_and_need_targeting",
+          "group": "families_across_income_levels",
+          "effect": "mixed",
+          "confidence": "high",
+          "directness": "direct",
+          "explanation": "Kindergeld erreicht Familien breit. Der zusätzliche Vorteil des Kinderfreibetrags hängt von der individuellen Steuerbelastung ab."
+        }
+      ],
+      "unresolved_questions": [
+        "Wie groß ist die Nettoentlastung nach Einkommensgruppen und im Zusammenspiel mit anderen Leistungen?"
+      ]
+    }
+  ],
+  "claim_tests": [
+    {
+      "id": "claim-business-relief",
+      "claim": "Die Regierung Merz entlastet profitable Unternehmen erheblich.",
+      "verdict": "supported",
+      "reasoning": "Die degressive Abschreibung gilt bereits; die langfristige Senkung der Körperschaftsteuer auf zehn Prozent ist beschlossen. Direkte Nutznießer sind investierende beziehungsweise profitable Unternehmen.",
+      "measure_ids": [
+        "investment-booster-depreciation",
+        "corporate-tax-cut-2028-2032"
+      ]
+    },
+    {
+      "id": "claim-nominal-benefit-cut",
+      "claim": "Merz hat 2026 die Grundsicherungs-Regelsätze für arme Familien nominal gekürzt.",
+      "verdict": "not_supported",
+      "reasoning": "Die Regelsätze blieben nominal unverändert. Eine mögliche reale Kaufkraftminderung durch Preissteigerungen ist von einer nominalen Kürzung zu unterscheiden. Die Nullrunde beruht zudem auf einer bereits bestehenden Fortschreibungsregelung.",
+      "measure_ids": [
+        "basic-security-rate-freeze-2026"
+      ]
+    },
+    {
+      "id": "claim-stricter-poor-households",
+      "claim": "Die Regierung erhöht den Druck und das finanzielle Risiko für Menschen in der Grundsicherung.",
+      "verdict": "supported",
+      "reasoning": "Die Reform verschärft Mitwirkung, Vermittlung und mögliche Minderungen und verändert Vermögens- und Wohnkostenschutz. Die tatsächliche Häufigkeit und soziale Wirkung muss nach Inkrafttreten gemessen werden.",
+      "measure_ids": [
+        "basic-security-reform-2026"
+      ]
+    },
+    {
+      "id": "claim-merz-child-benefit",
+      "claim": "Die Regierung Merz hat das Kindergeld 2026 erhöht.",
+      "verdict": "not_supported",
+      "reasoning": "Die Erhöhung trat 2026 in Kraft, wurde jedoch bereits im Dezember 2024 von der vorherigen Legislatur beschlossen. Sie darf nicht als neue Maßnahme der Regierung Merz verbucht werden.",
+      "measure_ids": [
+        "child-benefit-and-allowance-2026"
+      ]
+    },
+    {
+      "id": "claim-only-rich",
+      "claim": "Merz macht ausschließlich Politik für Reiche und kürzt ausschließlich bei Kindern und armen Familien.",
+      "verdict": "partly_supported",
+      "reasoning": "Der erkennbare Verteilungskonflikt ist real: große Unternehmensentlastungen stehen einer strengeren Grundsicherung gegenüber. Die Wörter ausschließlich und nominale Kürzung gehen jedoch über die belegbaren Tatsachen hinaus; außerdem bestehen Familienentlastungen, von denen die hier betrachtete Kindergelderhöhung allerdings nicht der Merz-Regierung zuzurechnen ist.",
+      "measure_ids": [
+        "corporate-tax-cut-2028-2032",
+        "basic-security-reform-2026",
+        "basic-security-rate-freeze-2026",
+        "child-benefit-and-allowance-2026"
+      ]
+    }
+  ],
+  "documented_influence_activity": [
+    {
+      "actor": "Institut der Wirtschaftsprüfer in Deutschland e.V.",
+      "position": "Begrüßte die degressive Abschreibung und die geplante Senkung von Körperschaft- und Thesaurierungssteuersatz.",
+      "source_id": "lobby-idw-investment-programme",
+      "interpretation": "Dokumentierte Interessenvertretung; kein Beleg für unzulässige Einflussnahme oder Kausalität."
+    },
+    {
+      "actor": "Bertelsmann SE & Co. KGaA",
+      "position": "Setzte sich für schnelle Umsetzung der Abschreibung, Forschungszulage und Körperschaftsteuersenkung ein.",
+      "source_id": "lobby-bertelsmann-investment-programme",
+      "interpretation": "Dokumentierte Interessenvertretung; kein Beleg dafür, dass eine politische Entscheidung gekauft oder rechtswidrig beeinflusst wurde."
+    },
+    {
+      "actor": "Verband binationaler Familien und Partnerschaften, iaf e.V.",
+      "position": "Warnte vor Sanktionen, die Haushalte mit Kindern belasten, und forderte verlässliche Kinderbetreuung.",
+      "source_id": "lobby-family-basic-security",
+      "interpretation": "Dokumentierte Gegenposition aus der Zivilgesellschaft; sie ist eine Interessenposition und noch kein empirischer Wirkungsnachweis."
+    }
+  ]
+}
