@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mikelninh/digital-democracy-studio/blob/main/safetrace/case_packs/schema.json",
+  "title": "SafeTrace Investigator Case Pack v0.8",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "pack_id",
+    "version",
+    "generated_at",
+    "edition",
+    "case",
+    "executive_summary",
+    "chronology",
+    "findings",
+    "unresolved_questions",
+    "source_manifest",
+    "review",
+    "redaction_profile",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "safetrace.case-pack/0.8"},
+    "pack_id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^0\\.8\\.[0-9]+$"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "edition": {"enum": ["public_redacted", "restricted_partner"]},
+    "case": {
+      "type": "object",
+      "required": ["id", "title", "jurisdiction", "purpose"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "jurisdiction": {"type": "string"},
+        "purpose": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "executive_summary": {
+      "type": "object",
+      "required": ["implemented_satisfactorily", "partly_implemented", "not_implemented", "key_gap", "interpretation"],
+      "properties": {
+        "implemented_satisfactorily": {"type": "integer", "minimum": 0},
+        "partly_implemented": {"type": "integer", "minimum": 0},
+        "not_implemented": {"type": "integer", "minimum": 0},
+        "key_gap": {"type": "string"},
+        "interpretation": {"type": "string"}
+      }
+    },
+    "chronology": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date", "event", "evidence_state", "source_id"],
+        "properties": {
+          "date": {"type": "string"},
+          "event": {"type": "string"},
+          "evidence_state": {"enum": ["verified_fact", "unresolved_gap"]},
+          "source_id": {"type": "string"}
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "statement", "evidence_state", "official_status", "responsible_institutions", "source_anchor", "limitations"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "statement": {"type": "string"},
+          "evidence_state": {"const": "verified_fact"},
+          "official_status": {"enum": ["implemented_satisfactorily", "partly_implemented", "not_implemented"]},
+          "responsible_institutions": {"type": "array", "items": {"type": "string"}},
+          "source_anchor": {"type": "string", "minLength": 1},
+          "limitations": {"type": "string"}
+        }
+      }
+    },
+    "unresolved_questions": {"type": "array"},
+    "source_manifest": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source_id", "title", "url", "publisher", "source_type", "parser"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "title": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "publisher": {"type": "string"},
+          "source_type": {"type": "string"},
+          "parser": {"type": "string"}
+        }
+      }
+    },
+    "review": {"type": "object"},
+    "redaction_profile": {
+      "type": "object",
+      "required": ["edition", "personal_data_included", "victim_or_witness_data_included", "private_addresses_included"],
+      "properties": {
+        "edition": {"type": "string"},
+        "personal_data_included": {"type": "boolean"},
+        "victim_or_witness_data_included": {"type": "boolean"},
+        "private_addresses_included": {"type": "boolean"}
+      }
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
