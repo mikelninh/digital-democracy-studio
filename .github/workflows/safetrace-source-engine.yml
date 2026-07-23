@@ -1,0 +1,36 @@
+name: SafeTrace Source Engine
+
+on:
+  push:
+    paths:
+      - "safetrace/source_engine/**"
+      - ".github/workflows/safetrace-source-engine.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: python -m unittest discover -s safetrace/source_engine/tests -v
+      - name: Build reviewed public status feed
+        run: python -m safetrace.source_engine.build_public_status --output artifacts/public/case-001.json
+      - name: Snapshot primary official sources
+        run: python -m safetrace.source_engine.cli --output artifacts/source-snapshots
+      - name: Upload auditable source bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-case-001-${{ github.run_id }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
