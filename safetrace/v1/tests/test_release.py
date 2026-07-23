@@ -13,7 +13,7 @@ class ReleaseTests(unittest.TestCase):
         source_root = Path(__file__).parents[2]
         for component in [
             "source_engine", "political_money", "review_desk", "arms_monitor",
-            "monitoring", "case_packs", "governance", "pilot",
+            "monitoring", "case_packs", "governance", "pilot", "law_fairness",
         ]:
             (root / "safetrace" / component).mkdir(parents=True, exist_ok=True)
         governance = source_root / "governance/data/readiness.json"
@@ -34,6 +34,7 @@ class ReleaseTests(unittest.TestCase):
             status = validate_repository(root)
             self.assertTrue(status["release_ready"])
             self.assertFalse(status["live_partner_ready"])
+            self.assertTrue(status["components"]["law_fairness"])
             self.assertIn("not authorised", status["truthful_status"])
 
     def test_status_file_is_machine_readable(self) -> None:

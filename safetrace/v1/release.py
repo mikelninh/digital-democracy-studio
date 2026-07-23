@@ -16,6 +16,7 @@ REQUIRED_COMPONENTS = [
     "case_packs",
     "governance",
     "pilot",
+    "law_fairness",
 ]
 
 
