@@ -1,0 +1,36 @@
+name: SafeTrace Review Desk
+
+on:
+  push:
+    paths:
+      - "safetrace/review_desk/**"
+      - ".github/workflows/safetrace-review-desk.yml"
+  pull_request:
+    paths:
+      - "safetrace/review_desk/**"
+      - ".github/workflows/safetrace-review-desk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-review-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test publication gates
+        run: python -m unittest discover -s safetrace/review_desk/tests -v
+      - name: Produce separated public and internal feeds
+        run: python -m safetrace.review_desk.evaluate
+      - name: Upload review bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-review-desk-${{ github.run_id }}
+          path: artifacts/review/
+          if-no-files-found: error
+          retention-days: 90
