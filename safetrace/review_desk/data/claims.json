@@ -1,0 +1,99 @@
+{
+  "schema_version": "safetrace.review-queue/0.5",
+  "case_id": "political-money-dvag-2026",
+  "claims": [
+    {
+      "id": "claim:dvag-donations-2026-slice",
+      "text": "The reviewed January-February 2026 slice contains five disclosed DVAG donations totalling EUR 340,000 to four political parties.",
+      "evidence_state": "verified_fact",
+      "sensitivity": "ordinary",
+      "origin": "imported_official_record",
+      "evidence": [
+        {
+          "id": "evidence:bundestag-donations-2026",
+          "role": "supporting",
+          "source_id": "bundestag-large-donations-2026",
+          "source_url": "https://www.bundestag.de/parlament/praesidium/parteienfinanzierung/fundstellen50000/2026",
+          "source_title": "Parteispenden über 35.000 € — Jahr 2026",
+          "summary": "The official page records four donations on 27 January 2026 and one on 2 February 2026 from DVAG, totalling EUR 340,000.",
+          "source_anchor": "January-February 2026 entries; BT-Drs. 21/5085 and 21/5550"
+        }
+      ],
+      "decision": {
+        "outcome": "approved",
+        "reviewer_role": "SafeTrace maintainer",
+        "rationale": "The amount, dates, recipients and donor name are directly supported by the official Bundestag disclosure. The public wording is limited to the reviewed slice.",
+        "decided_at": "2026-07-23T23:55:00+02:00",
+        "legal_review": "not_required",
+        "right_of_reply": "not_required",
+        "contradictory_evidence_addressed": true
+      },
+      "correction_history": []
+    },
+    {
+      "id": "claim:dvag-lobby-entry",
+      "text": "DVAG has the official Lobby Register entry R005553 and declares interests including public finance, pensions, banking, consumer protection and insurance.",
+      "evidence_state": "verified_fact",
+      "sensitivity": "ordinary",
+      "origin": "imported_official_record",
+      "evidence": [
+        {
+          "id": "evidence:lobby-r005553",
+          "role": "supporting",
+          "source_id": "lobbyregister-r005553",
+          "source_url": "https://www.lobbyregister.bundestag.de/suche/R005553",
+          "source_title": "Deutsche Vermögensberatung Aktiengesellschaft DVAG — R005553",
+          "summary": "The official entry identifies DVAG under register number R005553 and lists the selected policy-interest areas.",
+          "source_anchor": "Current public register entry"
+        }
+      ],
+      "decision": {
+        "outcome": "approved",
+        "reviewer_role": "SafeTrace maintainer",
+        "rationale": "The register number, organisation and selected interests are directly visible in the official Lobby Register entry.",
+        "decided_at": "2026-07-23T23:56:00+02:00",
+        "legal_review": "not_required",
+        "right_of_reply": "not_required",
+        "contradictory_evidence_addressed": true
+      },
+      "correction_history": []
+    },
+    {
+      "id": "claim:dvag-donations-caused-policy",
+      "text": "DVAG's donations caused or purchased a favourable political decision on pensions or financial regulation.",
+      "evidence_state": "analytical_red_flag",
+      "sensitivity": "sensitive",
+      "origin": "ai_suggested",
+      "evidence": [
+        {
+          "id": "evidence:association-only",
+          "role": "context",
+          "source_id": "political-money-graph-v0.4",
+          "source_url": "https://github.com/mikelninh/digital-democracy-studio/tree/main/safetrace/political_money",
+          "source_title": "SafeTrace Political Money Graph v0.4",
+          "summary": "The graph documents donations and declared lobbying interests but contains no evidence that a payment caused a decision.",
+          "source_anchor": "Publication boundary"
+        },
+        {
+          "id": "evidence:no-causal-record",
+          "role": "contradicting",
+          "source_id": "review-gap-causation",
+          "source_url": "https://www.lobbyregister.bundestag.de/informationen-und-hilfe/open-data-1049716",
+          "source_title": "Lobby Register Open Data/API documentation",
+          "summary": "The available official records describe registration and declared interests; they do not establish a quid pro quo or causal purchase of a policy result.",
+          "source_anchor": "Scope of public register data"
+        }
+      ],
+      "decision": {
+        "outcome": "rejected",
+        "reviewer_role": "SafeTrace maintainer",
+        "rationale": "Temporal proximity and overlapping subject matter do not prove bribery, unlawful influence or causation. No supporting evidence establishes the proposed claim.",
+        "decided_at": "2026-07-23T23:58:00+02:00",
+        "legal_review": "pending",
+        "right_of_reply": "not_contacted",
+        "contradictory_evidence_addressed": true
+      },
+      "correction_history": []
+    }
+  ]
+}
