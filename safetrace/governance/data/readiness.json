@@ -1,0 +1,108 @@
+{
+  "schema_version": "safetrace.readiness/1.0",
+  "controls": [
+    {
+      "id": "GOV-001",
+      "domain": "governance",
+      "description": "Evidence states, publication boundaries and correction rules are documented.",
+      "status": "documented",
+      "required_for": ["synthetic_evaluation", "restricted_partner"],
+      "owner_role": "reviewer",
+      "evidence": ["safetrace/METHODOLOGY.md", "safetrace/review_desk/model.py"],
+      "last_reviewed": "2026-07-24"
+    },
+    {
+      "id": "GOV-002",
+      "domain": "access",
+      "description": "Role-based permissions are explicit and default-deny unknown roles.",
+      "status": "implemented",
+      "required_for": ["synthetic_evaluation", "restricted_partner"],
+      "owner_role": "security_admin",
+      "evidence": ["safetrace/governance/model.py", "safetrace/governance/tests/test_governance.py"],
+      "last_reviewed": "2026-07-24"
+    },
+    {
+      "id": "GOV-003",
+      "domain": "security",
+      "description": "Review and access actions can be recorded in a tamper-evident hash chain.",
+      "status": "implemented",
+      "required_for": ["synthetic_evaluation", "restricted_partner"],
+      "owner_role": "security_admin",
+      "evidence": ["safetrace/governance/model.py", "safetrace/governance/tests/test_governance.py"],
+      "last_reviewed": "2026-07-24"
+    },
+    {
+      "id": "GOV-004",
+      "domain": "privacy",
+      "description": "The public and synthetic pilot prohibit personal, victim and witness data.",
+      "status": "implemented",
+      "required_for": ["synthetic_evaluation"],
+      "owner_role": "reviewer",
+      "evidence": ["safetrace/governance/data/readiness.json", "safetrace/pilot/model.py"],
+      "last_reviewed": "2026-07-24"
+    },
+    {
+      "id": "GOV-005",
+      "domain": "operations",
+      "description": "The synthetic pilot has measurable success, safety and quality gates.",
+      "status": "implemented",
+      "required_for": ["synthetic_evaluation", "restricted_partner"],
+      "owner_role": "partner_operator",
+      "evidence": ["safetrace/pilot/model.py", "safetrace/pilot/data/synthetic_pilot.json"],
+      "last_reviewed": "2026-07-24"
+    },
+    {
+      "id": "GOV-006",
+      "domain": "security",
+      "description": "Production authentication, encryption, secrets management and independent penetration testing are complete.",
+      "status": "blocked",
+      "required_for": ["restricted_partner"],
+      "owner_role": "security_admin",
+      "evidence": [],
+      "last_reviewed": "2026-07-24",
+      "blocker": "Requires a selected hosting architecture, independent security review and remediated findings."
+    },
+    {
+      "id": "GOV-007",
+      "domain": "privacy",
+      "description": "A partner-specific DPIA, lawful basis, retention schedule and data-processing agreement are approved.",
+      "status": "blocked",
+      "required_for": ["restricted_partner"],
+      "owner_role": "legal_reviewer",
+      "evidence": [],
+      "last_reviewed": "2026-07-24",
+      "blocker": "Cannot be completed without a named partner, scoped data flow and qualified legal review."
+    },
+    {
+      "id": "GOV-008",
+      "domain": "legal",
+      "description": "Defamation, evidence handling, right-of-reply and escalation procedures are approved for the partner case type.",
+      "status": "blocked",
+      "required_for": ["restricted_partner"],
+      "owner_role": "legal_reviewer",
+      "evidence": [],
+      "last_reviewed": "2026-07-24",
+      "blocker": "Requires qualified legal/editorial partner sign-off."
+    }
+  ],
+  "boundaries": {
+    "synthetic_evaluation": {
+      "mode": "synthetic_evaluation",
+      "allowed_data_classes": ["public", "synthetic"],
+      "personal_data_allowed": false,
+      "victim_or_witness_data_allowed": false,
+      "automated_publication_allowed": false,
+      "automated_referral_allowed": false,
+      "named_partner_required": false
+    },
+    "restricted_partner": {
+      "mode": "restricted_partner",
+      "allowed_data_classes": ["public", "restricted_partner"],
+      "personal_data_allowed": true,
+      "victim_or_witness_data_allowed": false,
+      "automated_publication_allowed": false,
+      "automated_referral_allowed": false,
+      "named_partner_required": true
+    }
+  }
+}
