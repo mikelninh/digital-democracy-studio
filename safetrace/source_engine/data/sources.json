@@ -1,0 +1,41 @@
+{
+  "schema_version": "safetrace.source-registry/0.3",
+  "sources": [
+    {
+      "source_id": "greco-germany-fifth-round-page",
+      "title": "GRECO Germany evaluation page",
+      "url": "https://www.coe.int/en/web/greco/evaluations/germany",
+      "publisher": "Council of Europe — GRECO",
+      "source_type": "official_status_page",
+      "parser": "greco_country_page_v1",
+      "expected_content_type": "text/html"
+    },
+    {
+      "source_id": "greco-germany-2025-second-compliance",
+      "title": "Germany Fifth Round Second Compliance Report",
+      "url": "https://rm.coe.int/grecorc5-2025-8-final-eng-2nd-compliance-report-germany-public/488027d7cc",
+      "publisher": "Council of Europe — GRECO",
+      "source_type": "official_compliance_report",
+      "parser": "greco_second_compliance_v1",
+      "expected_content_type": "application/pdf"
+    },
+    {
+      "source_id": "greco-germany-2020-evaluation",
+      "title": "Germany Fifth Round Evaluation Report",
+      "url": "https://rm.coe.int/fifth-evaluation-round-preventing-corruption-and-promoting-integrity-i/1680a0b8d7",
+      "publisher": "Council of Europe — GRECO",
+      "source_type": "official_evaluation_report",
+      "parser": "greco_evaluation_v1",
+      "expected_content_type": "application/pdf"
+    },
+    {
+      "source_id": "oecd-germany-integrity-2026",
+      "title": "Anti-Corruption and Integrity Outlook 2026: Germany",
+      "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/03/anti-corruption-and-integrity-outlook-2026-country-notes_b1df9263/germany_961fecbe/d57a73fc-en.pdf",
+      "publisher": "OECD",
+      "source_type": "official_country_note",
+      "parser": "oecd_integrity_country_note_v1",
+      "expected_content_type": "application/pdf"
+    }
+  ]
+}
