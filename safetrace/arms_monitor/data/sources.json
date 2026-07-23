@@ -1,0 +1,32 @@
+{
+  "schema_version": "safetrace.source-registry/0.6",
+  "sources": [
+    {
+      "source_id": "bundestag-arms-export-authorisations-2025",
+      "title": "Rüstungsexportgenehmigungen im Jahr 2025",
+      "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1155890",
+      "publisher": "Deutscher Bundestag",
+      "source_type": "official_parliamentary_summary",
+      "parser": "bundestag_arms_exports_v1",
+      "expected_content_type": "text/html"
+    },
+    {
+      "source_id": "bundeswehr-procurement-process",
+      "title": "Planung: Der Weg zu Großprojekten in der Beschaffung",
+      "url": "https://www.bundeswehr.de/de/beschaffung/beschaffung-planungsprozess",
+      "publisher": "Bundeswehr",
+      "source_type": "official_process_description",
+      "parser": "bundeswehr_procurement_process_v1",
+      "expected_content_type": "text/html"
+    },
+    {
+      "source_id": "bundeswehr-meko-a200-2026",
+      "title": "Neue Fregatten des Typs MEKO A-200 DEU für die Marine",
+      "url": "https://www.bundeswehr.de/de/beschaffung/meko-a-200-deu",
+      "publisher": "Bundeswehr",
+      "source_type": "official_procurement_project_update",
+      "parser": "bundeswehr_meko_a200_v1",
+      "expected_content_type": "text/html"
+    }
+  ]
+}
