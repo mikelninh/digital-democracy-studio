@@ -11,58 +11,61 @@ Source snapshots, political-money and arms records, human review, monitoring, ca
 Machine-readable Case Charter, shared evidence records, controlled vocabularies, data zones and Case 001–004 migrations.
 
 ### v1.3 — Source Registry and Evidence Vault
-Reviewed public-source catalogue, immutable originals, hash-chained receipts, manifests, health alerts and recovery tests.
+Reviewed source catalogue, immutable originals, hash-chained receipts, transformation manifests and recovery tests.
 
 ### v1.4 — Claim Ledger 2.0
-Versioned claims, exact evidence links, dynamic human review gates, visible corrections and automatic stale-publication invalidation.
+Versioned claims, exact evidence links, dynamic human review gates, visible corrections and stale-publication invalidation.
 
 ### v1.5 — Auditable Agent Task Queue
 Twelve bounded proposal workers, default-deny tools, replayable receipts and release-blocking adversarial evaluations.
 
 ### v1.6 — Internal Investigation Desk
-Eleven role-filtered views, least privilege, team workflow, public-export separation and a verifiable audit chain.
+Eleven role-filtered views, least privilege, public-export separation and a verifiable audit chain.
 
-### v1.7 — Case 004 Technical Reference Workflow
+### v1.7 — Case 004 Technical Reference
+A complete reproducible workflow for 11 sources, 5 measures, 5 claims, graph, timeline, human review, bounded agents, JSON/PDF, monitoring and study instruments. New publication remains blocked because retained original bytes are 0 of 11.
 
-- loads the reviewed German Law Fairness dataset;
-- registers 11 sources, 5 measures and 5 claim tests;
-- builds timeline events, affected-group entities and impact relationships;
-- completes independent repository-consistency review for every claim;
-- runs Skeptic, Quant, Legal Status and Guardian proposals through human review;
-- generates all eleven Investigation Desk views and verifies the audit chain;
-- generates JSON and PDF reference packs plus a monitoring manifest;
-- supplies a controlled operation-count benchmark and an eight-question comprehension instrument;
-- blocks a new publication because retained original source bytes remain 0 of 11;
-- makes no real time-saving or citizen-comprehension claim.
+### v1.8 — Independent Review Readiness
 
-## Exact v1.7 status
+- seven external review disciplines with minimum qualifications;
+- SHA-256-bound review packets and structured review questions;
+- required conflict declarations and written go/no-go recommendations;
+- open finding register with severity, owner, remediation and disclosure decision;
+- one critical and multiple high known blockers deliberately retained;
+- synthetic threat-model, publication-incident and recovery exercises;
+- consent-based workflow and citizen-comprehension study protocols;
+- controlled source-backfill plan for all eleven Case 004 sources;
+- automatic publication after backfill explicitly disabled;
+- external reviews, approvals and conflict declarations remain exactly zero.
 
-**Ready:** deterministic technical reference workflow and evaluation instruments.
+## Exact v1.8 status
 
-**Still blocked:** newly verified Case 004 publication, real observed workflow impact, completed citizen-comprehension study, production identity/security and restricted partner processing.
+**Ready:** invite qualified independent reviewers and provide reproducible review materials.
 
-The existing Gesetzes-Fairness page remains an editorial legacy output. The v1.7 pack is a reproducible technical reference, not a substitute for immutable original-source backfill and renewed publication review.
+**Not achieved:** independent review completion, external approval, remediated critical/high findings, named qualified partner, partner-pilot permission, production security approval or restricted-data permission.
 
-## Next engineering milestone — v1.8
+The release gate fails if SafeTrace claims an external approval, completed review or open pilot gate before those events actually occur.
 
-Prepare **independent review and original-source backfill**:
+## Next engineering milestone — v1.9
 
-- networked but controlled connectors for the eleven Case 004 sources;
-- immutable original-byte receipts and parser manifests;
-- backfill dashboard showing missing, changed and failed sources;
-- external methodology, editorial, legal, privacy and security review packets;
-- executable workflow-study protocol using observed staff time and accuracy;
-- executable citizen-comprehension study protocol with consent and anonymised results;
-- no public release until all material claims are re-reviewed against retained originals.
+Prepare an **isolated production-like pilot environment**, but only after real external findings are received and tracked:
 
-Then **v1.9** creates an isolated production-like pilot environment after independent findings are remediated.
+- named environment owner and explicitly synthetic/public test data;
+- production-style identity, MFA, secrets, encryption and access reviews;
+- tenant isolation and deny-by-default network policies;
+- deletion, recovery, incident and access-review exercises;
+- partner-specific legal/privacy templates without inventing a partner;
+- finding remediation evidence and decision log;
+- restricted data remains disabled unless separately approved.
+
+v1.9 code must not claim that independent findings have been resolved unless the finding register contains real reviewed evidence.
 
 See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
 
 ## Long-term stages
 
-- **v1.8–v1.9:** external review, source backfill and isolated pilot environment.
-- **v2.0:** one measured, qualified partner pilot.
+- **v1.9:** isolated pilot environment and remediation evidence.
+- **v2.0:** one measured, qualified partner pilot after written approvals.
 - **v2.1–v3.0:** mature operations and production-grade single-organisation deployment.
 - **v4.0–v5.0:** federated collaboration and open evidence interoperability.
 - **v6.0–v7.0:** locally governed cross-jurisdiction packs and public-interest network.
@@ -70,7 +73,7 @@ See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
 
 ## Real pilot success measures
 
-- At least 30% improvement in the defined workflow or equivalent documented benefit.
+- At least 30% observed improvement or equivalent documented benefit.
 - 100% source coverage and human review for material publication.
 - Zero autonomous guilt decisions and zero hidden corrections.
 - Zero serious privacy or security incidents.
@@ -87,3 +90,4 @@ See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
 - Predictive corruption scores for people.
 - Publishing private addresses or unnecessary personal data.
 - Fully automated referrals to police, prosecutors or media.
+- Fabricated external approvals, findings, partners or impact measurements.
