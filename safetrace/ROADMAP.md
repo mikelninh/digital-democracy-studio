@@ -7,69 +7,61 @@ Version numbers describe implemented capability. They do not grant permission to
 ### v0.3–v1.0 — Public investigation prototype
 Source snapshots, political-money and arms records, human review, monitoring, case packs, governance and controlled-pilot gates.
 
-### Case 004 — Law Fairness Monitor
-Germany-first distributional policy assessment separating direct effects, conditionality, budget impact, forecasts, measured outcomes and political attribution.
-
 ### v1.2 — Unified Evidence Foundation
+Machine-readable Case Charter, shared evidence records, controlled vocabularies, data zones and Case 001–004 migrations.
 
-- machine-readable Case Charter and acceptance gate;
-- shared evidence records, controlled vocabularies and data-zone limits;
-- publication boundaries and Case 001–004 migration tests.
-
-### v1.3 — Reviewed Source Registry and Evidence Vault
-
-- reviewed public-source catalogue and immutable originals;
-- hash-chained receipts, transformation manifests, health alerts and verified recovery.
+### v1.3 — Source Registry and Evidence Vault
+Reviewed public-source catalogue, immutable originals, hash-chained receipts, manifests, health alerts and recovery tests.
 
 ### v1.4 — Claim Ledger 2.0
-
-- versioned claims tied to exact source anchors and Vault receipts;
-- dynamic review gates, reviewer separation, visible corrections and stale-publication invalidation;
-- zero automatic publication during Case 001–004 migration.
+Versioned claims, exact evidence links, dynamic human review gates, visible corrections and automatic stale-publication invalidation.
 
 ### v1.5 — Auditable Agent Task Queue
+Twelve bounded proposal workers, default-deny tools, replayable receipts and release-blocking adversarial evaluations.
 
-- twelve specialised proposal workers with separate allowlists and ceilings;
-- replayable run receipts and human-only decisions;
-- release-blocking Golden Cases for quality and safety regressions.
+### v1.6 — Internal Investigation Desk
+Eleven role-filtered views, least privilege, team workflow, public-export separation and a verifiable audit chain.
 
-### v1.6 — Internal Investigation Desk Foundation
+### v1.7 — Case 004 Technical Reference Workflow
 
-- eleven role-filtered internal views;
-- seven least-privilege roles and synthetic authenticated sessions;
-- case intake and explicit workflow transitions;
-- team tasks, comments, review decisions and publication requests;
-- agent proposals enter human review rather than public truth;
-- independent final review and publication approval;
-- public export excludes internal comments, tasks and agent proposals;
-- visible stale status after correction;
-- hash-chained, independently verifiable audit timeline;
-- chat, spreadsheets and the public portal are not authoritative internal systems.
+- loads the reviewed German Law Fairness dataset;
+- registers 11 sources, 5 measures and 5 claim tests;
+- builds timeline events, affected-group entities and impact relationships;
+- completes independent repository-consistency review for every claim;
+- runs Skeptic, Quant, Legal Status and Guardian proposals through human review;
+- generates all eleven Investigation Desk views and verifies the audit chain;
+- generates JSON and PDF reference packs plus a monitoring manifest;
+- supplies a controlled operation-count benchmark and an eight-question comprehension instrument;
+- blocks a new publication because retained original source bytes remain 0 of 11;
+- makes no real time-saving or citizen-comprehension claim.
 
-## Exact v1.6 status
+## Exact v1.7 status
 
-**Ready:** deterministic public-source and synthetic team workflow evaluation, role policies, public-export separation and audit verification.
+**Ready:** deterministic technical reference workflow and evaluation instruments.
 
-**Not ready:** production identity provider, MFA, session revocation, tenant isolation, encrypted partner deployment, real victim/witness evidence or unrestricted personal data.
+**Still blocked:** newly verified Case 004 publication, real observed workflow impact, completed citizen-comprehension study, production identity/security and restricted partner processing.
 
-## Next engineering milestone — v1.7
+The existing Gesetzes-Fairness page remains an editorial legacy output. The v1.7 pack is a reproducible technical reference, not a substitute for immutable original-source backfill and renewed publication review.
 
-Run **Case 004 — Gesetzes-Fairness-Monitor** through the complete reference workflow:
+## Next engineering milestone — v1.8
 
-- backfill and verify official source bytes in the Evidence Vault;
-- create versioned claims for measures, impacts, attribution and the overall verdict;
-- build graph and timeline views;
-- run Skeptic, Quant, Legal Status and Guardian proposals through human review;
-- generate reviewed public JSON/PDF and monitoring state;
-- keep limitations and corrections visible;
-- benchmark a controlled manual workflow against the SafeTrace-assisted workflow;
-- test whether citizens distinguish enacted facts, forecasts, attribution and value judgments.
+Prepare **independent review and original-source backfill**:
+
+- networked but controlled connectors for the eleven Case 004 sources;
+- immutable original-byte receipts and parser manifests;
+- backfill dashboard showing missing, changed and failed sources;
+- external methodology, editorial, legal, privacy and security review packets;
+- executable workflow-study protocol using observed staff time and accuracy;
+- executable citizen-comprehension study protocol with consent and anonymised results;
+- no public release until all material claims are re-reviewed against retained originals.
+
+Then **v1.9** creates an isolated production-like pilot environment after independent findings are remediated.
 
 See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
 
 ## Long-term stages
 
-- **v1.7–v1.9:** reference case, external review and isolated pilot environment.
+- **v1.8–v1.9:** external review, source backfill and isolated pilot environment.
 - **v2.0:** one measured, qualified partner pilot.
 - **v2.1–v3.0:** mature operations and production-grade single-organisation deployment.
 - **v4.0–v5.0:** federated collaboration and open evidence interoperability.
