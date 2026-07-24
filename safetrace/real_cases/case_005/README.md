@@ -10,7 +10,7 @@ Did the Merz government newly decide the increase of German child benefit to EUR
 
 1. **Deutscher Bundestag** — parliamentary decision on 19 December 2024 and the increase effective 1 January 2026.
 2. **Bundesregierung** — implementation notice that EUR 259 is paid from January 2026.
-3. **Gesetze im Internet / BKGG § 6** — current statutory amount of EUR 259.
+3. **Bundesagentur für Arbeit / Familienkasse** — current official benefit information stating EUR 259 per child and month.
 4. **Bundesregierung** — the Merz government entered office on 6 May 2025.
 
 The release builder downloads the live official pages, stores their original bytes in the Evidence Vault, creates SHA-256 receipts, verifies required passages and creates parsed transformation manifests.
