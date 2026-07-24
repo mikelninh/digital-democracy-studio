@@ -38,9 +38,24 @@ A complete reproducible workflow for 11 sources, 5 measures, 5 claims, graph, ti
 - automatic publication after backfill explicitly disabled;
 - external reviews, approvals and conflict declarations remain exactly zero.
 
+### v1.8 Companion — Interactive Role & Case Simulator
+
+- six browser-local roles: Citizen, Investigator, Evidence Manager, Skeptical Reviewer, Legal & Harm Reviewer and Publisher;
+- four replayable cases: GRECO, political-money causality, arms-stage discipline and Law Fairness;
+- nine views: Overview, Sources, Claims, Graph, Timeline, Agents, Review, Publish and Audit;
+- role-filtered tasks and permissions;
+- simulated source and agent receipts;
+- review decisions with rationale;
+- successful training-only and fail-closed publication paths;
+- Case 004 remains blocked at 0 of 11 original source files;
+- local browser persistence and reset;
+- no network requests, accounts, repository mutation, real publication or restricted data.
+
+The Role Simulator is a usability and workflow companion. It is not v1.9, production authentication or an operational partner environment.
+
 ## Exact v1.8 status
 
-**Ready:** invite qualified independent reviewers and provide reproducible review materials.
+**Ready:** invite qualified independent reviewers, provide reproducible review materials and let users test the intended public/synthetic workflow locally.
 
 **Not achieved:** independent review completion, external approval, remediated critical/high findings, named qualified partner, partner-pilot permission, production security approval or restricted-data permission.
 
