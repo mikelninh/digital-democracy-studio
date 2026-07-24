@@ -51,7 +51,8 @@
       "update_cadence": "monthly",
       "expected_content_types": ["text/html"],
       "required_markers": [
-        "Das Kindergeld beträgt monatlich für jedes Kind 259 Euro"
+        "Höhe des Kindergeldes",
+        "259"
       ],
       "anchor": "§ 66 Satz 1 EStG im Lohnsteuer-Handbuch 2026"
     },
