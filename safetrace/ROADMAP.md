@@ -36,6 +36,10 @@ Default-deny role permissions, tamper-evident audit events, machine-readable rea
 
 An integrated release validator, transparent synthetic benchmark, measurable impact and safety gates, public pilot status page, partner pilot template and CI workflow across the full v0.3–v1.0 stack.
 
+### Case 004 — Law Fairness Monitor
+
+A Germany-first distributional policy assessment that separates direct effects, conditionality, budget impact, forecasts, measured outcomes, political attribution and documented lobbying positions.
+
 ## Exact v1.0 status
 
 **Ready:** public records, synthetic evaluation, portfolio demonstrations, partner discovery and workflow evaluation planning.
@@ -52,17 +56,35 @@ The restricted partner gate remains closed until all of the following exist:
 6. Qualified legal/editorial approval for evidence handling, publication and right of reply.
 7. Observed measurements replacing synthetic acceptance fixtures.
 
-## Next milestone — external validation
+## Next engineering milestone — v1.2
 
-The next meaningful version is not v1.1 simply because more features can be added. The next milestone is one controlled, qualified partner evaluation.
+The next implementation step is not a broad feature expansion. It is the foundation of the **SafeTrace Investigation OS**:
 
-Candidate partners include:
+- adopt the [SafeTrace Constitution](CONSTITUTION.md);
+- implement a machine-readable Case Charter;
+- unify Case, Source, Snapshot, Entity, Relationship, Event, Claim, Evidence, Review, Publication, Correction and AgentTask;
+- apply data-zone and sensitivity labels;
+- migrate existing cases without losing provenance or review history.
 
-- investigative journalism and data teams;
-- transparency and anti-corruption organisations;
-- fraud-prevention and victim-support teams;
-- public-sector digital-investigation units;
-- academic public-interest technology laboratories.
+The complete operating model is in [INVESTIGATION_OS.md](INVESTIGATION_OS.md).
+
+## Long-term roadmap
+
+The detailed release plan from **v1.2 through v10.0** is in [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
+
+High-level stages:
+
+- **v1.2–v1.9:** standardise the evidence model, Evidence Vault, Review Desk, agent task queue, internal workspace, reference case, external review and isolated pilot environment.
+- **v2.0:** run one measured, qualified partner pilot.
+- **v2.1–v2.9:** mature team operations, connectors, search, graph, policy analysis, public comprehension and reliability.
+- **v3.0:** production-grade single-organisation platform.
+- **v4.0:** federated partner collaboration with strong tenant isolation and revocable sharing.
+- **v5.0:** open evidence interoperability standard, SDKs and validation tools.
+- **v6.0:** multilingual, locally governed cross-jurisdiction packs.
+- **v7.0:** public-interest investigation network, curriculum and independent advisory board.
+- **v8.0:** resilient evidence infrastructure and long-term public-record preservation.
+- **v9.0:** independently governed evidence commons with transparent funding.
+- **v10.0:** accountable global public infrastructure—without surveillance, secret scoring or automated guilt.
 
 ## Real pilot success measures
 

@@ -20,6 +20,7 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 - **v0.8 Investigator Case Packs** — public-redacted PDF and machine-readable JSON exports.
 - **v0.9 Governance** — default-deny roles, tamper-evident audit records, threat model, incident response and executable readiness controls.
 - **v1.0 Controlled Pilot Framework** — measurable quality, safety and impact gates plus a partner operating template.
+- **Case 004 Law Fairness Monitor** — sourced distributional analysis with political attribution and no ideological black-box score.
 
 ## Exact release status
 
@@ -33,6 +34,17 @@ The synthetic benchmark is transparent test data, not claimed real-world impact.
 - partner-specific privacy documentation, lawful basis and retention controls;
 - qualified legal/editorial approval;
 - observed partner measurements replacing synthetic fixtures.
+
+## Investigation OS foundation
+
+The next build sequence is now documented as an operating system rather than a collection of disconnected features:
+
+- [SafeTrace Constitution](CONSTITUTION.md)
+- [Investigation OS operating model](INVESTIGATION_OS.md)
+- [Release history](ROADMAP.md)
+- [Future roadmap v1.2–v10.0](FUTURE_ROADMAP.md)
+
+The immediate engineering target is **v1.2: Case Charter plus a unified evidence model**. Long-term stages proceed through controlled partner validation, production hardening, federated collaboration, open evidence standards, cross-jurisdiction packs and independently governed public infrastructure.
 
 ## Non-negotiable boundaries
 
@@ -53,6 +65,7 @@ python -m unittest discover -s safetrace/review_desk/tests -v
 python -m unittest discover -s safetrace/arms_monitor/tests -v
 python -m unittest discover -s safetrace/monitoring/tests -v
 python -m unittest discover -s safetrace/case_packs/tests -v
+python -m unittest discover -s safetrace/law_fairness/tests -v
 python -m unittest discover -s safetrace/governance/tests -v
 python -m unittest discover -s safetrace/pilot/tests -v
 python -m unittest discover -s safetrace/v1/tests -v
@@ -62,5 +75,3 @@ python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
 ## Career positioning
 
 > **AI Engineer for Public-Interest Investigations** — building evidence-grounded systems that structure unorganised records, preserve provenance, expose accountability gaps and help human investigators produce reviewable conclusions.
-
-Read the [methodology](METHODOLOGY.md), [release history](ROADMAP.md), [governance controls](governance/), and [pilot readiness](pilot/).
