@@ -8,26 +8,19 @@ from typing import Any
 
 
 PROHIBITED_ACTIONS = {
-    "publish_real",
-    "contact_subject",
-    "refer_authority",
-    "identify_face",
-    "hack",
-    "open_restricted_data",
+    "publish_real", "contact_subject", "refer_authority",
+    "identify_face", "hack", "open_restricted_data",
 }
 EXPECTED_ROLES = {
-    "citizen",
-    "investigator",
-    "evidence_manager",
-    "reviewer",
-    "legal_reviewer",
-    "publisher",
+    "citizen", "investigator", "evidence_manager",
+    "reviewer", "legal_reviewer", "publisher",
 }
-EXPECTED_CASES = {"case-001", "case-002", "case-003", "case-004"}
+EXPECTED_CASES = {"case-001", "case-002", "case-003", "case-004", "case-005"}
 EXPECTED_VIEWS = {
     "overview", "sources", "claims", "graph", "timeline",
     "agents", "review", "publish", "audit",
 }
+EXPECTED_BLOCKED = {"case-001", "case-004", "case-005"}
 
 
 def load_data(path: Path) -> dict[str, Any]:
@@ -73,7 +66,7 @@ def validate(root: Path) -> dict[str, Any]:
         if not complete:
             incomplete_cases.append(case.get("id", "unknown"))
 
-    case_004 = next((case for case in cases if case.get("id") == "case-004"), {})
+    by_id = {case.get("id"): case for case in cases}
     publishable = [case.get("id") for case in cases if case.get("publication", {}).get("allowedInSimulation")]
     blocked = [case.get("id") for case in cases if not case.get("publication", {}).get("allowedInSimulation")]
     local_only = (
@@ -84,12 +77,7 @@ def validate(root: Path) -> dict[str, Any]:
     )
     accessible = all(
         fragment in html
-        for fragment in (
-            'lang="de"',
-            'aria-label="Hauptnavigation"',
-            'aria-live="polite"',
-            "Fall und Rolle zurücksetzen",
-        )
+        for fragment in ('lang="de"', 'aria-label="Hauptnavigation"', 'aria-live="polite"', "Fall und Rolle zurücksetzen")
     )
     truthful_boundary = (
         boundary.get("simulationOnly") is True
@@ -98,10 +86,14 @@ def validate(root: Path) -> dict[str, Any]:
         and boundary.get("realPublication") is False
         and boundary.get("restrictedData") is False
     )
-    case_004_closed = (
-        case_004.get("publication", {}).get("allowedInSimulation") is False
-        and case_004.get("readiness", {}).get("sources") == 11
-        and case_004.get("readiness", {}).get("originals") == 0
+    real_cases_closed = all(
+        by_id[case_id].get("publication", {}).get("allowedInSimulation") is False
+        and by_id[case_id].get("readiness", {}).get("originals") == 0
+        for case_id in EXPECTED_BLOCKED
+    )
+    synthetic_cases_clear = all(
+        by_id[case_id].get("kind") == "synthetic training fixture"
+        for case_id in {"case-002", "case-003"}
     )
 
     checks = {
@@ -113,20 +105,20 @@ def validate(root: Path) -> dict[str, Any]:
         "truthful_boundary": truthful_boundary,
         "browser_local_only": local_only,
         "accessibility_basics": accessible,
-        "case_004_fail_closed": case_004_closed,
-        "contains_success_path": bool(publishable),
-        "contains_blocked_path": blocked == ["case-004"],
+        "real_cases_fail_closed": real_cases_closed,
+        "synthetic_cases_explicit": synthetic_cases_clear,
+        "contains_training_success_path": set(publishable) == {"case-002", "case-003"},
+        "contains_correct_blocked_paths": set(blocked) == EXPECTED_BLOCKED,
+        "case_004_zero_of_eleven": by_id["case-004"]["readiness"] == {"sources": 11, "originals": 0, "claims": 5, "humanReviewed": 5, "openBlockers": 3},
+        "case_005_live_candidate": by_id["case-005"]["status"] == "live_acquisition_and_human_review_pending",
     }
     return {
-        "schema_version": "safetrace.role-simulator-report/1.0",
+        "schema_version": "safetrace.role-simulator-report/1.1",
         "status": "pass" if all(checks.values()) else "fail",
         "checks": checks,
         "counts": {
-            "roles": len(roles),
-            "cases": len(cases),
-            "views": len(views),
-            "publishable_training_cases": len(publishable),
-            "blocked_training_cases": len(blocked),
+            "roles": len(roles), "cases": len(cases), "views": len(views),
+            "publishable_training_cases": len(publishable), "blocked_real_cases": len(blocked),
         },
         "role_ids": sorted(role_ids),
         "case_ids": sorted(case_ids),
@@ -134,12 +126,9 @@ def validate(root: Path) -> dict[str, Any]:
         "incomplete_cases": incomplete_cases,
         "publication_paths": {"training_only": publishable, "blocked": blocked},
         "boundaries": {
-            "simulation_only": True,
-            "browser_local_state": True,
-            "network_requests": False,
-            "production_authentication": False,
-            "real_publication": False,
-            "restricted_data": False,
+            "simulation_only": True, "browser_local_state": True,
+            "network_requests": False, "production_authentication": False,
+            "real_publication": False, "restricted_data": False,
         },
     }
 

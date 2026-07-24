@@ -28,6 +28,7 @@ class RoleSimulatorTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.data = load_data()
         cls.html = HTML_PATH.read_text(encoding="utf-8")
+        cls.cases = {case["id"]: case for case in cls.data["cases"]}
 
     def test_truthful_boundary_is_closed(self) -> None:
         boundary = self.data["boundary"]
@@ -36,33 +37,17 @@ class RoleSimulatorTests(unittest.TestCase):
         self.assertFalse(boundary["productionAuthentication"])
         self.assertFalse(boundary["realPublication"])
         self.assertFalse(boundary["restrictedData"])
+        self.assertIn("different evidence classes", boundary["notice"])
 
-    def test_six_roles_and_four_existing_cases_are_available(self) -> None:
+    def test_six_roles_and_five_cases_are_available(self) -> None:
         self.assertEqual(
             {role["id"] for role in self.data["roles"]},
-            {
-                "citizen",
-                "investigator",
-                "evidence_manager",
-                "reviewer",
-                "legal_reviewer",
-                "publisher",
-            },
+            {"citizen", "investigator", "evidence_manager", "reviewer", "legal_reviewer", "publisher"},
         )
-        self.assertEqual(
-            {case["id"] for case in self.data["cases"]},
-            {"case-001", "case-002", "case-003", "case-004"},
-        )
+        self.assertEqual(set(self.cases), {"case-001", "case-002", "case-003", "case-004", "case-005"})
 
     def test_no_role_receives_prohibited_capabilities(self) -> None:
-        prohibited = {
-            "publish_real",
-            "contact_subject",
-            "refer_authority",
-            "identify_face",
-            "hack",
-            "open_restricted_data",
-        }
+        prohibited = {"publish_real", "contact_subject", "refer_authority", "identify_face", "hack", "open_restricted_data"}
         for role in self.data["roles"]:
             self.assertFalse(prohibited.intersection(role["allowedActions"]), role["id"])
 
@@ -80,35 +65,40 @@ class RoleSimulatorTests(unittest.TestCase):
             for claim in case["claims"]:
                 self.assertTrue(claim["text"])
                 self.assertTrue(claim["limitation"])
-                self.assertIn(
-                    claim["verdict"],
-                    {"supported", "not_supported", "rejected", "partly_supported"},
-                )
+                self.assertIn(claim["verdict"], {"supported", "not_supported", "rejected", "partly_supported"})
 
-    def test_simulator_contains_success_and_fail_closed_publication_paths(self) -> None:
-        publishable = [case for case in self.data["cases"] if case["publication"]["allowedInSimulation"]]
-        blocked = [case for case in self.data["cases"] if not case["publication"]["allowedInSimulation"]]
-        self.assertGreaterEqual(len(publishable), 1)
-        self.assertEqual([case["id"] for case in blocked], ["case-004"])
-        self.assertEqual(blocked[0]["readiness"]["originals"], 0)
-        self.assertEqual(blocked[0]["readiness"]["sources"], 11)
+    def test_only_synthetic_cases_have_training_success_paths(self) -> None:
+        publishable = {case["id"] for case in self.data["cases"] if case["publication"]["allowedInSimulation"]}
+        blocked = {case["id"] for case in self.data["cases"] if not case["publication"]["allowedInSimulation"]}
+        self.assertEqual(publishable, {"case-002", "case-003"})
+        self.assertEqual(blocked, {"case-001", "case-004", "case-005"})
+        self.assertTrue(all(self.cases[case_id]["kind"] == "synthetic training fixture" for case_id in publishable))
+
+    def test_case_001_overclaim_is_corrected(self) -> None:
+        case = self.cases["case-001"]
+        self.assertEqual(case["readiness"]["sources"], 3)
+        self.assertEqual(case["readiness"]["originals"], 0)
+        self.assertFalse(case["publication"]["allowedInSimulation"])
+        self.assertTrue(all(source["state"] == "backfill_required" for source in case["sources"]))
+
+    def test_case_004_and_case_005_fail_closed(self) -> None:
+        self.assertEqual(self.cases["case-004"]["readiness"]["originals"], 0)
+        self.assertEqual(self.cases["case-004"]["readiness"]["sources"], 11)
+        case_005 = self.cases["case-005"]
+        self.assertEqual(case_005["readiness"]["sources"], 4)
+        self.assertEqual(case_005["readiness"]["originals"], 0)
+        self.assertEqual(case_005["readiness"]["humanReviewed"], 0)
+        self.assertEqual(case_005["status"], "live_acquisition_and_human_review_pending")
 
     def test_causal_and_stage_boundaries_are_explicit(self) -> None:
-        money = next(case for case in self.data["cases"] if case["id"] == "case-002")
-        arms = next(case for case in self.data["cases"] if case["id"] == "case-003")
-        self.assertEqual(next(c for c in money["claims"] if c["id"] == "c2-3")["verdict"], "rejected")
-        self.assertEqual(next(c for c in arms["claims"] if c["id"] == "c3-3")["verdict"], "rejected")
+        self.assertEqual(next(c for c in self.cases["case-002"]["claims"] if c["id"] == "c2-3")["verdict"], "rejected")
+        self.assertEqual(next(c for c in self.cases["case-003"]["claims"] if c["id"] == "c3-3")["verdict"], "rejected")
 
     def test_html_is_local_accessible_and_resettable(self) -> None:
         required_fragments = (
-            'lang="de"',
-            'aria-label="Hauptnavigation"',
-            'aria-live="polite"',
-            'localStorage',
-            'simulator-data.js',
-            'Fall und Rolle zurücksetzen',
-            'Simulation only',
-            'Keine Aktion verändert echte Fälle',
+            'lang="de"', 'aria-label="Hauptnavigation"', 'aria-live="polite"',
+            "localStorage", "simulator-data.js", "Fall und Rolle zurücksetzen",
+            "Simulation only", "Keine Aktion verändert echte Fälle",
         )
         for fragment in required_fragments:
             self.assertIn(fragment, self.html)
