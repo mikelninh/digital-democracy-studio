@@ -1,0 +1,76 @@
+{
+  "schema_version": "safetrace.source-monitor-registry/1.0",
+  "boundary": "Known official URLs are monitored for availability, content changes and reviewed markers. Discovery of replacement or newer publications remains a named human review task.",
+  "sources": [
+    {
+      "source_id": "bundesbank-forecast-2026",
+      "publisher": "Deutsche Bundesbank",
+      "url": "https://publikationen.bundesbank.de/publikationen-de/berichte-studien/monatsberichte/monatsbericht-juni-2026-998608?article=deutschland-prognose-energiepreisschock-treibt-teuerung-an-und-bremst-die-konjunkturerholung-998836",
+      "update_cadence": "forecast cycle",
+      "required_markers": ["0,5", "0,4", "Deutschland-Prognose"]
+    },
+    {
+      "source_id": "ba-labour-june-2026",
+      "publisher": "Bundesagentur für Arbeit",
+      "url": "https://www.arbeitsagentur.de/presse/2026-22-arbeitsmarkt-im-juni-2026",
+      "update_cadence": "monthly",
+      "required_markers": ["Arbeitsmarkt im Juni 2026", "6,2"]
+    },
+    {
+      "source_id": "destatis-poverty-2025",
+      "publisher": "Statistisches Bundesamt",
+      "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/02/PD26_039_63.html",
+      "update_cadence": "annual",
+      "required_markers": ["16,1", "armutsgefährdet"]
+    },
+    {
+      "source_id": "destatis-housing-q1-2026",
+      "publisher": "Statistisches Bundesamt",
+      "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/05/PD26_166_3111.html",
+      "update_cadence": "monthly",
+      "required_markers": ["Baugenehmigungen", "63 500", "14,0"]
+    },
+    {
+      "source_id": "bnetza-renewables-2025",
+      "publisher": "Bundesnetzagentur",
+      "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260108_EEG.html",
+      "update_cadence": "annual",
+      "required_markers": ["117", "68,1", "9,5"]
+    },
+    {
+      "source_id": "bnetza-power-market-2025",
+      "publisher": "Bundesnetzagentur",
+      "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260105_Smard.html",
+      "update_cadence": "annual",
+      "required_markers": ["58,8", "Strommarkt 2025"]
+    },
+    {
+      "source_id": "case005-bundestag",
+      "publisher": "Deutscher Bundestag",
+      "url": "https://www.bundestag.de/dokumente/textarchiv/2024/kw39-de-existenzminimum-1017664",
+      "update_cadence": "immutable reference",
+      "required_markers": ["19. Dezember 2024", "259 Euro"]
+    },
+    {
+      "source_id": "case005-government",
+      "publisher": "Bundesregierung",
+      "url": "https://www.bundesregierung.de/breg-de/service/fragen-und-anworten/kanzlerwahl-regierungsbildung-2345072",
+      "update_cadence": "immutable reference",
+      "required_markers": ["6. Mai", "Friedrich Merz"]
+    },
+    {
+      "source_id": "bafin-altersvorsorge",
+      "publisher": "Bundesministerium der Finanzen",
+      "url": "https://www.bundesfinanzministerium.de/Web/DE/Themen/Internationales_Finanzmarkt/Altersvorsorge/altersvorsorge.html",
+      "update_cadence": "policy change",
+      "required_markers": ["Altersvorsorge"]
+    },
+    {
+      "source_id": "koinno-procurement",
+      "publisher": "Bundesministerium für Wirtschaft und Energie",
+      "url": "https://www.bundeswirtschaftsministerium.de/Redaktion/DE/Publikationen/Wirtschaft/koinno-innovative-oeffentliche-beschaffung.html",
+      "update_cadence": "policy change",
+      "required_markers": ["KOINNO", "Beschaffung"]
+    }
+  ]
+}

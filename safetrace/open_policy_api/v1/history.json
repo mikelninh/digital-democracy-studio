@@ -1,0 +1,18 @@
+{
+  "schema_version": "safetrace.open-policy-history/1.0",
+  "current_snapshot": "2026-07-24",
+  "snapshots": [
+    {
+      "snapshot_id": "2026-07-24",
+      "published_at": "2026-07-24",
+      "catalog_path": "catalog.json",
+      "git_blob_sha": "751c555aaa75f9cc35d8468c11c76261c5968de6",
+      "review_state": "platform_release_gate_passed",
+      "limitations": [
+        "Case 005 human publication review remains pending",
+        "Policy models are working analyses, not official findings",
+        "This snapshot is not yet an automatically discovered latest-release dataset"
+      ]
+    }
+  ]
+}
