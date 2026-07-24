@@ -1,0 +1,15 @@
+{
+  "schema_version": "safetrace.open-policy-index/1.0",
+  "version": "v1",
+  "generated_at": "2026-07-24",
+  "documents": {
+    "catalog": "catalog.json",
+    "openapi": "openapi.json"
+  },
+  "mcp": {
+    "transport": "stdio",
+    "server_module": "safetrace.mcp_server.server",
+    "protocol_revision": "2025-11-25",
+    "read_only": true
+  }
+}
