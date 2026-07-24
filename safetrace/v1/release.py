@@ -10,7 +10,7 @@ from safetrace.pilot.model import evaluate_pilot, load_pilot
 REQUIRED_COMPONENTS = [
     "source_engine", "political_money", "review_desk", "arms_monitor",
     "monitoring", "case_packs", "governance", "pilot", "law_fairness",
-    "core", "evidence_vault", "claim_ledger", "agent_queue",
+    "core", "evidence_vault", "claim_ledger", "agent_queue", "investigation_desk",
 ]
 
 
@@ -40,6 +40,8 @@ def validate_repository(root: Path) -> dict[str, Any]:
     ledger_report = _load_optional_json(safetrace_root / "claim_ledger/artifacts/release-report.json")
     agent_contract_path = safetrace_root / "agent_queue/artifacts/agent-queue-contracts-1.5.json"
     agent_report = _load_optional_json(safetrace_root / "agent_queue/artifacts/release-report.json")
+    desk_contract_path = safetrace_root / "investigation_desk/artifacts/investigation-desk-contracts-1.6.json"
+    desk_report = _load_optional_json(safetrace_root / "investigation_desk/artifacts/release-report.json")
 
     migration_ready = (
         migration_report.get("status") == "pass"
@@ -93,6 +95,36 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and agent_boundaries.get("autonomous_referral") is False
         and agent_boundaries.get("restricted_partner_data") is False
     )
+    desk_views = desk_report.get("views", {})
+    desk_roles = desk_report.get("roles", {})
+    desk_workflow = desk_report.get("workflow", {})
+    desk_export = desk_workflow.get("public_export", {})
+    desk_audit = desk_report.get("audit", {})
+    desk_boundaries = desk_report.get("boundaries", {})
+    desk_prohibited = desk_report.get("prohibited_actions", {})
+    desk_ready = (
+        desk_contract_path.exists()
+        and desk_report.get("status") == "pass"
+        and desk_views.get("count") == 11
+        and len(desk_views.get("implemented", [])) == 11
+        and desk_roles.get("synthetic_authenticated_sessions") is True
+        and desk_roles.get("production_identity_provider_configured") is False
+        and desk_workflow.get("claim_review_state") == "approved"
+        and desk_workflow.get("agent_proposal_status") == "accepted_for_review"
+        and desk_workflow.get("publication_status_after_correction") == "stale"
+        and desk_export.get("internal_comments_included") is False
+        and desk_export.get("internal_tasks_included") is False
+        and desk_export.get("agent_proposals_included") is False
+        and desk_audit.get("status") == "pass"
+        and desk_audit.get("events", 0) >= 10
+        and "cannot perform approve_publication" in desk_prohibited.get("investigator_publish_approval", "")
+        and "Authenticated internal session required" in desk_prohibited.get("unauthenticated_action", "")
+        and desk_boundaries.get("authoritative_internal_system") is True
+        and desk_boundaries.get("public_portal_separate") is True
+        and desk_boundaries.get("agent_proposals_auto_publish") is False
+        and desk_boundaries.get("production_auth_ready") is False
+        and desk_boundaries.get("restricted_partner_data") is False
+    )
 
     release_ready = (
         not missing
@@ -101,13 +133,14 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and vault_ready
         and ledger_ready
         and agent_ready
+        and desk_ready
         and synthetic_readiness.ready
         and pilot_evaluation.decision == "GO_SYNTHETIC"
         and not live_readiness.ready
     )
     return {
-        "schema_version": "safetrace.release-status/1.5",
-        "release": "v1.5-auditable-agent-task-queue",
+        "schema_version": "safetrace.release-status/1.6",
+        "release": "v1.6-investigation-desk-foundation",
         "release_ready": release_ready,
         "live_partner_ready": live_readiness.ready,
         "components": {name: name not in missing for name in REQUIRED_COMPONENTS},
@@ -115,13 +148,14 @@ def validate_repository(root: Path) -> dict[str, Any]:
         "evidence_vault": {"schema_version": "safetrace.evidence-vault/1.3", "release_evidence": vault_report},
         "claim_ledger": {"schema_version": "safetrace.claim-ledger/1.4", "release_evidence": ledger_report},
         "agent_queue": {"schema_version": "safetrace.agent-queue/1.5", "release_evidence": agent_report},
+        "investigation_desk": {"schema_version": "safetrace.investigation-desk/1.6", "release_evidence": desk_report},
         "synthetic_readiness": synthetic_readiness.to_dict(),
         "restricted_partner_readiness": live_readiness.to_dict(),
         "synthetic_pilot": pilot_evaluation.to_dict(),
         "truthful_status": (
-            "SafeTrace v1.5 provides twelve bounded, auditable proposal workers with default-deny tools, "
-            "replayable run receipts and release-blocking adversarial evaluations. Agents cannot approve, publish, "
-            "contact or refer. Real victim and restricted partner data remain unauthorised."
+            "SafeTrace v1.6 provides a role-controlled internal Investigation Desk with public-export separation "
+            "and a verifiable audit chain for public-source and synthetic workflows. Production identity, MFA, "
+            "tenant isolation and restricted partner data remain unconfigured and unauthorised."
         ),
     }
 
