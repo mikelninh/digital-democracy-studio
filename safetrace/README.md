@@ -1,4 +1,4 @@
-# SafeTrace v1.6 — Internal Investigation Desk Foundation
+# SafeTrace v1.7 — Case 004 Technical Reference Workflow
 
 **Victim-centred. Evidence-led. Human-reviewed. Germany first.**
 
@@ -13,29 +13,36 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 ## Shipped stack
 
 - **v0.3–v1.0** — public investigation prototype and controlled-pilot gates.
-- **Case 004** — Germany-first Law Fairness Monitor.
 - **v1.2** — unified Case Charter and evidence model.
-- **v1.3** — reviewed Source Registry and tamper-evident Evidence Vault.
-- **v1.4** — versioned Claim Ledger, review gates and visible corrections.
+- **v1.3** — Source Registry and tamper-evident Evidence Vault.
+- **v1.4** — Claim Ledger, review gates and visible corrections.
 - **v1.5** — twelve bounded proposal workers and adversarial evaluations.
-- **v1.6** — role-controlled Investigation Desk, public-export separation and hash-chained audit trail.
+- **v1.6** — role-controlled Investigation Desk and audit trail.
+- **v1.7** — Case 004 technical reference flow with graph, timeline, reviewed claims, agent proposals, JSON/PDF, monitoring, benchmark and comprehension instruments.
 
-## What v1.6 proves
+## What v1.7 proves
 
-- Eleven internal views: Inbox, Cases, Sources, Claims, Graph, Timeline, Review, Publish, Corrections, Agents and Audit.
-- Seven least-privilege roles: Intake Researcher, Investigator, Evidence Manager, Reviewer, Legal Reviewer, Publisher and Admin.
-- Every action requires an authenticated session context, role permission and sufficient data-zone access.
-- Record creators cannot perform final review.
-- Publication requesters cannot approve their own publication.
-- Agent proposals enter `awaiting_human` and can only be accepted for further review.
-- Public export includes only approved public claims and excludes internal comments, team tasks and agent proposals.
-- Corrections make an existing publication visibly `stale`.
-- Consequential actions create a verifiable hash-chained audit trail.
-- Chat and spreadsheets are explicitly not authoritative systems of record.
+- The real Case 004 repository dataset contains 11 source records, 5 measures and 5 claim tests.
+- All source records, measures, affected groups, impact relationships and claims can be represented in the Investigation Desk.
+- All five claim tests receive independent human consistency review.
+- Skeptic, Quant, Legal Status and Guardian outputs remain proposals accepted only for human review.
+- The complete workflow generates all eleven Desk views and a valid audit chain.
+- A machine-readable JSON reference pack, human-readable PDF and monitoring manifest are generated.
+- The controlled operation-count benchmark exceeds the 30% fixture target.
+- An eight-question comprehension instrument covers facts, forecasts, legal status, attribution, nominal/real effects, causation and value judgments.
 
 ## Exact release status
 
-**SafeTrace v1.6 is ready for deterministic public-source and synthetic internal workflow evaluation. The authorisation model uses synthetic authenticated sessions; production identity, MFA, session revocation, tenant isolation and restricted partner processing are not configured.**
+**SafeTrace v1.7 completes the deterministic technical reference workflow. It does not authorise a newly verified Case 004 publication.**
+
+Current honest blockers:
+
+- retained original source bytes: **0 of 11**;
+- observed human workflow-time study: **not completed**;
+- external citizen-comprehension participants: **0**;
+- real partner impact claimed: **no**.
+
+The existing Gesetzes-Fairness page remains an editorial legacy output. The v1.7 reference package is not a substitute for immutable original-source backfill and renewed review.
 
 ## Core documents
 
@@ -48,27 +55,21 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 - [v1.4 Claim Ledger](claim_ledger/README.md)
 - [v1.5 Agent Queue](agent_queue/README.md)
 - [v1.6 Investigation Desk](investigation_desk/README.md)
+- [v1.7 Case 004 reference](case_004_reference/README.md)
 
-## Run the v1.6 gates
+## Run the v1.7 gates
 
 ```bash
 python -m pip install reportlab
-python -m unittest discover -s safetrace/core/tests -v
-python -m safetrace.core.migration_report --root safetrace --output safetrace/core/migration-report.json
-python -m unittest discover -s safetrace/evidence_vault/tests -v
-python -m safetrace.evidence_vault.build_release_artifacts --safetrace-root safetrace --output-root safetrace/evidence_vault/artifacts
-python -m unittest discover -s safetrace/claim_ledger/tests -v
-python -m safetrace.claim_ledger.build_release_artifacts --safetrace-root safetrace --output-root safetrace/claim_ledger/artifacts
-python -m unittest discover -s safetrace/agent_queue/tests -v
-python -m safetrace.agent_queue.build_release_artifacts --output-root safetrace/agent_queue/artifacts
-python -m unittest discover -s safetrace/investigation_desk/tests -v
-python -m safetrace.investigation_desk.build_release_artifacts --output-root safetrace/investigation_desk/artifacts
+python -m unittest discover -s safetrace/case_004_reference/tests -v
+python -m safetrace.case_004_reference.contracts --write safetrace/case_004_reference/artifacts/case-004-reference-contracts-1.7.json
+python -m safetrace.case_004_reference.build_reference --safetrace-root safetrace --output-root safetrace/case_004_reference/artifacts
 python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
 ```
 
 ## Next engineering milestone
 
-**v1.7 — Complete Case 004 reference workflow:** backfill official source bytes, run the Gesetzes-Fairness case through the Desk, create reviewed graph/timeline and public case pack, benchmark manual versus assisted work and test citizen comprehension.
+**v1.8 — Independent review readiness:** source-byte backfill tooling, review packets, methodology/security/legal review checklists and an externally executable comprehension and workflow-study protocol.
 
 ## Non-negotiable boundaries
 
