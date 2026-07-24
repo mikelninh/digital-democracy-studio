@@ -1,0 +1,75 @@
+{
+  "schema_version": "safetrace.real-case-sources/1.0",
+  "case_id": "case-005",
+  "title": "Wer hat die Kindergelderhöhung auf 259 Euro beschlossen?",
+  "acquisition_review": {
+    "reviewed_by": "Michael Ninh",
+    "reviewed_at": "2026-07-24T13:30:00+02:00",
+    "scope": "Acquire four public official web pages only. No personal, restricted or submitted data."
+  },
+  "sources": [
+    {
+      "source_id": "case005-bundestag-decision-2024",
+      "title": "Bundestag beschließt Steuerfortentwicklungsgesetz und Kindergelderhöhung",
+      "publisher": "Deutscher Bundestag",
+      "canonical_url": "https://www.bundestag.de/dokumente/textarchiv/2024/kw39-de-existenzminimum-1017664",
+      "source_type": "official_parliamentary_record",
+      "source_rank": "primary_official",
+      "jurisdiction": "DE",
+      "update_cadence": "manual",
+      "expected_content_types": ["text/html"],
+      "required_markers": [
+        "Der Bundestag hat am Donnerstag, 19. Dezember 2024",
+        "mit Wirkung zum 1. Januar 2026 um weitere vier Euro auf 259 Euro"
+      ],
+      "anchor": "Abschnitt 'Bundestag erhöht Kindergeld und Steuerfreibeträge'"
+    },
+    {
+      "source_id": "case005-bundesregierung-implementation-2026",
+      "title": "Gesetzliche Neuregelungen Januar 2026: Kindergeld 259 Euro",
+      "publisher": "Bundesregierung",
+      "canonical_url": "https://www.bundesregierung.de/breg-de/schwerpunkte/wirksam-regieren/gesetzliche-neuregelungen-januar-2026-2399838",
+      "source_type": "official_government_information",
+      "source_rank": "primary_official",
+      "jurisdiction": "DE",
+      "update_cadence": "manual",
+      "expected_content_types": ["text/html"],
+      "required_markers": [
+        "Ab Januar 2026 steigt das Kindergeld",
+        "259 Euro pro Monat"
+      ],
+      "anchor": "Abschnitt 'Familie – Kindergeld erhöht sich'"
+    },
+    {
+      "source_id": "case005-bkgg-current-law",
+      "title": "Bundeskindergeldgesetz § 6 – Höhe des Kindergeldes",
+      "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz",
+      "canonical_url": "https://www.gesetze-im-internet.de/bkgg_1996/__6.html",
+      "source_type": "official_consolidated_law",
+      "source_rank": "primary_official",
+      "jurisdiction": "DE",
+      "update_cadence": "monthly",
+      "expected_content_types": ["text/html"],
+      "required_markers": [
+        "Das Kindergeld beträgt monatlich für jedes Kind 259 Euro"
+      ],
+      "anchor": "§ 6 Absatz 1 BKGG"
+    },
+    {
+      "source_id": "case005-merz-government-start",
+      "title": "Neue Bundesregierung im Amt am 6. Mai 2025",
+      "publisher": "Bundesregierung",
+      "canonical_url": "https://www.bundesregierung.de/breg-de/service/fragen-und-anworten/kanzlerwahl-regierungsbildung-2345072",
+      "source_type": "official_government_record",
+      "source_rank": "primary_official",
+      "jurisdiction": "DE",
+      "update_cadence": "manual",
+      "expected_content_types": ["text/html"],
+      "required_markers": [
+        "Am 6. Mai hat der Deutsche Bundestag Friedrich Merz zum Bundeskanzler gewählt",
+        "Damit beginnt ihre Amtszeit"
+      ],
+      "anchor": "Abschnitt 'Neue Bundesregierung im Amt'"
+    }
+  ]
+}
