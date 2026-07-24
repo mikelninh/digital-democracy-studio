@@ -14,13 +14,14 @@ class ReleaseTests(unittest.TestCase):
         components = [
             "source_engine", "political_money", "review_desk", "arms_monitor",
             "monitoring", "case_packs", "governance", "pilot", "law_fairness",
-            "core", "evidence_vault", "claim_ledger", "agent_queue",
+            "core", "evidence_vault", "claim_ledger", "agent_queue", "investigation_desk",
         ]
         for component in components:
             (root / "safetrace" / component).mkdir(parents=True, exist_ok=True)
         for path in (
             "governance/data", "pilot/data", "core/schemas", "evidence_vault/schemas",
             "evidence_vault/artifacts", "claim_ledger/artifacts", "agent_queue/artifacts",
+            "investigation_desk/artifacts",
         ):
             (root / "safetrace" / path).mkdir(parents=True, exist_ok=True)
 
@@ -32,18 +33,21 @@ class ReleaseTests(unittest.TestCase):
             (source_root / "pilot/data/synthetic_pilot.json").read_text(encoding="utf-8"),
             encoding="utf-8",
         )
-        (root / "safetrace/core/schemas/safetrace-core-1.2.schema.json").write_text("{}", encoding="utf-8")
-        (root / "safetrace/evidence_vault/schemas/evidence-vault-contracts-1.3.json").write_text("{}", encoding="utf-8")
-        (root / "safetrace/claim_ledger/artifacts/claim-ledger-contracts-1.4.json").write_text("{}", encoding="utf-8")
-        (root / "safetrace/agent_queue/artifacts/agent-queue-contracts-1.5.json").write_text("{}", encoding="utf-8")
+        for path in (
+            "core/schemas/safetrace-core-1.2.schema.json",
+            "evidence_vault/schemas/evidence-vault-contracts-1.3.json",
+            "claim_ledger/artifacts/claim-ledger-contracts-1.4.json",
+            "agent_queue/artifacts/agent-queue-contracts-1.5.json",
+            "investigation_desk/artifacts/investigation-desk-contracts-1.6.json",
+        ):
+            (root / "safetrace" / path).write_text("{}", encoding="utf-8")
 
         (root / "safetrace/core/migration-report.json").write_text(
             json.dumps({
                 "status": "pass",
                 "target_schema": "safetrace.core/1.2",
                 "cases": {case_id: {} for case_id in ("case-001", "case-002", "case-003", "case-004")},
-            }),
-            encoding="utf-8",
+            }), encoding="utf-8",
         )
         (root / "safetrace/evidence_vault/artifacts/release-report.json").write_text(
             json.dumps({
@@ -55,8 +59,7 @@ class ReleaseTests(unittest.TestCase):
                     "integrity": {"status": "pass"},
                     "restore_integrity": {"status": "pass"},
                 },
-            }),
-            encoding="utf-8",
+            }), encoding="utf-8",
         )
         (root / "safetrace/claim_ledger/artifacts/release-report.json").write_text(
             json.dumps({
@@ -73,8 +76,7 @@ class ReleaseTests(unittest.TestCase):
                     "cases": {case_id: {} for case_id in ("case-001", "case-002", "case-003", "case-004")},
                     "automatic_publications": 0,
                 },
-            }),
-            encoding="utf-8",
+            }), encoding="utf-8",
         )
         (root / "safetrace/agent_queue/artifacts/release-report.json").write_text(
             json.dumps({
@@ -89,8 +91,39 @@ class ReleaseTests(unittest.TestCase):
                     "autonomous_referral": False,
                     "restricted_partner_data": False,
                 },
-            }),
-            encoding="utf-8",
+            }), encoding="utf-8",
+        )
+        (root / "safetrace/investigation_desk/artifacts/release-report.json").write_text(
+            json.dumps({
+                "status": "pass",
+                "views": {"count": 11, "implemented": [f"view-{i}" for i in range(11)]},
+                "roles": {
+                    "synthetic_authenticated_sessions": True,
+                    "production_identity_provider_configured": False,
+                },
+                "workflow": {
+                    "claim_review_state": "approved",
+                    "agent_proposal_status": "accepted_for_review",
+                    "publication_status_after_correction": "stale",
+                    "public_export": {
+                        "internal_comments_included": False,
+                        "internal_tasks_included": False,
+                        "agent_proposals_included": False,
+                    },
+                },
+                "audit": {"status": "pass", "events": 14},
+                "prohibited_actions": {
+                    "investigator_publish_approval": "Role investigator cannot perform approve_publication",
+                    "unauthenticated_action": "Authenticated internal session required",
+                },
+                "boundaries": {
+                    "authoritative_internal_system": True,
+                    "public_portal_separate": True,
+                    "agent_proposals_auto_publish": False,
+                    "production_auth_ready": False,
+                    "restricted_partner_data": False,
+                },
+            }), encoding="utf-8",
         )
 
     def test_release_is_ready_but_not_live_ready(self) -> None:
@@ -100,37 +133,46 @@ class ReleaseTests(unittest.TestCase):
             status = validate_repository(root)
             self.assertTrue(status["release_ready"])
             self.assertFalse(status["live_partner_ready"])
-            self.assertTrue(status["components"]["agent_queue"])
-            self.assertEqual(status["agent_queue"]["release_evidence"]["status"], "pass")
-            self.assertIn("Agents cannot approve", status["truthful_status"])
+            self.assertTrue(status["components"]["investigation_desk"])
+            self.assertEqual(status["investigation_desk"]["release_evidence"]["status"], "pass")
+            self.assertIn("Production identity", status["truthful_status"])
 
-    def test_missing_or_failed_agent_report_blocks_release(self) -> None:
+    def test_missing_or_failed_desk_report_blocks_release(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/agent_queue/artifacts/release-report.json"
+            report = root / "safetrace/investigation_desk/artifacts/release-report.json"
             report.unlink()
             self.assertFalse(validate_repository(root)["release_ready"])
             report.write_text(json.dumps({"status": "fail"}), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
-    def test_unsafe_agent_acceptance_blocks_release(self) -> None:
+    def test_broken_audit_or_public_separation_blocks_release(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/agent_queue/artifacts/release-report.json"
+            report = root / "safetrace/investigation_desk/artifacts/release-report.json"
             payload = json.loads(report.read_text(encoding="utf-8"))
-            payload["evaluation"]["unsafe_accepted"] = 1
+            payload["audit"]["status"] = "fail"
             report.write_text(json.dumps(payload), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
-    def test_autonomous_approval_blocks_release(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/agent_queue/artifacts/release-report.json"
+            report = root / "safetrace/investigation_desk/artifacts/release-report.json"
             payload = json.loads(report.read_text(encoding="utf-8"))
-            payload["metrics"]["auto_approved"] = 1
+            payload["workflow"]["public_export"]["agent_proposals_included"] = True
+            report.write_text(json.dumps(payload), encoding="utf-8")
+            self.assertFalse(validate_repository(root)["release_ready"])
+
+    def test_fabricated_production_auth_readiness_blocks_release(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._make_repository(root)
+            report = root / "safetrace/investigation_desk/artifacts/release-report.json"
+            payload = json.loads(report.read_text(encoding="utf-8"))
+            payload["boundaries"]["production_auth_ready"] = True
             report.write_text(json.dumps(payload), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
@@ -142,7 +184,7 @@ class ReleaseTests(unittest.TestCase):
             write_release_status(root, output)
             self.assertEqual(
                 json.loads(output.read_text(encoding="utf-8"))["release"],
-                "v1.5-auditable-agent-task-queue",
+                "v1.6-investigation-desk-foundation",
             )
 
 
