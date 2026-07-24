@@ -10,6 +10,21 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/**
 
+## Interactive test lab
+
+**https://mikelninh.github.io/digital-democracy-studio/safetrace/role_simulator/**
+
+The browser-local Role Simulator lets one person replay Cases 001–004 as:
+
+- Citizen;
+- Investigator;
+- Evidence Manager;
+- Skeptical Reviewer;
+- Legal & Harm Reviewer;
+- Publisher.
+
+It supports role-filtered views, claims, sources, graph, timeline, bounded agents, review decisions, publication gates, comprehension checks and a local audit trail. It makes no network requests, publishes nothing and stores only local browser state.
+
 ## Shipped stack
 
 - **v0.3–v1.0** — public investigation prototype and controlled-pilot gates.
@@ -20,6 +35,7 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 - **v1.6** — role-controlled Investigation Desk and verifiable audit trail.
 - **v1.7** — complete Case 004 technical reference workflow without false re-certification.
 - **v1.8** — hashed external-review packets, finding register, dry-run exercises, source-backfill plan and consent-based study protocols.
+- **v1.8 Companion** — browser-local Role Simulator for six roles and four public/synthetic cases.
 
 ## What v1.8 proves
 
@@ -46,6 +62,8 @@ Current review state:
 - partner-pilot gate open: **no**;
 - restricted-data gate open: **no**.
 
+The Role Simulator demonstrates intended UX and authorisation boundaries. It is not production authentication, an operational investigation database or permission to process restricted data.
+
 ## Core documents
 
 - [Constitution](CONSTITUTION.md)
@@ -59,6 +77,7 @@ Current review state:
 - [v1.6 Investigation Desk](investigation_desk/README.md)
 - [v1.7 Case 004 reference](case_004_reference/README.md)
 - [v1.8 Review Readiness](review_readiness/README.md)
+- [Role Simulator](role_simulator/README.md)
 
 ## Run the v1.8 gates
 
@@ -67,6 +86,8 @@ python -m pip install reportlab
 python -m unittest discover -s safetrace/review_readiness/tests -v
 python -m safetrace.review_readiness.contracts --write safetrace/review_readiness/artifacts/review-readiness-contracts-1.8.json
 python -m safetrace.review_readiness.build_review_pack --safetrace-root safetrace --output-root safetrace/review_readiness/artifacts
+python -m unittest discover -s safetrace/role_simulator/tests -v
+python -m safetrace.role_simulator.validate --root safetrace/role_simulator --output safetrace/role_simulator/artifacts/role-simulator-report.json
 python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
 ```
 
