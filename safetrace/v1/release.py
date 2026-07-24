@@ -11,7 +11,7 @@ REQUIRED_COMPONENTS = [
     "source_engine", "political_money", "review_desk", "arms_monitor",
     "monitoring", "case_packs", "governance", "pilot", "law_fairness",
     "core", "evidence_vault", "claim_ledger", "agent_queue", "investigation_desk",
-    "case_004_reference",
+    "case_004_reference", "review_readiness",
 ]
 
 
@@ -49,6 +49,13 @@ def validate_repository(root: Path) -> dict[str, Any]:
     reference_pdf_path = safetrace_root / "case_004_reference/artifacts/case-004-reference-pack.pdf"
     comprehension_path = safetrace_root / "case_004_reference/artifacts/comprehension-instrument.json"
     monitoring_path = safetrace_root / "case_004_reference/artifacts/monitoring-manifest.json"
+    review_contract_path = safetrace_root / "review_readiness/artifacts/review-readiness-contracts-1.8.json"
+    review_report = _load_optional_json(safetrace_root / "review_readiness/artifacts/review-readiness-report.json")
+    review_pdf_path = safetrace_root / "review_readiness/artifacts/review-readiness-dossier.pdf"
+    finding_register_path = safetrace_root / "review_readiness/artifacts/finding-register.json"
+    source_backfill_path = safetrace_root / "review_readiness/artifacts/source-backfill-plan.json"
+    study_protocols_path = safetrace_root / "review_readiness/artifacts/study-protocols.json"
+    review_packets_path = safetrace_root / "review_readiness/artifacts/review-packets.json"
 
     migration_ready = (
         migration_report.get("status") == "pass"
@@ -170,6 +177,53 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and reference_boundaries.get("external_comprehension_study_completed") is False
         and reference_boundaries.get("restricted_partner_data") is False
     )
+    review = review_report.get("review", {})
+    findings = review_report.get("findings", {})
+    exercises = review_report.get("exercises", {})
+    protocols = review_report.get("study_protocols", [])
+    backfill = review_report.get("source_backfill", {})
+    decision = review_report.get("decision", {})
+    review_boundaries = review_report.get("boundaries", {})
+    review_ready = (
+        review_contract_path.exists()
+        and review_pdf_path.exists()
+        and finding_register_path.exists()
+        and source_backfill_path.exists()
+        and study_protocols_path.exists()
+        and review_packets_path.exists()
+        and review_report.get("status") == "pass"
+        and len(review.get("disciplines", [])) == 7
+        and len(review.get("slots", [])) == 7
+        and len(review.get("packets", [])) == 7
+        and review.get("external_reviews_completed") == 0
+        and review.get("external_approvals") == 0
+        and review.get("conflict_declarations_received") == 0
+        and all(slot.get("status") == "unassigned" for slot in review.get("slots", []))
+        and all(slot.get("external_reviewer_id") is None for slot in review.get("slots", []))
+        and findings.get("open_total", 0) >= 1
+        and findings.get("unresolved_critical", 0) >= 1
+        and findings.get("unresolved_high", 0) >= 1
+        and exercises.get("synthetic_dry_runs") == 3
+        and exercises.get("externally_observed") == 0
+        and all(item.get("mode") == "synthetic_dry_run" for item in exercises.get("items", []))
+        and len(protocols) == 2
+        and all(item.get("consent_required") is True for item in protocols)
+        and all(item.get("status") == "ready_for_ethics_privacy_review" for item in protocols)
+        and len(backfill.get("sources", [])) == 11
+        and backfill.get("automatic_publication_after_backfill") is False
+        and backfill.get("renewed_human_review_required") is True
+        and decision.get("ready_to_invite_reviewers") is True
+        and decision.get("external_reviews_completed") == 0
+        and decision.get("external_approvals") == 0
+        and decision.get("partner_pilot_gate_open") is False
+        and decision.get("restricted_data_gate_open") is False
+        and review_boundaries.get("independent_review_completed") is False
+        and review_boundaries.get("external_approval_present") is False
+        and review_boundaries.get("partner_named") is False
+        and review_boundaries.get("partner_pilot_gate_open") is False
+        and review_boundaries.get("restricted_data_gate_open") is False
+        and review_boundaries.get("production_security_approved") is False
+    )
 
     release_ready = (
         not missing
@@ -180,13 +234,14 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and agent_ready
         and desk_ready
         and reference_ready
+        and review_ready
         and synthetic_readiness.ready
         and pilot_evaluation.decision == "GO_SYNTHETIC"
         and not live_readiness.ready
     )
     return {
-        "schema_version": "safetrace.release-status/1.7",
-        "release": "v1.7-case-004-technical-reference",
+        "schema_version": "safetrace.release-status/1.8",
+        "release": "v1.8-independent-review-readiness",
         "release_ready": release_ready,
         "live_partner_ready": live_readiness.ready,
         "components": {name: name not in missing for name in REQUIRED_COMPONENTS},
@@ -196,14 +251,14 @@ def validate_repository(root: Path) -> dict[str, Any]:
         "agent_queue": {"schema_version": "safetrace.agent-queue/1.5", "release_evidence": agent_report},
         "investigation_desk": {"schema_version": "safetrace.investigation-desk/1.6", "release_evidence": desk_report},
         "case_004_reference": {"schema_version": "safetrace.case004-reference/1.7", "release_evidence": reference_report},
+        "review_readiness": {"schema_version": "safetrace.review-readiness/1.8", "release_evidence": review_report},
         "synthetic_readiness": synthetic_readiness.to_dict(),
         "restricted_partner_readiness": live_readiness.to_dict(),
         "synthetic_pilot": pilot_evaluation.to_dict(),
         "truthful_status": (
-            "SafeTrace v1.7 completes the deterministic Case 004 technical reference workflow with reviewed repository records, "
-            "Desk views, agent proposals, audit, JSON/PDF, monitoring, benchmark and comprehension instruments. A newly verified "
-            "public publication remains blocked because original source bytes are not yet backfilled; real time savings and citizen "
-            "comprehension remain unmeasured external outcomes."
+            "SafeTrace v1.8 is ready to invite qualified independent reviewers with hashed review packets, open findings, "
+            "synthetic exercises, source-backfill planning and consent-based study protocols. No external review, approval, "
+            "named partner, partner-pilot permission or restricted-data permission has been granted."
         ),
     }
 
