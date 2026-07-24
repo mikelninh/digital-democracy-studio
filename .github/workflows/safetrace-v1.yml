@@ -1,4 +1,4 @@
-name: SafeTrace v1.7 release gate
+name: SafeTrace v1.8 release gate
 
 on:
   push:
@@ -55,6 +55,11 @@ jobs:
           python -m unittest discover -s safetrace/case_004_reference/tests -v
           python -m safetrace.case_004_reference.contracts --write safetrace/case_004_reference/artifacts/case-004-reference-contracts-1.7.json
           python -m safetrace.case_004_reference.build_reference --safetrace-root safetrace --output-root safetrace/case_004_reference/artifacts
+      - name: Validate independent review readiness
+        run: |
+          python -m unittest discover -s safetrace/review_readiness/tests -v
+          python -m safetrace.review_readiness.contracts --write safetrace/review_readiness/artifacts/review-readiness-contracts-1.8.json
+          python -m safetrace.review_readiness.build_review_pack --safetrace-root safetrace --output-root safetrace/review_readiness/artifacts
       - name: Run existing SafeTrace tests
         run: |
           python -m unittest discover -s safetrace/source_engine/tests -v
@@ -73,12 +78,12 @@ jobs:
         run: python -m safetrace.law_fairness.build_public_status
       - name: Generate synthetic pilot report
         run: python -m safetrace.pilot.run_pilot --output safetrace/pilot/public
-      - name: Validate v1.7 release boundary
+      - name: Validate v1.8 release boundary
         run: python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
       - name: Upload release evidence
         uses: actions/upload-artifact@v4
         with:
-          name: safetrace-v1.7-case-004-reference-${{ github.run_id }}
+          name: safetrace-v1.8-independent-review-readiness-${{ github.run_id }}
           path: |
             safetrace/core/schemas/safetrace-core-1.2.schema.json
             safetrace/core/migration-report.json
@@ -93,6 +98,7 @@ jobs:
             safetrace/investigation_desk/artifacts/release-report.json
             safetrace/investigation_desk/artifacts/public-export.json
             safetrace/case_004_reference/artifacts/
+            safetrace/review_readiness/artifacts/
             safetrace/pilot/public/
             safetrace/v1/status.json
             safetrace/law_fairness/public_status.json
