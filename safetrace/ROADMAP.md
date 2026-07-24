@@ -1,102 +1,84 @@
 # SafeTrace Release History and Next Boundary
 
-SafeTrace now has a complete internal prototype path from public source ingestion to controlled-pilot evaluation. Version numbers describe implemented capabilities, not permission to handle sensitive data.
+Version numbers describe implemented capability. They do not grant permission to process sensitive evidence.
 
 ## Shipped
 
 ### v0.3 — Source Engine
-
-Official-source snapshots, retrieval timestamps, canonical URLs, SHA-256 receipts, parser versions, source manifests and material-change detection.
+Official-source snapshots, canonical URLs, retrieval timestamps, SHA-256 receipts, parser versions and change detection.
 
 ### v0.4 — Political Money Graph
-
-Provenance-first entity and relationship records for donations, lobbying and public decisions, with explicit safeguards against unsupported causal conclusions.
+Provenance-first entities and relationships with explicit safeguards against unsupported causal conclusions.
 
 ### v0.5 — Human Review Desk
-
-Claim-level evidence roles, supporting and contradicting material, reviewer rationale, correction history, legal-review requirements and right-of-reply gates.
+Claim-level evidence roles, contradictions, reviewer rationale, corrections, legal review and right of reply.
 
 ### v0.6 — Arms & Influence Monitor
-
-Structured public records for formal authority, procurement, contractors, authorisations, oversight, end-use questions and documented human consequences.
+Separate records for authority, procurement, authorisation, production, planned delivery, delivery and operational use.
 
 ### v0.7 — Monitoring and Alerts
-
-Source-change and missed-deadline proposals that remain pending until a human reviewer approves any public effect.
+Material-change and deadline proposals that remain pending until human review.
 
 ### v0.8 — Investigator Case Packs
-
-Human-readable PDF and machine-readable JSON exports containing chronology, reviewed findings, source manifests, redaction metadata, limitations and unresolved questions.
+Human-readable PDF and machine-readable JSON with chronology, sources, review labels, limitations and redaction metadata.
 
 ### v0.9 — Governance and Security Gates
-
-Default-deny role permissions, tamper-evident audit events, machine-readable readiness controls, threat model, incident response and separate public/synthetic versus restricted-partner decisions.
+Default-deny roles, tamper-evident audit events, threat model, incident response and separate public versus restricted readiness decisions.
 
 ### v1.0 — Pilot-Ready Release
-
-An integrated release validator, transparent synthetic benchmark, measurable impact and safety gates, public pilot status page, partner pilot template and CI workflow across the full v0.3–v1.0 stack.
+Integrated release validation, transparent synthetic benchmark, measurable safety/impact gates and partner pilot template.
 
 ### Case 004 — Law Fairness Monitor
+Germany-first distributional policy assessment separating direct effects, conditionality, budget impact, forecasts, measured outcomes and political attribution.
 
-A Germany-first distributional policy assessment that separates direct effects, conditionality, budget impact, forecasts, measured outcomes, political attribution and documented lobbying positions.
+### v1.2 — Unified Evidence Foundation
 
-## Exact v1.0 status
+- machine-readable Case Charter and acceptance gate;
+- shared records for Case, Source, Snapshot, Entity, Relationship, Event, Claim, Evidence, Review, Publication, Correction and AgentTask;
+- controlled evidence, legal, source, relationship, event, data-zone and sensitivity vocabularies;
+- strict cross-reference and publication validation;
+- bounded agent tasks with default-deny tools and data-zone ceilings;
+- generated JSON Schema and backward-compatibility checks;
+- adapters and executable migrations for Cases 001–004.
 
-**Ready:** public records, synthetic evaluation, portfolio demonstrations, partner discovery and workflow evaluation planning.
+## Exact v1.2 status
 
-**Not ready:** real victim evidence, witness data, unrestricted personal data or production partner operations.
+**Ready:** public official records, synthetic workflows, portfolio demonstrations, migration of existing cases and development of the internal Investigation OS.
 
-The restricted partner gate remains closed until all of the following exist:
+**Not ready:** real victim or witness evidence, unrestricted personal data or production partner operations.
 
-1. A qualified named partner and narrowly scoped case type.
-2. Signed roles, data boundaries, escalation and retention rules.
-3. Production authentication, encryption and secrets management.
-4. Independent security assessment and remediated findings.
-5. Partner-specific DPIA, lawful basis and data-processing terms.
-6. Qualified legal/editorial approval for evidence handling, publication and right of reply.
-7. Observed measurements replacing synthetic acceptance fixtures.
+The restricted partner gate remains closed until a qualified partner, written data boundaries, production security, independent review, lawful basis, retention/deletion controls and legal/editorial approval exist.
 
-## Next engineering milestone — v1.2
+## Next engineering milestone — v1.3
 
-The next implementation step is not a broad feature expansion. It is the foundation of the **SafeTrace Investigation OS**:
+Build the **Source Registry and Evidence Vault**:
 
-- adopt the [SafeTrace Constitution](CONSTITUTION.md);
-- implement a machine-readable Case Charter;
-- unify Case, Source, Snapshot, Entity, Relationship, Event, Claim, Evidence, Review, Publication, Correction and AgentTask;
-- apply data-zone and sensitivity labels;
-- migrate existing cases without losing provenance or review history.
+- reviewed source catalogue with hierarchy, cadence, connector, parser and health;
+- content-addressed immutable original files and receipts;
+- transformation, extraction and redaction manifests;
+- backup, restore, retention and deletion verification;
+- alerts for moved, unavailable or materially changed sources.
 
-The complete operating model is in [INVESTIGATION_OS.md](INVESTIGATION_OS.md).
+Then v1.4 unifies the Claim Ledger and review queues. See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
 
-## Long-term roadmap
+## Long-term stages
 
-The detailed release plan from **v1.2 through v10.0** is in [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
-
-High-level stages:
-
-- **v1.2–v1.9:** standardise the evidence model, Evidence Vault, Review Desk, agent task queue, internal workspace, reference case, external review and isolated pilot environment.
-- **v2.0:** run one measured, qualified partner pilot.
-- **v2.1–v2.9:** mature team operations, connectors, search, graph, policy analysis, public comprehension and reliability.
-- **v3.0:** production-grade single-organisation platform.
-- **v4.0:** federated partner collaboration with strong tenant isolation and revocable sharing.
-- **v5.0:** open evidence interoperability standard, SDKs and validation tools.
-- **v6.0:** multilingual, locally governed cross-jurisdiction packs.
-- **v7.0:** public-interest investigation network, curriculum and independent advisory board.
-- **v8.0:** resilient evidence infrastructure and long-term public-record preservation.
-- **v9.0:** independently governed evidence commons with transparent funding.
-- **v10.0:** accountable global public infrastructure—without surveillance, secret scoring or automated guilt.
+- **v1.3–v1.9:** Evidence Vault, Claim Ledger, bounded agents, Investigation Desk, reference case and independent review.
+- **v2.0:** one measured, qualified partner pilot.
+- **v2.1–v3.0:** mature operations and production-grade single-organisation deployment.
+- **v4.0–v5.0:** federated collaboration and open evidence interoperability.
+- **v6.0–v7.0:** locally governed cross-jurisdiction packs and public-interest network.
+- **v8.0–v10.0:** resilient, independently governed and accountable public infrastructure.
 
 ## Real pilot success measures
 
-- At least 30% reduction in the defined investigation or review workflow.
-- 100% source coverage for material claims.
-- 100% human review for material and sensitive publication.
-- Zero autonomous guilt decisions.
-- Zero hidden corrections.
+- At least 30% improvement in the defined workflow or equivalent documented benefit.
+- 100% source coverage and human review for material publication.
+- Zero autonomous guilt decisions and zero hidden corrections.
 - Zero serious privacy or security incidents.
-- False entity links do not increase versus the partner baseline.
-- Reviewers correctly understand evidence status and limitations.
-- The partner reports meaningful workflow improvement and wants to continue.
+- False entity links do not increase versus baseline.
+- Reviewers understand evidence status and limitations.
+- The qualified partner wants to continue.
 
 ## Deliberately excluded
 

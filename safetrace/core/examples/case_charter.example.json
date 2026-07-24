@@ -1,0 +1,58 @@
+{
+  "id": "charter:case-004",
+  "case_id": "case-004",
+  "title": "Gesetzes-Fairness-Monitor",
+  "research_question": "Wer profitiert direkt von den untersuchten Maßnahmen, wer trägt Kosten oder zusätzliche Risiken und welche Wirkungen sind tatsächlich belegt?",
+  "public_interest_rationale": "Der Fall macht Verteilungswirkungen, politische Verantwortung und Unsicherheiten neuer deutscher Gesetze für Bürgerinnen und Bürger nachvollziehbar.",
+  "jurisdiction": "Germany",
+  "case_owner": "named_case_lead",
+  "editorial_owner": "named_editorial_reviewer",
+  "created_at": "2026-07-24T00:00:00+00:00",
+  "status": "accepted",
+  "scope_inclusions": [
+    "Ausgewählte bundesrechtliche Steuer-, Sozial- und Familienmaßnahmen seit 2025",
+    "Offizielle Gesetzestexte, Haushaltswirkungen und nachvollziehbare Verteilungsanalysen"
+  ],
+  "scope_exclusions": [
+    "Pauschale moralische Gesamtbewertung der Regierung",
+    "Unterstellung unrechtmäßiger Einflussnahme ohne belastbare Belege",
+    "Private Adressen und nicht erforderliche personenbezogene Daten"
+  ],
+  "expected_source_types": [
+    "primary official legislation",
+    "official budget documents",
+    "authoritative distributional analysis"
+  ],
+  "affected_groups": [
+    "Haushalte mit niedrigen Einkommen",
+    "Familien und Kinder",
+    "Beschäftigte und Unternehmen",
+    "Steuerzahlende und öffentliche Haushalte"
+  ],
+  "risks": [
+    {
+      "id": "risk:political-misinterpretation",
+      "category": "misinterpretation",
+      "description": "Einzelne Maßnahmen könnten als Beweis für eine pauschale politische oder strafrechtliche Schlussfolgerung missverstanden werden.",
+      "likelihood": "high",
+      "severity": "high",
+      "mitigation": "Direkte Wirkungen, Prognosen, politische Attribution, Lobbypositionen und Werturteile werden sichtbar getrennt.",
+      "owner": "named_editorial_reviewer"
+    }
+  ],
+  "prohibited_methods": [
+    "automated_guilt",
+    "automated_referral",
+    "covert_contact",
+    "credential_testing",
+    "doxxing",
+    "facial_identification",
+    "hacking",
+    "impersonation"
+  ],
+  "permitted_data_zones": ["public"],
+  "publication_boundary": "Nur geprüfte öffentliche Quellen und klar begrenzte Schlussfolgerungen; keine automatischen Anschuldigungen, Meldungen oder privaten Personendaten.",
+  "legal_review_required": false,
+  "constitution_ref": "safetrace/CONSTITUTION.md",
+  "constitution_version": "1.0"
+}
