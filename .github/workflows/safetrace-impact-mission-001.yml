@@ -1,0 +1,42 @@
+name: SafeTrace Impact Mission 001 gate
+
+on:
+  push:
+    paths:
+      - "safetrace/impact_missions/mission_001/**"
+      - "safetrace/open_policy_api/v1/index.json"
+      - "safetrace/index.html"
+      - ".github/workflows/safetrace-impact-mission-001.yml"
+  pull_request:
+    paths:
+      - "safetrace/impact_missions/mission_001/**"
+      - "safetrace/open_policy_api/v1/index.json"
+      - "safetrace/index.html"
+      - ".github/workflows/safetrace-impact-mission-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-impact-mission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate evidence, hypotheses and personal impact contract
+        run: python -m unittest discover -s safetrace/impact_missions/mission_001/tests -v
+      - name: Validate mission JSON
+        run: python -m json.tool safetrace/impact_missions/mission_001/data.json > /dev/null
+      - name: Upload mission review packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-impact-mission-001-${{ github.run_id }}
+          path: |
+            safetrace/impact_missions/mission_001/
+            safetrace/open_policy_api/v1/index.json
+          if-no-files-found: error
+          retention-days: 90
