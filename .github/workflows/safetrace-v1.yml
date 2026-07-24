@@ -15,7 +15,59 @@ permissions:
   contents: read
 
 jobs:
+  probe-case-005-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe four official Case 005 pages
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re, urllib.request
+          from html.parser import HTMLParser
+
+          class Text(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True); self.parts=[]; self.skip=0
+              def handle_starttag(self, tag, attrs):
+                  if tag in {'script','style','noscript','svg'}: self.skip += 1
+              def handle_endtag(self, tag):
+                  if tag in {'script','style','noscript','svg'} and self.skip: self.skip -= 1
+              def handle_data(self, data):
+                  if not self.skip: self.parts.append(data)
+
+          sources = [
+              ('case005-bundestag-decision-2024','https://www.bundestag.de/dokumente/textarchiv/2024/kw39-de-existenzminimum-1017664',['Der Bundestag hat am Donnerstag, 19. Dezember 2024','mit Wirkung zum 1. Januar 2026 um weitere vier Euro auf 259 Euro']),
+              ('case005-bundesregierung-implementation-2026','https://www.bundesregierung.de/breg-de/schwerpunkte/wirksam-regieren/gesetzliche-neuregelungen-januar-2026-2399838',['Ab Januar 2026 steigt das Kindergeld','259 Euro pro Monat']),
+              ('case005-bkgg-current-law','https://www.gesetze-im-internet.de/bkgg_1996/__6.html',['Das Kindergeld beträgt monatlich für jedes Kind 259 Euro']),
+              ('case005-merz-government-start','https://www.bundesregierung.de/breg-de/service/fragen-und-anworten/kanzlerwahl-regierungsbildung-2345072',['Am 6. Mai hat der Deutsche Bundestag Friedrich Merz zum Bundeskanzler gewählt','Damit beginnt ihre Amtszeit']),
+          ]
+          failures=[]
+          for source_id,url,markers in sources:
+              print('PROBE_START',source_id,url,flush=True)
+              request=urllib.request.Request(url,headers={'User-Agent':'SafeTrace-Public-Source-Research/1.0','Accept':'text/html,application/xhtml+xml;q=0.9,*/*;q=0.5','Accept-Language':'de-DE,de;q=0.9'})
+              try:
+                  with urllib.request.urlopen(request,timeout=15) as response:
+                      payload=response.read(); content_type=response.headers.get_content_type(); resolved=response.geturl()
+              except Exception as exc:
+                  failures.append(f'{source_id}: fetch {type(exc).__name__}: {exc}')
+                  print('PROBE_FAIL',failures[-1],flush=True); continue
+              parser=Text(); parser.feed(payload.decode('utf-8',errors='replace'))
+              text=re.sub(r'\s+',' ',' '.join(parser.parts)).casefold()
+              missing=[marker for marker in markers if re.sub(r'\s+',' ',marker).casefold() not in text]
+              print('PROBE_RESPONSE',source_id,'type='+content_type,'bytes='+str(len(payload)),'resolved='+resolved,flush=True)
+              if content_type != 'text/html': failures.append(f'{source_id}: content type {content_type}')
+              if missing: failures.append(f'{source_id}: missing markers {missing}')
+              if not missing and content_type == 'text/html': print('PROBE_PASS',source_id,flush=True)
+          if failures:
+              print('PROBE_SUMMARY FAIL',flush=True)
+              for failure in failures: print(' -',failure,flush=True)
+              raise SystemExit(2)
+          print('PROBE_SUMMARY PASS sources=4',flush=True)
+          PY
+
   validate:
+    needs: probe-case-005-sources
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -25,8 +77,6 @@ jobs:
           python-version: "3.12"
       - name: Install case-pack dependency
         run: python -m pip install --disable-pip-version-check reportlab
-      - name: Probe Case 005 official sources
-        run: python -m safetrace.real_cases.case_005.probe_sources
       - name: Validate unified evidence foundation
         run: |
           python -m unittest discover -s safetrace/core/tests -v
