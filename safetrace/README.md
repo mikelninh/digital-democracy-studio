@@ -1,4 +1,4 @@
-# SafeTrace v1.5 — Auditable Agent Task Queue
+# SafeTrace v1.6 — Internal Investigation Desk Foundation
 
 **Victim-centred. Evidence-led. Human-reviewed. Germany first.**
 
@@ -12,27 +12,30 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 
 ## Shipped stack
 
-- **v0.3–v1.0** — source snapshots, political-money and arms records, review, monitoring, case packs, governance and controlled-pilot gates.
+- **v0.3–v1.0** — public investigation prototype and controlled-pilot gates.
 - **Case 004** — Germany-first Law Fairness Monitor.
-- **v1.2** — unified Case Charter and evidence model with Case 001–004 migrations.
+- **v1.2** — unified Case Charter and evidence model.
 - **v1.3** — reviewed Source Registry and tamper-evident Evidence Vault.
-- **v1.4** — versioned Claim Ledger, dynamic review gates and visible corrections.
-- **v1.5** — twelve bounded proposal workers, default-deny execution, replayable run receipts and adversarial evaluation gates.
+- **v1.4** — versioned Claim Ledger, review gates and visible corrections.
+- **v1.5** — twelve bounded proposal workers and adversarial evaluations.
+- **v1.6** — role-controlled Investigation Desk, public-export separation and hash-chained audit trail.
 
-## What v1.5 proves
+## What v1.6 proves
 
-- Every task fixes its purpose, tools, data-zone ceiling, schemas, model, prompt version, timeout, budget and human approver.
-- Scout, Archivist, Reader, Linker, Chronologist, Claim Compiler, Skeptic, Quant, Legal Status, Guardian, Watchtower and Explainer have separate allowlists.
-- Every completed run records input/output hashes, tools, cost, latency and a deterministic trace key.
-- Every successful output starts as `awaiting_human`; a human may only accept it for further review, reject it or request changes.
-- Unknown tools, forbidden actions, data-zone escalation, budget/timeout overruns and agents acting as reviewers are blocked.
-- Consequential proposals require exact source anchors.
-- False entity links, political attribution errors, missed contradictions, legal-status overstatement and harmful publication suggestions fail release-blocking Golden Cases.
-- The release invariant is **zero autonomous approval, publication, contact, referral or guilt decisions**.
+- Eleven internal views: Inbox, Cases, Sources, Claims, Graph, Timeline, Review, Publish, Corrections, Agents and Audit.
+- Seven least-privilege roles: Intake Researcher, Investigator, Evidence Manager, Reviewer, Legal Reviewer, Publisher and Admin.
+- Every action requires an authenticated session context, role permission and sufficient data-zone access.
+- Record creators cannot perform final review.
+- Publication requesters cannot approve their own publication.
+- Agent proposals enter `awaiting_human` and can only be accepted for further review.
+- Public export includes only approved public claims and excludes internal comments, team tasks and agent proposals.
+- Corrections make an existing publication visibly `stale`.
+- Consequential actions create a verifiable hash-chained audit trail.
+- Chat and spreadsheets are explicitly not authoritative systems of record.
 
 ## Exact release status
 
-**SafeTrace v1.5 is ready for deterministic public-source and synthetic agent workflow evaluation. It is not a production model orchestration service and is not authorised for real victim, witness or restricted partner data.**
+**SafeTrace v1.6 is ready for deterministic public-source and synthetic internal workflow evaluation. The authorisation model uses synthetic authenticated sessions; production identity, MFA, session revocation, tenant isolation and restricted partner processing are not configured.**
 
 ## Core documents
 
@@ -44,8 +47,9 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 - [v1.3 Evidence Vault](evidence_vault/README.md)
 - [v1.4 Claim Ledger](claim_ledger/README.md)
 - [v1.5 Agent Queue](agent_queue/README.md)
+- [v1.6 Investigation Desk](investigation_desk/README.md)
 
-## Run the v1.5 gates
+## Run the v1.6 gates
 
 ```bash
 python -m pip install reportlab
@@ -57,12 +61,14 @@ python -m unittest discover -s safetrace/claim_ledger/tests -v
 python -m safetrace.claim_ledger.build_release_artifacts --safetrace-root safetrace --output-root safetrace/claim_ledger/artifacts
 python -m unittest discover -s safetrace/agent_queue/tests -v
 python -m safetrace.agent_queue.build_release_artifacts --output-root safetrace/agent_queue/artifacts
+python -m unittest discover -s safetrace/investigation_desk/tests -v
+python -m safetrace.investigation_desk.build_release_artifacts --output-root safetrace/investigation_desk/artifacts
 python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
 ```
 
 ## Next engineering milestone
 
-**v1.6 — Investigation Desk foundation:** one internal workflow surface for case intake, sources, claims, timelines, graphs, review queues, publications, corrections and agent proposals—without pretending authentication or restricted-data readiness already exists.
+**v1.7 — Complete Case 004 reference workflow:** backfill official source bytes, run the Gesetzes-Fairness case through the Desk, create reviewed graph/timeline and public case pack, benchmark manual versus assisted work and test citizen comprehension.
 
 ## Non-negotiable boundaries
 
