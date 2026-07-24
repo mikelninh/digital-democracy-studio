@@ -1,4 +1,4 @@
-name: SafeTrace v1.5 release gate
+name: SafeTrace v1.6 release gate
 
 on:
   push:
@@ -45,6 +45,11 @@ jobs:
           python -m unittest discover -s safetrace/agent_queue/tests -v
           python -m safetrace.agent_queue.contracts --write safetrace/agent_queue/artifacts/agent-queue-contracts-1.5.json
           python -m safetrace.agent_queue.build_release_artifacts --output-root safetrace/agent_queue/artifacts
+      - name: Validate Internal Investigation Desk
+        run: |
+          python -m unittest discover -s safetrace/investigation_desk/tests -v
+          python -m safetrace.investigation_desk.contracts --write safetrace/investigation_desk/artifacts/investigation-desk-contracts-1.6.json
+          python -m safetrace.investigation_desk.build_release_artifacts --output-root safetrace/investigation_desk/artifacts
       - name: Run existing SafeTrace tests
         run: |
           python -m unittest discover -s safetrace/source_engine/tests -v
@@ -63,12 +68,12 @@ jobs:
         run: python -m safetrace.law_fairness.build_public_status
       - name: Generate synthetic pilot report
         run: python -m safetrace.pilot.run_pilot --output safetrace/pilot/public
-      - name: Validate v1.5 release boundary
+      - name: Validate v1.6 release boundary
         run: python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
       - name: Upload release evidence
         uses: actions/upload-artifact@v4
         with:
-          name: safetrace-v1.5-auditable-agent-queue-${{ github.run_id }}
+          name: safetrace-v1.6-investigation-desk-${{ github.run_id }}
           path: |
             safetrace/core/schemas/safetrace-core-1.2.schema.json
             safetrace/core/migration-report.json
@@ -79,6 +84,9 @@ jobs:
             safetrace/claim_ledger/artifacts/release-report.json
             safetrace/agent_queue/artifacts/agent-queue-contracts-1.5.json
             safetrace/agent_queue/artifacts/release-report.json
+            safetrace/investigation_desk/artifacts/investigation-desk-contracts-1.6.json
+            safetrace/investigation_desk/artifacts/release-report.json
+            safetrace/investigation_desk/artifacts/public-export.json
             safetrace/pilot/public/
             safetrace/v1/status.json
             safetrace/law_fairness/public_status.json
