@@ -1,0 +1,111 @@
+{
+  "schema_version": "safetrace.impact-mission/1.0",
+  "mission_id": "mission-001",
+  "title": "Gute Arbeit, weniger Armut, schneller Wind",
+  "status": "public_review_candidate",
+  "generated_at": "2026-07-24",
+  "north_star": "Mehr Menschen in gute, produktive Arbeit bringen, die Armut senkt und den Ausbau sauberer Energie beschleunigt.",
+  "boundary": "The three indicators are signals, not a proven causal chain. Policy hypotheses remain proposals to test, not findings.",
+  "indicators": [
+    {
+      "indicator_id": "unemployment-rate-june-2026",
+      "title": "Arbeitslosenquote",
+      "value": 6.2,
+      "unit": "%",
+      "period": "Juni 2026",
+      "supporting_facts": ["2.936.000 Menschen arbeitslos", "15.000 weniger als im Mai", "22.000 mehr als im Juni 2025"],
+      "definition_caveat": "Die registrierte Arbeitslosenquote ist nicht identisch mit der ILO-Erwerbslosenquote und misst nicht die Qualität oder Bezahlung der Arbeit.",
+      "source": {
+        "publisher": "Bundesagentur für Arbeit",
+        "url": "https://www.arbeitsagentur.de/presse/2026-22-arbeitsmarkt-im-juni-2026",
+        "published_at": "2026-06-30",
+        "evidence_status": "official_observation"
+      }
+    },
+    {
+      "indicator_id": "poverty-risk-2025",
+      "title": "Armutsgefährdungsquote",
+      "value": 16.1,
+      "unit": "%",
+      "period": "2025",
+      "supporting_facts": ["rund 13,3 Millionen Menschen", "15,5 % im Vorjahr", "Schwelle alleinlebend: 1.446 Euro netto pro Monat"],
+      "definition_caveat": "Die Quote misst Einkommen unter 60 % des Median-Äquivalenzeinkommens. Sie ist eine relative Einkommenskennzahl und kein vollständiges Maß materieller Not.",
+      "source": {
+        "publisher": "Statistisches Bundesamt",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/02/PD26_039_63.html",
+        "published_at": "2026-02-03",
+        "evidence_status": "official_observation"
+      }
+    },
+    {
+      "indicator_id": "onshore-wind-capacity-2030-gap",
+      "title": "Windleistung an Land",
+      "value": 68.1,
+      "unit": "GW",
+      "period": "Ende 2025",
+      "target": {"value": 115.0, "unit": "GW", "date": "2030"},
+      "gap": {"value": 46.9, "unit": "GW"},
+      "supporting_facts": ["durchschnittlich 9,4 GW Zubau pro Jahr erforderlich", "20,8 GW im Jahr 2025 genehmigt", "knapp 0,6 GW endgültig stillgelegt"],
+      "definition_caveat": "Installierte Leistung ist nicht gleich Stromerzeugung, Netzverfügbarkeit, niedriger Endkundenpreis oder lokale Wertschöpfung.",
+      "source": {
+        "publisher": "Bundesnetzagentur",
+        "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260108_EEG.html",
+        "published_at": "2026-01-08",
+        "evidence_status": "official_observation_and_target"
+      }
+    }
+  ],
+  "shared_diagnosis": {
+    "statement": "Deutschland hat gleichzeitig einen schwachen Arbeitsmarkt, eine steigende Armutsgefährdung und einen großen Investitionsbedarf beim Wind-Ausbau. Die Chance besteht darin, Klimainvestitionen stärker in gute Arbeit, Qualifikation und breite lokale Wertschöpfung zu übersetzen.",
+    "strongest_counterargument": "Die drei Kennzahlen haben unterschiedliche Zeiträume und Ursachen. Wind-Ausbau kann Arbeitsplätze schaffen, aber weder automatisch Arbeitslosigkeit noch Einkommensarmut senken.",
+    "missing_evidence": [
+      "Wie viele zusätzliche, dauerhaft gute Arbeitsplätze entstehen je GW Wind an Land?",
+      "Welche Qualifikationen und Regionen passen zu den offenen Aufgaben?",
+      "Wie viel lokale und deutsche Wertschöpfung bleibt tatsächlich erhalten?",
+      "Wie verändern zusätzliche Erwerbseinkommen das verfügbare Haushaltseinkommen nach Steuern, Transfers, Miete und Betreuung?"
+    ]
+  },
+  "impact_hypotheses": [
+    {
+      "hypothesis_id": "wind-to-work-bridge",
+      "title": "Wind-to-Work Bridge",
+      "proposal": "Neue Wind-, Netz- und Speicherprojekte mit bezahlter Qualifizierung, garantierten Bewerbungsgesprächen und regionalen Ausbildungsplätzen verbinden.",
+      "mechanism": "Investitionsbedarf wird in konkrete Einstiegswege für arbeitslose und wechselwillige Menschen übersetzt.",
+      "metrics": ["Teilnehmerzahl", "Abschlussquote", "Beschäftigung nach 6 und 12 Monaten", "Medianlohn", "Arbeitsqualität", "Kosten je nachhaltiger Vermittlung"],
+      "evidence_status": "to_test"
+    },
+    {
+      "hypothesis_id": "make-work-pay",
+      "title": "Jede zusätzliche Stunde lohnt sich",
+      "proposal": "Die kombinierte Belastung durch Steuern, Sozialabgaben, Transferentzug, Miete und Betreuung für typische Haushalte sichtbar machen und hohe Grenzbelastungen abbauen.",
+      "mechanism": "Mehr Arbeit erhöht zuverlässig das verfügbare Einkommen und reduziert Armutsrisiken.",
+      "metrics": ["verfügbares Einkommen je zusätzlicher Arbeitsstunde", "Erwerbsbeteiligung", "In-Work-Poverty", "Kinderbetreuungszugang"],
+      "evidence_status": "to_test"
+    },
+    {
+      "hypothesis_id": "speed-with-participation",
+      "title": "Tempo mit Beteiligung",
+      "proposal": "Schnellere Genehmigung und Netzanschlüsse mit transparenter lokaler Beteiligung, kommunalen Einnahmen und messbaren Natur- und Kostengrenzen kombinieren.",
+      "mechanism": "Bessere lokale Anreize und klare Fristen können Umsetzung beschleunigen, ohne Akzeptanz und Schutzstandards blind abzubauen.",
+      "metrics": ["Genehmigungsdauer", "Inbetriebnahmen in GW", "Netzanschlussdauer", "lokale Einnahmen", "Klagen", "Systemkosten"],
+      "evidence_status": "to_test"
+    }
+  ],
+  "personal_actions": [
+    {"action_id": "verify", "title": "Quellen selbst prüfen", "proof": "Alle drei Originalseiten geöffnet; Werte, Zeitraum und Definition notiert."},
+    {"action_id": "choose", "title": "Eine Impact-Wette auswählen", "proof": "Eine Hypothese mit Begründung und größtem Zweifel markiert."},
+    {"action_id": "challenge", "title": "Drei Gegenprüfer gewinnen", "proof": "Feedback von mindestens einer arbeitssuchenden Person, einer Energieperson und einer skeptischen Person dokumentiert."},
+    {"action_id": "conversation", "title": "Eine reale Fachkonversation auslösen", "proof": "Mission an mindestens eine Organisation oder Fachperson geschickt und Antwort dokumentiert."},
+    {"action_id": "measure", "title": "Ersten Impact messen", "proof": "Mindestens zehn Leser; Verständnis, stärkstes Gegenargument und Handlungsbereitschaft erfasst."}
+  ],
+  "success_contract": {
+    "first_cycle": {
+      "readers": 10,
+      "external_challenges": 3,
+      "expert_conversations": 1,
+      "required_output": "A public findings note showing what changed in our understanding and what remains unproven."
+    },
+    "publication_allowed": false,
+    "human_review_required": true
+  }
+}
