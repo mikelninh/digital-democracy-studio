@@ -42,19 +42,19 @@
     },
     {
       "source_id": "case005-bkgg-current-law",
-      "title": "Lohnsteuer-Handbuch 2026 § 66 – Höhe des Kindergeldes",
-      "publisher": "Bundesministerium der Finanzen",
-      "canonical_url": "https://ksth.bundesfinanzministerium.de/lsth/2026/A-Einkommensteuergesetz/X-Kindergeld-62-78/Paragraf-66/inhalt.html",
-      "source_type": "official_current_tax_law_handbook",
+      "title": "Kindergeld: Anspruch, Höhe und Dauer",
+      "publisher": "Bundesagentur für Arbeit / Familienkasse",
+      "canonical_url": "https://www.arbeitsagentur.de/familie-und-kinder/infos-rund-um-kindergeld/kindergeld-anspruch-hoehe-dauer",
+      "source_type": "official_benefit_information",
       "source_rank": "primary_official",
       "jurisdiction": "DE",
       "update_cadence": "monthly",
       "expected_content_types": ["text/html"],
       "required_markers": [
         "Höhe des Kindergeldes",
-        "259"
+        "Sie erhalten pro Kind 259 Euro Kindergeld im Monat"
       ],
-      "anchor": "§ 66 Satz 1 EStG im Lohnsteuer-Handbuch 2026"
+      "anchor": "Abschnitt 'Höhe des Kindergeldes'"
     },
     {
       "source_id": "case005-merz-government-start",
