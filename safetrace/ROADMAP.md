@@ -4,29 +4,8 @@ Version numbers describe implemented capability. They do not grant permission to
 
 ## Shipped
 
-### v0.3 — Source Engine
-Official-source snapshots, canonical URLs, retrieval timestamps, SHA-256 receipts, parser versions and change detection.
-
-### v0.4 — Political Money Graph
-Provenance-first entities and relationships with explicit safeguards against unsupported causal conclusions.
-
-### v0.5 — Human Review Desk
-Claim-level evidence roles, contradictions, reviewer rationale, corrections, legal review and right of reply.
-
-### v0.6 — Arms & Influence Monitor
-Separate records for authority, procurement, authorisation, production, planned delivery, delivery and operational use.
-
-### v0.7 — Monitoring and Alerts
-Material-change and deadline proposals that remain pending until human review.
-
-### v0.8 — Investigator Case Packs
-Human-readable PDF and machine-readable JSON with chronology, sources, review labels, limitations and redaction metadata.
-
-### v0.9 — Governance and Security Gates
-Default-deny roles, tamper-evident audit events, threat model, incident response and separate public versus restricted readiness decisions.
-
-### v1.0 — Pilot-Ready Release
-Integrated release validation, transparent synthetic benchmark, measurable safety and impact gates and partner pilot template.
+### v0.3–v1.0 — Public investigation prototype
+Source snapshots, political-money and arms records, human review, monitoring, case packs, governance and controlled-pilot gates.
 
 ### Case 004 — Law Fairness Monitor
 Germany-first distributional policy assessment separating direct effects, conditionality, budget impact, forecasts, measured outcomes and political attribution.
@@ -35,46 +14,51 @@ Germany-first distributional policy assessment separating direct effects, condit
 
 - machine-readable Case Charter and acceptance gate;
 - shared Case, Source, Snapshot, Entity, Relationship, Event, Claim, Evidence, Review, Publication, Correction and AgentTask records;
-- controlled evidence, legal, source, relationship, event, data-zone and sensitivity vocabularies;
-- strict cross-reference, publication and agent-boundary validation;
-- generated JSON Schema, compatibility checks and Case 001–004 migrations.
+- controlled vocabularies, data-zone limits, publication gates and Case 001–004 migrations.
 
 ### v1.3 — Reviewed Source Registry and Evidence Vault
 
-- central reviewed public-source catalogue with hierarchy, cadence, connector, parser and retention policy;
-- content-addressed immutable original objects;
-- hash-chained acquisition receipts tied to registry revisions;
-- raw and normalized change detection;
-- transformation manifests for normalization, parsing, extraction, redaction and export;
-- named human approval for redaction and export;
-- source-health alerts with no automatic public effect;
-- protected originals, approved derived deletion and visible tombstones;
-- complete integrity checking, file-hashed backups and independently verified restore.
+- reviewed public-source catalogue;
+- content-addressed immutable originals;
+- hash-chained receipts and transformation manifests;
+- material-change and source-health alerts;
+- retention controls, visible tombstones and verified backup/restore.
 
-## Exact v1.3 status
+### v1.4 — Claim Ledger 2.0
 
-**Ready:** reviewed public official sources, synthetic workflows, verifiable acquisition history, existing-case source registration, backup and recovery testing, and development of the internal Investigation OS.
+- versioned claim wording, evidence status, legal status, author and limitations;
+- supporting, contradicting and contextual links to Source Registry and Evidence Vault records;
+- dynamic identity, evidence, red-team, legal, right-of-reply, publication and correction gates;
+- researcher/reviewer separation for sensitive claims and material publication;
+- explicit red-team treatment of contradicting evidence;
+- sequential visible corrections;
+- automatic `stale` status for publications using a superseded claim version;
+- Case 001–004 migration with zero automatic publication and mandatory Evidence Vault backfill.
+
+## Exact v1.4 status
+
+**Ready:** vault-backed public and synthetic claim workflows, structured review queues, visible corrections, publication invalidation and conservative migration of existing cases.
 
 **Not ready:** real victim or witness evidence, unrestricted personal data or production partner operations.
 
-The restricted partner gate remains closed until a qualified partner, written data boundaries, production security, independent review, lawful basis, retention/deletion controls and legal/editorial approval exist.
+Existing public cases remain visible as legacy outputs. Any future Claim Ledger publication requires Evidence Vault receipts and the complete review graph.
 
-## Next engineering milestone — v1.4
+## Next engineering milestone — v1.5
 
-Build **Claim Ledger 2.0** on top of the Source Registry and Evidence Vault:
+Build the **Auditable Agent Task Queue and evaluation harness**:
 
-- one authoritative claim record across all cases;
-- supporting, contradicting and contextual evidence linked to vault receipts and exact anchors;
-- identity, evidence, red-team, legal, right-of-reply, publication and correction queues;
-- separation of researcher and final reviewer for sensitive claims;
-- visible claim versions, corrections and downstream invalidation;
-- no consequential claim bypasses the required review graph.
+- bounded Scout, Archivist, Reader, Linker, Chronologist, Claim Compiler, Skeptic, Quant, Legal Status, Guardian, Watchtower and Explainer workers;
+- explicit purpose, allowed tools, data-zone ceiling, input/output contract, model, prompt version, timeout, budget and human approver;
+- structured proposals into Claim Ledger 2.0, never approved claims;
+- golden datasets for extraction, entity resolution, attribution, contradictions and harmful-output prevention;
+- replayable runs with quality, safety, cost and latency metrics;
+- release-blocking adversarial and regression evaluations.
 
 See [FUTURE_ROADMAP.md](FUTURE_ROADMAP.md).
 
 ## Long-term stages
 
-- **v1.4–v1.9:** Claim Ledger, bounded agents, Investigation Desk, reference case and independent review.
+- **v1.5–v1.9:** bounded agents, Investigation Desk, reference case and independent review.
 - **v2.0:** one measured, qualified partner pilot.
 - **v2.1–v3.0:** mature operations and production-grade single-organisation deployment.
 - **v4.0–v5.0:** federated collaboration and open evidence interoperability.
