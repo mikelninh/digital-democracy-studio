@@ -15,7 +15,7 @@ class ReleaseTests(unittest.TestCase):
             "source_engine", "political_money", "review_desk", "arms_monitor",
             "monitoring", "case_packs", "governance", "pilot", "law_fairness",
             "core", "evidence_vault", "claim_ledger", "agent_queue",
-            "investigation_desk", "case_004_reference",
+            "investigation_desk", "case_004_reference", "review_readiness",
         ]
         for component in components:
             (root / "safetrace" / component).mkdir(parents=True, exist_ok=True)
@@ -23,6 +23,7 @@ class ReleaseTests(unittest.TestCase):
             "governance/data", "pilot/data", "core/schemas", "evidence_vault/schemas",
             "evidence_vault/artifacts", "claim_ledger/artifacts", "agent_queue/artifacts",
             "investigation_desk/artifacts", "case_004_reference/artifacts",
+            "review_readiness/artifacts",
         ):
             (root / "safetrace" / path).mkdir(parents=True, exist_ok=True)
 
@@ -43,6 +44,12 @@ class ReleaseTests(unittest.TestCase):
             "case_004_reference/artifacts/case-004-reference-pack.pdf",
             "case_004_reference/artifacts/comprehension-instrument.json",
             "case_004_reference/artifacts/monitoring-manifest.json",
+            "review_readiness/artifacts/review-readiness-contracts-1.8.json",
+            "review_readiness/artifacts/review-readiness-dossier.pdf",
+            "review_readiness/artifacts/finding-register.json",
+            "review_readiness/artifacts/source-backfill-plan.json",
+            "review_readiness/artifacts/study-protocols.json",
+            "review_readiness/artifacts/review-packets.json",
         )
         for path in required_files:
             (root / "safetrace" / path).write_bytes(b"{}" if not path.endswith(".pdf") else b"%PDF-fixture")
@@ -129,55 +136,108 @@ class ReleaseTests(unittest.TestCase):
                 "restricted_partner_data": False,
             },
         }), encoding="utf-8")
+        slots = [
+            {
+                "discipline": f"discipline-{i}", "purpose": "Independent review purpose",
+                "minimum_qualification": "Qualified external reviewer", "independent_required": True,
+                "external_reviewer_id": None, "conflict_declaration_id": None, "status": "unassigned",
+            }
+            for i in range(7)
+        ]
+        packets = [{"id": f"packet-{i}"} for i in range(7)]
+        exercises = [{"id": f"exercise-{i}", "mode": "synthetic_dry_run"} for i in range(3)]
+        protocols = [
+            {"id": "workflow", "consent_required": True, "status": "ready_for_ethics_privacy_review"},
+            {"id": "comprehension", "consent_required": True, "status": "ready_for_ethics_privacy_review"},
+        ]
+        backfill_sources = [{"source_id": f"source-{i}"} for i in range(11)]
+        (root / "safetrace/review_readiness/artifacts/review-readiness-report.json").write_text(json.dumps({
+            "status": "pass",
+            "review": {
+                "disciplines": [f"discipline-{i}" for i in range(7)],
+                "slots": slots, "packets": packets,
+                "external_reviews_completed": 0, "external_approvals": 0,
+                "conflict_declarations_received": 0,
+            },
+            "findings": {"open_total": 7, "unresolved_critical": 1, "unresolved_high": 3},
+            "exercises": {"items": exercises, "synthetic_dry_runs": 3, "externally_observed": 0},
+            "study_protocols": protocols,
+            "source_backfill": {
+                "sources": backfill_sources, "automatic_publication_after_backfill": False,
+                "renewed_human_review_required": True,
+            },
+            "decision": {
+                "ready_to_invite_reviewers": True, "external_reviews_completed": 0,
+                "external_approvals": 0, "partner_pilot_gate_open": False,
+                "restricted_data_gate_open": False,
+            },
+            "boundaries": {
+                "independent_review_completed": False, "external_approval_present": False,
+                "partner_named": False, "partner_pilot_gate_open": False,
+                "restricted_data_gate_open": False, "production_security_approved": False,
+            },
+        }), encoding="utf-8")
 
-    def test_release_is_ready_but_publication_and_live_gate_remain_closed(self) -> None:
+    def test_release_is_review_ready_but_not_externally_approved(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
             status = validate_repository(root)
             self.assertTrue(status["release_ready"])
             self.assertFalse(status["live_partner_ready"])
-            report = status["case_004_reference"]["release_evidence"]
-            self.assertFalse(report["boundaries"]["new_publication_allowed"])
-            self.assertIn("original source bytes", status["truthful_status"])
+            report = status["review_readiness"]["release_evidence"]
+            self.assertEqual(report["review"]["external_approvals"], 0)
+            self.assertFalse(report["boundaries"]["independent_review_completed"])
+            self.assertIn("No external review", status["truthful_status"])
 
-    def test_missing_or_failed_reference_report_blocks_release(self) -> None:
+    def test_missing_or_failed_review_report_blocks_release(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/case_004_reference/artifacts/release-report.json"
+            report = root / "safetrace/review_readiness/artifacts/review-readiness-report.json"
             report.unlink()
             self.assertFalse(validate_repository(root)["release_ready"])
             report.write_text(json.dumps({"status": "fail"}), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
-    def test_fabricated_publication_or_impact_claim_blocks_release(self) -> None:
+    def test_fabricated_external_approval_or_completed_review_blocks_release(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/case_004_reference/artifacts/release-report.json"
+            report = root / "safetrace/review_readiness/artifacts/review-readiness-report.json"
             payload = json.loads(report.read_text(encoding="utf-8"))
-            payload["boundaries"]["new_publication_allowed"] = True
+            payload["review"]["external_approvals"] = 1
+            payload["decision"]["external_approvals"] = 1
+            payload["boundaries"]["external_approval_present"] = True
             report.write_text(json.dumps(payload), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/case_004_reference/artifacts/release-report.json"
+            report = root / "safetrace/review_readiness/artifacts/review-readiness-report.json"
             payload = json.loads(report.read_text(encoding="utf-8"))
-            payload["benchmark"]["real_partner_impact_claimed"] = True
+            payload["boundaries"]["independent_review_completed"] = True
             report.write_text(json.dumps(payload), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
-    def test_fabricated_comprehension_study_blocks_release(self) -> None:
+    def test_open_critical_findings_and_closed_pilot_gate_are_required(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._make_repository(root)
-            report = root / "safetrace/case_004_reference/artifacts/release-report.json"
+            report = root / "safetrace/review_readiness/artifacts/review-readiness-report.json"
             payload = json.loads(report.read_text(encoding="utf-8"))
-            payload["comprehension"]["participant_count"] = 12
-            payload["comprehension"]["observed_study_completed"] = True
+            payload["findings"]["unresolved_critical"] = 0
+            report.write_text(json.dumps(payload), encoding="utf-8")
+            self.assertFalse(validate_repository(root)["release_ready"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._make_repository(root)
+            report = root / "safetrace/review_readiness/artifacts/review-readiness-report.json"
+            payload = json.loads(report.read_text(encoding="utf-8"))
+            payload["decision"]["partner_pilot_gate_open"] = True
+            payload["boundaries"]["partner_pilot_gate_open"] = True
             report.write_text(json.dumps(payload), encoding="utf-8")
             self.assertFalse(validate_repository(root)["release_ready"])
 
@@ -189,7 +249,7 @@ class ReleaseTests(unittest.TestCase):
             write_release_status(root, output)
             self.assertEqual(
                 json.loads(output.read_text(encoding="utf-8"))["release"],
-                "v1.7-case-004-technical-reference",
+                "v1.8-independent-review-readiness",
             )
 
 
