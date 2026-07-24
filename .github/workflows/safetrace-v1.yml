@@ -1,4 +1,4 @@
-name: SafeTrace v1.2 release gate
+name: SafeTrace v1.3 release gate
 
 on:
   push:
@@ -30,6 +30,11 @@ jobs:
           python -m unittest discover -s safetrace/core/tests -v
           python -m safetrace.core.schema --check safetrace/core/schemas/safetrace-core-1.2.schema.json
           python -m safetrace.core.migration_report --root safetrace --output safetrace/core/migration-report.json
+      - name: Validate Source Registry and Evidence Vault
+        run: |
+          python -m unittest discover -s safetrace/evidence_vault/tests -v
+          python -m safetrace.evidence_vault.contracts --check safetrace/evidence_vault/schemas/evidence-vault-contracts-1.3.json
+          python -m safetrace.evidence_vault.build_release_artifacts --safetrace-root safetrace --output-root safetrace/evidence_vault/artifacts
       - name: Run existing SafeTrace tests
         run: |
           python -m unittest discover -s safetrace/source_engine/tests -v
@@ -48,15 +53,19 @@ jobs:
         run: python -m safetrace.law_fairness.build_public_status
       - name: Generate synthetic pilot report
         run: python -m safetrace.pilot.run_pilot --output safetrace/pilot/public
-      - name: Validate v1.2 release boundary
+      - name: Validate v1.3 release boundary
         run: python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
-      - name: Upload pilot-ready artefacts
+      - name: Upload release evidence
         uses: actions/upload-artifact@v4
         with:
-          name: safetrace-v1.2-foundation-${{ github.run_id }}
+          name: safetrace-v1.3-evidence-vault-${{ github.run_id }}
           path: |
             safetrace/core/schemas/safetrace-core-1.2.schema.json
             safetrace/core/migration-report.json
+            safetrace/evidence_vault/schemas/evidence-vault-contracts-1.3.json
+            safetrace/evidence_vault/artifacts/release-report.json
+            safetrace/evidence_vault/artifacts/registry/current.json
+            safetrace/evidence_vault/artifacts/evidence-vault-backup.tar.gz
             safetrace/pilot/public/
             safetrace/v1/status.json
             safetrace/law_fairness/public_status.json
