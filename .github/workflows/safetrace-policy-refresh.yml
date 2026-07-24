@@ -1,0 +1,51 @@
+name: SafeTrace official-source monitor
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Acquire official pages and create review candidate
+        id: refresh
+        run: |
+          python -m safetrace.policy_platform.refresh \
+            --root safetrace \
+            --output safetrace/policy_platform/artifacts/source-monitor
+          cat safetrace/policy_platform/artifacts/source-monitor/github-output.txt >> "$GITHUB_OUTPUT"
+      - name: Upload immutable source-review packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-source-review-${{ github.run_id }}
+          path: safetrace/policy_platform/artifacts/source-monitor/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Open or update a human-review issue
+        if: steps.refresh.outputs.review_required == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="SafeTrace source change requires review"
+          existing="$(gh issue list --state open --search \"$title in:title\" --json number --jq '.[0].number // empty')"
+          body="$(cat safetrace/policy_platform/artifacts/source-monitor/review.md)"
+          body="$body
+
+Actions evidence packet: $RUN_URL"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body" --assignee "${{ github.repository_owner }}"
+          fi

@@ -1,0 +1,50 @@
+name: Policy evidence challenge
+description: Report a source, value, period, definition or interpretation problem in SafeTrace.
+title: "Evidence challenge: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Challenges improve SafeTrace only when they identify a concrete claim, source or missing limitation. This form does not vote facts into existence.
+  - type: input
+    id: item
+    attributes:
+      label: Indicator, system or case ID
+      placeholder: e.g. unemployment-rate-june-2026
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL or source ID
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is wrong?
+      options:
+        - Value does not match source
+        - Period or date is misleading
+        - Definition is incomplete
+        - Evidence status is too strong
+        - Important counterevidence is missing
+        - Source is unavailable or changed
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Exact evidence and proposed correction
+      description: Quote only the minimum necessary passage and explain the correction.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I understand this is a public evidence challenge and not a private complaint channel.
+          required: true

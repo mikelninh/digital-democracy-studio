@@ -2,49 +2,30 @@
   "openapi": "3.1.1",
   "info": {
     "title": "SafeTrace Open Policy API",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Versioned, read-only public policy evidence, incentive and outcome snapshots. Static JSON endpoints; no write operations."
   },
-  "servers": [
-    {
-      "url": "https://mikelninh.github.io/digital-democracy-studio/safetrace/open_policy_api/v1"
-    }
-  ],
+  "servers": [{"url": "https://mikelninh.github.io/digital-democracy-studio/safetrace/open_policy_api/v1"}],
   "paths": {
     "/index.json": {
       "get": {
-        "summary": "Discover API documents",
+        "summary": "Discover API documents and monitoring boundary",
         "operationId": "getIndex",
-        "responses": {
-          "200": {
-            "description": "Index document",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
+        "responses": {"200": {"description": "Index document", "content": {"application/json": {"schema": {"type": "object"}}}}}
       }
     },
     "/catalog.json": {
       "get": {
         "summary": "Read the complete Truth–Incentive–Outcome catalog",
         "operationId": "getCatalog",
-        "responses": {
-          "200": {
-            "description": "Policy catalog",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
+        "responses": {"200": {"description": "Policy catalog", "content": {"application/json": {"schema": {"type": "object"}}}}}
+      }
+    },
+    "/history.json": {
+      "get": {
+        "summary": "Read published snapshot history and review state",
+        "operationId": "getHistory",
+        "responses": {"200": {"description": "Snapshot history", "content": {"application/json": {"schema": {"type": "object"}}}}}
       }
     }
   },
@@ -52,14 +33,7 @@
     "schemas": {
       "EvidenceStatus": {
         "type": "string",
-        "enum": [
-          "official_observation",
-          "official_forecast",
-          "official_estimate",
-          "source_verified_human_review_pending",
-          "working_policy_model",
-          "official_snapshot_working_analysis"
-        ]
+        "enum": ["official_observation", "official_forecast", "official_estimate", "source_verified_human_review_pending", "working_policy_model", "official_snapshot_working_analysis"]
       }
     }
   }
