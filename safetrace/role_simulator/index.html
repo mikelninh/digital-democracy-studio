@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SafeTrace Role Simulator — teste öffentliche und synthetische Fälle als Bürger:in, Investigator:in, Evidence Manager, Reviewer:in, Legal Reviewer oder Publisher.">
+  <title>SafeTrace Role Simulator</title>
+  <style>
+    :root{
+      --bg:#ecebe5;--paper:#fffef9;--ink:#161a17;--muted:#69716b;--line:#d8d8cf;
+      --dark:#152019;--green:#315d48;--lime:#d9ef8d;--amber:#f1c776;--red:#c85d55;
+      --blue:#477a9e;--violet:#745c9d;--rose:#9a5e70;--shadow:0 18px 48px rgba(25,34,28,.09);
+      --radius:20px;--sidebar:242px;--inspector:310px;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+    button,select,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .app{min-height:100vh;display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr) var(--inspector)}
+    .sidebar{position:sticky;top:0;height:100vh;background:var(--dark);color:white;padding:24px 18px;display:flex;flex-direction:column;overflow:auto}
+    .brand{display:flex;align-items:center;gap:11px;margin:2px 8px 26px}.mark{width:38px;height:38px;border-radius:13px;background:var(--lime);color:var(--dark);display:grid;place-items:center;font-weight:950}.brand strong{display:block;font-size:1.03rem}.brand span{display:block;color:#afbab2;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+    .nav-label{margin:18px 10px 8px;color:#89978e;font-size:.68rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800}.nav{display:grid;gap:4px}.nav button{border:0;background:transparent;color:#bac4bd;text-align:left;padding:10px 12px;border-radius:11px;display:flex;align-items:center;justify-content:space-between}.nav button:hover,.nav button.active{background:rgba(255,255,255,.09);color:white}.nav button.active{box-shadow:inset 3px 0 0 var(--lime)}.nav small{background:rgba(255,255,255,.09);padding:2px 6px;border-radius:999px}
+    .sidebar-footer{margin-top:auto;padding:16px 10px 0;color:#93a097;font-size:.76rem}.sidebar-footer a{display:block;margin-top:9px;color:white}
+    .main{min-width:0;padding:0 34px 60px}.topbar{position:sticky;top:0;z-index:10;background:rgba(236,235,229,.94);backdrop-filter:blur(15px);border-bottom:1px solid rgba(0,0,0,.07);margin:0 -34px;padding:14px 34px;display:flex;align-items:center;gap:14px}.topbar .grow{flex:1}.select-wrap{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:5px 9px}.select-wrap label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:800}.select-wrap select{border:0;background:transparent;max-width:245px;color:var(--ink);font-weight:750;outline:none}.badge{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#fff4d9;color:#624c1c;font-size:.76rem;font-weight:800;border:1px solid #e8d7ae}.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber)}
+    .hero{padding:44px 0 28px}.eyebrow{font-size:.72rem;color:var(--green);font-weight:900;text-transform:uppercase;letter-spacing:.14em}.hero h1{font-size:clamp(2.5rem,5vw,5.8rem);line-height:.94;letter-spacing:-.06em;margin:12px 0 18px;max-width:940px}.hero p{color:var(--muted);font-size:1.08rem;max-width:840px}.case-status{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.pill{display:inline-flex;padding:6px 9px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.75rem;font-weight:750}.pill.good{background:#eaf5ed;color:#27553d;border-color:#bdd8c6}.pill.warn{background:#fff3d8;color:#694c12;border-color:#e8d29b}.pill.bad{background:#fbe9e7;color:#7b352f;border-color:#e5b9b4}.pill.info{background:#e9f0f5;color:#315b78;border-color:#bdd0dc}
+    .metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:28px}.metric{padding:21px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric strong{display:block;font-size:2rem;letter-spacing:-.04em}.metric span{font-size:.73rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:750}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 8px 24px rgba(25,34,28,.035)}.card h2,.card h3{margin-top:0}.card h2{font-size:1.5rem}.card h3{font-size:1.08rem}.muted{color:var(--muted)}.section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:12px 0 18px}.section-title h2{font-size:2rem;letter-spacing:-.035em;margin:0}.section-title p{margin:0;color:var(--muted);max-width:620px}
+    .task-list{display:grid;gap:9px}.task{display:flex;gap:10px;align-items:flex-start;padding:13px;border-radius:13px;border:1px solid var(--line);background:white}.task input{margin-top:3px;width:18px;height:18px;accent-color:var(--green)}.task.done{opacity:.58}.task.done span{text-decoration:line-through}.progress{height:8px;background:#e6e6df;border-radius:999px;overflow:hidden;margin:14px 0}.progress>span{display:block;height:100%;background:var(--green);transition:width .25s}
+    .source,.claim,.agent,.review-row,.audit-row{border:1px solid var(--line);border-radius:15px;padding:16px;background:white}.source+.source,.claim+.claim,.agent+.agent,.review-row+.review-row,.audit-row+.audit-row{margin-top:10px}.source-head,.claim-head,.review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.source h3,.claim h3{margin:0 0 5px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.meta span{font-size:.7rem;padding:4px 7px;border-radius:999px;background:#f1f2ed;color:#56605a}.anchor{margin-top:10px;padding:10px 12px;border-left:3px solid var(--lime);background:#f7f8f1;color:#4e574f;font-size:.87rem}.claim-text{font-size:1.1rem;font-weight:720;line-height:1.35}.evidence-columns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}.evidence-box{padding:12px;border-radius:12px;background:#f4f4ef}.evidence-box h4{margin:0 0 6px;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}.evidence-box ul{margin:0;padding-left:18px;font-size:.85rem}.limitation{margin-top:12px;padding:11px;border:1px dashed #cfb66e;background:#fff8df;border-radius:12px;font-size:.88rem}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:9px 12px;border-radius:10px;font-weight:750;font-size:.83rem}.btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(0,0,0,.07)}.btn.primary{background:var(--dark);color:white;border-color:var(--dark)}.btn.success{background:var(--green);color:white;border-color:var(--green)}.btn.danger{background:#fff0ee;color:#863a34;border-color:#e8bdb8}.btn:disabled{cursor:not-allowed;opacity:.4;transform:none;box-shadow:none}.btn.small{padding:6px 9px;font-size:.75rem}
+    .graph{min-height:390px;position:relative;background:radial-gradient(circle at 50% 50%,#f7f8f3,#efefe9);border-radius:17px;border:1px solid var(--line);overflow:hidden}.nodes{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;padding:45px 28px}.node{min-height:92px;border:1px solid var(--line);background:white;border-radius:16px;padding:14px;box-shadow:0 9px 25px rgba(0,0,0,.06);display:grid;place-items:center;text-align:center;font-weight:800}.node small{display:block;color:var(--muted);font-weight:500;margin-top:4px}.edges{margin-top:15px}.edge{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:.86rem}.edge:last-child{border:0}.edge b{text-align:right}.edge span{padding:4px 8px;border-radius:999px;background:#eef0e9;color:#59635d;font-size:.73rem}
+    .timeline{position:relative;padding-left:24px}.timeline::before{content:"";position:absolute;left:6px;top:5px;bottom:5px;width:2px;background:#ccd2ca}.event{position:relative;padding:0 0 24px 18px}.event::before{content:"";position:absolute;left:-23px;top:4px;width:12px;height:12px;background:var(--lime);border:3px solid var(--paper);box-shadow:0 0 0 1px #aab4aa;border-radius:50%}.event time{font-size:.72rem;color:var(--green);font-weight:900;text-transform:uppercase}.event h3{margin:3px 0 4px}.event p{margin:0;color:var(--muted)}
+    .agent-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.risk{margin-top:9px;color:#7b4b21;font-size:.83rem}.receipt{margin-top:10px;background:#1d2821;color:#cfdbd2;border-radius:11px;padding:11px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;overflow:auto}
+    .decision-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.decision-group label{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:white;font-size:.82rem}.decision-group input{accent-color:var(--green)}textarea{width:100%;min-height:86px;border:1px solid var(--line);border-radius:12px;padding:11px;resize:vertical;margin-top:10px;background:white}.gate-list{display:grid;gap:9px}.gate{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:12px;padding:12px;background:white}.gate-icon{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:900;flex:0 0 auto}.gate.pass .gate-icon{background:#e5f3e9;color:#27623f}.gate.fail .gate-icon{background:#fdeae7;color:#8b3e36}.gate.warn .gate-icon{background:#fff4d8;color:#72520f}
+    .inspector{position:sticky;top:0;height:100vh;background:#f7f7f2;border-left:1px solid var(--line);padding:22px;overflow:auto}.inspector h2{font-size:1.15rem;margin:0 0 8px}.role-chip{display:inline-flex;padding:6px 9px;border-radius:999px;background:var(--lime);font-size:.72rem;font-weight:900;margin:10px 0 14px}.daily{padding:14px;border-radius:14px;background:var(--dark);color:white;margin:14px 0}.daily small{color:#aebbb2;text-transform:uppercase;letter-spacing:.08em}.daily p{margin:7px 0 0;font-weight:700}.next-list{display:grid;gap:8px}.next{padding:11px;border-radius:11px;background:white;border:1px solid var(--line);font-size:.84rem}.boundary{margin-top:18px;padding:13px;border-radius:13px;background:#fff3dc;border:1px solid #e7d2a4;font-size:.8rem;color:#5f4a23}.reset{margin-top:18px;width:100%}
+    .empty{padding:50px 20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--radius)}.toast{position:fixed;right:330px;bottom:24px;z-index:50;background:var(--dark);color:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}.mobile-toggle{display:none}
+    @media(max-width:1150px){:root{--inspector:0px}.app{grid-template-columns:var(--sidebar) minmax(0,1fr)}.inspector{display:none}.toast{right:24px}}
+    @media(max-width:780px){.app{display:block}.sidebar{position:fixed;z-index:40;width:260px;transform:translateX(-100%);transition:.2s}.sidebar.open{transform:none}.main{padding:0 18px 50px}.topbar{margin:0 -18px;padding:11px 18px;flex-wrap:wrap}.mobile-toggle{display:inline-flex}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2n){border-right:0}.grid,.grid.three{grid-template-columns:1fr}.select-wrap select{max-width:170px}.hero{padding-top:30px}.nodes{grid-template-columns:1fr 1fr}.evidence-columns{grid-template-columns:1fr}}
+    @media(max-width:480px){.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.topbar .grow{display:none}.select-wrap{width:100%;justify-content:space-between}.select-wrap select{max-width:66%}.hero h1{font-size:2.6rem}.nodes{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Hauptnavigation">
+      <div class="brand"><div class="mark">ST</div><div><strong>SafeTrace</strong><span>Role Simulator</span></div></div>
+      <div class="nav-label">Arbeitsbereich</div>
+      <nav class="nav" id="nav"></nav>
+      <div class="nav-label">Hinweise</div>
+      <div class="sidebar-footer">
+        Öffentliche und synthetische Simulation. Keine Aktion verändert echte Fälle.
+        <a href="../">← SafeTrace Portal</a>
+        <a href="https://github.com/mikelninh/digital-democracy-studio/tree/main/safetrace/role_simulator">Quellcode</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="btn mobile-toggle" id="mobileToggle" aria-label="Navigation öffnen">☰</button>
+        <div class="select-wrap">
+          <label for="roleSelect">Rolle</label>
+          <select id="roleSelect"></select>
+        </div>
+        <div class="select-wrap">
+          <label for="caseSelect">Fall</label>
+          <select id="caseSelect"></select>
+        </div>
+        <div class="grow"></div>
+        <span class="badge">Simulation only</span>
+      </header>
+      <div id="content" aria-live="polite"></div>
+    </main>
+
+    <aside class="inspector" aria-label="Rollenhilfe">
+      <h2>Deine aktuelle Perspektive</h2>
+      <div class="role-chip" id="roleChip"></div>
+      <p class="muted" id="roleDescription"></p>
+      <div class="daily"><small>Leitfrage</small><p id="dailyQuestion"></p></div>
+      <h2>Nächste Schritte</h2>
+      <div class="next-list" id="nextTasks"></div>
+      <div class="boundary"><strong>Wichtig:</strong> Browserentscheidungen sind Trainingsdaten auf deinem Gerät. Kein echter Claim wird geändert und nichts wird veröffentlicht.</div>
+      <button class="btn danger reset" id="resetButton">Fall und Rolle zurücksetzen</button>
+    </aside>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="simulator-data.js"></script>
+  <script>
+    (() => {
+      'use strict';
+      const DATA = window.SAFETRACE_SIMULATOR_DATA;
+      const STORAGE_KEY = 'safetrace-role-simulator-state-v1';
+      const viewLabels = {overview:'Übersicht',sources:'Quellen',claims:'Claims',graph:'Graph',timeline:'Timeline',agents:'Agents',review:'Review',publish:'Publish',audit:'Audit'};
+      const viewIcons = {overview:'◫',sources:'⌘',claims:'≡',graph:'◎',timeline:'↕',agents:'✦',review:'✓',publish:'↑',audit:'#'};
+      const forbiddenActions = ['publish_real','contact_subject','refer_authority','identify_face','hack','open_restricted_data'];
+
+      const defaultState = {
+        roleId:'citizen',caseId:'case-004',view:'overview',completedTasks:{},claimDecisions:{},sourceReceipts:{},agentRuns:{},quizAnswers:{},notes:{},publicationAttempts:{},audit:[]
+      };
+      let state = loadState();
+
+      const $ = id => document.getElementById(id);
+      const roleSelect = $('roleSelect');
+      const caseSelect = $('caseSelect');
+      const content = $('content');
+      const nav = $('nav');
+      const toast = $('toast');
+
+      function loadState(){
+        try { return {...structuredClone(defaultState), ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')}; }
+        catch { return structuredClone(defaultState); }
+      }
+      function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+      function role(){ return DATA.roles.find(r => r.id === state.roleId) || DATA.roles[0]; }
+      function activeCase(){ return DATA.cases.find(c => c.id === state.caseId) || DATA.cases[0]; }
+      function escapeHtml(value){ return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+      function showToast(message){ toast.textContent = message; toast.classList.add('show'); clearTimeout(showToast.t); showToast.t=setTimeout(()=>toast.classList.remove('show'),2600); }
+      function key(kind,id=''){ return `${state.caseId}:${state.roleId}:${kind}:${id}`; }
+      function audit(action, detail){
+        state.audit.unshift({id:crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), at:new Date().toISOString(), caseId:state.caseId, roleId:state.roleId, action, detail});
+        state.audit=state.audit.slice(0,150); saveState();
+      }
+      function statusPill(label,type='info'){ return `<span class="pill ${type}">${escapeHtml(label)}</span>`; }
+      function verdictType(v){ return v==='supported'?'good':v==='not_supported'||v==='rejected'?'bad':v==='partly_supported'?'warn':'info'; }
+      function sourceStateType(s){ return s==='retained'?'good':s==='backfill_required'?'warn':'info'; }
+      function sourceStateLabel(s){ return ({retained:'Original gesichert',backfill_required:'Backfill erforderlich'}[s]||s); }
+      function isTaskDone(i){ return !!state.completedTasks[key('task',i)]; }
+      function completedCount(){ return activeCase().tasks[state.roleId].filter((_,i)=>isTaskDone(i)).length; }
+      function localOriginals(){ return activeCase().readiness.originals + Object.keys(state.sourceReceipts).filter(k=>k.startsWith(`${state.caseId}:${state.roleId}:receipt:`)).length; }
+
+      function initSelectors(){
+        roleSelect.innerHTML = DATA.roles.map(r=>`<option value="${r.id}" ${r.id===state.roleId?'selected':''}>${escapeHtml(r.name)}</option>`).join('');
+        caseSelect.innerHTML = DATA.cases.map(c=>`<option value="${c.id}" ${c.id===state.caseId?'selected':''}>Case ${c.number} · ${escapeHtml(c.title)}</option>`).join('');
+        roleSelect.addEventListener('change',()=>{state.roleId=roleSelect.value; state.view='overview'; audit('role_switched', role().name); render();});
+        caseSelect.addEventListener('change',()=>{state.caseId=caseSelect.value; state.view='overview'; audit('case_switched', activeCase().title); render();});
+      }
+
+      function renderNav(){
+        nav.innerHTML = role().allowedViews.map(v=>`<button type="button" data-view="${v}" class="${state.view===v?'active':''}" aria-current="${state.view===v?'page':'false'}"><span>${viewIcons[v]} &nbsp;${viewLabels[v]}</span>${v==='review'?`<small>${activeCase().claims.length}</small>`:''}</button>`).join('');
+        nav.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.view; saveState(); render(); $('sidebar').classList.remove('open');}));
+      }
+
+      function renderInspector(){
+        $('roleChip').textContent=role().name;
+        $('roleDescription').textContent=role().description;
+        $('dailyQuestion').textContent=role().dailyQuestion;
+        const tasks=activeCase().tasks[state.roleId];
+        $('nextTasks').innerHTML=tasks.map((t,i)=>`<div class="next">${isTaskDone(i)?'✓':'○'} ${escapeHtml(t)}</div>`).join('');
+      }
+
+      function hero(){
+        const c=activeCase(); const originals=localOriginals();
+        return `<section class="hero"><div class="eyebrow">Case ${c.number} · ${escapeHtml(c.kind)}</div><h1>${escapeHtml(c.title)}</h1><p>${escapeHtml(c.subtitle)}</p><div class="case-status">${statusPill(c.status.replaceAll('_',' '), c.publication.allowedInSimulation?'good':'warn')}${statusPill(c.publication.label,c.publication.allowedInSimulation?'good':'bad')}${statusPill(`Rolle: ${role().name}`,'info')}${originals!==c.readiness.originals?statusPill(`lokal simuliert: ${originals} Originale`,'warn'):''}</div></section>`;
+      }
+      function metrics(){
+        const c=activeCase(); return `<div class="metrics"><div class="metric"><strong>${c.readiness.sources}</strong><span>Source Records</span></div><div class="metric"><strong>${c.readiness.originals}</strong><span>echte Originale im Fall</span></div><div class="metric"><strong>${c.readiness.claims}</strong><span>Claims</span></div><div class="metric"><strong>${c.readiness.humanReviewed}</strong><span>Human Reviewed</span></div><div class="metric"><strong>${c.readiness.openBlockers}</strong><span>offene Blocker</span></div></div>`;
+      }
+
+      function taskPanel(){
+        const tasks=activeCase().tasks[state.roleId], done=completedCount();
+        return `<div class="card"><h2>Deine Mission als ${escapeHtml(role().name)}</h2><p class="muted">Arbeite die drei Schritte durch. Dein Fortschritt bleibt lokal im Browser gespeichert.</p><div class="progress"><span style="width:${(done/tasks.length)*100}%"></span></div><div class="task-list">${tasks.map((t,i)=>`<label class="task ${isTaskDone(i)?'done':''}"><input type="checkbox" data-task="${i}" ${isTaskDone(i)?'checked':''}><span>${escapeHtml(t)}</span></label>`).join('')}</div></div>`;
+      }
+      function quizPanel(){
+        const q=activeCase().comprehension; const saved=state.quizAnswers[key('quiz')];
+        return `<div class="card"><h2>Verständnis-Check</h2><p class="claim-text">${escapeHtml(q.question)}</p><div class="task-list">${q.options.map((o,i)=>`<label class="task"><input type="radio" name="quiz" value="${i}" ${saved===i?'checked':''}><span>${escapeHtml(o)}</span></label>`).join('')}</div>${saved!==undefined?`<div class="limitation"><strong>${saved===q.correct?'Richtig.':'Noch nicht.'}</strong> ${escapeHtml(q.explanation)}</div>`:''}</div>`;
+      }
+      function overview(){
+        const c=activeCase();
+        return hero()+metrics()+`<div class="grid">${taskPanel()}${quizPanel()}</div><div class="grid" style="margin-top:15px"><div class="card"><h2>Forschungsfrage</h2><p class="claim-text">${escapeHtml(c.question)}</p><div class="limitation"><strong>Grenze:</strong> ${escapeHtml(c.publication.reason)}</div></div><div class="card"><h2>Was du hier testest</h2><p>${escapeHtml(c.summary)}</p><div class="actions"><button class="btn primary" data-go="claims">Claims prüfen</button><button class="btn" data-go="sources">Quellen öffnen</button></div></div></div>`;
+      }
+
+      function sources(){
+        const c=activeCase();
+        return hero()+`<div class="section-title"><div><h2>Quellen & Provenienz</h2><p>Jeder Record zeigt Publisher, Typ, Datenzone, Zustand und genauen Anker.</p></div></div><div class="grid">${c.sources.map(s=>`<article class="source"><div class="source-head"><div><h3>${escapeHtml(s.title)}</h3><div class="muted">${escapeHtml(s.publisher)}</div></div>${statusPill(sourceStateLabel(s.state),sourceStateType(s.state))}</div><div class="meta"><span>${escapeHtml(s.type)}</span><span>Zone: ${escapeHtml(s.zone)}</span><span>ID: ${escapeHtml(s.id)}</span></div><div class="anchor"><strong>Quellenanker</strong><br>${escapeHtml(s.anchor)}</div><div class="actions">${['evidence_manager','investigator'].includes(state.roleId)?`<button class="btn primary" data-acquire="${s.id}">${state.sourceReceipts[key('receipt',s.id)]?'Receipt simuliert ✓':'Acquisition simulieren'}</button>`:''}<button class="btn" data-inspect-source="${s.id}">Quelle inspizieren</button></div>${state.sourceReceipts[key('receipt',s.id)]?`<div class="receipt">SIMULATED RECEIPT · sha256:${state.sourceReceipts[key('receipt',s.id)].hash}<br>local-only · no repository mutation</div>`:''}</article>`).join('')}</div>`;
+      }
+
+      function claimCard(claim,includeActions=true){
+        const decision=state.claimDecisions[key('claim',claim.id)];
+        return `<article class="claim"><div class="claim-head"><div><div class="claim-text">${escapeHtml(claim.text)}</div><div class="meta"><span>${escapeHtml(claim.status)}</span><span>${claim.material?'material claim':'context claim'}</span><span>${escapeHtml(claim.reviewState)}</span></div></div>${statusPill(claim.verdict.replaceAll('_',' '),verdictType(claim.verdict))}</div><div class="evidence-columns"><div class="evidence-box"><h4>Supporting</h4>${claim.supporting.length?`<ul>${claim.supporting.map(id=>`<li>${escapeHtml(id)}</li>`).join('')}</ul>`:'<span class="muted">Kein unterstützender Beleg</span>'}</div><div class="evidence-box"><h4>Contradicting / limiting</h4>${claim.contradicting.length?`<ul>${claim.contradicting.map(id=>`<li>${escapeHtml(id)}</li>`).join('')}</ul>`:'<span class="muted">Kein expliziter Gegenbeleg</span>'}</div></div><div class="limitation"><strong>Limitation:</strong> ${escapeHtml(claim.limitation)}</div>${decision?`<div class="anchor"><strong>Deine lokale Entscheidung:</strong> ${escapeHtml(decision.decision)}${decision.rationale?` — ${escapeHtml(decision.rationale)}`:''}</div>`:''}${includeActions?claimActions(claim):''}</article>`;
+      }
+      function claimActions(claim){
+        if(state.roleId==='investigator') return `<div class="actions"><button class="btn primary" data-submit-claim="${claim.id}">In Review senden</button><button class="btn" data-add-limit="${claim.id}">Limitation bestätigen</button></div>`;
+        if(state.roleId==='reviewer') return `<div class="actions"><button class="btn success" data-decision="${claim.id}:approve">Approve</button><button class="btn" data-decision="${claim.id}:changes">Changes</button><button class="btn danger" data-decision="${claim.id}:reject">Reject</button></div>`;
+        if(state.roleId==='legal_reviewer') return `<div class="actions"><button class="btn success" data-decision="${claim.id}:legal_clear">Legal clear</button><button class="btn" data-decision="${claim.id}:redact">Redaction</button><button class="btn danger" data-decision="${claim.id}:block_harm">Block</button></div>`;
+        return `<div class="actions"><button class="btn" data-inspect-claim="${claim.id}">Belegpfad protokollieren</button></div>`;
+      }
+      function claims(){ return hero()+`<div class="section-title"><div><h2>Claim Ledger</h2><p>Jede materielle Aussage bleibt einzeln prüfbar, begrenzt und korrigierbar.</p></div></div><div>${activeCase().claims.map(c=>claimCard(c)).join('')}</div>`; }
+
+      function graph(){
+        const g=activeCase().graph;
+        return hero()+`<div class="section-title"><div><h2>Relationship Graph</h2><p>Kanten beschreiben dokumentierte Beziehungen. Sie erzeugen keine versteckte Kausalität.</p></div></div><div class="graph"><div class="nodes">${g.nodes.map(n=>`<div class="node">${escapeHtml(n.label)}<small>${escapeHtml(n.type)}</small></div>`).join('')}</div></div><div class="card edges">${g.edges.map(e=>`<div class="edge"><b>${escapeHtml(g.nodes.find(n=>n.id===e.from)?.label||e.from)}</b><span>${escapeHtml(e.label)}</span><div>${escapeHtml(g.nodes.find(n=>n.id===e.to)?.label||e.to)}</div></div>`).join('')}</div>`;
+      }
+      function timeline(){ return hero()+`<div class="section-title"><div><h2>Timeline</h2><p>Reihenfolge wird sichtbar, ohne zeitliche Nähe automatisch als Ursache zu werten.</p></div></div><div class="card timeline">${activeCase().timeline.map(e=>`<div class="event"><time>${escapeHtml(e.date)}</time><h3>${escapeHtml(e.title)}</h3><p>${escapeHtml(e.detail)}</p></div>`).join('')}</div>`; }
+
+      function agents(){
+        if(!role().allowedViews.includes('agents')) return noAccess('Agents');
+        return hero()+`<div class="section-title"><div><h2>Bounded Agents</h2><p>Jeder Lauf produziert nur einen nachvollziehbaren Vorschlag. Menschen entscheiden.</p></div></div><div>${activeCase().agents.map((a,i)=>{const run=state.agentRuns[key('agent',i)];return `<article class="agent"><div class="agent-top"><div><h3>${escapeHtml(a.name)}</h3><p>${escapeHtml(a.proposal)}</p></div>${statusPill(run?'awaiting human':'not run',run?'warn':'info')}</div><div class="risk"><strong>Fehlerrisiko:</strong> ${escapeHtml(a.risk)}</div><div class="actions"><button class="btn primary" data-run-agent="${i}">${run?'Erneut ausführen':'Agent simulieren'}</button>${run?'<button class="btn" data-accept-agent="'+i+'">Für Review übernehmen</button>':''}</div>${run?`<div class="receipt">trace:${run.trace}<br>model:simulator-deterministic · prompt:v1 · tools:${run.tools}<br>status:${run.status} · output_hash:${run.hash}</div>`:''}</article>`}).join('')}</div>`;
+      }
+
+      function review(){
+        if(!role().allowedViews.includes('review')) return noAccess('Review');
+        const canDecide=['reviewer','legal_reviewer'].includes(state.roleId);
+        return hero()+`<div class="section-title"><div><h2>${state.roleId==='legal_reviewer'?'Legal & Harm Review':'Human Review Queue'}</h2><p>${canDecide?'Triff eine unabhängige Entscheidung und begründe sie.':'Du kannst die Queue sehen, aber nicht final entscheiden.'}</p></div></div><div>${activeCase().claims.map(c=>`<div class="review-row">${claimCard(c,false)}${canDecide?`<textarea id="rationale-${c.id}" placeholder="Begründung, Gegenbelege oder notwendige Änderungen …">${escapeHtml(state.notes[key('rationale',c.id)]||'')}</textarea><div class="decision-group">${state.roleId==='reviewer'?`<button class="btn success" data-review-submit="${c.id}:approve">Approve</button><button class="btn" data-review-submit="${c.id}:changes">Request changes</button><button class="btn danger" data-review-submit="${c.id}:reject">Reject</button>`:`<button class="btn success" data-review-submit="${c.id}:legal_clear">Legal clear</button><button class="btn" data-review-submit="${c.id}:redact">Request redaction</button><button class="btn danger" data-review-submit="${c.id}:block_harm">Block harm</button>`}</div>`:`<div class="limitation">Nur Reviewer und Legal Reviewer dürfen hier Entscheidungen speichern.</div>`}</div>`).join('')}</div>`;
+      }
+
+      function publicationGates(){
+        const c=activeCase(), decisions=Object.values(state.claimDecisions).filter(d=>d.caseId===c.id);
+        return [
+          {label:`${c.readiness.humanReviewed}/${c.readiness.claims} Repository-Claims human-reviewed`,state:c.readiness.humanReviewed===c.readiness.claims?'pass':'fail'},
+          {label:`${c.readiness.originals}/${c.readiness.sources} unveränderte Originale im echten Fall`,state:c.readiness.originals===c.readiness.sources?'pass':'fail'},
+          {label:'Interne Kommentare, Tasks und Agentenvorschläge ausgeschlossen',state:'pass'},
+          {label:'Autonome Veröffentlichung deaktiviert',state:'pass'},
+          {label:decisions.length?`${decisions.length} lokale Trainingsentscheidungen gespeichert`:'Noch keine lokale Trainingsentscheidung',state:decisions.length?'pass':'warn'},
+          {label:c.publication.reason,state:c.publication.allowedInSimulation?'pass':'fail'}
+        ];
+      }
+      function publish(){
+        if(!role().allowedViews.includes('publish')) return noAccess('Publish');
+        const c=activeCase(), attempt=state.publicationAttempts[key('publication')];
+        return hero()+`<div class="section-title"><div><h2>Publication Gate</h2><p>Eine Freigabe ist ein eigener menschlicher Schritt. In diesem Simulator bleibt sie immer lokal und unecht.</p></div></div><div class="grid"><div class="card"><h2>Gate-Check</h2><div class="gate-list">${publicationGates().map(g=>`<div class="gate ${g.state}"><span class="gate-icon">${g.state==='pass'?'✓':g.state==='fail'?'×':'!'}</span><div>${escapeHtml(g.label)}</div></div>`).join('')}</div><div class="actions"><button class="btn ${c.publication.allowedInSimulation?'success':'danger'}" id="publishAttempt">${c.publication.allowedInSimulation?'Simulierte Trainingsfreigabe':'Publikation testen — erwartet NO-GO'}</button></div>${attempt?`<div class="limitation"><strong>${escapeHtml(attempt.result)}</strong><br>${escapeHtml(attempt.reason)}</div>`:''}</div><div class="card"><h2>Öffentlicher Export</h2><p>Würde nur freigegebene Claims, Quellenhinweise, Limitationen und sichtbare Korrekturen enthalten.</p><ul><li>Keine internen Kommentare</li><li>Keine Team-Tasks</li><li>Keine Agenten-Proposals</li><li>Keine privaten oder taktisch gefährlichen Daten</li></ul><div class="boundary"><strong>Realität:</strong> Dieser Button veröffentlicht weder auf GitHub noch im SafeTrace-Portal.</div></div></div>`;
+      }
+
+      function auditView(){
+        const rows=state.audit.filter(a=>a.caseId===state.caseId);
+        return hero()+`<div class="section-title"><div><h2>Lokaler Audit Trail</h2><p>Nur deine Simulatoraktionen. Der echte SafeTrace-Auditlog wird nicht verändert.</p></div><button class="btn danger" id="clearAudit">Lokalen Audit löschen</button></div>${rows.length?rows.map(a=>`<div class="audit-row"><div class="source-head"><strong>${escapeHtml(a.action.replaceAll('_',' '))}</strong><span class="muted">${new Date(a.at).toLocaleString('de-DE')}</span></div><div class="muted">Rolle: ${escapeHtml(DATA.roles.find(r=>r.id===a.roleId)?.name||a.roleId)}</div><div>${escapeHtml(a.detail)}</div></div>`).join(''):'<div class="empty">Noch keine Aktionen in diesem Fall. Öffne Quellen, führe Agents aus oder triff eine Review-Entscheidung.</div>'}`;
+      }
+      function noAccess(name){ return hero()+`<div class="empty"><h2>${escapeHtml(name)} ist für ${escapeHtml(role().name)} nicht freigeschaltet.</h2><p>Wechsle oben die Rolle, um diese Perspektive zu simulieren.</p></div>`; }
+
+      function bindCommon(){
+        document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.go; saveState(); render();}));
+        document.querySelectorAll('[data-task]').forEach(input=>input.addEventListener('change',()=>{state.completedTasks[key('task',input.dataset.task)]=input.checked; audit(input.checked?'task_completed':'task_reopened',activeCase().tasks[state.roleId][Number(input.dataset.task)]); render();}));
+        document.querySelectorAll('input[name="quiz"]').forEach(input=>input.addEventListener('change',()=>{state.quizAnswers[key('quiz')]=Number(input.value); audit('comprehension_answered',`Antwort ${Number(input.value)+1}`); render();}));
+        document.querySelectorAll('[data-inspect-source]').forEach(b=>b.addEventListener('click',()=>{audit('source_inspected',b.dataset.inspectSource); showToast('Quelleninspektion im lokalen Audit protokolliert.');}));
+        document.querySelectorAll('[data-inspect-claim]').forEach(b=>b.addEventListener('click',()=>{audit('claim_evidence_path_inspected',b.dataset.inspectClaim); showToast('Claim-Belegpfad protokolliert.');}));
+        document.querySelectorAll('[data-acquire]').forEach(b=>b.addEventListener('click',()=>simulateReceipt(b.dataset.acquire)));
+        document.querySelectorAll('[data-submit-claim]').forEach(b=>b.addEventListener('click',()=>{audit('claim_submitted_for_review',b.dataset.submitClaim); showToast('Claim als Trainingsvorschlag in Review gesendet.');}));
+        document.querySelectorAll('[data-add-limit]').forEach(b=>b.addEventListener('click',()=>{audit('limitation_confirmed',b.dataset.addLimit); showToast('Limitation bestätigt.');}));
+        document.querySelectorAll('[data-decision]').forEach(b=>b.addEventListener('click',()=>quickDecision(b.dataset.decision)));
+        document.querySelectorAll('[data-run-agent]').forEach(b=>b.addEventListener('click',()=>runAgent(Number(b.dataset.runAgent))));
+        document.querySelectorAll('[data-accept-agent]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.acceptAgent); state.agentRuns[key('agent',i)].status='accepted_for_review'; audit('agent_proposal_accepted_for_review',activeCase().agents[i].name); saveState(); render();}));
+        document.querySelectorAll('[data-review-submit]').forEach(b=>b.addEventListener('click',()=>reviewDecision(b.dataset.reviewSubmit)));
+        if($('publishAttempt')) $('publishAttempt').addEventListener('click',publicationAttempt);
+        if($('clearAudit')) $('clearAudit').addEventListener('click',()=>{state.audit=state.audit.filter(a=>a.caseId!==state.caseId);saveState();render();});
+      }
+      function simulateReceipt(sourceId){
+        const k=key('receipt',sourceId); const hash=Array.from(`${state.caseId}-${sourceId}-${Date.now()}`).reduce((h,c)=>((h<<5)-h+c.charCodeAt(0))|0,0).toString(16).replace('-','').padEnd(16,'0');
+        state.sourceReceipts[k]={hash,at:new Date().toISOString(),simulation:true}; audit('simulated_source_receipt',sourceId); saveState(); render(); showToast('Lokales Receipt erzeugt — kein echter Evidence-Vault-Eintrag.');
+      }
+      function quickDecision(value){
+        const [claimId,decision]=value.split(':'); state.claimDecisions[key('claim',claimId)]={caseId:state.caseId,roleId:state.roleId,decision,rationale:'Schnellentscheidung im Simulator',at:new Date().toISOString()}; audit('claim_decision_saved',`${claimId}: ${decision}`); saveState(); render();
+      }
+      function reviewDecision(value){
+        const [claimId,decision]=value.split(':'); const textarea=$(`rationale-${claimId}`); const rationale=textarea?.value.trim()||'';
+        if(!rationale){showToast('Bitte zuerst eine nachvollziehbare Begründung eingeben.');textarea?.focus();return;}
+        state.notes[key('rationale',claimId)]=rationale; state.claimDecisions[key('claim',claimId)]={caseId:state.caseId,roleId:state.roleId,decision,rationale,at:new Date().toISOString()}; audit('independent_review_decision',`${claimId}: ${decision} — ${rationale}`); saveState(); render(); showToast('Lokale Review-Entscheidung gespeichert.');
+      }
+      function runAgent(i){
+        const a=activeCase().agents[i], seed=`${state.caseId}:${a.name}:${Date.now()}`, hash=Array.from(seed).reduce((h,c)=>((h<<5)-h+c.charCodeAt(0))|0,0).toString(16).replace('-','').padEnd(16,'0');
+        state.agentRuns[key('agent',i)]={trace:`sim-${Date.now().toString(36)}`,tools:'read_public_fixture,structured_proposal',hash,status:'awaiting_human',at:new Date().toISOString()}; audit('agent_run_completed',`${a.name}: awaiting_human`); saveState(); render(); showToast(`${a.name} hat einen Trainingsvorschlag erzeugt.`);
+      }
+      function publicationAttempt(){
+        const c=activeCase(), result=c.publication.allowedInSimulation?'TRAINING APPROVED':'NO-GO CORRECTLY ENFORCED';
+        state.publicationAttempts[key('publication')]={result,reason:c.publication.allowedInSimulation?'Nur eine lokale Trainingsfreigabe. Kein echtes System wurde verändert.':c.publication.reason,at:new Date().toISOString()}; audit(c.publication.allowedInSimulation?'training_publication_approved':'publication_blocked',c.publication.reason); saveState(); render(); showToast(result);
+      }
+
+      function render(){
+        const r=role(); if(!r.allowedViews.includes(state.view)) state.view='overview';
+        roleSelect.value=state.roleId; caseSelect.value=state.caseId; renderNav(); renderInspector();
+        const renderers={overview,sources,claims,graph,timeline,agents,review,publish,audit:auditView};
+        content.innerHTML=(renderers[state.view]||overview)(); bindCommon();
+      }
+
+      $('resetButton').addEventListener('click',()=>{
+        if(!confirm('Alle lokalen Entscheidungen für diesen Fall und diese Rolle zurücksetzen?')) return;
+        const prefix=`${state.caseId}:${state.roleId}:`;
+        ['completedTasks','claimDecisions','sourceReceipts','agentRuns','quizAnswers','notes','publicationAttempts'].forEach(group=>{Object.keys(state[group]).filter(k=>k.startsWith(prefix)).forEach(k=>delete state[group][k]);});
+        state.audit=state.audit.filter(a=>!(a.caseId===state.caseId&&a.roleId===state.roleId)); saveState(); render(); showToast('Rolle und Fall lokal zurückgesetzt.');
+      });
+      $('mobileToggle').addEventListener('click',()=>$('sidebar').classList.toggle('open'));
+      document.addEventListener('keydown',e=>{if(e.key==='Escape') $('sidebar').classList.remove('open');});
+
+      if(forbiddenActions.some(a=>DATA.roles.some(r=>r.allowedActions.includes(a)))) throw new Error('Unsafe simulator role configuration');
+      initSelectors(); render();
+    })();
+  </script>
+</body>
+</html>
