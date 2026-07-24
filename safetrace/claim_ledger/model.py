@@ -103,7 +103,12 @@ class ClaimVersion:
     metadata: dict[str, Any] = field(default_factory=dict)
     supersedes_version: int | None = None
 
-    def validate(self, vault_index: dict[str, VaultEvidenceRef]) -> None:
+    def validate(
+        self,
+        vault_index: dict[str, VaultEvidenceRef],
+        *,
+        require_supporting: bool = True,
+    ) -> None:
         _required(self.claim_id, "Claim id")
         _required(self.text, "Claim text", 10)
         _required(self.created_by, "Researcher")
@@ -125,7 +130,7 @@ class ClaimVersion:
             if link.id in ids:
                 raise ValueError("Duplicate evidence link")
             ids.add(link.id)
-        if not any(link.role == "supporting" for link in self.evidence_links):
+        if require_supporting and not any(link.role == "supporting" for link in self.evidence_links):
             raise ValueError("Claim version requires supporting evidence")
 
     @property
@@ -157,7 +162,10 @@ class LedgerClaim:
         for number, version in sorted(self.versions.items()):
             if number != version.version or version.claim_id != self.id:
                 raise ValueError("Claim version map is inconsistent")
-            version.validate(vault_index)
+            # SafeTrace must preserve rejected, disproved and unresolved internal records.
+            # They may lack supporting evidence by design, but evaluation still blocks
+            # publication because ClaimVersion.validate defaults to require_supporting=True.
+            version.validate(vault_index, require_supporting=self.material)
 
 
 @dataclass(frozen=True)
