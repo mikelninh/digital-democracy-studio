@@ -25,6 +25,8 @@ jobs:
           python-version: "3.12"
       - name: Install case-pack dependency
         run: python -m pip install --disable-pip-version-check reportlab
+      - name: Probe Case 005 official sources
+        run: python -m safetrace.real_cases.case_005.probe_sources
       - name: Validate unified evidence foundation
         run: |
           python -m unittest discover -s safetrace/core/tests -v
