@@ -1,4 +1,4 @@
-name: SafeTrace v1.8 + Role Simulator release gate
+name: SafeTrace v1.8 + Real Case 005 release gate
 
 on:
   push:
@@ -64,6 +64,13 @@ jobs:
         run: |
           python -m unittest discover -s safetrace/role_simulator/tests -v
           python -m safetrace.role_simulator.validate --root safetrace/role_simulator --output safetrace/role_simulator/artifacts/role-simulator-report.json
+      - name: Validate Case 005 offline safety fixtures
+        run: python -m unittest discover -s safetrace/real_cases/case_005/tests -v
+      - name: Acquire and verify live official sources for Case 005
+        run: |
+          python -m safetrace.real_cases.case_005.build_case \
+            --output-root safetrace/real_cases/case_005/artifacts \
+            --acquired-at "$(date -u +%Y-%m-%dT%H:%M:%S+00:00)"
       - name: Run existing SafeTrace tests
         run: |
           python -m unittest discover -s safetrace/source_engine/tests -v
@@ -87,7 +94,7 @@ jobs:
       - name: Upload release evidence
         uses: actions/upload-artifact@v4
         with:
-          name: safetrace-v1.8-role-simulator-${{ github.run_id }}
+          name: safetrace-v1.8-real-case-005-${{ github.run_id }}
           path: |
             safetrace/core/schemas/safetrace-core-1.2.schema.json
             safetrace/core/migration-report.json
@@ -104,6 +111,7 @@ jobs:
             safetrace/case_004_reference/artifacts/
             safetrace/review_readiness/artifacts/
             safetrace/role_simulator/artifacts/role-simulator-report.json
+            safetrace/real_cases/case_005/artifacts/
             safetrace/pilot/public/
             safetrace/v1/status.json
             safetrace/law_fairness/public_status.json
