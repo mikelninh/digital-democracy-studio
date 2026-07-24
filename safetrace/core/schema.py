@@ -49,11 +49,11 @@ def schema_document()->dict[str,Any]:
     return generate_schema()
 
 def serialised_schema()->str:
-    return json.dumps(generate_schema(),ensure_ascii=False,indent=2,sort_keys=True)+"\n"
+    return json.dumps(generate_schema(),ensure_ascii=False,separators=(",",":"),sort_keys=True)+"\n"
 
 def main()->int:
     p=argparse.ArgumentParser(); p.add_argument("--write",type=Path); p.add_argument("--check",type=Path); a=p.parse_args(); expected=generate_schema()
-    if a.write:a.write.parent.mkdir(parents=True,exist_ok=True); a.write.write_text(json.dumps(expected,ensure_ascii=False,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    if a.write:a.write.parent.mkdir(parents=True,exist_ok=True); a.write.write_text(serialised_schema(),encoding="utf-8")
     if a.check:
         actual=json.loads(a.check.read_text(encoding="utf-8"))
         if actual!=expected:raise SystemExit("Committed SafeTrace core schema differs from generated schema")
