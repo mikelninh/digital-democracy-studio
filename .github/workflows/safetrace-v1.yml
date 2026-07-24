@@ -1,4 +1,4 @@
-name: SafeTrace v1.8 release gate
+name: SafeTrace v1.8 + Role Simulator release gate
 
 on:
   push:
@@ -60,6 +60,10 @@ jobs:
           python -m unittest discover -s safetrace/review_readiness/tests -v
           python -m safetrace.review_readiness.contracts --write safetrace/review_readiness/artifacts/review-readiness-contracts-1.8.json
           python -m safetrace.review_readiness.build_review_pack --safetrace-root safetrace --output-root safetrace/review_readiness/artifacts
+      - name: Validate browser-local Role Simulator
+        run: |
+          python -m unittest discover -s safetrace/role_simulator/tests -v
+          python -m safetrace.role_simulator.validate --root safetrace/role_simulator --output safetrace/role_simulator/artifacts/role-simulator-report.json
       - name: Run existing SafeTrace tests
         run: |
           python -m unittest discover -s safetrace/source_engine/tests -v
@@ -83,7 +87,7 @@ jobs:
       - name: Upload release evidence
         uses: actions/upload-artifact@v4
         with:
-          name: safetrace-v1.8-independent-review-readiness-${{ github.run_id }}
+          name: safetrace-v1.8-role-simulator-${{ github.run_id }}
           path: |
             safetrace/core/schemas/safetrace-core-1.2.schema.json
             safetrace/core/migration-report.json
@@ -99,6 +103,7 @@ jobs:
             safetrace/investigation_desk/artifacts/public-export.json
             safetrace/case_004_reference/artifacts/
             safetrace/review_readiness/artifacts/
+            safetrace/role_simulator/artifacts/role-simulator-report.json
             safetrace/pilot/public/
             safetrace/v1/status.json
             safetrace/law_fairness/public_status.json
