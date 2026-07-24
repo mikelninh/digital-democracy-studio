@@ -39,7 +39,7 @@ jobs:
           sources = [
               ('case005-bundestag-decision-2024','https://www.bundestag.de/dokumente/textarchiv/2024/kw39-de-existenzminimum-1017664',['Der Bundestag hat am Donnerstag, 19. Dezember 2024','mit Wirkung zum 1. Januar 2026 um weitere vier Euro auf 259 Euro']),
               ('case005-bundesregierung-implementation-2026','https://www.bundesregierung.de/breg-de/schwerpunkte/wirksam-regieren/gesetzliche-neuregelungen-januar-2026-2399838',['Ab Januar 2026 steigt das Kindergeld','259 Euro pro Monat']),
-              ('case005-bkgg-current-law','https://www.gesetze-im-internet.de/bkgg_1996/__6.html',['Das Kindergeld beträgt monatlich für jedes Kind 259 Euro']),
+              ('case005-bkgg-current-law','https://ksth.bundesfinanzministerium.de/lsth/2026/A-Einkommensteuergesetz/X-Kindergeld-62-78/Paragraf-66/inhalt.html',['Das Kindergeld beträgt monatlich für jedes Kind 259 Euro']),
               ('case005-merz-government-start','https://www.bundesregierung.de/breg-de/service/fragen-und-anworten/kanzlerwahl-regierungsbildung-2345072',['Am 6. Mai hat der Deutsche Bundestag Friedrich Merz zum Bundeskanzler gewählt','Damit beginnt ihre Amtszeit']),
           ]
           failures=[]
