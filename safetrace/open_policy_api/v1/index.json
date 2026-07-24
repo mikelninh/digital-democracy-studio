@@ -1,11 +1,12 @@
 {
-  "schema_version": "safetrace.open-policy-index/1.1",
+  "schema_version": "safetrace.open-policy-index/1.2",
   "version": "v1",
   "generated_at": "2026-07-24",
   "documents": {
     "catalog": "catalog.json",
     "history": "history.json",
-    "openapi": "openapi.json"
+    "openapi": "openapi.json",
+    "impact_mission_001": "../../impact_missions/mission_001/data.json"
   },
   "monitoring": {
     "cadence": "weekly",
