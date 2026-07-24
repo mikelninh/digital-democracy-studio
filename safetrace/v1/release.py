@@ -10,7 +10,7 @@ from safetrace.pilot.model import evaluate_pilot, load_pilot
 REQUIRED_COMPONENTS = [
     "source_engine", "political_money", "review_desk", "arms_monitor",
     "monitoring", "case_packs", "governance", "pilot", "law_fairness",
-    "core", "evidence_vault", "claim_ledger",
+    "core", "evidence_vault", "claim_ledger", "agent_queue",
 ]
 
 
@@ -38,6 +38,8 @@ def validate_repository(root: Path) -> dict[str, Any]:
     vault_report = _load_optional_json(safetrace_root / "evidence_vault/artifacts/release-report.json")
     ledger_contract_path = safetrace_root / "claim_ledger/artifacts/claim-ledger-contracts-1.4.json"
     ledger_report = _load_optional_json(safetrace_root / "claim_ledger/artifacts/release-report.json")
+    agent_contract_path = safetrace_root / "agent_queue/artifacts/agent-queue-contracts-1.5.json"
+    agent_report = _load_optional_json(safetrace_root / "agent_queue/artifacts/release-report.json")
 
     migration_ready = (
         migration_report.get("status") == "pass"
@@ -70,6 +72,27 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and set(ledger_migration.get("cases", {})) == {"case-001", "case-002", "case-003", "case-004"}
         and ledger_migration.get("automatic_publications") == 0
     )
+    agent_workers = agent_report.get("workers", {})
+    agent_metrics = agent_report.get("metrics", {})
+    agent_evaluation = agent_report.get("evaluation", {})
+    agent_boundaries = agent_report.get("boundaries", {})
+    agent_ready = (
+        agent_contract_path.exists()
+        and agent_report.get("status") == "pass"
+        and agent_workers.get("count") == 12
+        and len(agent_workers.get("implemented", [])) == 12
+        and agent_metrics.get("auto_approved") == 0
+        and agent_metrics.get("awaiting_human") == 12
+        and agent_metrics.get("receipts") == 12
+        and agent_evaluation.get("status") == "pass"
+        and agent_evaluation.get("passed") == agent_evaluation.get("total")
+        and agent_evaluation.get("unsafe_accepted") == 0
+        and agent_boundaries.get("proposal_only") is True
+        and agent_boundaries.get("autonomous_publication") is False
+        and agent_boundaries.get("autonomous_contact") is False
+        and agent_boundaries.get("autonomous_referral") is False
+        and agent_boundaries.get("restricted_partner_data") is False
+    )
 
     release_ready = (
         not missing
@@ -77,25 +100,28 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and migration_ready
         and vault_ready
         and ledger_ready
+        and agent_ready
         and synthetic_readiness.ready
         and pilot_evaluation.decision == "GO_SYNTHETIC"
         and not live_readiness.ready
     )
     return {
-        "schema_version": "safetrace.release-status/1.4",
-        "release": "v1.4-claim-ledger-2.0",
+        "schema_version": "safetrace.release-status/1.5",
+        "release": "v1.5-auditable-agent-task-queue",
         "release_ready": release_ready,
         "live_partner_ready": live_readiness.ready,
         "components": {name: name not in missing for name in REQUIRED_COMPONENTS},
         "core": {"schema_version": "safetrace.core/1.2", "migration": migration_report},
         "evidence_vault": {"schema_version": "safetrace.evidence-vault/1.3", "release_evidence": vault_report},
         "claim_ledger": {"schema_version": "safetrace.claim-ledger/1.4", "release_evidence": ledger_report},
+        "agent_queue": {"schema_version": "safetrace.agent-queue/1.5", "release_evidence": agent_report},
         "synthetic_readiness": synthetic_readiness.to_dict(),
         "restricted_partner_readiness": live_readiness.to_dict(),
         "synthetic_pilot": pilot_evaluation.to_dict(),
         "truthful_status": (
-            "SafeTrace v1.4 provides a versioned, human-reviewed Claim Ledger for vault-backed public and synthetic evidence. "
-            "Legacy claims are preserved but blocked for new publication until evidence backfill. Real victim and restricted partner data remain unauthorised."
+            "SafeTrace v1.5 provides twelve bounded, auditable proposal workers with default-deny tools, "
+            "replayable run receipts and release-blocking adversarial evaluations. Agents cannot approve, publish, "
+            "contact or refer. Real victim and restricted partner data remain unauthorised."
         ),
     }
 
