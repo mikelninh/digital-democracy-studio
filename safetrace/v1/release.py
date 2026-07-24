@@ -11,6 +11,7 @@ REQUIRED_COMPONENTS = [
     "source_engine", "political_money", "review_desk", "arms_monitor",
     "monitoring", "case_packs", "governance", "pilot", "law_fairness",
     "core", "evidence_vault", "claim_ledger", "agent_queue", "investigation_desk",
+    "case_004_reference",
 ]
 
 
@@ -42,6 +43,12 @@ def validate_repository(root: Path) -> dict[str, Any]:
     agent_report = _load_optional_json(safetrace_root / "agent_queue/artifacts/release-report.json")
     desk_contract_path = safetrace_root / "investigation_desk/artifacts/investigation-desk-contracts-1.6.json"
     desk_report = _load_optional_json(safetrace_root / "investigation_desk/artifacts/release-report.json")
+    reference_contract_path = safetrace_root / "case_004_reference/artifacts/case-004-reference-contracts-1.7.json"
+    reference_report = _load_optional_json(safetrace_root / "case_004_reference/artifacts/release-report.json")
+    reference_json_path = safetrace_root / "case_004_reference/artifacts/case-004-reference-pack.json"
+    reference_pdf_path = safetrace_root / "case_004_reference/artifacts/case-004-reference-pack.pdf"
+    comprehension_path = safetrace_root / "case_004_reference/artifacts/comprehension-instrument.json"
+    monitoring_path = safetrace_root / "case_004_reference/artifacts/monitoring-manifest.json"
 
     migration_ready = (
         migration_report.get("status") == "pass"
@@ -125,6 +132,44 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and desk_boundaries.get("production_auth_ready") is False
         and desk_boundaries.get("restricted_partner_data") is False
     )
+    reference_counts = reference_report.get("counts", {})
+    reference_backfill = reference_report.get("source_backfill", {})
+    reference_workflow = reference_report.get("workflow", {})
+    reference_audit = reference_workflow.get("audit", {})
+    reference_benchmark = reference_report.get("benchmark", {})
+    reference_comprehension = reference_report.get("comprehension", {})
+    reference_boundaries = reference_report.get("boundaries", {})
+    reference_ready = (
+        reference_contract_path.exists()
+        and reference_json_path.exists()
+        and reference_pdf_path.exists()
+        and comprehension_path.exists()
+        and monitoring_path.exists()
+        and reference_report.get("status") == "pass"
+        and reference_counts.get("sources") == 11
+        and reference_counts.get("measures") == 5
+        and reference_counts.get("claims") == 5
+        and reference_counts.get("agent_proposals") == 4
+        and reference_counts.get("desk_views") == 11
+        and reference_backfill.get("sources_registered") == 11
+        and reference_backfill.get("original_bytes_backfilled") == 0
+        and reference_backfill.get("publication_allowed") is False
+        and reference_workflow.get("human_reviewed_claims") == 5
+        and reference_workflow.get("agent_proposals_accepted_for_review") == 4
+        and reference_workflow.get("publication_requests") == 0
+        and reference_audit.get("status") == "pass"
+        and reference_benchmark.get("target_met_in_fixture") is True
+        and reference_benchmark.get("observed_human_time_measurement") is False
+        and reference_benchmark.get("real_partner_impact_claimed") is False
+        and reference_comprehension.get("participant_count") == 0
+        and reference_comprehension.get("observed_study_completed") is False
+        and len(reference_comprehension.get("concepts", [])) >= 4
+        and reference_boundaries.get("technical_reference_complete") is True
+        and reference_boundaries.get("new_publication_allowed") is False
+        and reference_boundaries.get("real_partner_impact_claimed") is False
+        and reference_boundaries.get("external_comprehension_study_completed") is False
+        and reference_boundaries.get("restricted_partner_data") is False
+    )
 
     release_ready = (
         not missing
@@ -134,13 +179,14 @@ def validate_repository(root: Path) -> dict[str, Any]:
         and ledger_ready
         and agent_ready
         and desk_ready
+        and reference_ready
         and synthetic_readiness.ready
         and pilot_evaluation.decision == "GO_SYNTHETIC"
         and not live_readiness.ready
     )
     return {
-        "schema_version": "safetrace.release-status/1.6",
-        "release": "v1.6-investigation-desk-foundation",
+        "schema_version": "safetrace.release-status/1.7",
+        "release": "v1.7-case-004-technical-reference",
         "release_ready": release_ready,
         "live_partner_ready": live_readiness.ready,
         "components": {name: name not in missing for name in REQUIRED_COMPONENTS},
@@ -149,13 +195,15 @@ def validate_repository(root: Path) -> dict[str, Any]:
         "claim_ledger": {"schema_version": "safetrace.claim-ledger/1.4", "release_evidence": ledger_report},
         "agent_queue": {"schema_version": "safetrace.agent-queue/1.5", "release_evidence": agent_report},
         "investigation_desk": {"schema_version": "safetrace.investigation-desk/1.6", "release_evidence": desk_report},
+        "case_004_reference": {"schema_version": "safetrace.case004-reference/1.7", "release_evidence": reference_report},
         "synthetic_readiness": synthetic_readiness.to_dict(),
         "restricted_partner_readiness": live_readiness.to_dict(),
         "synthetic_pilot": pilot_evaluation.to_dict(),
         "truthful_status": (
-            "SafeTrace v1.6 provides a role-controlled internal Investigation Desk with public-export separation "
-            "and a verifiable audit chain for public-source and synthetic workflows. Production identity, MFA, "
-            "tenant isolation and restricted partner data remain unconfigured and unauthorised."
+            "SafeTrace v1.7 completes the deterministic Case 004 technical reference workflow with reviewed repository records, "
+            "Desk views, agent proposals, audit, JSON/PDF, monitoring, benchmark and comprehension instruments. A newly verified "
+            "public publication remains blocked because original source bytes are not yet backfilled; real time savings and citizen "
+            "comprehension remain unmeasured external outcomes."
         ),
     }
 
