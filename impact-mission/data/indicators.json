@@ -1,0 +1,103 @@
+{
+  "mission": {
+    "id": "IM-001",
+    "title": "Arbeit. Teilhabe. Energie.",
+    "scope": "Deutschland",
+    "data_version": "2026-07-25",
+    "principle": "Richtung sichtbar machen, ohne Kausalität zu behaupten."
+  },
+  "indicators": [
+    {
+      "id": "unemployment-rate",
+      "label": "Arbeitslosenquote",
+      "value": 6.2,
+      "unit": "%",
+      "period": "Juni 2026",
+      "published_at": "2026-06-30",
+      "frequency": "monatlich",
+      "direction": "lower_is_better",
+      "status": "stable",
+      "status_label": "stabil, aber nicht verbessert",
+      "change": {
+        "month_over_month_pp": -0.1,
+        "year_over_year_pp": 0.0
+      },
+      "context": {
+        "people_unemployed": 2936000,
+        "seasonally_adjusted_change_people": -1000
+      },
+      "target": {
+        "type": "directional",
+        "label": "dauerhaft sinkend, ohne prekäre Beschäftigung zu verstecken"
+      },
+      "source": {
+        "publisher": "Bundesagentur für Arbeit",
+        "title": "Arbeitsmarkt im Juni 2026",
+        "url": "https://www.arbeitsagentur.de/presse/2026-22-arbeitsmarkt-im-juni-2026"
+      },
+      "caveat": "Die BA-Arbeitslosenquote ist nicht identisch mit der ILO-Erwerbslosenquote. Saison- und Konjunktureffekte müssen getrennt betrachtet werden."
+    },
+    {
+      "id": "at-risk-of-poverty-rate",
+      "label": "Armutsgefährdungsquote",
+      "value": 16.1,
+      "unit": "%",
+      "period": "2025",
+      "published_at": "2026-04-09",
+      "frequency": "jährlich",
+      "direction": "lower_is_better",
+      "status": "wrong_direction",
+      "status_label": "in die falsche Richtung",
+      "change": {
+        "year_over_year_pp": 0.6,
+        "previous_value": 15.5,
+        "previous_period": "2024"
+      },
+      "context": {
+        "single_person_monthly_threshold_eur": 1445
+      },
+      "target": {
+        "type": "directional",
+        "label": "jährlich sinkend; zusätzlich Teilhabe und Wohnkosten beobachten"
+      },
+      "source": {
+        "publisher": "Statistisches Bundesamt (Destatis)",
+        "title": "Endergebnisse EU-SILC 2025 – Armutsgefährdung",
+        "url": "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Einkommen-Konsum-Lebensbedingungen/Lebensbedingungen-Armutsgefaehrdung/aktuell.html"
+      },
+      "caveat": "Armutsgefährdung bedeutet ein verfügbares Äquivalenzeinkommen unter 60 % des nationalen Medians. Die Kennzahl misst relative Einkommensarmut, nicht jede Form materieller Not."
+    },
+    {
+      "id": "onshore-wind-expansion",
+      "label": "Ausbau Wind an Land",
+      "value": 70.051,
+      "unit": "GW installiert",
+      "period": "Juni 2026",
+      "published_at": "2026-07-13",
+      "frequency": "monatlich",
+      "direction": "higher_is_better",
+      "status": "off_track",
+      "status_label": "deutlich unter Zielpfad",
+      "change": {
+        "net_addition_ytd_gw": 1.9429,
+        "net_addition_june_gw": 0.443
+      },
+      "target": {
+        "type": "official_2030_capacity",
+        "value": 115,
+        "unit": "GW",
+        "deadline": "2030-12-31",
+        "remaining_gap_gw": 44.949,
+        "required_monthly_addition_gw": 0.832,
+        "ytd_required_gw": 4.992,
+        "ytd_pace_ratio": 0.389
+      },
+      "source": {
+        "publisher": "Bundesnetzagentur / Marktstammdatenregister",
+        "title": "Statistik zur Stromerzeugungsleistung – Juni 2026",
+        "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EE-Statistik/DL/EEStatistikMaStR.pdf?__blob=publicationFile"
+      },
+      "caveat": "Registrierungen können wegen der gesetzlichen Meldefrist nachträglich ergänzt werden. Nettozubau ist Inbetriebnahme abzüglich endgültiger Stilllegung."
+    }
+  ]
+}
