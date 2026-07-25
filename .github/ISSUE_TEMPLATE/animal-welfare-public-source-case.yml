@@ -1,0 +1,98 @@
+name: "Animal Welfare Public-Source Case"
+description: "Schlage einen überprüfbaren Tierschutzfall ausschließlich mit öffentlichen Quellen vor."
+title: "Animal Welfare Case — "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bitte zuerst lesen
+
+        Dieses Formular ist nur für **öffentliche Quellen** gedacht. Veröffentliche keine privaten Adressen, medizinischen Daten, geleakten Dokumente, Hinweisgeber-Identitäten oder unbestätigten Beschuldigungen gegen Privatpersonen.
+
+        SafeTrace untersucht Fragen. Es erstellt keine automatische Verdächtigenliste und veröffentlicht nichts automatisch.
+
+  - type: input
+    id: question
+    attributes:
+      label: Konkrete Forschungsfrage
+      description: Eine Frage, die mit Belegen bestätigt, eingeschränkt oder widerlegt werden kann.
+      placeholder: "Beispiel: Wie viele Betriebe fallen unter die Ausnahme, und wie wurde der Grenzwert begründet?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: public_interest
+    attributes:
+      label: Warum ist der Fall öffentlich relevant?
+      description: Beschreibe möglichen Schaden, betroffene Tiere, Systemwirkung oder eine wichtige Kontrolllücke.
+    validations:
+      required: true
+
+  - type: textarea
+    id: primary_sources
+    attributes:
+      label: Öffentliche Primärquellen
+      description: Nenne amtliche Dokumente, Register, Gerichtsentscheidungen, Datensätze oder Originalveröffentlichungen mit URLs und Datum.
+      placeholder: |
+        - Herausgeber, Titel, Datum, https://...
+        - Herausgeber, Titel, Datum, https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: claim
+    attributes:
+      label: Welche begrenzte Behauptung soll geprüft werden?
+      description: Keine Etiketten wie „korrupt“, sondern eine konkrete Tatsachen- oder Prozessbehauptung.
+    validations:
+      required: true
+
+  - type: textarea
+    id: counterevidence
+    attributes:
+      label: Bekannte Gegenbelege oder alternative Erklärungen
+      description: Was könnte die erste Vermutung abschwächen oder erklären?
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_parties
+    attributes:
+      label: Wer sollte gehört werden?
+      description: Behörden, Verbände, Unternehmen, Forschung, Beschäftigte, Tierschutz oder andere Betroffene.
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired_change
+    attributes:
+      label: Welche überprüfbare Verbesserung wäre möglich?
+      description: Datenkorrektur, Transparenz, Kontrolle, Gesetzesänderung, Plattformregel oder andere konkrete Abhilfe.
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Wie könnte Impact gemessen werden?
+      description: Nenne mindestens zwei Messgrößen, die über Reichweite und Likes hinausgehen.
+      placeholder: |
+        - Korrigierte amtliche Zahl
+        - Kontrollquote / Mortalitätsrate / Bearbeitungszeit
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Sicherheits- und Fairnessbestätigung
+      options:
+        - label: "Ich verwende nur rechtmäßig öffentliche Quellen und veröffentliche keine unnötigen personenbezogenen Daten."
+          required: true
+        - label: "Ich verstehe, dass Nähe, Lobbyarbeit, Geheimhaltung oder ein Datenfehler allein kein Beweis für Korruption oder Rechtsverstöße sind."
+          required: true
+        - label: "Ich bin bereit, Gegenbelege und die Antwort der anderen Seite sichtbar einzubeziehen."
+          required: true
+        - label: "Der Fall erfordert kein Hacking, keine Täuschung, kein Doxxing und keinen verdeckten Zugang."
+          required: true
