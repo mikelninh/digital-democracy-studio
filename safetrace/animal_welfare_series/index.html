@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SafeTrace Animal Welfare Evidence Series: öffentliche Belege, faire Prüfung und konkrete Schritte für wirksamen Tierschutz." />
+  <title>Was wir wissen — Tierschutzfälle mit Belegen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper:#f4f1e8; --paper2:#e8e2d5; --card:#fbfaf6; --ink:#171b16;
+      --muted:#62695e; --line:rgba(23,27,22,.16); --forest:#1f5a45;
+      --forest2:#dce9e1; --amber:#9a6117; --amber2:#f3e4c6;
+      --red:#913c35; --red2:#efd9d5; --blue:#315e79; --blue2:#dce7ed;
+      --shadow:0 20px 55px rgba(44,43,36,.09); --radius:24px;
+      --wrap:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);font-family:Manrope,system-ui,sans-serif;background:radial-gradient(circle at 8% 4%,#fff 0,transparent 27rem),linear-gradient(180deg,#faf7f0 0,var(--paper) 42%,#ece7dc 100%);min-height:100vh}
+    a{color:inherit}.wrap{width:min(calc(100% - 36px),var(--wrap));margin:auto}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .brand{text-decoration:none;font-weight:800;letter-spacing:-.03em}.brand span{font-weight:400;color:var(--muted)}
+    .nav{display:flex;gap:18px;align-items:center;font:500 11px DM Mono,monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+    .nav a{text-decoration:none}.nav a:hover{color:var(--ink)}
+    .live{display:inline-flex;align-items:center;gap:8px}.live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--forest);box-shadow:0 0 0 5px rgba(31,90,69,.12)}
+    header{padding:76px 0 42px}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--muted);font:500 12px/1.4 DM Mono,monospace;text-transform:uppercase;letter-spacing:.08em}.eyebrow:before{content:"";width:34px;height:1px;background:currentColor}
+    h1{max-width:1000px;margin:25px 0 22px;font:500 clamp(56px,8.5vw,112px)/.88 Newsreader,serif;letter-spacing:-.06em}
+    h1 em{color:var(--forest);font-weight:400}
+    .intro{display:grid;grid-template-columns:1.35fr .65fr;gap:60px;align-items:end;margin-top:38px}
+    .intro-copy{max-width:760px;color:#343a32;font-size:clamp(18px,2vw,24px);line-height:1.52;letter-spacing:-.02em}.intro-copy strong{color:var(--ink)}
+    .series-status{padding-left:28px;border-left:1px solid var(--line)}.series-status small{display:block;color:var(--muted);font:500 11px DM Mono,monospace;text-transform:uppercase}.series-status b{display:block;margin:8px 0 4px;font:500 58px/1 Newsreader,serif}.series-status span{color:var(--muted);font-size:14px;line-height:1.5}
+    .principle{display:inline-flex;align-items:flex-start;gap:10px;margin-top:34px;padding:15px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.4);color:var(--muted);font-size:13px}.principle strong{color:var(--ink)}
+    main{padding-bottom:100px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin:66px 0 22px}.section-head h2{margin:0;font:500 clamp(34px,4vw,52px)/1 Newsreader,serif;letter-spacing:-.04em}.section-head p{max-width:540px;margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}.filter{padding:10px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.42);cursor:pointer;color:var(--muted);font:600 11px Manrope,sans-serif}.filter.active,.filter:hover{background:var(--ink);color:#fff}
+    .cases{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+    .case{display:flex;flex-direction:column;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.63);box-shadow:var(--shadow);transition:.2s;position:relative;overflow:hidden}.case:hover{transform:translateY(-3px)}
+    .case:after{content:attr(data-id);position:absolute;right:14px;bottom:-22px;color:rgba(23,27,22,.035);font:500 102px/1 Newsreader,serif;pointer-events:none}
+    .case-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.case-id{color:var(--muted);font:500 11px DM Mono,monospace}.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 9px;border-radius:999px;font:500 10px DM Mono,monospace;text-transform:uppercase}.badge:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.publish{color:var(--forest);background:var(--forest2)}.watch{color:var(--amber);background:var(--amber2)}.question{color:var(--blue);background:var(--blue2)}
+    .case h3{margin:23px 0 10px;font:500 34px/1.02 Newsreader,serif;letter-spacing:-.035em}.verdict{margin:0 0 21px;color:#42483f;font-size:14px;line-height:1.62}
+    .meters{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;padding:17px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.meter small{display:block;margin-bottom:8px;color:var(--muted);font:500 9px DM Mono,monospace;text-transform:uppercase}.dots{display:flex;gap:4px}.dots i{display:block;width:12px;height:7px;border-radius:99px;background:var(--paper2)}.dots i.on{background:var(--forest)}.dots.impact i.on{background:var(--blue)}.dots.urgent i.on{background:var(--amber)}
+    .claim{position:relative;z-index:1;margin:21px 0;padding:17px 18px;border-left:3px solid var(--forest);background:rgba(220,233,225,.55);font:500 15px/1.55 Newsreader,serif}
+    details.case-details{position:relative;z-index:1;margin-top:auto;border-top:1px solid var(--line)}details.case-details summary{padding:17px 0 0;cursor:pointer;list-style:none;color:var(--forest);font-weight:700;font-size:13px}details.case-details summary::-webkit-details-marker{display:none}details.case-details summary:after{content:" +"}details[open].case-details summary:after{content:" −"}
+    .detail-block{margin-top:18px}.detail-block h4{margin:0 0 9px;font:700 10px DM Mono,monospace;text-transform:uppercase;color:var(--muted);letter-spacing:.05em}.detail-block ul{margin:0;padding-left:18px;color:#474d44;font-size:13px;line-height:1.62}.source-list{display:grid;gap:8px}.source-list a{display:flex;justify-content:space-between;gap:15px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.5);font-size:12px;text-decoration:none}.source-list a:hover{background:#fff}.issue-link{display:inline-block;margin-top:16px;font-size:12px;font-weight:700;text-underline-offset:3px}
+    .impact-framework{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.impact-card{padding:24px;border-top:4px solid var(--forest);background:rgba(255,255,255,.34)}.impact-card:nth-child(2){border-color:var(--blue)}.impact-card:nth-child(3){border-color:var(--amber)}.impact-card:nth-child(4){border-color:var(--red)}.impact-card small{font:500 10px DM Mono,monospace;color:var(--muted)}.impact-card h3{margin:18px 0 9px;font:500 25px/1.05 Newsreader,serif}.impact-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+    .checker{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;padding:clamp(24px,4vw,46px);border-radius:30px;background:#1c211c;color:#eff1e9;box-shadow:var(--shadow)}
+    .checker h2{margin:20px 0 14px;font:500 clamp(40px,5vw,64px)/.95 Newsreader,serif;letter-spacing:-.04em}.checker-copy{color:#b9c0b7;line-height:1.65;font-size:14px}.checker .eyebrow{color:#aeb6ab}
+    .question-row{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.14)}.question-row label{display:flex;justify-content:space-between;gap:16px;font-size:13px;line-height:1.45}.question-row output{font:500 12px DM Mono,monospace;color:#cddfd5}.question-row input[type=range]{width:100%;margin-top:12px;accent-color:#9bcbb6}.checkline{display:flex;gap:10px;align-items:flex-start;margin-top:17px;color:#c4cac1;font-size:12px;line-height:1.45}.checkline input{margin-top:2px;accent-color:#9bcbb6}
+    .checker-result{margin-top:22px;padding:20px;border-radius:18px;background:rgba(255,255,255,.09)}.result-score{font:500 54px/1 Newsreader,serif}.result-label{margin:6px 0 8px;font-weight:800}.result-explain{color:#bcc3ba;font-size:13px;line-height:1.55}.checker-note{margin-top:14px;color:#91998f;font-size:11px;line-height:1.5}
+    .loop{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.loop-step{padding:21px 18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.4)}.loop-step b{display:block;font:500 36px/1 Newsreader,serif;color:var(--forest)}.loop-step strong{display:block;margin:12px 0 8px}.loop-step p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+    .cta{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;margin-top:70px;padding:clamp(30px,5vw,56px);border-radius:30px;background:var(--forest);color:#fff}.cta h2{margin:0;font:500 clamp(40px,5vw,66px)/.95 Newsreader,serif;letter-spacing:-.04em}.cta p{margin:0;color:#d4e4da;font-size:16px;line-height:1.65}.cta-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;padding:12px 15px;border-radius:999px;background:#fff;color:var(--forest);text-decoration:none;font-weight:800;font-size:12px}.btn.secondary{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff}
+    footer{padding:32px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:24px}
+    .loading,.error{padding:25px;border:1px solid var(--line);border-radius:18px;color:var(--muted)}
+    @media(max-width:980px){.intro,.checker,.cta{grid-template-columns:1fr}.series-status{padding:22px 0 0;border-left:0;border-top:1px solid var(--line)}.cases{grid-template-columns:1fr}.impact-framework{grid-template-columns:repeat(2,1fr)}.loop{grid-template-columns:1fr 1fr}.section-head{align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){header{padding-top:52px}h1{font-size:59px}.nav a:not(.live){display:none}.principle{border-radius:18px}.impact-framework,.loop{grid-template-columns:1fr}.meters{grid-template-columns:1fr}.foot{flex-direction:column}.case{padding:21px}.case-top{display:block}.badge{margin-top:10px}}
+    @media(prefers-reduced-motion:no-preference){.case{animation:rise .55s both}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Hauptnavigation">
+      <a class="brand" href="../">SafeTrace <span>Evidence Series</span></a>
+      <div class="nav"><a href="#faelle">Fälle</a><a href="#impact">Impact</a><a href="#checker">Case Checker</a><a class="live" href="cases.json">Open Data</a></div>
+    </nav>
+  </div>
+
+  <header class="wrap">
+    <div class="eyebrow">Animal Welfare · Germany first</div>
+    <h1>Was wir <em>wissen.</em></h1>
+    <div class="intro">
+      <div class="intro-copy">Öffentliche Belege. Faire Prüfung. Konkrete nächste Schritte. Wir untersuchen Tierschutzfälle, ohne aus einer Datenlücke automatisch einen Skandal und aus einer Lobbyposition automatisch Korruption zu machen.</div>
+      <aside class="series-status"><small>Cases eröffnet</small><b>7</b><span>Zwei sofortige Transparenz-Stories, drei Policy- und Netzwerkfälle, zwei laufende Watch-Fälle.</span></aside>
+    </div>
+    <div class="principle"><span>◎</span><span><strong>Versprechen:</strong> Jede belastende Aussage steht neben Quelle, Gegenbeleg, Unsicherheit und einem Weg zur Korrektur.</span></div>
+  </header>
+
+  <main class="wrap">
+    <section id="faelle">
+      <div class="section-head"><h2>Die Fälle</h2><p>Die Ampel zeigt den Veröffentlichungsstatus – nicht, ob jemand „schuldig“ ist. Jeder Fall kann durch neue Evidenz stärker, schwächer oder geschlossen werden.</p></div>
+      <div class="filters" role="group" aria-label="Fallfilter">
+        <button class="filter active" data-filter="all">Alle</button>
+        <button class="filter" data-filter="publishable">Publizierbar</button>
+        <button class="filter" data-filter="watch">Live Watch</button>
+        <button class="filter" data-filter="transparency">Transparenz</button>
+      </div>
+      <div class="cases" id="caseGrid"><div class="loading">Fälle werden geladen …</div></div>
+    </section>
+
+    <section id="impact">
+      <div class="section-head"><h2>Impact ohne Selbsttäuschung</h2><p>Reichweite ist Aufmerksamkeit. Wirkung beginnt erst, wenn Evidenz besser wird, Verantwortung klarer wird, Verhalten sich ändert oder Tiere messbar weniger leiden.</p></div>
+      <div class="impact-framework">
+        <article class="impact-card"><small>01 · EVIDENCE</small><h3>Wissen verbessert</h3><p>Neue Primärquellen, korrigierte Zahlen, beantwortete Fragen und reproduzierte Befunde.</p></article>
+        <article class="impact-card"><small>02 · ACCOUNTABILITY</small><h3>Antworten ausgelöst</h3><p>Stellungnahmen, parlamentarische Fragen, feste Zuständigkeiten, Fristen und sichtbare Korrekturen.</p></article>
+        <article class="impact-card"><small>03 · BEHAVIOUR</small><h3>Praxis verändert</h3><p>Kontrollen, Plattformregeln, Rückverfolgbarkeit, Gesetzgebung und Branchenstandards.</p></article>
+        <article class="impact-card"><small>04 · OUTCOME</small><h3>Tierleid reduziert</h3><p>Weniger Mortalität, Verletzungen, schwere Verstöße, Transportdauer und Wiederholungsmängel.</p></article>
+      </div>
+    </section>
+
+    <section id="checker">
+      <div class="section-head"><h2>Kann dein Fall angenommen werden?</h2><p>Dieser Check entscheidet nichts über Wahrheit oder Schuld. Er schätzt nur, ob ein Fall mit öffentlichen Quellen sinnvoll, fair und sicher untersucht werden kann.</p></div>
+      <div class="checker">
+        <div>
+          <div class="eyebrow">Browser-local · keine Übertragung</div>
+          <h2>Citizen Case Checker</h2>
+          <p class="checker-copy">Bewerte nicht, wie wütend dich ein Thema macht, sondern wie konkret und überprüfbar es ist. Fälle mit vertraulichen Dokumenten oder gefährdeten Personen gehören noch nicht in dieses öffentliche Werkzeug.</p>
+          <div class="checker-result" aria-live="polite">
+            <div class="result-score" id="resultScore">18</div>
+            <div class="result-label" id="resultLabel">Vorprüfung sinnvoll</div>
+            <div class="result-explain" id="resultExplain">Formuliere eine engere Forschungsfrage und sichere zuerst zwei belastbare Primärquellen.</div>
+          </div>
+          <p class="checker-note">Die Bewertung bleibt ausschließlich in deinem Browser. Sie wird nicht gespeichert oder gesendet.</p>
+        </div>
+        <form id="caseChecker">
+          <div class="question-row"><label for="harm"><span>Möglicher öffentlicher oder tierischer Schaden</span><output id="harmOut">3</output></label><input id="harm" type="range" min="0" max="5" value="3" /></div>
+          <div class="question-row"><label for="evidence"><span>Zugang zu amtlichen oder anderen starken Primärquellen</span><output id="evidenceOut">3</output></label><input id="evidence" type="range" min="0" max="5" value="3" /></div>
+          <div class="question-row"><label for="action"><span>Konkrete Akteure und realistische nächste Schritte</span><output id="actionOut">3</output></label><input id="action" type="range" min="0" max="5" value="3" /></div>
+          <div class="question-row"><label for="urgency"><span>Zeitkritikalität oder Risiko verlorener Belege</span><output id="urgencyOut">3</output></label><input id="urgency" type="range" min="0" max="5" value="3" /></div>
+          <div class="question-row"><label for="publicValue"><span>Öffentlicher Mehrwert gegenüber vorhandener Berichterstattung</span><output id="publicValueOut">3</output></label><input id="publicValue" type="range" min="0" max="5" value="3" /></div>
+          <div class="question-row"><label for="fairness"><span>Gegenseite und Gegenbelege können fair einbezogen werden</span><output id="fairnessOut">3</output></label><input id="fairness" type="range" min="0" max="5" value="3" /></div>
+          <label class="checkline"><input id="personalData" type="checkbox" />Der Fall benötigt private personenbezogene Daten oder vertrauliche Uploads.</label>
+          <label class="checkline"><input id="unsafeMethod" type="checkbox" />Der Fall wäre nur mit Täuschung, Hacking, Doxxing oder verdecktem Zugang bearbeitbar.</label>
+          <label class="checkline"><input id="specificQuestion" type="checkbox" checked />Es gibt eine konkrete, falsifizierbare Forschungsfrage.</label>
+        </form>
+      </div>
+    </section>
+
+    <section id="loop">
+      <div class="section-head"><h2>Der TRACE Loop</h2><p>Ein wiederverwendbarer Ablauf für Bürger:innen, Redaktionen und Organisationen – von der ersten Frage bis zur messbaren Abhilfe.</p></div>
+      <div class="loop">
+        <article class="loop-step"><b>T</b><strong>Test</strong><p>Ist die Frage konkret, falsifizierbar und öffentlich relevant?</p></article>
+        <article class="loop-step"><b>R</b><strong>Register</strong><p>Primärquellen, Datenstände, Definitionen und Originale erfassen.</p></article>
+        <article class="loop-step"><b>A</b><strong>Assemble</strong><p>Belege, Gegenbelege, Zeitlinie und alternative Erklärungen verbinden.</p></article>
+        <article class="loop-step"><b>C</b><strong>Challenge</strong><p>Stärkste Gegenposition, Recht auf Antwort und Schadensprüfung.</p></article>
+        <article class="loop-step"><b>E</b><strong>Evaluate</strong><p>Begrenztes Verdict, Aktion, Impact-Metrik, Monitoring und Korrektur.</p></article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div><h2>Erste Mission: zwei Fehler in öffentliches Lernen verwandeln.</h2></div>
+      <div><p>Wir starten mit Case 012 und Case 015: bundesweite Mortalitätsdaten anfragen und den Berliner Zahlenwiderspruch sachlich klären. Danach zeigen wir öffentlich, was geantwortet, korrigiert oder weiter offengeblieben ist.</p><div class="cta-actions"><a class="btn" href="https://github.com/mikelninh/digital-democracy-studio/issues/50">Case 012 öffnen</a><a class="btn secondary" href="https://github.com/mikelninh/digital-democracy-studio/issues/53">Case 015 öffnen</a></div></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><span>SafeTrace Animal Welfare Evidence Series v0.1 · Datenstand 26.07.2026</span><span><a href="README.md">Methodik</a> · <a href="cases.json">Open Data</a> · <a href="https://github.com/mikelninh/digital-democracy-studio">GitHub</a></span></div></footer>
+
+  <script>
+    const statusMeta = status => {
+      if (status.includes('live_') || status.includes('waiting')) return { cls:'watch', label:'Live Watch', group:'watch' };
+      if (status.includes('question')) return { cls:'question', label:'Transparenzfrage', group:'transparency' };
+      if (status.includes('transparency') || status.includes('data_quality')) return { cls:'publish', label:'Publizierbar', group:'transparency' };
+      return { cls:'publish', label:'Publizierbar', group:'publishable' };
+    };
+    const dots = (value, extra='') => `<span class="dots ${extra}">${[1,2,3,4,5].map(i=>`<i class="${i<=value?'on':''}"></i>`).join('')}</span>`;
+    const escapeHTML = value => String(value).replace(/[&<>'"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[c]));
+
+    function renderCase(item){
+      const meta=statusMeta(item.status);
+      return `<article class="case" data-id="${escapeHTML(item.id)}" data-group="${meta.group} ${item.status.includes('publishable')?'publishable':''}">
+        <div class="case-top"><div class="case-id">${escapeHTML(item.id)}</div><div class="badge ${meta.cls}">${meta.label}</div></div>
+        <h3>${escapeHTML(item.title)}</h3>
+        <p class="verdict">${escapeHTML(item.verdict)}</p>
+        <div class="meters">
+          <div class="meter"><small>Beweisstärke</small>${dots(item.evidence_strength)}</div>
+          <div class="meter"><small>Impact-Potenzial</small>${dots(item.impact_potential,'impact')}</div>
+          <div class="meter"><small>Dringlichkeit</small>${dots(item.urgency,'urgent')}</div>
+        </div>
+        <div class="claim">${escapeHTML(item.publish_line)}</div>
+        <details class="case-details"><summary>Belege und nächste Schritte</summary>
+          <div class="detail-block"><h4>Verifiziert</h4><ul>${item.verified_claims.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul></div>
+          <div class="detail-block"><h4>Nicht belegt</h4><ul>${item.not_established.map(x=>`<li>${escapeHTML(x)}</li>`).join('')}</ul></div>
+          <div class="detail-block"><h4>Nächste Aktion</h4><p class="verdict">${escapeHTML(item.next_action)}</p></div>
+          <div class="detail-block"><h4>Win-win-win</h4><p class="verdict">${escapeHTML(item.win_win_win)}</p></div>
+          <div class="detail-block"><h4>Quellen</h4><div class="source-list">${item.sources.map(s=>`<a href="${escapeHTML(s.url)}" target="_blank" rel="noopener"><span>${escapeHTML(s.publisher)} · ${escapeHTML(s.title)}</span><span>↗</span></a>`).join('')}</div></div>
+          <a class="issue-link" href="https://github.com/mikelninh/digital-democracy-studio/issues/${item.issue}">Offenen Case und Aufgaben ansehen →</a>
+        </details>
+      </article>`;
+    }
+
+    let allCases=[];
+    async function loadCases(){
+      try{
+        const res=await fetch('cases.json',{cache:'no-store'});
+        if(!res.ok) throw new Error('catalog unavailable');
+        const data=await res.json(); allCases=data.cases; draw('all');
+      }catch(err){document.getElementById('caseGrid').innerHTML='<div class="error">Der Fallkatalog konnte nicht geladen werden. Öffne <a href="cases.json">cases.json</a> direkt.</div>';}
+    }
+    function draw(filter){
+      const shown=filter==='all'?allCases:allCases.filter(c=>{
+        const meta=statusMeta(c.status); return meta.group===filter || (filter==='publishable'&&c.status.includes('publishable'));
+      });
+      document.getElementById('caseGrid').innerHTML=shown.map(renderCase).join('');
+    }
+    document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); draw(btn.dataset.filter);
+    }));
+
+    const ids=['harm','evidence','action','urgency','publicValue','fairness'];
+    const form=document.getElementById('caseChecker');
+    function updateChecker(){
+      let score=ids.reduce((sum,id)=>sum+Number(document.getElementById(id).value),0);
+      ids.forEach(id=>document.getElementById(id+'Out').value=document.getElementById(id).value);
+      const privateData=document.getElementById('personalData').checked;
+      const unsafe=document.getElementById('unsafeMethod').checked;
+      const specific=document.getElementById('specificQuestion').checked;
+      if(privateData) score-=6; if(unsafe) score-=12; if(!specific) score-=6;
+      score=Math.max(0,score);
+      let label,explain;
+      if(unsafe){label='Nicht mit diesem Tool';explain='Der vorgeschlagene Weg erfordert unzulässige oder gefährliche Methoden. Formuliere einen legalen Public-Source-Ansatz oder wende dich an eine qualifizierte Stelle.';}
+      else if(privateData){label='Partner erforderlich';explain='Der Fall enthält sensible oder vertrauliche Daten. Das öffentliche SafeTrace-Lab ist dafür noch nicht freigegeben.';}
+      else if(score>=24){label='Priorisiert annehmen';explain='Hoher erwartbarer öffentlicher Nutzen. Beginne mit Case Charter, Primärquellen und einer aktiven Suche nach Gegenbelegen.';}
+      else if(score>=18){label='Datensprint definieren';explain='Der Fall ist vielversprechend. Definiere eine enge erste Frage und ein konkretes Ergebnis für die Vorprüfung.';}
+      else if(score>=12){label='Vorprüfung sinnvoll';explain='Formuliere die Frage enger und sichere zuerst mindestens zwei belastbare Primärquellen.';}
+      else{label='Noch nicht annehmen';explain='Der Fall ist derzeit zu unklar, zu privat oder zu schwach belegt. Das ist kein Urteil über das Anliegen – nur über die aktuelle Untersuchbarkeit.';}
+      document.getElementById('resultScore').textContent=score;
+      document.getElementById('resultLabel').textContent=label;
+      document.getElementById('resultExplain').textContent=explain;
+    }
+    form.addEventListener('input',updateChecker); updateChecker(); loadCases();
+  </script>
+</body>
+</html>
