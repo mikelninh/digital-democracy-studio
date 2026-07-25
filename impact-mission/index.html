@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Impact-Mission 001: Arbeitslosenquote, Armutsgefährdungsquote und Ausbau Wind an Land – verständlich, quellengebunden und ohne falsche Kausalität." />
+  <title>Impact-Mission 001 — Arbeit. Teilhabe. Energie.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f4f1e9;
+      --paper-2: #ebe6db;
+      --ink: #171915;
+      --muted: #62665e;
+      --line: rgba(23, 25, 21, .16);
+      --green: #28624d;
+      --green-soft: #dce8df;
+      --amber: #8c5d15;
+      --amber-soft: #f0e3c9;
+      --red: #8d3931;
+      --red-soft: #edd9d5;
+      --blue: #315f79;
+      --blue-soft: #dbe6eb;
+      --shadow: 0 20px 50px rgba(44, 43, 37, .09);
+      --radius: 22px;
+      --wrap: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 5%, rgba(255,255,255,.85), transparent 28rem),
+        linear-gradient(180deg, #f7f4ed 0%, var(--paper) 44%, #eeeadf 100%);
+      font-family: Manrope, system-ui, sans-serif;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    .wrap { width: min(calc(100% - 36px), var(--wrap)); margin: 0 auto; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .brand span { font-weight: 400; color: var(--muted); }
+
+    .top-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font: 500 12px/1 DM Mono, monospace;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(40, 98, 77, .12);
+    }
+
+    header { padding: 74px 0 42px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font: 500 12px/1.4 DM Mono, monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+
+    h1 {
+      max-width: 950px;
+      margin: 24px 0 20px;
+      font: 500 clamp(52px, 8vw, 104px)/.91 Newsreader, serif;
+      letter-spacing: -.055em;
+    }
+    h1 em { color: var(--green); font-style: italic; font-weight: 400; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(270px, .55fr);
+      gap: 50px;
+      align-items: end;
+      margin-top: 40px;
+    }
+    .intro-copy {
+      max-width: 740px;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.52;
+      letter-spacing: -.02em;
+      color: #343730;
+    }
+    .intro-copy strong { color: var(--ink); }
+
+    .mission-pulse {
+      border-left: 1px solid var(--line);
+      padding-left: 28px;
+    }
+    .pulse-label {
+      font: 500 11px/1.2 DM Mono, monospace;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .pulse-number {
+      margin: 9px 0 3px;
+      font: 500 58px/1 Newsreader, serif;
+      letter-spacing: -.05em;
+    }
+    .pulse-text { color: var(--muted); line-height: 1.4; font-size: 14px; }
+
+    .principle {
+      margin: 34px 0 0;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      background: rgba(255,255,255,.38);
+    }
+    .principle b { color: var(--ink); }
+
+    main { padding-bottom: 100px; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin: 64px 0 20px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font: 500 clamp(32px, 4vw, 48px)/1 Newsreader, serif;
+      letter-spacing: -.035em;
+    }
+    .section-head p { margin: 0; max-width: 510px; color: var(--muted); line-height: 1.55; font-size: 14px; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-height: 570px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.56);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .card::after {
+      content: attr(data-index);
+      position: absolute;
+      right: 17px;
+      bottom: -25px;
+      font: 500 130px/1 Newsreader, serif;
+      color: rgba(23,25,21,.035);
+      pointer-events: none;
+    }
+
+    .card-head { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
+    .card-kicker {
+      font: 500 11px/1.4 DM Mono, monospace;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+    }
+    .status {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      font: 500 10px/1 DM Mono, monospace;
+      text-transform: uppercase;
+      letter-spacing: .035em;
+    }
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .status.stable { color: var(--amber); background: var(--amber-soft); }
+    .status.wrong_direction, .status.off_track { color: var(--red); background: var(--red-soft); }
+    .status.on_track { color: var(--green); background: var(--green-soft); }
+
+    .card h3 {
+      margin: 26px 0 4px;
+      min-height: 58px;
+      font: 500 28px/1.05 Newsreader, serif;
+      letter-spacing: -.025em;
+    }
+    .value-row { display: flex; align-items: baseline; gap: 9px; margin: 18px 0 2px; }
+    .value { font: 500 clamp(58px, 6vw, 76px)/.9 Newsreader, serif; letter-spacing: -.055em; }
+    .unit { color: var(--muted); font-weight: 600; font-size: 14px; }
+    .period { color: var(--muted); font: 400 12px/1.4 DM Mono, monospace; }
+
+    .signal {
+      margin: 28px 0 0;
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .signal-cell small { display: block; margin-bottom: 7px; color: var(--muted); font: 400 10px/1.2 DM Mono, monospace; text-transform: uppercase; letter-spacing: .05em; }
+    .signal-cell strong { font-size: 17px; letter-spacing: -.02em; }
+    .signal-cell strong.bad { color: var(--red); }
+    .signal-cell strong.neutral { color: var(--amber); }
+    .signal-cell strong.good { color: var(--green); }
+
+    .track { margin: 25px 0 0; }
+    .track-meta { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 9px; color: var(--muted); font: 400 10px/1.2 DM Mono, monospace; text-transform: uppercase; }
+    .bar { height: 8px; border-radius: 999px; overflow: hidden; background: var(--paper-2); }
+    .bar > span { display: block; height: 100%; border-radius: inherit; background: var(--blue); }
+    .bar.red > span { background: var(--red); }
+
+    .card-note { margin: 22px 0 0; color: #464a42; font-size: 13px; line-height: 1.58; }
+    .source {
+      margin-top: auto;
+      padding-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .source a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 12px;
+      background: rgba(255,255,255,.45);
+      transition: transform .18s ease, background .18s ease;
+    }
+    .source a:hover { transform: translateY(-2px); background: white; }
+    .source a span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .source a span:last-child { font-size: 18px; }
+
+    .interpretation {
+      margin-top: 70px;
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: 28px;
+      background: #1c211c;
+      color: #f1efe7;
+      display: grid;
+      grid-template-columns: .8fr 1.35fr;
+      gap: 60px;
+      box-shadow: var(--shadow);
+    }
+    .interpretation .eyebrow { color: #aeb5aa; }
+    .interpretation h2 { margin: 22px 0 0; font: 500 clamp(37px, 5vw, 61px)/.98 Newsreader, serif; letter-spacing: -.04em; }
+    .verdict { margin: 0; font-size: clamp(19px, 2vw, 25px); line-height: 1.5; color: #e4e5dd; letter-spacing: -.02em; }
+    .verdict strong { color: white; }
+    .verdict-foot { margin-top: 28px; color: #aeb5aa; line-height: 1.65; font-size: 13px; }
+
+    .levers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .lever {
+      padding: 25px;
+      border-top: 3px solid var(--ink);
+      background: rgba(255,255,255,.28);
+    }
+    .lever .num { font: 500 11px/1 DM Mono, monospace; color: var(--muted); }
+    .lever h3 { margin: 20px 0 11px; font: 500 25px/1.08 Newsreader, serif; }
+    .lever p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    details {
+      margin-top: 60px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+      font-weight: 700;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font: 400 28px/1 Newsreader, serif; }
+    details[open] summary::after { content: "−"; }
+    .method {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 5px 0 32px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .method strong { display: block; margin-bottom: 8px; color: var(--ink); }
+
+    footer {
+      padding: 30px 0 50px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .foot { display: flex; justify-content: space-between; gap: 24px; }
+    .foot a { text-underline-offset: 3px; }
+
+    .loading { padding: 40px 0; color: var(--muted); }
+    .error { padding: 18px; border: 1px solid var(--red); color: var(--red); border-radius: 12px; }
+
+    @media (max-width: 980px) {
+      .cards, .levers { grid-template-columns: 1fr; }
+      .card { min-height: 0; }
+      .intro, .interpretation { grid-template-columns: 1fr; }
+      .mission-pulse { border-left: 0; border-top: 1px solid var(--line); padding: 22px 0 0; }
+      .interpretation { gap: 32px; }
+      .section-head { align-items: start; flex-direction: column; }
+      .method { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    @media (max-width: 600px) {
+      .top-meta span:last-child { display: none; }
+      header { padding-top: 52px; }
+      h1 { font-size: 56px; }
+      .principle { border-radius: 18px; align-items: start; }
+      .card { padding: 20px; }
+      .card-head { display: block; }
+      .status { margin-top: 12px; }
+      .signal { grid-template-columns: 1fr; }
+      .foot { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card { animation: rise .65s both; }
+      .card:nth-child(2) { animation-delay: .08s; }
+      .card:nth-child(3) { animation-delay: .16s; }
+      @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Hauptnavigation">
+      <a class="brand" href="../">Digital Democracy <span>Studio</span></a>
+      <div class="top-meta"><i class="live-dot" aria-hidden="true"></i><span>Mission 001</span><span id="dataVersion">Daten werden geladen</span></div>
+    </nav>
+  </div>
+
+  <header class="wrap">
+    <div class="eyebrow">Impact-Mission 001 · Deutschland</div>
+    <h1>Arbeit. Teilhabe. <em>Energie.</em></h1>
+    <div class="intro">
+      <div class="intro-copy">
+        Drei Zahlen, die zeigen, ob Fortschritt im Alltag ankommt: <strong>Finden Menschen Arbeit?</strong> Können sie am gesellschaftlichen Leben teilhaben? Und bauen wir die Infrastruktur einer klimaneutralen Zukunft schnell genug?
+      </div>
+      <aside class="mission-pulse" aria-label="Missionsstatus">
+        <div class="pulse-label">Klar auf Kurs</div>
+        <div class="pulse-number" id="pulseNumber">—</div>
+        <div class="pulse-text" id="pulseText">Wir prüfen drei Indikatoren gegen Richtung und Zielpfad.</div>
+      </aside>
+    </div>
+    <div class="principle"><span aria-hidden="true">◎</span><span><b>Regel:</b> Wir zeigen Messwerte, Quellen und Grenzen. Ein Trend ist noch keine Ursache.</span></div>
+  </header>
+
+  <main class="wrap">
+    <div class="section-head">
+      <h2>Die drei Signale</h2>
+      <p>Jede Karte nutzt die aktuellste verfügbare amtliche Veröffentlichung. Unterschiedliche Aktualisierungsrhythmen bleiben sichtbar, statt künstlich glattgerechnet zu werden.</p>
+    </div>
+
+    <section class="cards" id="cards" aria-live="polite">
+      <p class="loading">Amtliche Daten werden geladen …</p>
+    </section>
+
+    <section class="interpretation" aria-labelledby="verdict-title">
+      <div>
+        <div class="eyebrow">Erste Einordnung</div>
+        <h2 id="verdict-title">Fortschritt ist noch kein Gesamtbild.</h2>
+      </div>
+      <div>
+        <p class="verdict"><strong>Der Arbeitsmarkt bewegt sich kaum, die Armutsgefährdung ist gestiegen und der Windzubau bleibt deutlich unter dem benötigten Tempo.</strong> Das ist kein Urteil über eine einzelne Regierung. Es ist ein öffentliches Frühwarnsystem: Wo stimmen Richtung und Geschwindigkeit noch nicht?</p>
+        <p class="verdict-foot">Die drei Kennzahlen werden nicht zu einem scheinpräzisen Gesamtscore verrechnet. So vermeiden wir, dass ein guter Wert einen schlechten verdeckt. Jede Mission bleibt einzeln überprüfbar.</p>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <h2>Was jetzt zählt</h2>
+      <p>Die Leitfragen hinter den Zahlen. In der nächsten Ausbaustufe verbinden wir Maßnahmen, Haushaltsmittel und belegbare Ergebnisse – ohne vorschnelle Kausalbehauptungen.</p>
+    </div>
+
+    <section class="levers" aria-label="Handlungsfelder">
+      <article class="lever">
+        <div class="num">01 · ARBEIT</div>
+        <h3>Nicht nur Jobs zählen. Übergänge zählen.</h3>
+        <p>Wie schnell finden Menschen aus Arbeitslosigkeit in stabile Beschäftigung? Dafür müssen Langzeitarbeitslosigkeit, Vermittlungsdauer, offene Stellen und Qualität der Arbeit neben der Quote sichtbar werden.</p>
+      </article>
+      <article class="lever">
+        <div class="num">02 · TEILHABE</div>
+        <h3>Einkommen muss ein Leben ermöglichen.</h3>
+        <p>Die Armutsgefährdungsquote braucht Kontext: Wohnkosten, Haushaltsform, Kinder, Alter und materielle Entbehrung. Die Mission fragt nicht nur, wer unter einer Linie liegt, sondern was Menschen real fehlt.</p>
+      </article>
+      <article class="lever">
+        <div class="num">03 · ENERGIE</div>
+        <h3>Genehmigung ist noch keine Kilowattstunde.</h3>
+        <p>Genehmigungen und Ausschreibungen sind Vorläufer. Entscheidend sind Inbetriebnahmen, Netzanschlüsse und Nettozubau. Der Zielpfad macht sichtbar, ob gute Vorarbeit rechtzeitig zu realer Leistung wird.</p>
+      </article>
+    </section>
+
+    <details>
+      <summary>Methodik und Grenzen</summary>
+      <div class="method">
+        <div><strong>Amtliche Quellen zuerst</strong>Bundesagentur für Arbeit, Destatis und Bundesnetzagentur. Jede Karte verlinkt die konkrete Veröffentlichung und zeigt deren Datenstand.</div>
+        <div><strong>Keine falsche Vergleichbarkeit</strong>Monatsdaten und Jahresdaten werden nicht vermischt. Prozentpunkte, Prozentwerte, Leistung und Zielpfad bleiben in ihren eigenen Einheiten.</div>
+        <div><strong>Keine erfundene Kausalität</strong>Die Mission zeigt Richtung, Tempo und offene Fragen. Welche Maßnahme welchen Effekt hatte, braucht eine eigene Evidenzprüfung.</div>
+      </div>
+    </details>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>Impact-Mission 001 · Datenversion <span id="footerVersion">—</span> · gebaut in Berlin</span>
+      <span><a href="data/indicators.json">Offene Daten</a> · <a href="README.md">Dokumentation</a> · <a href="https://github.com/mikelninh/digital-democracy-studio/tree/main/impact-mission">GitHub</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const fallbackData = {
+      mission: { data_version: '2026-07-25' },
+      indicators: [
+        { id:'unemployment-rate', label:'Arbeitslosenquote', value:6.2, unit:'%', period:'Juni 2026', status:'stable', status_label:'stabil, aber nicht verbessert', change:{month_over_month_pp:-0.1,year_over_year_pp:0}, context:{people_unemployed:2936000}, target:{label:'dauerhaft sinkend'}, source:{publisher:'Bundesagentur für Arbeit',url:'https://www.arbeitsagentur.de/presse/2026-22-arbeitsmarkt-im-juni-2026'}, caveat:'BA-Arbeitslosenquote und ILO-Erwerbslosenquote sind nicht identisch.' },
+        { id:'at-risk-of-poverty-rate', label:'Armutsgefährdungsquote', value:16.1, unit:'%', period:'2025', status:'wrong_direction', status_label:'in die falsche Richtung', change:{year_over_year_pp:0.6,previous_value:15.5}, context:{single_person_monthly_threshold_eur:1445}, target:{label:'jährlich sinkend'}, source:{publisher:'Destatis',url:'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Einkommen-Konsum-Lebensbedingungen/Lebensbedingungen-Armutsgefaehrdung/aktuell.html'}, caveat:'Die Kennzahl misst relative Einkommensarmut unter 60 % des nationalen Medians.' },
+        { id:'onshore-wind-expansion', label:'Ausbau Wind an Land', value:70.051, unit:'GW installiert', period:'Juni 2026', status:'off_track', status_label:'deutlich unter Zielpfad', change:{net_addition_ytd_gw:1.9429,net_addition_june_gw:0.443}, target:{value:115,remaining_gap_gw:44.949,required_monthly_addition_gw:0.832,ytd_required_gw:4.992,ytd_pace_ratio:0.389}, source:{publisher:'Bundesnetzagentur / MaStR',url:'https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EE-Statistik/DL/EEStatistikMaStR.pdf?__blob=publicationFile'}, caveat:'Registrierungen können wegen der Meldefrist nachträglich ergänzt werden.' }
+      ]
+    };
+
+    const fmt = (number, digits = 1) => new Intl.NumberFormat('de-DE', { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(number);
+    const signedPP = value => `${value > 0 ? '+' : value < 0 ? '−' : '±'}${fmt(Math.abs(value), 1)} PP`;
+    const statusClass = status => ['stable','wrong_direction','off_track','on_track'].includes(status) ? status : 'stable';
+
+    function signalHTML(indicator) {
+      if (indicator.id === 'unemployment-rate') {
+        return `
+          <div class="signal-cell"><small>zum Vormonat</small><strong class="good">${signedPP(indicator.change.month_over_month_pp)}</strong></div>
+          <div class="signal-cell"><small>zum Vorjahr</small><strong class="neutral">${signedPP(indicator.change.year_over_year_pp)}</strong></div>`;
+      }
+      if (indicator.id === 'at-risk-of-poverty-rate') {
+        return `
+          <div class="signal-cell"><small>Vorjahr</small><strong>${fmt(indicator.change.previous_value,1)} %</strong></div>
+          <div class="signal-cell"><small>Veränderung</small><strong class="bad">${signedPP(indicator.change.year_over_year_pp)}</strong></div>`;
+      }
+      return `
+        <div class="signal-cell"><small>Nettozubau 2026</small><strong>${fmt(indicator.change.net_addition_ytd_gw,3)} GW</strong></div>
+        <div class="signal-cell"><small>benötigt bis Juni</small><strong class="bad">${fmt(indicator.target.ytd_required_gw,3)} GW</strong></div>`;
+    }
+
+    function trackHTML(indicator) {
+      if (indicator.id === 'unemployment-rate') {
+        return `<div class="track"><div class="track-meta"><span>Richtung: sinkend</span><span>Vorjahr: unverändert</span></div><div class="bar"><span style="width:50%"></span></div></div>`;
+      }
+      if (indicator.id === 'at-risk-of-poverty-rate') {
+        return `<div class="track"><div class="track-meta"><span>Richtung: sinkend</span><span>aktuell: gestiegen</span></div><div class="bar red"><span style="width:72%"></span></div></div>`;
+      }
+      const targetCompletion = Math.min(100, indicator.value / indicator.target.value * 100);
+      return `<div class="track"><div class="track-meta"><span>${fmt(indicator.value,3)} von ${fmt(indicator.target.value,0)} GW</span><span>${fmt(targetCompletion,1)} %</span></div><div class="bar"><span style="width:${targetCompletion}%"></span></div><div class="track-meta" style="margin-top:14px"><span>Tempo 2026</span><span>${fmt(indicator.target.ytd_pace_ratio*100,0)} % des Zielpfads</span></div><div class="bar red"><span style="width:${Math.min(100,indicator.target.ytd_pace_ratio*100)}%"></span></div></div>`;
+    }
+
+    function contextNote(indicator) {
+      if (indicator.id === 'unemployment-rate') return `${new Intl.NumberFormat('de-DE').format(indicator.context.people_unemployed)} Menschen waren arbeitslos registriert. Die Quote sank monatlich leicht, blieb gegenüber dem Vorjahr aber unverändert.`;
+      if (indicator.id === 'at-risk-of-poverty-rate') return `Für eine alleinlebende Person lag die Schwelle bei rund ${new Intl.NumberFormat('de-DE', {style:'currency',currency:'EUR',maximumFractionDigits:0}).format(indicator.context.single_person_monthly_threshold_eur)} netto im Monat. Gegenüber 2024 stieg die Quote um 0,6 Prozentpunkte.`;
+      return `Bis zum 115-GW-Ziel fehlen ${fmt(indicator.target.remaining_gap_gw,3)} GW. Der erforderliche Pfad liegt derzeit bei rund ${fmt(indicator.target.required_monthly_addition_gw*1000,0)} MW netto pro Monat.`;
+    }
+
+    function renderCard(indicator, index) {
+      return `
+        <article class="card" data-index="0${index+1}">
+          <div class="card-head">
+            <div class="card-kicker">Indikator 0${index+1}</div>
+            <div class="status ${statusClass(indicator.status)}">${indicator.status_label}</div>
+          </div>
+          <h3>${indicator.label}</h3>
+          <div class="value-row"><div class="value">${fmt(indicator.value, indicator.value < 10 ? 1 : 3)}</div><div class="unit">${indicator.unit}</div></div>
+          <div class="period">Datenzeitraum · ${indicator.period}</div>
+          <div class="signal">${signalHTML(indicator)}</div>
+          ${trackHTML(indicator)}
+          <p class="card-note">${contextNote(indicator)}</p>
+          <p class="card-note"><strong>Grenze:</strong> ${indicator.caveat}</p>
+          <div class="source"><a href="${indicator.source.url}" target="_blank" rel="noopener"><span>Quelle · ${indicator.source.publisher}</span><span aria-hidden="true">↗</span></a></div>
+        </article>`;
+    }
+
+    async function init() {
+      let data = fallbackData;
+      try {
+        const response = await fetch('data/indicators.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Daten nicht erreichbar');
+        data = await response.json();
+      } catch (error) {
+        console.warn('Fallback-Daten aktiv:', error);
+      }
+
+      const onTrack = data.indicators.filter(x => x.status === 'on_track').length;
+      document.getElementById('cards').innerHTML = data.indicators.map(renderCard).join('');
+      document.getElementById('pulseNumber').textContent = `${onTrack} / ${data.indicators.length}`;
+      document.getElementById('pulseText').textContent = onTrack === data.indicators.length
+        ? 'Alle Signale bewegen sich derzeit in die richtige Richtung.'
+        : 'Keiner der drei Indikatoren ist derzeit eindeutig auf Zielkurs.';
+      document.getElementById('dataVersion').textContent = `Stand ${new Intl.DateTimeFormat('de-DE').format(new Date(data.mission.data_version))}`;
+      document.getElementById('footerVersion').textContent = data.mission.data_version;
+    }
+
+    init();
+  </script>
+</body>
+</html>
