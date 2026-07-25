@@ -25,6 +25,22 @@ The browser-local Role Simulator lets one person replay Cases 001–004 as:
 
 It supports role-filtered views, claims, sources, graph, timeline, bounded agents, review decisions, publication gates, comprehension checks and a local audit trail. It makes no network requests, publishes nothing and stores only local browser state.
 
+## Animal Welfare Evidence Series — review candidate
+
+**https://mikelninh.github.io/digital-democracy-studio/safetrace/animal_welfare_series/**
+
+The series prepares Cases 012–018 as public-source animal-welfare investigations. It includes:
+
+- sourced and bounded verdicts;
+- verified facts, explicit unknowns and counterevidence;
+- evidence-strength, impact-potential and urgency views;
+- a four-layer impact framework;
+- the reusable TRACE citizen-investigation loop;
+- a browser-local Case Checker with no telemetry or uploads;
+- explicit restrictions against confidential data, automated accusations and autonomous publication.
+
+The page is a review candidate until this branch is independently checked and merged. It is not permission to submit sensitive evidence or identify suspected private individuals.
+
 ## Shipped stack
 
 - **v0.3–v1.0** — public investigation prototype and controlled-pilot gates.
@@ -36,6 +52,7 @@ It supports role-filtered views, claims, sources, graph, timeline, bounded agent
 - **v1.7** — complete Case 004 technical reference workflow without false re-certification.
 - **v1.8** — hashed external-review packets, finding register, dry-run exercises, source-backfill plan and consent-based study protocols.
 - **v1.8 Companion** — browser-local Role Simulator for six roles and four public/synthetic cases.
+- **Animal Welfare Series v0.1 candidate** — seven public-source cases, impact measurement and citizen case intake without sensitive data.
 
 ## What v1.8 proves
 
@@ -62,7 +79,7 @@ Current review state:
 - partner-pilot gate open: **no**;
 - restricted-data gate open: **no**.
 
-The Role Simulator demonstrates intended UX and authorisation boundaries. It is not production authentication, an operational investigation database or permission to process restricted data.
+The Role Simulator and Case Checker demonstrate intended UX and safety boundaries. They are not production authentication, operational investigation databases or permission to process restricted data.
 
 ## Core documents
 
@@ -78,6 +95,7 @@ The Role Simulator demonstrates intended UX and authorisation boundaries. It is 
 - [v1.7 Case 004 reference](case_004_reference/README.md)
 - [v1.8 Review Readiness](review_readiness/README.md)
 - [Role Simulator](role_simulator/README.md)
+- [Animal Welfare Evidence Series](animal_welfare_series/README.md)
 
 ## Run the v1.8 gates
 
