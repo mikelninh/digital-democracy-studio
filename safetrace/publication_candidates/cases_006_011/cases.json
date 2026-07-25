@@ -1,0 +1,56 @@
+{
+  "schema": "safetrace.public-interest-briefs/1.0",
+  "research_freeze": "2026-07-25",
+  "publication_status": "independent_review_pending",
+  "global_boundary": "No case currently supports an allegation of bribery, corruption, favouritism or unlawful influence.",
+  "cases": [
+    {
+      "id": "CASE-006",
+      "title": "DVAG donations and private-pension reform",
+      "core_finding": "Political spending and institutional proximity are verified, while the strongest observable BDV demands were rejected or met with stricter consumer-cost safeguards.",
+      "evidence_strength": "strong_primary_sources",
+      "publication_gate": "right_of_reply_and_independent_review",
+      "prohibited_inference": "Donations caused, bought or altered the law."
+    },
+    {
+      "id": "CASE-007",
+      "title": "Amazon and the 2026 UVgO reform",
+      "core_finding": "A documented overlap exists on higher direct-award thresholds, but multiple organisations sought increases and marketplace-specific adoption is not established.",
+      "evidence_strength": "strong_overlap_incomplete_drafting_path",
+      "publication_gate": "exact_redline_and_right_of_reply",
+      "prohibited_inference": "Amazon authored or improperly caused the reform."
+    },
+    {
+      "id": "CASE-008",
+      "title": "Germany's GRECO status after 31 March 2026",
+      "core_finding": "No newer German fifth-round compliance publication is publicly listed as of the research freeze, leaving the post-deadline status publicly unverifiable.",
+      "evidence_strength": "strong_public_status_finding",
+      "publication_gate": "confirmation_requested",
+      "prohibited_inference": "Germany failed to submit its report."
+    },
+    {
+      "id": "CASE-009",
+      "title": "Berlin procurement transparency",
+      "core_finding": "Visible ex-post notices commonly omit price, bid count and detailed justification, limiting defensible competition and value-for-money review.",
+      "evidence_strength": "strong_system_level_sample",
+      "publication_gate": "bulk_sample_and_authority_response_recommended",
+      "prohibited_inference": "A non-open procedure is corrupt or unlawful."
+    },
+    {
+      "id": "CASE-010",
+      "title": "Bundestag outside-interest data fragmentation",
+      "core_finding": "Detailed disclosure rules coexist with a fragmented technical publication model that lacks one versioned interest-to-policy dataset.",
+      "evidence_strength": "strong_system_level_finding",
+      "publication_gate": "technical_verification_and_bundestag_response_recommended",
+      "prohibited_inference": "A disclosed interest or policy role proves misconduct."
+    },
+    {
+      "id": "CASE-011",
+      "title": "Federal audit follow-through tracker",
+      "core_finding": "Parliament created concrete reporting deadlines, but acceptance of recommendations must remain separate from publicly verified implementation.",
+      "evidence_strength": "strong_primary_source_tracker",
+      "publication_gate": "locate_due_reports_or_mark_not_publicly_verified",
+      "prohibited_inference": "A report not located in this review was never submitted or the recommendation was ignored."
+    }
+  ]
+}
