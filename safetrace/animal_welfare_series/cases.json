@@ -1,19 +1,72 @@
 {
-  "schema": "safetrace.animal-welfare-series/0.1",
+  "schema": "safetrace.animal-welfare-series/0.2",
   "generated_at": "2026-07-26",
+  "series_name": "Spuren im System",
+  "season_name": "Tierwohl",
+  "tagline": "Öffentliche Belege. Faire Prüfung. Messbare Veränderung.",
   "scope": "Germany-first public-source animal-welfare investigations",
   "publication_rule": "Only exact sourced facts, bounded interpretations and explicit unknowns may be published. Correlation, lobbying overlap, missing data or secrecy do not establish illegality or corruption.",
+  "priority_model": {
+    "dimensions": [
+      "harm",
+      "evidence_access",
+      "actionability",
+      "urgency",
+      "public_value",
+      "fairness_capacity"
+    ],
+    "score_range": "0–5 per dimension",
+    "penalties": {
+      "private_data": -6,
+      "unsafe_methods": -12,
+      "unclear_question": -6,
+      "capacity_gap": -4
+    },
+    "thresholds": {
+      "24–30": "priorisiert annehmen",
+      "18–23": "Datensprint definieren",
+      "12–17": "Vorprüfung oder Frage schärfen",
+      "0–11": "nicht annehmen oder weiterverweisen"
+    },
+    "separation_rule": "Priority ranks expected public value and investigability. It does not determine truth, guilt or publication readiness."
+  },
   "cases": [
     {
       "id": "CASE-012",
       "issue": 50,
       "slug": "animal-mortality-data-gap",
+      "story_title": "Die unsichtbaren Toten",
+      "story_deck": "Deutschland zählt Millionen Tiere. Doch bundesweit fehlt eine vergleichbare Antwort darauf, wie viele schon im Stall sterben – und warum.",
       "title": "Deutschland zählt Tierbestände – aber nicht bundesweit ihre Todesfälle",
       "status": "publishable_transparency_finding",
       "verdict": "Hohe Beweisstärke für einen systemischen Datenblindfleck; kein Beweis für Verstöße einzelner Betriebe.",
       "evidence_strength": 5,
       "impact_potential": 5,
       "urgency": 4,
+      "priority": {
+        "harm": 5,
+        "evidence_access": 5,
+        "actionability": 5,
+        "urgency": 4,
+        "public_value": 5,
+        "fairness_capacity": 5,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 29,
+        "decision": "priorisiert_annehmen",
+        "rationale": "Sehr hohe öffentliche Relevanz, klare amtliche Ausgangsquelle und konkrete 16-Länder-Datenerhebung."
+      },
+      "publication_readiness": "ready_for_independent_review",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "draft_questions_ready"
+      },
       "verified_claims": [
         "Der Bundesregierung lagen laut Bundestagszusammenfassung vom 17. Februar 2026 keine Informationen zur Sterblichkeit landwirtschaftlicher Tiere und anderer Tierarten vor.",
         "Eine bundesweit standardisierte Erfassung von Falltieren und Todesursachen ist öffentlich nicht verfügbar."
@@ -34,6 +87,7 @@
       "win_win_win": "Vergleichbare, anonymisierte Risikodaten schützen Tiere, helfen Behörden bei gezielten Kontrollen und ermöglichen Betrieben Benchmarking ohne öffentliche Prangerlisten.",
       "sources": [
         {
+          "source_id": "AW-012-S01",
           "publisher": "Deutscher Bundestag",
           "title": "Mortalität landwirtschaftlicher Tiere und anderer Tierarten",
           "date": "2026-02-17",
@@ -45,12 +99,38 @@
       "id": "CASE-013",
       "issue": 51,
       "slug": "slaughterhouse-camera-threshold",
+      "story_title": "Die Kamera-Lücke",
+      "story_deck": "Schlachthöfe sollen überwacht werden. Aber die Pflicht beginnt erst oberhalb fester Größenwerte, deren reale Reichweite niemand öffentlich beziffert.",
       "title": "Videoüberwachung im Schlachthof – mit Größen-Ausnahme",
       "status": "publishable_policy_risk",
       "verdict": "Größen-Ausnahme und gegensätzliche Lobbypositionen sind belegt; Reichweite und Ursache der Ausnahme bleiben offen.",
       "evidence_strength": 4,
       "impact_potential": 5,
       "urgency": 5,
+      "priority": {
+        "harm": 5,
+        "evidence_access": 4,
+        "actionability": 5,
+        "urgency": 5,
+        "public_value": 5,
+        "fairness_capacity": 5,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 29,
+        "decision": "priorisiert_annehmen",
+        "rationale": "Laufendes Gesetz, klarer Schwellenwert und direkt messbare Reichweite der Ausnahme."
+      },
+      "publication_readiness": "ready_for_data_sprint_and_review",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "draft_questions_ready"
+      },
       "verified_claims": [
         "Der Gesetzentwurf sieht Videoüberwachung für Betriebe oberhalb von 1.000 Großvieheinheiten Säugetieren oder 150.000 Stück Geflügel beziehungsweise Kaninchen pro Jahr vor.",
         "Die Bundesregierung begründet die Maßnahme mit der begrenzten zeitlichen und räumlichen Reichweite amtlicher Vor-Ort-Kontrollen.",
@@ -73,18 +153,21 @@
       "win_win_win": "Tiere erhalten bessere Nachweisbarkeit, faire Betriebe objektive Entlastungsbelege und kleine Betriebe Förderung, kurze Speicherfristen sowie klare Datenschutzregeln.",
       "sources": [
         {
+          "source_id": "AW-013-S01",
           "publisher": "Deutscher Bundestag",
           "title": "Videoüberwachung in größeren Schlachthöfen",
           "date": "2026-07-03",
           "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1193396"
         },
         {
+          "source_id": "AW-013-S02",
           "publisher": "Lobbyregister / Bundestierärztekammer",
           "title": "Videoüberwachung auch bei kleinen Betrieben",
           "date": "2026-06-23",
           "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0025464"
         },
         {
+          "source_id": "AW-013-S03",
           "publisher": "Lobbyregister / Deutscher Fleischer-Verband",
           "title": "Einführung einer Videoüberwachung in Schlachtbetrieben",
           "date": "2026-04-02",
@@ -96,12 +179,38 @@
       "id": "CASE-014",
       "issue": 52,
       "slug": "third-country-animal-transport",
+      "story_title": "Die Reise ohne Zeugen",
+      "story_deck": "Deutschland genehmigt Tiertransporte in Drittstaaten. Doch ist der Schutz bis zum endgültigen Ziel wirklich nachprüfbar?",
       "title": "Tiertransporte: Kontrolle bis zum endgültigen Zielort?",
       "status": "live_watch_waiting_for_official_answer",
       "verdict": "Hohe Relevanz, aber noch keine ausreichende aktuelle Datenbasis für ein Systemurteil.",
       "evidence_strength": 3,
       "impact_potential": 5,
       "urgency": 5,
+      "priority": {
+        "harm": 5,
+        "evidence_access": 3,
+        "actionability": 4,
+        "urgency": 5,
+        "public_value": 5,
+        "fairness_capacity": 4,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 26,
+        "decision": "priorisiert_annehmen",
+        "rationale": "Sehr hohes potenzielles Tierleid und zeitkritische Regierungsantwort; aktuelle Evidenz ist noch unvollständig."
+      },
+      "publication_readiness": "live_watch_not_ready_for_system_verdict",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "waiting_for_official_answer"
+      },
       "verified_claims": [
         "Die Kleine Anfrage 21/7216 zu Tiertransporten aus Deutschland in Drittstaaten wurde am 20. Juli 2026 veröffentlicht.",
         "Sie verlangt unter anderem Daten zu Kontrollen, Verstößen, verletzten oder toten Tieren, Transportzeiten und Sammelstellen.",
@@ -124,12 +233,14 @@
       "win_win_win": "Tiere profitieren von überprüfbaren Reisen, seriöse Transporteure von fairerem Wettbewerb und Behörden von risikobasierten Genehmigungen.",
       "sources": [
         {
+          "source_id": "AW-014-S01",
           "publisher": "Deutscher Bundestag DIP",
           "title": "Kleine Anfrage 21/7216: Tiertransporte aus Deutschland in Drittstaaten",
           "date": "2026-07-20",
           "url": "https://www.bundestag.de/dokumente/dip/"
         },
         {
+          "source_id": "AW-014-S02",
           "publisher": "Bundesministerium für Ernährung und Landwirtschaft",
           "title": "Eckpunkte für mehr Tierschutz beim Export lebender Tiere",
           "date": "2025-02-15",
@@ -141,12 +252,38 @@
       "id": "CASE-015",
       "issue": 53,
       "slug": "berlin-animal-experiment-control-counts",
+      "story_title": "Das Rätsel der zehn Kontrollen",
+      "story_deck": "Berlins Behörde meldet für 2025 zugleich 26 und 36 Kontrollen laufender Tierversuche. Welche Zahl stimmt?",
       "title": "Berliner Tierversuchskontrollen: 26 oder 36?",
       "status": "publishable_data_quality_finding",
       "verdict": "Der amtliche Zahlenwiderspruch ist eindeutig; daraus folgt noch kein Kontroll- oder Rechtsversagen.",
       "evidence_strength": 5,
       "impact_potential": 4,
       "urgency": 4,
+      "priority": {
+        "harm": 3,
+        "evidence_access": 5,
+        "actionability": 5,
+        "urgency": 4,
+        "public_value": 4,
+        "fairness_capacity": 5,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 26,
+        "decision": "priorisiert_annehmen",
+        "rationale": "Klarer, reproduzierbarer Befund mit sehr einfacher und messbarer Korrekturmöglichkeit."
+      },
+      "publication_readiness": "ready_for_correction_request_and_review",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "draft_questions_ready"
+      },
       "verified_claims": [
         "Das LAGeSo nennt insgesamt 64 Vor-Ort-Kontrollen im Jahr 2025.",
         "Der Fließtext nennt 38 Kontrollen von Tierhaltungen und 26 von Tierversuchen.",
@@ -170,6 +307,7 @@
       "win_win_win": "Konsistente Daten erhöhen Vertrauen, würdigen behobene Mängel und helfen Tierschutz, Wissenschaft sowie Behörde bei einer sachlichen Qualitätsdebatte.",
       "sources": [
         {
+          "source_id": "AW-015-S01",
           "publisher": "LAGeSo Berlin",
           "title": "Überwachung von Versuchseinrichtungen",
           "date": "2026-02",
@@ -181,12 +319,38 @@
       "id": "CASE-016",
       "issue": 54,
       "slug": "illegal-pet-trade-germany",
+      "story_title": "Die Route der falschen Pässe",
+      "story_deck": "EU-Ermittlungen zeigen, wie Hunde und Katzen mit falschen Angaben und getarnten Transporten nach Deutschland gelangen.",
       "title": "Illegaler Hunde- und Katzenhandel nach Deutschland",
       "status": "publishable_eu_network_finding",
       "verdict": "EU-weites Betrugsmuster und Deutschland als Zielroute sind verifiziert; deutscher Marktumfang und einzelne Verantwortliche nicht.",
       "evidence_strength": 4,
       "impact_potential": 5,
       "urgency": 4,
+      "priority": {
+        "harm": 5,
+        "evidence_access": 4,
+        "actionability": 4,
+        "urgency": 4,
+        "public_value": 5,
+        "fairness_capacity": 4,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 26,
+        "decision": "priorisiert_annehmen",
+        "rationale": "Dokumentiertes grenzüberschreitendes Muster, hoher Schaden und klare nächste Datenanfragen ohne verdeckte Methoden."
+      },
+      "publication_readiness": "ready_for_network_explainer_review",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "required_if_individual_actors_named"
+      },
       "verified_claims": [
         "Die EU-Kontrollaktion erfasste 467 Betrugsverdachtsmeldungen und 47 eingeleitete Gerichtsverfahren.",
         "Die Kommission nennt Transporte aus Rumänien, Ungarn und Polen nach Deutschland als bedeutende Route.",
@@ -211,6 +375,7 @@
       "win_win_win": "Tiere und Käufer:innen erhalten Schutz, seriöse Züchter und Tierheime faireren Wettbewerb, Plattformen und Behörden bessere Verifizierungsstandards.",
       "sources": [
         {
+          "source_id": "AW-016-S01",
           "publisher": "Europäische Kommission",
           "title": "EU enforcement action on illegal trade of cats and dogs",
           "date": "2023",
@@ -222,12 +387,38 @@
       "id": "CASE-017",
       "issue": 55,
       "slug": "military-animal-experiment-secrecy",
+      "story_title": "Die geheime Versuchszahl",
+      "story_deck": "Die Bundeswehr schützt Forschungsdetails als Verschlusssache. Welche aggregierten Tierwohldaten könnten trotzdem öffentlich sein?",
       "title": "Bundeswehr-Tierversuche und die Grenzen der Geheimhaltung",
       "status": "publishable_transparency_question",
       "verdict": "Die Geheimhaltung von Anzahl und Zweck ist bestätigt; Rechtswidrigkeit oder missbräuchliche Versuche sind nicht belegt.",
       "evidence_strength": 5,
       "impact_potential": 3,
       "urgency": 3,
+      "priority": {
+        "harm": 3,
+        "evidence_access": 5,
+        "actionability": 3,
+        "urgency": 3,
+        "public_value": 4,
+        "fairness_capacity": 4,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 22,
+        "decision": "datensprint_definieren",
+        "rationale": "Die Transparenzfrage ist belegt, aber Tierwohlwirkung und konkrete Abhilfe sind weniger direkt als bei den anderen Fällen."
+      },
+      "publication_readiness": "requires_security_legal_review",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "draft_questions_ready"
+      },
       "verified_claims": [
         "Die Bundesregierung erklärte, dass keine Projekte zum Einsatz von Tieren als Waffen, Drohnen oder in vergleichbarer Weise geplant seien.",
         "Angaben zu Anzahl und Zweck von Tierversuchen der Bundeswehr oder beauftragter Einrichtungen wurden als VS – Nur für den Dienstgebrauch eingestuft.",
@@ -249,6 +440,7 @@
       "win_win_win": "Tierschutzkontrolle wird prüfbarer, echte militärische Geheimnisse bleiben geschützt und die Bundeswehr gewinnt Vertrauen durch abgestufte Transparenz.",
       "sources": [
         {
+          "source_id": "AW-017-S01",
           "publisher": "Deutscher Bundestag",
           "title": "Keine Forschung zum Einsatz von Tieren als Waffen",
           "date": "2026-06-19",
@@ -260,12 +452,38 @@
       "id": "CASE-018",
       "issue": 56,
       "slug": "animal-husbandry-label-scope",
+      "story_title": "Das Label mit den blinden Flecken",
+      "story_deck": "Die Tierhaltungskennzeichnung kommt später – und möglicherweise nicht überall dort, wo Verbraucher:innen Fleisch kaufen.",
       "title": "Tierhaltungskennzeichnung: Verzögerung, Reichweite und Lobbykonflikt",
       "status": "live_legislative_tracker",
       "verdict": "Verschiebung und Konflikt über den Anwendungsbereich sind belegt; Forderung-zu-Gesetz-Vergleich ist noch nicht abgeschlossen.",
       "evidence_strength": 4,
       "impact_potential": 5,
       "urgency": 5,
+      "priority": {
+        "harm": 5,
+        "evidence_access": 4,
+        "actionability": 5,
+        "urgency": 5,
+        "public_value": 5,
+        "fairness_capacity": 5,
+        "penalties": {
+          "private_data": 0,
+          "unsafe_methods": 0,
+          "unclear_question": 0,
+          "capacity_gap": 0
+        },
+        "total": 29,
+        "decision": "priorisiert_annehmen",
+        "rationale": "Laufendes Gesetz mit großer Marktabdeckung, dokumentierten Interessengegensätzen und direkt messbarer Reichweite."
+      },
+      "publication_readiness": "live_tracker_requires_final_text_comparison",
+      "review_status": {
+        "editorial": "not_started",
+        "animal_welfare_domain": "not_started",
+        "legal_privacy": "not_started",
+        "right_of_reply": "draft_questions_ready"
+      },
       "verified_claims": [
         "Der Bundestag verschob die Anwendungspflicht auf den 1. Januar 2027.",
         "Der Deutsche Fleischer-Verband wandte sich gegen eine Ausweitung auf Außer-Haus-Verpflegung und verarbeitete Ware.",
@@ -290,18 +508,21 @@
       "win_win_win": "Tiere profitieren von messbarer Nachfrage, Verbraucher:innen von verständlicher Information und Betriebe von einheitlichen digitalen Regeln sowie Übergangshilfen.",
       "sources": [
         {
+          "source_id": "AW-018-S01",
           "publisher": "Deutscher Bundestag",
           "title": "Pflicht zur Verwendung der Tierhaltungskennzeichnung wird verschoben",
           "date": "2026-01-15",
           "url": "https://www.bundestag.de/dokumente/textarchiv/2026/kw03-de-tierhaltungskennzeichnungsgesetz-1134328"
         },
         {
+          "source_id": "AW-018-S02",
           "publisher": "Lobbyregister / Deutscher Fleischer-Verband",
           "title": "Praxisnahe Ausgestaltung des Tierhaltungskennzeichnungsgesetzes",
           "date": "2026-04-30",
           "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0024123"
         },
         {
+          "source_id": "AW-018-S03",
           "publisher": "Lobbyregister",
           "title": "Stellungnahmen und Regelungsvorhaben zur Tierhaltungskennzeichnung",
           "date": "2026",
