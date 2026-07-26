@@ -1,0 +1,44 @@
+name: "Spuren im System — factual correction"
+description: "Report a specific factual or source error in a published animal-welfare case."
+title: "[Correction] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form only for public information. Do not include private addresses, medical records, witness identities, confidential files or unpublished allegations.
+  - type: input
+    id: case
+    attributes:
+      label: Case or page
+      placeholder: "CASE-015 or the exact page URL"
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Exact statement that may be wrong
+      description: Quote the smallest relevant passage.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: Explain what should change and why.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Public sources
+      description: Provide direct links, dates and the passages that support the correction.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: "I have not included confidential material, private personal data or doxxing."
+          required: true
