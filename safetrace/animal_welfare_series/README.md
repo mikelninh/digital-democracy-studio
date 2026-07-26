@@ -1,277 +1,127 @@
-# SafeTrace Animal Welfare Evidence Series v0.1
+# Spuren im System — Staffel Tierwohl v0.2
 
-**Was wir wissen. Was offen bleibt. Was jetzt zählt.**
+**Öffentliche Belege. Faire Prüfung. Messbare Veränderung.**
 
-Diese Serie verwandelt öffentliche Tierschutzfragen in nachvollziehbare Fälle. Sie sucht nicht nach möglichst dramatischen Vorwürfen, sondern nach überprüfbaren Tatsachen, klaren Datenlücken und realistischen Verbesserungen.
+`Spuren im System` is the storytelling layer. The TRACE Loop is the investigation method underneath it.
 
-Live path after review and merge:
+## Case names
 
-`/safetrace/animal_welfare_series/`
-
-Machine-readable case catalog:
-
-[`cases.json`](cases.json)
-
-## Fälle
-
-| Fall | Kurzthema | Aktueller Status |
+| Case | Story title | Research title |
 |---|---|---|
-| Case 012 | Mortalitätsdaten in der Tierhaltung | publizierbarer Transparenzbefund |
-| Case 013 | Videoüberwachung in Schlachtbetrieben | publizierbarer Policy-Risikofall |
-| Case 014 | Tiertransporte in Drittstaaten | Live-Watch, Regierungsantwort offen |
-| Case 015 | Berliner Tierversuchskontrollen | publizierbarer amtlicher Datenwiderspruch |
-| Case 016 | Illegaler Hunde- und Katzenhandel | publizierbarer EU-Netzwerkbefund |
-| Case 017 | Bundeswehr-Tierversuche | publizierbare Transparenzfrage |
-| Case 018 | Tierhaltungskennzeichnung | laufender Gesetzgebungs-Tracker |
+| 012 | **Die unsichtbaren Toten** | Bundesweite Mortalitätsdaten in der Tierhaltung |
+| 013 | **Die Kamera-Lücke** | Schwellenwerte für Videoüberwachung in Schlachtbetrieben |
+| 014 | **Die Reise ohne Zeugen** | Kontrolle von Tiertransporten bis zum Zielort |
+| 015 | **Das Rätsel der zehn Kontrollen** | Berliner Kontrollzahlen: 26 oder 36? |
+| 016 | **Die Route der falschen Pässe** | Illegaler Hunde- und Katzenhandel nach Deutschland |
+| 017 | **Die geheime Versuchszahl** | Transparenz bei militärischen Tierversuchen |
+| 018 | **Das Label mit den blinden Flecken** | Reichweite der Tierhaltungskennzeichnung |
 
-## Der TRACE Loop
+Creative titles may create curiosity. The factual research title and bounded verdict remain visible beside them.
 
-Jeder Bürgerfall durchläuft denselben Loop:
+## TRACE
 
-1. **T — Test the question**  
-   Ist die Frage konkret, falsifizierbar und von öffentlichem Interesse?
-2. **R — Register the evidence**  
-   Welche Primärquellen, Datenstände, Originaldokumente und Definitionen existieren?
-3. **A — Assemble both cases**  
-   Welche Belege stützen die These, welche widersprechen ihr und welche alternative Erklärung ist plausibel?
-4. **C — Challenge fairly**  
-   Wurde die stärkste Gegenposition dargestellt? Haben betroffene Akteure Gelegenheit zur Stellungnahme? Wurden Schaden, Datenschutz und Sicherheitsrisiken geprüft?
-5. **E — Evaluate and act**  
-   Welches begrenzte Verdict trägt die Evidenz? Welche Aktion folgt? Wie wird Wirkung gemessen, überwacht und gegebenenfalls korrigiert?
+1. **Test** — concrete, falsifiable, relevant and safely investigable question.
+2. **Register** — sources, dates, definitions and retention status.
+3. **Assemble** — supporting evidence, counterevidence and alternatives.
+4. **Challenge** — strongest counterposition, harm review and right of reply.
+5. **Evaluate** — bounded verdict, action, impact, monitoring and correction.
 
-Der Loop darf mit `unresolved`, `insufficient_evidence`, `claim_rejected` oder `no_problem_found` enden. Eine Untersuchung muss keinen Skandal produzieren, um wertvoll zu sein.
+## Priority test
 
-## Verdict-System
+Six dimensions receive 0–5 points:
 
-### `verified_fact`
+- possible harm;
+- evidence access;
+- actionability;
+- urgency;
+- public value;
+- fairness and review capacity.
 
-Eine Tatsachenbehauptung ist durch mindestens eine geeignete Primärquelle exakt belegt und nicht durch gleichwertige Quellen widerlegt.
+The score ranks public value and investigability. It never represents truth, guilt or publication readiness.
 
-### `supported_interpretation`
+Current result:
 
-Mehrere belegte Tatsachen stützen eine begrenzte Einordnung. Die Schlussfolgerung wird ausdrücklich als Interpretation gekennzeichnet.
+- **29/30:** Cases 013, 018 and 012;
+- **26/30:** Cases 014, 015 and 016;
+- **22/30:** Case 017, requiring a bounded data and security review first.
 
-### `transparency_gap`
+Run:
 
-Eine für öffentliche Kontrolle notwendige Information ist nicht veröffentlicht, widersprüchlich oder nicht sinnvoll verknüpft. Das ist kein Beweis für Fehlverhalten.
+```bash
+python safetrace/animal_welfare_series/prioritize.py --json
+```
 
-### `policy_risk`
+## Impact
 
-Ein Gesetz oder Verfahren enthält eine nachvollziehbare Lücke oder einen Trade-off. Ursache, Wirkung und Verantwortlichkeit können weiter offen sein.
+[`impact_log.json`](impact_log.json) records separate 30, 90 and 365 day checkpoints for:
 
-### `unresolved`
+1. evidence impact;
+2. accountability impact;
+3. behaviour or policy impact;
+4. animal outcome impact.
 
-Die Frage ist legitim, aber vorhandene Belege reichen noch nicht aus.
+Reach remains separate from animal-welfare outcomes.
 
-### `claim_rejected`
+## Governance implemented
 
-Die untersuchte Behauptung wird durch Gegenbelege widerlegt oder geht über die vorhandene Evidenz hinaus.
+See [`governance/README.md`](governance/README.md).
 
-### `misconduct_supported`
+Implemented now:
 
-Nur bei konkreten Belegen für eine definierte Pflichtverletzung. Sensible Namensnennung erfordert unabhängige redaktionelle und rechtliche Prüfung sowie regelmäßig ein Recht auf Stellungnahme.
+- editorial, animal-welfare and legal/privacy review packets;
+- conflict declaration and pass/block decisions;
+- correction, complaint and appeal routes;
+- standard right-of-reply packets;
+- public-source registry and Evidence Vault hand-off;
+- accessibility and comprehension protocol;
+- partner criteria for sensitive material;
+- dedicated GitHub forms;
+- fail-closed CI checks.
 
-## Wie Fälle priorisiert werden
+Still requires real external work:
 
-Jeder vorgeschlagene Fall erhält eine sichtbare Prioritätsbewertung von 0 bis 5:
+- named independent reviewers;
+- original-byte and hash backfill for all sources;
+- external accessibility and comprehension tests;
+- a named qualified partner for sensitive material.
 
-1. **möglicher Schaden** — Tiere, Menschen, Umwelt oder öffentliche Mittel;
-2. **Evidenzzugang** — Primärquellen und belastbare Daten;
-3. **Handlungsfähigkeit** — realistische Akteure und konkrete nächste Schritte;
-4. **Zeitkritikalität** — laufendes Gesetz, Frist, verschwundene Daten oder akutes Risiko;
-5. **öffentlicher Mehrwert** — schließt die Recherche eine echte Wissens- oder Kontrolllücke?
-6. **Fairnessfähigkeit** — lässt sich die Gegenposition und ein Recht auf Antwort angemessen einbeziehen?
+A template does not count as a completed review.
 
-Abgezogen werden Punkte für:
+## Public participation
 
-- überwiegend private Konflikte;
-- unklare oder nicht falsifizierbare Vorwürfe;
-- unnötige personenbezogene Daten;
-- Gefahr für Hinweisgeber:innen;
-- erforderliche verdeckte oder rechtswidrige Methoden;
-- fehlende Kapazität für Recht auf Antwort, Moderation oder fachliche Prüfung.
+Supported:
 
-### Annahmeregel
+- browser-local prioritiser;
+- Public-Source case proposals;
+- factual corrections;
+- complaints and harm concerns;
+- attributable independent reviews.
 
-- **24–30:** priorisiert annehmen;
-- **18–23:** annehmen, wenn ein klarer Datensprint definiert ist;
-- **12–17:** zunächst präzisieren oder eine Vorprüfung durchführen;
-- **unter 12:** nicht annehmen oder an eine geeignetere Stelle verweisen.
+Not supported:
 
-Die Punktzahl bestimmt nicht das Verdict. Sie entscheidet nur, wo knappe Recherchezeit den größten erwartbaren öffentlichen Nutzen hat.
+- non-public documents;
+- personal or medical details;
+- private addresses;
+- automatic accusation, naming or publication;
+- operational case referral.
 
-## Was nach einem Verdict passiert
+## Release checks
 
-### 1. Publish
-
-Verifizierte Tatsachen, Gegenbelege, Unsicherheiten, Quellen und Antwort der Gegenseite erscheinen gemeinsam.
-
-### 2. Ask
-
-Offene Fragen werden als konkrete Informations-, Presse- oder Parlamentsanfragen versandt. Keine suggestiven Sammelfragen.
-
-### 3. Fix
-
-Wenn eine Behörde oder Organisation einen Fehler korrigieren kann, wird zunächst eine klar begrenzte Korrektur verlangt.
-
-### 4. Measure
-
-Vor Veröffentlichung wird festgelegt, woran Fortschritt erkennbar wäre. Spätere Veränderungen werden nicht automatisch der Veröffentlichung zugerechnet.
-
-### 5. Monitor
-
-Quellen, Fristen, Gesetzesfassungen und Antworten werden weiter beobachtet. Änderungen erzeugen einen Review-Hinweis, keine automatische neue Behauptung.
-
-### 6. Correct or close
-
-Neue Evidenz kann das Verdict bestätigen, abschwächen, widerlegen oder den Fall schließen. Korrekturen bleiben sichtbar.
-
-## Impact messen
-
-Impact wird auf vier Ebenen getrennt gemessen. Eine hohe Reichweite ist noch keine Verbesserung für Tiere.
-
-### A. Evidence impact
-
-- Zahl neu verfügbarer Primärquellen;
-- korrigierte amtliche Angaben;
-- geschlossene Datenlücken;
-- beantwortete offene Fragen;
-- Zahl unabhängig reproduzierter Befunde.
-
-### B. Accountability impact
-
-- Stellungnahmen betroffener Institutionen;
-- parlamentarische Fragen oder Ausschussbefassungen;
-- neue oder verbesserte öffentliche Berichte;
-- verbindliche Fristen, Zuständigkeiten und Nachkontrollen;
-- sichtbare Korrekturen.
-
-### C. Behaviour and policy impact
-
-- veränderte Kontrollpraxis;
-- verbesserte Rückverfolgbarkeit;
-- Gesetzes- oder Verordnungsänderungen;
-- Plattform- und Branchenstandards;
-- Nutzung der Daten durch Behörden, Forschung oder Zivilgesellschaft.
-
-### D. Animal outcome impact
-
-- Mortalität, Verletzungen und schwere Verstöße;
-- Dauer belastender Transporte;
-- Wiederholungsmängel;
-- erfasste und tatsächlich verbesserte Haltungsplätze;
-- Ersatz, Reduktion und Verbesserung bei Tierversuchen.
-
-**Attributionsregel:** SafeTrace dokumentiert Beiträge und zeitliche Veränderungen. Es behauptet nur dann eine eigene Wirkung, wenn ein Akteur dies bestätigt oder ein nachvollziehbares Wirkungsdesign vorliegt.
-
-## Visuelle Darstellung
-
-Jede Story zeigt dieselben Elemente:
-
-- **Beweisstärke** von 1 bis 5;
-- **Impact-Potenzial** von 1 bis 5;
-- **Dringlichkeit** von 1 bis 5;
-- **Verified / Not established / Open**;
-- Zeitlinie;
-- Quellenkarten mit Datum und Herausgeber;
-- stärkste Gegenposition;
-- Win-win-win-Pfad;
-- nächste überprüfbare Aktion;
-- Impact-Tracker über Zeit.
-
-Es gibt bewusst keinen pauschalen Skandal-, Korruptions- oder Bösewicht-Score.
-
-## Fair Play
-
-Vor einer sensiblen Veröffentlichung müssen wir:
-
-1. die stärkste faire Gegenposition selbst formulieren;
-2. belastende und entlastende Quellen mit derselben Sorgfalt behandeln;
-3. Gesetzeslage, politische Bewertung und moralische Bewertung trennen;
-4. Kosten, Umsetzbarkeit, Datenschutz und unbeabsichtigte Folgen benennen;
-5. betroffenen Akteuren präzise Fragen und angemessene Antwortzeit geben;
-6. Antworten unverzerrt wiedergeben;
-7. keine Verantwortlichkeit allein aus Nähe, Spenden, Mitgliedschaft, Geheimhaltung oder Datenfehlern ableiten;
-8. Fehler schnell und sichtbar korrigieren.
-
-## Win-win-win statt Lagerkampf
-
-Ein Fall soll nicht nur zeigen, wer verliert. Er sucht nach einer Lösung, bei der:
-
-- **Tiere** messbar besser geschützt werden;
-- **faire Betriebe, Forschung, Behörden oder Plattformen** Rechtssicherheit und Vertrauen gewinnen;
-- **Bürger:innen und Verbraucher:innen** bessere Information und wirksame Handlungsmöglichkeiten erhalten.
-
-Win-win-win ist kein Zwang zum falschen Kompromiss. Rechtsverstöße und vermeidbares Leiden dürfen klar benannt werden. Aber auch dann sollten Abhilfe, Prävention und faire Umsetzung Teil des Ergebnisses sein.
-
-## Ist das System für andere Bürger:innen bereit?
-
-### Bereits teilbar
-
-- Browser-lokaler Case Checker ohne Konto und Telemetrie;
-- öffentliche Primärquellen und maschinenlesbarer Case-Katalog;
-- TRACE Loop und Vorlagen für Forschungsfrage, Belege, Gegenbelege und Impact;
-- Einreichung von reinen Public-Source-Fällen als strukturiertes GitHub Issue;
-- transparente Ablehnungs- und Korrekturgründe.
-
-### Noch nicht bereit
-
-- vertrauliche Uploads oder Hinweisgeberdaten;
-- private oder geleakte Dokumente;
-- sichere Identitäts- und Rollenverwaltung für externe Teams;
-- automatisierte Namensveröffentlichung;
-- operative Weiterleitung an Polizei, Veterinärämter oder Medienpartner;
-- verbindliche Rechtsberatung;
-- autonome Veröffentlichung oder autonome Schuldentscheidungen.
-
-### Was vor einem offenen Bürgerportal fehlt
-
-1. unabhängige redaktionelle, rechtliche, Tierschutz- und Datenschutzprüfung;
-2. Missbrauchsschutz, Moderation und Beschwerdeverfahren;
-3. sichere Quellenspeicherung und unveränderliche Abrufnachweise;
-4. klarer Prozess für Recht auf Antwort;
-5. externe Zugänglichkeits- und Verständlichkeitstests;
-6. Partner für sensible Hinweise;
-7. definierte Reaktionszeiten und Kapazitätsgrenzen;
-8. öffentliche Governance für Priorisierung, Interessenkonflikte und Korrekturen.
-
-## Serienformat
-
-Arbeitstitel:
-
-# **Was wir wissen**
-
-Unterzeile:
-
-**Öffentliche Belege. Faire Prüfung. Konkrete nächste Schritte.**
-
-Jede Episode folgt acht Abschnitten:
-
-1. Die eine Frage;
-2. Warum sie Tiere und Menschen betrifft;
-3. Was amtlich belegt ist;
-4. Was nicht belegt ist;
-5. Die stärkste Gegenperspektive;
-6. Unser begrenztes Verdict;
-7. Was jetzt konkret passieren kann;
-8. Woran wir Wirkung in 30, 90 und 365 Tagen erkennen.
-
-## Empfohlene Veröffentlichungsreihenfolge
-
-1. **Case 012** — stärkster systemischer Datenbefund;
-2. **Case 015** — klarster, schnell lösbarer lokaler Datenwiderspruch;
-3. **Case 013** — aktueller Gesetzgebungs- und Trade-off-Fall;
-4. **Case 016** — dokumentiertes EU-Betrugsmuster mit deutscher Zielroute;
-5. **Case 018** — Live-Tracker bis zum finalen Gesetzestext;
-6. **Case 014** — nach Eingang der Regierungsantwort;
-7. **Case 017** — nach abgestufter Informationsanfrage und Sicherheitsprüfung.
-
-## Unmittelbarer Call to Action
-
-1. Case 012 und Case 015 als erste öffentliche Review-Kandidaten redaktionell gegenprüfen.
-2. Eine gemeinsame, sachliche Anfrage an LAGeSo senden.
-3. Den 16-Länder-Datensprint für Case 012 vorbereiten.
-4. Für Case 013 die Zahl der von der Kamera-Ausnahme betroffenen Betriebe und Tiere beschaffen.
-5. Bürger:innen den Case Checker testen lassen, jedoch zunächst nur mit öffentlichen Quellen und ohne personenbezogene Beschuldigungen.
-
-> Das Ziel ist nicht, möglichst viele Menschen anzuklagen. Das Ziel ist, möglichst viele überprüfbare Wege zu weniger Tierleid zu öffnen.
+```bash
+python safetrace/animal_welfare_series/prioritize.py --json
+python safetrace/animal_welfare_series/accessibility_check.py
+python safetrace/animal_welfare_series/validate.py
+```
+
+Static accessibility checks target WCAG 2.2 AA structure but do not claim conformance. External testing is still required.
+
+## Next actions
+
+1. Ask LAGeSo to clarify Case 015.
+2. Prepare the 16-state data request for Case 012.
+3. Obtain threshold coverage data for Case 013.
+4. Build the demand-to-law matrix for Case 018.
+5. Recruit one reviewer for each independent track.
+6. Test the prioritiser with five citizens.
+7. Backfill source snapshots and hashes.
+8. Publish a 30-day findings note.
