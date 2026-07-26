@@ -1,0 +1,39 @@
+name: SafeTrace v1 readiness audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "safetrace/animal_welfare_series/cases.json"
+      - "safetrace/citizen_portal/candidates.json"
+      - "safetrace/citizen_portal/social_seasons.json"
+      - "safetrace/citizen_portal/audit_v1.py"
+      - ".github/workflows/safetrace-v1-audit.yml"
+  pull_request:
+    paths:
+      - "safetrace/animal_welfare_series/cases.json"
+      - "safetrace/citizen_portal/candidates.json"
+      - "safetrace/citizen_portal/social_seasons.json"
+      - "safetrace/citizen_portal/audit_v1.py"
+      - ".github/workflows/safetrace-v1-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit all cases and candidates
+        run: python safetrace/citizen_portal/audit_v1.py | tee safetrace/citizen_portal/v1_audit_summary.txt
+      - name: Upload reproducible audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-v1-readiness-audit
+          path: |
+            safetrace/citizen_portal/v1_audit_report.json
+            safetrace/citizen_portal/v1_audit_summary.txt
