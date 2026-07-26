@@ -1,0 +1,52 @@
+name: "Spuren im System — independent review"
+description: "Submit an attributable editorial, legal/privacy or animal-welfare review."
+title: "[Review] "
+labels: []
+body:
+  - type: dropdown
+    id: track
+    attributes:
+      label: Review track
+      options:
+        - Editorial
+        - Animal-welfare domain
+        - Legal and privacy
+        - Accessibility and comprehension
+    validations:
+      required: true
+  - type: input
+    id: artifact
+    attributes:
+      label: Artifact and commit reviewed
+      placeholder: "PR, file and commit SHA"
+    validations:
+      required: true
+  - type: textarea
+    id: identity
+    attributes:
+      label: Reviewer identity and relevant qualifications
+    validations:
+      required: true
+  - type: textarea
+    id: conflicts
+    attributes:
+      label: Conflicts of interest
+      description: State relevant employment, funding, clients, activism or organisational ties, or write none.
+    validations:
+      required: true
+  - type: textarea
+    id: findings
+    attributes:
+      label: Findings and required changes
+    validations:
+      required: true
+  - type: dropdown
+    id: decision
+    attributes:
+      label: Decision
+      options:
+        - Pass
+        - Pass with changes
+        - Block
+    validations:
+      required: true
