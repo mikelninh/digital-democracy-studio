@@ -1,0 +1,38 @@
+name: Citizen Portal
+
+on:
+  pull_request:
+    paths:
+      - "safetrace/citizen_portal/**"
+      - ".github/ISSUE_TEMPLATE/citizen-public-source-case.yml"
+      - ".github/workflows/citizen-portal.yml"
+  push:
+    branches: [main]
+    paths:
+      - "safetrace/citizen_portal/**"
+      - ".github/ISSUE_TEMPLATE/citizen-public-source-case.yml"
+      - ".github/workflows/citizen-portal.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate candidate radar and public safety boundaries
+        shell: bash
+        run: |
+          set -o pipefail
+          python safetrace/citizen_portal/validate.py | tee citizen-portal-validation.json
+      - name: Retain validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: citizen-portal-validation
+          path: citizen-portal-validation.json
+          if-no-files-found: error

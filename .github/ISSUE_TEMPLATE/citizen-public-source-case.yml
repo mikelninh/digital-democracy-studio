@@ -1,0 +1,83 @@
+name: "Citizen Case · öffentliche Quellen"
+description: "Schlage einen überprüfbaren Fall mit frei zugänglichen Quellen für den TRACE Loop vor."
+title: "Citizen Case: "
+labels: ["citizen-intake"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Public-Source-Intake
+        Reiche **keine vertraulichen Dokumente, privaten Adressen, Gesundheitsdaten, Zugangsdaten oder gefährdeten Hinweisgeber-Identitäten** ein. Dieses Formular ist öffentlich.
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Themenbereich
+      options:
+        - Tierschutz
+        - Umwelt und Klima
+        - Korruption und Lobbytransparenz
+        - Steuergeld und öffentliche Vergaben
+        - Gesundheit und Pflege
+        - Digitalrechte und Datenschutz
+        - Verbraucher- und Arbeitsschutz
+        - Lokale Verwaltung
+        - Sonstiges öffentliches Interesse
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Eine konkrete Forschungsfrage
+      description: Formuliere eine Frage, die durch Belege bestätigt, eingeschränkt oder widerlegt werden kann.
+      placeholder: "Kann Behörde X öffentlich nachweisen, dass ...?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: public_interest
+    attributes:
+      label: Warum ist der Fall öffentlich relevant?
+      description: Möglicher Schaden, betroffene Gruppen oder Bedeutung für öffentliche Mittel, Rechte, Umwelt oder Tiere.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Öffentliche Primärquellen
+      description: Links zu amtlichen Dokumenten, Registern, Gerichtsentscheidungen, Datensätzen oder Originalveröffentlichungen. Eine Quelle pro Zeile.
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: counterevidence
+    attributes:
+      label: Was könnte gegen die Vermutung sprechen?
+      description: Nenne Gegenbelege, faire alternative Erklärungen oder die stärkste Position der anderen Seite.
+    validations:
+      required: true
+
+  - type: textarea
+    id: next_action
+    attributes:
+      label: Welches konkrete Ergebnis wäre innerhalb eines Datensprints möglich?
+      placeholder: "Eine Vergleichstabelle, Korrekturanfrage, Zeitlinie, Datenqualitätsprüfung ..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Sicherheits- und Fairnessbestätigung
+      options:
+        - label: "Ich habe keine vertraulichen Dateien, privaten Kontaktdaten oder Zugangsdaten beigefügt."
+          required: true
+        - label: "Der Fall erfordert kein Hacking, Doxxing, Täuschung oder verdeckten Zugang."
+          required: true
+        - label: "Ich verstehe, dass der TRACE-Score weder Wahrheit noch Schuld bewertet."
+          required: true
+        - label: "Ich akzeptiere, dass der Vorschlag öffentlich ist und abgelehnt, eingegrenzt oder geschlossen werden kann."
+          required: true

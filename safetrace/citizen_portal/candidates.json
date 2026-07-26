@@ -1,0 +1,197 @@
+{
+  "schema": "safetrace.citizen-portal/0.3",
+  "generated_at": "2026-07-26",
+  "scope": "Public-source candidate discovery; scores rank expected public value and investigability, never truth or guilt.",
+  "dimensions": ["harm", "evidence", "actionability", "urgency", "public_value", "fairness"],
+  "candidates": [
+    {
+      "id": "CAND-019",
+      "topic": "animal_welfare",
+      "story_title": "Zwei Stellen weniger für Millionen Tiere",
+      "research_question": "Welche Aufgaben, Prüfungen oder öffentlichen Berichte können mit drei statt zuvor fünf Planstellen bei der Bundestierschutzbeauftragten tatsächlich geleistet werden?",
+      "scores": {"harm":4,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+      "total": 29,
+      "decision": "prioritise",
+      "evidence_state": "verified_staffing_change_impact_open",
+      "first_sprint": "Aufgaben, Output, Budget und Bearbeitungszeiten vor und nach der Personaländerung vergleichen.",
+      "sources": [{"publisher":"Deutscher Bundestag","title":"Weniger Stellen bei der Tierschutzbeauftragten","date":"2026-07-16","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1195066"}]
+    },
+    {
+      "id": "CAND-020",
+      "topic": "animal_welfare",
+      "story_title": "Die Tiere, die niemand zählen kann",
+      "research_question": "Warum kann der Bund Betriebsgrößen, Haltungsverfahren und Standorte der gewerblichen Kaninchenmast und -zucht nicht beziffern?",
+      "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":4,"public_value":5,"fairness":5},
+      "total": 29,
+      "decision": "prioritise",
+      "evidence_state": "verified_federal_data_gap",
+      "first_sprint": "Länder, Veterinärämter und Branchenregister mit identischen Datenfeldern abfragen.",
+      "sources": [{"publisher":"Deutscher Bundestag","title":"Haltung von Mast- und Zuchtkaninchen in Deutschland","date":"2026-03-10","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1154702"}]
+    },
+    {
+      "id": "CAND-021",
+      "topic": "animal_welfare",
+      "story_title": "Der blinde Fleck hinter dem Hoftor",
+      "research_question": "Welche Tierschutz-Kontrollbefugnisse bestehen in Anlagen, die tote Tiere und tierische Nebenprodukte sammeln oder verarbeiten, und wo fehlen sie?",
+      "scores": {"harm":5,"evidence":3,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+      "total": 26,
+      "decision": "prioritise_with_data_sprint",
+      "evidence_state": "professional_body_claim_requires_legal_mapping",
+      "first_sprint": "Bundes- und Landesrecht sowie reale Kontrollpraxis kartieren; Forderung der Bundestierärztekammer rechtlich prüfen.",
+      "sources": [
+        {"publisher":"Lobbyregister / Bundestierärztekammer","title":"Videoüberwachung in Schlachthöfen auch bei kleinen Betrieben","date":"2026-06-23","url":"https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/stellungnahmengutachtensuche/SG2606230009"},
+        {"publisher":"Europäische Kommission","title":"Legislation on official controls","date":"2026","url":"https://food.ec.europa.eu/horizontal-topics/official-controls-and-enforcement/legislation-official-controls_en"}
+      ]
+    },
+    {
+      "id": "CAND-022",
+      "topic": "animal_welfare",
+      "story_title": "Die Milliarde, die den Stall kaum verändert",
+      "research_question": "Welche Tierwohlverbesserungen erzeugte das Bundesprogramm Umbau der Tierhaltung pro ausgegebenem Euro und was bedeutet seine Kürzung?",
+      "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+      "total": 30,
+      "decision": "prioritise",
+      "evidence_state": "programme_data_and_budget_change_verified_effect_open",
+      "first_sprint": "Bewilligungen, tatsächlich umgebaute Plätze, Tierwohlkriterien und Haushaltskürzungen in einer Wirkungsbilanz verbinden.",
+      "sources": [
+        {"publisher":"Deutscher Bundestag","title":"Umbau der landwirtschaftlichen Tierhaltung","date":"2025-09-24","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1111624"},
+        {"publisher":"Deutscher Bundestag","title":"Etat 2026: Minimale Änderungen am Landwirtschaftsetat","date":"2025-11-17","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1127126"}
+      ]
+    },
+    {
+      "id": "CAND-023",
+      "topic": "animal_welfare",
+      "story_title": "Wer verkauft hier eigentlich das Tier?",
+      "research_question": "Kann Deutschland den anonymen Onlinehandel mit Tieren wirksam unterbinden, ohne seriöse private Vermittlung und Datenschutz unverhältnismäßig zu belasten?",
+      "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+      "total": 30,
+      "decision": "prioritise",
+      "evidence_state": "risk_and_current_lobby_positions_verified_implementation_open",
+      "first_sprint": "Plattformregeln, Identitätsprüfung, Behördenzugang und EU-Anforderungen vergleichend testen.",
+      "sources": [
+        {"publisher":"Deutscher Bundestag","title":"Onlinehandel mit Tieren begünstigt illegalen Tierhandel","date":"2021-04-07","url":"https://www.bundestag.de/presse/hib/832560-832560"},
+        {"publisher":"Lobbyregister / kleinanzeigen.de","title":"Regelungen im Online-Heimtierhandel","date":"2026-01-06","url":"https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0021878"}
+      ]
+    },
+    {
+      "id": "CAND-024",
+      "topic": "animal_welfare",
+      "story_title": "Der Chip, der Europas Welpenhandel verändern soll",
+      "research_question": "Wie setzt Deutschland die neue EU-Rückverfolgbarkeit für Hunde und Katzen um, und werden Onlineanbieter tatsächlich überprüfbar?",
+      "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+      "total": 30,
+      "decision": "prioritise",
+      "evidence_state": "eu_legislative_change_verified_national_implementation_open",
+      "first_sprint": "EU-Pflichten in eine Deutschland-Umsetzungsmatrix mit Fristen, Registern und Plattformpflichten übersetzen.",
+      "sources": [{"publisher":"Europäisches Parlament","title":"Animal welfare and wildlife protection: EU laws explained","date":"2026-04","url":"https://www.europarl.europa.eu/topics/en/article/20200624STO81911/animal-welfare-and-protection-eu-laws-explained-videos"}]
+    },
+    {
+      "id": "CAND-025",
+      "topic": "animal_welfare",
+      "story_title": "Die letzte Manege",
+      "research_question": "Welche Wildtiere dürfen weiterhin in deutschen Zirkussen gehalten oder neu eingesetzt werden und wie wird ihre Haltung kontrolliert?",
+      "scores": {"harm":4,"evidence":4,"actionability":4,"urgency":4,"public_value":4,"fairness":5},
+      "total": 25,
+      "decision": "prioritise_with_data_sprint",
+      "evidence_state": "policy_conflict_verified_current_population_and_controls_open",
+      "first_sprint": "Zirkusbetriebe, Tierarten, Bestandsschutz, Kontrollen und Verstöße bundesweit erfassen.",
+      "sources": [
+        {"publisher":"Deutscher Bundestag","title":"Anhörung zum Tierschutzgesetz","date":"2024","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1023250"},
+        {"publisher":"Lobbyregister / Pro Wildlife","title":"Novellierung Tierschutzgesetz","date":"2026-06-01","url":"https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/stellungnahmengutachtensuche/SG2606010015"}
+      ]
+    },
+    {
+      "id": "CAND-026",
+      "topic": "animal_welfare",
+      "story_title": "Gezüchtet für den Defekt",
+      "research_question": "Ist das Qualzuchtverbot für Heim- und Nutztiere so konkret und vollziehbar, dass Behörden problematische Zuchtmerkmale einheitlich verfolgen können?",
+      "scores": {"harm":5,"evidence":4,"actionability":4,"urgency":5,"public_value":5,"fairness":5},
+      "total": 28,
+      "decision": "prioritise",
+      "evidence_state": "enforcement_and_definition_conflict_verified_outcomes_open",
+      "first_sprint": "Landesvollzug, Gerichtsentscheidungen, Symptomlisten und Verbandspositionen vergleichen.",
+      "sources": [
+        {"publisher":"Deutscher Bundestag","title":"Novellierung des Tierschutzgesetzes gefordert","date":"2026-04-15","url":"https://www.bundestag.de/dokumente/textarchiv/2025/kw21-de-tierschutz-1067412"},
+        {"publisher":"Lobbyregister / BNA","title":"Novellierung Tierschutzgesetz","date":"2024-06-05","url":"https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0001454"}
+      ]
+    },
+    {
+      "id": "CAND-027",
+      "topic": "animal_welfare",
+      "story_title": "Festgebunden an die Übergangsfrist",
+      "research_question": "Wie viele Tiere verbleiben in Anbindehaltung, welche Übergangs- und Ausnahmeregeln gelten und welche Betriebe benötigen welche Unterstützung für den Ausstieg?",
+      "scores": {"harm":5,"evidence":4,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+      "total": 29,
+      "decision": "prioritise",
+      "evidence_state": "policy_conflict_verified_current_coverage_open",
+      "first_sprint": "Tier- und Betriebszahlen, Gesetzesfassungen, Ausnahmen, Investitionsbedarf und Alternativen kartieren.",
+      "sources": [
+        {"publisher":"Deutscher Bundestag","title":"Unterschiedliche Blickwinkel auf Reform des Tierschutzes","date":"2026-04-14","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1165220"},
+        {"publisher":"Lobbyregister / Greenpeace","title":"Änderung des Tierschutzgesetzes","date":"2025-06-30","url":"https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/stellungnahmengutachtensuche/SG2506300165"}
+      ]
+    },
+    {
+      "id": "CAND-028",
+      "topic": "animal_welfare",
+      "story_title": "Wenn der Stall brennt, verschwindet die Zahl",
+      "research_question": "Wie viele Tiere sterben oder werden verletzt bei Stallbränden und anderen Havarien, und welche Brandschutzmaßnahmen verhindern nachweislich Opfer?",
+      "scores": {"harm":5,"evidence":4,"actionability":5,"urgency":4,"public_value":5,"fairness":5},
+      "total": 28,
+      "decision": "prioritise",
+      "evidence_state": "historic_and_current_data_gap_verified_prevention_effect_open",
+      "first_sprint": "Feuerwehr-, Versicherungs-, Länder- und Veterinärdaten zu einer reproduzierbaren Ereignisstatistik verbinden.",
+      "sources": [
+        {"publisher":"Deutscher Bundestag","title":"Keine Statistik zu Havariefällen in Zoos","date":"2020-04-27","url":"https://www.bundestag.de/webarchiv/presse/hib/2020_04/693152-693152"},
+        {"publisher":"Deutscher Bundestag","title":"Mortalität landwirtschaftlicher Tiere und anderer Tierarten","date":"2026-02-17","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1146252"}
+      ]
+    },
+    {
+      "id": "CAND-029",
+      "topic": "animal_welfare",
+      "story_title": "Der Schutz, der das Gesetz wechseln soll",
+      "research_question": "Würde eine Herausnahme der Tierversuchs-Paragrafen aus dem Tierschutzgesetz Schutz, Zuständigkeit oder öffentliche Kontrolle praktisch verändern?",
+      "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+      "total": 30,
+      "decision": "prioritise",
+      "evidence_state": "live_legislative_conflict_verified_effect_open",
+      "first_sprint": "Gesetzesvarianten, Zuständigkeiten, Genehmigungsstandards und Rechtsbehelfe als Redline vergleichen.",
+      "sources": [{"publisher":"Deutscher Bundestag","title":"Tierschutz und Forschung: Wirksamer Schutz von Versuchstieren","date":"2026-04-16","url":"https://www.bundestag.de/dokumente/textarchiv/2026/kw16-de-versuchstiere-1158214"}]
+    },
+    {
+      "id": "CAND-030",
+      "topic": "wildlife",
+      "story_title": "120 Trophäen aus geschützten Arten",
+      "research_question": "Nach welchen Kriterien genehmigt Deutschland Jagdtrophäen geschützter Arten und welche Naturschutzwirkung wird nach der Einfuhr überprüft?",
+      "scores": {"harm":4,"evidence":5,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+      "total": 27,
+      "decision": "prioritise",
+      "evidence_state": "permit_counts_verified_conservation_outcome_open",
+      "first_sprint": "Genehmigungen nach Art, Herkunft, Begründung und späterer Bestandsentwicklung auswerten.",
+      "sources": [{"publisher":"Deutscher Bundestag","title":"Einfuhr von Jagdtrophäen geschützter Arten","date":"2026-05-29","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1182840"}]
+    },
+    {
+      "id": "CAND-031",
+      "topic": "animal_welfare",
+      "story_title": "Die Tiere unter der Wasserlinie",
+      "research_question": "Welche tierartspezifischen Regeln und Kontrollen fehlen für Fische und andere Wassertiere in Haltung, Transport und Tötung?",
+      "scores": {"harm":5,"evidence":3,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+      "total": 26,
+      "decision": "prioritise_with_data_sprint",
+      "evidence_state": "professional_body_regulatory_warning_verified_scope_open",
+      "first_sprint": "Bestehende Bundes-, Länder- und EU-Regeln nach Tierart und Lebensphase kartieren; Vollzugslücken testen.",
+      "sources": [{"publisher":"Lobbyregister / Bundestierärztekammer","title":"Forderung nach Regelungen für Fische","date":"2026-03-05","url":"https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/stellungnahmengutachtensuche?filter%5Bfieldsofinterest%5D%5BFOI_ENVIRONMENT%7CFOI_ENVIRONMENT_ANIMAL%5D=true&page=2&pageSize=25&sort=FIRSTPUBLICATION_DESC"}]
+    },
+    {
+      "id": "CAND-032",
+      "topic": "public_accountability",
+      "story_title": "Der Hinweis, der sicher ankommen muss",
+      "research_question": "Wie setzen Bund und Länder die vorgeschriebenen Melde- und Schutzmechanismen für Hinweise auf Verstöße in der Agrar- und Tierschutzkontrolle tatsächlich um?",
+      "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":4,"public_value":5,"fairness":5},
+      "total": 29,
+      "decision": "prioritise",
+      "evidence_state": "eu_requirement_verified_german_implementation_open",
+      "first_sprint": "Meldekanäle, Schutzregeln, Zuständigkeiten, Reaktionszeiten und veröffentlichte Ergebnisse aller Länder vergleichen.",
+      "sources": [{"publisher":"Europäische Kommission","title":"Legislation on official controls","date":"2026","url":"https://food.ec.europa.eu/horizontal-topics/official-controls-and-enforcement/legislation-official-controls_en"}]
+    }
+  ]
+}
