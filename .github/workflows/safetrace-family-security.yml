@@ -1,0 +1,31 @@
+name: SafeTrace Family Security Case 051
+
+on:
+  pull_request:
+    paths:
+      - "safetrace/family_security/**"
+      - ".github/workflows/safetrace-family-security.yml"
+  push:
+    branches: [main]
+    paths:
+      - "safetrace/family_security/**"
+      - ".github/workflows/safetrace-family-security.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate bounded Family Security case
+        run: python safetrace/family_security/validate_case_051.py
+      - name: Validate public artifacts
+        run: |
+          python -m json.tool safetrace/family_security/case_051.json >/dev/null
+          test -s safetrace/family_security/index.html
+          test -s safetrace/family_security/README.md

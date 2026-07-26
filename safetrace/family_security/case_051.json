@@ -1,0 +1,160 @@
+{
+  "schema": "safetrace.case-contract/1.0",
+  "id": "CAND-051",
+  "story_title": "Der Kinderwunsch im Wartestand",
+  "research_question": "Welche wirtschaftlichen, zeitlichen, gesundheitlichen und partnerschaftlichen Unsicherheiten verhindern in Deutschland, dass Menschen ihre gewünschte Familiengröße verwirklichen – und welche Maßnahmen helfen nachweislich, ohne Druck auf Frauen oder Familien auszuüben?",
+  "affected_group": "Menschen mit Kinderwunsch, Eltern und besonders Mütter",
+  "jurisdiction": "Deutschland mit internationalem Vergleich",
+  "need": {
+    "severity": 4,
+    "scale": 5,
+    "urgency": 5,
+    "vulnerability": 5,
+    "public_value": 5,
+    "overlookedness": 4,
+    "total": 28
+  },
+  "feasibility": {
+    "source_access": 5,
+    "falsifiability": 4,
+    "jurisdiction_clarity": 3,
+    "safety_legality": 5,
+    "capacity": 2,
+    "total": 19
+  },
+  "evidence": {
+    "verified_claims": [
+      "Die zusammengefasste Geburtenziffer in Deutschland lag 2025 bei 1,32 Kindern je Frau; 654.241 Kinder wurden geboren, der niedrigste Stand der Nachkriegszeit.",
+      "Von Januar bis April 2026 wurden vorläufig rund 204.400 Kinder geboren, 2,5 Prozent weniger als im Vorjahreszeitraum.",
+      "Die Weltbevölkerung wird nach der UN-Hauptprojektion voraussichtlich bis Mitte der 2080er-Jahre auf etwa 10,3 Milliarden wachsen und bis 2100 leicht auf rund 10,2 Milliarden sinken; ein Aussterben der Menschheit in diesem Jahrhundert folgt daraus nicht.",
+      "Die UNFPA-Mehrländerbefragung 2025 ergab, dass fast 20 Prozent der Erwachsenen im reproduktiven Alter erwarten, ihre gewünschte Kinderzahl nicht zu erreichen; 39 Prozent nannten finanzielle Begrenzungen. Diese Werte sind global und nicht als Deutschland-Schätzung zu verwenden.",
+      "Die OECD identifiziert wirtschaftliche Sicherheit, Wohnkosten, Arbeitsmarktbedingungen, Kinderbetreuung, Elternzeit und die faire Verteilung von Sorgearbeit als relevante Bedingungen für Familiengründung; die beobachteten Zusammenhänge beweisen nicht für jede einzelne Maßnahme Kausalität.",
+      "Eine BiB-Arbeit von 2025 findet bei untersuchten IVF-Eltern anhaltende Erwerbs- und Hausarbeitsfolgen vor allem für Mütter sowie eine häufigere Wahrnehmung unfairer Arbeitsteilung."
+    ],
+    "unknowns": [
+      "Wie groß in Deutschland aktuell die Lücke zwischen gewünschter, erwarteter und tatsächlich realisierter Kinderzahl ist.",
+      "Welchen relativen Beitrag Wohnkosten, unsichere Arbeit, Betreuungsausfälle, ungleiche Sorgearbeit, fehlende Partnerschaft, Gesundheit und Zukunftsängste leisten.",
+      "Welche bestehenden familienpolitischen Leistungen pro eingesetztem Euro die Familiengründung, das Wohlergehen und die Wahlfreiheit am wirksamsten unterstützen.",
+      "Welche Gruppen besonders große unerfüllte Kinderwünsche oder unfreiwillige Kinderlosigkeit erleben.",
+      "Welche Maßnahmen kurzfristige Vorzieheffekte erzeugen und welche langfristig gewünschte Familiengrößen ermöglichen."
+    ],
+    "counterevidence": [
+      "Menschen entscheiden sich teilweise bewusst gegen Kinder oder für kleinere Familien; nicht jede niedrige Geburtenrate ist ein Ausdruck verhinderter Wünsche.",
+      "Eine kleinere Bevölkerung kann Umwelt- und Infrastrukturbelastungen reduzieren und ist nicht automatisch gesellschaftlicher Niedergang.",
+      "Familienpolitik beeinflusst Geburtenentscheidungen nur indirekt und kann kulturelle Präferenzen, Partnerschaftsverläufe, Infertilität oder globale Unsicherheit nicht vollständig ausgleichen.",
+      "Selbst erfolgreiche Maßnahmen verändern die Größe der Erwerbsbevölkerung erst mit großer zeitlicher Verzögerung; Anpassung durch Produktivität, Migration und längere gesunde Erwerbsphasen bleibt notwendig."
+    ],
+    "sources": [
+      {
+        "source_id": "FS-051-S01",
+        "publisher": "Statistisches Bundesamt",
+        "title": "Zusammengefasste Geburtenziffer sinkt im Jahr 2025 auf 1,32 Kinder je Frau",
+        "date": "2026-07-01",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/07/PD26_230_12.html",
+        "receipt_status": "url_only"
+      },
+      {
+        "source_id": "FS-051-S02",
+        "publisher": "Statistisches Bundesamt",
+        "title": "Monatliche Geburtenzahlen",
+        "date": "2026-07-13",
+        "url": "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Geburten/geburten-aktuell.html",
+        "receipt_status": "url_only"
+      },
+      {
+        "source_id": "FS-051-S03",
+        "publisher": "United Nations DESA",
+        "title": "World Population Prospects 2024: Summary of Results",
+        "date": "2024-07-11",
+        "url": "https://www.un.org/development/desa/pd/node/4324",
+        "receipt_status": "url_only"
+      },
+      {
+        "source_id": "FS-051-S04",
+        "publisher": "UNFPA",
+        "title": "State of World Population 2025: The real fertility crisis",
+        "date": "2025-06-10",
+        "url": "https://www.unfpa.org/swp2025",
+        "receipt_status": "url_only"
+      },
+      {
+        "source_id": "FS-051-S05",
+        "publisher": "OECD",
+        "title": "Society at a Glance 2024 – Fertility trends and the role for policy",
+        "date": "2024-06-20",
+        "url": "https://www.oecd.org/en/publications/society-at-a-glance-2024_918d8db3-en/full-report/fertility-trends-across-the-oecd-underlying-drivers-and-the-role-for-policy_770679b8.html",
+        "receipt_status": "url_only"
+      },
+      {
+        "source_id": "FS-051-S06",
+        "publisher": "Bundesinstitut für Bevölkerungsforschung",
+        "title": "The wished-for children: Do mothers carry the burden while fathers reap the joy?",
+        "date": "2025",
+        "url": "https://www.bib.bund.de/Publikation/2025/The-wished-for-children-Do-mothers-carry-the-burden-while-fathers-reap-the-joy.html",
+        "receipt_status": "url_only"
+      }
+    ]
+  },
+  "fairness": {
+    "strongest_counterposition": "Der Staat sollte keine Geburtenziele setzen und Menschen weder moralisch noch finanziell zu Elternschaft drängen. Gute Familienpolitik schützt Wahlfreiheit: gewünschte Kinder ermöglichen, ungewollte Schwangerschaften vermeiden und kinderfreie Lebensentwürfe respektieren.",
+    "alternative_explanations": [
+      "Demografisch kleine Elternjahrgänge drücken die absolute Geburtenzahl zusätzlich zur niedrigen Geburtenziffer.",
+      "Spätere Familiengründung kann Geburten zeitlich verschieben, ohne dass alle Kinderwünsche dauerhaft ausfallen.",
+      "Veränderte Lebensentwürfe und höhere Akzeptanz von Kinderfreiheit erklären einen Teil des Trends.",
+      "Makrokrisen können zeitweise Aufschub erzeugen, der sich später teilweise umkehrt."
+    ],
+    "publication_harms": [
+      "Frauen könnten für demografische Entwicklungen verantwortlich gemacht oder unter reproduktiven Druck gesetzt werden.",
+      "Kinderlose Menschen und kleine Familien könnten abgewertet werden.",
+      "Migration könnte fälschlich als Konkurrenz zur Familienförderung dargestellt werden.",
+      "Ein einzelner Geburtenindikator könnte Wohlergehen, Wahlfreiheit und Verteilungsgerechtigkeit verdrängen."
+    ],
+    "right_of_reply": "not_required"
+  },
+  "action_contract": {
+    "target_actor": "Bundesfamilienministerium, Bundesinstitut für Bevölkerungsforschung, Statistisches Bundesamt und ausgewählte Länder/Kommunen",
+    "exact_ask": "Ein öffentliches Datenmodell entwickeln, das die Lücke zwischen gewünschter und erwarteter Familiengröße sowie Wohn-, Einkommens-, Betreuungs-, Care- und Gesundheitsbarrieren nach Alter, Geschlecht, Region und Familienform vergleichbar macht.",
+    "internal_owner": "Michael Ninh – Scoping Owner",
+    "deliverable": "Family Security Index v0.1, Datenwörterbuch, Quellenregister und Politik-zu-Outcome-Matrix",
+    "deadline": "2026-08-23",
+    "stop_condition": "Der Fall bleibt im Scoping und verdrängt keinen der fünf aktiven Fälle. Er wird erst aktiv, wenn ein aktiver Fall schließt und mindestens eine belastbare Deutschland-Quelle zur Wunsch-Erwartungs-Lücke oder ein offizieller Datenpartner vorliegt.",
+    "safe_citizen_actions": [
+      "Öffentliche kommunale Daten zu Wohnen, Betreuung und Familienleistungen beitragen.",
+      "Erfahrungen nur anonymisiert und ohne Gesundheits-, Arbeitgeber- oder Partnerdaten als Themenhinweis beschreiben.",
+      "Politikvorschläge anhand klarer Baseline-, Kosten- und Outcome-Fragen prüfen.",
+      "Keine Person zur Elternschaft drängen oder Kinderfreiheit abwerten."
+    ]
+  },
+  "impact_contract": {
+    "status": "not_measurable_yet",
+    "level": "evidence",
+    "metric": "Anteil der Index-Dimensionen mit vergleichbarer Deutschland-Baseline und identifiziertem verantwortlichem Akteur",
+    "baseline": 0,
+    "target": "Mindestens 5 von 7 Dimensionen mit reproduzierbarer Baseline und Datenquelle",
+    "data_source": "Destatis, BiB/FReDA, OECD, Bundes- und Länderberichte sowie kommunale Open Data",
+    "owner": "Michael Ninh – Scoping Owner",
+    "cadence": "monatlich während des Scopings",
+    "attribution_rule": "SafeTrace darf zunächst nur Daten- und Accountability-Impact beanspruchen. Veränderungen der Geburtenziffer oder realisierten Familiengröße dürfen nicht ohne belastbare Evaluation kausal SafeTrace oder einer Einzelmaßnahme zugeschrieben werden."
+  },
+  "publication": {
+    "verdict_type": "systemic_data_gap",
+    "readiness": "scoping",
+    "editorial_review": "not_started",
+    "domain_review": "not_started",
+    "legal_privacy_review": "not_required",
+    "correction_route": "Öffentliche Korrektur über SafeTrace Issue oder Correction Intake; Zahlen und Projektionen werden mit Datenstand versehen."
+  },
+  "lifecycle": "scoping",
+  "family_security_index": {
+    "principle": "Sicherheit ermöglichen, nicht Geburten erzwingen.",
+    "dimensions": [
+      "bezahlbarer und ausreichend großer Wohnraum",
+      "planbares Einkommen und verlässliche Arbeitszeiten",
+      "verfügbare und verlässliche Kinderbetreuung inklusive Ausfallrisiko",
+      "faire Verteilung von Sorgearbeit und Karrierefolgen",
+      "reproduktive, Schwangerschafts- und postpartale Gesundheitsversorgung",
+      "Partnerschafts-, Zeit- und soziale Unterstützung",
+      "verständlicher Zugang zu Leistungen ohne Bürokratiefalle"
+    ]
+  }
+}
