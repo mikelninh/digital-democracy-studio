@@ -82,6 +82,11 @@ def validate() -> dict[str, object]:
     if not isinstance(seasons, list) or len(seasons) != 3:
         fail("social radar must contain exactly seasons 2 to 4")
 
+    expected_titles = {"Kinder im System", "Schutzlücken", "Zwischen den Zuständigkeiten"}
+    actual_titles = {str(season.get("title")) for season in seasons if isinstance(season, dict)}
+    if actual_titles != expected_titles:
+        fail(f"unexpected season titles: {sorted(actual_titles)}")
+
     ids: set[str] = set()
     high_priority = 0
     sources = 0
@@ -123,7 +128,7 @@ def validate() -> dict[str, object]:
             fail(f"index missing safety marker: {marker}")
 
     season_html = SEASONS_PAGE.read_text(encoding="utf-8")
-    for marker in ("Kinder im System", "Schutzlücken", "Zwischen den Zuständigkeiten", "kein Schuldvorwurf"):
+    for marker in ("Staffeln 2 bis 4", "social_seasons.json", "kein Schuldvorwurf", "Fair-Play-Standard"):
         if marker.lower() not in season_html.lower():
             fail(f"season page missing marker: {marker}")
 
