@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://safetrace.local/schema/case-contract-v1.json",
+  "title": "SafeTrace v1 Case Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "story_title",
+    "research_question",
+    "affected_group",
+    "jurisdiction",
+    "need",
+    "feasibility",
+    "evidence",
+    "fairness",
+    "action_contract",
+    "impact_contract",
+    "publication",
+    "lifecycle"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^(CASE|CAND)-[0-9]{3,}$"},
+    "story_title": {"type": "string", "minLength": 5},
+    "research_question": {"type": "string", "minLength": 20},
+    "affected_group": {"type": "string", "minLength": 2},
+    "jurisdiction": {"type": "string", "minLength": 2},
+    "need": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["severity", "scale", "urgency", "vulnerability", "public_value", "overlookedness", "total"],
+      "properties": {
+        "severity": {"type": "integer", "minimum": 0, "maximum": 5},
+        "scale": {"type": "integer", "minimum": 0, "maximum": 5},
+        "urgency": {"type": "integer", "minimum": 0, "maximum": 5},
+        "vulnerability": {"type": "integer", "minimum": 0, "maximum": 5},
+        "public_value": {"type": "integer", "minimum": 0, "maximum": 5},
+        "overlookedness": {"type": "integer", "minimum": 0, "maximum": 5},
+        "total": {"type": "integer", "minimum": 0, "maximum": 30}
+      }
+    },
+    "feasibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_access", "falsifiability", "jurisdiction_clarity", "safety_legality", "capacity", "total"],
+      "properties": {
+        "source_access": {"type": "integer", "minimum": 0, "maximum": 5},
+        "falsifiability": {"type": "integer", "minimum": 0, "maximum": 5},
+        "jurisdiction_clarity": {"type": "integer", "minimum": 0, "maximum": 5},
+        "safety_legality": {"type": "integer", "minimum": 0, "maximum": 5},
+        "capacity": {"type": "integer", "minimum": 0, "maximum": 5},
+        "total": {"type": "integer", "minimum": 0, "maximum": 25}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verified_claims", "unknowns", "counterevidence", "sources"],
+      "properties": {
+        "verified_claims": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "unknowns": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "counterevidence": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["source_id", "publisher", "title", "date", "url", "receipt_status"],
+            "properties": {
+              "source_id": {"type": "string"},
+              "publisher": {"type": "string"},
+              "title": {"type": "string"},
+              "date": {"type": "string"},
+              "url": {"type": "string", "format": "uri"},
+              "receipt_status": {"enum": ["url_only", "snapshot_retained", "hashed_and_reviewed"]}
+            }
+          }
+        }
+      }
+    },
+    "fairness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strongest_counterposition", "alternative_explanations", "publication_harms", "right_of_reply"],
+      "properties": {
+        "strongest_counterposition": {"type": "string", "minLength": 10},
+        "alternative_explanations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "publication_harms": {"type": "array", "items": {"type": "string"}},
+        "right_of_reply": {"enum": ["not_required", "required_not_sent", "sent", "answered", "declined", "deadline_elapsed"]}
+      }
+    },
+    "action_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_actor", "exact_ask", "internal_owner", "deliverable", "deadline", "stop_condition"],
+      "properties": {
+        "target_actor": {"type": "string", "minLength": 2},
+        "exact_ask": {"type": "string", "minLength": 10},
+        "internal_owner": {"type": "string", "minLength": 2},
+        "deliverable": {"type": "string", "minLength": 5},
+        "deadline": {"type": "string", "format": "date"},
+        "stop_condition": {"type": "string", "minLength": 10},
+        "safe_citizen_actions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "impact_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "level", "metric", "baseline", "target", "data_source", "owner", "cadence", "attribution_rule"],
+      "properties": {
+        "status": {"enum": ["complete", "not_measurable_yet"]},
+        "level": {"enum": ["reach", "evidence", "accountability", "system", "outcome"]},
+        "metric": {"type": "string"},
+        "baseline": {"type": ["string", "number", "null"]},
+        "target": {"type": ["string", "number", "null"]},
+        "data_source": {"type": ["string", "null"]},
+        "owner": {"type": ["string", "null"]},
+        "cadence": {"type": ["string", "null"]},
+        "attribution_rule": {"type": "string", "minLength": 10}
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verdict_type", "readiness", "editorial_review", "domain_review", "legal_privacy_review", "correction_route"],
+      "properties": {
+        "verdict_type": {
+          "enum": [
+            "verified_factual_finding",
+            "data_quality_problem",
+            "systemic_data_gap",
+            "implementation_gap",
+            "policy_risk",
+            "documented_pattern",
+            "insufficient_evidence",
+            "claim_refuted",
+            "corrected_and_closed",
+            "live_process"
+          ]
+        },
+        "readiness": {"enum": ["blocked", "scoping", "review_required", "reply_pending", "publishable", "published", "closed"]},
+        "editorial_review": {"enum": ["not_started", "pass", "changes_required", "block"]},
+        "domain_review": {"enum": ["not_required", "not_started", "pass", "changes_required", "block"]},
+        "legal_privacy_review": {"enum": ["not_required", "not_started", "pass", "changes_required", "block"]},
+        "correction_route": {"type": "string", "minLength": 5}
+      }
+    },
+    "lifecycle": {
+      "enum": ["radar", "scoping", "accepted", "active_sprint", "evidence_review", "right_of_reply", "publishable", "published", "action_tracking", "impact_verified", "closed"]
+    }
+  }
+}
