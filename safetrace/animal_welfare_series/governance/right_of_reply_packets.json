@@ -1,0 +1,98 @@
+{
+  "schema": "safetrace.right-of-reply/0.1",
+  "generated_at": "2026-07-26",
+  "rule": "Draft questions are not evidence of delivery or response. Sensitive publication remains blocked until applicable review and reply gates are complete.",
+  "packets": [
+    {
+      "case_id": "CASE-012",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "Deutschland kann bundesweit nicht transparent zeigen, wie viele landwirtschaftlich gehaltene Tiere vor der Schlachtung sterben und welche Ursachen oder Haltungsbedingungen dahinterstehen.",
+      "questions": [
+        "Welche bundesweit oder in den Ländern verfügbaren Daten erfassen Falltiere und Todesursachen bereits?",
+        "Welche rechtlichen oder technischen Gründe verhindern derzeit eine vergleichbare Bundesstatistik?",
+        "Plant die Bundesregierung eine Zusammenführung oder Veröffentlichung, und wenn ja mit welchem Zeitplan?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    },
+    {
+      "case_id": "CASE-013",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "Eine anerkannte Kontrolllücke soll technisch geschlossen werden – jedoch nur oberhalb fester Größenwerte, deren reale Reichweite öffentlich noch nicht beziffert ist.",
+      "questions": [
+        "Wie viele Schlachtstätten und welcher Anteil der Schlachtzahlen liegen unterhalb der vorgesehenen Schwellen?",
+        "Welche Evidenz begründet genau diese Schwellenwerte?",
+        "Welche Förder- und Datenschutzmaßnahmen sind für kleinere Betriebe vorgesehen?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    },
+    {
+      "case_id": "CASE-014",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "Ob deutsche Behörden Tierwohl bei Drittstaatentransporten bis zum endgültigen Ziel belastbar kontrollieren können, ist öffentlich noch nicht abschließend prüfbar.",
+      "questions": [
+        "Welche Daten kann die Bundesregierung zur vollständigen Kontrolle bis zum endgültigen Zielort liefern?",
+        "Wie werden Verstöße, Verletzungen, Todesfälle und Wiederholungstäter erfasst?",
+        "Wer trägt nach Verlassen des EU-Gebiets die Kontrollverantwortung?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    },
+    {
+      "case_id": "CASE-015",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "Berlins offizielle Tierschutzseite widerspricht sich bei der Zahl der 2025 kontrollierten Tierversuche: Der Text nennt 26, die Tabelle 36.",
+      "questions": [
+        "Welche Zahl ist korrekt: 26 oder 36 Kontrollen laufender Tierversuche im Jahr 2025?",
+        "Sind die insgesamt genannten 64 Vor-Ort-Kontrollen korrekt?",
+        "Kann die Behörde aggregierte Informationen zu Mängelschwere, Nachkontrollen und Wiederholungsmängeln veröffentlichen?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    },
+    {
+      "case_id": "CASE-016",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "EU-Ermittlungen dokumentieren wiederkehrende Routen und Betrugsmethoden beim illegalen Hunde- und Katzenhandel nach Deutschland; der deutsche Gesamtumfang bleibt unzureichend quantifiziert.",
+      "questions": [
+        "Welche Deutschland-spezifischen Fallzahlen liegen zu den EU-weit dokumentierten Betrugsmustern vor?",
+        "Welche Anbieter- oder Plattform-Verifikationen haben nachweislich Risikofälle reduziert?",
+        "Wie werden seriöse Tierheime und legale Transporte vor Pauschalverdacht geschützt?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    },
+    {
+      "case_id": "CASE-017",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "Angaben zu Anzahl und Zweck militärischer Tierversuche sind eingestuft; offen bleibt, welche weniger sensiblen Tierwohl- und Kontrolldaten aggregiert veröffentlicht werden könnten.",
+      "questions": [
+        "Welche aggregierten Angaben zu Tierarten, Anzahl und Belastungsgraden können ohne operative Details veröffentlicht werden?",
+        "Welche unabhängigen Stellen prüfen Unerlässlichkeit, 3R-Maßnahmen und Geheimhaltung?",
+        "Wie oft werden Einstufungen überprüft oder herabgestuft?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    },
+    {
+      "case_id": "CASE-018",
+      "status": "draft_not_sent",
+      "proposed_publish_line": "Die Tierhaltungskennzeichnung wurde auf 2027 verschoben; über Tierarten, Gastronomie, verarbeitete Produkte und Importware wird weiter gerungen.",
+      "questions": [
+        "Welche Tierarten, Produkte, Verkaufswege und Importfälle umfasst die aktuelle Fassung konkret?",
+        "Welche Änderungen erfolgten zwischen den veröffentlichten Fassungen und warum?",
+        "Wie groß ist der Marktanteil der Bereiche, die zunächst nicht gekennzeichnet werden?"
+      ],
+      "delivery_receipt": null,
+      "response_deadline": null,
+      "response_received": false
+    }
+  ]
+}
