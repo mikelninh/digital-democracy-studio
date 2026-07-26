@@ -5,12 +5,18 @@ on:
     paths:
       - "safetrace/animal_welfare_series/**"
       - ".github/ISSUE_TEMPLATE/animal-welfare-public-source-case.yml"
+      - ".github/ISSUE_TEMPLATE/animal-welfare-correction.yml"
+      - ".github/ISSUE_TEMPLATE/animal-welfare-complaint.yml"
+      - ".github/ISSUE_TEMPLATE/animal-welfare-review.yml"
       - ".github/workflows/animal-welfare-series.yml"
   push:
     branches: [main]
     paths:
       - "safetrace/animal_welfare_series/**"
       - ".github/ISSUE_TEMPLATE/animal-welfare-public-source-case.yml"
+      - ".github/ISSUE_TEMPLATE/animal-welfare-correction.yml"
+      - ".github/ISSUE_TEMPLATE/animal-welfare-complaint.yml"
+      - ".github/ISSUE_TEMPLATE/animal-welfare-review.yml"
       - ".github/workflows/animal-welfare-series.yml"
 
 permissions:
@@ -26,5 +32,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate public case catalog and safety boundaries
+      - name: Verify transparent priority totals
+        run: python safetrace/animal_welfare_series/prioritize.py --json
+      - name: Run static accessibility and privacy guard
+        run: python safetrace/animal_welfare_series/accessibility_check.py
+      - name: Validate catalog governance and safety boundaries
         run: python safetrace/animal_welfare_series/validate.py
