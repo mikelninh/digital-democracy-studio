@@ -1,68 +1,58 @@
-# Was wir wissen
+# Spuren im System — Staffel Tierwohl
 
-## Öffentliche Belege. Faire Prüfung. Konkrete nächste Schritte.
+## Öffentliche Belege. Faire Prüfung. Messbare Veränderung.
 
-Tierschutzdebatten beginnen oft mit starken Bildern und enden in zwei Lagern. Die einen sehen einen Skandal. Die anderen sehen Übertreibung, Bürokratie oder einen Angriff auf ihre Arbeit.
+Tierschutzgeschichten beginnen oft mit einem erschütternden Bild oder einem empörenden Verdacht. Doch Empörung allein sagt uns noch nicht, was wirklich passiert ist, welche Verantwortung belegt werden kann oder welche Veränderung Tieren tatsächlich hilft.
 
-Mit **Was wir wissen** versuchen wir etwas anderes.
+Darum starten wir **Spuren im System**.
 
-Wir nehmen eine konkrete Frage. Wir suchen öffentliche Primärquellen. Wir trennen bestätigte Tatsachen von Interpretationen und offenen Punkten. Wir suchen aktiv nach Gegenbelegen. Und wir fragen nicht nur: „Wer ist schuld?“, sondern auch: **Welche Veränderung würde Tieren tatsächlich helfen – und woran könnten wir erkennen, ob sie wirkt?**
+Die Serie untersucht konkrete Tierschutzfragen mit dem TRACE Loop:
 
-Die ersten sieben Fälle reichen von fehlenden bundesweiten Mortalitätsdaten in der Tierhaltung über Videoüberwachung in Schlachtbetrieben und Tiertransporte bis zu illegalem Welpenhandel, Tierversuchskontrollen und der staatlichen Tierhaltungskennzeichnung.
+- **Test:** Ist die Frage konkret und überprüfbar?
+- **Register:** Welche Primärquellen, Datenstände und Originale existieren?
+- **Assemble:** Welche Belege, Gegenbelege und Alternativerklärungen gehören zusammen?
+- **Challenge:** Was ist die stärkste faire Gegenposition? Wer muss antworten können?
+- **Evaluate:** Welches begrenzte Verdict trägt die Evidenz – und was folgt daraus?
 
-Nicht jeder Fall endet mit einem Skandal.
+Jeder Fall hat zwei Namen:
 
-Manche enden mit einem klaren Datenfehler. Andere mit einer legitimen politischen Abwägung, deren Folgen noch niemand beziffert hat. Wieder andere bleiben offen, bis eine Behörde antwortet. Auch ein widerlegter Verdacht ist ein wertvolles Ergebnis, wenn er sauber dokumentiert ist.
+1. einen erzählerischen Titel, der Neugier weckt;
+2. eine sachliche Forschungsfrage, die klarstellt, was tatsächlich geprüft wird.
+
+Unsere erste Staffel umfasst:
+
+- **Die unsichtbaren Toten** — fehlende bundesweite Mortalitätsdaten;
+- **Die Kamera-Lücke** — Schwellenwerte für Videoüberwachung in Schlachtbetrieben;
+- **Die Reise ohne Zeugen** — Kontrolle von Tiertransporten bis zum Zielort;
+- **Das Rätsel der zehn Kontrollen** — widersprüchliche Berliner Kontrollzahlen;
+- **Die Route der falschen Pässe** — illegaler Hunde- und Katzenhandel;
+- **Die geheime Versuchszahl** — Transparenz bei militärischen Tierversuchen;
+- **Das Label mit den blinden Flecken** — Reichweite der Tierhaltungskennzeichnung.
+
+Ein starker Titel darf neugierig machen. Er darf niemals mehr behaupten als die Quellen tragen.
+
+## Was diese Serie anders macht
+
+Jede Episode zeigt sichtbar:
+
+- verifizierte Tatsachen;
+- ausdrücklich nicht belegte Behauptungen;
+- Primärquellen und Quellenstatus;
+- die stärkste Gegenperspektive;
+- Priorität und Publikationsreife als getrennte Größen;
+- ein begrenztes Verdict;
+- einen Win-win-win-Pfad;
+- nächste überprüfbare Aktionen;
+- Impact nach 30, 90 und 365 Tagen.
+
+Nicht jeder Fall muss mit einem Skandal enden. Eine korrigierte Zahl, eine beantwortete Frage, ein widerlegter Verdacht oder ein besserer Kontrollprozess sind ebenfalls Fortschritt.
 
 ## Unser Versprechen
 
-Jede Episode zeigt:
+Wir wollen nicht möglichst viele Menschen beschuldigen.
 
-1. die konkrete Forschungsfrage;
-2. warum sie Tiere und Menschen betrifft;
-3. was durch Primärquellen belegt ist;
-4. was ausdrücklich **nicht** belegt ist;
-5. die stärkste faire Gegenperspektive;
-6. ein begrenztes Verdict;
-7. eine konkrete nächste Handlung;
-8. Messgrößen für 30, 90 und 365 Tage.
+Wir wollen möglichst viele überprüfbare Wege zu weniger Tierleid öffnen.
 
-Wir veröffentlichen keine automatischen Schuldurteile. Lobbyarbeit, Geheimhaltung, politische Nähe oder widersprüchliche Daten können eine Untersuchung rechtfertigen – sie beweisen allein aber weder Korruption noch Rechtsverstöße.
+Dafür veröffentlichen wir belastende Aussagen nur gemeinsam mit Quellen, Gegenbelegen, Unsicherheiten, fairer Antwortmöglichkeit und sichtbarem Korrekturweg.
 
-## Wirkung statt Empörung
-
-Likes und Reichweite zeigen, ob eine Geschichte Menschen erreicht. Sie zeigen noch nicht, ob sich für Tiere etwas verbessert hat.
-
-Deshalb messen wir vier Ebenen getrennt:
-
-- **Evidence Impact:** Wurden Zahlen korrigiert, Quellen veröffentlicht oder Fragen beantwortet?
-- **Accountability Impact:** Haben Behörden, Politik oder Unternehmen Stellung genommen und Zuständigkeiten geklärt?
-- **Behaviour Impact:** Haben sich Kontrollen, Regeln oder Verfahren verändert?
-- **Animal Outcome Impact:** Sind Mortalität, Verletzungen, Belastungsdauer oder schwere Wiederholungsmängel messbar gesunken?
-
-Wir schreiben uns eine Veränderung nur dann selbst zu, wenn es dafür einen nachvollziehbaren Beleg gibt.
-
-## Bürger:innen können mitprüfen
-
-Der TRACE Loop macht das Verfahren wiederverwendbar:
-
-- **T — Test:** Ist die Frage konkret und falsifizierbar?
-- **R — Register:** Welche Primärquellen und Datenstände existieren?
-- **A — Assemble:** Welche Belege und Gegenbelege gehören zusammen?
-- **C — Challenge:** Was sagt die andere Seite, und welche Risiken hat die Veröffentlichung?
-- **E — Evaluate:** Welches Verdict trägt die Evidenz, und was folgt daraus?
-
-Das öffentliche Werkzeug ist zunächst nur für frei zugängliche Quellen gedacht. Keine vertraulichen Uploads, keine privaten Adressen, kein Doxxing und keine verdeckten Methoden.
-
-## Die erste Mission
-
-Wir beginnen mit zwei überprüfbaren Fällen:
-
-- **Case 012:** Welche Mortalitätsdaten zu landwirtschaftlich gehaltenen Tieren liegen Bund und Ländern tatsächlich vor?
-- **Case 015:** Warum nennt Berlins offizielle Seite für dieselben Tierversuchskontrollen einmal 26 und einmal 36?
-
-Wir fragen nach, veröffentlichen die Antworten und dokumentieren sichtbar, was korrigiert wurde und was offen bleibt.
-
-Das Ziel ist nicht, möglichst viele Menschen anzuklagen.
-
-**Das Ziel ist, möglichst viele überprüfbare Wege zu weniger Tierleid zu öffnen.**
+Mitgefühl zeigt uns, wohin wir schauen müssen. Beweise zeigen uns, was wir dort wirklich sehen.
