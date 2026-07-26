@@ -1,0 +1,110 @@
+{
+  "version": "0.1",
+  "as_of": "2026-07-26",
+  "decision_rule": "No intervention is recommended solely because it may raise births. It must improve reproductive freedom, parent and child wellbeing, distributional fairness and measurable security.",
+  "interventions": [
+    {
+      "id": "FS-POL-01",
+      "name": "Childcare Reliability Guarantee",
+      "priority": "A",
+      "barrier": "Unmet demand, closures, shortened hours and lack of backup care",
+      "mechanism": "Guarantee a usable place, publish reliability metrics and provide backup when contracted care repeatedly fails.",
+      "evidence_state": "strong problem evidence; intervention effect requires pilot evaluation",
+      "leading_metrics": ["unmet demand", "closure days", "reduced-hours days", "backup-care response time"],
+      "family_outcomes": ["parent employment continuity", "reported planning security", "care stress", "desired-versus-expected family-size gap"],
+      "pilot": "Compare participating and matched municipalities over 24 months, with pre-registered definitions and no fertility claim before adequate follow-up.",
+      "risks": ["staff overload", "quality traded for availability", "unequal access to backup care"]
+    },
+    {
+      "id": "FS-POL-02",
+      "name": "Equal-Care Parental Leave Test",
+      "priority": "A",
+      "barrier": "Highly unequal leave duration and gendered career costs",
+      "mechanism": "Test more non-transferable, adequately paid leave for each parent plus flexible phased return without lowering household security.",
+      "evidence_state": "strong inequality evidence; design effects differ across income groups and require evaluation",
+      "leading_metrics": ["father leave months", "overlap and solo-care months", "return-to-work timing", "household income replacement"],
+      "family_outcomes": ["care-time distribution", "maternal earnings trajectory", "relationship fairness", "intention for another wanted child"],
+      "pilot": "Model distributional effects first, then test with employers or public-sector cohorts and compare by income and family form.",
+      "risks": ["income loss for low-paid families", "formal leave without real care", "employer discrimination"]
+    },
+    {
+      "id": "FS-POL-03",
+      "name": "Family Housing Access Pilot",
+      "priority": "A",
+      "barrier": "High housing costs and delayed access to adequate independent housing",
+      "mechanism": "Offer transparent priority, guarantees or long-term affordable family units tied to need rather than a pronatalist payment.",
+      "evidence_state": "strong housing-pressure context; direct fertility effect uncertain",
+      "leading_metrics": ["housing-cost burden", "search duration", "overcrowding", "moves caused by family growth"],
+      "family_outcomes": ["planning security", "partnership household formation", "expected family size", "child housing stability"],
+      "pilot": "Five-city comparison using common eligibility, waiting-time and counterfactual rules.",
+      "risks": ["displacement of other vulnerable households", "windfall gains", "regional comparability failure"]
+    },
+    {
+      "id": "FS-POL-04",
+      "name": "Automatic Family Benefits",
+      "priority": "B",
+      "barrier": "Administrative burden, fragmented applications and unknown non-take-up",
+      "mechanism": "Pre-fill or automatically grant eligible benefits where legally possible, with human review and multilingual explanations.",
+      "evidence_state": "high plausibility; Germany-wide cross-benefit baseline missing",
+      "leading_metrics": ["application time", "processing time", "non-take-up", "error and appeal rate"],
+      "family_outcomes": ["disposable income stability", "financial stress", "trust in services"],
+      "pilot": "One-stop pilot covering a small set of benefits in two jurisdictions before national scaling.",
+      "risks": ["privacy overreach", "incorrect automated decisions", "digital exclusion"]
+    },
+    {
+      "id": "FS-POL-05",
+      "name": "Pregnancy and Parenthood Career Protection",
+      "priority": "A",
+      "barrier": "Motherhood-related employment, earnings and promotion penalties",
+      "mechanism": "Measure and reduce preventable parenthood penalties through predictable schedules, transparent promotion data, return pathways and enforcement.",
+      "evidence_state": "strong gender-gap evidence; specific employer interventions require causal testing",
+      "leading_metrics": ["hours before and after birth", "promotion and pay progression", "return-to-role rate", "schedule predictability"],
+      "family_outcomes": ["long-term income", "career satisfaction", "care fairness", "future child intentions"],
+      "pilot": "Public-sector and volunteer-employer cohort with independent evaluation and anti-retaliation safeguards.",
+      "risks": ["hiring discrimination", "box-ticking compliance", "burden shifted to colleagues"]
+    },
+    {
+      "id": "FS-POL-06",
+      "name": "Reproductive Health Access Map",
+      "priority": "B",
+      "barrier": "Unequal information, eligibility, cost and waiting times for fertility and reproductive healthcare",
+      "mechanism": "Publish access rules, costs, waiting times and referral pathways; improve evidence-based counselling and equitable eligibility.",
+      "evidence_state": "individual unmet-need relevance is clear; macro fertility impact is limited and should not be overstated",
+      "leading_metrics": ["waiting time", "out-of-pocket cost", "regional access", "treatment discontinuation"],
+      "family_outcomes": ["informed choice", "time to appropriate care", "patient wellbeing", "wanted pregnancies where medically possible"],
+      "pilot": "Public access map and patient-journey audit without collecting identifiable health records in SafeTrace.",
+      "risks": ["false hope", "commercial steering", "privacy and stigma"]
+    },
+    {
+      "id": "FS-POL-07",
+      "name": "Postpartum Security Standard",
+      "priority": "B",
+      "barrier": "Fragmented physical and mental-health support after birth",
+      "mechanism": "Define minimum follow-up, screening, referral and practical support after birth, including partner inclusion.",
+      "evidence_state": "health and wellbeing rationale strong; Germany baseline and fertility link need mapping",
+      "leading_metrics": ["follow-up completion", "screening and referral time", "unmet support need", "continuity of care"],
+      "family_outcomes": ["maternal mental and physical health", "relationship stress", "parent confidence", "future family intentions"],
+      "pilot": "Regional care-pathway audit using aggregated outcomes and independent clinical review.",
+      "risks": ["medicalisation", "screening without treatment capacity", "unequal rural access"]
+    },
+    {
+      "id": "FS-POL-08",
+      "name": "Wanted Second and Third Child Study",
+      "priority": "B",
+      "barrier": "Different barriers by parity are hidden inside one national fertility rate",
+      "mechanism": "Separate first-child, second-child and third-or-later intentions and identify which security constraint changes at each stage.",
+      "evidence_state": "BiB identifies declining higher-order births as important; intervention evidence remains incomplete",
+      "leading_metrics": ["intentions by parity", "timing postponement", "housing and care capacity", "maternal and paternal workload"],
+      "family_outcomes": ["realisation of wanted family size", "parent wellbeing", "child wellbeing"],
+      "pilot": "FReDA-compatible analysis and qualitative review, not a cash-bonus experiment.",
+      "risks": ["pressure on larger families", "selection bias", "ignoring first-child and childfree preferences"]
+    }
+  ],
+  "do_not_prioritise_without_evidence": [
+    "unconditional one-time baby bonuses",
+    "campaigns that shame childfree people or women",
+    "fertility targets detached from child and parent wellbeing",
+    "municipal rankings before definitions and case mix are comparable",
+    "claims that migration or family policy alone can solve demographic ageing"
+  ]
+}

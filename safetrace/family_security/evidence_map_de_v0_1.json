@@ -1,0 +1,214 @@
+{
+  "version": "0.1",
+  "as_of": "2026-07-26",
+  "scope": "Germany public-source baseline for CAND-051",
+  "warning": "Indicators use different populations, years and definitions. They must not be combined into a causal fertility score without further validation.",
+  "headline_finding": "German family aspirations remain materially higher than realised fertility, while housing, childcare and gendered care burdens show measurable security gaps. A nationally comparable baseline is still missing for several key dimensions.",
+  "indicators": [
+    {
+      "id": "FS-DESIRE-IDEAL-01",
+      "dimension": "family_aspiration",
+      "label": "Ideal number of children among young adults",
+      "value": 2.31,
+      "unit": "children",
+      "population": "young adults aged 18–29",
+      "period": "reported in 2024 BiB policy paper",
+      "status": "verified_starting_fact",
+      "interpretation": "When respondents are asked to ignore obstacles, the average ideal family size is above two children.",
+      "limitation": "Ideal family size is not the same as a concrete intention, forecast or entitlement to children.",
+      "source": {
+        "publisher": "Bundesinstitut für Bevölkerungsforschung",
+        "title": "Kinderwünsche, Care-Arbeit und Erwerbstätigkeit: Welche Rahmenbedingungen junge Erwachsene und Eltern brauchen",
+        "url": "https://www.bib.bund.de/Publikation/2024/pdf/Kinderwuensche-Care-Arbeit-und-Erwerbstaetigkeit-Welche-Rahmenbedingungen-junge-Erwachsene-und-Eltern-brauchen.pdf?__blob=publicationFile&v=1"
+      }
+    },
+    {
+      "id": "FS-DESIRE-INTENDED-02",
+      "dimension": "family_aspiration",
+      "label": "Intended number of children",
+      "value": {"women": 1.76, "men": 1.74},
+      "unit": "children",
+      "population": "women and men aged 18–49",
+      "period": "2023/24",
+      "status": "verified_starting_fact",
+      "interpretation": "Intentions remained stable during the fertility decline, while near-term plans weakened among people aged 30–39.",
+      "limitation": "Intentions include children already born and cannot be subtracted mechanically from annual total fertility rates.",
+      "source": {
+        "publisher": "Bundesinstitut für Bevölkerungsforschung",
+        "title": "Stabile Kinderwünsche trotz Geburtenrückgang",
+        "url": "https://www.bib.bund.de/Publikation/2025/pdf/Stabile-Kinderwuensche-trotz-Geburtenrueckgang.pdf?__blob=publicationFile&v=1"
+      }
+    },
+    {
+      "id": "FS-FERTILITY-REALIZED-03",
+      "dimension": "family_aspiration",
+      "label": "Total fertility rate",
+      "value": 1.32,
+      "unit": "children per woman",
+      "population": "Germany",
+      "period": "2025",
+      "status": "verified_starting_fact",
+      "interpretation": "Period fertility is substantially below both replacement level and reported ideal family size.",
+      "limitation": "The total fertility rate is a synthetic period measure and is affected by timing shifts; it is not the completed family size of a real cohort.",
+      "source": {
+        "publisher": "Statistisches Bundesamt",
+        "title": "Zusammengefasste Geburtenziffer sinkt im Jahr 2025 auf 1,32 Kinder je Frau",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/07/PD26_230_12.html"
+      }
+    },
+    {
+      "id": "FS-HOUSING-OVERBURDEN-04",
+      "dimension": "housing",
+      "label": "Housing-cost overburden",
+      "value": 11.2,
+      "unit": "percent of population",
+      "population": "Germany",
+      "period": "2025",
+      "status": "verified_context_indicator",
+      "interpretation": "More than one in ten people lived in a household spending over 40% of disposable income on housing costs.",
+      "limitation": "This indicator is not specific to prospective parents or families and does not prove an effect on fertility decisions.",
+      "source": {
+        "publisher": "Statistisches Bundesamt / Eurostat",
+        "title": "EU-Vergleich: Überbelastung durch Wohnkosten 2025",
+        "url": "https://www.destatis.de/Europa/DE/Thema/Bevoelkerung-Arbeit-Soziales/Soziales-Lebensbedingungen/Wohnkosten.html"
+      }
+    },
+    {
+      "id": "FS-HOUSING-PARENTS-05",
+      "dimension": "housing",
+      "label": "25-year-olds living with parents",
+      "value": 30,
+      "unit": "percent",
+      "population": "people aged 25 in Germany",
+      "period": "2025",
+      "status": "verified_context_indicator",
+      "interpretation": "Delayed independent household formation may be relevant to partnership and family timing.",
+      "limitation": "Living with parents can be voluntary and the statistic does not identify housing cost as the cause.",
+      "source": {
+        "publisher": "Statistisches Bundesamt",
+        "title": "30 % der 25-Jährigen wohnten 2025 noch im Haushalt der Eltern",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/07/PD26_N044_12.html"
+      }
+    },
+    {
+      "id": "FS-CHILDCARE-GAP-06",
+      "dimension": "childcare",
+      "label": "Unmet childcare demand for ages 1 to under 3",
+      "value": 21,
+      "unit": "percent of stated demand",
+      "population": "families with children aged 1 to under 3",
+      "period": "KiBS 2018–2020",
+      "status": "verified_but_stale",
+      "interpretation": "Every fifth stated childcare need was not met in the national analysis; gaps were larger for low-income and non-German-speaking households.",
+      "limitation": "The underlying data are older and must be refreshed before use as a 2026 baseline.",
+      "source": {
+        "publisher": "Bundesinstitut für Bevölkerungsforschung",
+        "title": "Ungedeckte Betreuungsbedarfe in Deutschland",
+        "url": "https://www.bib.bund.de/DE/Forschung/Bildung/BiB-Kita-Gaps/Ungedeckte-Betreuungsbedarfe-Deutschland.html"
+      }
+    },
+    {
+      "id": "FS-CHILDCARE-USE-07",
+      "dimension": "childcare",
+      "label": "Childcare participation under age three",
+      "value": 37.8,
+      "unit": "percent",
+      "population": "children under age three",
+      "period": "1 March 2025",
+      "status": "verified_context_indicator",
+      "interpretation": "The participation rate rose slightly while the number of children in care declined.",
+      "limitation": "Participation is not the same as fulfilled demand, reliable opening hours or quality.",
+      "source": {
+        "publisher": "Statistisches Bundesamt",
+        "title": "Zahl der unter Dreijährigen in Kindertagesbetreuung 2025 um 5,6 % gesunken",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/10/PD25_392_225.html"
+      }
+    },
+    {
+      "id": "FS-CARE-EMPLOYMENT-08",
+      "dimension": "care_fairness",
+      "label": "Employment rate of parents with a child under three",
+      "value": {"mothers": 39.7, "fathers": 88.7},
+      "unit": "percent",
+      "population": "parents aged 15–64 with at least one child under three in household",
+      "period": "2025",
+      "status": "verified_starting_fact",
+      "interpretation": "The realised employment gap is large and strongly gendered during early parenthood.",
+      "limitation": "The measure includes voluntary choices and parental leave arrangements and does not by itself quantify an involuntary career penalty.",
+      "source": {
+        "publisher": "Statistisches Bundesamt",
+        "title": "39,7 % der Mütter mit einem Kind unter drei Jahren sind erwerbstätig",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/Zahl-der-Woche/2026/PD26_19_p002.html"
+      }
+    },
+    {
+      "id": "FS-CARE-LEAVE-09",
+      "dimension": "care_fairness",
+      "label": "Planned parental-benefit duration",
+      "value": {"women_months": 14.9, "men_months": 3.8, "male_recipient_share_percent": 25.9},
+      "unit": "months and percent",
+      "population": "parental-benefit recipients",
+      "period": "2025",
+      "status": "verified_starting_fact",
+      "interpretation": "Care-related leave remains highly unequal in duration.",
+      "limitation": "Elterngeld receipt does not capture all unpaid care or identify the preferred division of each family.",
+      "source": {
+        "publisher": "Statistisches Bundesamt",
+        "title": "Elterngeld 2025: Anteil der Eltern mit Elterngeld Plus auf Höchststand",
+        "url": "https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/04/PD26_136_22922.html"
+      }
+    },
+    {
+      "id": "FS-CARE-HOUSEWORK-10",
+      "dimension": "care_fairness",
+      "label": "Weekly housework time",
+      "value": {"women_hours": 13, "men_hours": "approximately half of women"},
+      "unit": "hours per week",
+      "population": "working-age women and men in relationships",
+      "period": "FReDA policy brief reported 2025",
+      "status": "verified_context_indicator",
+      "interpretation": "Unequal routine housework can affect relationship satisfaction and the perceived cost of additional children.",
+      "limitation": "Housework is only one component of total care and mental load.",
+      "source": {
+        "publisher": "Bundesinstitut für Bevölkerungsforschung",
+        "title": "Geteilt, gerecht, zufrieden? Aufteilung von Hausarbeit in Beziehungen",
+        "url": "https://www.bib.bund.de/DE/Presse/Pressegespraeche/2025-07-09-Pressegespraech-Geteilt-gerecht-zufrieden-Aufteilung-von-Hausarbeit-in-Beziehungen.html"
+      }
+    },
+    {
+      "id": "FS-HEALTH-GAP-11",
+      "dimension": "reproductive_and_maternal_health",
+      "label": "Comparable national family-formation health baseline",
+      "value": null,
+      "unit": null,
+      "population": "prospective parents and parents",
+      "period": "2026 scoping",
+      "status": "data_gap",
+      "interpretation": "A single comparable baseline linking fertility access, pregnancy care, birth experience, postpartum health and later family intentions was not identified in the initial official-source sweep.",
+      "limitation": "This is a search finding, not proof that no relevant datasets exist.",
+      "source": null
+    },
+    {
+      "id": "FS-BENEFITS-GAP-12",
+      "dimension": "benefit_access",
+      "label": "Comparable non-take-up and administrative-burden baseline",
+      "value": null,
+      "unit": null,
+      "population": "families potentially eligible for benefits",
+      "period": "2026 scoping",
+      "status": "data_gap",
+      "interpretation": "The initial sweep did not identify one current official national dataset covering entitlement, application friction, processing time and non-take-up across core family benefits.",
+      "limitation": "Programme-specific evidence may exist and must be mapped separately.",
+      "source": null
+    }
+  ],
+  "priority_data_gaps": [
+    "Current Germany-wide gap between ideal, intended, expected and ultimately realised family size by age, gender, parity, income and region",
+    "Current unmet childcare demand plus closure days, reduced opening hours and emergency backup availability",
+    "Prospective-parent housing affordability and time to obtain adequate housing",
+    "Motherhood and fatherhood earnings, pension and career effects by parity",
+    "Access, waiting times and outcomes for fertility, maternity and postpartum services",
+    "Administrative burden and non-take-up across family benefits",
+    "Relationship safety, support networks and time scarcity as family-formation constraints"
+  ]
+}

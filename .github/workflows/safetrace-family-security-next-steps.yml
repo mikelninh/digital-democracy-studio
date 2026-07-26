@@ -1,0 +1,37 @@
+name: SafeTrace Family Security Next Steps
+
+on:
+  pull_request:
+    paths:
+      - "safetrace/family_security/evidence_map_de_v0_1.json"
+      - "safetrace/family_security/policy_matrix_v0_1.json"
+      - "safetrace/family_security/next_steps.html"
+      - "safetrace/family_security/validate_next_steps.py"
+      - ".github/workflows/safetrace-family-security-next-steps.yml"
+  push:
+    branches: [main]
+    paths:
+      - "safetrace/family_security/evidence_map_de_v0_1.json"
+      - "safetrace/family_security/policy_matrix_v0_1.json"
+      - "safetrace/family_security/next_steps.html"
+      - "safetrace/family_security/validate_next_steps.py"
+      - ".github/workflows/safetrace-family-security-next-steps.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate evidence map and policy matrix
+        run: python safetrace/family_security/validate_next_steps.py
+      - name: Validate JSON and public page
+        run: |
+          python -m json.tool safetrace/family_security/evidence_map_de_v0_1.json >/dev/null
+          python -m json.tool safetrace/family_security/policy_matrix_v0_1.json >/dev/null
+          test -s safetrace/family_security/next_steps.html
