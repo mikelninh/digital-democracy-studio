@@ -1,0 +1,50 @@
+name: SafeTrace v0.4 Portfolio Truth
+
+on:
+  pull_request:
+    paths:
+      - "safetrace/citizen_portal/active_portfolio_v0_4.json"
+      - "safetrace/citizen_portal/validate_portfolio_v0_4.py"
+      - "safetrace/citizen_portal/portfolio_v0_4.html"
+      - "safetrace/citizen_portal/OUTREACH_PACKETS_V0_4.md"
+      - "safetrace/citizen_portal/V2_PRODUCT_CONCEPT.md"
+      - "safetrace/citizen_portal/v2_concept.html"
+      - ".github/workflows/safetrace-v0-4-portfolio.yml"
+  push:
+    branches: [main]
+    paths:
+      - "safetrace/citizen_portal/active_portfolio_v0_4.json"
+      - "safetrace/citizen_portal/validate_portfolio_v0_4.py"
+      - "safetrace/citizen_portal/portfolio_v0_4.html"
+      - "safetrace/citizen_portal/OUTREACH_PACKETS_V0_4.md"
+      - "safetrace/citizen_portal/V2_PRODUCT_CONCEPT.md"
+      - "safetrace/citizen_portal/v2_concept.html"
+      - ".github/workflows/safetrace-v0-4-portfolio.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate five active Case Contracts
+        run: python safetrace/citizen_portal/validate_portfolio_v0_4.py | tee safetrace/citizen_portal/portfolio_v0_4_validation.txt
+      - name: Validate public concept and outreach artifacts
+        run: |
+          test -s safetrace/citizen_portal/portfolio_v0_4.html
+          test -s safetrace/citizen_portal/OUTREACH_PACKETS_V0_4.md
+          test -s safetrace/citizen_portal/V2_PRODUCT_CONCEPT.md
+          test -s safetrace/citizen_portal/v2_concept.html
+          grep -qi "Impact-Grenze" safetrace/citizen_portal/portfolio_v0_4.html
+          grep -qi "prepared, not yet sent" safetrace/citizen_portal/OUTREACH_PACKETS_V0_4.md
+          grep -qi "kein aktueller Freigabestatus" safetrace/citizen_portal/v2_concept.html
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: safetrace-v0-4-portfolio-validation
+          path: safetrace/citizen_portal/portfolio_v0_4_validation.txt
