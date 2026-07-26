@@ -1,0 +1,244 @@
+{
+  "schema": "safetrace.social-seasons/0.1",
+  "generated_at": "2026-07-26",
+  "publication_rule": "These are public-source investigation candidates, not allegations or verdicts. Scores rank expected public value and investigability only.",
+  "seasons": [
+    {
+      "id": "SEASON-02",
+      "title": "Kinder im System",
+      "subtitle": "Wo Schutz, Betreuung und Chancen zwischen Pflicht und Praxis verschwinden.",
+      "candidates": [
+        {
+          "id": "CAND-033",
+          "topic": "children",
+          "story_title": "181 Fälle – und trotzdem keine Statistik",
+          "research_question": "Warum existiert keine regelmäßige, vollständige Statistik zu gemeldeten und anerkannten Fällen sexuellen Missbrauchs von Kindern in Bildungs- und Betreuungseinrichtungen?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "federal_data_gap_verified",
+          "first_sprint": "Meldung, Anerkennung, Einrichtungstyp, Ausgang und Präventionsfolge über Unfallversicherungsträger und Länder vereinheitlichen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Unfallversicherungen haben keine Daten zu Kindesmissbrauch","date":"2026-05-08","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1174946"}]
+        },
+        {
+          "id": "CAND-034",
+          "topic": "children",
+          "story_title": "Das Schutzkonzept, das niemand zählen kann",
+          "research_question": "Wie viele Angebote der Kinder- und Jugendhilfe verfügen tatsächlich über geprüfte, angewendete und regelmäßig aktualisierte Gewaltschutzkonzepte?",
+          "scores": {"harm":5,"evidence":4,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 29,
+          "decision": "prioritise",
+          "evidence_state": "legal_requirement_verified_compliance_open",
+          "first_sprint": "Alle Länder nach Prüfquote, Mängeln, Aktualisierung und Konsequenzen fehlender Schutzkonzepte befragen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Gewaltschutzkonzepte bei Angeboten für Kinder","date":"2026-02-11","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1145822"}]
+        },
+        {
+          "id": "CAND-035",
+          "topic": "children",
+          "story_title": "221.500 Leben außerhalb der Familie",
+          "research_question": "Warum steigt die Zahl junger Menschen in Heimen und Pflegefamilien, und welche öffentlich vergleichbaren Daten zeigen Sicherheit, Stabilität und spätere Chancen?",
+          "scores": {"harm":5,"evidence":5,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+          "total": 28,
+          "decision": "prioritise",
+          "evidence_state": "population_increase_verified_outcomes_fragmented",
+          "first_sprint": "Abbrüche, Wechsel, Bildungswege, Beschwerden, Personal und Übergang ins Erwachsenenleben nach Ländern vergleichen.",
+          "sources": [{"publisher":"Statistisches Bundesamt","title":"Zahl junger Menschen in Heimen und Pflegefamilien 2024 weiter gestiegen","date":"2026-03-23","url":"https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/03/PD26_098_225.html"}]
+        },
+        {
+          "id": "CAND-036",
+          "topic": "children",
+          "story_title": "Der Kita-Code deiner Postleitzahl",
+          "research_question": "Welche Folgen haben die großen Länderunterschiede beim Personal-Kind-Schlüssel für Ausfälle, Qualität, Inklusion und Bildungschancen?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":4,"public_value":5,"fairness":5},
+          "total": 29,
+          "decision": "prioritise",
+          "evidence_state": "staffing_disparity_verified_outcome_link_open",
+          "first_sprint": "Personalschlüssel mit Schließtagen, Ausfällen, Förderbedarf, Beschwerden und Qualitätsprüfungen verbinden.",
+          "sources": [{"publisher":"Statistisches Bundesamt","title":"Personal-Kind-Schlüssel 2025 nach Ländern","date":"2026-02-25","url":"https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Soziales/Kindertagesbetreuung/Tabellen/personal-kind-schluessel-2025.html"}]
+        },
+        {
+          "id": "CAND-037",
+          "topic": "families",
+          "story_title": "Allein erziehen, doppelt so oft arm",
+          "research_question": "Welche konkreten Hürden bei Unterhalt, Betreuung, Wohnen und Leistungen halten die Armutsgefährdung von Alleinerziehenden bei 28,9 Prozent?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "scale_and_risk_verified_driver_contribution_open",
+          "first_sprint": "Unterhaltsausfälle, Vorschuss, Betreuungslücken, Wohnkosten und Nichtinanspruchnahme von Leistungen quantifizieren.",
+          "sources": [{"publisher":"Statistisches Bundesamt","title":"1,62 Millionen Alleinerziehende mit minderjährigen Kindern","date":"2026-07-23","url":"https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/07/PD26_N051_12.html"}]
+        },
+        {
+          "id": "CAND-038",
+          "topic": "children",
+          "story_title": "32.700 Träger – aber findet jede Familie Hilfe?",
+          "research_question": "Ist die Kinder- und Jugendhilfe trotz 32.700 Trägern für Familien lokal erreichbar, verständlich und rechtzeitig verfügbar?",
+          "scores": {"harm":4,"evidence":4,"actionability":4,"urgency":3,"public_value":5,"fairness":5},
+          "total": 25,
+          "decision": "prioritise_with_data_sprint",
+          "evidence_state": "provider_scale_verified_access_open",
+          "first_sprint": "Wartezeiten, Zuständigkeiten, Abweisungen, Erreichbarkeit und barrierefreie Informationen in ausgewählten Kommunen testen.",
+          "sources": [{"publisher":"Statistisches Bundesamt","title":"32.700 Träger der Kinder- und Jugendhilfe im Jahr 2024","date":"2026-01-28","url":"https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Soziales/Kinderhilfe-Jugendhilfe/aktuell-traeger-kinder-jugendhilfe.html"}]
+        }
+      ]
+    },
+    {
+      "id": "SEASON-03",
+      "title": "Schutzlücken",
+      "subtitle": "Gewalt ist sichtbar. Ob Schutz tatsächlich ankommt, oft nicht.",
+      "candidates": [
+        {
+          "id": "CAND-039",
+          "topic": "violence",
+          "story_title": "Die fehlenden Schutzplätze, die niemand beziffern kann",
+          "research_question": "Wie viele Frauenhaus- und Schutzplätze fehlen regional tatsächlich, wenn selbst der Bund den Bedarf bislang nicht beziffern kann?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "federal_need_data_gap_verified",
+          "first_sprint": "Kapazität, Abweisungen, Barrierefreiheit, Kinderplätze, Finanzierung und regionale Erreichbarkeit erfassen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Gewalt gegen Frauen: Umsetzung der Istanbul-Konvention","date":"2026-05","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1174538"}]
+        },
+        {
+          "id": "CAND-040",
+          "topic": "violence",
+          "story_title": "120 Maßnahmen – kein öffentlicher Tacho",
+          "research_question": "Welche der 120 Maßnahmen der Gewaltschutzstrategie sind begonnen, finanziert, abgeschlossen oder nachweislich wirksam?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "government_monitoring_plan_verified_public_scoreboard_missing",
+          "first_sprint": "Eine Maßnahme-zu-Budget-zu-Output-Matrix mit Verantwortlichen, Fristen und Evidenz bauen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Fristgerechte Umsetzung von Gewaltschutzstrategie","date":"2026-06-15","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1184800"}]
+        },
+        {
+          "id": "CAND-041",
+          "topic": "violence",
+          "story_title": "Die Fußfessel ist beschlossen – schützt sie auch?",
+          "research_question": "Können Gerichte und Länder die neue elektronische Aufenthaltsüberwachung schnell, einheitlich und mit messbarem Schutz für Betroffene umsetzen?",
+          "scores": {"harm":5,"evidence":5,"actionability":4,"urgency":5,"public_value":4,"fairness":5},
+          "total": 28,
+          "decision": "prioritise",
+          "evidence_state": "law_adopted_implementation_and_outcomes_open",
+          "first_sprint": "Rechtskraft, Landeskapazitäten, Anordnungen, Verstöße, Reaktionszeiten und Schutz-Outcomes verfolgen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Ja zur elektronischen Fußfessel zum Schutz vor häuslicher Gewalt","date":"2026-05-08","url":"https://www.bundestag.de/dokumente/textarchiv/2026/kw09-de-aufenthaltsueberwachung-1140440"}]
+        },
+        {
+          "id": "CAND-042",
+          "topic": "violence",
+          "story_title": "Kein Zuhause, kein sicherer Schutzraum",
+          "research_question": "Wie viele wohnungslose Frauen finden sichere, geschlechtergerechte und gewaltgeschützte Unterbringung – und wie viele werden abgewiesen?",
+          "scores": {"harm":5,"evidence":4,"actionability":5,"urgency":4,"public_value":5,"fairness":5},
+          "total": 28,
+          "decision": "prioritise",
+          "evidence_state": "policy_need_verified_national_capacity_open",
+          "first_sprint": "Kommunale Schutzangebote, abschließbare Räume, Sanitärbereiche, Gewaltschutzkonzepte und Abweisungen erfassen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Besserer Schutz für wohnungslose Frauen","date":"2026-03-24","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1157614"}]
+        },
+        {
+          "id": "CAND-043",
+          "topic": "digital_rights",
+          "story_title": "Digital verfolgt, analog allein gelassen?",
+          "research_question": "Schließt das geplante Digitale Gewaltschutzgesetz die wichtigsten Schutzlücken für anonyme Hass-Accounts und bildbasierte sexualisierte Gewalt?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "live_draft_verified_effectiveness_open",
+          "first_sprint": "Betroffenenfälle, Verfahrensdauer, Plattformpflichten, anonyme Accounts und Rechtsbehelfe gegen den Entwurf mappen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Entwurf eines Digitalen Gewaltschutzgesetzes","date":"2026-06-29","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1192978"}]
+        },
+        {
+          "id": "CAND-044",
+          "topic": "migration",
+          "story_title": "16 Verletzte in drei Monaten",
+          "research_question": "Welche Prävention, Strafverfolgung und Opferhilfe folgt auf politisch motivierte Gewaltdelikte gegen Geflüchtete?",
+          "scores": {"harm":5,"evidence":5,"actionability":4,"urgency":5,"public_value":4,"fairness":5},
+          "total": 28,
+          "decision": "prioritise",
+          "evidence_state": "q1_incidents_verified_case_outcomes_open",
+          "first_sprint": "Tatverlauf, Ermittlungsstatus, Verurteilungen, Schutzmaßnahmen und Opferunterstützung aggregiert nachverfolgen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Gewaltdelikte gegen Flüchtlinge","date":"2026-06-02","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1183210"}]
+        }
+      ]
+    },
+    {
+      "id": "SEASON-04",
+      "title": "Zwischen den Zuständigkeiten",
+      "subtitle": "Wohnungslosigkeit, Migration und Pflege: viele Betroffene, verteilte Verantwortung.",
+      "candidates": [
+        {
+          "id": "CAND-045",
+          "topic": "homelessness",
+          "story_title": "474.700 Menschen – und die Kosten kennt niemand zentral",
+          "research_question": "Wie lange bleiben Menschen in kommunaler Wohnungslosenunterbringung, was kostet sie und wie viele wechseln tatsächlich in dauerhaften Wohnraum?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "population_verified_costs_and_exit_outcomes_fragmented",
+          "first_sprint": "Kommunale Kosten, Aufenthaltsdauer, Familienanteil, Statusgruppen und Ausgänge in dauerhaften Wohnraum vergleichen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"474.000 Menschen wegen Wohnungslosigkeit in Einrichtungen","date":"2026-05-20","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1179002"}]
+        },
+        {
+          "id": "CAND-046",
+          "topic": "homelessness",
+          "story_title": "Neun Tote, 2.663 Opfer",
+          "research_question": "Warum steigt registrierte Gewalt gegen obdachlose Menschen, und welche Tatorte, Täterkontexte und Präventionsmaßnahmen sind erkennbar?",
+          "scores": {"harm":5,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 30,
+          "decision": "prioritise",
+          "evidence_state": "2025_victim_counts_verified_prevention_and_case_outcomes_open",
+          "first_sprint": "Delikte, Orte, Ermittlungs- und Verfahrensausgänge sowie kommunale Schutzmaßnahmen auswerten.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Straftaten gegen Obdachlose im Jahr 2025","date":"2026-06-18","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1187854"}]
+        },
+        {
+          "id": "CAND-047",
+          "topic": "migration",
+          "story_title": "Der Sprachkurs-Stopp",
+          "research_question": "Wie viele Menschen und Kurse betrifft die ausgesetzte Zulassung nach Paragraf 44 Absatz 4 Aufenthaltsgesetz tatsächlich, und welche Folgen entstehen für Arbeit und Teilhabe?",
+          "scores": {"harm":4,"evidence":5,"actionability":5,"urgency":5,"public_value":5,"fairness":5},
+          "total": 29,
+          "decision": "prioritise",
+          "evidence_state": "admission_stop_verified_affected_scale_and_outcomes_open",
+          "first_sprint": "Anträge, Ablehnungen, nicht gestartete Kurse, Wartezeiten und Arbeitsmarktfolgen nach Gruppen und Regionen erfassen.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Regierung verteidigt Zugang zu Integrationskursen","date":"2026-03-20","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1156850"}]
+        },
+        {
+          "id": "CAND-048",
+          "topic": "migration",
+          "story_title": "307.030 gestartet – aber was geschieht danach?",
+          "research_question": "Welche Teilnehmenden schließen Integrationskurse erfolgreich ab, wer bricht ab und welche langfristigen Sprach-, Bildungs- und Arbeitsmarktergebnisse folgen?",
+          "scores": {"harm":4,"evidence":5,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+          "total": 27,
+          "decision": "prioritise",
+          "evidence_state": "annual_entries_and_successful_exits_verified_cohort_outcomes_open",
+          "first_sprint": "Kohorten statt Jahresgesamtzahlen verfolgen und Abbruchgründe, Wartezeiten, Kinderbetreuung und spätere Beschäftigung verbinden.",
+          "sources": [{"publisher":"Deutscher Bundestag","title":"Zahl neuer Teilnehmer an Integrationskursen","date":"2026-05-08","url":"https://www.bundestag.de/presse/hib/kurzmeldungen-1174954"}]
+        },
+        {
+          "id": "CAND-049",
+          "topic": "care",
+          "story_title": "3,8 Millionen Angehörige tragen das Pflegesystem",
+          "research_question": "Welche gesundheitlichen, finanziellen und beruflichen Folgen entstehen für Angehörige, die Pflegebedürftige überwiegend zu Hause versorgen?",
+          "scores": {"harm":5,"evidence":5,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+          "total": 28,
+          "decision": "prioritise",
+          "evidence_state": "home_care_scale_verified_caregiver_outcomes_fragmented",
+          "first_sprint": "Pflegezeit, Erwerbsausfälle, Ersatzpflege, Gesundheitsfolgen, Beratung und regionale Entlastungsangebote zusammenführen.",
+          "sources": [{"publisher":"Statistisches Bundesamt","title":"Gesundheitsausgaben in Pflegeeinrichtungen im Jahr 2023 um 6,3 Prozent gestiegen","date":"2025-05","url":"https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/05/PD25_N025_236.html"}]
+        },
+        {
+          "id": "CAND-050",
+          "topic": "families",
+          "story_title": "Wohnkosten fressen die Familie auf",
+          "research_question": "Welche Haushalte mit Kindern geraten trotz Erwerbsarbeit durch Wohnkosten unter die Armuts- oder Belastungsgrenze, und welche Hilfen erreichen sie nicht?",
+          "scores": {"harm":5,"evidence":5,"actionability":4,"urgency":4,"public_value":5,"fairness":5},
+          "total": 28,
+          "decision": "prioritise",
+          "evidence_state": "poverty_risk_verified_housing_contribution_and_benefit_gaps_open",
+          "first_sprint": "Armutsrisiko, Warmmiete, Wohngeld, Kinderzuschlag und Nichtinanspruchnahme nach Haushaltstyp und Region verknüpfen.",
+          "sources": [{"publisher":"Statistisches Bundesamt","title":"Armutsgefährdung nach Haushaltstyp 2025","date":"2026-04-09","url":"https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Einkommen-Konsum-Lebensbedingungen/Lebensbedingungen-Armutsgefaehrdung/Tabellen/armutsgef-typ-2-zvgl.html"}]
+        }
+      ]
+    }
+  ]
+}
