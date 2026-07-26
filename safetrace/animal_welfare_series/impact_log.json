@@ -1,0 +1,63 @@
+{
+  "schema": "safetrace.animal-welfare-impact-log/0.1",
+  "generated_at": "2026-07-26",
+  "rule": "Views and likes are reach only. Evidence, accountability, behaviour/policy and animal outcomes are recorded separately.",
+  "cases": [
+    {
+      "case_id": "CASE-012",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    },
+    {
+      "case_id": "CASE-013",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    },
+    {
+      "case_id": "CASE-014",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    },
+    {
+      "case_id": "CASE-015",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    },
+    {
+      "case_id": "CASE-016",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    },
+    {
+      "case_id": "CASE-017",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    },
+    {
+      "case_id": "CASE-018",
+      "baseline_date": "2026-07-26",
+      "baseline": {"evidence_events": 0, "accountability_events": 0, "behaviour_or_policy_events": 0, "animal_outcome_events": 0, "reach_metrics": {}},
+      "checkpoints": {"30_days": "2026-08-25", "90_days": "2026-10-24", "365_days": "2027-07-26"},
+      "events": [],
+      "attribution_note": "No SafeTrace-caused impact is claimed until a named actor confirms contribution or a reviewed causal design supports it."
+    }
+  ]
+}
