@@ -8,6 +8,9 @@ on:
       - "safetrace/citizen_portal/candidates.json"
       - "safetrace/citizen_portal/social_seasons.json"
       - "safetrace/citizen_portal/audit_v1.py"
+      - "safetrace/citizen_portal/V1_*.md"
+      - "safetrace/citizen_portal/case_contract_v1.schema.json"
+      - "safetrace/citizen_portal/v1_concept.html"
       - ".github/workflows/safetrace-v1-audit.yml"
   pull_request:
     paths:
@@ -15,6 +18,9 @@ on:
       - "safetrace/citizen_portal/candidates.json"
       - "safetrace/citizen_portal/social_seasons.json"
       - "safetrace/citizen_portal/audit_v1.py"
+      - "safetrace/citizen_portal/V1_*.md"
+      - "safetrace/citizen_portal/case_contract_v1.schema.json"
+      - "safetrace/citizen_portal/v1_concept.html"
       - ".github/workflows/safetrace-v1-audit.yml"
 
 permissions:
@@ -28,6 +34,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Validate v1 contract files
+        run: |
+          python -m json.tool safetrace/citizen_portal/case_contract_v1.schema.json >/dev/null
+          test -s safetrace/citizen_portal/V1_PRODUCT_SPEC.md
+          test -s safetrace/citizen_portal/V1_AUDIT_FINDINGS.md
+          test -s safetrace/citizen_portal/V1_PORTFOLIO_DECISION.md
+          grep -q "Concept boundary" safetrace/citizen_portal/v1_concept.html
       - name: Audit all cases and candidates
         run: python safetrace/citizen_portal/audit_v1.py | tee safetrace/citizen_portal/v1_audit_summary.txt
       - name: Upload reproducible audit
