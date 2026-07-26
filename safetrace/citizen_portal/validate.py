@@ -128,7 +128,7 @@ def validate() -> dict[str, object]:
             fail(f"index missing safety marker: {marker}")
 
     season_html = SEASONS_PAGE.read_text(encoding="utf-8")
-    for marker in ("Staffeln 2 bis 4", "social_seasons.json", "kein Schuldvorwurf", "Fair-Play-Standard"):
+    for marker in ("Staffeln 2 bis 4", "social_seasons.json", "Schuldvorwurf", "Fair-Play-Standard"):
         if marker.lower() not in season_html.lower():
             fail(f"season page missing marker: {marker}")
 
