@@ -1,0 +1,251 @@
+{
+  "schema": "safetrace.active-portfolio/0.4",
+  "generated_at": "2026-07-26",
+  "status": "operational_alpha",
+  "capacity_rule": {
+    "active_limit": 5,
+    "scoped_limit": 10,
+    "active_count": 5,
+    "rule": "No sixth investigation may become active until one active case is closed, paused or replaced through a documented portfolio decision."
+  },
+  "portfolio_owner": "Michael Ninh",
+  "cases": [
+    {
+      "id": "CASE-015",
+      "story_title": "Das Rätsel der zehn Kontrollen",
+      "research_question": "Warum nennt die offizielle Berliner Seite für 2025 zugleich 26 und 36 Kontrollen laufender Tierversuche, und welche Gesamtzahl ist korrekt?",
+      "affected_group": "Versuchstiere, Forschungseinrichtungen und Berliner Öffentlichkeit",
+      "jurisdiction": "Berlin",
+      "need": {"severity": 3, "scale": 3, "urgency": 4, "vulnerability": 4, "public_value": 5, "overlookedness": 5, "total": 24},
+      "feasibility": {"source_access": 5, "falsifiability": 5, "jurisdiction_clarity": 5, "safety_legality": 5, "capacity": 4, "total": 24},
+      "evidence": {
+        "verified_claims": [
+          "Die offizielle LAGeSo-Seite nennt insgesamt 64 Vor-Ort-Kontrollen für 2025.",
+          "Der Fließtext nennt 38 Kontrollen von Tierhaltungen und 26 Kontrollen laufender Tierversuche.",
+          "Die Tabelle nennt 38 Kontrollen von Tierhaltungen und 36 Kontrollen laufender Tierversuche."
+        ],
+        "unknowns": [
+          "Welche Zahl korrekt ist und wie die Gesamtsumme gebildet wurde.",
+          "Ob der Widerspruch ausschließlich redaktionell ist oder weitere Datensätze betrifft."
+        ],
+        "counterevidence": [
+          "Die Behörde veröffentlicht Kontrollaktivitäten und festgestellte Mängel; der Zahlenwiderspruch beweist weder ausgefallene Kontrollen noch Rechtsversagen."
+        ],
+        "sources": [
+          {"source_id": "AW-015-S01", "publisher": "LAGeSo Berlin", "title": "Überwachung von Versuchseinrichtungen", "date": "2026-02", "url": "https://www.berlin.de/lageso/gesundheit/veterinaerwesen/tierschutz/ueberwachung/", "receipt_status": "url_only"}
+        ]
+      },
+      "fairness": {
+        "strongest_counterposition": "Es handelt sich wahrscheinlich um einen einfachen redaktionellen Übertragungsfehler, der keine Aussage über die Qualität oder Häufigkeit der Kontrollen erlaubt.",
+        "alternative_explanations": ["Text und Tabelle nutzen möglicherweise unterschiedliche Abgrenzungen.", "Eine Zahl könnte nachträglich aktualisiert worden sein, ohne die andere Darstellung anzupassen."],
+        "publication_harms": ["Eine zugespitzte Darstellung könnte unbelegt Misstrauen gegenüber Behörde oder Forschungseinrichtungen erzeugen."],
+        "right_of_reply": "required_not_sent"
+      },
+      "action_contract": {
+        "target_actor": "LAGeSo Berlin",
+        "exact_ask": "Die korrekte Zahl, die Berechnungslogik der Gesamtsumme und gegebenenfalls eine öffentliche Korrektur oder Erläuterung mitteilen.",
+        "internal_owner": "Michael Ninh (interim case lead)",
+        "deliverable": "Versandte Korrekturanfrage, Zustellnachweis und öffentliches Antwort- beziehungsweise Korrekturprotokoll.",
+        "deadline": "2026-08-02",
+        "stop_condition": "Fall als korrigiert und geschlossen markieren, sobald öffentliche Seite und behördliche Erklärung widerspruchsfrei sind; nur bei materiellem Restwiderspruch weiter untersuchen.",
+        "safe_citizen_actions": ["Die öffentliche Seite prüfen und archivierte Versionen vergleichen.", "Eine sachliche Quellenkorrektur ohne Schuldvorwurf melden."]
+      },
+      "impact_contract": {
+        "status": "complete",
+        "level": "evidence",
+        "metric": "Öffentlich konsistente Kontrollzahl mit nachvollziehbarer Erklärung",
+        "baseline": "Offizielle Seite enthält den Widerspruch 26 versus 36 bei zugleich genannter Gesamtsumme 64.",
+        "target": "Eine konsistente veröffentlichte Zahl und eine Erklärung der Abgrenzung bis zum Abschluss des ersten Antwortzyklus.",
+        "data_source": "LAGeSo-Webseite, schriftliche Antwort und sichtbares Korrekturprotokoll",
+        "owner": "Michael Ninh",
+        "cadence": "Wöchentlich bis zur Schließung, danach einmaliger 30-Tage-Check",
+        "attribution_rule": "SafeTrace beansprucht nur einen Beitrag, wenn die Anfrage zeitlich dokumentiert ist; ohne Bestätigung der Behörde wird keine alleinige Verursachung der Korrektur behauptet."
+      },
+      "publication": {"verdict_type": "data_quality_problem", "readiness": "review_required", "editorial_review": "not_started", "domain_review": "not_started", "legal_privacy_review": "not_required", "correction_route": "Öffentliches Korrekturformular und versioniertes Case-Log"},
+      "lifecycle": "active_sprint"
+    },
+    {
+      "id": "CASE-012",
+      "story_title": "Die unsichtbaren Toten",
+      "research_question": "Welche vergleichbaren Daten erfassen Bund und Länder darüber, wie viele landwirtschaftlich gehaltene Tiere vor der Schlachtung sterben und welche Ursachen dokumentiert werden?",
+      "affected_group": "Landwirtschaftlich gehaltene Tiere, Kontrollbehörden und Tierhaltungsbetriebe",
+      "jurisdiction": "Deutschland, Bund und 16 Länder",
+      "need": {"severity": 5, "scale": 5, "urgency": 4, "vulnerability": 5, "public_value": 5, "overlookedness": 5, "total": 29},
+      "feasibility": {"source_access": 4, "falsifiability": 5, "jurisdiction_clarity": 3, "safety_legality": 5, "capacity": 4, "total": 21},
+      "evidence": {
+        "verified_claims": [
+          "Der Bundesregierung lagen laut Bundestagszusammenfassung vom 17. Februar 2026 keine bundesweiten Informationen zur Sterblichkeit landwirtschaftlicher Tiere und anderer Tierarten vor.",
+          "Eine öffentlich vergleichbare bundesweite Darstellung nach Tierart, Todesursache, Alter und Haltungsform ist nicht verfügbar."
+        ],
+        "unknowns": ["Welche Länder oder nachgeordneten Stellen bereits verwertbare Daten besitzen.", "Welche Definitionen und Datenquellen miteinander vergleichbar sind.", "Ob Mortalitätsdaten derzeit in behördliche Risikoanalysen einfließen."],
+        "counterevidence": ["Fehlende Bundesdaten bedeuten nicht, dass Länder, Betriebe, Tierkörperbeseitigungsanlagen oder Forschungseinrichtungen überhaupt keine Daten erheben."],
+        "sources": [
+          {"source_id": "AW-012-S01", "publisher": "Deutscher Bundestag", "title": "Mortalität landwirtschaftlicher Tiere und anderer Tierarten", "date": "2026-02-17", "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1146252", "receipt_status": "url_only"}
+        ]
+      },
+      "fairness": {
+        "strongest_counterposition": "Tiergesundheits- und Mortalitätsdaten liegen teilweise dezentral vor; eine zentrale Bundeszahl könnte wegen unterschiedlicher Zuständigkeiten, Definitionen und Meldewege derzeit irreführend sein.",
+        "alternative_explanations": ["Daten werden unter anderen Verwaltungszwecken erhoben.", "Vergleichbarkeit scheitert eher an Definitionen als an fehlender Erhebung.", "Datenschutz und Betriebsgeheimnisse können die Veröffentlichung begrenzen."],
+        "publication_harms": ["Unvergleichbare Rohdaten könnten zu unfairen Länder- oder Betriebsrankings führen."],
+        "right_of_reply": "required_not_sent"
+      },
+      "action_contract": {
+        "target_actor": "Zuständige Bundesstelle und die 16 Landesministerien beziehungsweise Landesbehörden",
+        "exact_ask": "Für definierte Tierarten vorhandene Mortalitätsfelder, Datenhalter, Definitionen, Erhebungsrhythmus, Rechtsgrundlage und Nutzung in Risikoanalysen offenlegen.",
+        "internal_owner": "Michael Ninh (interim case lead)",
+        "deliverable": "Standardisierte Anfrage, Versandliste und 16-Länder-Matrix mit Antwort-, Daten- und Definitionsstatus.",
+        "deadline": "2026-08-09",
+        "stop_condition": "Nach der ersten vollständigen Antwortrunde eine Datenlandkarte publizieren und nur dann eine zweite Runde starten, wenn konkrete, schließbare Definitions- oder Zugangsfragen verbleiben.",
+        "safe_citizen_actions": ["Öffentliche Landesberichte und Statistiken ergänzen.", "Definitionen und Datenfelder quellenbasiert vergleichen."]
+      },
+      "impact_contract": {
+        "status": "complete",
+        "level": "evidence",
+        "metric": "Anzahl der Länder mit dokumentiertem Datenhalter, Definition und auswertbarem Mortalitätsfeld",
+        "baseline": 0,
+        "target": "16 Stellen kontaktiert und mindestens 10 substanzielle Antworten oder verifizierte Datennachweise im ersten 30-Tage-Zyklus",
+        "data_source": "Versionierte Versand- und Antwortmatrix mit Links zu amtlichen Datensätzen",
+        "owner": "Michael Ninh",
+        "cadence": "Wöchentlich; öffentliche Zwischenstände nach 30 und 90 Tagen",
+        "attribution_rule": "SafeTrace misst geöffnete und geklärte Daten. Eine Verringerung von Tiersterblichkeit darf erst bei späteren vergleichbaren Outcome-Daten und ohne unbelegte Kausalbehauptung berichtet werden."
+      },
+      "publication": {"verdict_type": "systemic_data_gap", "readiness": "review_required", "editorial_review": "not_started", "domain_review": "not_started", "legal_privacy_review": "not_started", "correction_route": "Versionierter Quellen- und Definitionslog mit öffentlicher Korrekturmöglichkeit"},
+      "lifecycle": "active_sprint"
+    },
+    {
+      "id": "CAND-033",
+      "story_title": "181 Fälle – und trotzdem keine Statistik",
+      "research_question": "Welche Stellen erfassen Meldung, Anerkennung, Fallausgang und Präventionsfolge bei sexuellem Missbrauch von Kindern in Bildungs- und Betreuungseinrichtungen?",
+      "affected_group": "Kinder und Jugendliche in Bildungs- und Betreuungseinrichtungen",
+      "jurisdiction": "Deutschland, Bund, Länder und Unfallversicherungsträger",
+      "need": {"severity": 5, "scale": 5, "urgency": 5, "vulnerability": 5, "public_value": 5, "overlookedness": 5, "total": 30},
+      "feasibility": {"source_access": 4, "falsifiability": 4, "jurisdiction_clarity": 3, "safety_legality": 5, "capacity": 3, "total": 19},
+      "evidence": {
+        "verified_claims": ["Eine Bundestagszusammenfassung vom 8. Mai 2026 beschreibt fehlende regelmäßige vollständige Daten bei den Unfallversicherungsträgern und verweist auf eine unvollständige Sonderabfrage mit 181 Fällen für 2017 bis 2021."],
+        "unknowns": ["Welche Institutionen welche Fälle mit welcher Definition erfassen.", "Wie Meldungen, Anerkennungen, Ablehnungen, Strafverfahren und Präventionsfolgen zusammenhängen.", "Welche Daten datenschutzkonform aggregiert veröffentlicht werden können."],
+        "counterevidence": ["Die Zahl 181 stammt aus einer begrenzten Sonderabfrage und darf nicht als vollständige Zahl aller Fälle oder Einrichtungen interpretiert werden."],
+        "sources": [
+          {"source_id": "SOC-033-S01", "publisher": "Deutscher Bundestag", "title": "Unfallversicherungen haben keine Daten zu Kindesmissbrauch", "date": "2026-05-08", "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1174946", "receipt_status": "url_only"}
+        ]
+      },
+      "fairness": {
+        "strongest_counterposition": "Eine zentrale Statistik kann wegen unterschiedlicher Rechtswege, Meldegründe und Schutzinteressen schwer herzustellen sein; mehr Datenaustausch darf den Schutz betroffener Kinder nicht gefährden.",
+        "alternative_explanations": ["Fälle werden in mehreren Systemen erfasst und könnten doppelt gezählt werden.", "Nicht jede Meldung wird als Versicherungsfall anerkannt.", "Niedrige Zahlen können Untererfassung oder unterschiedliche Zuständigkeiten widerspiegeln."],
+        "publication_harms": ["Unvorsichtige Veröffentlichung könnte Betroffene identifizierbar machen oder Einrichtungen pauschal verdächtigen."],
+        "right_of_reply": "required_not_sent"
+      },
+      "action_contract": {
+        "target_actor": "Zuständige Bundesstellen, gesetzliche Unfallversicherungsträger und Landesministerien",
+        "exact_ask": "Ein gemeinsames Datenwörterbuch für Meldung, Anerkennung, Fallausgang und Präventionsfolge sowie die jeweils verantwortlichen Datenhalter benennen.",
+        "internal_owner": "Michael Ninh (interim case lead)",
+        "deliverable": "Zuständigkeitskarte und Datenwörterbuch mit mindestens fünf verifizierten institutionellen Rückmeldungen.",
+        "deadline": "2026-08-09",
+        "stop_condition": "Keine bundesweite Hochrechnung veröffentlichen, bevor Definitionen und Zuständigkeiten geklärt sind; nach der Zuständigkeitskarte über Fortsetzung, Weiterverweisung oder Datensprint entscheiden.",
+        "safe_citizen_actions": ["Nur öffentliche institutionelle Daten und Definitionen ergänzen.", "Keine Namen, Fallakten oder identifizierenden Details betroffener Kinder einreichen."]
+      },
+      "impact_contract": {
+        "status": "complete",
+        "level": "evidence",
+        "metric": "Institutionen mit klar dokumentierter Zuständigkeit und kompatiblen Datenfeldern",
+        "baseline": "Keine regelmäßige vollständige gemeinsame Statistik; Zuständigkeiten und Definitionen sind im Portal noch nicht kartiert.",
+        "target": "Mindestens fünf verifizierte institutionelle Rückmeldungen und ein veröffentlichtes Datenwörterbuch im ersten 30-Tage-Zyklus",
+        "data_source": "Amtliche Antworten, Rechtsgrundlagen und öffentliche Datenbeschreibungen",
+        "owner": "Michael Ninh",
+        "cadence": "Vierzehntägig; Schutz- und Datenschutzreview vor jeder Veröffentlichung",
+        "attribution_rule": "SafeTrace misst nur bessere öffentliche Nachvollziehbarkeit. Es behauptet keine Veränderung der Missbrauchshäufigkeit ohne unabhängige, vergleichbare Outcome-Daten."
+      },
+      "publication": {"verdict_type": "systemic_data_gap", "readiness": "scoping", "editorial_review": "not_started", "domain_review": "not_started", "legal_privacy_review": "not_started", "correction_route": "Geschützter Moderationsprozess für Korrekturen; keine personenbezogenen Falldaten"},
+      "lifecycle": "active_sprint"
+    },
+    {
+      "id": "CAND-039",
+      "story_title": "Die fehlenden Schutzplätze, die niemand beziffern kann",
+      "research_question": "Wie groß sind regionale Kapazität, Abweisungen und Zugangsbarrieren bei Frauenhäusern und anderen Schutzangeboten?",
+      "affected_group": "Von geschlechtsspezifischer und häuslicher Gewalt betroffene Frauen und ihre Kinder",
+      "jurisdiction": "Deutschland, Länder und Kommunen",
+      "need": {"severity": 5, "scale": 5, "urgency": 5, "vulnerability": 5, "public_value": 5, "overlookedness": 5, "total": 30},
+      "feasibility": {"source_access": 3, "falsifiability": 4, "jurisdiction_clarity": 3, "safety_legality": 5, "capacity": 3, "total": 18},
+      "evidence": {
+        "verified_claims": ["Eine Bundestagszusammenfassung aus Mai 2026 berichtet, dass der Bund die Zahl fehlender Schutzplätze ohne Bedarfsplanungen der Länder nicht beziffern kann."],
+        "unknowns": ["Regionale Kapazität und tatsächliche Abweisungen.", "Barrierefreiheit, Kinderplätze und Aufnahme besonderer Bedarfe.", "Unterschiede bei Finanzierung und Zählweise."],
+        "counterevidence": ["Fehlende Bundesbezifferung bedeutet nicht, dass alle Länder oder Träger ohne Bedarfsdaten arbeiten; lokale Systeme können detailliertere Informationen besitzen."],
+        "sources": [
+          {"source_id": "SOC-039-S01", "publisher": "Deutscher Bundestag", "title": "Gewalt gegen Frauen: Umsetzung der Istanbul-Konvention", "date": "2026-05", "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1174538", "receipt_status": "url_only"}
+        ]
+      },
+      "fairness": {
+        "strongest_counterposition": "Eine tagesgenaue nationale Bedarfszahl kann wegen Sicherheitsanforderungen, schwankender Belegung und unterschiedlichen Schutzangeboten irreführend sein; nicht jede Ablehnung bedeutet fehlende Gesamtkapazität.",
+        "alternative_explanations": ["Abweisungen können aus Sicherheits-, Zuständigkeits- oder Spezialisierungsgründen erfolgen.", "Kapazität und tatsächliche Verfügbarkeit unterscheiden sich.", "Einige Angebote werden aus Schutzgründen nicht vollständig öffentlich dokumentiert."],
+        "publication_harms": ["Zu genaue Standort- oder Belegungsdaten könnten Schutzsuchende und Einrichtungen gefährden.", "Unvergleichbare Daten könnten Regionen unfair bewerten."],
+        "right_of_reply": "required_not_sent"
+      },
+      "action_contract": {
+        "target_actor": "Landeskoordinierungsstellen, ausgewählte Kommunen und öffentliche Trägerkoordination",
+        "exact_ask": "Aggregierte Kapazität, Abweisungsgründe, Kinderplätze, Barrierefreiheit, Erreichbarkeit und Zählmethoden für einen begrenzten Pilotvergleich bereitstellen.",
+        "internal_owner": "Michael Ninh (interim case lead)",
+        "deliverable": "Sicheres Datenmodell und Pilotmatrix mit mindestens fünf Ländern oder zehn Kommunen, ohne sensible Standorte oder Falldaten.",
+        "deadline": "2026-08-16",
+        "stop_condition": "Keine nationale Bedarfsschätzung aus unvollständigen Pilotsamples ableiten; nach dem Pilot entscheiden, ob Vergleichbarkeit und Schutzanforderungen eine Ausweitung erlauben.",
+        "safe_citizen_actions": ["Öffentliche Jahresberichte und Bedarfsplanungen ergänzen.", "Keine Standorte, Belegungsdetails oder Informationen zu Schutzsuchenden veröffentlichen."]
+      },
+      "impact_contract": {
+        "status": "complete",
+        "level": "evidence",
+        "metric": "Regionen mit vergleichbaren aggregierten Feldern zu Kapazität, Abweisung und Zugänglichkeit",
+        "baseline": "Keine bundesweit bezifferte Bedarfslücke und noch kein SafeTrace-Pilotdatensatz.",
+        "target": "Pilotdaten aus mindestens fünf Ländern oder zehn Kommunen plus dokumentierte Definitionsunterschiede innerhalb von 45 Tagen",
+        "data_source": "Öffentliche Bedarfsplanungen, aggregierte Behörden- und Trägerantworten",
+        "owner": "Michael Ninh",
+        "cadence": "Vierzehntägig; 30- und 90-Tage-Bericht",
+        "attribution_rule": "SafeTrace kann geöffnete Daten und neue Verantwortungszusagen als Beitrag dokumentieren. Verbesserter Schutz wird erst bei verlässlichen Daten zu Aufnahme, Wartezeit und sicherer Unterbringung berichtet."
+      },
+      "publication": {"verdict_type": "systemic_data_gap", "readiness": "scoping", "editorial_review": "not_started", "domain_review": "not_started", "legal_privacy_review": "not_started", "correction_route": "Sicherheitsgeprüfte Korrektur ohne Veröffentlichung sensibler Standort- oder Falldaten"},
+      "lifecycle": "active_sprint"
+    },
+    {
+      "id": "CAND-045",
+      "story_title": "474.700 Menschen – und dann?",
+      "research_question": "Wie lange bleiben Menschen in kommunaler Wohnungslosenunterbringung, was kostet sie und wie viele wechseln in dauerhaften Wohnraum?",
+      "affected_group": "Wohnungslose Menschen in kommunaler oder institutioneller Unterbringung",
+      "jurisdiction": "Deutschland, Länder und Kommunen",
+      "need": {"severity": 5, "scale": 5, "urgency": 5, "vulnerability": 5, "public_value": 5, "overlookedness": 4, "total": 29},
+      "feasibility": {"source_access": 4, "falsifiability": 5, "jurisdiction_clarity": 3, "safety_legality": 5, "capacity": 3, "total": 20},
+      "evidence": {
+        "verified_claims": ["Eine Bundestagszusammenfassung vom 20. Mai 2026 nennt rund 474.700 untergebrachte wohnungslose Menschen und erklärt, dass zentrale Kostendaten dem Bund nicht vorliegen."],
+        "unknowns": ["Kommunale Kosten je Unterbringungsform.", "Aufenthaltsdauer und Ausgänge in dauerhaften Wohnraum.", "Unterschiedliche Definitionen, Fallmixe und lokale Leistungsmodelle."],
+        "counterevidence": ["Dezentrale Kostenverantwortung kann sachgerecht sein; fehlende Bundesdaten beweisen weder Ineffizienz noch schlechte kommunale Arbeit."],
+        "sources": [
+          {"source_id": "SOC-045-S01", "publisher": "Deutscher Bundestag", "title": "474.000 Menschen wegen Wohnungslosigkeit in Einrichtungen", "date": "2026-05-20", "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1179002", "receipt_status": "url_only"}
+        ]
+      },
+      "fairness": {
+        "strongest_counterposition": "Kommunale Unterbringungskosten und Verläufe sind wegen Mietniveau, Leistungsumfang, Haushaltsstruktur und Fallkomplexität nicht ohne Weiteres vergleichbar.",
+        "alternative_explanations": ["Hohe Kosten können bessere Betreuung oder besonders angespannte Wohnungsmärkte widerspiegeln.", "Lange Aufenthalte können an fehlendem Wohnraum statt an der Unterbringung selbst liegen.", "Kommunen nutzen unterschiedliche Definitionen für erfolgreiche Ausgänge."],
+        "publication_harms": ["Unbereinigte Rankings könnten Kommunen oder Einrichtungen unfair stigmatisieren.", "Zu kleine Fallzahlen können Rückschlüsse auf Betroffene ermöglichen."],
+        "right_of_reply": "required_not_sent"
+      },
+      "action_contract": {
+        "target_actor": "Ausgewählte Kommunen, Landesstellen und bundesweite Wohnungslosenkoordination",
+        "exact_ask": "Für einen Pilotvergleich aggregierte Kosten, Aufenthaltsdauer, Haushaltsstruktur, Leistungsumfang und Ausgänge in dauerhaften Wohnraum nach gemeinsamen Definitionen bereitstellen.",
+        "internal_owner": "Michael Ninh (interim case lead)",
+        "deliverable": "Pilot-Datenwörterbuch und vergleichbarer Datensatz aus mindestens fünf Kommunen.",
+        "deadline": "2026-08-16",
+        "stop_condition": "Keine Rangliste veröffentlichen, bevor Definitionen, Fallmix und Datenqualität vergleichbar sind; nach dem Pilot über Skalierung, Anpassung oder Schließung entscheiden.",
+        "safe_citizen_actions": ["Öffentliche kommunale Haushalts- und Wohnungslosenberichte ergänzen.", "Nur aggregierte Daten ohne Namen, Adressen oder Einzelfallakten einreichen."]
+      },
+      "impact_contract": {
+        "status": "complete",
+        "level": "evidence",
+        "metric": "Kommunen mit vergleichbaren Daten zu Kosten, Dauer und Übergang in dauerhaften Wohnraum",
+        "baseline": "Bundesweit bekannte Unterbringungszahl, aber kein zentraler vergleichbarer Kosten- und Exit-Datensatz.",
+        "target": "Mindestens fünf Kommunen mit gemeinsam definierten Pilotfeldern innerhalb von 45 Tagen",
+        "data_source": "Kommunale Haushaltsdaten, aggregierte Verwaltungsantworten und öffentliche Wohnungslosenberichte",
+        "owner": "Michael Ninh",
+        "cadence": "Vierzehntägig; 30-, 90- und 365-Tage-Follow-up bei Fortsetzung",
+        "attribution_rule": "SafeTrace dokumentiert Datenöffnung und Prozessänderungen als möglichen Beitrag. Verbesserte Wohnoutcomes werden nur mit vergleichbaren Verlaufsdaten und ohne vorschnelle Kausalzuweisung berichtet."
+      },
+      "publication": {"verdict_type": "systemic_data_gap", "readiness": "scoping", "editorial_review": "not_started", "domain_review": "not_started", "legal_privacy_review": "not_started", "correction_route": "Versionierte Daten- und Methodenkorrektur mit kommunalem Recht auf Antwort"},
+      "lifecycle": "active_sprint"
+    }
+  ]
+}
