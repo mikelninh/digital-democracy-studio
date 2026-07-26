@@ -25,4 +25,14 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate candidate radar and public safety boundaries
-        run: python safetrace/citizen_portal/validate.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python safetrace/citizen_portal/validate.py | tee citizen-portal-validation.json
+      - name: Retain validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: citizen-portal-validation
+          path: citizen-portal-validation.json
+          if-no-files-found: error
