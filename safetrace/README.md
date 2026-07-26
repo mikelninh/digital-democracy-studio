@@ -10,6 +10,19 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/**
 
+## Citizen Portal — public-source alpha
+
+**https://mikelninh.github.io/digital-democracy-studio/safetrace/citizen_portal/**
+
+The Citizen Portal makes the TRACE loop reusable across public-interest topics. It includes:
+
+- a browser-local six-dimension priority test;
+- a public candidate radar with sources and bounded first sprints;
+- visible separation between priority, evidence state and publication readiness;
+- a structured public-source GitHub intake;
+- explicit safety stops for private data, covert access, hacking and doxxing;
+- no automatic guilt decisions or publication.
+
 ## Interactive test lab
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/role_simulator/**
@@ -25,11 +38,11 @@ The browser-local Role Simulator lets one person replay Cases 001–004 as:
 
 It supports role-filtered views, claims, sources, graph, timeline, bounded agents, review decisions, publication gates, comprehension checks and a local audit trail. It makes no network requests, publishes nothing and stores only local browser state.
 
-## Animal Welfare Evidence Series — review candidate
+## Spuren im System · Tierwohl
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/animal_welfare_series/**
 
-The series prepares Cases 012–018 as public-source animal-welfare investigations. It includes:
+The public alpha covers Cases 012–018 as public-source animal-welfare investigations. It includes:
 
 - sourced and bounded verdicts;
 - verified facts, explicit unknowns and counterevidence;
@@ -39,7 +52,7 @@ The series prepares Cases 012–018 as public-source animal-welfare investigatio
 - a browser-local Case Checker with no telemetry or uploads;
 - explicit restrictions against confidential data, automated accusations and autonomous publication.
 
-The page is a review candidate until this branch is independently checked and merged. It is not permission to submit sensitive evidence or identify suspected private individuals.
+The series is public for testing but still requires independent review before sensitive or accusatory publication. It is not permission to submit sensitive evidence or identify suspected private individuals.
 
 ## Shipped stack
 
@@ -52,7 +65,8 @@ The page is a review candidate until this branch is independently checked and me
 - **v1.7** — complete Case 004 technical reference workflow without false re-certification.
 - **v1.8** — hashed external-review packets, finding register, dry-run exercises, source-backfill plan and consent-based study protocols.
 - **v1.8 Companion** — browser-local Role Simulator for six roles and four public/synthetic cases.
-- **Animal Welfare Series v0.1 candidate** — seven public-source cases, impact measurement and citizen case intake without sensitive data.
+- **Spuren im System · Tierwohl v0.2** — seven public-source cases, governance gates, impact measurement and citizen case intake without sensitive data.
+- **Citizen Portal v0.3** — topic-neutral public-source intake, candidate radar and local TRACE prioritisation.
 
 ## What v1.8 proves
 
@@ -79,7 +93,7 @@ Current review state:
 - partner-pilot gate open: **no**;
 - restricted-data gate open: **no**.
 
-The Role Simulator and Case Checker demonstrate intended UX and safety boundaries. They are not production authentication, operational investigation databases or permission to process restricted data.
+The Role Simulator, Citizen Portal and Case Checker demonstrate intended UX and safety boundaries. They are not production authentication, operational investigation databases or permission to process restricted data.
 
 ## Core documents
 
@@ -95,7 +109,8 @@ The Role Simulator and Case Checker demonstrate intended UX and safety boundarie
 - [v1.7 Case 004 reference](case_004_reference/README.md)
 - [v1.8 Review Readiness](review_readiness/README.md)
 - [Role Simulator](role_simulator/README.md)
-- [Animal Welfare Evidence Series](animal_welfare_series/README.md)
+- [Spuren im System · Tierwohl](animal_welfare_series/README.md)
+- [Citizen Portal](citizen_portal/README.md)
 
 ## Run the v1.8 gates
 
@@ -106,6 +121,7 @@ python -m safetrace.review_readiness.contracts --write safetrace/review_readines
 python -m safetrace.review_readiness.build_review_pack --safetrace-root safetrace --output-root safetrace/review_readiness/artifacts
 python -m unittest discover -s safetrace/role_simulator/tests -v
 python -m safetrace.role_simulator.validate --root safetrace/role_simulator --output safetrace/role_simulator/artifacts/role-simulator-report.json
+python safetrace/citizen_portal/validate.py
 python -m safetrace.v1.cli --root . --output safetrace/v1/status.json
 ```
 
