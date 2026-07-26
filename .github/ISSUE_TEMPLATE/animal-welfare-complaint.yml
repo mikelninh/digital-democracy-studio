@@ -1,0 +1,50 @@
+name: "Spuren im System — complaint or harm concern"
+description: "Raise a privacy, fairness, safety, moderation or accessibility concern."
+title: "[Complaint] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This public form is not suitable for confidential evidence or emergencies. Do not post sensitive personal data. For immediate danger, contact the competent local authority.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Concern category
+      options:
+        - Privacy or safety
+        - Fairness or missing context
+        - Source quality
+        - Accessibility
+        - Harassment or abuse
+        - Conflict of interest
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Case, page or comment
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: What is the concern?
+      description: Be specific and explain the potential harm.
+    validations:
+      required: true
+  - type: textarea
+    id: remedy
+    attributes:
+      label: What remedy would be proportionate?
+      placeholder: "Clarification, correction, temporary hold, removal of personal data, accessibility fix..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: "I have not included confidential material, private personal data or threats."
+          required: true
