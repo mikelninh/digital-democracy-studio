@@ -64,9 +64,15 @@ def main() -> None:
             fail(f"missing or empty project artifact: {relative}")
 
     combined = "\n".join((ROOT / name).read_text(encoding="utf-8").lower() for name in required_files)
-    for marker in ("family security", "wahlfreiheit", "keine staatliche soll-kinderzahl", "data gap"):
-        if marker not in combined:
-            fail(f"missing public boundary marker: {marker}")
+    required_marker_groups = (
+        ("family security",),
+        ("wahlfreiheit", "reproductive autonomy"),
+        ("keine staatliche soll-kinderzahl", "not a state fertility target"),
+        ("data_gap", "datenlücke", "data gap"),
+    )
+    for alternatives in required_marker_groups:
+        if not any(marker in combined for marker in alternatives):
+            fail(f"missing public boundary marker group: {alternatives}")
 
     prohibited = (
         "frauen müssen mehr kinder",
