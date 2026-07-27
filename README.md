@@ -6,6 +6,8 @@
 
 - [Impact-Mission 001 — Arbeit. Teilhabe. Energie.](impact-mission/)  
   A public Germany scoreboard for unemployment, poverty risk and onshore wind expansion—showing direction, target pace, data age and methodological limits without inventing causal claims.
+- [Family Security Lab](family-security-lab/)  
+  A public evidence and policy-testing project on housing, childcare, care equality, health and economic security—built to help people realise the family they want without reproductive pressure or hidden costs for mothers.
 - [SafeTrace v1.0 — Pilot-Ready](safetrace/)  
   Public-interest investigation infrastructure spanning official-source provenance, political money, arms and influence, human review, monitoring, investigator exports, governance and measurable pilot gates.
 - [SafeVoice](https://github.com/mikelninh/safevoice)  
@@ -26,6 +28,7 @@ SafeTrace v0.3 through v0.8 implement the public investigation workflow. v0.9 ad
 SafeTrace is not an accusation engine. It separates verified facts, court-established findings, official allegations, analytical red flags, unresolved gaps, and corrections.
 
 - [Open Impact-Mission 001](impact-mission/)
+- [Open Family Security Lab](family-security-lab/)
 - [Open the SafeTrace portal](safetrace/)
 - [Read the methodology](safetrace/METHODOLOGY.md)
 - [Review the release history](safetrace/ROADMAP.md)
