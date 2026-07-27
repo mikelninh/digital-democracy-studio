@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Family Security Lab: deutsche Evidenzkarte und testbare familienpolitische Interventionen." />
+  <title>Evidenz & Politiktests · Family Security Lab</title>
+  <style>
+    :root{--bg:#f5efe7;--paper:#fffdf8;--ink:#1b1b19;--muted:#686960;--line:#d9d0c2;--plum:#6f355f;--rose:#eadce7;--green:#285d48;--gold:#94651e;--shadow:0 15px 42px rgba(44,35,39,.08);--r:22px;--max:1200px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}a{color:inherit}.wrap{width:min(calc(100% - 34px),var(--max));margin:auto}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}.top a{text-decoration:none}.brand{font-weight:900}.nav{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}header{padding:62px 0 28px}.eyebrow{color:var(--plum);font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:900}h1{font:500 clamp(48px,7vw,88px)/.92 Georgia,serif;letter-spacing:-.055em;margin:16px 0 20px}.lead{font-size:clamp(18px,2vw,24px);max-width:900px;color:#454941}.warning{margin-top:22px;border:1px solid var(--line);border-radius:16px;padding:15px 17px;background:rgba(255,255,255,.62);color:var(--muted);font-size:13px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:28px 0 18px}.chip{border:1px solid var(--line);background:rgba(255,255,255,.65);border-radius:999px;padding:9px 12px;font-weight:800;color:var(--muted);cursor:pointer}.chip.active,.chip:hover{background:var(--ink);color:#fff}.section{padding:34px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:18px}.head h2{font:500 clamp(34px,4.5vw,54px)/.96 Georgia,serif;letter-spacing:-.04em;margin:0}.head p{max-width:560px;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}.meta{display:flex;justify-content:space-between;gap:14px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:850}.card h3{font:500 27px/1.05 Georgia,serif;margin:17px 0 8px}.value{font:500 37px Georgia,serif;color:var(--plum)}.card p{font-size:13px;color:#525850}.limit{border-top:1px solid var(--line);padding-top:12px;margin-top:12px;color:var(--muted)!important}.source{display:inline-flex;margin-top:10px;font-size:11px;font-weight:850;color:var(--plum)}.status{display:inline-flex;padding:6px 8px;border-radius:999px;background:var(--rose);color:var(--plum)}.status.data_gap{background:#f1e4c7;color:var(--gold)}.policy{border-left:5px solid var(--plum)}.policy.priority-B{border-left-color:var(--gold)}.policy ul{padding-left:18px;color:#525850;font-size:13px}.policy .priority{font-weight:900;color:var(--plum)}.gaps{display:grid;gap:8px}.gap{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 16px;font-size:13px}.empty{color:var(--muted)}footer{border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted);font-size:12px}:focus-visible{outline:3px solid #d29233;outline-offset:3px}@media(max-width:850px){.grid{grid-template-columns:1fr}.head{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<div class="wrap"><nav class="top" aria-label="Hauptnavigation"><a class="brand" href="index.html">Family Security Lab</a><div class="nav"><a href="#evidence">Evidenz</a><a href="#gaps">Datenlücken</a><a href="#policies">Politiktests</a><a href="data/case_051.json">Case JSON</a></div></nav></div>
+<header class="wrap">
+  <div class="eyebrow">Versionierte öffentliche Daten · v0.1</div>
+  <h1>Evidenz vor Anreiz.</h1>
+  <p class="lead">Wir vergleichen nicht, welche Idee am großzügigsten klingt, sondern welche Barriere sichtbar ist, welche Maßnahme sie plausibel verändert und woran Erfolg oder Scheitern erkennbar wäre.</p>
+  <div class="warning"><strong>Methodische Grenze:</strong> Ideal, Intention, Erwartung und periodische Geburtenziffer beziehen sich auf unterschiedliche Konzepte und Populationen. Sie dürfen nicht zu einer scheinpräzisen „fehlenden Kinderzahl“ verrechnet werden.</div>
+</header>
+<main class="wrap">
+  <section id="evidence" class="section">
+    <div class="head"><h2>Deutschland-Evidenzkarte</h2><p id="evidenceSummary">Indikatoren werden geladen …</p></div>
+    <div class="toolbar" id="filters" aria-label="Dimensionsfilter"></div>
+    <div class="grid" id="evidenceGrid"><p class="empty">Daten werden geladen …</p></div>
+  </section>
+
+  <section id="gaps" class="section">
+    <div class="head"><h2>Prioritäre Datenlücken</h2><p>Ein fehlender Wert ist kein Nullwert. Er zeigt, welche Baseline vor einer Empfehlung oder Rangliste zuerst aufgebaut werden muss.</p></div>
+    <div class="gaps" id="gapList"></div>
+  </section>
+
+  <section id="policies" class="section">
+    <div class="head"><h2>Testbare Politikansätze</h2><p>Priorität A bedeutet: sichtbares Problem und plausibler Pilot. Sie bedeutet nicht: Wirkung auf Geburten bereits bewiesen.</p></div>
+    <div class="grid" id="policyGrid"><p class="empty">Politikmatrix wird geladen …</p></div>
+  </section>
+</main>
+<footer><div class="wrap">Family Security Lab · Quellen, Grenzen und fehlgeschlagene Hypothesen bleiben sichtbar.</div></footer>
+<script>
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+const formatValue=v=>typeof v==='object'&&v!==null?Object.entries(v).map(([k,x])=>`${k.replaceAll('_',' ')}: ${x}`).join(' · '):v??'Noch keine Baseline';
+let allIndicators=[];let active='all';
+function drawEvidence(){const list=allIndicators.filter(x=>active==='all'||x.dimension===active);document.getElementById('evidenceGrid').innerHTML=list.map(x=>`<article class="card"><div class="meta"><span>${esc(x.dimension.replaceAll('_',' '))}</span><span class="status ${esc(x.status)}">${esc(x.status.replaceAll('_',' '))}</span></div><h3>${esc(x.label)}</h3><div class="value">${esc(formatValue(x.value))}</div><p>${esc(x.interpretation)}</p><p class="limit"><strong>Grenze:</strong> ${esc(x.limitation)}</p>${x.source?`<a class="source" target="_blank" rel="noopener" href="${esc(x.source.url)}">${esc(x.source.publisher)} ↗</a>`:''}</article>`).join('')||'<p class="empty">Keine Indikatoren.</p>'}
+Promise.all([fetch('data/evidence_map_de_v0_1.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/policy_matrix_v0_1.json',{cache:'no-store'}).then(r=>r.json())]).then(([e,p])=>{
+  allIndicators=e.indicators;
+  document.getElementById('evidenceSummary').textContent=`${e.indicators.length} Indikatoren · ${e.priority_data_gaps.length} prioritäre Datenlücken · Datenstand ${e.as_of}`;
+  const dims=['all',...new Set(e.indicators.map(x=>x.dimension))];
+  document.getElementById('filters').innerHTML=dims.map((d,i)=>`<button class="chip ${i===0?'active':''}" data-dim="${esc(d)}">${d==='all'?'Alle':esc(d.replaceAll('_',' '))}</button>`).join('');
+  document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');active=b.dataset.dim;drawEvidence()}));
+  drawEvidence();
+  document.getElementById('gapList').innerHTML=e.priority_data_gaps.map((g,i)=>`<div class="gap"><strong>${i+1}.</strong> ${esc(g)}</div>`).join('');
+  document.getElementById('policyGrid').innerHTML=p.interventions.map(x=>`<article class="card policy priority-${esc(x.priority)}"><div class="meta"><span>${esc(x.id)}</span><span class="priority">Priorität ${esc(x.priority)}</span></div><h3>${esc(x.name)}</h3><p><strong>Barriere:</strong> ${esc(x.barrier)}</p><p><strong>Mechanismus:</strong> ${esc(x.mechanism)}</p><p><strong>Evidenzstand:</strong> ${esc(x.evidence_state)}</p><p><strong>Pilot:</strong> ${esc(x.pilot)}</p><p><strong>Messgrößen:</strong></p><ul>${x.leading_metrics.map(m=>`<li>${esc(m)}</li>`).join('')}</ul><p><strong>Risiken:</strong> ${esc(x.risks.join(' · '))}</p></article>`).join('');
+}).catch(err=>{document.getElementById('evidenceGrid').innerHTML='<p class="empty">Daten konnten nicht geladen werden. Öffne die JSON-Dateien direkt.</p>';console.error(err)});
+</script>
+</body>
+</html>
