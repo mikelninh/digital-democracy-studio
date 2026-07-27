@@ -1,0 +1,33 @@
+name: Family Security Lab
+
+on:
+  pull_request:
+    paths:
+      - "family-security-lab/**"
+      - ".github/workflows/family-security-lab.yml"
+  push:
+    branches: [main]
+    paths:
+      - "family-security-lab/**"
+      - ".github/workflows/family-security-lab.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate standalone project
+        run: python family-security-lab/validate_project.py
+      - name: Validate public JSON and pages
+        run: |
+          python -m json.tool family-security-lab/data/case_051.json >/dev/null
+          python -m json.tool family-security-lab/data/evidence_map_de_v0_1.json >/dev/null
+          python -m json.tool family-security-lab/data/policy_matrix_v0_1.json >/dev/null
+          test -s family-security-lab/index.html
+          test -s family-security-lab/evidence.html
