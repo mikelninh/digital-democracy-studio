@@ -74,12 +74,13 @@ def main() -> None:
         if not any(marker in combined for marker in alternatives):
             fail(f"missing public boundary marker group: {alternatives}")
 
-    prohibited = (
-        "frauen müssen mehr kinder",
-        "kinderlose sind schuld",
-        "geburten um jeden preis",
+    coercive_assertions = (
+        "frauen müssen mehr kinder bekommen",
+        "kinderlose menschen sind schuld",
+        "staatliches ziel ist möglichst viele geburten",
+        "körperliche autonomie ist nachrangig",
     )
-    for phrase in prohibited:
+    for phrase in coercive_assertions:
         if phrase in combined:
             fail(f"coercive wording detected: {phrase}")
 
