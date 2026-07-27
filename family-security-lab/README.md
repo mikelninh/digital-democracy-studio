@@ -4,7 +4,7 @@
 
 Family Security Lab is an independent public-interest project inside Digital Democracy Studio. It investigates which economic, time, health, housing, childcare and relationship conditions help people realise their desired family size safely and freely.
 
-The project grew out of SafeTrace case **CAND-051 — Der Kinderwunsch im Wartestand**, but now has its own product identity, roadmap and data layer.
+The project grew out of SafeTrace case **CAND-051 — Der Kinderwunsch im Wartestand**, but now has its own product identity, roadmap, public pages and data layer.
 
 ## Product promise
 
@@ -78,16 +78,15 @@ family-security-lab/
 ├── PROJECT.md
 ├── ROADMAP.md
 ├── METHODOLOGY.md
-├── data/
-│   ├── case_051.json
-│   ├── evidence_map_de_v0_1.json
-│   └── policy_matrix_v0_1.json
-└── web/
-    ├── index.html
-    └── evidence.html
+├── index.html
+├── evidence.html
+└── data/
+    ├── case_051.json
+    ├── evidence_map_de_v0_1.json
+    └── policy_matrix_v0_1.json
 ```
 
-During the compatibility phase, the canonical live SafeTrace artifacts remain under [`safetrace/family_security/`](../safetrace/family_security/). The standalone project mirrors and organises those assets until migration is complete.
+During the compatibility phase, the original SafeTrace artifacts remain under [`safetrace/family_security/`](../safetrace/family_security/). New product development should treat this top-level directory as the standalone project home.
 
 ## Status
 
@@ -106,9 +105,12 @@ During the compatibility phase, the canonical live SafeTrace artifacts remain un
 - child welfare and bodily autonomy outrank demographic targets;
 - migration, productivity and social-system adaptation remain part of demographic policy.
 
-## Connected work
+## Open the project
 
-- [Public case page](../safetrace/family_security/)
-- [Evidence and policy dashboard](../safetrace/family_security/next_steps.html)
-- [SafeTrace case contract](../safetrace/family_security/case_051.json)
+- [Project landing page](index.html)
+- [Interactive evidence and policy explorer](evidence.html)
+- [Product definition](PROJECT.md)
+- [Methodology](METHODOLOGY.md)
+- [Roadmap](ROADMAP.md)
+- [Machine-readable Case Contract](data/case_051.json)
 - [GitHub Issue #66](https://github.com/mikelninh/digital-democracy-studio/issues/66)
