@@ -4,6 +4,8 @@
 
 ## Projects
 
+- [MittelBrücke — Vom Problem zum finanzierten Auftrag](mittelbruecke/)  
+  Finds public funding and procurement paths, explains requirements, forms delivery teams, structures transparent competition and follows budgets through milestones to measurable impact.
 - [Impact-Mission 001 — Arbeit. Teilhabe. Energie.](impact-mission/)  
   A public Germany scoreboard for unemployment, poverty risk and onshore wind expansion—showing direction, target pace, data age and methodological limits without inventing causal claims.
 - [Family Security Lab](family-security-lab/)  
@@ -27,6 +29,7 @@ SafeTrace v0.3 through v0.8 implement the public investigation workflow. v0.9 ad
 
 SafeTrace is not an accusation engine. It separates verified facts, court-established findings, official allegations, analytical red flags, unresolved gaps, and corrections.
 
+- [Open MittelBrücke](mittelbruecke/)
 - [Open Impact-Mission 001](impact-mission/)
 - [Open Family Security Lab](family-security-lab/)
 - [Open the SafeTrace portal](safetrace/)
