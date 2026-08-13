@@ -1,0 +1,386 @@
+{
+  "schema": "zsi.entity-resolution/results-1.1",
+  "benchmark": "benchmark-v1.json",
+  "baseline": {
+    "precision": 0.9048,
+    "recall": 0.95,
+    "f1": 0.9268,
+    "errors": [
+      "ER-009",
+      "ER-031",
+      "ER-032"
+    ]
+  },
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "accuracy": 1.0,
+    "false_positives": 0,
+    "false_negatives": 0
+  },
+  "errors": [],
+  "results": [
+    {
+      "case_id": "ER-001",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Premium Food Group ApS & Co. KG",
+      "record_b": "Premium Food Group"
+    },
+    {
+      "case_id": "ER-002",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Premium Food Group ApS & Co. KG",
+      "record_b": "PremiumFoodGroup"
+    },
+    {
+      "case_id": "ER-003",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Premium Food Group ApS & Co. KG",
+      "record_b": "PFG"
+    },
+    {
+      "case_id": "ER-004",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Tönnies Unternehmensgruppe",
+      "record_b": "Premium Food Group"
+    },
+    {
+      "case_id": "ER-005",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Tönnies Holding",
+      "record_b": "Premium Food Group ApS & Co. KG"
+    },
+    {
+      "case_id": "ER-006",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "PFG Central Services GmbH & Co. KG",
+      "record_b": "PFG Central Services"
+    },
+    {
+      "case_id": "ER-007",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Tönnies Central Services GmbH & Co. KG",
+      "record_b": "PFG Central Services GmbH & Co. KG"
+    },
+    {
+      "case_id": "ER-008",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Tönnies Livestock GmbH",
+      "record_b": "Toennies Livestock GmbH"
+    },
+    {
+      "case_id": "ER-009",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "character similarity 0.97 + address",
+      "record_a": "Tönnies Livestock GmbH",
+      "record_b": "Ton nies Livestock"
+    },
+    {
+      "case_id": "ER-010",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "WESTFLEISCH SCE mbH",
+      "record_b": "Westfleisch"
+    },
+    {
+      "case_id": "ER-011",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "WESTFLEISCH SCE mbH",
+      "record_b": "West Fleisch SCE"
+    },
+    {
+      "case_id": "ER-012",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Westfleisch SCE mbH",
+      "record_b": "WESTFLEISCH S.C.E. mbH"
+    },
+    {
+      "case_id": "ER-013",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "PHW-Gruppe",
+      "record_b": "PHW Gruppe"
+    },
+    {
+      "case_id": "ER-014",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "PHW-Gruppe",
+      "record_b": "PHW"
+    },
+    {
+      "case_id": "ER-015",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "WIESENHOF",
+      "record_b": "Wiesenhof"
+    },
+    {
+      "case_id": "ER-016",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "BWE Brüterei Weser-Ems GmbH & Co. KG",
+      "record_b": "BWE Brueterei Weser Ems"
+    },
+    {
+      "case_id": "ER-017",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "MEGA Tierernährung GmbH & Co. KG",
+      "record_b": "MEGA Tierernaehrung"
+    },
+    {
+      "case_id": "ER-018",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Westfleisch Erkenschwick GmbH",
+      "record_b": "Westfleisch Erkenschwick"
+    },
+    {
+      "case_id": "ER-019",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Tönnies Lebensmittel GmbH & Co. KG",
+      "record_b": "Toennies Lebensmittel"
+    },
+    {
+      "case_id": "ER-020",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Premium Food Group",
+      "record_b": "P.F.G."
+    },
+    {
+      "case_id": "ER-021",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Premium Food Group ApS & Co. KG",
+      "record_b": "PFG Central Services GmbH & Co. KG"
+    },
+    {
+      "case_id": "ER-022",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Premium Food Group ApS & Co. KG",
+      "record_b": "Tönnies Livestock GmbH"
+    },
+    {
+      "case_id": "ER-023",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "PFG Central Services GmbH & Co. KG",
+      "record_b": "Tönnies Livestock GmbH"
+    },
+    {
+      "case_id": "ER-024",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Westfleisch SCE mbH",
+      "record_b": "Westfleisch Finanz AG"
+    },
+    {
+      "case_id": "ER-025",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Westfleisch SCE mbH",
+      "record_b": "Wetralog GmbH"
+    },
+    {
+      "case_id": "ER-026",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Westfleisch Erkenschwick GmbH",
+      "record_b": "Gustoland GmbH"
+    },
+    {
+      "case_id": "ER-027",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "PHW-Gruppe",
+      "record_b": "BWE Brüterei Weser-Ems GmbH & Co. KG"
+    },
+    {
+      "case_id": "ER-028",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "PHW-Gruppe",
+      "record_b": "MEGA Tierernährung GmbH & Co. KG"
+    },
+    {
+      "case_id": "ER-029",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "WIESENHOF",
+      "record_b": "PHW-Gruppe"
+    },
+    {
+      "case_id": "ER-030",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "stable identifiers",
+      "record_a": "Tönnies Lebensmittel GmbH & Co. KG",
+      "record_b": "Tönnies Livestock GmbH"
+    },
+    {
+      "case_id": "ER-031",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "same name but conflicting addresses",
+      "record_a": "Food Logistics GmbH",
+      "record_b": "Food Logistics GmbH"
+    },
+    {
+      "case_id": "ER-032",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "same name but conflicting addresses",
+      "record_a": "Central Services GmbH",
+      "record_b": "Central Services GmbH"
+    },
+    {
+      "case_id": "ER-033",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.50 char=0.73",
+      "record_a": "PFG Central Services",
+      "record_b": "Westfleisch Central Services"
+    },
+    {
+      "case_id": "ER-034",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.33 char=0.69",
+      "record_a": "Betrieb Mucke",
+      "record_b": "Betrieb Mertens"
+    },
+    {
+      "case_id": "ER-035",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.40 char=0.67",
+      "record_a": "Rheda-Wiedenbrück slaughter site",
+      "record_b": "Weißenfels slaughter site"
+    },
+    {
+      "case_id": "ER-036",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.33 char=0.57",
+      "record_a": "Westfleisch Coesfeld",
+      "record_b": "Westfleisch Erkenschwick"
+    },
+    {
+      "case_id": "ER-037",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.00",
+      "record_a": "PFG",
+      "record_b": "PHW"
+    },
+    {
+      "case_id": "ER-038",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.13",
+      "record_a": "West Fleisch",
+      "record_b": "West Food"
+    },
+    {
+      "case_id": "ER-039",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.50 char=0.64",
+      "record_a": "Tönnies",
+      "record_b": "Tönnies Livestock"
+    },
+    {
+      "case_id": "ER-040",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.25",
+      "record_a": "Wiesenhof",
+      "record_b": "Westfleisch"
+    }
+  ],
+  "guardrail": "Same frozen benchmark after inspecting baseline failures. This demonstrates regression repair, not out-of-sample production accuracy; a holdout set is still required."
+}
