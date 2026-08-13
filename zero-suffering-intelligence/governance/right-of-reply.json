@@ -1,0 +1,58 @@
+{
+  "schema": "zsi.right-of-reply/1.0",
+  "updated_at": "2026-08-13",
+  "policy": "Consequential organisation profiles receive a clear opportunity to correct factual errors, add context and point to better primary evidence. Replies do not buy removal of sourced facts. Material corrections remain visible.",
+  "requests": [
+    {
+      "case_id": "ZSI-CASE-001",
+      "organisation": "Premium Food Group / Tönnies",
+      "status": "drafted_not_sent",
+      "requested_at": null,
+      "response_status": "not_requested_yet",
+      "contact_route": {
+        "type": "corporate_communications",
+        "name": "Fabian Reinkemeier",
+        "email": "fabian.reinkemeier@premiumfoodgroup.de",
+        "official_page": "https://premiumfoodgroup.de/gruppe/newsroom/"
+      },
+      "claims_covered": ["ZSI-C-0001","ZSI-C-0002","ZSI-C-0003","ZSI-C-0004","ZSI-C-0005","ZSI-C-0006","ZSI-C-0007","ZSI-C-0008","ZSI-C-0009","ZSI-C-0010","ZSI-C-0011","ZSI-C-0012","ZSI-C-0013","ZSI-C-0014","ZSI-C-0015","ZSI-C-0016","ZSI-C-0017","ZSI-G-0001"],
+      "correction_refs": [],
+      "draft_subject": "Bitte um Prüfung und Stellungnahme zu Zero Suffering Intelligence Case #001",
+      "draft_body": "Guten Tag, wir bauen mit Zero Suffering Intelligence eine öffentliche, quellenbasierte Übersicht zu Strukturen im deutschen Ernährungssystem. Premium Food Group / Tönnies ist unser erster Fall. Wir möchten Ihnen vor einer breiteren Veröffentlichung Gelegenheit geben, die konkret aufgeführten Claims und Quellen zu prüfen. Besonders willkommen sind Hinweise auf sachliche Fehler, veraltete Angaben, bessere Primärquellen und Kontext, der für eine faire Darstellung fehlt. Unbelegte Verbindungen kennzeichnen wir ausdrücklich als offen; zum Beispiel behaupten wir derzeit keine konkrete Lieferbeziehung von Betrieb Mucke oder Betrieb Mertens zu einem bestimmten Schlachthof. Gern dokumentieren wir Ihre Stellungnahme und nachvollziehbare Korrekturen transparent."
+    },
+    {
+      "case_id": "ZSI-CASE-002",
+      "organisation": "Westfleisch SCE mbH",
+      "status": "drafted_not_sent",
+      "requested_at": null,
+      "response_status": "not_requested_yet",
+      "contact_route": {
+        "type": "press_office",
+        "name": "Unternehmenskommunikation / Presse",
+        "email": "presse@westfleisch.de",
+        "official_page": "https://www.westfleisch.de/dialog/ansprechpartner-presse"
+      },
+      "claims_covered": ["ZSI-C-0018","ZSI-C-0019","ZSI-C-0020","ZSI-C-0021"],
+      "correction_refs": [],
+      "draft_subject": "Bitte um Prüfung und Stellungnahme zu Zero Suffering Intelligence Case #002",
+      "draft_body": "Guten Tag, wir recherchieren für Zero Suffering Intelligence öffentlich belegbare Strukturen im deutschen Ernährungssystem. Für einen ersten Westfleisch-Fall haben wir derzeit ausschließlich Angaben aus Ihren eigenen öffentlichen Unternehmensinformationen als atomare Claims erfasst, unter anderem zu Genossenschaftsmitgliedern, Kooperationsverträgen und Fleischcentern. Wir möchten Ihnen Gelegenheit geben, diese Claims zu prüfen und uns auf Fehler, Aktualisierungen oder bessere Primärquellen hinzuweisen. Nicht belegte Bereiche wie konkrete Farm-zu-Anlage-Lieferketten, Public Money, Procurement, Lobbying oder Regulatory History bleiben ausdrücklich offen, bis belastbare Quellen vorliegen."
+    },
+    {
+      "case_id": "ZSI-CASE-003",
+      "organisation": "PHW-Gruppe / WIESENHOF",
+      "status": "drafted_not_sent",
+      "requested_at": null,
+      "response_status": "not_requested_yet",
+      "contact_route": {
+        "type": "corporate_communications",
+        "name": "Abteilung Unternehmenskommunikation",
+        "email": "kommunikation@phw-gruppe.de",
+        "official_page": "https://phw-gruppe.de/kontakt/"
+      },
+      "claims_covered": ["ZSI-C-0022","ZSI-C-0023","ZSI-C-0024"],
+      "correction_refs": [],
+      "draft_subject": "Bitte um Prüfung und Stellungnahme zu Zero Suffering Intelligence Case #003",
+      "draft_body": "Guten Tag, wir bauen mit Zero Suffering Intelligence eine öffentliche, quellenbasierte Übersicht zu Strukturen im deutschen Ernährungssystem. Für einen ersten PHW/WIESENHOF-Fall haben wir derzeit ausschließlich öffentlich zugängliche Unternehmensangaben zu Gruppenstruktur, Umsatz und Vertragslandwirtschaft als atomare Claims erfasst. Wir möchten Ihnen Gelegenheit geben, die Angaben zu prüfen und uns auf Fehler, aktuellere Angaben, bessere Primärquellen oder fehlenden Kontext hinzuweisen. Ungeklärte Bereiche bleiben sichtbar als Research Gaps und werden nicht aus Plausibilität ergänzt."
+    }
+  ]
+}
