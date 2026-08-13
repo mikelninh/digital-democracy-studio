@@ -1,0 +1,1 @@
+governance.innerHTML='<div class="head"><h2>Right of Reply</h2><p>Three case requests are prepared and remain unsent.</p></div><div class="box"><a href="governance/right-of-reply.json">Open request registry →</a><br><a href="governance/RIGHT-OF-REPLY.md">Read policy →</a><br><a href="governance/CORRECTIONS.md">Corrections log →</a></div>';
