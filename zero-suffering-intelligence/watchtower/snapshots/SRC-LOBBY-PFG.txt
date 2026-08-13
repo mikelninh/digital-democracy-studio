@@ -35,9 +35,6 @@ Version des Registereintrags
 Version des Registereintrags
 Version des Registereintrags
 Version des Registereintrags
-Hinweis
-Dies ist eine historische Version des Registereintrags. Der Registereintrag wurde inzwischen aktualisiert.
-Zum aktuellen Registereintrag
 Navigation für den Seiteninhalt
 PFG Central Services GmbH & Co.KG
 Beschreibung der Tätigkeit sowie Benennung der Interessen- und Vorhabenbereiche
@@ -56,9 +53,6 @@ Inhalt dieser Seite melden
 Mehr Informationen
 )
 Seiteninhalt
-Hinweis
-Dies ist eine historische Version des Registereintrags. Der Registereintrag wurde inzwischen aktualisiert.
-Zum aktuellen Registereintrag
 PFG Central Services GmbH & Co.KG
 Kommanditgesellschaft (KG)
 Registernummer:
@@ -66,9 +60,9 @@ R000472
 Ersteintrag:
 14.02.2022
 Letzte Änderung:
-12.05.2026
+20.07.2026
 Letzte Jahresaktualisierung:
-01.07.2025
+20.07.2026
 Tätigkeitskategorie:
 Sonstiges Unternehmen
 Kontaktdaten:
@@ -98,14 +92,14 @@ E-Mail-Adresse:
  thomas.dosch@premiumfoodgroup.de
 Hauptfinanzierungsquellen
 (in absteigender Reihenfolge):
-Geschäftsjahr: 01/24 bis 12/24
+Geschäftsjahr: 01/25 bis 12/25
 Wirtschaftliche Tätigkeit
 Jährliche finanzielle Aufwendungen im Bereich der Interessenvertretung:
-Geschäftsjahr: 01/24 bis 12/24
-140.001 bis 150.000 Euro
+Geschäftsjahr: 01/25 bis 12/25
+190.001 bis 200.000 Euro
 Vollzeitäquivalent der im Bereich der Interessenvertretung beschäftigten Personen:
-Geschäftsjahr: 01/24 bis 12/24
-0,90
+Geschäftsjahr: 01/25 bis 12/25
+3,00
 Vertretungsberechtigte Person(en):
 Andrè Ressing
 Funktion: Geschäftsführer
@@ -141,7 +135,7 @@ Wettbewerbsrecht
 Die Interessenvertretung wird ausschließlich in eigenem Interesse selbst wahrgenommen.
 Beschreibung der Tätigkeit:
 Die PFG Central Services GmbH & Co.KG ist ein Lebensmittelhersteller, das der Ernährungssicherung der Bevölkerung in Deutschland dient und dazu eng mit landwirtschaftlichen Unternehmen als Rohstofflieferanten vernetzt ist. Das Unternehmen ist mit einem Büro in der Hauptstadt Berlin vertreten. Hier werden Gesetzgebungsverfahren in den genannten Interessenbereichen verfolgt. Sofern konkrete Interessen der PFG betroffen sind, erfolgt die Kontaktaufnahme zu politischen EntscheidungsträgerInnen und deren Büros, die im Bundestag oder im Kabinett vertreten sind. Ggf. erfolgen mündliche Erläuterungen oder schriftliche Stellungnahmen, um eine Folgenabschätzung des politischen Vorhabens zu unterstützen. Das übergeordnete Ziel ist, zu einer nachhaltigen und tierschutzgerechten Ernährungssicherung in Deutschland beizutragen.
-Konkrete Regelungsvorhaben (1)
+Konkrete Regelungsvorhaben (2)
 Tierhaltungskennzeichnungsgesetz
 Beschreibung:
 Der Gesetzesbeschluss wird begrüßt. Es muss nun fristgerecht und zeitnah zu einer praxistauglichen Novellierung des TierHaltKennzG kommen. Dazu werden die Regierungsfraktionen und das BMLEH schnellstmöglich einen Referentenentwurf mit den vorgeschlagenen Änderungen vorzulegen
@@ -158,22 +152,52 @@ TierHaltKennzG
 Interessenbereiche:
 Verbraucherschutz
 [alle RV hierzu]
+Referentenentwurf Entwurf eines Dritten Gesetzes zur Änderung des Tierhaltungskennzeichnungsgesetzes
+Beschreibung:
+Ziel ist, dass die Änderungen des TierHaltKennzG sowohl das sogenannte Downgrading ermöglichen als auch die Kennzeichnung von Auslandsware im Rahmen des Tierhaltungskennzeichnungsgesetzes vorsieht. Die Novelle muss EU-rechtskonform sein, um den EU-Regelungen für einen gemeinsamen europäischen Binnenmarktes zu entsprechen. Es wird auf die beigefügten Stellungnahmen und rechtlichen Bewertungen verwiesen.
+Referentenentwurf:
+Drittes Gesetz zur Änderung des Tierhaltungskennzeichnungsgesetzes
+(
+Vorgang
+)
+[alle RV hierzu]
+Datum der Veröffentlichung:
+ 17.04.2026
+Federführendes Ministerium:
+BMLEH
+[alle RV hierzu]
+Betroffenes geltendes Recht:
+TierHaltKennzG
+[alle RV hierzu]
+Interessenbereiche:
+Verbraucherschutz
+[alle RV hierzu]
+Stellungnahmen/Gutachten (1):
+SG2607200004
+(
+PDF - 3 Seiten
+)
+Adressatenkreis:
+Versendet am 18.07.2026 an:
+Bundestag
+Fraktionen/Gruppen
+[alle SG dorthin]
 Angaben zu Aufträgen (0)
 Die Interessenvertretung wird nicht im Auftrag ausgeübt.
 Zuwendungen oder Zuschüsse der öffentlichen Hand
-Geschäftsjahr: 01/24 bis 12/24
+Geschäftsjahr: 01/25 bis 12/25
 Keine Zuwendungen oder Zuschüsse über 10.000 Euro erhalten.
 Schenkungen und sonstige lebzeitige Zuwendungen
-Geschäftsjahr: 01/24 bis 12/24
+Geschäftsjahr: 01/25 bis 12/25
 Gesamtsumme:
 0 Euro
 Mitgliedsbeiträge
-Geschäftsjahr: 01/24 bis 12/24
+Geschäftsjahr: 01/25 bis 12/25
 Gesamtsumme:
 0 Euro
 Jahresabschluss/Rechenschaftsbericht
-Geschäftsjahr: 01/24 bis 12/24
-Toennies-Central-Servives-GmbH-Co_KG-Abschluss.pdf
+Geschäftsjahr: 01/25 bis 12/25
+PFG-Central-Services-GmbH-Co-KG-JA-31-12-2025.pdf
 ×
 Registerinhalt speichern - nicht eingeloggt
 Fehler
@@ -252,5 +276,5 @@ Impressum
 © Deutscher Bundestag
 Quellenangabe
 Ausdruck aus dem Internet-Angebot des Deutschen Bundestages
-https://www.lobbyregister.bundestag.de/suche/R000472/76599
-Abgerufen am 13.08.2026 um 22:20 Uhr
+https://www.lobbyregister.bundestag.de/suche/R000472
+Abgerufen am 13.08.2026 um 22:21 Uhr
