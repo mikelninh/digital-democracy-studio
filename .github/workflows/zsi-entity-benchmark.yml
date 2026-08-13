@@ -1,0 +1,32 @@
+name: ZSI Entity Resolution Benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/zsi_entity_benchmark.py
+      - zero-suffering-intelligence/entity-resolution/benchmark-v1.json
+      - .github/workflows/zsi-entity-benchmark.yml
+
+permissions:
+  contents: write
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen benchmark
+        run: python scripts/zsi_entity_benchmark.py
+      - name: Commit results
+        run: |
+          git config user.name zsi-benchmark
+          git config user.email actions@users.noreply.github.com
+          git add zero-suffering-intelligence/entity-resolution/results-v1.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore(zsi): update entity benchmark results'
+          git push
