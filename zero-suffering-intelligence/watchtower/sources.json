@@ -2,96 +2,19 @@
   "schema": "zsi.watchtower/sources-0.8",
   "updated_at": "2026-08-13",
   "sources": [
-    {
-      "source_id": "SRC-PFG-HOME",
-      "title": "Premium Food Group — Homepage / facts",
-      "category": "company",
-      "url": "https://premiumfoodgroup.de/",
-      "claim_ids": ["ZSI-C-0009", "ZSI-C-0010", "ZSI-C-0011"]
-    },
-    {
-      "source_id": "SRC-PFG-ABOUT",
-      "title": "Premium Food Group — Über uns",
-      "category": "company",
-      "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "claim_ids": ["ZSI-C-0012"]
-    },
-    {
-      "source_id": "SRC-PFG-RENAME",
-      "title": "Premium Food Group — Holding rename announcement",
-      "category": "company",
-      "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "claim_ids": ["ZSI-C-0013"]
-    },
-    {
-      "source_id": "SRC-PFG-HISTORY",
-      "title": "Premium Food Group — History",
-      "category": "company",
-      "url": "https://premiumfoodgroup.de/en/group/history/",
-      "claim_ids": ["ZSI-C-0004", "ZSI-C-0005"]
-    },
-    {
-      "source_id": "SRC-LIVESTOCK-DIALOG",
-      "title": "Tönnies Livestock — Landwirtschaft im Dialog",
-      "category": "company",
-      "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "claim_ids": ["ZSI-C-0001", "ZSI-C-0002"]
-    },
-    {
-      "source_id": "SRC-LIVESTOCK-ABOUT",
-      "title": "Tönnies Livestock — Über uns",
-      "category": "company",
-      "url": "https://toennies-livestock.de/ueber-uns/",
-      "claim_ids": ["ZSI-C-0003", "ZSI-C-0014"]
-    },
-    {
-      "source_id": "SRC-LOBBY-PFG",
-      "title": "Bundestag Lobbyregister — PFG Central Services R000472",
-      "category": "official_register",
-      "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "claim_ids": ["ZSI-C-0006", "ZSI-C-0015"]
-    },
-    {
-      "source_id": "SRC-BFR-KONTRED",
-      "title": "BfR — KontRed",
-      "category": "public_research",
-      "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "claim_ids": ["ZSI-C-0007", "ZSI-C-0008"]
-    },
-    {
-      "source_id": "SRC-BKART-VION",
-      "title": "Bundeskartellamt — Vion/Tönnies decision",
-      "category": "authority",
-      "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "claim_ids": ["ZSI-C-0016", "ZSI-C-0017"]
-    },
-    {
-      "source_id": "SRC-WESTFLEISCH-GROUP",
-      "title": "Westfleisch — Unternehmensgruppe",
-      "category": "company",
-      "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "claim_ids": ["ZSI-C-0018", "ZSI-C-0019", "ZSI-C-0020", "ZSI-C-0021"]
-    },
-    {
-      "source_id": "SRC-PHW-ABOUT",
-      "title": "PHW-Gruppe — Über uns",
-      "category": "company",
-      "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "claim_ids": ["ZSI-C-0022", "ZSI-C-0023"]
-    },
-    {
-      "source_id": "SRC-PHW-POULTRY",
-      "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
-      "category": "company",
-      "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "claim_ids": ["ZSI-C-0024"]
-    },
-    {
-      "source_id": "SRC-PHW-SUBSIDIARIES",
-      "title": "PHW-Gruppe — Tochterunternehmen / Integration",
-      "category": "company",
-      "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "claim_ids": []
-    }
+    {"source_id":"SRC-PFG-HOME","title":"Premium Food Group — Homepage / facts","category":"company","url":"https://premiumfoodgroup.de/","claim_ids":["ZSI-C-0009","ZSI-C-0010","ZSI-C-0011"]},
+    {"source_id":"SRC-PFG-ABOUT","title":"Premium Food Group — Über uns","category":"company","url":"https://premiumfoodgroup.de/gruppe/ueber-uns/","claim_ids":["ZSI-C-0012"]},
+    {"source_id":"SRC-PFG-RENAME","title":"Premium Food Group — Holding rename announcement","category":"company","url":"https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/","claim_ids":["ZSI-C-0013"]},
+    {"source_id":"SRC-PFG-HISTORY","title":"Premium Food Group — History","category":"company","url":"https://premiumfoodgroup.de/en/group/history/","claim_ids":["ZSI-C-0004","ZSI-C-0005"]},
+    {"source_id":"SRC-LIVESTOCK-DIALOG","title":"Tönnies Livestock — Landwirtschaft im Dialog","category":"company","url":"https://toennies-livestock.de/landwirtschaft-im-dialog/","claim_ids":["ZSI-C-0001","ZSI-C-0002"]},
+    {"source_id":"SRC-LIVESTOCK-ABOUT","title":"Tönnies Livestock — Über uns","category":"company","url":"https://toennies-livestock.de/ueber-uns/","claim_ids":["ZSI-C-0003","ZSI-C-0014"]},
+    {"source_id":"SRC-LOBBY-PFG-CURRENT","title":"Bundestag Lobbyregister — PFG Central Services R000472 current","category":"official_register","url":"https://www.lobbyregister.bundestag.de/suche/R000472","claim_ids":["ZSI-C-0006","ZSI-C-0025"]},
+    {"source_id":"SRC-LOBBY-PFG-FY2024","title":"Bundestag Lobbyregister — PFG Central Services FY2024 version","category":"official_register_historical","url":"https://www.lobbyregister.bundestag.de/suche/R000472/72658","claim_ids":["ZSI-C-0015"]},
+    {"source_id":"SRC-BFR-KONTRED","title":"BfR — KontRed","category":"public_research","url":"https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/","claim_ids":["ZSI-C-0007","ZSI-C-0008"]},
+    {"source_id":"SRC-BKART-VION","title":"Bundeskartellamt — Vion/Tönnies decision","category":"authority","url":"https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html","claim_ids":["ZSI-C-0016","ZSI-C-0017"]},
+    {"source_id":"SRC-WESTFLEISCH-GROUP","title":"Westfleisch — Unternehmensgruppe","category":"company","url":"https://www.westfleisch.de/unternehmen/unternehmensgruppe/","claim_ids":["ZSI-C-0018","ZSI-C-0019","ZSI-C-0020","ZSI-C-0021"]},
+    {"source_id":"SRC-PHW-ABOUT","title":"PHW-Gruppe — Über uns","category":"company","url":"https://phw-gruppe.de/unternehmen/ueber-uns/","claim_ids":["ZSI-C-0022","ZSI-C-0023"]},
+    {"source_id":"SRC-PHW-POULTRY","title":"PHW-Gruppe — Geflügel / Vertragslandwirte","category":"company","url":"https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/","claim_ids":["ZSI-C-0024"]},
+    {"source_id":"SRC-PHW-SUBSIDIARIES","title":"PHW-Gruppe — Tochterunternehmen / Integration","category":"company","url":"https://phw-gruppe.de/unternehmen/tochterunternehmen/","claim_ids":[]}
   ]
 }
