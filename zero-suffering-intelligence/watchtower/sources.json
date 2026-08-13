@@ -14,7 +14,14 @@
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "claim_ids": ["ZSI-C-0012", "ZSI-C-0013"]
+      "claim_ids": ["ZSI-C-0012"]
+    },
+    {
+      "source_id": "SRC-PFG-RENAME",
+      "title": "Premium Food Group — Holding rename announcement",
+      "category": "company",
+      "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
+      "claim_ids": ["ZSI-C-0013"]
     },
     {
       "source_id": "SRC-PFG-HISTORY",
@@ -41,7 +48,7 @@
       "source_id": "SRC-LOBBY-PFG",
       "title": "Bundestag Lobbyregister — PFG Central Services R000472",
       "category": "official_register",
-      "url": "https://www.lobbyregister.bundestag.de/suche/R000472/76599",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
       "claim_ids": ["ZSI-C-0006", "ZSI-C-0015"]
     },
     {
@@ -70,14 +77,14 @@
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "claim_ids": ["ZSI-C-0022", "ZSI-C-0023", "ZSI-C-0024"]
+      "claim_ids": ["ZSI-C-0022", "ZSI-C-0023"]
     },
     {
       "source_id": "SRC-PHW-POULTRY",
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "claim_ids": ["ZSI-C-0025"]
+      "claim_ids": ["ZSI-C-0024"]
     },
     {
       "source_id": "SRC-PHW-SUBSIDIARIES",
