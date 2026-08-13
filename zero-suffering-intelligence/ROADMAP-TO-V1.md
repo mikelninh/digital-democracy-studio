@@ -4,39 +4,44 @@ Updated: 2026-08-13
 
 ## Release principle
 
-Ship public capabilities, then measure them against reality. The V1 software shell is live as a Release Candidate; the `seed corpus / RC` label stays until the evidence and external-review gates are met.
+The V1 software shell is live as a Release Candidate. The `seed corpus / RC` label remains until the evidence-coverage and external-review gates are met.
 
 ## Shipped capabilities
 
 - [x] v0.1 — public front door: Impact → Power → Evidence → Change
 - [x] v0.2 — clickable graph + Evidence Inspector
-- [x] v0.3 — search, status filters and Path Mode
-- [x] v0.4 — public Claim Ledger with stable claim IDs, source type, review state, boundaries, correction state and shareable claim hashes
-- [x] v0.5 — Animal Impact Mirror alpha without a guilt score
-- [x] v0.6 — frozen 40-case Entity Resolution benchmark with reproducible metrics and visible errors
-- [x] v0.7a — Investigation OS text intake: source text → atomic candidate claims → human keep/reject → export
-- [x] v0.8 — automated Watchtower: scheduled source fetch → normalized snapshot → SHA-256 → diff → affected claim review queue
-- [x] Research Ops — Cases #001–003, Watchtower state, Entity Resolution metrics and governance links in one public view
+- [x] v0.3 — search, filters and Path Mode
+- [x] v0.4 — public Claim Ledger with stable IDs, boundaries, correction state and exports
+- [x] v0.5 — Animal Impact Mirror without a guilt score
+- [x] v0.6 — frozen 40-case Entity Resolution benchmark
+- [x] v0.7a — Investigation OS text intake → candidate claims → human keep/reject → export
+- [x] v0.8/0.9 — automated Watchtower: scheduled fetch → normalized snapshot → SHA-256 → diff/suspect retrieval classification → claim-review queue
+- [x] Research Ops — Cases #001–003, Watchtower, resolver metrics and governance in one public view
 
 ## Current measurable state
 
-- Reviewed organisations: **1 / 10** (PFG/Tönnies); Westfleisch and PHW are active research cases, not yet counted as fully reviewed.
+- Reviewed organisations: **1 / 10**. Westfleisch and PHW are active research cases, not counted as fully reviewed.
 - Verified atomic claims: **25 / 100** plus one explicit open-gap record.
 - Deep-dive investigations: **1 / 3**; Cases #002 and #003 are active.
 - Entity Resolution benchmark: **40 / 40** frozen pair tests.
-- Resolver metrics: **Precision 90.48% · Recall 95.00% · F1 92.68% · Accuracy 92.50%**.
-- Visible resolver errors: **3** (2 false positives, 1 false negative).
-- Watchtower: **14** primary/official sources configured, scheduled every six hours.
+- Resolver baseline: **Precision 90.48% · Recall 95.00% · F1 92.68% · Accuracy 92.50%**, with 3 visible errors.
+- Resolver correction run on the **same frozen benchmark**: **100% Precision / Recall / F1**, with 0 errors. This is regression repair after inspecting failures, **not holdout or production accuracy**.
+- Watchtower: **14** primary/official sources, scheduled every six hours.
+- Latest clean Watchtower control run: **14 unchanged · 0 changed · 0 suspect · 0 failed · 0 claims needing review**.
+- Watchtower reliability failures documented and repaired: snapshot serialization noise, volatile timestamps, temporal source versioning and bot/challenge-page collapse.
 - Right of Reply: **3** request bundles drafted, **0 sent**.
 - External reviewers: **0 / 3**.
+- Hardest PFG edge: named farm → exact slaughterhouse remains unproven and is published as an explicit evidence boundary.
 
 ## Next
 
+- [ ] create an unseen Entity Resolution holdout benchmark before making generalization claims
 - [ ] v0.7b — URL/document intake + preserved source record + candidate entity extraction + Claim Ledger proposal
-- [ ] resolve Entity Resolution ER-009, ER-031 and ER-032; rerun the frozen benchmark and publish before/after metrics
-- [ ] send Right-of-Reply requests only after explicit human approval and record response status
-- [ ] v0.9 — external reality test: 3 real reviewers challenge the system; publish failures and corrections
-- [ ] complete the hardest PFG supply-chain edge or publish a source-backed account of why the exact destination remains inaccessible
+- [ ] send Right-of-Reply requests only after explicit human approval and record response states
+- [ ] v0.9 — 3 external reviewers challenge real cases; publish failures/corrections
+- [ ] grow Westfleisch and PHW to reviewed profiles and add 7 more organisations
+- [ ] grow 25 verified claims → 50 → 100 without padding
+- [ ] continue pursuing the exact PFG farm → slaughterhouse receipt or document why it is inaccessible
 
 ## V1.0 evidence gates
 
@@ -44,36 +49,30 @@ Ship public capabilities, then measure them against reality. The V1 software she
 - [ ] 10 major organisations with reviewed public profiles
 - [ ] 3 deep-dive investigations
 - [ ] 100+ human-reviewed atomic public claims
-- [ ] at least one fully sourced farm → intermediary → facility → legal entity → product/brand path, or an explicit published account of why the final hop remains inaccessible
+- [ ] at least one fully sourced farm → intermediary → facility → legal entity → product/brand path, or a published source-backed account of why the missing hop remains inaccessible
 
 ### Evidence integrity
-- [x] public verified claims use stable claim IDs
-- [x] public claim records carry source URL/type, accessed date, review state and an explicit boundary
-- [x] historical/current values can coexist as temporal claim versions rather than silently overwriting history
-- [x] correction and internal reliability events remain visible
-- [x] Right-of-Reply workflow is documented and operationally represented
-- [ ] Right-of-Reply requests have been sent and response states recorded for consequential company profiles
-- [ ] procedural status vocabulary is tested across multiple real regulatory/enforcement cases
+- [x] stable claim IDs and explicit boundaries
+- [x] source URL/type, accessed date and review state
+- [x] historical/current values coexist as temporal versions
+- [x] correction and reliability events remain visible
+- [x] Right-of-Reply workflow is operationally represented
+- [ ] Right-of-Reply requests sent and response states recorded
+- [ ] procedural-status vocabulary tested across multiple real enforcement/regulatory cases
 
 ### Entity resolution
-- [x] 40 deliberately messy frozen benchmark pair tests
-- [x] precision/recall/F1 published from a reproducible runner
+- [x] 40 deliberately messy frozen benchmark pairs
+- [x] precision/recall/F1 published
 - [x] false positives and false negatives published
-- [x] no production merge is justified solely by shared address or group membership
-- [ ] human corrections to the three benchmark errors are implemented and before/after metrics published
+- [x] baseline failures corrected and before/after metrics published
+- [ ] unseen holdout benchmark published
 
-### Product usefulness
-- [x] public claim export
-- [x] basic source/entity/claim search
-- [x] responsive public interface
-- [ ] Journalist test validated by an external journalist/researcher
-- [ ] Citizen comprehension test validated externally
-- [ ] Fairness test validated with an investigated organisation or independent reviewer
-
-### Reliability / external test
-- [x] first Watchtower reliability failures were logged instead of hidden
-- [x] benchmark metrics and errors are public product data
-- [ ] at least 3 external reviewers use the system on real questions
+### Product usefulness / reality test
+- [x] claim/case exports, search and responsive public UI
+- [ ] external Journalist test
+- [ ] external Citizen comprehension test
+- [ ] external Fairness test
+- [ ] at least 3 external reviewers use ZSI on real questions
 - [ ] their failures, corrections and unresolved disputes are logged
 
 ## V1.0 definition
