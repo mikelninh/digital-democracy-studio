@@ -1,0 +1,30 @@
+{
+  "schema": "zsi.watchtower/review-resolutions-0.8",
+  "updated_at": "2026-08-13",
+  "resolutions": [
+    {
+      "resolution_id": "WT-R-0001",
+      "status": "resolved",
+      "issue": "Initial snapshots were serialized with a trailing newline, creating false source-change fingerprints on the next run.",
+      "affected_claim_ids": ["ZSI-C-0001","ZSI-C-0002","ZSI-C-0003","ZSI-C-0004","ZSI-C-0005","ZSI-C-0007","ZSI-C-0008","ZSI-C-0009","ZSI-C-0010","ZSI-C-0011","ZSI-C-0012","ZSI-C-0014","ZSI-C-0016","ZSI-C-0017","ZSI-C-0018","ZSI-C-0019","ZSI-C-0020","ZSI-C-0021","ZSI-C-0022","ZSI-C-0023","ZSI-C-0024"],
+      "resolution": "Canonical snapshot text is now stripped of serialization-only trailing newlines before hashing. A later control run reported these sources unchanged.",
+      "resolved_at": "2026-08-13"
+    },
+    {
+      "resolution_id": "WT-R-0002",
+      "status": "resolved",
+      "issue": "The Bundestag Lobbyregister renders a retrieval timestamp in page text, creating a new hash on each fetch even when the substantive entry is unchanged.",
+      "affected_claim_ids": ["ZSI-C-0006","ZSI-C-0015"],
+      "resolution": "Known volatile retrieval timestamps are normalized before hashing. FY2024 lobbying expenditure is now pinned to a historical register version; FY2025 is represented as a separate current claim ZSI-C-0025.",
+      "resolved_at": "2026-08-13"
+    },
+    {
+      "resolution_id": "WT-R-0003",
+      "status": "resolved",
+      "issue": "A mutable current Lobbyregister URL had been used for a historical FY2024 claim.",
+      "affected_claim_ids": ["ZSI-C-0015","ZSI-C-0025"],
+      "resolution": "Historical and current claims now have separate temporal records and source mappings. History is preserved rather than silently overwritten.",
+      "resolved_at": "2026-08-13"
+    }
+  ]
+}
