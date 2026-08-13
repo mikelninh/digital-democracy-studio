@@ -1,0 +1,643 @@
+Entwicklung und Implementierung technologischer Verfahren zur Reduktion von mikrobiellen Kontaminanten im Geflügel- und Schweineschlachtprozess - BfR
+Direkt zum Seiteninhalt springen
+Zur Startseite von
+BfR – Bundesinstitut für Risikobewertung
+Suche
+Suche öffnen
+Suche schließen
+Suche
+Suchbegriff leeren
+Suchen
+Menü
+Zur Startseite von
+BfR – Bundesinstitut für Risikobewertung
+Metamenü
+Gebärdensprache
+Leichte Sprache: Das Bundes-Institut für Risiko-Bewertung
+Presse
+Schnelleinstieg
+Öffnen
+Schließen
+Themen A-Z
+Karriere
+Fragen und Antworten
+Veröffentlichungen
+Forschung
+Veranstaltungen
+Mediathek
+Infografiken
+Podcast
+Vergiftungsmeldungen
+Produktmeldungen
+BfR-Kommissionen
+Referenzlaboratorien
+Kontakt
+Merkliste
+Einträge
+Warenkorb
+EN
+Englisch
+Suche
+Suche öffnen
+Suche schließen
+Suche
+Suchbegriff leeren
+Suchen
+Themenschwerpunkte
+Unsere Themen
+Öffnen
+Schließen
+Lebens- und Futtermittel
+Chemikalien
+Produkte
+Risikokommunikation
+Schutz von Versuchstieren
+Menü
+Hauptmenü
+Über uns
+Über uns
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Über uns
+Das Institut
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Institutspolitik
+Zahlen und Fakten
+Standorte
+Geschichte des BfR
+Rechtsgrundlage
+Qualitätsmanagement
+Umweltmanagement
+Nachhaltigkeitsbericht
+Grundsätze zur Guten wissenschaftlichen Praxis
+Auszeichnungen
+Struktur
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Institutsleitung
+Stabsstellen
+Zentralabteilung
+Abteilung Informationstechnik
+Abteilung Risikokommunikation
+Abteilung Exposition
+Abteilung Biologische Sicherheit
+Abteilung Referenzzentrum Lebens- und Futtermittelanalytik
+Abteilung Sicherheit von Pestiziden
+Abteilung Chemikalien- und Produktsicherheit
+Abteilung Lebens- und Futtermittelsicherheit in der Nahrungskette
+Abteilung Deutsches Zentrum zum Schutz von Versuchstieren
+Einrichtungen am BfR
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zentrum zum Schutz von Versuchstieren
+BfR-Kommissionen
+Referenzlaboratorien
+GLP-Bundesstelle
+Wissenschaftlicher Beirat
+EFSA Focal Point
+Kooperationen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+National
+Internationale Zusammenarbeit
+Global cooperation
+Risikobewertung
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Leitfaden Risikobewertung
+Glossar
+Toxikologische Beurteilung
+Schwangere
+Jugendliche
+Ältere Menschen
+Kinder
+Lebensmittel- und Futtermittelsicherheit
+Lebensmittel- und Futtermittelsicherheit
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Lebensmittel- und Futtermittelsicherheit
+Mikrobielle Risiken
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Lebensmittelhygiene
+Lebensmittelinfektionen und Krankheitsausbrüche
+Wasserwiederverwendung
+Zoonosen
+Bakterien
+Viren
+Parasiten
+Antibiotikaresistenz und Lebensmittel
+Antibiotika-Einsatz bei Nutztieren
+BSE
+Futtermittel
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Inhaltsstoffe
+Rückstände
+Zusatzstoffe
+Gentechnisch veränderte Futtermittel
+Stoffliche Risiken
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Lebensmittelinhaltsstoffe
+Rückstände
+Kontaminanten
+Tierische Stoffe
+Ernährungsrisiken
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Ernährungsbedingte Erkrankungen
+Health Claims
+Nährwertprofile
+Spezielle Lebensmittelgruppen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Ausgewählte Lebensmittel
+Genetisch veränderte Lebens- und Futtermittel
+Angereicherte Lebensmittel
+Diätetische Lebensmittel
+Nahrungsergänzungsmittel
+Neuartige Lebensmittel (Novel Food)
+Produktidentität und Rückverfolgbarkeit
+Produktsicherheit
+Produktsicherheit
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Produktsicherheit
+Tätowierung
+Mikroplastik
+Textilien und Leder
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Chrom
+Azofarbstoffe
+Nanomaterialien
+Allergien
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Duftstoffe
+Nickel
+Materialien in Kontakt mit Lebensmitteln
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Bisphenol A
+Druckfarben
+Perfluorierte Verbindungen
+PET
+Phthalate/Weichmacher
+Geschirr
+Aluminium
+Spielzeug
+Sonstige Produkte
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Polycyclische aromatische Kohlenwasserstoffe
+Nitrosamine
+Sonstige Bedarfsgegenstände
+Tabakerzeugnisse
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Shishas
+E-Zigaretten
+Kosmetische Mittel
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Sonnenschutz
+Fluorid
+Parabene
+Chemikaliensicherheit
+Chemikaliensicherheit
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Chemikaliensicherheit
+Chemikalien unter REACH
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Beschränkungsverfahren
+Zulassung
+Einstufung und Kennzeichnung
+Rechtliche Grundlagen
+Biozidprodukte
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Einteilung
+Desinsektion
+Chlorpyrifos
+Rechtliche Grundlagen
+Gesetzliche Verfahren
+Risikobewertung
+Pflanzenschutzmittel
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Rechtliche Grundlagen
+Gesetzliche Verfahren
+Risikobewertung
+Verbrauchersicherheit
+Anwendungssicherheit
+Expositionsschätzung für Pflanzenschutzmittel
+Rückstandsanalytik
+Forschungsprojekte
+Internationale Maßnahmen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Gefahrenbewertung
+Einstufung, Kennzeichnung, Restriktionen
+Internationale Bewertungen von Chemikalien
+Transport gefährlicher Güter
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Transport von festen Schüttgütern auf See
+Transport von verpackten Gütern auf See
+Transport von flüssigen Massengütern auf See
+Ballastwasser-Management
+Modellvorschriften der Vereinten Nationen für den Gefahrguttransp
+Notfallmaßnahmen, komplexe Schadenslagen und Havarien
+Forschung
+Rechtliche Umsetzung der Modellvorschriften
+Nationales Produktregister
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+UFI-Code
+Mitteilung von Wasch- und Reinigungsmitteln
+Mitteilung gefährlicher Produkte
+Freiwillige Mitteilungen
+Vergiftungen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Deutsches Vergiftungsregister
+Giftinformationszentren
+Mitteilung von Vergiftungen
+DevTox Projekt
+Risikokommunikation
+Risikokommunikation
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Risikokommunikation
+Sozialwissenschaftlicher Hintergrund
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Risikofrüherkennung
+Risikowahrnehmung
+Evaluation von Risikokommunikation
+Gesundheitskommunikation
+Audiovisuelle Kommunikation
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+BfR-Risikoprofil
+Videoreihe Forschperspektive
+Podcast "Risiko für die Ohren"
+Presse
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Pressestelle
+Presseinformationen
+Pressegespräche
+Mediathek
+Infografiken
+Social Media-Übersicht
+BfR Vergiftungs-App
+Meldungen der letzten 30 Tage
+Dialogformate
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+BfR-Giftgarten
+Stakeholderspezifischer Dialog
+BfR-Wissensdialog
+BfR-Forum Verbraucherschutz
+Trainings zur Risikokommunikation und -bewertung
+BfR-Summer Academy
+Verbraucherkonferenzen
+Verbrauchermesse Grüne Woche
+Didaktisches Pflanzenlabyrinth
+Veröffentlichungen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Stellungnahmen und Mitteilungen
+Wissenschaftsberichte
+Fachpublikationen
+BfR2GO
+BfR-Kinderbuch
+Wissens-Comic
+Jahresberichte
+Broschüren
+Verbrauchermonitor
+Merkblätter
+Flyer
+Plakate und Karten
+Bildungsmaterialien
+BfR-Wissenschaft
+Tagungsbände
+Sonstige Publikationen
+Monitoring öffentlicher Meinung
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+BfR-Verbrauchermonitor
+BfR-Corona-Monitor
+Forschung
+Forschung
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Forschung
+Toxikologie
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Nanomaterialien
+Toxische Substanzen
+QSAR in der Chemikalienbewertung
+Gen- und Proteinexpressionsanalysen
+Sicherheitsfaktoren
+Biofunktionalität
+Kontaminanten in Lebens- und Futtermitteln
+Endokrine Disruptoren
+Mikrobiologie
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Forschung zur Lebensmittelhygiene
+Risikomodellierung und automatische Berichterstellung (rrisk)
+Antibiotikaresistenz
+Analytik
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Authentizitätsprüfung
+Expositionsschätzung
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Studie: Chemikalien in Verbraucherprodukten in Deutschland
+Nutzung von „Total Diet“-Studien in der Expositionsschätzung
+Lebensmittelsicherheit von jagdlich gewonnenem Wildbret
+Bioverfügbarkeit von Tätowiermittelinhaltsstoffen
+Forschungsprojekt Chemikalien- und Produktsicherheit
+Textilien, Spielzeug und nicht-textile Pflegeartikel
+Modellparameter für prospektive Aufnahmeabschätzungen
+Probabilistische Expositionsschätzung
+MEAL-Studie
+EDKAR-Studie
+KiESEL-Studie
+COPLANT-Studie
+Forschung Risikokommunikation
+Alternativmethoden zu Tierversuchen
+Science News
+Forschungsagenda
+Forschungsförderung
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Ausschreibungen
+Fellowship-Programme
+Nachwuchsförderung
+Forschungsfelder
+Drittmittelprojekte
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Projekt
+Europäische Partnerschaft Risikobewertung von Chemikalien (PARC)
+Service
+Service
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Service
+Aktuelle Warnungen
+BfR-Softwares
+Newsletter
+Themen A-Z
+Fragen und Antworten
+Veranstaltungen
+Bibliothek
+Datenbanken
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+LFGB-Sammlung
+BTL
+BfR-Empfehlungen zu Materialien für den Lebensmittelkontakt
+Informationsfreiheitsgesetz (IFG)
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+BfR-Verzeichnisse gem. § 11 Abs. 1 IFG
+Europäisches Medienfreiheitsgesetz (EMFA)
+Karriere am BfR
+Karriere am
+BfR
+kurz für
+Bundesinstitut für Risikobewertung
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Zur Übersicht
+Karriere am BfR
+Stellenanzeigen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+IT-Stellenanzeigen
+Abschlussarbeiten
+Karriereoptionen
+Untermenüpunkte öffnen
+Untermenüpunkte schließen
+Enthält die aktuelle Seite
+Auszubildende
+Promovierende
+Wissenschaftlerinnen und Wissenschaftler
+Weitere Berufsgruppen
+Angebote für Geflüchtete
+Initiativbewerbung Praktikum / Masterarbeit / Bachelorarbeit
+Warum Arbeiten am BfR attraktiv ist
+Lernen Sie uns kennen!
+Brotkrumennavigation
+Bundesinstitut für Risikobewertung
+|
+Forschung
+|
+Drittmittelprojekte
+|
+Entwicklung und Implementierung technologischer Verfahren zur Reduktion von mikrobiellen Kontaminanten im Geflügel- und Schweineschlachtprozess
+Kategorie
+Forschungsprojekt
+#
+Mikrobiologie
+Entwicklung und Implementierung technologischer Verfahren zur Reduktion von mikrobiellen Kontaminanten im Geflügel- und Schweineschlachtprozess
+Merken
+Artikel nicht gemerkt
+Durch Klicken der Merkliste hinzufügen.
+Gemerkt
+Artikel gemerkt
+Durch Klicken von der Merkliste entfernen.
+Artikel teilen
+URL kopieren
+Projektstatus
+Abgeschlossen
+Projektstart
+Nov 2020
+Projektende
+Jun 2024
+Kurztitel
+KontRed
+Abteilung
+Biologische Sicherheit
+Beschreibung und Zielstellung
+Übergeordnetes Ziel ist, durch die Optimierung und Lenkung von Prozessen und Verfahren und durch die Implementierung neuer technischer Verfahren unter hygienischen Gesichtspunkten die Belastung von Schlachtkörpern mit Zoonoseerregern am Ende der Schlachtlinie zu senken. Die Sicherheit von Geflügelfleisch- und Schweinefleischprodukten wird dadurch verbessert und das Verbrauchervertrauen nachhaltig gestärkt. Folgende Ziele stehen im Vordergrund: Optimierung der Verfahren und Prozesse im Schlacht- und Verarbeitungsprozess Geflügel/Schwein zur Reduktion des Vorkommens und des Transfers von Zoonoseerregern; Entwicklung, Implementierung und Validierung von biologischen, chemischen, physikalischen und technischen Kontroll- und Interventionsmaßnahmen zur Reduktion von Zoonoseerregern im Schlacht- und Verarbeitungsprozess Geflügel/Schwein, Entwicklung eines Bewertungsmodells zur Prüfung der Effizienz von Verfahren und Maßnahmen zur Reduktion von Zoonoseerregern im Schlacht- und Verarbeitungsprozess Geflügel/Schwein.
+Ergebnis
+In der „Basisstudie“ wurde im Verlauf der Fleischgewinnung grundsätzlich eine Verringerung der untersuchten Bakteriengruppen (aerobe mesophile Koloniezahl,
+E. coli
+und
+Campylobacter
+) auf den Schlachtkörpern festgestellt. Die höchste Belastung wurde auf Schlachtkörpern direkt nach dem Entbluten gemessen. Das Brühen, gefolgt vom Rupfen, führte zu einer deutlichen Verringerung der Belastung. Ein Anstieg wurde nach dem Ausnehmen der Schlachtkörper beobachtet. Über die weiteren Verarbeitungsschritte bis nach der Kühlung sank die Belastung allerdings wieder. Die Erkenntnisse der Status quo-Erhebung (Basisstudie), die, wenngleich, sich mit älteren Untersuchungen im Ergebnis im Wesentlichen deckt, aber wesentlich für die Bewertung neuer Interventionsverfahren ausgehend von der aktuell vorhandenen Technologie anzusehen ist, wurden dem Konsortium für die Erarbeitung von Untersuchungsplänen und für die geplanten Interventionsstudien zur Verfügung gestellt und in einem Fachartikel veröffentlicht. Untersuchungen zur Behandlung von Broilerschlachtkörpern mit heißem Wasser erbrachten eine Reduktion von
+Campylobacter
+und Salmonellen um etwa 1 Log10 KbE. Mit einer Kältebehandlung vor der abschließenden Luftkühlung konnten
+Campylobacter
+um ca. 0,5 Log10 KbE verringert werden. Die Daten aus diesen Untersuchugen wurden in einem Fachartikel veröffentlicht. Mit
+Salmonella
+-Phagen konnten Reduktionen der Belastung bis zu 3 Log10 erreicht werden, während
+Campylobacter
+-Phagen ein enges Wirtsspektrum und eine geringe lytische Aktivität zeigten.
+Projekttyp
+Drittmittelprojekt
+Forschungsschwerpunkt
+Gesundheit von Mensch, Tier und Umwelt (One Health) / Forschung zur Sicherheit nationaler und internationaler Warenketten
+Organisationseinheiten und Partner
+Federführende Fachgruppe:
+Lebensmittelhygiene und -technologie, Warenketten und Produktschutz (41)
+Kontaktpersonen:
+Dr. Niels Bandick, 
+ 
+ Dr. Stefan Hertwig,
+PD
+kurz für
+Privatdozent
+Dr. Felix Reich
+Beteiligte BfR-Partner:
+Experimentelle Toxikologie und ZEBET
+Externe Partner:
+Institut für Biometrie, Epidemiologie und Informationsverarbeitung,
+ 
+ Institut für Lebensmittelsicherheit und -hygiene,
+ 
+ Institut für Tier- und Umwelthygiene,
+ 
+ Institut für Lebensmittelqualität und -sicherheit,
+ 
+ Institut für Lebensmittelhygiene,
+ 
+ Herrmann-Rietschel-Institut, Institut für Energietechnik,
+ 
+ Technische Hochschule Ostwestfalen-Lippe,
+ 
+ Leibniz-Institut für Plasmaforschung und Technologie e.V.,
+ 
+ DVGW - Technologiezentrum Wasser, Abteilung Technologie und Wirtschaftlichkeit,
+ 
+ Frankenförder Forschungsgesellschaft mbH,
+ 
+ Rothkötter Unternehmensgruppe / Emsland-Frischgeflügel GmbH,
+ 
+ Tönnies Lebensmittel GmbH & Co. KG,
+ 
+ Brand Qualitätsfleisch GmbH & Co. KG,
+ 
+ Phage Technology Center GmbH,
+ 
+ SKS Sondermaschinen- und Fördertechnikvertriebs- GmbH,
+ 
+ CLK GmbH Bildverarbeitung & Robotik,
+ 
+ PHW-Gruppe / LOHMANN & CO. AG
+Mittelgeber und Förderkennzeichen
+Bundesministerium für Ernährung und Landwirtschaft
+281C104B18
+Publikationen
+http://doi.org/10.3389/fmicb.2024.1429756
+,
+http://doi.org/10.1016/j.ijfoodmicro.2024.110610
+,
+http://doi.org/10.1111/jfs.13153
+,
+http://doi.org/10.3390/microorganisms11092298
+,
+http://doi.org/10.3389/fmicb.2024.1354696
+Unsere Newsletter
+Das
+BfR
+kurz für
+Bundesinstitut für Risikobewertung
+bietet Ihnen verschiedene Newsletter in deutscher und englischer Sprache.
+Abonnieren
+Zum Seitenanfang
+Zur Startseite von
+Footer
+Meta-Navigation
+Presse
+AGB
+Kontakt
+Impressum
+Datenschutz
+Erklärung zur Barrierefreiheit
+Folgen Sie uns
+Externer Link:
+BfR auf Linkedin
+Externer Link:
+BfR auf Instagram
+Externer Link:
+BfR auf X
+Externer Link:
+BfR auf Mastodon
+Externer Link:
+BfR auf Threads
+Externer Link:
+BfR auf Bluesky
+Externer Link:
+BfR auf Youtube
+Externer Link:
+BfR auf Podcast
+©
+Copyright
+Bundesinstitut für Risikobewertung 2026

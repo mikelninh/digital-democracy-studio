@@ -1,0 +1,252 @@
+{
+  "schema": "zsi.watchtower/status-0.8",
+  "generated_at": "2026-08-13T20:19:51+00:00",
+  "sources_total": 12,
+  "unchanged": 0,
+  "changed": 0,
+  "baselines_created": 12,
+  "fetch_failed": 0,
+  "claims_needing_review": [],
+  "sources": [
+    {
+      "source_id": "SRC-PFG-HOME",
+      "title": "Premium Food Group — Homepage / facts",
+      "category": "company",
+      "url": "https://premiumfoodgroup.de/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0009",
+        "ZSI-C-0010",
+        "ZSI-C-0011"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "8d10f23e61f02c66f69a83b248092e670fd4b0e08e2d87c026e1b6666df9b283",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 7777
+    },
+    {
+      "source_id": "SRC-PFG-ABOUT",
+      "title": "Premium Food Group — Über uns",
+      "category": "company",
+      "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0012",
+        "ZSI-C-0013"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "c09ecbb85461625732bcfd4bec90cbabdb4aa866e312810999ae4b6564e9813e",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 3254
+    },
+    {
+      "source_id": "SRC-PFG-HISTORY",
+      "title": "Premium Food Group — History",
+      "category": "company",
+      "url": "https://premiumfoodgroup.de/en/group/history/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0004",
+        "ZSI-C-0005"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "055df6e9f153e09289f0e50678b41c6a9216a9a05d5783d07f861b5329aad4b4",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 7317
+    },
+    {
+      "source_id": "SRC-LIVESTOCK-DIALOG",
+      "title": "Tönnies Livestock — Landwirtschaft im Dialog",
+      "category": "company",
+      "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0001",
+        "ZSI-C-0002"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "dc2d00f82481c0f8da6e2899a90c918c0e27e67205c745bd92747b45b6cf6d01",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 3497
+    },
+    {
+      "source_id": "SRC-LIVESTOCK-ABOUT",
+      "title": "Tönnies Livestock — Über uns",
+      "category": "company",
+      "url": "https://toennies-livestock.de/ueber-uns/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0003",
+        "ZSI-C-0014"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "3644e9f0e1e413eefba026492ab4616617b9ddd26f72c498f48a8753f583d58b",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 3782
+    },
+    {
+      "source_id": "SRC-LOBBY-PFG",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472",
+      "category": "official_register",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R000472/76599",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0015"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "102d725fa5c5d03e1a3bf800fc0fe93dcfca6110d8f2307c0d9f35f8d96982bc",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 8531
+    },
+    {
+      "source_id": "SRC-BFR-KONTRED",
+      "title": "BfR — KontRed",
+      "category": "public_research",
+      "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0007",
+        "ZSI-C-0008"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": "W/\"40fe7d2b84ffc8d87121f13b82961437\"",
+      "last_modified": null,
+      "sha256": "c2175bfcb58dd97d0edf28e7333572b2b52b68d9f67361bd1e951ee230cbdfba",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 16834
+    },
+    {
+      "source_id": "SRC-BKART-VION",
+      "title": "Bundeskartellamt — Vion/Tönnies decision",
+      "category": "authority",
+      "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0016",
+        "ZSI-C-0017"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": "Thu, 13 Aug 2026 20:20:09 GMT",
+      "sha256": "e128fd96c84b102a8956424c81d826ded817a24c2baf3c140b30eaa254961626",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 12372
+    },
+    {
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "category": "company",
+      "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "sha256": "84b7d87c488372bf7e7327a5d43be2ac7a39f91f75463a8405cd6af5399cf8d4",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 16021
+    },
+    {
+      "source_id": "SRC-PHW-ABOUT",
+      "title": "PHW-Gruppe — Über uns",
+      "category": "company",
+      "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0022",
+        "ZSI-C-0023",
+        "ZSI-C-0024"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": "Thu, 13 Aug 2026 00:42:18 GMT",
+      "sha256": "e94b6b9a47a602e94595ac876f11f060838d861712691f821946faac52d1763f",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 3661
+    },
+    {
+      "source_id": "SRC-PHW-POULTRY",
+      "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
+      "category": "company",
+      "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0025"
+      ],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": "Sat, 08 Aug 2026 08:03:47 GMT",
+      "sha256": "34e96aeffc2093e224f2ec0043b40c2fb81123f7157eb7a81b6ca66c4bb15962",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 7619
+    },
+    {
+      "source_id": "SRC-PHW-SUBSIDIARIES",
+      "title": "PHW-Gruppe — Tochterunternehmen / Integration",
+      "category": "company",
+      "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
+      "checked_at": "2026-08-13T20:19:51+00:00",
+      "claim_ids": [],
+      "previous_sha256": null,
+      "http_status": 200,
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": "Tue, 11 Aug 2026 09:13:29 GMT",
+      "sha256": "1ab481e83dc5f504bdf05c711c39b673bb5eed446230855b5bc56022655d5d41",
+      "status": "baseline_created",
+      "diff": [],
+      "character_count": 3870
+    }
+  ]
+}
