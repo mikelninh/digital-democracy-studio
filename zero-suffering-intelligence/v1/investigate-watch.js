@@ -1,0 +1,1 @@
+['investigate-ui.js','watch-ui.js'].forEach(src=>{const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)});
