@@ -2,6 +2,27 @@
   "schema": "zsi.watchtower/events-0.8",
   "events": [
     {
+      "event_id": "844b340f07b31f2e",
+      "source_id": "SRC-LOBBY-PFG",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472",
+      "detected_at": "2026-08-13T20:43:33+00:00",
+      "previous_sha256": "f1a061c3528df68d1e9d9e82d1f0902935ec757aa85ba951478d642b200d832e",
+      "sha256": "ff874231353ebec2b8d4b5454481cb0d7bd1630ff714976b9e0d4130ab2f42ed",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -279,2 +279,2 @@",
+        " https://www.lobbyregister.bundestag.de/suche/R000472",
+        "-Abgerufen am 13.08.2026 um 22:37 Uhr",
+        "+Abgerufen am [volatile]"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "191f0012861bfd18",
       "source_id": "SRC-LOBBY-PFG",
       "title": "Bundestag Lobbyregister — PFG Central Services R000472",
