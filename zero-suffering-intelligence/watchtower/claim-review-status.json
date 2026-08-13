@@ -1,6 +1,5 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-08-13T20:57:00+00:00",
-  "claims": {},
-  "note": "Review flags created by collapsed bot/challenge responses were resolved after restoring the last valid snapshots. Watchtower v0.9 now classifies such retrievals as fetch_suspect and preserves the prior snapshot."
+  "generated_at": "2026-08-13T21:02:33+00:00",
+  "claims": {}
 }

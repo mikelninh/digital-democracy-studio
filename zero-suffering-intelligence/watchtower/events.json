@@ -1,5 +1,5 @@
 {
-  "schema": "zsi.watchtower/events-0.8",
+  "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
       "event_id": "ab2666d21c202645",
