@@ -1,5 +1,5 @@
 name: ZSI Watchtower
-# control-run marker: 0.8.1
+# control-run marker: 0.9.0
 on:
   workflow_dispatch:
   schedule:
