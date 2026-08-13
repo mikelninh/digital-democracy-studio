@@ -1,0 +1,37 @@
+{
+  "schema": "zsi.claim-supplement/0.8",
+  "updated_at": "2026-08-13",
+  "overrides": {
+    "ZSI-C-0015": {
+      "source_title": "Deutscher Bundestag — Lobbyregister R000472, FY2024 version",
+      "source_url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
+      "review_status": "human_reviewed_version_pinned",
+      "valid_from": "2024-01-01",
+      "valid_to": "2024-12-31",
+      "superseded_by": "ZSI-C-0025"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "ZSI-C-0025",
+      "subject": "PFG Central Services GmbH & Co. KG",
+      "predicate": "reported_lobbying_expenditure",
+      "object": "€190,001–€200,000 in FY2025",
+      "claim": "The German Bundestag Lobbyregister reports annual lobbying expenditure of €190,001 to €200,000 for PFG Central Services GmbH & Co. KG for financial year 2025.",
+      "status": "verified",
+      "confidence": "high",
+      "source_type": "official_register",
+      "source_title": "Deutscher Bundestag — Lobbyregister R000472, current entry",
+      "source_url": "https://www.lobbyregister.bundestag.de/suche/R000472",
+      "accessed_at": "2026-08-13",
+      "review_status": "human_reviewed_public_alpha",
+      "right_of_reply": "not_requested_yet",
+      "correction_status": "none",
+      "valid_from": "2025-01-01",
+      "valid_to": "2025-12-31",
+      "supersedes": "ZSI-C-0015",
+      "boundary": "This is a reported annual lobbying-expenditure range for financial year 2025. It does not establish policy influence or causation.",
+      "falsification_condition": "A corrected or superseding official Lobbyregister record for financial year 2025."
+    }
+  ]
+}
