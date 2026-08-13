@@ -6,42 +6,33 @@
       "source_id": "SRC-LOBBY-PFG",
       "title": "Bundestag Lobbyregister — PFG Central Services R000472",
       "detected_at": "2026-08-13T20:43:33+00:00",
-      "previous_sha256": "f1a061c3528df68d1e9d9e82d1f0902935ec757aa85ba951478d642b200d832e",
-      "sha256": "ff874231353ebec2b8d4b5454481cb0d7bd1630ff714976b9e0d4130ab2f42ed",
-      "claim_ids": [
-        "ZSI-C-0006",
-        "ZSI-C-0015"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -279,2 +279,2 @@",
-        " https://www.lobbyregister.bundestag.de/suche/R000472",
-        "-Abgerufen am 13.08.2026 um 22:37 Uhr",
-        "+Abgerufen am [volatile]"
-      ],
-      "review_status": "needs_review"
+      "claim_ids": ["ZSI-C-0006","ZSI-C-0015"],
+      "event_type": "fingerprint_noise",
+      "review_status": "resolved_false_positive",
+      "resolution_id": "WT-R-0002",
+      "summary": "The only text difference was a volatile retrieval timestamp introduced by the source page. Watchtower now normalizes this field before hashing."
     },
     {
       "event_id": "191f0012861bfd18",
       "source_id": "SRC-LOBBY-PFG",
       "title": "Bundestag Lobbyregister — PFG Central Services R000472",
       "detected_at": "2026-08-13T20:36:51+00:00",
-      "previous_sha256": "15bae960c93d4a0e6260f88f29fcbd362d4977661502f6b343760f6e0222e607",
-      "sha256": "f1a061c3528df68d1e9d9e82d1f0902935ec757aa85ba951478d642b200d832e",
-      "claim_ids": [
-        "ZSI-C-0006",
-        "ZSI-C-0015"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -279,2 +279,2 @@",
-        " https://www.lobbyregister.bundestag.de/suche/R000472",
-        "-Abgerufen am 13.08.2026 um 22:21 Uhr",
-        "+Abgerufen am 13.08.2026 um 22:37 Uhr"
-      ],
-      "review_status": "needs_review"
+      "claim_ids": ["ZSI-C-0006","ZSI-C-0015"],
+      "event_type": "fingerprint_noise",
+      "review_status": "resolved_false_positive",
+      "resolution_id": "WT-R-0002",
+      "summary": "The only text difference was the source page's retrieval timestamp. No substantive claim change was inferred from this event."
+    },
+    {
+      "event_id": "WT-TEMPORAL-0001",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "PFG Central Services Lobbyregister temporal review",
+      "detected_at": "2026-08-13",
+      "claim_ids": ["ZSI-C-0015","ZSI-C-0025"],
+      "event_type": "temporal_source_versioning",
+      "review_status": "resolved",
+      "resolution_id": "WT-R-0003",
+      "summary": "The historical FY2024 expenditure claim was pinned to an official historical register version, while the current FY2025 figure was added as a separate claim."
     }
   ]
 }
