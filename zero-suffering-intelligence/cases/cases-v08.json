@@ -1,63 +1,73 @@
 {
-  "schema": "zsi.cases/0.8",
-  "updated_at": "2026-08-13",
+  "schema": "zsi.cases/1.0",
+  "updated_at": "2026-08-14",
+  "review_definition": "Reviewed v1 means every investigation lane has been systematically checked. Each lane ends in source-backed claims, a bounded partial finding, or a documented open question with a next research action. It is not a claim of completeness.",
+  "status_legend": {
+    "verified": "Source-backed finding",
+    "partial": "Part of the relationship is proven; an important hop remains open",
+    "reviewed_open": "This lane was searched but no publishable claim was established from the reviewed source set",
+    "verified_narrow": "Verified for a specific legal entity, period or threshold only"
+  },
   "lanes": ["Scale","Farms/Suppliers","Facilities","Brands","Retail","Public Money","Procurement","Lobbying","Regulatory history","Transition"],
   "cases": [
     {
       "case_id": "ZSI-CASE-001",
       "organisation": "Premium Food Group / Tönnies",
-      "status": "deep_dive_active",
+      "status": "deep_dive_reviewed_v1",
       "species_scope": ["pigs","cattle"],
       "question": "How far can a public-source evidence chain be proven from named farm relationships through corporate infrastructure, public money and political influence?",
+      "next_best_action": "Find one primary record that proves a named partner farm's exact slaughterhouse destination, or document why that record is not publicly accessible.",
       "lanes": {
-        "Scale": {"status":"verified","claim_ids":["ZSI-C-0009","ZSI-C-0010","ZSI-C-0011"],"gap":"No comparable animal-throughput time series is yet in the public ledger."},
-        "Farms/Suppliers": {"status":"partial","claim_ids":["ZSI-C-0001","ZSI-C-0002","ZSI-C-0014","ZSI-G-0001"],"gap":"Exact named-farm → slaughterhouse destination remains unproven."},
-        "Facilities": {"status":"verified","claim_ids":["ZSI-C-0004","ZSI-C-0005","ZSI-C-0017"],"gap":"Facility operation is proven; the named-farm shipment edge is not."},
-        "Brands": {"status":"partial","claim_ids":["ZSI-C-0012"],"gap":"Specific product/brand path from a named farm or facility is not yet proven."},
-        "Retail": {"status":"open","claim_ids":[],"gap":"No named retailer relationship is asserted without retailer/manufacturer evidence."},
-        "Public Money": {"status":"partial","claim_ids":["ZSI-C-0007","ZSI-C-0008"],"gap":"Project participation is proven; exact recipient-level funding amount is not."},
-        "Procurement": {"status":"open","claim_ids":[],"gap":"No awarded public contract to a mapped legal entity has been verified."},
-        "Lobbying": {"status":"verified_with_review_event","claim_ids":["ZSI-C-0006","ZSI-C-0015"],"gap":"Current Lobbyregister update requires version-aware review of historical/current expenditure claims."},
-        "Regulatory history": {"status":"partial","claim_ids":["ZSI-C-0016"],"gap":"Merger-control history is documented; this is not an animal-welfare enforcement finding."},
-        "Transition": {"status":"open","claim_ids":[],"gap":"No comparable animal-impact transition time series is yet published."}
+        "Scale": {"status":"verified","claim_ids":["ZSI-C-0009","ZSI-C-0010","ZSI-C-0011"],"meaning":"Company-reported market and turnover scale is documented.","gap":"No comparable animal-throughput time series is yet in the public ledger.","next_action":"Add comparable annual pig/cattle throughput from an authoritative source."},
+        "Farms/Suppliers": {"status":"partial","claim_ids":["ZSI-C-0001","ZSI-C-0002","ZSI-C-0014","ZSI-G-0001"],"meaning":"Named farm relationships and the livestock intermediary are documented.","gap":"Exact named-farm → slaughterhouse destination remains unproven.","next_action":"Search shipment, audit, certification, veterinary and supplier-programme records for an explicit destination."},
+        "Facilities": {"status":"verified","claim_ids":["ZSI-C-0004","ZSI-C-0005","ZSI-C-0017"],"meaning":"Several slaughter/processing locations are documented by company and authority sources.","gap":"Facility operation is proven; the named-farm shipment edge is not.","next_action":"Resolve legal operator and validity dates for every facility in the case."},
+        "Brands": {"status":"partial","claim_ids":["ZSI-C-0012"],"meaning":"The group portfolio is documented, but product-level provenance is not.","gap":"Specific product/brand path from a named farm or facility is not yet proven.","next_action":"Find one product or brand source that identifies the manufacturing legal entity or facility."},
+        "Retail": {"status":"reviewed_open","claim_ids":[],"meaning":"Broad retail exposure is described, but no named retailer relationship passes the publication threshold yet.","gap":"No named retailer relationship is asserted without retailer/manufacturer evidence.","next_action":"Search retailer product pages, supplier disclosures and manufacturer packaging records for a named relationship."},
+        "Public Money": {"status":"partial","claim_ids":["ZSI-C-0007","ZSI-C-0008"],"meaning":"Publicly funded project participation is documented.","gap":"Project participation is proven; exact recipient-level funding amount is not.","next_action":"Resolve the recipient legal entity and amount in authoritative grant records."},
+        "Procurement": {"status":"reviewed_open","claim_ids":[],"meaning":"The reviewed procurement source set did not establish an awarded contract to a mapped entity.","gap":"No awarded public contract to a mapped legal entity has been verified.","next_action":"Query TED, e-Vergabe and state/municipal award notices using current and historical aliases."},
+        "Lobbying": {"status":"verified","claim_ids":["ZSI-C-0006","ZSI-C-0015","ZSI-C-0025"],"meaning":"Lobbyregister activity and temporally versioned expenditure are documented.","gap":"Lobbying records do not establish policy causation.","next_action":"Map additional initiatives and position papers while keeping causation vocabulary constrained."},
+        "Regulatory history": {"status":"partial","claim_ids":["ZSI-C-0016"],"meaning":"A merger-control intervention is documented.","gap":"This is competition-law history, not an animal-welfare enforcement finding.","next_action":"Search authority, prosecutor and court records with explicit procedural status."},
+        "Transition": {"status":"reviewed_open","claim_ids":[],"meaning":"Portfolio diversification is visible, but there is no comparable animal-outcome trend yet.","gap":"No animal-impact transition time series is yet published.","next_action":"Build a year-by-year series for animal throughput, welfare-program coverage and alternative-protein activity."}
       }
     },
     {
       "case_id": "ZSI-CASE-002",
       "organisation": "Westfleisch SCE mbH",
-      "status": "research_case_active",
+      "status": "deep_dive_reviewed_v1",
       "species_scope": ["pigs","cattle","calves"],
-      "question": "Can the same ZSI evidence model resolve a cooperative farm network, facilities and downstream market relationships without overclaiming?",
+      "question": "Can the same ZSI evidence model resolve a cooperative farm network, facilities, downstream processing and influence relationships without overclaiming?",
+      "next_best_action": "Prove one named farm → named Westfleisch facility relationship and resolve one downstream product or named customer edge.",
       "lanes": {
-        "Scale": {"status":"partial","claim_ids":["ZSI-C-0018","ZSI-C-0020"],"gap":"Comparable animal throughput and market-share claims are not yet in the ledger."},
-        "Farms/Suppliers": {"status":"partial","claim_ids":["ZSI-C-0018","ZSI-C-0019","ZSI-C-0021"],"gap":"Supplier population is documented; named-farm → named-facility shipment evidence is still needed."},
-        "Facilities": {"status":"verified","claim_ids":["ZSI-C-0020"],"gap":"Facility list exists; legal operator/entity resolution should be deepened per site."},
-        "Brands": {"status":"open","claim_ids":[],"gap":"Brand-to-legal-entity and product-flow edges not yet in the ledger."},
-        "Retail": {"status":"open","claim_ids":[],"gap":"Broad retail relationships are described by the company, but no named retailer edge is asserted yet."},
-        "Public Money": {"status":"open","claim_ids":[],"gap":"Recipient-level grants/subsidies not yet researched."},
-        "Procurement": {"status":"open","claim_ids":[],"gap":"No awarded public contract mapped yet."},
-        "Lobbying": {"status":"open","claim_ids":[],"gap":"Lobbyregister and association relationships not yet ingested."},
-        "Regulatory history": {"status":"open","claim_ids":[],"gap":"Authority/court/prosecutor records not yet mapped."},
-        "Transition": {"status":"open","claim_ids":[],"gap":"No comparable animal-outcome or transition time series yet."}
+        "Scale": {"status":"verified","claim_ids":["ZSI-C-0018","ZSI-C-0026","ZSI-C-0027","ZSI-C-0028","ZSI-C-0029","ZSI-C-0030"],"meaning":"Membership, workforce, site footprint, sales volume and market reach are documented from Westfleisch sources.","gap":"Sales volume is not the same as live-animal throughput.","next_action":"Add comparable annual slaughter/animal-throughput figures by species from authoritative or audited sources."},
+        "Farms/Suppliers": {"status":"partial","claim_ids":["ZSI-C-0018","ZSI-C-0019","ZSI-C-0021"],"meaning":"The cooperative supplier model and a regional supplier population around Coesfeld are documented.","gap":"No individually named farm → named facility shipment is yet published in the ledger.","next_action":"Search cooperative member profiles, audits and origin programmes for one named farm-to-facility receipt."},
+        "Facilities": {"status":"verified","claim_ids":["ZSI-C-0020","ZSI-C-0032","ZSI-C-0034","ZSI-C-0035","ZSI-C-0036","ZSI-C-0037","ZSI-C-0038"],"meaning":"Five meat centres, site functions, several legal operators and live-animal logistics are documented.","gap":"A facility list does not establish which farm supplied a particular animal.","next_action":"Resolve operator validity dates and certification identifiers for all five meat centres."},
+        "Brands": {"status":"partial","claim_ids":["ZSI-C-0033"],"meaning":"Gustoland is documented as a Westfleisch subsidiary at the Erkenschwick site with sausage/convenience production.","gap":"Co-location does not prove product-level material flow from the adjacent slaughter line.","next_action":"Add WestfalenLand/Gustoland legal-entity and product-manufacturing receipts."},
+        "Retail": {"status":"reviewed_open","claim_ids":["ZSI-C-0029"],"meaning":"Domestic/export market channels are documented, but no named retailer edge passes the evidence threshold.","gap":"No named retailer relationship is asserted yet.","next_action":"Search retailer own-brand manufacturer disclosures, packaging and supplier pages for a named edge."},
+        "Public Money": {"status":"reviewed_open","claim_ids":[],"meaning":"No recipient-level public-money claim was established in the source set reviewed for this v1 pass.","gap":"This is not evidence that Westfleisch entities receive no public support.","next_action":"Search EU/state aid, CAP, federal/state project and regional development records by exact legal entity."},
+        "Procurement": {"status":"reviewed_open","claim_ids":[],"meaning":"No awarded federal public-contract claim was established in the reviewed source set.","gap":"A missing claim is not proof that no public contracts exist.","next_action":"Query TED, e-Vergabe and state/municipal award notices using Westfleisch subsidiaries and aliases."},
+        "Lobbying": {"status":"partial","claim_ids":["ZSI-C-0039","ZSI-C-0040","ZSI-C-0041"],"meaning":"Westfleisch's VDF membership and a Westfleisch-linked VDF board role are documented alongside a VDF policy initiative.","gap":"Association membership does not prove that Westfleisch authored or directed the VDF initiative.","next_action":"Search for direct Westfleisch Lobbyregister entries, submissions or attributed statements before asserting company-specific lobbying positions."},
+        "Regulatory history": {"status":"partial","claim_ids":["ZSI-C-0042"],"meaning":"A historical Bundeskartellamt record documents contract slaughter for Westfleisch in a competition-law context.","gap":"The 2011 relationship is historical and is not an animal-welfare enforcement finding.","next_action":"Search current authority/court/prosecutor records and label investigation, order, fine, conviction and appeal separately."},
+        "Transition": {"status":"partial","claim_ids":["ZSI-C-0043"],"meaning":"A current higher-husbandry programme has documented participation requirements.","gap":"Programme requirements do not establish system-wide participation or measured animal-outcome improvement.","next_action":"Find annual programme coverage and animal-based outcome indicators to create a real transition time series."}
       }
     },
     {
       "case_id": "ZSI-CASE-003",
       "organisation": "PHW-Gruppe / WIESENHOF",
-      "status": "research_case_active",
+      "status": "deep_dive_reviewed_v1",
       "species_scope": ["chickens","turkeys","ducks"],
-      "question": "Can ZSI map a vertically integrated poultry system from contract farming through legal entities, facilities, brands and market channels?",
+      "question": "Can ZSI map a vertically integrated poultry system from contract farming through feed, facilities, brands, market channels and political influence?",
+      "next_best_action": "Resolve one named contract farmer → named PHW slaughter facility path and map the legal operators of the principal German slaughter sites.",
       "lanes": {
-        "Scale": {"status":"partial","claim_ids":["ZSI-C-0022","ZSI-C-0023","ZSI-C-0024"],"gap":"Annual animal throughput by species is not yet in the ledger."},
-        "Farms/Suppliers": {"status":"partial","claim_ids":["ZSI-C-0024"],"gap":"Contract-farmer model is documented; named farm and destination edges are not."},
-        "Facilities": {"status":"open","claim_ids":[],"gap":"Slaughter/processing facilities and legal operators need resolution."},
-        "Brands": {"status":"open","claim_ids":[],"gap":"WIESENHOF and other brands need explicit brand-to-legal-entity claim receipts."},
-        "Retail": {"status":"open","claim_ids":[],"gap":"Named retailer/product relationships not yet mapped."},
-        "Public Money": {"status":"open","claim_ids":[],"gap":"Recipient-level public funding not yet researched."},
-        "Procurement": {"status":"open","claim_ids":[],"gap":"No awarded public contract mapped yet."},
-        "Lobbying": {"status":"open","claim_ids":[],"gap":"Lobbyregister and association lanes not yet ingested."},
-        "Regulatory history": {"status":"open","claim_ids":[],"gap":"Official enforcement/procedural records not yet mapped."},
-        "Transition": {"status":"open","claim_ids":[],"gap":"Alternative-protein activity exists as a research lead, but no animal-impact transition claim is asserted without a comparable time series."}
+        "Scale": {"status":"verified","claim_ids":["ZSI-C-0022","ZSI-C-0023","ZSI-C-0024","ZSI-C-0044","ZSI-C-0045"],"meaning":"Subsidiaries, turnover, workforce, locations and agricultural partnerships are documented.","gap":"Annual animal throughput by species is not yet in the ledger.","next_action":"Add comparable chicken/turkey/duck throughput from authoritative or audited sources."},
+        "Farms/Suppliers": {"status":"partial","claim_ids":["ZSI-C-0024","ZSI-C-0051","ZSI-C-0052"],"meaning":"The contract-farmer model and vertically integrated production stages are documented.","gap":"No named contract farm → named slaughter facility path is yet proven.","next_action":"Find a named partner-farm profile or traceability source that identifies its destination facility."},
+        "Facilities": {"status":"partial","claim_ids":["ZSI-C-0051","ZSI-C-0052"],"meaning":"PHW describes own hatcheries, feed mills, slaughter and processing plants within its integrated system.","gap":"The principal slaughter sites and their exact legal operators are not yet individually resolved in the ledger.","next_action":"Build the German facility table with approval numbers, legal operators and validity dates."},
+        "Brands": {"status":"verified","claim_ids":["ZSI-C-0047","ZSI-C-0048","ZSI-C-0053","ZSI-C-0055"],"meaning":"WIESENHOF and GREEN LEGEND relationships and origin/launch claims are documented.","gap":"Brand linkage does not resolve the manufacturing legal entity for every product.","next_action":"Select one WIESENHOF product and resolve its manufacturer/facility receipt."},
+        "Retail": {"status":"partial","claim_ids":["ZSI-C-0049"],"meaning":"PHW documents supply to food retail, foodservice and gastronomy, including brands and private labels.","gap":"No named retailer/customer edge is asserted.","next_action":"Use retailer product pages, packaging and supplier disclosures to establish one named customer relationship."},
+        "Public Money": {"status":"verified_narrow","claim_ids":["ZSI-C-0058"],"meaning":"The Lobbyregister reports no public grants above €10,000 for LOHMANN & Co. AG in the stated financial year.","gap":"This narrow negative claim cannot be generalized to the PHW group or other periods/thresholds.","next_action":"Search recipient-level public funding for other PHW legal entities and programmes."},
+        "Procurement": {"status":"reviewed_open","claim_ids":[],"meaning":"No awarded public-contract claim was established in the federal source set reviewed for this v1 pass.","gap":"This is not proof that PHW entities have no public contracts.","next_action":"Query TED, e-Vergabe and state/municipal award notices using PHW, WIESENHOF and subsidiary legal names."},
+        "Lobbying": {"status":"verified","claim_ids":["ZSI-C-0056","ZSI-C-0057"],"meaning":"A PHW-linked holding entity has a current Lobbyregister entry with expenditure and a specific animal-housing policy objective.","gap":"Lobbying activity does not establish policy causation or adoption.","next_action":"Map all five listed initiatives and time-version future register changes through Watchtower."},
+        "Regulatory history": {"status":"reviewed_open","claim_ids":[],"meaning":"No official enforcement claim met the publication threshold in this v1 source pass.","gap":"Media allegations or company responses are not substituted for authority/court findings.","next_action":"Search veterinary authorities, prosecutors and courts using exact subsidiary and facility names."},
+        "Transition": {"status":"partial","claim_ids":["ZSI-C-0054","ZSI-C-0055"],"meaning":"PHW's alternative-protein business field and vegan brand development are documented transition activities.","gap":"These activities do not demonstrate reduced poultry throughput or improved animal outcomes.","next_action":"Build a comparable time series linking animal throughput, welfare-program coverage and alternative-protein revenue/volume."}
       }
     }
   ]
