@@ -1,0 +1,36 @@
+name: ZSI Entity Resolution Holdout
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/zsi_entity_holdout.py
+      - scripts/zsi_entity_benchmark_v11.py
+      - zero-suffering-intelligence/entity-resolution/holdout-v1.json
+      - .github/workflows/zsi-entity-holdout.yml
+
+permissions:
+  contents: write
+
+jobs:
+  holdout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Evaluate frozen unseen holdout
+        run: python scripts/zsi_entity_holdout.py
+      - name: Commit holdout results
+        run: |
+          git config user.name zsi-holdout
+          git config user.email actions@users.noreply.github.com
+          git add zero-suffering-intelligence/entity-resolution/results-holdout-v1.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore(zsi): publish frozen holdout results'
+          git pull --rebase origin main
+          git push origin HEAD:main
