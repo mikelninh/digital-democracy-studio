@@ -1,0 +1,351 @@
+{
+  "schema": "zsi.entity-resolution/holdout-results-1.0",
+  "holdout": "holdout-v1.json",
+  "resolver": "zsi_entity_benchmark_v11.predict — unchanged after holdout freeze",
+  "cases": 30,
+  "metrics": {
+    "true_positives": 12,
+    "false_positives": 1,
+    "false_negatives": 2,
+    "true_negatives": 15,
+    "precision": 0.9231,
+    "recall": 0.8571,
+    "f1": 0.8889,
+    "accuracy": 0.9
+  },
+  "errors": [
+    {
+      "case_id": "HOLD-018",
+      "expected": "merge",
+      "predicted": "separate",
+      "correct": false,
+      "reason": "insufficient evidence token=0.50 char=0.40",
+      "record_a": "Sprehe Unternehmensgruppe",
+      "record_b": "Sprehe Gruppe",
+      "ground_truth_reason": "Common long/short group label for the same organisation."
+    },
+    {
+      "case_id": "HOLD-022",
+      "expected": "merge",
+      "predicted": "separate",
+      "correct": false,
+      "reason": "insufficient evidence token=0.20 char=0.60",
+      "record_a": "DMK GmbH",
+      "record_b": "DMK G.m.b.H.",
+      "ground_truth_reason": "Punctuation variation of the same legal entity."
+    },
+    {
+      "case_id": "HOLD-023",
+      "expected": "separate",
+      "predicted": "merge",
+      "correct": false,
+      "reason": "canonical name match without address conflict",
+      "record_a": "DMK GmbH",
+      "record_b": "DMK Group",
+      "ground_truth_reason": "Operating legal entity and historical group label are distinct identities."
+    }
+  ],
+  "results": [
+    {
+      "case_id": "HOLD-001",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Danish Crown Fleisch GmbH",
+      "record_b": "Danish Crown Fleisch",
+      "ground_truth_reason": "Legal suffix variation of the same named entity."
+    },
+    {
+      "case_id": "HOLD-002",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "character similarity 0.97 + address",
+      "record_a": "Danish Crown Fleisch GmbH",
+      "record_b": "Danish Cown Fleisch GmbH",
+      "ground_truth_reason": "Single-character typo with matching location."
+    },
+    {
+      "case_id": "HOLD-003",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.75 char=0.80",
+      "record_a": "Danish Crown Fleisch GmbH",
+      "record_b": "Danish Crown Teterower Fleisch GmbH",
+      "ground_truth_reason": "Distinct legal entities/sites within the same group."
+    },
+    {
+      "case_id": "HOLD-004",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Danish Crown Teterower Fleisch GmbH",
+      "record_b": "Danish Crown Teterower Fleisch",
+      "ground_truth_reason": "Legal suffix variation of the same named entity."
+    },
+    {
+      "case_id": "HOLD-005",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.13",
+      "record_a": "Schlachtzentrum Nordfriesland GmbH",
+      "record_b": "Danish Crown Fleisch GmbH",
+      "ground_truth_reason": "Group relationship does not collapse distinct legal entities."
+    },
+    {
+      "case_id": "HOLD-006",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Müller Fleisch GmbH",
+      "record_b": "Mueller Fleisch GmbH",
+      "ground_truth_reason": "Umlaut transliteration of the same legal entity."
+    },
+    {
+      "case_id": "HOLD-007",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "character similarity 0.96 + address",
+      "record_a": "Müller Fleisch GmbH",
+      "record_b": "Muller Fleisch GmbH",
+      "ground_truth_reason": "Common diacritic-loss spelling variant with matching address."
+    },
+    {
+      "case_id": "HOLD-008",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.33 char=0.77",
+      "record_a": "Müller Fleisch GmbH",
+      "record_b": "Ulmer Fleisch GmbH",
+      "ground_truth_reason": "Different legal entities in the same corporate group."
+    },
+    {
+      "case_id": "HOLD-009",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.50 char=0.67",
+      "record_a": "Müller Gruppe",
+      "record_b": "Müller Fleisch GmbH",
+      "ground_truth_reason": "Group label and operating legal entity must not be silently collapsed."
+    },
+    {
+      "case_id": "HOLD-010",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Süddeutsches Schweinefleischzentrum GmbH",
+      "record_b": "Sueddeutsches Schweinefleischzentrum GmbH",
+      "ground_truth_reason": "Umlaut/transliteration variant of the same named entity."
+    },
+    {
+      "case_id": "HOLD-011",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Plukon Deutschland",
+      "record_b": "Plukon Deutschland GmbH",
+      "ground_truth_reason": "Synthetic legal-suffix variation representing the same reviewed organisation label."
+    },
+    {
+      "case_id": "HOLD-012",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.33 char=0.52",
+      "record_a": "Plukon Deutschland",
+      "record_b": "Plukon Food Group",
+      "ground_truth_reason": "German operating scope and parent/group identity are not treated as the same entity."
+    },
+    {
+      "case_id": "HOLD-013",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.17",
+      "record_a": "Stolle",
+      "record_b": "Plukon Deutschland",
+      "ground_truth_reason": "Brand and company identity are distinct."
+    },
+    {
+      "case_id": "HOLD-014",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.08",
+      "record_a": "FairMast",
+      "record_b": "Plukon Deutschland",
+      "ground_truth_reason": "Brand/programme and company identity are distinct."
+    },
+    {
+      "case_id": "HOLD-015",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Rothkötter Unternehmensgruppe",
+      "record_b": "Rothkoetter Unternehmensgruppe",
+      "ground_truth_reason": "Umlaut transliteration of the same group label."
+    },
+    {
+      "case_id": "HOLD-016",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.25 char=0.58",
+      "record_a": "Rothkötter Unternehmensgruppe",
+      "record_b": "Rothkötter Mischfutterwerk Boizenburg",
+      "ground_truth_reason": "Group and named production operation are distinct entities/units."
+    },
+    {
+      "case_id": "HOLD-017",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Rothkoetter",
+      "record_b": "Rothkötter",
+      "ground_truth_reason": "Common transliteration of the same organisation label."
+    },
+    {
+      "case_id": "HOLD-018",
+      "expected": "merge",
+      "predicted": "separate",
+      "correct": false,
+      "reason": "insufficient evidence token=0.50 char=0.40",
+      "record_a": "Sprehe Unternehmensgruppe",
+      "record_b": "Sprehe Gruppe",
+      "ground_truth_reason": "Common long/short group label for the same organisation."
+    },
+    {
+      "case_id": "HOLD-019",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Union-Besitz Holding GmbH & Co. KG",
+      "record_b": "Union Besitz Holding",
+      "ground_truth_reason": "Punctuation and legal-suffix variation of the same named holding entity."
+    },
+    {
+      "case_id": "HOLD-020",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.17",
+      "record_a": "Sprehe Gruppe",
+      "record_b": "Union-Besitz Holding GmbH & Co. KG",
+      "ground_truth_reason": "Public group label and legal holding entity are related but not silently identical."
+    },
+    {
+      "case_id": "HOLD-021",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.21",
+      "record_a": "Wernke Fleisch",
+      "record_b": "Sprehe Gruppe",
+      "ground_truth_reason": "Brand/operating name and parent group are distinct."
+    },
+    {
+      "case_id": "HOLD-022",
+      "expected": "merge",
+      "predicted": "separate",
+      "correct": false,
+      "reason": "insufficient evidence token=0.20 char=0.60",
+      "record_a": "DMK GmbH",
+      "record_b": "DMK G.m.b.H.",
+      "ground_truth_reason": "Punctuation variation of the same legal entity."
+    },
+    {
+      "case_id": "HOLD-023",
+      "expected": "separate",
+      "predicted": "merge",
+      "correct": false,
+      "reason": "canonical name match without address conflict",
+      "record_a": "DMK GmbH",
+      "record_b": "DMK Group",
+      "ground_truth_reason": "Operating legal entity and historical group label are distinct identities."
+    },
+    {
+      "case_id": "HOLD-024",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.17",
+      "record_a": "DMK Group",
+      "record_b": "Arla Foods",
+      "ground_truth_reason": "Pre-merger group identity and post-merger Arla group identity are temporally related, not the same canonical entity."
+    },
+    {
+      "case_id": "HOLD-025",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.00 char=0.17",
+      "record_a": "DMK GmbH",
+      "record_b": "Arla Foods",
+      "ground_truth_reason": "DMK GmbH remains a legal subsidiary after the merger and is not the Arla parent identity."
+    },
+    {
+      "case_id": "HOLD-026",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "canonical name match without address conflict",
+      "record_a": "Hochwald Foods GmbH",
+      "record_b": "Hochwald Foods",
+      "ground_truth_reason": "Legal suffix variation of the same company name."
+    },
+    {
+      "case_id": "HOLD-027",
+      "expected": "merge",
+      "predicted": "merge",
+      "correct": true,
+      "reason": "character similarity 0.96 + address",
+      "record_a": "Hochwald Foods GmbH",
+      "record_b": "Hochwld Foods GmbH",
+      "ground_truth_reason": "Single-character typo with matching location."
+    },
+    {
+      "case_id": "HOLD-028",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "insufficient evidence token=0.25 char=0.57",
+      "record_a": "Hochwald Milch eG",
+      "record_b": "Hochwald Foods GmbH",
+      "ground_truth_reason": "Cooperative parent and operating subsidiary are distinct legal entities."
+    },
+    {
+      "case_id": "HOLD-029",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "same name but conflicting addresses",
+      "record_a": "Food Logistics GmbH",
+      "record_b": "Food Logistics GmbH",
+      "ground_truth_reason": "Identical generic names with conflicting addresses must not auto-merge."
+    },
+    {
+      "case_id": "HOLD-030",
+      "expected": "separate",
+      "predicted": "separate",
+      "correct": true,
+      "reason": "same name but conflicting addresses",
+      "record_a": "Central Services GmbH",
+      "record_b": "Central Services GmbH",
+      "ground_truth_reason": "Identical generic names with conflicting addresses must not auto-merge."
+    }
+  ],
+  "guardrail": "This is the first evaluation on frozen holdout-v1. Do not tune and re-report against this same holdout as if it remained unseen. Any resolver repair after inspecting these errors requires a fresh holdout-v2 for the next unbiased score."
+}
