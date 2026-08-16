@@ -2,6 +2,59 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "e4381599cbbec497",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-08-16T18:45:17+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -221,11 +221,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "6e2b4bf232355c82",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-08-16T18:45:17+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -246,11 +246,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "ab2666d21c202645",
       "source_id": "SRC-LIVESTOCK-ABOUT",
       "title": "Tönnies Livestock — Über uns",
