@@ -2,6 +2,77 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "bd12cd291cc50611",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-08-18T07:02:32+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -239,20 +239,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "324e49aaa638509c",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-08-18T07:02:32+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -264,20 +264,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "9756ee4966317eac",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
