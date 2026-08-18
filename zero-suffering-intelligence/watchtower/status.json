@@ -1,9 +1,9 @@
 {
   "schema": "zsi.watchtower/status-0.9",
-  "generated_at": "2026-08-18T13:06:04+00:00",
+  "generated_at": "2026-08-18T18:54:51+00:00",
   "sources_total": 14,
-  "unchanged": 13,
-  "changed": 1,
+  "unchanged": 12,
+  "changed": 2,
   "baselines_created": 0,
   "fetch_suspect": 0,
   "fetch_failed": 0,
@@ -18,7 +18,7 @@
       "title": "Premium Food Group — Homepage / facts",
       "category": "company",
       "url": "https://premiumfoodgroup.de/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0009",
         "ZSI-C-0010",
@@ -37,7 +37,7 @@
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0012"
       ],
@@ -54,7 +54,7 @@
       "title": "Premium Food Group — Holding rename announcement",
       "category": "company",
       "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0013"
       ],
@@ -71,7 +71,7 @@
       "title": "Premium Food Group — History",
       "category": "company",
       "url": "https://premiumfoodgroup.de/en/group/history/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0004",
         "ZSI-C-0005"
@@ -89,7 +89,7 @@
       "title": "Tönnies Livestock — Landwirtschaft im Dialog",
       "category": "company",
       "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0001",
         "ZSI-C-0002"
@@ -107,7 +107,7 @@
       "title": "Tönnies Livestock — Über uns",
       "category": "company",
       "url": "https://toennies-livestock.de/ueber-uns/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0003",
         "ZSI-C-0014"
@@ -125,7 +125,7 @@
       "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
       "category": "official_register",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0006",
         "ZSI-C-0025"
@@ -133,29 +133,12 @@
       "previous_sha256": "d51d072e9d9365d755e7e0232dacb29687f7d7f5ec1124b39b90dc73192c895a",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "d51d072e9d9365d755e7e0232dacb29687f7d7f5ec1124b39b90dc73192c895a",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 9401
-    },
-    {
-      "source_id": "SRC-LOBBY-PFG-FY2024",
-      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
-      "category": "official_register_historical",
-      "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
-      "checked_at": "2026-08-18T13:06:04+00:00",
-      "claim_ids": [
-        "ZSI-C-0015"
-      ],
-      "previous_sha256": "2a3d7955e9bde8c8e0973252111aafa55abfa0ecb2a26b36a8bd828dd3a9256d",
-      "http_status": 200,
-      "content_type": "text/html",
-      "sha256": "b9e28716f9807cee916f55e4f6ce7d2653db3862a10226ab2f18344e521ffe10",
+      "sha256": "56cc7bccdfdec2c40f179b9b449edc2f7aec9ccf42fa0a02573c88028b1ebee1",
       "status": "changed",
       "diff": [
         "--- previous",
         "+++ current",
-        "@@ -239,2 +239,20 @@",
+        "@@ -264,2 +264,20 @@",
         " Vierteljährlich - bei Änderungen",
         "+Keine Benachrichtigung",
         "+Täglich",
@@ -177,14 +160,55 @@
         "+Vierteljährlich - bei Änderungen",
         " Login Benachrichtigungskonto"
       ],
-      "character_count": 9037
+      "character_count": 9767
+    },
+    {
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "category": "official_register_historical",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
+      "checked_at": "2026-08-18T18:54:51+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "previous_sha256": "b9e28716f9807cee916f55e4f6ce7d2653db3862a10226ab2f18344e521ffe10",
+      "http_status": 200,
+      "content_type": "text/html",
+      "sha256": "2a3d7955e9bde8c8e0973252111aafa55abfa0ecb2a26b36a8bd828dd3a9256d",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -239,20 +239,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "character_count": 8671
     },
     {
       "source_id": "SRC-BFR-KONTRED",
       "title": "BfR — KontRed",
       "category": "public_research",
       "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0007",
         "ZSI-C-0008"
@@ -202,7 +226,7 @@
       "title": "Bundeskartellamt — Vion/Tönnies decision",
       "category": "authority",
       "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0016",
         "ZSI-C-0017"
@@ -220,7 +244,7 @@
       "title": "Westfleisch — Unternehmensgruppe",
       "category": "company",
       "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0018",
         "ZSI-C-0019",
@@ -240,7 +264,7 @@
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0022",
         "ZSI-C-0023"
@@ -258,7 +282,7 @@
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [
         "ZSI-C-0024"
       ],
@@ -275,7 +299,7 @@
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "checked_at": "2026-08-18T13:06:04+00:00",
+      "checked_at": "2026-08-18T18:54:51+00:00",
       "claim_ids": [],
       "previous_sha256": "1ab481e83dc5f504bdf05c711c39b673bb5eed446230855b5bc56022655d5d41",
       "http_status": 200,
