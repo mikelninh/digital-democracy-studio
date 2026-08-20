@@ -2,6 +2,28 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "3afc3eeecd28667d",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-08-20T18:57:59+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -308,3 +308,3 @@",
+        " 48155 Münster",
+        "-Telefon:+49 251 493-1160",
+        "+Telefon:+49 251 493-1165",
+        " E-Mail:"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "3fb6e2302167cb57",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
