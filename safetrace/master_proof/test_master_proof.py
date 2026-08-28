@@ -1,14 +1,10 @@
 from pathlib import Path
-import importlib.util
 import json
 
+import engine
+from claim_ledger import Claim, EvidenceReceipt, contradiction_pairs, explain_claim
+
 ROOT = Path(__file__).parent
-
-spec = importlib.util.spec_from_file_location("civicos_engine", ROOT / "engine.py")
-engine = importlib.util.module_from_spec(spec)
-assert spec.loader
-spec.loader.exec_module(engine)
-
 ontology = json.loads((ROOT / "ontology.json").read_text(encoding="utf-8"))
 golden = json.loads((ROOT / "golden_cases.json").read_text(encoding="utf-8"))
 
@@ -55,11 +51,35 @@ def run() -> None:
     check(fallback["human_review"] is True, "unknown consequential questions must escalate")
     check(fallback["autonomous_action_allowed"] is False, "fallback may not act")
 
+    receipt = EvidenceReceipt(
+        id="ev-1",
+        source="synthetic://registry/a",
+        source_type="registry",
+        retrieved_at="2026-08-28T00:00:00+00:00"
+    )
+    claim_a = Claim(
+        id="claim-a", subject_id="org-1", predicate="DIRECTOR_OF", object_id="person-a",
+        status="supported", evidence_ids=("ev-1",), valid_from="2026-01-01", confidence=0.9
+    )
+    claim_b = Claim(
+        id="claim-b", subject_id="org-1", predicate="DIRECTOR_OF", object_id="person-b",
+        status="unresolved", evidence_ids=("ev-2",), valid_from="2026-01-01", confidence=0.7
+    )
+    conflicts = contradiction_pairs([claim_a, claim_b])
+    check(len(conflicts) == 1, "overlapping contradictory claims must be surfaced")
+    check(conflicts[0]["review_state"] == "human_review_required", "contradiction must escalate")
+
+    explained = explain_claim(claim_a, [receipt])
+    check(len(explained["evidence"]) == 1, "claim must resolve its evidence receipt")
+    check(not explained["missing_evidence_ids"], "supported proof fixture must have no missing receipt")
+
     print(f"PASS: {len(cases)} golden cases validated")
     print("PASS: ontology contract")
     print("PASS: human-approval boundaries")
     print("PASS: deterministic workflow probes")
     print("PASS: insufficient-grounding fallback")
+    print("PASS: claim ledger evidence receipts")
+    print("PASS: temporal contradiction escalation")
 
 
 if __name__ == "__main__":
