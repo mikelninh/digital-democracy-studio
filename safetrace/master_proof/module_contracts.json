@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "principle": "Existing projects remain independently testable. CivicOS composes them through explicit capability contracts instead of merging them into a monolith.",
   "modules": {
     "GitLaw": {
@@ -14,7 +14,7 @@
     "PruefPilot": {
       "repository": "https://github.com/mikelninh/pruefpilot",
       "role": "typed document intake, extraction, evidence checks and versioned domain rules",
-      "capabilities": ["document_extraction", "deadline_extraction", "evidence_checklist", "versioned_rules", "consistency_checks", "prompt_injection_quarantine"],
+      "capabilities": ["document_extraction", "deadline_extraction", "deadline_check", "evidence_checklist", "evidence_gap_analysis", "decision_context", "versioned_rules", "consistency_checks", "prompt_injection_quarantine"],
       "interfaces": ["Python", "FastAPI"],
       "proof": {"unit_api_tests": "22/22", "retrieval_evals": "10/10", "real_pdf_intake": true},
       "limitations": ["production identity/access, persistence, retention/deletion and security review still needed"],
@@ -50,7 +50,7 @@
     "DigitalWorkerFactory": {
       "repository": "https://github.com/mikelninh/digital-worker-factory",
       "role": "bounded agent runtime, capabilities, evidence requirements, policy gates, human approval and audit",
-      "capabilities": ["draft_action", "request_drafting", "action_routing", "review_queue", "policy_gate", "human_approval", "audit_trace"],
+      "capabilities": ["draft_action", "request_drafting", "action_routing", "review_queue", "case_filtering", "policy_gate", "human_approval", "audit_trace"],
       "interfaces": ["Node.js", "declarative worker specs"],
       "proof": {"synthetic_reliability_suite": true, "human_approval_boundary": true},
       "limitations": ["synthetic evals prove regression discipline, not real-world accuracy"],
@@ -95,7 +95,7 @@
     "OpenAction": {
       "repository": "https://github.com/mikelninh/openaction",
       "role": "shared case truth, constraints, ownership, evidence-linked actions, approval paths, trust passports and change impact",
-      "capabilities": ["workflow_state", "blocker_detection", "responsibility_graph", "change_impact", "approval_receipt", "evidence_reuse", "next_action_coordination"],
+      "capabilities": ["workflow_state", "blocker_detection", "responsibility_graph", "change_impact", "impact_graph", "approval_receipt", "evidence_reuse", "next_action_coordination"],
       "interfaces": ["JavaScript SDK", "Python SDK", "Java SDK", "OpenAPI"],
       "proof": {"ground_truth_case": "Tesla Gruenheide G07819", "synthetic_pilot_cases": 60},
       "limitations": ["external authority/domain review and real event exports still required", "not an official standard"],
@@ -115,7 +115,7 @@
       "repository": "https://github.com/mikelninh/digital-democracy-studio",
       "path": "safetrace",
       "role": "claim/evidence graph, provenance, contradictions and investigative review",
-      "capabilities": ["claim_ledger", "source_provenance", "temporal_relationships", "contradiction_detection", "source_comparison", "pattern_detection", "payment_graph", "contract_graph"],
+      "capabilities": ["claim_ledger", "source_provenance", "temporal_relationships", "temporal_graph", "contradiction_detection", "source_comparison", "pattern_detection", "payment_graph", "contract_graph"],
       "interfaces": ["Python", "FastAPI", "static demo"],
       "proof": {"master_proof_integration": true},
       "limitations": ["several investigative data connectors still source-snapshot rather than live"],
