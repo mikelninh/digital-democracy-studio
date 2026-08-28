@@ -3,6 +3,7 @@ import json
 
 import engine
 from claim_ledger import Claim, EvidenceReceipt, contradiction_pairs, explain_claim
+from composition import compose_case, portfolio_graph
 from connectors import SourceFetchError, _registered_source, connector_manifest
 from golden_runner import run_all
 from source_backing import build_gap_audit, source_pack
@@ -12,6 +13,7 @@ ontology = json.loads((ROOT / "ontology.json").read_text(encoding="utf-8"))
 golden = json.loads((ROOT / "golden_cases.json").read_text(encoding="utf-8"))
 registry = json.loads((ROOT / "source_registry.json").read_text(encoding="utf-8"))
 snapshots = json.loads((ROOT / "source_snapshots.json").read_text(encoding="utf-8"))
+modules = json.loads((ROOT / "module_contracts.json").read_text(encoding="utf-8"))["modules"]
 
 
 def check(condition: bool, message: str) -> None:
@@ -43,6 +45,14 @@ def run() -> None:
             check(source["id"] in registry["sources"], f"unregistered source in {case['id']}")
             check(bool(source["snapshot_facts"]), f"source {source['id']} lacks snapshot facts")
             check(source["backing_state"] in {"verified_snapshot", "live_fetch"}, f"weak source state for {source['id']}")
+
+        composition = compose_case(case["id"])
+        check(composition["composition_ready"], f"{case['id']} has missing capability providers: {composition['missing_capabilities']}")
+        check(composition["coverage"] == 1.0, f"{case['id']} must have full capability coverage")
+        for binding in composition["bindings"]:
+            if binding["status"] == "covered":
+                provider = binding["selected_provider"]["module"]
+                check(provider in modules, f"{case['id']} selected unknown module {provider}")
 
     sensitive_cases = [case for case in cases if case["expected"]["human_review"]]
     for case in sensitive_cases:
@@ -103,6 +113,10 @@ def run() -> None:
     check(report["demo_readiness"] == "ready", "master proof must be demo-ready")
     check(report["production_readiness"] == "not_ready", "proof must not claim production readiness")
 
+    portfolio = portfolio_graph()
+    check(portfolio["cases_composition_ready"] == portfolio["total_cases"], "all golden cases need composable providers")
+    check(portfolio["capability_coverage"] == 1.0, "all required capabilities need providers")
+
     audit = build_gap_audit()
     check(audit["source_backed_golden_cases"] == len(cases), "all golden cases need source snapshots")
     check(audit["production_ready"] is False, "gap audit must remain honest")
@@ -120,6 +134,7 @@ def run() -> None:
     print("PASS: temporal contradiction escalation")
     print("PASS: allowlisted source connector boundary")
     print(f"PASS: source-backed end-to-end scorecard {report['passed']}/{report['total']}")
+    print(f"PASS: cross-repo capability composition {portfolio['cases_composition_ready']}/{portfolio['total_cases']} cases, {portfolio['capability_coverage']:.0%} coverage")
     print("PASS: production gaps remain explicit")
 
 
