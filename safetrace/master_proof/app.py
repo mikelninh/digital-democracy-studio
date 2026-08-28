@@ -3,6 +3,7 @@ import json
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+from connectors import SourceFetchError, connector_manifest, fetch_official_source
 from engine import build_plan
 from source_backing import build_gap_audit, source_pack
 
@@ -24,7 +25,8 @@ def health():
         "ok": True,
         "golden_cases": len(GOLDEN["cases"]),
         "ontology_version": ONTOLOGY["version"],
-        "source_routes_verified": all(not case["gaps"] or True for case in audit["cases"]),
+        "source_routes_verified": all(case["source_routes_verified"] for case in audit["cases"]),
+        "source_snapshots_present": audit["source_backed_golden_cases"],
         "production_ready": audit["production_ready"]
     }
 
@@ -49,6 +51,25 @@ def case_sources(case_id: str):
         return source_pack(case_id)
     except KeyError:
         raise HTTPException(404, "Golden case not found")
+
+
+@app.get("/sources")
+def sources():
+    return connector_manifest()
+
+
+@app.post("/sources/{source_id}/fetch")
+def fetch_source(source_id: str):
+    """Fetch one reviewed official source and return a cryptographic receipt.
+
+    Raw content is intentionally not returned by this endpoint. A production
+    Evidence Vault should retain it under explicit retention/access rules.
+    """
+    try:
+        receipt, _ = fetch_official_source(source_id)
+    except SourceFetchError as exc:
+        raise HTTPException(502, str(exc))
+    return {"status": "fetched", "receipt": receipt.to_dict()}
 
 
 @app.get("/gaps")
