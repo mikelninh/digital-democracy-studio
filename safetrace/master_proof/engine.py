@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -25,21 +24,15 @@ KEYWORDS = {
 }
 
 
-@dataclass(frozen=True)
-class Match:
-    case: dict[str, Any]
-    score: int
-
-
-def find_case(question: str) -> Match | None:
+def find_case(question: str) -> dict[str, Any] | None:
     text = question.lower()
-    ranked: list[Match] = []
     by_id = {case["id"]: case for case in GOLDEN["cases"]}
+    best: dict[str, Any] | None = None
     for case_id, words in KEYWORDS.items():
         score = sum(1 for word in words if word in text)
-        if score:
-            ranked.append(Match(by_id[case_id], score))
-    return max(ranked, key=lambda item: item.score, default=None)
+        if score and (best is None or score > best["score"]):
+            best = {"case": by_id[case_id], "score": score}
+    return best
 
 
 def build_plan(question: str) -> dict[str, Any]:
@@ -56,9 +49,8 @@ def build_plan(question: str) -> dict[str, Any]:
             "autonomous_action_allowed": False
         }
 
-    case = match.case
+    case = match["case"]
     expected = case["expected"]
-    prohibited = case["must_not"]
     return {
         "status": "bounded_plan",
         "question": question,
@@ -73,10 +65,10 @@ def build_plan(question: str) -> dict[str, Any]:
         "human_review": expected["human_review"],
         "proposed_action": expected["next_action"],
         "autonomous_action_allowed": False if expected["human_review"] else expected["next_action"] not in ONTOLOGY["action_policy"]["requires_human_approval"],
-        "must_not": prohibited,
+        "must_not": case["must_not"],
         "why": {
             "matched_case": case["id"],
-            "keyword_score": match.score,
+            "keyword_score": match["score"],
             "evidence": [],
             "note": "This layer selects the workflow only. Domain modules must attach source-backed evidence receipts before factual claims are promoted to supported."
         }
