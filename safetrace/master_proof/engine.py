@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from source_backing import source_pack
+
 ROOT = Path(__file__).parent
 ONTOLOGY = json.loads((ROOT / "ontology.json").read_text(encoding="utf-8"))
 GOLDEN = json.loads((ROOT / "golden_cases.json").read_text(encoding="utf-8"))
@@ -45,32 +47,40 @@ def build_plan(question: str) -> dict[str, Any]:
             "human_review": True,
             "answer": "No golden workflow matched strongly enough. Gather authoritative sources before proposing an action.",
             "why": {"matched_case": None, "evidence": [], "missing": ["grounded workflow"]},
+            "next_best_action": None,
             "proposed_action": None,
             "autonomous_action_allowed": False
         }
 
     case = match["case"]
     expected = case["expected"]
+    backing = source_pack(case["id"])
+    route_state = "authoritative_routes_verified" if backing["all_routes_verified"] else "source_gap"
+    live_state = "live_sources_fetched" if backing["all_live_fetched"] else "live_fetch_pending"
+
     return {
-        "status": "bounded_plan",
+        "status": "source_backed_plan",
         "question": question,
         "matched_case": case["id"],
         "persona": case["persona"],
         "domain": case["domain"],
-        "confidence": "workflow-match-only",
+        "confidence": route_state,
+        "source_state": live_state,
         "modules": case["modules"],
         "required_entity_types": expected["entity_types"],
         "capabilities": expected["capabilities"],
         "uncertainty": expected["uncertainty"],
         "human_review": expected["human_review"],
         "proposed_action": expected["next_action"],
+        "next_best_action": backing["next_best_action"],
         "autonomous_action_allowed": False if expected["human_review"] else expected["next_action"] not in ONTOLOGY["action_policy"]["requires_human_approval"],
         "must_not": case["must_not"],
         "why": {
             "matched_case": case["id"],
             "keyword_score": match["score"],
-            "evidence": [],
-            "note": "This layer selects the workflow only. Domain modules must attach source-backed evidence receipts before factual claims are promoted to supported."
+            "authoritative_sources": backing["authoritative_sources"],
+            "source_contract": backing["source_contract"],
+            "note": "Authoritative source routes are verified, but a source becomes run evidence only after a live connector fetches it and produces an evidence receipt."
         }
     }
 
