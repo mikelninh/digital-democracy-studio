@@ -1,0 +1,127 @@
+{
+  "version": "0.2.0",
+  "retrieved_at": "2026-08-28",
+  "warning": "These are dated evidence snapshots for the master proof. Production runs must re-fetch sources whose facts can change and preserve the fetched original/receipt.",
+  "snapshots": {
+    "berlin_wohngeld": {
+      "facts": [
+        "Berlin describes Wohngeld as a housing-cost subsidy for people with low income that requires an application.",
+        "The amount depends on household members, eligible rent and total household income.",
+        "The responsible office is the Bürgeramt or Wohnungsamt in the applicant's district.",
+        "The service page lists WoGG § 22, WoGV and WoGVwV among the legal bases."
+      ]
+    },
+    "familienportal_kiz": {
+      "facts": [
+        "Kinderzuschlag is intended for families whose income covers the parents' own needs but not, or only narrowly, the whole family's needs.",
+        "Eligibility depends on factors including the child living in the household, receipt of Kindergeld, minimum income and household need.",
+        "The Familienportal identifies income, housing-cost and asset evidence among documents that can be required."
+      ]
+    },
+    "familienportal_kiz_digital": {
+      "facts": [
+        "The official KiZ-Lotse can be used to check whether Kinderzuschlag may be relevant.",
+        "An online Kinderzuschlag application route is available after the pre-check."
+      ]
+    },
+    "bgb_558": {
+      "facts": [
+        "BGB § 558 governs increases up to the local comparative rent under specified conditions.",
+        "The provision includes timing conditions and a capping limit, subject to the statutory details and exceptions.",
+        "A case-specific conclusion requires the landlord's stated legal basis, dates and property/local-rent facts."
+      ]
+    },
+    "police_cybercrime": {
+      "facts": [
+        "Police guidance says acute threats should be reported via 110.",
+        "Existing digital material such as emails, chats, photos or videos can be important evidence and should preferably remain complete and unchanged until police contact.",
+        "A criminal complaint can be made at a police station; preserved evidence should be brought to the report."
+      ]
+    },
+    "police_digital_evidence": {
+      "facts": [
+        "Police guidance recommends preserving online evidence before it disappears.",
+        "A useful screenshot should preserve the relevant content, date/time, username, context, platform and associated URLs.",
+        "The guidance warns not to create screenshots of child or youth sexual-abuse material and instead to contact police."
+      ]
+    },
+    "berlin_service_portal": {
+      "facts": [
+        "Berlin's ServicePortal is the official directory for administrative services, locations and authorities.",
+        "Responsibility can be resolved through the specific service and location rather than inferred from an agency name alone."
+      ]
+    },
+    "berlin_ifg": {
+      "facts": [
+        "Berlin IFG guidance describes a general right to request access to or information from authority records, subject to exceptions.",
+        "A request can be made to the body holding the records and should identify the relevant file or subject as clearly as possible.",
+        "Disclosure is not guaranteed because exclusions and costs can apply."
+      ]
+    },
+    "unternehmensregister": {
+      "facts": [
+        "The Unternehmensregister provides access to register information from German register courts.",
+        "Available register outputs include current, chronological and historical extracts.",
+        "Chronological/historical evidence is useful for distinguishing current identity from past control or representation."
+      ]
+    },
+    "transparenzregister": {
+      "facts": [
+        "The Transparenzregister records information about beneficial owners for entities subject to transparency obligations.",
+        "Access is tiered; some users need to demonstrate a legitimate interest or another statutory access basis.",
+        "Beneficial ownership/control is a relationship question and should not be treated as proof that two legal entities are the same entity."
+      ]
+    },
+    "bundeshaushalt": {
+      "facts": [
+        "Bundeshaushalt digital provides interactive federal budget data across years, including expenditure/revenue and target/actual values where available.",
+        "Users can drill down through budget structure to individual titles."
+      ]
+    },
+    "bundeshaushalt_download": {
+      "facts": [
+        "The federal budget download portal provides public budget data and documents, including machine-readable CSV/XML for available years.",
+        "The portal states that the official budget document remains legally authoritative."
+      ]
+    },
+    "bundesrechnungshof_reports": {
+      "facts": [
+        "The Bundesrechnungshof publishes audit results including remarks, special reports and some final audit communications.",
+        "Audit reports can provide context for public-spending questions but do not replace recipient-level payment evidence."
+      ]
+    },
+    "berlin_procurement": {
+      "facts": [
+        "Berlin's procurement platform publishes current public tenders and participation procedures.",
+        "The platform also links to publications about awarded contracts and other procurement notices."
+      ]
+    },
+    "berlin_procurement_awards": {
+      "facts": [
+        "Berlin publishes information about certain awarded contracts and intended restricted tenders through the procurement platform.",
+        "Repeated awards are observable procurement facts but require context before any inference about impropriety."
+      ]
+    },
+    "berlin_tree_permit": {
+      "facts": [
+        "Berlin's tree-protection service identifies the district Umwelt- und Naturschutzamt as responsible based on the tree's location.",
+        "The service lists project/tree details, justification and a location plan among relevant application evidence.",
+        "The page lists BaumSchVO § 5 and other environmental legal bases."
+      ]
+    },
+    "berlin_special_use": {
+      "facts": [
+        "Using public street land for a construction-site setup is a special use that requires a permit.",
+        "Berlin's service page lists an application for the construction-site area and a security deposit among requirements.",
+        "The service cites Berliner Straßengesetz § 11 among its legal bases."
+      ]
+    },
+    "gii_currentness": {
+      "facts": [
+        "Gesetze im Internet provides a near-daily update service pointing to newly promulgated federal provisions in the Bundesgesetzblatt.",
+        "The update service is available as an RSS feed.",
+        "The consolidated texts on Gesetze im Internet are not themselves the official promulgated version, so the underlying Bundesgesetzblatt document remains important for authoritative change evidence."
+      ]
+    }
+  }
+}
