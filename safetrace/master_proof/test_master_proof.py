@@ -1,10 +1,14 @@
+from datetime import date
 from pathlib import Path
 import json
 
 import engine
+from change_impact import impact_plan
 from claim_ledger import Claim, EvidenceReceipt, contradiction_pairs, explain_claim
 from composition import compose_case, portfolio_graph
 from connectors import SourceFetchError, _registered_source, connector_manifest
+from evidence_vault import export_policy, ingest_bytes
+from freshness_gate import gate_rule_dependent_tool
 from golden_runner import run_all
 from source_backing import build_gap_audit, source_pack
 
@@ -77,20 +81,9 @@ def run() -> None:
     check(fallback["human_review"] is True, "unknown consequential questions must escalate")
     check(fallback["autonomous_action_allowed"] is False, "fallback may not act")
 
-    receipt = EvidenceReceipt(
-        id="ev-1",
-        source="synthetic://registry/a",
-        source_type="registry",
-        retrieved_at="2026-08-28T00:00:00+00:00"
-    )
-    claim_a = Claim(
-        id="claim-a", subject_id="org-1", predicate="DIRECTOR_OF", object_id="person-a",
-        status="supported", evidence_ids=("ev-1",), valid_from="2026-01-01", confidence=0.9
-    )
-    claim_b = Claim(
-        id="claim-b", subject_id="org-1", predicate="DIRECTOR_OF", object_id="person-b",
-        status="unresolved", evidence_ids=("ev-2",), valid_from="2026-01-01", confidence=0.7
-    )
+    receipt = EvidenceReceipt(id="ev-1", source="synthetic://registry/a", source_type="registry", retrieved_at="2026-08-28T00:00:00+00:00")
+    claim_a = Claim(id="claim-a", subject_id="org-1", predicate="DIRECTOR_OF", object_id="person-a", status="supported", evidence_ids=("ev-1",), valid_from="2026-01-01", confidence=0.9)
+    claim_b = Claim(id="claim-b", subject_id="org-1", predicate="DIRECTOR_OF", object_id="person-b", status="unresolved", evidence_ids=("ev-2",), valid_from="2026-01-01", confidence=0.7)
     conflicts = contradiction_pairs([claim_a, claim_b])
     check(len(conflicts) == 1, "overlapping contradictory claims must be surfaced")
     check(conflicts[0]["review_state"] == "human_review_required", "contradiction must escalate")
@@ -108,6 +101,24 @@ def run() -> None:
     else:
         raise AssertionError("connector must reject arbitrary/non-allowlisted source ids")
 
+    private_receipt = ingest_bytes(b"synthetic personal document", media_type="text/plain", sensitivity="personal")
+    check(private_receipt.raw_persisted is False, "master proof must default to no raw evidence persistence")
+    check(private_receipt.sha256, "evidence intake must create integrity hash")
+    private_export = export_policy(private_receipt)
+    check(private_export["allowed"] is False, "personal evidence must not export automatically")
+    check(private_export["requires_human_approval"] is True, "personal evidence export needs approval")
+
+    stale_gate = gate_rule_dependent_tool(module="WohngeldMCP", data_as_of="2024-2025", today=date(2026, 8, 28))
+    check(stale_gate.decision == "verify_first", "stale benefit parameters must fail closed into verification")
+    current_gate = gate_rule_dependent_tool(module="synthetic-current", data_as_of="2026", today=date(2026, 8, 28))
+    check(current_gate.decision == "allow", "current verified-year fixture should pass freshness gate")
+
+    impact = impact_plan("BerlStrG:11", effective_date="2026-09-01")
+    check(impact["status"] == "candidate_impact_found", "known rule dependency should produce candidate impact")
+    check(impact["autonomous_case_change_allowed"] is False, "change impact may never auto-change case outcome")
+    unknown_impact = impact_plan("UNKNOWN:RULE")
+    check(unknown_impact["status"] == "dependency_unknown", "unknown dependency must fail bounded")
+
     report = run_all()
     check(report["passed"] == report["total"], "all source-backed golden experiences must pass contract")
     check(report["demo_readiness"] == "ready", "master proof must be demo-ready")
@@ -120,7 +131,8 @@ def run() -> None:
     audit = build_gap_audit()
     check(audit["source_backed_golden_cases"] == len(cases), "all golden cases need source snapshots")
     check(audit["production_ready"] is False, "gap audit must remain honest")
-    check(any(item["gap"].startswith("machine-readable live connector") for item in audit["priorities"]), "live connector gap must stay visible")
+    check(any(item["gap"].startswith("execute allowlisted live fetch") for item in audit["priorities"]), "per-run live evidence gap must stay visible")
+    check("freshness gate for stale rule-dependent tools" in audit["built_since_first_audit"], "freshness gate should be recorded as built")
 
     check(set(snapshots["snapshots"]) >= set(registry["sources"]), "every registered source needs a dated snapshot")
 
@@ -130,9 +142,11 @@ def run() -> None:
     print("PASS: human-approval boundaries")
     print("PASS: deterministic workflow probes")
     print("PASS: insufficient-grounding fallback")
-    print("PASS: claim ledger evidence receipts")
-    print("PASS: temporal contradiction escalation")
+    print("PASS: claim ledger evidence receipts + contradiction escalation")
     print("PASS: allowlisted source connector boundary")
+    print("PASS: privacy-minimising evidence receipt + export gate")
+    print("PASS: stale rule-dependent tools fail into verification")
+    print("PASS: bounded rule-to-service change impact")
     print(f"PASS: source-backed end-to-end scorecard {report['passed']}/{report['total']}")
     print(f"PASS: cross-repo capability composition {portfolio['cases_composition_ready']}/{portfolio['total_cases']} cases, {portfolio['capability_coverage']:.0%} coverage")
     print("PASS: production gaps remain explicit")
