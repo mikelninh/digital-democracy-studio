@@ -1,0 +1,74 @@
+{
+  "version": "0.1.0",
+  "coverage": "master-proof subset; not a complete German administrative dependency graph",
+  "edges": [
+    {
+      "rule_id": "WoGG:22",
+      "rule_label": "WoGG § 22",
+      "relation": "GOVERNS_APPLICATION",
+      "service_id": "berlin:wohngeld:mietzuschuss",
+      "service_label": "Wohngeld - Mietzuschuss beantragen",
+      "source_id": "berlin_wohngeld",
+      "valid_from": null,
+      "valid_to": null,
+      "confidence": 0.99,
+      "review_state": "source_backed"
+    },
+    {
+      "rule_id": "BGB:558",
+      "rule_label": "BGB § 558",
+      "relation": "GOVERNS_CHECK",
+      "service_id": "civicos:housing:rent-increase-check",
+      "service_label": "Rent increase review workflow",
+      "source_id": "bgb_558",
+      "valid_from": null,
+      "valid_to": null,
+      "confidence": 0.99,
+      "review_state": "source_backed"
+    },
+    {
+      "rule_id": "BaumSchVO-BE:5",
+      "rule_label": "Berliner Baumschutzverordnung § 5",
+      "relation": "GOVERNS_PERMISSION",
+      "service_id": "berlin:baumschutz:ausnahmegenehmigung",
+      "service_label": "Baumschutz - Ausnahmegenehmigung beantragen",
+      "source_id": "berlin_tree_permit",
+      "valid_from": null,
+      "valid_to": null,
+      "confidence": 0.99,
+      "review_state": "source_backed"
+    },
+    {
+      "rule_id": "BerlStrG:11",
+      "rule_label": "Berliner Straßengesetz § 11",
+      "relation": "GOVERNS_PERMISSION",
+      "service_id": "berlin:sonderutzung:baustelleneinrichtung",
+      "service_label": "Straßensondernutzung - Baustelleneinrichtung",
+      "source_id": "berlin_special_use",
+      "valid_from": null,
+      "valid_to": null,
+      "confidence": 0.99,
+      "review_state": "source_backed"
+    }
+  ],
+  "synthetic_case_links": [
+    {
+      "case_id": "gold:wohngeld-001",
+      "service_id": "berlin:wohngeld:mietzuschuss",
+      "state": "review_pending",
+      "synthetic": true
+    },
+    {
+      "case_id": "gold:permit-001",
+      "service_id": "berlin:baumschutz:ausnahmegenehmigung",
+      "state": "evidence_missing",
+      "synthetic": true
+    },
+    {
+      "case_id": "gold:permit-001",
+      "service_id": "berlin:sonderutzung:baustelleneinrichtung",
+      "state": "not_started",
+      "synthetic": true
+    }
+  ]
+}
