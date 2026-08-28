@@ -1,0 +1,144 @@
+{
+  "version": "0.3.0",
+  "principle": "Existing projects remain independently testable. CivicOS composes them through explicit capability contracts instead of merging them into a monolith.",
+  "modules": {
+    "GitLaw": {
+      "repository": "https://github.com/mikelninh/gitlaw",
+      "role": "source-grounded German federal-law retrieval and citation verification",
+      "capabilities": ["legal_retrieval", "rule_retrieval", "citation_verification", "legal_context", "legal_diff", "paragraph_graph"],
+      "interfaces": ["Python", "FastAPI", "MCP"],
+      "proof": {"laws_indexed": 5936, "citation_resolution_eval": "53/53"},
+      "limitations": ["broader legal-answer evaluation with qualified professionals still needed"],
+      "adapter_state": "contract_ready"
+    },
+    "PruefPilot": {
+      "repository": "https://github.com/mikelninh/pruefpilot",
+      "role": "typed document intake, extraction, evidence checks and versioned domain rules",
+      "capabilities": ["document_extraction", "deadline_extraction", "evidence_checklist", "versioned_rules", "consistency_checks", "prompt_injection_quarantine"],
+      "interfaces": ["Python", "FastAPI"],
+      "proof": {"unit_api_tests": "22/22", "retrieval_evals": "10/10", "real_pdf_intake": true},
+      "limitations": ["production identity/access, persistence, retention/deletion and security review still needed"],
+      "adapter_state": "contract_ready"
+    },
+    "SafeVoice": {
+      "repository": "https://github.com/mikelninh/safevoice",
+      "role": "digital-harassment evidence intake, hashing, classification and reviewable case packaging",
+      "capabilities": ["evidence_intake", "hashing", "source_metadata", "classification", "case_packaging", "draft_action"],
+      "interfaces": ["Python", "FastAPI", "MCP"],
+      "proof": {"evaluation_cases": 35, "full_pass": "30/35", "severity_agreement": "94%"},
+      "limitations": ["curated evaluations are not validated police cases", "broader real-user and qualified-reviewer validation needed"],
+      "adapter_state": "contract_ready"
+    },
+    "PublicMoneyMCP": {
+      "repository": "https://github.com/mikelninh/pmm-mcp",
+      "role": "deterministic German federal-budget and Bundesrechnungshof tools",
+      "capabilities": ["budget_lookup", "budget_distribution", "anomaly_context", "audit_finding_lookup", "year_comparison", "sankey_data"],
+      "interfaces": ["Python", "MCP"],
+      "proof": {"automated_tests": 19, "bundled_budget_years": [2024, 2025]},
+      "limitations": ["mainly Einzelplan-level", "upstream data not continuously synchronised", "BRH coverage curated rather than exhaustive", "anomaly flags are leads, not misconduct findings"],
+      "adapter_state": "contract_ready"
+    },
+    "CitizenAgents": {
+      "repository": "https://github.com/mikelninh/citizen-agents",
+      "role": "monitored public-source changes with cited findings, logs and human review",
+      "capabilities": ["change_monitoring", "service_discovery", "source_verification", "public_source_research"],
+      "interfaces": ["scheduled agents", "machine-readable logs", "pull-request review"],
+      "proof": {"public_prototype": true, "audit_trail_design": true},
+      "limitations": ["agent/integration maturity varies; repository logs are source of truth"],
+      "adapter_state": "contract_ready"
+    },
+    "DigitalWorkerFactory": {
+      "repository": "https://github.com/mikelninh/digital-worker-factory",
+      "role": "bounded agent runtime, capabilities, evidence requirements, policy gates, human approval and audit",
+      "capabilities": ["draft_action", "request_drafting", "action_routing", "review_queue", "policy_gate", "human_approval", "audit_trace"],
+      "interfaces": ["Node.js", "declarative worker specs"],
+      "proof": {"synthetic_reliability_suite": true, "human_approval_boundary": true},
+      "limitations": ["synthetic evals prove regression discipline, not real-world accuracy"],
+      "adapter_state": "contract_ready"
+    },
+    "JudgeMCP": {
+      "repository": "https://github.com/mikelninh/judge-mcp",
+      "role": "composable rubric evaluation and bounded create-judge-revise loops",
+      "capabilities": ["artifact_evaluation", "rubric_scoring", "threshold_iteration", "quality_gate"],
+      "interfaces": ["Python", "MCP"],
+      "proof": {"automated_tests": 16},
+      "limitations": ["LLM scores are calibrated rather than objective truth", "rubric quality limits evaluator quality"],
+      "adapter_state": "contract_ready"
+    },
+    "WohngeldMCP": {
+      "repository": "https://github.com/mikelninh/wohngeld-mcp",
+      "role": "Wohngeld pre-check, approximate calculator, Mietstufe and local-office lookup",
+      "capabilities": ["eligibility_hypothesis", "wohngeld_estimate", "mietstufe_lookup", "responsibility_lookup", "required_documents"],
+      "interfaces": ["Python", "MCP"],
+      "proof": {"automated_tests": "34/34"},
+      "limitations": ["calculator is approximate", "rule/constants freshness must be updated after reforms", "no application submission"],
+      "adapter_state": "usable_with_freshness_gate"
+    },
+    "ElterngeldMCP": {
+      "repository": "https://github.com/mikelninh/elterngeld-mcp",
+      "role": "deterministic Elterngeld calculation, eligibility cap, plan comparison and office lookup",
+      "capabilities": ["elterngeld_calculation", "eligibility_hypothesis", "benefit_plan_comparison", "responsibility_lookup"],
+      "interfaces": ["Python", "MCP"],
+      "proof": {"automated_tests": "38/38"},
+      "limitations": ["2024/2025 constants require freshness gate", "Mutterschaftsgeld offset not modeled", "self-employment cases approximate"],
+      "adapter_state": "usable_with_freshness_gate"
+    },
+    "CivicMCPToolkit": {
+      "repository": "https://github.com/mikelninh/civic-ai-mcp-toolkit",
+      "role": "shared MCP server factory, tracing, structured logging, health checks, error envelopes and fixtures",
+      "capabilities": ["mcp_transport", "tool_tracing", "structured_logging", "error_envelopes", "health_checks", "fixture_loading"],
+      "interfaces": ["Python", "FastMCP", "stdio", "SSE"],
+      "proof": {"automated_tests": "19/19"},
+      "limitations": ["existing MCPs are not all migrated to the toolkit yet"],
+      "adapter_state": "shared_infrastructure"
+    },
+    "OpenAction": {
+      "repository": "https://github.com/mikelninh/openaction",
+      "role": "shared case truth, constraints, ownership, evidence-linked actions, approval paths, trust passports and change impact",
+      "capabilities": ["workflow_state", "blocker_detection", "responsibility_graph", "change_impact", "approval_receipt", "evidence_reuse", "next_action_coordination"],
+      "interfaces": ["JavaScript SDK", "Python SDK", "Java SDK", "OpenAPI"],
+      "proof": {"ground_truth_case": "Tesla Gruenheide G07819", "synthetic_pilot_cases": 60},
+      "limitations": ["external authority/domain review and real event exports still required", "not an official standard"],
+      "adapter_state": "contract_ready"
+    },
+    "SafeTraceEntityResolution": {
+      "repository": "https://github.com/mikelninh/digital-democracy-studio",
+      "path": "safetrace/entity_resolution",
+      "role": "explainable organisation identity matching and ambiguity review",
+      "capabilities": ["entity_resolution", "relationship_graph", "provenance", "confidence_scoring", "human_review_queue"],
+      "interfaces": ["Python", "static demo"],
+      "proof": {"synthetic_records": 40, "entities": 10, "precision": 1.0, "recall": 0.9, "f1": 0.947, "false_positive_auto_merges": 0},
+      "limitations": ["synthetic benchmark", "needs live register adapters and larger diverse evaluation corpus"],
+      "adapter_state": "local_component"
+    },
+    "SafeTrace": {
+      "repository": "https://github.com/mikelninh/digital-democracy-studio",
+      "path": "safetrace",
+      "role": "claim/evidence graph, provenance, contradictions and investigative review",
+      "capabilities": ["claim_ledger", "source_provenance", "temporal_relationships", "contradiction_detection", "source_comparison", "pattern_detection", "payment_graph", "contract_graph"],
+      "interfaces": ["Python", "FastAPI", "static demo"],
+      "proof": {"master_proof_integration": true},
+      "limitations": ["several investigative data connectors still source-snapshot rather than live"],
+      "adapter_state": "local_component"
+    },
+    "CityKnowledgeGraph": {
+      "repository": "https://github.com/mikelninh/digital-democracy-studio",
+      "path": "safetrace/city_knowledge_graph",
+      "role": "municipal services, authorities, responsibilities and governing-rule relationships",
+      "capabilities": ["responsibility_graph", "responsibility_lookup", "service_discovery", "action_routing"],
+      "interfaces": ["Python", "FastAPI", "JSON graph"],
+      "proof": {"first_vertical": "Berlin municipal permit routing"},
+      "limitations": ["coverage is a proof graph, not a complete German administrative ontology"],
+      "adapter_state": "local_component"
+    },
+    "CasePilot": {
+      "repository": "https://github.com/mikelninh/digital-worker-factory",
+      "role": "agent/workflow reliability checks for completion, required tools, evidence, loops and escalation",
+      "capabilities": ["workflow_state", "blocker_detection", "review_queue", "replay", "completion_integrity"],
+      "interfaces": ["runtime/eval contracts"],
+      "proof": {"replayable_failure_cases": true},
+      "limitations": ["current proof is synthetic rather than production telemetry"],
+      "adapter_state": "contract_ready"
+    }
+  }
+}
