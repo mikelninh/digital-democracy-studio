@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    {"id":"berlin","type":"Municipality","label":"Berlin","source":"https://www.berlin.de/"},
+    {"id":"senmvku","type":"Department","label":"Senatsverwaltung für Mobilität, Verkehr, Klimaschutz und Umwelt","source":"https://www.berlin.de/sen/uvk/"},
+    {"id":"ba-mitte","type":"Department","label":"Bezirksamt Mitte von Berlin","source":"https://www.berlin.de/ba-mitte/"},
+    {"id":"service-tree-permit","type":"Service","label":"Baumfällgenehmigung","source":"https://service.berlin.de/"},
+    {"id":"service-special-use","type":"Service","label":"Sondernutzung öffentlichen Straßenlandes","source":"https://service.berlin.de/"},
+    {"id":"rule-baumschutz","type":"Regulation","label":"Berliner Baumschutzverordnung","source":"https://gesetze.berlin.de/"},
+    {"id":"rule-berlstrg","type":"Regulation","label":"Berliner Straßengesetz","source":"https://gesetze.berlin.de/"},
+    {"id":"infra-street-tree","type":"Infrastructure","label":"Straßenbaum","source":"synthetic-demo://infrastructure/street-tree"},
+    {"id":"infra-sidewalk","type":"Infrastructure","label":"Gehwegfläche","source":"synthetic-demo://infrastructure/sidewalk"},
+    {"id":"org-cityworks","type":"Organisation","label":"CityWorks Berlin GmbH","source":"synthetic-demo://org/cityworks"},
+    {"id":"case-001","type":"Case","label":"Baumfällung für Baustellenzufahrt","source":"synthetic-demo://case/001"}
+  ],
+  "edges": [
+    {"from":"senmvku","to":"berlin","type":"part_of","evidence":"Official Berlin authority page"},
+    {"from":"ba-mitte","to":"berlin","type":"part_of","evidence":"Official district authority page"},
+    {"from":"service-tree-permit","to":"ba-mitte","type":"responsible_authority","evidence":"Service responsibility depends on district; Mitte used as demo case"},
+    {"from":"service-tree-permit","to":"rule-baumschutz","type":"governed_by","evidence":"Tree protection rules govern permit requirements"},
+    {"from":"service-tree-permit","to":"infra-street-tree","type":"applies_to","evidence":"Permit concerns protected trees"},
+    {"from":"service-special-use","to":"ba-mitte","type":"responsible_authority","evidence":"District authority handles local special-use applications in demo case"},
+    {"from":"service-special-use","to":"rule-berlstrg","type":"governed_by","evidence":"Special use of public road land is governed by Berlin road law"},
+    {"from":"service-special-use","to":"infra-sidewalk","type":"applies_to","evidence":"Sidewalk is public road land in demo case"},
+    {"from":"case-001","to":"org-cityworks","type":"requested_by","evidence":"Synthetic case dossier"},
+    {"from":"case-001","to":"service-tree-permit","type":"requires","evidence":"Case affects a protected street tree"},
+    {"from":"case-001","to":"service-special-use","type":"may_require","evidence":"Construction access may occupy public sidewalk space"}
+  ]
+}
