@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CivicOS — Master Proof</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f7f8fb}*{box-sizing:border-box}body{margin:0}.shell{max-width:1180px;margin:0 auto;padding:44px 22px 72px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#6b7280}.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:end;margin:12px 0 28px}h1{font-size:clamp(44px,7vw,78px);line-height:.96;letter-spacing:-.055em;margin:0}.sub{font-size:19px;line-height:1.5;color:#4b5563;margin:0}.panel{background:white;border:1px solid #e5e7eb;border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(17,24,39,.05)}.ask{display:flex;gap:10px;margin-top:16px}input{flex:1;border:1px solid #d1d5db;border-radius:14px;padding:15px;font:inherit}button{border:0;border-radius:14px;padding:14px 18px;font-weight:750;cursor:pointer;background:#111827;color:white}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}.chip{background:#f3f4f6;color:#374151;padding:9px 11px;border-radius:999px;font-size:13px;cursor:pointer}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.card{background:white;border:1px solid #e5e7eb;border-radius:20px;padding:18px}.label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#9ca3af;font-weight:800}.value{font-size:18px;font-weight:750;margin-top:7px}.small{font-size:14px;line-height:1.45;color:#6b7280;margin-top:6px}.flow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.step{padding:8px 10px;border:1px solid #e5e7eb;border-radius:10px;font-size:12px;background:#fafafa}.why{margin-top:18px}.whyGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.receipt{padding:13px;border:1px solid #e5e7eb;border-radius:14px;background:#fafafa}.ok{font-weight:800}.warn{font-weight:800}.footer{margin-top:26px;color:#6b7280;font-size:13px}.hidden{display:none}@media(max-width:820px){.hero,.grid,.whyGrid{grid-template-columns:1fr}.ask{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="eyebrow">CivicOS · evidence-to-action infrastructure</div>
+  <section class="hero">
+    <h1>Give people<br>the why.</h1>
+    <p class="sub">Ask a consequential public question. CivicOS identifies the workflow, shows which modules and evidence are needed, exposes uncertainty, and proposes a safe next action — without giving the model uncontrolled authority.</p>
+  </section>
+
+  <section class="panel">
+    <div class="label">What do you want to understand or change?</div>
+    <div class="ask">
+      <input id="q" value="My Wohngeld application was rejected. What can I do next?" aria-label="Question" />
+      <button onclick="run()">Trace it</button>
+    </div>
+    <div class="chips">
+      <span class="chip" onclick="pick('My Wohngeld application was rejected. What can I do next?')">Housing benefit rejected</span>
+      <span class="chip" onclick="pick('Are these suppliers actually the same entity or linked by a director?')">Supplier links</span>
+      <span class="chip" onclick="pick('Where did the public money for this programme go?')">Follow public money</span>
+      <span class="chip" onclick="pick('Which authority is responsible for this problem and why?')">Who is responsible?</span>
+      <span class="chip" onclick="pick('A rule changed. Which services and cases are affected?')">Rule changed</span>
+    </div>
+  </section>
+
+  <div id="result" class="hidden">
+    <section class="grid">
+      <article class="card"><div class="label">Situation</div><div id="situation" class="value"></div><div id="domain" class="small"></div></article>
+      <article class="card"><div class="label">Next safe action</div><div id="action" class="value"></div><div id="review" class="small"></div></article>
+      <article class="card"><div class="label">Uncertainty</div><div id="uncertainty" class="small"></div></article>
+    </section>
+
+    <section class="panel why">
+      <div class="label">Why?</div>
+      <div id="flow" class="flow"></div>
+      <div class="whyGrid" style="margin-top:16px">
+        <div>
+          <div class="label">Modules activated</div>
+          <div id="modules" class="flow"></div>
+        </div>
+        <div>
+          <div class="label">Must not happen</div>
+          <div id="mustnot" class="flow"></div>
+        </div>
+      </div>
+      <div class="receipt" style="margin-top:16px">
+        <div class="label">Evidence receipt status</div>
+        <div class="small"><span class="warn">Workflow matched; factual evidence not yet attached.</span> Domain modules must add source-backed receipts before claims become <strong>supported</strong>. Consequential actions remain behind approval gates.</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">Synthetic master proof. It demonstrates architecture, boundaries and evaluation contracts — not legal advice, entitlement guarantees or findings about real people or organisations.</div>
+</div>
+<script>
+const cases=[
+{id:'citizen-wohngeld-rejection',keys:['wohngeld','housing benefit','rejected','abgelehnt'],domain:'Benefits · citizen',action:'Prepare a reviewable objection or missing-evidence checklist',uncertainty:'Eligibility and legal conclusion remain unresolved until current facts and authoritative rules are verified.',modules:['PrüfPilot','GitLaw','City Knowledge Graph','Digital Worker Factory'],caps:['extract decision','retrieve governing rule','identify authority','check deadline','build claim ledger','draft next action'],must:['promise entitlement','invent deadline','submit objection without approval'],review:true},
+{id:'investigator-supplier-links',keys:['supplier','vendor','same entity','director','lieferant'],domain:'Entity resolution · investigator',action:'Show supported links and ambiguous links separately',uncertainty:'RELATED_TO must never be silently collapsed into SAME_AS.',modules:['SafeTrace Entity Resolution','SafeTrace'],caps:['normalise entities','score identity signals','build relationship graph','attach provenance','queue ambiguity'],must:['silently merge entities','infer wrongdoing from a relationship'],review:true},
+{id:'investigator-public-money',keys:['public money','budget','funding','haushalt','förder'],domain:'Public money · investigator',action:'Produce a traceable funding map and questions for follow-up',uncertainty:'Anomaly flags are leads, not findings of misconduct.',modules:['Public Money MCP','SafeTrace','Citizen Agents'],caps:['retrieve budget','resolve recipients','connect payments','attach sources','surface anomalies','create claims'],must:['label anomaly as corruption','invent a recipient','publish accusation'],review:true},
+{id:'citizen-authority-responsibility',keys:['authority','behörde','zuständig','responsible'],domain:'Public services · citizen',action:'Show the responsible body, the rule behind that responsibility, and the official route',uncertainty:'Jurisdiction can depend on location, subject and current administrative allocation.',modules:['City Knowledge Graph','GitLaw','Citizen Agents'],caps:['resolve service','trace responsibility edge','retrieve rule','verify official source','show contact route'],must:['invent authority','hide jurisdiction ambiguity'],review:false},
+{id:'operator-policy-change-impact',keys:['rule changed','law changed','gesetz geändert','impact'],domain:'Policy operations · government operator',action:'Produce an affected-workflow list with evidence and review priority',uncertainty:'Impact candidates remain hypotheses until case-specific facts are checked.',modules:['Citizen Agents','GitLaw','City Knowledge Graph','Digital Worker Factory'],caps:['detect change','diff law','map affected services','filter cases','prioritise review'],must:['change outcomes without review','apply old or unverified rule'],review:true}
+];
+function pick(v){document.getElementById('q').value=v;run()}
+function run(){const q=document.getElementById('q').value.toLowerCase();let best=null,score=0;for(const c of cases){const s=c.keys.filter(k=>q.includes(k)).length;if(s>score){best=c;score=s}}document.getElementById('result').classList.remove('hidden');if(!best){best={id:'insufficient-grounding',domain:'Unknown workflow',action:'Gather authoritative sources before proposing an action',uncertainty:'No sufficiently grounded workflow was found.',modules:['Human review'],caps:['stop','collect sources','re-run'],must:['guess','act autonomously'],review:true}}document.getElementById('situation').textContent=best.id.replaceAll('-',' ');document.getElementById('domain').textContent=best.domain;document.getElementById('action').textContent=best.action;document.getElementById('review').textContent=best.review?'Human approval required':'Read-only guidance can proceed; external action still requires its own policy check.';document.getElementById('uncertainty').textContent=best.uncertainty;document.getElementById('flow').innerHTML=best.caps.map(x=>`<span class="step">${x}</span>`).join('<span class="small">→</span>');document.getElementById('modules').innerHTML=best.modules.map(x=>`<span class="step">${x}</span>`).join('');document.getElementById('mustnot').innerHTML=best.must.map(x=>`<span class="step">✕ ${x}</span>`).join('')}
+run();
+</script>
+</body>
+</html>
