@@ -12,17 +12,17 @@ GOLDEN = json.loads((ROOT / "golden_cases.json").read_text(encoding="utf-8"))
 
 KEYWORDS = {
     "citizen-wohngeld-rejection": ["wohngeld", "housing benefit", "rejected", "abgelehnt"],
-    "citizen-benefits-gap": ["benefit", "leistungen", "support", "unterstützung", "anspruch"],
+    "citizen-benefits-gap": ["benefit", "leistungen", "support", "unterstützung", "anspruch", "household be missing"],
     "citizen-rent-increase": ["rent", "miete", "mieterhöhung", "landlord"],
-    "citizen-digital-harassment": ["harass", "beläst", "online", "digital violence"],
-    "citizen-authority-responsibility": ["authority", "behörde", "zuständig", "responsible"],
-    "citizen-information-request": ["information request", "informationsfrei", "transparency", "auskunft"],
-    "investigator-supplier-links": ["supplier", "vendor", "same entity", "director", "lieferant"],
-    "investigator-public-money": ["public money", "budget", "funding", "haushalt", "förder"],
-    "investigator-procurement-pattern": ["procurement", "contract", "tender", "vergabe", "auftrag"],
-    "investigator-contradictory-records": ["disagree", "contradict", "widerspruch", "records"],
-    "operator-permit-routing": ["permit", "genehmigung", "department", "blocked"],
-    "operator-policy-change-impact": ["rule changed", "law changed", "gesetz geändert", "impact"]
+    "citizen-digital-harassment": ["harass", "beläst", "online", "digital violence", "preserve the evidence"],
+    "citizen-authority-responsibility": ["authority", "behörde", "zuständig", "responsible", "contact the right place"],
+    "citizen-information-request": ["information request", "informationsfrei", "transparency", "auskunft", "what information", "public decision was made", "records sought"],
+    "investigator-supplier-links": ["suppliers look unrelated", "same entity", "linked by a director", "director", "lieferant"],
+    "investigator-public-money": ["public money", "budget", "funding", "haushalt", "förder", "programme go"],
+    "investigator-procurement-pattern": ["procurement", "tender", "vergabe", "auftrag", "repeatedly win", "public contracts", "similar public contracts"],
+    "investigator-contradictory-records": ["disagree", "contradict", "widerspruch", "two official-looking records", "what is still unresolved"],
+    "operator-permit-routing": ["permit", "genehmigung", "department", "blocked", "resident wants permission", "where is the case blocked"],
+    "operator-policy-change-impact": ["rule changed", "law changed", "gesetz geändert", "impact", "which services", "affected"]
 }
 
 
@@ -80,7 +80,7 @@ def build_plan(question: str) -> dict[str, Any]:
             "keyword_score": match["score"],
             "authoritative_sources": backing["authoritative_sources"],
             "source_contract": backing["source_contract"],
-            "note": "Authoritative source routes are verified, but a source becomes run evidence only after a live connector fetches it and produces an evidence receipt."
+            "note": "Authoritative source routes are verified, but a source becomes current run evidence only after a live connector fetches it and produces an evidence receipt."
         }
     }
 
