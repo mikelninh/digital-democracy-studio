@@ -6,6 +6,7 @@ from typing import Any
 
 ROOT = Path(__file__).parent
 REGISTRY = json.loads((ROOT / "source_registry.json").read_text(encoding="utf-8"))
+SNAPSHOTS = json.loads((ROOT / "source_snapshots.json").read_text(encoding="utf-8"))
 GOLDEN = json.loads((ROOT / "golden_cases.json").read_text(encoding="utf-8"))
 CASES = {case["id"]: case for case in GOLDEN["cases"]}
 
@@ -86,11 +87,9 @@ NEXT_ACTIONS: dict[str, dict[str, Any]] = {
     }
 }
 
-# The build intentionally separates 'route verified' from 'content fetched'.
-# Live connectors can flip individual sources to live_fetch after producing receipts.
-LIVE_CONNECTOR_STATUS: dict[str, bool] = {
-    source_id: False for source_id in REGISTRY["sources"]
-}
+# Live connectors can flip individual sources to live_fetch only after they
+# produced a current evidence receipt for that run.
+LIVE_CONNECTOR_STATUS: dict[str, bool] = {source_id: False for source_id in REGISTRY["sources"]}
 
 
 def source_pack(case_id: str) -> dict[str, Any]:
@@ -100,9 +99,17 @@ def source_pack(case_id: str) -> dict[str, Any]:
     sources = []
     for source_id in ids:
         source = dict(REGISTRY["sources"][source_id])
+        snapshot = SNAPSHOTS["snapshots"].get(source_id)
         source["id"] = source_id
-        source["backing_state"] = "live_fetch" if LIVE_CONNECTOR_STATUS[source_id] else "verified_route"
-        source["verified_at"] = REGISTRY["verified_at"]
+        source["route_verified_at"] = REGISTRY["verified_at"]
+        source["snapshot_retrieved_at"] = SNAPSHOTS["retrieved_at"] if snapshot else None
+        source["snapshot_facts"] = snapshot["facts"] if snapshot else []
+        if LIVE_CONNECTOR_STATUS[source_id]:
+            source["backing_state"] = "live_fetch"
+        elif snapshot:
+            source["backing_state"] = "verified_snapshot"
+        else:
+            source["backing_state"] = "verified_route"
         sources.append(source)
     action = NEXT_ACTIONS[case_id]
     return {
@@ -110,9 +117,14 @@ def source_pack(case_id: str) -> dict[str, Any]:
         "authoritative_sources": sources,
         "source_count": len(sources),
         "all_routes_verified": bool(sources),
+        "all_have_snapshots": bool(sources) and all(s["snapshot_facts"] for s in sources),
         "all_live_fetched": bool(sources) and all(s["backing_state"] == "live_fetch" for s in sources),
         "next_best_action": action,
-        "source_contract": REGISTRY["contract"]
+        "source_contract": {
+            **REGISTRY["contract"],
+            "verified_snapshot": "A dated, manually verified snapshot records supported facts for the master proof. It is evidence for that retrieval date, not a promise that the source is unchanged now.",
+            "snapshot_warning": SNAPSHOTS["warning"]
+        }
     }
 
 
@@ -122,7 +134,7 @@ def build_gap_audit() -> dict[str, Any]:
         pack = source_pack(case_id)
         gaps: list[str] = []
         if not pack["all_live_fetched"]:
-            gaps.append("machine-readable live connector / evidence receipt")
+            gaps.append("machine-readable live connector / per-run evidence receipt")
         if case_id in {"citizen-wohngeld-rejection", "citizen-rent-increase", "citizen-digital-harassment"}:
             gaps.append("secure user-document upload + redaction + deletion controls")
         if case_id == "citizen-benefits-gap":
@@ -133,7 +145,14 @@ def build_gap_audit() -> dict[str, Any]:
             gaps.append("recipient/award normalisation and cross-source identifiers")
         if case_id == "operator-policy-change-impact":
             gaps.append("law-to-service dependency map and effective-date parser")
-        cases.append({"case_id": case_id, "gaps": gaps, "gap_count": len(gaps)})
+        cases.append({
+            "case_id": case_id,
+            "source_routes_verified": pack["all_routes_verified"],
+            "source_snapshots_present": pack["all_have_snapshots"],
+            "live_fetched": pack["all_live_fetched"],
+            "gaps": gaps,
+            "gap_count": len(gaps)
+        })
 
     ranked: dict[str, int] = {}
     for case in cases:
@@ -147,7 +166,9 @@ def build_gap_audit() -> dict[str, Any]:
         "verified_at": REGISTRY["verified_at"],
         "cases": cases,
         "priorities": priorities,
-        "master_proof_ready_for_demo": True,
+        "source_backed_golden_cases": sum(1 for case in cases if case["source_snapshots_present"]),
+        "total_golden_cases": len(cases),
+        "master_proof_ready_for_demo": all(case["source_snapshots_present"] for case in cases),
         "production_ready": False,
-        "reason": "All golden cases have authoritative source routes, but live connectors, privacy/security controls and domain validation are incomplete."
+        "reason": "All golden cases now have dated authoritative evidence snapshots, but production still needs live connectors, privacy/security controls, domain validation and user testing."
     }
