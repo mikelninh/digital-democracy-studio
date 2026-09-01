@@ -1,0 +1,61 @@
+name: Intelligence Live Company Investigation
+
+on:
+  pull_request:
+    paths:
+      - 'safetrace/intelligence_casework/company_live.py'
+      - 'safetrace/intelligence_casework/fixtures/venatic_live.json'
+      - 'safetrace/intelligence_casework/tests/test_company_live.py'
+      - '.github/workflows/intelligence-live-company.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * 1'
+
+jobs:
+  investigate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regression tests
+        run: python -m unittest safetrace.intelligence_casework.tests.test_company_live -v
+      - name: Acquire live public sources and investigate Venatic
+        run: |
+          rm -rf artifacts/intelligence-casework/venatic-live
+          python -m safetrace.intelligence_casework.company_live \
+            --case safetrace/intelligence_casework/fixtures/venatic_live.json \
+            --out artifacts/intelligence-casework/venatic-live
+      - name: Validate investigation contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/intelligence-casework/venatic-live/result.json')
+          r = json.loads(p.read_text())
+          assert r['schema_version'] == 'safetrace.live-company-investigation/2.0'
+          assert r['integrity']['status'] == 'pass'
+          assert r['metrics']['sources_acquired'] >= 3
+          assert r['metrics']['required_extractions_missing'] == 0
+          assert any(c['field'] == 'legal_name' for c in r['claims'])
+          assert any(c['field'] == 'register_id' for c in r['claims'])
+          assert any(g['field'] == 'shareholders' for g in r['unresolved_questions'])
+          assert all(s['sha256'] and s['receipt_hash'] for s in r['sources'])
+          print(json.dumps(r['metrics'], indent=2))
+          print('\nCLAIMS')
+          for c in r['claims']:
+              print(f"- {c['field']}: {c['value']} [{c['status']}] {c['confidence']:.0%}")
+          print('\nUNRESOLVED')
+          for g in r['unresolved_questions']:
+              print(f"- {g['title']}: {g['status']} -> {g['next_step']}")
+          PY
+      - name: Print analyst report
+        run: cat artifacts/intelligence-casework/venatic-live/report.md
+      - name: Upload investigation work product
+        uses: actions/upload-artifact@v4
+        with:
+          name: venatic-live-investigation
+          path: artifacts/intelligence-casework/venatic-live/
+          if-no-files-found: error
