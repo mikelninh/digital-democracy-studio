@@ -39,6 +39,7 @@ jobs:
           assert 2.16 < m['bottom50_share_pct_derived'] < 2.18
           assert m['poverty_risk_people_m']==13.3
           assert m['federal_budget_2026_bn']>500
+          assert abs(m['top10_net_wealth_bn'] * 0.001 - 11.83895077) < 1e-8
           ids=set()
           for s in data['sources']:
               assert s['id'] not in ids; ids.add(s['id'])
@@ -55,7 +56,8 @@ jobs:
               'a tax proposal or revenue forecast',
               'Automatic entitlement before new programmes',
               'Give every public euro a Distribution Score',
-              'Build the first end-to-end distribution experiment'
+              'Build the first end-to-end distribution experiment',
+              "periods.every(p=>p===periods[0])"
           ]:
               assert phrase in html, phrase
           assert 'font:18px/1.6' in html
@@ -70,7 +72,7 @@ jobs:
         run: |
           mkdir -p artifacts/money-flow-atlas
           python - <<'PY'
-          import subprocess,time
+          import re, subprocess, time
           from playwright.sync_api import sync_playwright
           server=subprocess.Popen(['python','-m','http.server','8765'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
           try:
@@ -81,7 +83,7 @@ jobs:
                   errors=[]; page.on('pageerror',lambda e:errors.append(str(e)))
                   url='http://127.0.0.1:8765/safetrace/money_flow_atlas/'
                   page.goto(url,wait_until='domcontentloaded')
-                  page.wait_for_timeout(900)
+                  page.wait_for_timeout(1300)
                   assert not errors,errors
                   assert 'Where is the money' in page.locator('h1').inner_text()
                   assert float(page.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=17
@@ -89,15 +91,30 @@ jobs:
                   assert page.locator('.kpi').count()==3
                   assert page.locator('.flow-node').count()>=6
                   body=page.locator('body').inner_text()
-                  for phrase in ['59.48%','13.3m','€524.5bn','16.1%','30.3% singles','Automatic entitlement','Distribution Score']:
+                  for phrase in ['13.3m','€524.5bn','16.1%','30.3% singles','Automatic entitlement','Distribution Score']:
                       assert phrase in body,phrase
+
+                  # The wealth bar is either the coherent verified fallback or one coherent live ECB quarter.
+                  def pct(selector):
+                      return float(re.sub(r'[^0-9.]','',page.locator(selector).inner_text()))
+                  top=pct('#topShare'); mid=pct('#midShare'); bottom=pct('#bottomShare')
+                  assert abs((top+mid+bottom)-100) < .08, (top,mid,bottom)
+                  freshness=page.locator('#freshness').inner_text()
+                  if 'refreshed' in freshness:
+                      live_period=freshness.split('·')[-1].strip()
+                      assert live_period in page.locator('#totalWealthPeriod').inner_text()
+                      assert live_period in page.locator('#flowTopShare').evaluate("e=>document.getElementById('totalWealthPeriod').innerText")
+                  else:
+                      assert abs(top-59.48)<.01 and abs(bottom-2.17)<.02
                   page.screenshot(path='artifacts/money-flow-atlas/01-overview-desktop.png',full_page=True)
 
-                  # Evidence drawer exposes original authority and boundary.
+                  # Evidence drawer exposes the same currently displayed wealth figure and original authority.
+                  displayed_top=page.locator('#topShare').inner_text().replace('≈','').strip()
                   page.locator('[data-source="W2"]').first.click()
                   page.locator('#sourceOverlay.show').wait_for(state='visible')
+                  page.wait_for_timeout(220)
                   assert 'European Central Bank' in page.locator('#sourcePublisher').inner_text()
-                  assert '59.48%' in page.locator('#sourceSupports').inner_text()
+                  assert displayed_top in page.locator('#sourceSupports').inner_text()
                   assert 'data.ecb.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
                   assert 'does not prove' in page.locator('.limit').inner_text().lower()
                   page.screenshot(path='artifacts/money-flow-atlas/02-source-drawer.png')
@@ -108,12 +125,16 @@ jobs:
                   assert '€7.78bn/year' in page.locator('#subsidyPool').inner_text()
                   assert '€48.75/month' in page.locator('#subsidyMonthly').inner_text()
                   page.locator('#wealthSlider').fill('0.1')
-                  assert '€11.84bn/year' in page.locator('#wealthPool').inner_text()
+                  pool_01=float(re.sub(r'[^0-9.]','',page.locator('#wealthPool').inner_text()))
+                  assert 10 < pool_01 < 13
+                  page.locator('#wealthSlider').fill('0.2')
+                  pool_02=float(re.sub(r'[^0-9.]','',page.locator('#wealthPool').inner_text()))
+                  assert abs(pool_02 - 2*pool_01) < .03
                   assert 'not a tax proposal or revenue forecast' in page.locator('.sim-card').nth(1).inner_text().lower()
 
                   # Mobile readability.
                   mobile=browser.new_page(viewport={'width':390,'height':844})
-                  mobile.goto(url,wait_until='domcontentloaded');mobile.wait_for_timeout(700)
+                  mobile.goto(url,wait_until='domcontentloaded');mobile.wait_for_timeout(1000)
                   assert float(mobile.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=16
                   assert mobile.locator('h1').is_visible()
                   mobile.screenshot(path='artifacts/money-flow-atlas/03-mobile.png',full_page=True)
