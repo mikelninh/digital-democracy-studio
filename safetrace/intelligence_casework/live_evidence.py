@@ -24,7 +24,7 @@ EXPECTED_CONTENT_TYPES = (
     "application/vnd.ms-excel",
     "text/plain",
 )
-_REQUIRED_HEADER_KEYS = {"uniqueid", "name6", "nametype", "individualentityship"}
+_REQUIRED_HEADER_KEYS = {"uniqueid", "name6", "nametype"}
 
 
 def _norm(value: str) -> str:
@@ -132,11 +132,12 @@ def parse_uksl_csv(payload: bytes) -> list[dict]:
         full_name = " ".join(x for x in parts if x and x.lower() not in {"n/a", "na"}).strip()
         if not full_name:
             continue
+        record_type = row.get("individualentityship", "") or row.get("individualentityorship", "") or row.get("individualentityorshiptype", "")
         records.append({
             "unique_id": unique_id,
             "name": full_name,
             "name_type": row.get("nametype", ""),
-            "record_type": row.get("individualentityship", ""),
+            "record_type": record_type,
             "dob": row.get("dob", ""),
             "nationality": row.get("nationalityies", ""),
             "regime": row.get("regimename", ""),
