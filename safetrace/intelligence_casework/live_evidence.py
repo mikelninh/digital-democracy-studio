@@ -16,7 +16,7 @@ from safetrace.evidence_vault.vault import EvidenceVault
 UKSL_SOURCE_ID = "uk-fcdo-sanctions-list-csv"
 UKSL_URL = "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
 ALLOWED_HOSTS = {"sanctionslist.fcdo.gov.uk"}
-MAX_SOURCE_BYTES = 32 * 1024 * 1024
+MAX_SOURCE_BYTES = 128 * 1024 * 1024
 EXPECTED_CONTENT_TYPES = (
     "text/csv",
     "application/csv",
