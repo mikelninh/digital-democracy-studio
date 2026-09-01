@@ -1,0 +1,102 @@
+name: Venatic Real Investigation Proof
+
+on:
+  pull_request:
+    paths:
+      - 'safetrace/venatic_application/real/**'
+      - '.github/workflows/venatic-real-investigation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'safetrace/venatic_application/real/**'
+      - '.github/workflows/venatic-real-investigation.yml'
+  workflow_dispatch:
+
+jobs:
+  browser-proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source-backed case contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          html = Path('safetrace/venatic_application/real/index.html').read_text(encoding='utf-8')
+          data = json.loads(Path('safetrace/venatic_application/real/sources.json').read_text(encoding='utf-8'))
+          assert data['case_id'] == 'REAL-DE-MEAT-LOBBY-001'
+          assert len(data['sources']) >= 8
+          assert 'REAL PUBLIC-SOURCE CASE' in html
+          assert 'Lobbying activity' in html and 'Policy alignment' in html and 'Direct causation' in html
+          assert 'Not proven.' in html
+          assert 'Open original source' in html
+          assert 'German Bundestag' in html
+          assert 'Synthetic training case' not in html
+          for source in data['sources']:
+              assert source['url'].startswith('https://')
+              assert source['authority']
+              assert source['exact_location']
+              assert source['supports']
+              assert source['does_not_prove']
+          print('Real investigation source contract: OK')
+          PY
+      - name: Install Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install chromium
+      - name: Browser-verify source hierarchy
+        run: |
+          mkdir -p artifacts/venatic-real
+          python - <<'PY'
+          import subprocess, time
+          from playwright.sync_api import sync_playwright
+
+          server = subprocess.Popen(['python','-m','http.server','8765'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+          try:
+              time.sleep(0.5)
+              with sync_playwright() as p:
+                  browser = p.chromium.launch(headless=True)
+                  page = browser.new_page(viewport={'width': 1440, 'height': 1050})
+                  errors=[]
+                  page.on('pageerror', lambda error: errors.append(str(error)))
+                  page.goto('http://127.0.0.1:8765/safetrace/venatic_application/real/', wait_until='networkidle')
+                  assert not errors, errors
+                  body = page.locator('body').inner_text()
+                  assert 'Did the meat industry get the policy change it wanted?' in body
+                  assert 'Lobbying activity' in body
+                  assert 'Policy alignment' in body
+                  assert 'Direct causation' in body
+                  assert 'Not proven.' in body
+                  page.screenshot(path='artifacts/venatic-real/01-overview.png', full_page=True)
+
+                  page.locator('[data-source="S2"]').first.click()
+                  assert page.locator('#overlay').evaluate('(el)=>el.classList.contains("show")')
+                  assert 'Official federal disclosure register' in page.locator('#sourceAuthority').inner_text()
+                  assert 'RV0009541' in page.locator('#sourceLocation').inner_text()
+                  href = page.locator('#sourceUrl').get_attribute('href')
+                  assert 'lobbyregister.bundestag.de' in href
+                  assert 'caused' in page.locator('#sourceLimit').inner_text().lower()
+                  page.screenshot(path='artifacts/venatic-real/02-pfg-source.png', full_page=True)
+                  page.locator('#close').click()
+
+                  page.locator('[data-source="S6"]').first.click()
+                  assert 'Primary legislative document' in page.locator('#sourceAuthority').inner_text()
+                  assert 'Executive footprint' in page.locator('#sourceLocation').inner_text()
+                  href = page.locator('#sourceUrl').get_attribute('href')
+                  assert href == 'https://dserver.bundestag.de/btd/21/003/2100327.pdf'
+                  page.screenshot(path='artifacts/venatic-real/03-legislation-source.png', full_page=True)
+                  browser.close()
+          finally:
+              server.terminate()
+              server.wait(timeout=5)
+          PY
+      - name: Upload browser proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: venatic-real-investigation-proof
+          path: artifacts/venatic-real/
+          if-no-files-found: error
