@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 from urllib.error import HTTPError
 
-from safetrace.intelligence_casework.company_live_production import fetch_with_retry
+from safetrace.intelligence_casework.company_live_production import canonicalize_address, fetch_with_retry
 
 
 class CompanyLiveProductionTests(unittest.TestCase):
@@ -40,6 +40,14 @@ class CompanyLiveProductionTests(unittest.TestCase):
                 base_fetch=denied, sleeper=lambda _: None,
             )
         self.assertEqual(len(calls), 1)
+
+    def test_address_punctuation_and_country_suffix_are_not_false_contradictions(self):
+        official = canonicalize_address("Neustädtische Kirchstraße 6 10117 Berlin, Germany")
+        registry = canonicalize_address("Neustädtische Kirchstraße 6 • 10117 Berlin")
+        abbreviated = canonicalize_address("Neustädtische Kirchstr. 6, 10117 Berlin")
+        self.assertEqual(official, "Neustädtische Kirchstraße 6, 10117 Berlin")
+        self.assertEqual(official, registry)
+        self.assertEqual(official, abbreviated)
 
 
 if __name__ == "__main__":
