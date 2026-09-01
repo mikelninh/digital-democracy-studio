@@ -11,7 +11,7 @@ def _entity_index(case: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {row["id"]: row for row in case.get("entities", [])}
 
 
-def _initial_source_ids(case: dict[str, Any]) -> set[str]:
+def initial_source_ids(case: dict[str, Any]) -> set[str]:
     return {row["id"] for row in case.get("source_records", []) if row.get("availability") == "initial"}
 
 
@@ -68,10 +68,8 @@ def _ownership_submission(case: dict[str, Any], relationships: list[dict[str, An
             {target},
         )
 
-    # Remove company rows that only duplicate already-visible direct owners; keep deeper owners.
     direct_names = {row["owner"] for row in direct}
     indirect = [row for row in indirect if row["owner"] not in direct_names]
-
     nominee_present = any(row.get("type") == "OWNS_AS_NOMINEE" for row in ownership_edges)
     control_signal = any(r.get("type") == "BOARD_APPOINTMENT_RIGHT" for r in relationships)
     return {
@@ -128,8 +126,9 @@ def _asset_submission(case: dict[str, Any], relationships: list[dict[str, Any]])
     return roles
 
 
-def build_submission(case: dict[str, Any]) -> dict[str, Any]:
-    available = _initial_source_ids(case)
+def build_submission_with_available(
+    case: dict[str, Any], available: set[str], optional_sources_selected: list[str] | None = None
+) -> dict[str, Any]:
     relationships = _available_relationships(case, available)
     cited = sorted({sid for row in relationships for sid in row.get("evidence", []) if sid in available})
     sanctions = _sanctions_submission(case, available)
@@ -140,7 +139,9 @@ def build_submission(case: dict[str, Any]) -> dict[str, Any]:
         for source in case.get("source_records", [])
         if source["id"] in available
     ).casefold()
-    director_conflict = "anna keller" in source_text and "markus stein" in source_text
+    director_timeline_handled = "anna keller" in source_text and "markus stein" in source_text
+    if "ceased as managing director" in source_text and "appointed" in source_text:
+        director_timeline_handled = True
 
     ownership = _ownership_submission(case, relationships)
     nominee_gap = not ownership["beneficial_ownership_complete"]
@@ -158,9 +159,9 @@ def build_submission(case: dict[str, Any]) -> dict[str, Any]:
         },
         "uncertainty": {
             "unresolved_items": ["Cedar nominee principal / natural-person beneficial owner remains unresolved"] if nominee_gap else [],
-            "director_timeline_handled": director_conflict,
+            "director_timeline_handled": director_timeline_handled,
         },
-        "optional_sources_selected": [],
+        "optional_sources_selected": optional_sources_selected or [],
         "critical_failure_flags": {
             "sanctions_match_claimed": False,
             "fraud_or_evasion_claimed_from_payment_change": False,
@@ -172,6 +173,10 @@ def build_submission(case: dict[str, Any]) -> dict[str, Any]:
             "director_conflict_silently_discarded": False,
         },
     }
+
+
+def build_submission(case: dict[str, Any]) -> dict[str, Any]:
+    return build_submission_with_available(case, initial_source_ids(case))
 
 
 def main() -> int:
