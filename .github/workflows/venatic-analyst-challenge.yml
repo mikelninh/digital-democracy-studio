@@ -1,0 +1,66 @@
+name: Venatic Analyst Challenge
+
+on:
+  pull_request:
+    paths:
+      - 'safetrace/venatic_challenge/**'
+      - '.github/workflows/venatic-analyst-challenge.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'safetrace/venatic_challenge/**'
+      - '.github/workflows/venatic-analyst-challenge.yml'
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate challenge pack contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          case = json.loads(Path('safetrace/venatic_challenge/case_v002.json').read_text(encoding='utf-8'))
+          assert case['classification'].startswith('SYNTHETIC')
+          assert len(case['source_records']) == 28
+          assert sum(s['availability'] == 'initial' for s in case['source_records']) == 18
+          assert sum(s['availability'] == 'optional' for s in case['source_records']) == 10
+          assert len({s['id'] for s in case['source_records']}) == 28
+          assert len({e['id'] for e in case['entities']}) == len(case['entities'])
+          assert abs(0.80 * 0.70 * 0.65 * 100 - 36.4) < 1e-9
+          assert abs(0.80 * 0.70 * 0.55 * 100 - 30.8) < 1e-9
+          print('Challenge contract: OK')
+          PY
+
+      - name: Run evaluator regression suite
+        run: python -m unittest discover -s safetrace/venatic_challenge/tests -v
+
+      - name: Score reference submission
+        run: |
+          mkdir -p artifacts/venatic-analyst-challenge
+          python -m safetrace.venatic_challenge.evaluate \
+            --submission safetrace/venatic_challenge/fixtures/gold_submission.json \
+            --out artifacts/venatic-analyst-challenge/reference-score.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('artifacts/venatic-analyst-challenge/reference-score.json').read_text())
+          assert result['score'] == 100
+          assert result['passed'] is True
+          assert result['critical_failures'] == []
+          print('Reference benchmark: 100/100, no critical failures')
+          PY
+
+      - name: Upload benchmark evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: venatic-analyst-challenge-benchmark
+          path: artifacts/venatic-analyst-challenge/
+          if-no-files-found: error
