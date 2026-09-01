@@ -24,6 +24,17 @@ def _index(items: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {item["id"]: item for item in items}
 
 
+def _duplicate_ids(items: list[dict[str, Any]]) -> set[str]:
+    seen: set[str] = set()
+    duplicates: set[str] = set()
+    for item in items:
+        item_id = item.get("id")
+        if item_id in seen:
+            duplicates.add(str(item_id))
+        seen.add(item_id)
+    return duplicates
+
+
 def _pct(value: float | None) -> str:
     if value is None:
         return "unknown"
@@ -45,13 +56,34 @@ def _threshold_hit(value: float | None, policy: dict[str, Any]) -> bool:
 
 def validate_case(data: dict[str, Any]) -> list[str]:
     errors: list[str] = []
-    entities = _index(data.get("entities", []))
-    sources = _index(data.get("sources", []))
+    entity_items = data.get("entities", [])
+    source_items = data.get("sources", [])
+
+    for duplicate in sorted(_duplicate_ids(entity_items)):
+        errors.append(f"{duplicate}: entity id must be unique")
+    for duplicate in sorted(_duplicate_ids(source_items)):
+        errors.append(f"{duplicate}: source id must be unique")
+    for entity in entity_items:
+        if not entity.get("id"):
+            errors.append("<missing>: entity id is required")
+    for source in source_items:
+        if not source.get("id"):
+            errors.append("<missing>: source id is required")
+
+    # Only build indexes after duplicate/missing-ID validation so malformed input
+    # cannot silently overwrite a distinct entity or evidence source.
+    if any(not item.get("id") for item in entity_items + source_items):
+        entities: dict[str, dict[str, Any]] = {}
+        sources: dict[str, dict[str, Any]] = {}
+    else:
+        entities = _index(entity_items)
+        sources = _index(source_items)
+
     target = data.get("target_entity_id")
     if target not in entities:
         errors.append("target_entity_id must reference an entity")
 
-    for entity in data.get("entities", []):
+    for entity in entity_items:
         if entity.get("kind") not in SUPPORTED_ENTITY_KINDS:
             errors.append(f"{entity.get('id')}: unsupported entity kind")
         if entity.get("resolution_status", "unresolved") not in SUPPORTED_RESOLUTION:
@@ -62,7 +94,8 @@ def validate_case(data: dict[str, Any]) -> list[str]:
         eid = edge.get("id")
         if not eid or eid in edge_ids:
             errors.append(f"{eid or '<missing>'}: ownership edge id must be unique")
-        edge_ids.add(eid)
+        if eid:
+            edge_ids.add(eid)
         if edge.get("owner_id") not in entities:
             errors.append(f"{eid}: unknown owner_id")
         if edge.get("target_id") not in entities:
@@ -81,6 +114,17 @@ def validate_case(data: dict[str, Any]) -> list[str]:
                 errors.append(f"{eid}: evidence references unknown source {ev.get('source_id')}")
             if not ev.get("anchor"):
                 errors.append(f"{eid}: evidence requires an anchor")
+
+    completeness = data.get("completeness", {})
+    if completeness.get("ownership_chain_complete") is True:
+        evidence = completeness.get("evidence", [])
+        if not evidence:
+            errors.append("ownership_chain_complete=true requires evidence")
+        for ev in evidence:
+            if ev.get("source_id") not in sources:
+                errors.append(f"completeness evidence references unknown source {ev.get('source_id')}")
+            if not ev.get("anchor"):
+                errors.append("completeness evidence requires an anchor")
 
     policy = data.get("policy", {})
     threshold = float(policy.get("ubo_threshold", 0.25))
@@ -105,8 +149,8 @@ def _cycle_findings(data: dict[str, Any]) -> list[dict[str, Any]]:
     def canonical(edge_cycle: list[str]) -> tuple[str, ...]:
         if not edge_cycle:
             return tuple()
-        rots = [tuple(edge_cycle[i:] + edge_cycle[:i]) for i in range(len(edge_cycle))]
-        return min(rots)
+        rotations = [tuple(edge_cycle[i:] + edge_cycle[:i]) for i in range(len(edge_cycle))]
+        return min(rotations)
 
     def dfs(node: str) -> None:
         active[node] = len(stack_nodes)
@@ -200,7 +244,7 @@ def _aggregate_paths(paths: list[dict[str, Any]], entities: dict[str, dict[str, 
             "resolution_status": entities[owner_id].get("resolution_status", "unresolved"),
             "aggregate_pct": total,
             "path_count": len(rows),
-            "paths": sorted(rows, key=lambda r: (r["edge_ids"], r["effective_pct"])),
+            "paths": sorted(rows, key=lambda row: (row["edge_ids"], row["effective_pct"])),
             "integrity_warning": "aggregate_exceeds_100_percent" if total > 1.0000001 else None,
         })
     return sorted(out, key=lambda row: (-row["aggregate_pct"], row["owner_id"]))
@@ -259,13 +303,13 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
         if entity["kind"] != "person" or entity.get("resolution_status") != "confirmed":
             continue
         owner_id = entity["id"]
-        econ = economic_by_id.get(owner_id, {}).get("aggregate_pct")
-        vote = voting_by_id.get(owner_id, {}).get("aggregate_pct")
+        economic_pct = economic_by_id.get(owner_id, {}).get("aggregate_pct")
+        voting_pct = voting_by_id.get(owner_id, {}).get("aggregate_pct")
         rights = controls_by_id.get(owner_id, [])
         grounds: list[str] = []
-        if _threshold_hit(econ, policy):
+        if _threshold_hit(economic_pct, policy):
             grounds.append("economic_ownership_threshold")
-        if _threshold_hit(vote, policy):
+        if _threshold_hit(voting_pct, policy):
             grounds.append("voting_rights_threshold")
         if rights and policy.get("control_rights_establish_candidate", True):
             grounds.append("documented_control_right")
@@ -280,8 +324,8 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
                 "name": entity["name"],
                 "status": "candidate_under_configured_rule",
                 "grounds": grounds,
-                "economic_pct": econ,
-                "voting_pct": vote,
+                "economic_pct": economic_pct,
+                "voting_pct": voting_pct,
                 "control_signals": rights,
                 "why": {
                     "paths": why_paths,
@@ -294,8 +338,7 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
                 "boundary": "Candidate under the configured analytical rule; not a definitive legal beneficial-owner determination.",
             })
 
-    unresolved: list[dict[str, Any]] = []
-    unresolved.extend(cycles)
+    unresolved: list[dict[str, Any]] = list(cycles)
     for row in economic_blocked + voting_blocked:
         unresolved.append({
             "type": "blocked_path",
@@ -310,8 +353,11 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
     for gap in data.get("collection_gaps", []):
         unresolved.append({**gap, "status": gap.get("status", "not_established")})
 
-    established_economic_edges = [e for e in data.get("ownership_edges", []) if e.get("status") == "established" and e.get("economic_pct") is not None]
-    missing_vote_edges = [e["id"] for e in established_economic_edges if e.get("voting_pct") is None]
+    established_economic_edges = [
+        edge for edge in data.get("ownership_edges", [])
+        if edge.get("status") == "established" and edge.get("economic_pct") is not None
+    ]
+    missing_vote_edges = [edge["id"] for edge in established_economic_edges if edge.get("voting_pct") is None]
     if missing_vote_edges:
         unresolved.append({
             "type": "voting_data_gap",
@@ -320,23 +366,43 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
             "reason": "Economic ownership is documented on these edges, but voting rights are not. No equality is inferred.",
         })
 
-    source_ids = sorted({ev["source_id"] for edge in data.get("ownership_edges", []) for ev in edge.get("evidence", [])})
+    completeness = data.get("completeness", {})
+    completeness_asserted = completeness.get("ownership_chain_complete") is True
+    completeness_evidence = completeness.get("evidence", []) if completeness_asserted else []
+    voting_control_established = any(
+        row["owner_kind"] == "person"
+        and row.get("resolution_status") == "confirmed"
+        and _threshold_hit(row.get("aggregate_pct"), policy)
+        for row in voting
+    )
+
+    source_ids = {
+        ev["source_id"]
+        for edge in data.get("ownership_edges", [])
+        for ev in edge.get("evidence", [])
+    }
+    source_ids.update(ev["source_id"] for ev in completeness_evidence)
+
     result = {
         "schema_version": "safetrace.ownership-control/1.0",
         "case_id": data["case_id"],
         "classification": data.get("classification", "unspecified"),
         "subject": {"id": target["id"], "name": target["name"], "kind": target["kind"]},
         "policy": policy,
+        "completeness": {
+            "ownership_chain_complete_asserted": completeness_asserted,
+            "evidence": completeness_evidence,
+        },
         "economic_ownership": economic,
         "voting_rights": voting,
         "control_signals": control_signals,
-        "ubo_candidates": sorted(candidates, key=lambda x: x["name"]),
+        "ubo_candidates": sorted(candidates, key=lambda item: item["name"]),
         "unresolved": unresolved,
-        "source_ids_used": source_ids,
+        "source_ids_used": sorted(source_ids),
         "metrics": {
             "entities": len(data["entities"]),
             "ownership_edges": len(data.get("ownership_edges", [])),
-            "established_edges": sum(e.get("status") == "established" for e in data.get("ownership_edges", [])),
+            "established_edges": sum(edge.get("status") == "established" for edge in data.get("ownership_edges", [])),
             "economic_paths": len(economic_paths),
             "voting_paths": len(voting_paths),
             "control_signals": len(control_signals),
@@ -347,18 +413,22 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
         },
         "decision_boundary": {
             "ownership_established": bool(economic),
-            "voting_control_established": bool(voting),
-            "beneficial_ownership_complete": not unresolved and bool(candidate_ids),
+            "voting_rights_established": bool(voting),
+            "voting_control_established": voting_control_established,
+            "ownership_chain_complete_asserted": completeness_asserted,
+            "beneficial_ownership_complete": completeness_asserted and not unresolved and bool(candidate_ids),
             "human_review_required": True,
-            "statement": "Economic ownership, voting rights and other control are separate evidence dimensions. Missing evidence remains unknown.",
+            "statement": "Economic ownership, voting rights and other control are separate evidence dimensions. Missing evidence remains unknown; completeness requires affirmative evidence.",
         },
         "guardrails": [
             "No ownership percentage is inferred from a company name, role or website mention.",
             "Ambiguous or unresolved identities block downstream ownership propagation.",
             "Candidate or contradictory ownership edges do not propagate.",
             "Economic ownership is not assumed to equal voting rights.",
+            "Any voting-rights evidence is not itself treated as voting control; the configured threshold must be met.",
             "Control rights are reported separately from equity.",
             "Cycles are surfaced and excluded from naive recursive aggregation.",
+            "Ownership-chain completeness requires an explicit evidence-backed assertion.",
             "UBO candidates are rule-scoped analytical candidates, not final legal determinations.",
         ],
     }
@@ -379,19 +449,31 @@ def render_markdown(result: dict[str, Any]) -> str:
     for row in result["economic_ownership"]:
         lines.append(f"- **{row['owner_name']}** — {_pct(row['aggregate_pct'])} aggregate economic interest across {row['path_count']} path(s).")
         for path in row["paths"]:
-            lines.append(f"  - Why: {' → '.join(path['edge_ids'])} = {_pct(path['effective_pct'])}; evidence: " + ", ".join(f"{ev['source_id']}#{ev['anchor']}" for ev in path["evidence"]))
+            lines.append(
+                f"  - Why: {' → '.join(path['edge_ids'])} = {_pct(path['effective_pct'])}; evidence: "
+                + ", ".join(f"{ev['source_id']}#{ev['anchor']}" for ev in path["evidence"])
+            )
     if not result["economic_ownership"]:
         lines.append("- Not established.")
 
     lines += ["", "## Voting rights", ""]
     for row in result["voting_rights"]:
-        lines.append(f"- **{row['owner_name']}** — {_pct(row['aggregate_pct'])} documented voting-rights path aggregate.")
+        lines.append(f"- **{row['owner_name']}** — {_pct(row['aggregate_pct'])} documented voting-rights aggregate across {row['path_count']} path(s).")
+        for path in row["paths"]:
+            lines.append(
+                f"  - Why: {' → '.join(path['edge_ids'])} = {_pct(path['effective_pct'])}; evidence: "
+                + ", ".join(f"{ev['source_id']}#{ev['anchor']}" for ev in path["evidence"])
+            )
     if not result["voting_rights"]:
         lines.append("- Not established. Economic ownership is not substituted for missing voting evidence.")
 
     lines += ["", "## Other control", ""]
     for signal in result["control_signals"]:
-        lines.append(f"- **{signal['controller_name']}** — {', '.join(signal['rights'])}. _Evidence: " + ", ".join(f"{ev['source_id']}#{ev['anchor']}" for ev in signal["evidence"]) + "_")
+        lines.append(
+            f"- **{signal['controller_name']}** — {', '.join(signal['rights'])}. _Evidence: "
+            + ", ".join(f"{ev['source_id']}#{ev['anchor']}" for ev in signal["evidence"])
+            + "_"
+        )
     if not result["control_signals"]:
         lines.append("- No documented control-right signal established in the supplied evidence.")
 
@@ -407,34 +489,62 @@ def render_markdown(result: dict[str, Any]) -> str:
     if not result["unresolved"]:
         lines.append("- No unresolved item in this bounded case.")
 
-    lines += ["", "## Boundary", "", result["decision_boundary"]["statement"], "", "The output is an evidence-backed analytical work product. Consequential or legal UBO/control conclusions require human review and the applicable jurisdiction-specific rules.", ""]
+    lines += [
+        "", "## Boundary", "", result["decision_boundary"]["statement"], "",
+        "The output is an evidence-backed analytical work product. Consequential or legal UBO/control conclusions require human review and the applicable jurisdiction-specific rules.", "",
+    ]
     return "\n".join(lines)
 
 
+def _html_path_details(row: dict[str, Any], esc: Any) -> str:
+    return "".join(
+        "<details><summary>Show me why</summary><p>"
+        + esc(" → ".join(path["edge_ids"]))
+        + " = "
+        + esc(_pct(path["effective_pct"]))
+        + "</p><ul>"
+        + "".join(f"<li>{esc(ev['source_id'])} · {esc(ev['anchor'])}</li>" for ev in path["evidence"])
+        + "</ul></details>"
+        for path in row["paths"]
+    )
+
+
 def render_html(result: dict[str, Any]) -> str:
-    esc = lambda x: html.escape(str(x), quote=True)
+    esc = lambda value: html.escape(str(value), quote=True)
     metrics = result["metrics"]
     ownership = "".join(
         f"<article class='card'><div class='eyebrow'>{esc(row['owner_kind'])}</div><h3>{esc(row['owner_name'])}</h3><div class='value'>{esc(_pct(row['aggregate_pct']))}</div><p>{row['path_count']} evidence-backed path(s)</p>"
-        + "".join("<details><summary>Show me why</summary><p>" + esc(" → ".join(path["edge_ids"])) + " = " + esc(_pct(path["effective_pct"])) + "</p><ul>" + "".join(f"<li>{esc(ev['source_id'])} · {esc(ev['anchor'])}</li>" for ev in path["evidence"]) + "</ul></details>" for path in row["paths"])
-        + "</article>" for row in result["economic_ownership"]
+        + _html_path_details(row, esc)
+        + "</article>"
+        for row in result["economic_ownership"]
     ) or "<p class='muted'>Economic ownership not established.</p>"
+    voting = "".join(
+        f"<article class='card'><div class='eyebrow'>VOTING RIGHTS · {esc(row['owner_kind'])}</div><h3>{esc(row['owner_name'])}</h3><div class='value'>{esc(_pct(row['aggregate_pct']))}</div><p>{row['path_count']} evidence-backed voting path(s)</p>"
+        + _html_path_details(row, esc)
+        + "</article>"
+        for row in result["voting_rights"]
+    ) or "<p class='muted'>Voting rights not established. Economic ownership is not substituted.</p>"
     candidates = "".join(
-        f"<article class='card candidate'><div class='eyebrow'>RULE-SCOPED CANDIDATE</div><h3>{esc(c['name'])}</h3><p>{esc(', '.join(c['grounds']))}</p><p>Economic: <b>{esc(_pct(c['economic_pct']))}</b> · Voting: <b>{esc(_pct(c['voting_pct']))}</b></p><small>{esc(c['boundary'])}</small></article>"
-        for c in result["ubo_candidates"]
+        f"<article class='card candidate'><div class='eyebrow'>RULE-SCOPED CANDIDATE</div><h3>{esc(candidate['name'])}</h3><p>{esc(', '.join(candidate['grounds']))}</p><p>Economic: <b>{esc(_pct(candidate['economic_pct']))}</b> · Voting: <b>{esc(_pct(candidate['voting_pct']))}</b></p><small>{esc(candidate['boundary'])}</small></article>"
+        for candidate in result["ubo_candidates"]
     ) or "<p class='muted'>No UBO candidate established from supplied evidence.</p>"
-    gaps = "".join(f"<li><b>{esc(x.get('type','gap'))}</b><span>{esc(x.get('status','unresolved'))}</span><p>{esc(x.get('reason','Not established.'))}</p></li>" for x in result["unresolved"]) or "<li>No unresolved item in this bounded case.</li>"
+    gaps = "".join(
+        f"<li><b>{esc(item.get('type','gap'))}</b><span>{esc(item.get('status','unresolved'))}</span><p>{esc(item.get('reason','Not established.'))}</p></li>"
+        for item in result["unresolved"]
+    ) or "<li>No unresolved item in this bounded case.</li>"
     control_cards: list[str] = []
     for signal in result["control_signals"]:
         evidence_items = "".join(f"<li>{esc(ev['source_id'])} · {esc(ev['anchor'])}</li>" for ev in signal["evidence"])
-        control_cards.append(f"<article class='card'><h3>{esc(signal['controller_name'])}</h3><div class='value smallvalue'>{esc(', '.join(signal['rights']))}</div><details><summary>Show me why</summary><ul>{evidence_items}</ul></details></article>")
+        control_cards.append(
+            f"<article class='card'><h3>{esc(signal['controller_name'])}</h3><div class='value smallvalue'>{esc(', '.join(signal['rights']))}</div><details><summary>Show me why</summary><ul>{evidence_items}</ul></details></article>"
+        )
     controls = "".join(control_cards) or "<p class='muted'>No documented non-equity control signal.</p>"
 
     return f"""<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>Ownership & Control — {esc(result['subject']['name'])}</title><style>
 :root{{--bg:#07100f;--panel:#0e1917;--panel2:#13211f;--line:#263a36;--text:#f1f7f5;--muted:#9bb0aa;--accent:#96e8c4;--warn:#f4c36a}}
 *{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif}}main{{max-width:1180px;margin:auto;padding:52px 24px 88px}}h1{{font-size:clamp(42px,7vw,78px);line-height:.94;letter-spacing:-.055em;margin:8px 0 18px}}h2{{margin:52px 0 18px;font-size:27px}}h3{{margin:8px 0}}.kicker,.eyebrow{{text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;color:var(--accent)}}.lead{{font-size:19px;max-width:900px;color:#dbe9e5}}.metrics{{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:28px 0}}.metric,.card{{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}}.metric b{{display:block;font-size:30px}}.metric span,.muted,small{{color:var(--muted)}}.grid{{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}}.value{{font-size:28px;font-weight:780}}.smallvalue{{font-size:18px}}details{{border-top:1px solid var(--line);padding:9px 0;margin-top:12px}}summary{{cursor:pointer;color:var(--accent)}}.candidate{{border-color:#567664}}ul.gaps{{list-style:none;padding:0;display:grid;gap:10px}}.gaps li{{background:var(--panel2);border-left:3px solid var(--warn);padding:15px 18px}}.gaps span{{margin-left:10px;color:var(--warn);font-size:12px}}.boundary{{margin-top:48px;border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--panel2)}}@media(max-width:820px){{.metrics{{grid-template-columns:repeat(2,1fr)}}.grid{{grid-template-columns:1fr}}}}
-</style></head><body><main><div class='kicker'>SafeTrace · Ownership & Control</div><h1>{esc(result['subject']['name'])}</h1><p class='lead'>Trace economic ownership, voting rights and documented control separately. Every propagated conclusion carries its evidence chain; ambiguous identities and missing edges stop propagation.</p><div class='metrics'><div class='metric'><b>{metrics['entities']}</b><span>entities</span></div><div class='metric'><b>{metrics['established_edges']}</b><span>established edges</span></div><div class='metric'><b>{metrics['economic_paths']}</b><span>economic paths</span></div><div class='metric'><b>{metrics['voting_paths']}</b><span>voting paths</span></div><div class='metric'><b>{metrics['ubo_candidates']}</b><span>UBO candidates</span></div><div class='metric'><b>{metrics['unresolved_items']}</b><span>open items</span></div></div><h2>Economic ownership</h2><div class='grid'>{ownership}</div><h2>Other documented control</h2><div class='grid'>{controls}</div><h2>UBO candidates under configured rule</h2><div class='grid'>{candidates}</div><h2>Still unknown / blocked</h2><ul class='gaps'>{gaps}</ul><div class='boundary'><div class='eyebrow'>Decision boundary</div><p>{esc(result['decision_boundary']['statement'])}</p><p class='muted'>Analytical candidates are not final legal UBO determinations. Human review and applicable jurisdiction-specific rules are required.</p></div></main></body></html>"""
+</style></head><body><main><div class='kicker'>SafeTrace · Ownership & Control</div><h1>{esc(result['subject']['name'])}</h1><p class='lead'>Trace economic ownership, voting rights and documented control separately. Every propagated conclusion carries its evidence chain; ambiguous identities and missing edges stop propagation.</p><div class='metrics'><div class='metric'><b>{metrics['entities']}</b><span>entities</span></div><div class='metric'><b>{metrics['established_edges']}</b><span>established edges</span></div><div class='metric'><b>{metrics['economic_paths']}</b><span>economic paths</span></div><div class='metric'><b>{metrics['voting_paths']}</b><span>voting paths</span></div><div class='metric'><b>{metrics['ubo_candidates']}</b><span>UBO candidates</span></div><div class='metric'><b>{metrics['unresolved_items']}</b><span>open items</span></div></div><h2>Economic ownership</h2><div class='grid'>{ownership}</div><h2>Voting rights</h2><div class='grid'>{voting}</div><h2>Other documented control</h2><div class='grid'>{controls}</div><h2>UBO candidates under configured rule</h2><div class='grid'>{candidates}</div><h2>Still unknown / blocked</h2><ul class='gaps'>{gaps}</ul><div class='boundary'><div class='eyebrow'>Decision boundary</div><p>{esc(result['decision_boundary']['statement'])}</p><p class='muted'>Analytical candidates are not final legal UBO determinations. Human review and applicable jurisdiction-specific rules are required.</p></div></main></body></html>"""
 
 
 def run_case(case_path: Path, out_dir: Path) -> dict[str, Any]:
@@ -454,8 +564,8 @@ def main() -> int:
     args = parser.parse_args()
     result = run_case(args.case, args.out)
     print(json.dumps(result["metrics"], indent=2))
-    print(f"UBO candidates: {[x['name'] for x in result['ubo_candidates']]}")
-    if any(x.get("integrity_warning") for x in result["economic_ownership"]):
+    print(f"UBO candidates: {[item['name'] for item in result['ubo_candidates']]}")
+    if any(item.get("integrity_warning") for item in result["economic_ownership"]):
         return 2
     return 0
 
