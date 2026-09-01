@@ -1,0 +1,48 @@
+{
+  "ownership": {
+    "direct": [
+      {"owner": "Northbridge Holdings Ltd", "economic_pct": 65, "voting_pct": 55},
+      {"owner": "Danube Industrial GmbH", "economic_pct": 20, "voting_pct": 20},
+      {"owner": "Cedar Nominees Ltd", "economic_pct": 15, "voting_pct": 25, "nominee": true}
+    ],
+    "indirect": [
+      {"owner": "Aurora Meridian FZE", "economic_pct": 45.5, "voting_pct": 38.5},
+      {"owner": "Mihailo Petrović", "economic_pct": 36.4, "voting_pct": 30.8},
+      {"owner": "Lydia Karst", "economic_pct": 20, "voting_pct": 20}
+    ],
+    "beneficial_ownership_complete": false,
+    "control_signal_separate": true
+  },
+  "sanctions": {
+    "decision": "NOT_SAME_AS",
+    "reason": "DOB, nationality and passport all conflict with the sanctions candidate.",
+    "evidence": ["S07", "S08", "S09"]
+  },
+  "assets": {
+    "legal_owner": "Atlas Property SPV GmbH",
+    "security_interest_holder": "Helios Handelsbank AG",
+    "operator_lessee": "Meridian Atlas Trading GmbH"
+  },
+  "source_ids_cited": ["S02", "S03", "S05", "S06", "S07", "S08", "S12", "S17", "S18", "S19", "S25", "S28"],
+  "claims_have_source_ids": true,
+  "boundaries": {
+    "no_fraud_or_evasion_claim": true,
+    "no_nominee_principal_invented": true,
+    "court_no_hit_bounded": true
+  },
+  "uncertainty": {
+    "unresolved_items": ["Cedar nominee principal / natural-person beneficial owner remains unresolved"],
+    "director_timeline_handled": true
+  },
+  "optional_sources_selected": ["S25", "S28", "S19", "S22", "S24"],
+  "critical_failure_flags": {
+    "sanctions_match_claimed": false,
+    "fraud_or_evasion_claimed_from_payment_change": false,
+    "cedar_principal_invented": false,
+    "target_claimed_as_property_owner": false,
+    "bank_claimed_as_property_owner": false,
+    "court_no_hit_treated_as_no_litigation_proof": false,
+    "beneficial_ownership_marked_complete": false,
+    "director_conflict_silently_discarded": false
+  }
+}
