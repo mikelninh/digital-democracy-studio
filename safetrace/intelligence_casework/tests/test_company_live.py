@@ -47,7 +47,7 @@ class CompanyLiveTests(unittest.TestCase):
                 },
                 {
                     "id": "registry", "title": "Registry", "publisher": "Registry mirror", "url": "https://registry.example/record",
-                    "source_type": "public_register_aggregator", "source_rank": "secondary_public_record", "authority": 0.8, "jurisdiction": "DE", "update_cadence": "manual",
+                    "source_type": "public_register_aggregator", "source_rank": "reputable_secondary", "authority": 0.8, "jurisdiction": "DE", "update_cadence": "manual",
                     "extract": [
                         {"field": "legal_name", "pattern": "(Acme GmbH)"},
                         {"field": "register_id", "pattern": "(HRB 12345)", "required": True}
