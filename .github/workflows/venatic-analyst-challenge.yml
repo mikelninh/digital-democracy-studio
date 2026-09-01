@@ -58,6 +58,26 @@ jobs:
           print('Reference benchmark: 100/100, no critical failures')
           PY
 
+      - name: Run SafeTrace blind initial-pack analysis
+        run: |
+          python -m safetrace.venatic_challenge.run_initial \
+            --out artifacts/venatic-analyst-challenge/initial-submission.json
+          set +e
+          python -m safetrace.venatic_challenge.evaluate \
+            --submission artifacts/venatic-analyst-challenge/initial-submission.json \
+            --out artifacts/venatic-analyst-challenge/initial-score.json
+          code=$?
+          set -e
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          score = json.loads(Path('artifacts/venatic-analyst-challenge/initial-score.json').read_text())
+          assert score['score'] >= 90, score
+          assert score['critical_failures'] == [], score
+          print(f"Blind initial-pack score: {score['score']}/100")
+          PY
+          test "$code" -eq 0
+
       - name: Upload benchmark evidence
         uses: actions/upload-artifact@v4
         with:
