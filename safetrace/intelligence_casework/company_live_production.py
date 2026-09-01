@@ -86,9 +86,10 @@ def canonicalize_address(value: str) -> str:
     """Collapse presentation differences without erasing substantive address components."""
     text = re.sub(r"\s+", " ", value).strip(" ,.;")
     text = text.replace("Kirchstr.", "Kirchstraße").replace("Kirchstrasse", "Kirchstraße")
-    text = re.sub(r"\s*•\s*", ", ", text)
     text = re.sub(r",?\s*Germany$", "", text, flags=re.IGNORECASE).strip(" ,")
-    text = re.sub(r"\s*,\s*", ", ", text)
+    text = re.sub(r"\s*•\s*", " ", text)
+    text = re.sub(r"\s*,\s*", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"\s+(\d{5}\s+Berlin)$", r", \1", text)
     return text
 
