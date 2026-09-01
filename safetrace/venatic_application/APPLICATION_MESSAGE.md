@@ -12,7 +12,7 @@ The blind first pass scores 95/100 against a hidden gold answer with zero critic
 
 The point is not that software replaces an analyst. I built it to show how I research and think: preserve uncertainty, separate leads from conclusions, keep provenance behind consequential claims and make the next research decision explicit.
 
-**Proof of work:** [insert application link]
+**Proof of work:** https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/
 
 I’d be very interested to learn how your analysts approach these cases in practice and where this kind of evidence-first tooling could be useful.
 
