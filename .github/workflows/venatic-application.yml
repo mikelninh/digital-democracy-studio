@@ -34,17 +34,24 @@ jobs:
           assert sum(s['availability'] == 'initial' for s in case['source_records']) == 18
           assert sum(s['availability'] == 'optional' for s in case['source_records']) == 10
           html = (root / 'index.html').read_text(encoding='utf-8')
-          for phrase in ['Try three investigations.','Who really owns this company?','Is this sanctions hit real?','Who owns the warehouse?','95/100','100/100']:
+          for phrase in [
+              'Solve three tiny investigations.',
+              '80% × 70% × 65%',
+              '36.4% indirect economic interest',
+              'Natural-person principal: UNKNOWN',
+              'View source',
+              'Facts used in this case',
+              '95 → 100'
+          ]:
               assert phrase in html, phrase
           assert 'APPLICATION_MESSAGE.md' not in html
-          assert "I didn't want to tell you I could do the work" not in html
-          print('Simplified application contract: OK')
+          print('Visual detective application contract: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify three-case HR journey
+      - name: Browser-verify detective evidence journey
         run: |
           mkdir -p artifacts/venatic-application
           python - <<'PY'
@@ -61,32 +68,47 @@ jobs:
                   page.on('pageerror', lambda error: errors.append(str(error)))
                   page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
                   assert not errors, errors
-                  assert page.locator('h1').inner_text() == 'Try three investigations.'
-                  assert page.locator('.case-card').count() == 3
+                  assert page.locator('h1').inner_text() == 'Solve three tiny investigations.'
+                  assert page.locator('.case-tab').count() == 3
                   assert page.locator('.pane.active').get_attribute('id') == 'ownership'
+                  assert '80% × 70% × 65%' in page.locator('#ownership .equation').inner_text()
+                  assert '36.4%' in page.locator('#ownership .equation').inner_text()
+                  assert 'UNKNOWN' in page.locator('#ownership').inner_text()
                   page.screenshot(path='artifacts/venatic-application/01-overview.png', full_page=True)
 
+                  page.locator('#ownership .proof[data-source="S06"]').click()
+                  assert page.locator('#drawer').evaluate('(el) => el.classList.contains("show")')
+                  assert 'Aurora Meridian FZE ownership certificate' in page.locator('#sourceTitle').inner_text()
+                  assert 'Mihailo Petrović owns 80%' in page.locator('#sourceFacts').inner_text()
+                  page.screenshot(path='artifacts/venatic-application/02-source-proof.png', full_page=True)
+                  page.locator('#close').click()
+
                   page.locator('#ownership .choice[data-answer="correct"]').click()
-                  assert '36.4%' in page.locator('#result-ownership').inner_text()
-                  assert page.locator('#d1').evaluate('(el) => el.classList.contains("done")')
-                  page.screenshot(path='artifacts/venatic-application/02-ownership-aha.png', full_page=True)
-
+                  assert 'every ownership edge has a source' in page.locator('#result-ownership').inner_text()
                   page.locator('#result-ownership [data-next="sanctions"]').click()
+
                   assert page.locator('.pane.active').get_attribute('id') == 'sanctions'
+                  assert '19 Apr 1984' in page.locator('#sanctions').inner_text()
+                  assert '03 Jan 1972' in page.locator('#sanctions').inner_text()
+                  page.locator('#sanctions .proof[data-source="S08"]').click()
+                  assert 'Mikhail Petrovich' in page.locator('#sourceFacts').inner_text()
+                  page.locator('#close').click()
                   page.locator('#sanctions .choice[data-answer="correct"]').click()
-                  assert 'NOT SAME PERSON' in page.locator('#result-sanctions').inner_text()
-                  assert page.locator('#d2').evaluate('(el) => el.classList.contains("done")')
-
+                  assert 'reject the match' in page.locator('#result-sanctions').inner_text().lower()
                   page.locator('#result-sanctions [data-next="asset"]').click()
-                  assert page.locator('.pane.active').get_attribute('id') == 'asset'
-                  page.locator('#asset .choice[data-answer="correct"]').click()
-                  assert 'land register' in page.locator('#asset').inner_text().lower()
-                  assert page.locator('#d3').evaluate('(el) => el.classList.contains("done")')
 
+                  assert page.locator('.pane.active').get_attribute('id') == 'asset'
+                  assert 'LEGAL OWNER' in page.locator('#asset').inner_text()
+                  page.locator('#asset .proof[data-source="S17"]').first.click()
+                  assert 'Atlas Property SPV GmbH' in page.locator('#sourceFacts').inner_text()
+                  assert 'Helios Handelsbank AG' in page.locator('#sourceFacts').inner_text()
+                  page.locator('#close').click()
+                  page.locator('#asset .choice[data-answer="correct"]').click()
                   page.locator('#result-asset [data-finish]').click()
-                  assert page.locator('#complete').evaluate('(el) => el.classList.contains("show")')
-                  final = page.locator('#complete').inner_text()
-                  assert '95/100' in final and '100/100' in final and 'critical overclaims' in final
+
+                  assert page.locator('#done').evaluate('(el) => el.classList.contains("show")')
+                  final = page.locator('#done').inner_text()
+                  assert '28 records' in final and '95 → 100' in final and 'critical overclaims' in final
                   page.screenshot(path='artifacts/venatic-application/03-finish.png', full_page=True)
                   browser.close()
           finally:
