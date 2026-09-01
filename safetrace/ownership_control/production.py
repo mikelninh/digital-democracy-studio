@@ -124,12 +124,7 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
 
 
 def _render_workspace(result: dict[str, Any], data: dict[str, Any]) -> str:
-    """Render the analyst workspace and guard against browser-global name collisions.
-
-    `window.top` is a browser-provided global. Earlier UI code declared `const top`,
-    which parses in non-browser checks but fails in Chromium. Keep this compatibility
-    shim until the renderer itself is split into smaller assets.
-    """
+    """Render the analyst workspace with browser-safe interaction guards."""
     page = render_workspace_html(result, data)
     page = page.replace("const top=economic[0];", "const topOwner=economic[0];")
     page = page.replace(
@@ -139,6 +134,13 @@ def _render_workspace(result: dict[str, Any], data: dict[str, Any]) -> str:
     page = page.replace(
         "const findings=[];if(top)findings.push([false,`${top.owner_name} · ${pct(top.aggregate_pct)} economic`,`Highest aggregated economic position in the computed graph.`]);",
         "const findings=[];if(topOwner)findings.push([false,`${topOwner.owner_name} · ${pct(topOwner.aggregate_pct)} economic`,`Highest aggregated economic position in the computed graph.`]);",
+    )
+    # SVG percentage badges sit above the intentionally wide transparent edge hit
+    # target. They are display-only and must not steal the analyst's click.
+    page = page.replace(
+        "</style>",
+        "#graph svg rect,#graph svg text{pointer-events:none}</style>",
+        1,
     )
     if "const top=" in page:
         raise RuntimeError("Analyst workspace contains browser-global `top` redeclaration")
