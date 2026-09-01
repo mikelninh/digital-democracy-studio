@@ -113,6 +113,10 @@ jobs:
                   errors=[]
                   page.on('pageerror',lambda e:errors.append(str(e)))
 
+                  def open_source(selector):
+                      page.locator(selector).first.click()
+                      page.locator('#sourceOverlay.show').wait_for(state='visible')
+
                   # Hub: three cases, no wall of technical detail.
                   page.goto(base,wait_until='networkidle')
                   assert page.locator('.case-card').count()==3
@@ -126,8 +130,7 @@ jobs:
                   assert 'Did the meat industry get a policy change it asked for?' in page.locator('h1').inner_text()
                   assert page.locator('.verdict').count()==3
                   assert float(page.locator('.verdict p').first.evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 16
-                  page.locator('[data-source="S9"]').first.click()
-                  assert page.locator('#sourceOverlay').evaluate('(el)=>el.classList.contains("show")')
+                  open_source('[data-source="S9"]')
                   assert 'promulgated' in page.locator('#sourceSupports').inner_text().lower()
                   assert 'dip.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
                   page.screenshot(path='artifacts/venatic-real/01-meat-source.png',full_page=True)
@@ -138,11 +141,11 @@ jobs:
                   body=page.locator('body').inner_text().lower()
                   assert 'up to €8.5bn' in body and '~€880m' in body
                   assert 'lobbying caused award' in body and 'not proven' in body
-                  page.locator('[data-source="D2"]').first.click()
+                  open_source('[data-source="D2"]')
                   assert 'framework ceiling' in page.locator('#sourceLimit').inner_text().lower()
                   assert 'rheinmetall.com' in page.locator('#sourceUrl').get_attribute('href')
                   page.locator('#closeSource').click()
-                  page.locator('[data-source="D8"]').first.click()
+                  open_source('[data-source="D8"]')
                   assert 'official federal lobbying disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
                   assert '472' in page.locator('#sourceSupports').inner_text()
                   page.screenshot(path='artifacts/venatic-real/02-defence-source.png',full_page=True)
@@ -154,7 +157,7 @@ jobs:
                   for term in ['IMO 9413547','NS ARCTIC','AMULET','ALTAIR','IMO 9422457','SCF BAIKAL','BOBCAT','BLOSSOM']:
                       assert term in body, term
                   assert 'Unresolved' in body
-                  page.locator('[data-source="S3"]').first.click()
+                  open_source('[data-source="S3"]')
                   assert 'Official Journal legal act' in page.locator('#sourceAuthority').inner_text()
                   assert '9413547' in page.locator('#sourceLocation').inner_text()
                   assert 'eur-lex.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
