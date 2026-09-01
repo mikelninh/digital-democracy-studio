@@ -7,10 +7,17 @@ from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 
-from safetrace.intelligence_casework.company_live_resilient import investigate_resilient
+from safetrace.intelligence_casework.company_live_resilient import _normalise_live_fact, investigate_resilient
 
 
 class CompanyLiveResilientTests(unittest.TestCase):
+    def test_german_euro_share_capital_is_not_inflated_by_100x(self):
+        fact = _normalise_live_fact({
+            "field": "share_capital_eur", "status": "extracted",
+            "value": "2500000", "raw_value": "25.000,00 EUR",
+        })
+        self.assertEqual(fact["value"], "25000")
+
     def test_blocked_secondary_source_is_recorded_while_case_continues(self):
         case = {
             "case": {
@@ -24,7 +31,10 @@ class CompanyLiveResilientTests(unittest.TestCase):
                     "id": "official", "title": "Official", "publisher": "Acme", "url": "https://example.com/",
                     "source_type": "company_official_website", "source_rank": "primary_official", "authority": 0.95,
                     "jurisdiction": "DE", "update_cadence": "manual",
-                    "extract": [{"field": "legal_name", "pattern": "(Acme GmbH)", "required": True}]
+                    "extract": [
+                        {"field": "legal_name", "pattern": "(Acme GmbH)", "required": True},
+                        {"field": "address", "pattern": "(Main Street 1)", "required": True}
+                    ]
                 },
                 {
                     "id": "blocked", "title": "Blocked mirror", "publisher": "Mirror", "url": "https://blocked.example/record",
@@ -54,11 +64,19 @@ class CompanyLiveResilientTests(unittest.TestCase):
             self.assertEqual(result["metrics"]["sources_requested"], 2)
             self.assertEqual(result["metrics"]["sources_acquired"], 1)
             self.assertEqual(result["metrics"]["source_failures"], 1)
+            self.assertEqual(result["metrics"]["extraction_gaps"], 1)
             self.assertTrue(any(c["field"] == "legal_name" for c in result["claims"]))
             self.assertTrue(any(g["status"] == "source_unavailable" for g in result["unresolved_questions"]))
+            self.assertTrue(any(g["status"] == "extraction_gap" and "address" in g["field"] for g in result["unresolved_questions"]))
             self.assertTrue(any(g["field"] == "register_id" for g in result["unresolved_questions"]))
             self.assertIn("source-access failure", result["bottom_line"])
-            self.assertTrue((out / "index.html").exists())
+            report = (out / "report.md").read_text(encoding="utf-8")
+            self.assertIn("unavailable HTTP 403", report)
+            self.assertNotIn("403 equivalent success", report)
+            html = (out / "index.html").read_text(encoding="utf-8")
+            self.assertIn("Still unknown", html)
+            self.assertIn("UNAVAILABLE", html)
+            self.assertIn("parser gaps", html)
 
 
 if __name__ == "__main__":
