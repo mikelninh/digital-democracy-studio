@@ -25,8 +25,26 @@ jobs:
           python-version: '3.12'
       - name: Validate synthetic intelligence case
         run: python safetrace/intelligence_casework/validate_case.py
-      - name: Run intelligence casework tests
-        run: python -m unittest safetrace.intelligence_casework.tests.test_case_v001 -v
+      - name: Re-run working investigation and verify committed results
+        run: python -m safetrace.intelligence_casework.run_case --check
+      - name: Run all intelligence casework tests
+        run: python -m unittest discover -s safetrace/intelligence_casework/tests -v
+      - name: Assert investigation outcome contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path('safetrace/intelligence_casework/results/v001_result.json').read_text(encoding='utf-8'))
+          e = r['executive_result']
+          assert r['status'] == 'completed'
+          assert e['decision'] == 'ENHANCED_DUE_DILIGENCE_REQUIRED'
+          assert e['confirmed_sanctions_match'] is False
+          assert e['material_findings'] == 3
+          assert e['open_actions'] == 4
+          assert any(x['effective_interest'] == 0.42 for x in r['ownership']['paths'])
+          assert any(x['effective_interest'] == 0.28 for x in r['ownership']['paths'])
+          print('PASS: V-001 produced the expected bounded analyst result')
+          PY
       - name: Re-run frozen entity-resolution holdout
         run: python scripts/zsi_entity_holdout.py
       - name: Verify holdout result remains committed and honest

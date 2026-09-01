@@ -1,0 +1,284 @@
+{
+  "asset_interests": [
+    {
+      "assessment": "Legal ownership is established.",
+      "asset_id": "AS1",
+      "asset_name": "Leipzig Distribution Centre",
+      "interest_type": "LEGAL_OWNER_OF",
+      "party_name": "Northstar Components GmbH",
+      "source": "AT1"
+    },
+    {
+      "assessment": "Operation/use only; not ownership.",
+      "asset_id": "AS1",
+      "asset_name": "Leipzig Distribution Centre",
+      "interest_type": "OPERATES_AT",
+      "party_name": "Northstar Operations GmbH",
+      "source": "AT2"
+    },
+    {
+      "assessment": "Security interest only; not ownership.",
+      "asset_id": "AS1",
+      "asset_name": "Leipzig Distribution Centre",
+      "interest_type": "SECURITY_INTEREST_IN",
+      "party_name": "Borealis Bank AG",
+      "source": "AT1"
+    },
+    {
+      "assessment": "Legal ownership is established.",
+      "asset_id": "AS2",
+      "asset_name": "CNC Production Line 7",
+      "interest_type": "LEGAL_OWNER_OF",
+      "party_name": "Arcadia Leasing GmbH",
+      "source": "AT3"
+    },
+    {
+      "assessment": "Lease/use only; not ownership.",
+      "asset_id": "AS2",
+      "asset_name": "CNC Production Line 7",
+      "interest_type": "LESSEE_OF",
+      "party_name": "Northstar Components GmbH",
+      "source": "AT3"
+    }
+  ],
+  "case_id": "V-001",
+  "classification": "SYNTHETIC TRAINING CASE \u2014 NO REAL-WORLD ALLEGATIONS",
+  "client_question": "Who controls Northstar Components GmbH, what material risks are visible in the supplied record, which assets can actually be attributed, and what should an analyst verify next?",
+  "contradictions": [
+    {
+      "assessment": "Sources conflict on current director status; authoritative filing outranks self-report but must be refreshed.",
+      "company_name": "Northstar Components GmbH",
+      "next_action": "Obtain the latest authoritative registry filing history and effective date.",
+      "observed_values": [
+        false,
+        true
+      ],
+      "person_name": "Marek Vostrik",
+      "sources": [
+        "S1",
+        "S5"
+      ]
+    }
+  ],
+  "executive_result": {
+    "analyst_review_required": true,
+    "confidence": 0.93,
+    "confirmed_sanctions_match": false,
+    "decision": "ENHANCED_DUE_DILIGENCE_REQUIRED",
+    "material_findings": 3,
+    "open_actions": 4,
+    "summary": "Visible ownership is supported, but enhanced due diligence is required before a consequential decision. Beneficial ownership behind a nominee stake is unresolved, a payment-beneficiary change is unverified, director status is contradictory, and the sanctions near-name candidate is rejected because stable identity fields conflict."
+  },
+  "findings": [
+    {
+      "category": "ownership",
+      "conclusion": "Meridian Ventures Ltd has a documented 70% direct economic interest in Northstar Components GmbH.",
+      "severity": "info",
+      "sources": [
+        "S1"
+      ],
+      "status": "supported"
+    },
+    {
+      "category": "ownership",
+      "conclusion": "Asterion Capital FZE has a documented 42% indirect economic interest in Northstar Components GmbH.",
+      "severity": "info",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "status": "supported"
+    },
+    {
+      "category": "ownership",
+      "conclusion": "Alder Ventures GmbH has a documented 30% direct economic interest in Northstar Components GmbH.",
+      "severity": "info",
+      "sources": [
+        "S1"
+      ],
+      "status": "supported"
+    },
+    {
+      "category": "ownership",
+      "conclusion": "Helix Nominees Ltd has a documented 28% indirect economic interest in Northstar Components GmbH.",
+      "severity": "info",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "status": "supported"
+    },
+    {
+      "category": "beneficial_ownership_gap",
+      "conclusion": "The natural-person beneficial owner behind Helix Nominees Ltd (28% effective interest) is unresolved in the supplied record.",
+      "severity": "medium",
+      "sources": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "status": "unresolved"
+    },
+    {
+      "category": "payment_route",
+      "conclusion": "A later payment instruction changes the beneficiary away from the contractual counterparty. This is an anomaly requiring verification, not proof of fraud or sanctions evasion.",
+      "severity": "high",
+      "sources": [
+        "S6",
+        "S7"
+      ],
+      "status": "requires_verification"
+    },
+    {
+      "category": "contradiction",
+      "conclusion": "Current director status for Marek Vostrik is contradictory across supplied sources.",
+      "severity": "medium",
+      "sources": [
+        "S1",
+        "S5"
+      ],
+      "status": "requires_verification"
+    },
+    {
+      "category": "screening",
+      "conclusion": "Rejected as SAME_AS: stable identity fields conflict.",
+      "severity": "info",
+      "sources": [
+        "S8"
+      ],
+      "status": "rejected_match"
+    }
+  ],
+  "guardrails": [
+    "Risk indicators are not accusations.",
+    "Fuzzy-name leads are not confirmed identities.",
+    "Negative search results are bounded.",
+    "Ownership, security, operation and lease/use remain distinct.",
+    "Consequential conclusions require human review."
+  ],
+  "negative_evidence": [
+    {
+      "assessment": "No adverse hit in this bounded source; this does not prove absence of litigation or adverse records elsewhere.",
+      "scope": "synthetic DE docket fixture only",
+      "source": "S9",
+      "subject_name": "Northstar Components GmbH"
+    }
+  ],
+  "next_actions": [
+    {
+      "action": "Resolve beneficial ownership behind nominee shareholder(s).",
+      "best_source": "Current official beneficial-ownership/PSC filing or client-authorised KYC documentation.",
+      "priority": 1,
+      "why": "Completes the ownership/control assessment."
+    },
+    {
+      "action": "Verify the payment-beneficiary change independently.",
+      "best_source": "Known counterparty contact plus beneficiary-account documentation.",
+      "priority": 2,
+      "why": "Most immediate transaction-risk anomaly."
+    },
+    {
+      "action": "Refresh current director status.",
+      "best_source": "Fresh authoritative registry filing history.",
+      "priority": 3,
+      "why": "Supplied sources disagree on a consequential management fact."
+    },
+    {
+      "action": "Refresh sanctions screening against authoritative live lists.",
+      "best_source": "Relevant authoritative sanctions lists at decision time.",
+      "priority": 4,
+      "why": "Training fixture is not a live compliance check."
+    }
+  ],
+  "ownership": {
+    "beneficial_ownership_gaps": [
+      {
+        "effective_interest": 0.28,
+        "entity_id": "E4",
+        "entity_name": "Helix Nominees Ltd",
+        "sources": [
+          "S1",
+          "S2",
+          "S4"
+        ]
+      }
+    ],
+    "paths": [
+      {
+        "direct": true,
+        "effective_interest": 0.7,
+        "owner_id": "E2",
+        "owner_name": "Meridian Ventures Ltd",
+        "sources": [
+          "S1"
+        ]
+      },
+      {
+        "direct": false,
+        "effective_interest": 0.42,
+        "owner_id": "E3",
+        "owner_name": "Asterion Capital FZE",
+        "sources": [
+          "S1",
+          "S2"
+        ]
+      },
+      {
+        "direct": true,
+        "effective_interest": 0.3,
+        "owner_id": "E5",
+        "owner_name": "Alder Ventures GmbH",
+        "sources": [
+          "S1"
+        ]
+      },
+      {
+        "direct": false,
+        "effective_interest": 0.28,
+        "owner_id": "E4",
+        "owner_name": "Helix Nominees Ltd",
+        "sources": [
+          "S1",
+          "S2"
+        ]
+      }
+    ]
+  },
+  "payment_anomalies": [
+    {
+      "assessment": "A later payment instruction changes the beneficiary away from the contractual counterparty. This is an anomaly requiring verification, not proof of fraud or sanctions evasion.",
+      "changed_beneficiary_id": "E7",
+      "changed_beneficiary_name": "Oriole Settlement Services FZE",
+      "contract_beneficiary_id": "E6",
+      "contract_beneficiary_name": "Eastbridge Logistics Sp. z o.o.",
+      "next_action": "Verify the instruction through a known counterparty channel and verify beneficiary-account ownership.",
+      "sources": [
+        "S6",
+        "S7"
+      ],
+      "supplier_name": "Eastbridge Logistics Sp. z o.o.",
+      "target_name": "Northstar Components GmbH"
+    }
+  ],
+  "schema": "safetrace.investigation-result/1.0",
+  "screening": [
+    {
+      "assessment": "Rejected as SAME_AS: stable identity fields conflict.",
+      "candidate_name": "Marek Vostryk",
+      "conflicting_identifiers": [
+        "dob",
+        "nationality"
+      ],
+      "name_similarity": 0.9231,
+      "same_as": false,
+      "source": "S8",
+      "stable_identifier_overlap": {},
+      "target_name": "Marek Vostrik"
+    }
+  ],
+  "status": "completed",
+  "subject": {
+    "id": "E1",
+    "name": "Northstar Components GmbH"
+  }
+}
