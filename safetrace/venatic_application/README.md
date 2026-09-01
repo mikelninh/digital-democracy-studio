@@ -30,11 +30,19 @@ These are synthetic benchmark scores, not claims of production analyst performan
 
 ## Package files
 
+### Reviewer-facing
 - `index.html` — the one-link application experience
 - `APPLICATION_NOTE.md` — why this proof exists and what it demonstrates
-- `APPLICATION_MESSAGE.md` — concise application message
 - `PRODUCT_ARCHITECT_STORY.md` — how the work was directed and verified
-- `WALKTHROUGH.md` — 90-second interview/demo script
+
+### Submission-ready
+- `APPLICATION_MESSAGE.md` — concise application message
+- `CV_TAILORING.md` — targeted headline, profile, project bullets and skills ordering
+- `WALKTHROUGH.md` — 90-second demo script
+
+### Candidate prep
+- `INTERVIEW_PREP.md` — likely analyst questions mapped to concrete proof
+- `SEND_CHECKLIST.md` — final claims, links and submission QA
 
 ## Quality gate
 
