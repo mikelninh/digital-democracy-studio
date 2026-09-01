@@ -8,7 +8,7 @@ The application deliberately separates **real-world investigation** from **synth
 
 ### 1. Flagship — real public-source investigation
 
-`real/index.html`
+`index.html` redirects directly to `real/index.html` so the application URL opens the real case first.
 
 **Question:** Did the German meat industry get the policy change it wanted — and can the public record prove why?
 
@@ -26,7 +26,7 @@ A reviewer never has to trust an AI-generated finding: each evidence drawer link
 
 ### 2. Benchmark lab — synthetic adversarial investigation
 
-`index.html` and `safetrace/venatic_challenge/`
+`benchmark/index.html` and `safetrace/venatic_challenge/`
 
 The Meridian Atlas challenge remains synthetic by design so the system can be tested against a known hidden answer and deliberately adversarial edge cases.
 
@@ -63,7 +63,7 @@ For real investigations:
 ## Quality gates
 
 - `.github/workflows/venatic-real-investigation.yml` browser-tests the real case, evidence drawers, authority/location metadata and original-source links.
-- `.github/workflows/venatic-application.yml` browser-tests the synthetic analyst challenge.
+- `.github/workflows/venatic-application.yml` browser-tests the synthetic benchmark at its separate route.
 - the broader SafeTrace release workflow protects the shared evidence infrastructure.
 
 ## Boundary
