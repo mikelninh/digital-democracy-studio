@@ -21,4 +21,4 @@ Kind regards,
 **Michael Ninh**  
 Berlin
 
-**Proof of work:** [insert final public SafeTrace application URL]
+**Proof of work:** https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/
