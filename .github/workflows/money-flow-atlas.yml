@@ -57,6 +57,7 @@ jobs:
               'Automatic entitlement before new programmes',
               'Give every public euro a Distribution Score',
               'Build the first end-to-end distribution experiment',
+              'See what could change',
               "periods.every(p=>p===periods[0])"
           ]:
               assert phrase in html, phrase
@@ -88,6 +89,9 @@ jobs:
                   assert 'Where is the money' in page.locator('h1').inner_text()
                   assert float(page.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=17
                   assert float(page.locator('.source-btn').first.evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=15
+                  action=page.locator('.hero-action')
+                  assert action.is_visible() and action.get_attribute('href')=='#solution'
+                  assert action.bounding_box()['y'] < 1050
                   assert page.locator('.kpi').count()==3
                   assert page.locator('.flow-node').count()>=6
                   body=page.locator('body').inner_text()
@@ -103,22 +107,30 @@ jobs:
                   if 'refreshed' in freshness:
                       live_period=freshness.split('·')[-1].strip()
                       assert live_period in page.locator('#totalWealthPeriod').inner_text()
-                      assert live_period in page.locator('#flowTopShare').evaluate("e=>document.getElementById('totalWealthPeriod').innerText")
                   else:
                       assert abs(top-59.48)<.01 and abs(bottom-2.17)<.02
                   page.screenshot(path='artifacts/money-flow-atlas/01-overview-desktop.png',full_page=True)
 
-                  # Evidence drawer exposes the same currently displayed wealth figure and original authority.
+                  # Evidence drawer exposes the same currently displayed wealth figure and keeps keyboard focus inside.
                   displayed_top=page.locator('#topShare').inner_text().replace('≈','').strip()
-                  page.locator('[data-source="W2"]').first.click()
+                  trigger=page.locator('[data-source="W2"]').first
+                  trigger.click()
                   page.locator('#sourceOverlay.show').wait_for(state='visible')
                   page.wait_for_timeout(220)
+                  assert page.locator('main').get_attribute('inert') is not None
                   assert 'European Central Bank' in page.locator('#sourcePublisher').inner_text()
                   assert displayed_top in page.locator('#sourceSupports').inner_text()
                   assert 'data.ecb.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
                   assert 'does not prove' in page.locator('.limit').inner_text().lower()
+                  assert page.evaluate("document.activeElement.id")=='closeSource'
+                  page.keyboard.press('Shift+Tab')
+                  assert page.evaluate("document.activeElement.id")=='sourceUrl'
+                  page.keyboard.press('Tab')
+                  assert page.evaluate("document.activeElement.id")=='closeSource'
                   page.screenshot(path='artifacts/money-flow-atlas/02-source-drawer.png')
                   page.locator('#closeSource').click()
+                  assert page.locator('main').get_attribute('inert') is None
+                  assert page.evaluate("document.activeElement.dataset.source")=='W2'
 
                   # Scale calculator is arithmetic, not a forecast.
                   page.locator('#subsidySlider').fill('10')
@@ -132,11 +144,13 @@ jobs:
                   assert abs(pool_02 - 2*pool_01) < .03
                   assert 'not a tax proposal or revenue forecast' in page.locator('.sim-card').nth(1).inner_text().lower()
 
-                  # Mobile readability.
+                  # Mobile readability and immediate next action.
                   mobile=browser.new_page(viewport={'width':390,'height':844})
                   mobile.goto(url,wait_until='domcontentloaded');mobile.wait_for_timeout(1000)
                   assert float(mobile.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=16
                   assert mobile.locator('h1').is_visible()
+                  assert mobile.locator('.hero-action').is_visible()
+                  assert mobile.locator('.hero-action').bounding_box()['y'] < 844
                   mobile.screenshot(path='artifacts/money-flow-atlas/03-mobile.png',full_page=True)
                   mobile.close();browser.close()
           finally:
