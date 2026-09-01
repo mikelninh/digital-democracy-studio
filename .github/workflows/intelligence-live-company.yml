@@ -32,7 +32,7 @@ jobs:
           python -m safetrace.intelligence_casework.company_live_resilient \
             --case safetrace/intelligence_casework/fixtures/venatic_live.json \
             --out artifacts/intelligence-casework/venatic-live \
-            --minimum-sources 1
+            --minimum-sources 2
       - name: Validate investigation contract
         run: |
           python - <<'PY'
@@ -40,18 +40,25 @@ jobs:
           from pathlib import Path
           p = Path('artifacts/intelligence-casework/venatic-live/result.json')
           r = json.loads(p.read_text())
-          assert r['schema_version'] == 'safetrace.live-company-investigation/2.1'
+          assert r['schema_version'] == 'safetrace.live-company-investigation/2.2'
           assert r['integrity']['status'] == 'pass'
           assert r['metrics']['sources_requested'] == 3
-          assert r['metrics']['sources_acquired'] >= 1
+          assert r['metrics']['sources_acquired'] >= 2
+          assert r['metrics']['extraction_gaps'] == sum(len(s['required_not_found']) for s in r['sources'])
           assert any(c['field'] == 'legal_name' for c in r['claims'])
+          assert any(c['field'] == 'register_id' for c in r['claims'])
+          capital = next(c for c in r['claims'] if c['field'] == 'share_capital_eur')
+          assert capital['value'] == '25000', capital
           assert any(g['field'] == 'shareholders' for g in r['unresolved_questions'])
           assert all(s['sha256'] and s['receipt_hash'] for s in r['sources'] if s['acquisition_status'] == 'acquired')
           assert all(s['error'] for s in r['sources'] if s['acquisition_status'] != 'acquired')
+          report = Path('artifacts/intelligence-casework/venatic-live/report.md').read_text()
+          assert '403 equivalent success' not in report
+          assert 'Still unknown' in Path('artifacts/intelligence-casework/venatic-live/index.html').read_text()
           print(json.dumps(r['metrics'], indent=2))
           print('\nSOURCE STATUS')
           for s in r['sources']:
-              print(f"- {s['id']}: {s['acquisition_status']} http={s['http_status']} facts={s['facts_extracted']}")
+              print(f"- {s['id']}: {s['acquisition_status']} http={s['http_status']} facts={s['facts_extracted']} missing={','.join(s['required_not_found']) or '-'}")
           print('\nCLAIMS')
           for c in r['claims']:
               print(f"- {c['field']}: {c['value']} [{c['status']}] {c['confidence']:.0%}")
