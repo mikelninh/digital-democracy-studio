@@ -1,0 +1,88 @@
+name: Venatic Technical Proof
+
+on:
+  pull_request:
+    paths:
+      - 'safetrace/venatic_application/technical/**'
+      - 'safetrace/ownership_control/**'
+      - 'safetrace/venatic_challenge/**'
+      - '.github/workflows/venatic-technical-proof.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'safetrace/venatic_application/technical/**'
+      - '.github/workflows/venatic-technical-proof.yml'
+  workflow_dispatch:
+
+jobs:
+  technical-proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate architecture links and claims
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path('safetrace/venatic_application/technical/index.html').read_text(encoding='utf-8')
+          required = [
+              'Evidence in. Defensible conclusion out.',
+              '95/100', '100/100', '0',
+              'ownership_control/engine.py',
+              'ownership_control/production.py',
+              'venatic_challenge/evaluate.py',
+              'venatic_challenge/source_independence.py',
+              'venatic-analyst-challenge.yml',
+              'venatic-application.yml',
+              'Unknown stays unknown',
+              'Similar name ≠ same person',
+              'Use ≠ ownership'
+          ]
+          for item in required:
+              assert item in html, item
+          print('Technical proof contract: OK')
+          PY
+      - name: Install Chromium
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install chromium
+      - name: Browser-verify technical proof
+        run: |
+          mkdir -p artifacts/venatic-technical
+          python - <<'PY'
+          import subprocess, time
+          from playwright.sync_api import sync_playwright
+
+          server = subprocess.Popen(['python','-m','http.server','8765'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+          try:
+              time.sleep(0.5)
+              with sync_playwright() as p:
+                  browser = p.chromium.launch(headless=True)
+                  page = browser.new_page(viewport={'width': 1440, 'height': 1100})
+                  errors=[]
+                  page.on('pageerror', lambda error: errors.append(str(error)))
+                  page.goto('http://127.0.0.1:8765/safetrace/venatic_application/technical/', wait_until='networkidle')
+                  assert not errors, errors
+                  assert page.locator('h1').inner_text() == 'What runs underneath the investigation?'
+                  assert page.locator('.stage').count() == 6
+                  assert page.locator('.principle').count() == 6
+                  assert page.locator('.metric').count() == 4
+                  assert page.locator('.repo-card').count() >= 10
+                  assert '95/100' in page.locator('.metrics').inner_text()
+                  assert '100/100' in page.locator('.metrics').inner_text()
+                  assert '0' in page.locator('.metrics').inner_text()
+                  page.screenshot(path='artifacts/venatic-technical/technical-proof.png', full_page=True)
+                  browser.close()
+          finally:
+              server.terminate()
+              server.wait(timeout=5)
+          PY
+      - name: Upload technical proof screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: venatic-technical-proof
+          path: artifacts/venatic-technical/
+          if-no-files-found: error
