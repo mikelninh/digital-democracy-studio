@@ -1,0 +1,105 @@
+name: Ownership UI Browser Proof
+
+on:
+  pull_request:
+    paths:
+      - 'safetrace/ownership_control/**'
+      - '.github/workflows/ownership-ui-browser.yml'
+  workflow_dispatch:
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser runtime
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install chromium
+      - name: Build production analyst workspace
+        run: |
+          rm -rf artifacts/ownership-ui-browser
+          python -m safetrace.ownership_control.production \
+            --case safetrace/ownership_control/fixtures/golden_case.json \
+            --out artifacts/ownership-ui-browser/golden
+      - name: Exercise graph and evidence interaction in Chromium
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          html = Path('artifacts/ownership-ui-browser/golden/index.html').read_text(encoding='utf-8')
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page(viewport={'width': 1440, 'height': 960})
+              runtime_errors = []
+              page.on('pageerror', lambda error: runtime_errors.append(str(error)))
+              page.set_content(html, wait_until='load')
+              page.wait_for_timeout(150)
+
+              assert not runtime_errors, runtime_errors
+              assert 'Who owns and controls' in page.locator('h1').inner_text()
+              assert page.locator('[data-edge]').count() >= 1
+              assert page.locator('#graph svg').count() == 1
+              assert page.locator('#answer').inner_text().strip()
+              assert page.locator('#findings .finding').count() >= 1
+
+              page.locator('[data-edge]').first.click(force=True)
+              page.wait_for_timeout(100)
+              assert 'active' in page.locator('[data-tab="evidence"]').get_attribute('class')
+              assert not page.locator('#evidence').evaluate('(el) => el.classList.contains("hidden")')
+              assert page.locator('#evidence .relation').count() == 1
+              assert page.locator('#evidence .source').count() >= 1
+
+              page.screenshot(path='artifacts/ownership-ui-browser/workspace.png', full_page=True)
+              browser.close()
+          PY
+      - name: Exercise fail-closed empty state in Chromium
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          case = {
+              'case_id': 'UI-EMPTY-001',
+              'classification': 'SYNTHETIC BROWSER TEST',
+              'target_entity_id': 'target',
+              'entities': [{'id': 'target', 'name': 'Unresolved Example GmbH', 'kind': 'company', 'resolution_status': 'confirmed'}],
+              'sources': [],
+              'ownership_edges': [],
+              'collection_gaps': [{'type': 'shareholder_list_missing', 'reason': 'Authoritative shareholder evidence has not been acquired.'}],
+              'policy': {'ubo_threshold': 0.25, 'ubo_threshold_operator': 'gt'},
+          }
+          Path('artifacts/ownership-ui-browser/empty-case.json').write_text(json.dumps(case), encoding='utf-8')
+          PY
+          python -m safetrace.ownership_control.production \
+            --case artifacts/ownership-ui-browser/empty-case.json \
+            --out artifacts/ownership-ui-browser/empty
+          python - <<'PY'
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+
+          html = Path('artifacts/ownership-ui-browser/empty/index.html').read_text(encoding='utf-8')
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page(viewport={'width': 1200, 'height': 850})
+              errors = []
+              page.on('pageerror', lambda error: errors.append(str(error)))
+              page.set_content(html, wait_until='load')
+              page.wait_for_timeout(100)
+              assert not errors, errors
+              assert page.locator('[data-edge]').count() == 0
+              assert 'No ownership edge is supported yet' in page.locator('#graph').inner_text()
+              assert 'Authoritative shareholder evidence has not been acquired.' in page.locator('#nextText').inner_text()
+              browser.close()
+          PY
+      - name: Upload browser-verified work product
+        uses: actions/upload-artifact@v4
+        with:
+          name: ownership-ui-browser-proof
+          path: artifacts/ownership-ui-browser/
+          if-no-files-found: error
