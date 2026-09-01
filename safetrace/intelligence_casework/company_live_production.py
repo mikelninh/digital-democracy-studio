@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 from pathlib import Path
 from typing import Any, Callable
@@ -81,6 +82,17 @@ def browser_fetch(url: str, allowed_hosts: set[str], *, timeout: int = 25) -> tu
             browser.close()
 
 
+def canonicalize_address(value: str) -> str:
+    """Collapse presentation differences without erasing substantive address components."""
+    text = re.sub(r"\s+", " ", value).strip(" ,.;")
+    text = text.replace("Kirchstr.", "Kirchstraße").replace("Kirchstrasse", "Kirchstraße")
+    text = re.sub(r"\s*•\s*", ", ", text)
+    text = re.sub(r",?\s*Germany$", "", text, flags=re.IGNORECASE).strip(" ,")
+    text = re.sub(r"\s*,\s*", ", ", text)
+    text = re.sub(r"\s+(\d{5}\s+Berlin)$", r", \1", text)
+    return text
+
+
 def build_production_fetch(case: dict[str, Any]) -> Callable[..., tuple[bytes, str, str]]:
     browser_hosts = {
         (urlparse(source["url"]).hostname or "").lower()
@@ -98,14 +110,26 @@ def build_production_fetch(case: dict[str, Any]) -> Callable[..., tuple[bytes, s
     return production_fetch
 
 
+def build_production_normalizer(base_normalizer: Callable[[dict[str, Any]], dict[str, Any]]) -> Callable[[dict[str, Any]], dict[str, Any]]:
+    def normalise(fact: dict[str, Any]) -> dict[str, Any]:
+        item = base_normalizer(fact)
+        if item.get("status") == "extracted" and item.get("field") == "address" and item.get("value"):
+            item["value"] = canonicalize_address(str(item["value"]))
+        return item
+    return normalise
+
+
 def investigate_production(case_path: Path, out_dir: Path, *, now: str | None = None) -> dict[str, Any]:
     case = json.loads(case_path.read_text(encoding="utf-8"))
-    original = resilient.fetch_source
+    original_fetch = resilient.fetch_source
+    original_normalise = resilient._normalise_live_fact
     resilient.fetch_source = build_production_fetch(case)
+    resilient._normalise_live_fact = build_production_normalizer(original_normalise)
     try:
         result = resilient.investigate_resilient(case_path, out_dir, now=now)
     finally:
-        resilient.fetch_source = original
+        resilient.fetch_source = original_fetch
+        resilient._normalise_live_fact = original_normalise
     result["run"]["acquisition_adapter"] = "direct_retry_plus_explicit_browser_render/2.3"
     (out_dir / "result.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return result
