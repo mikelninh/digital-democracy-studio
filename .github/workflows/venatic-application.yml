@@ -22,34 +22,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate application package contract
+      - name: Validate application and challenge contracts
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           root = Path('safetrace/venatic_application')
-          required = ['index.html','APPLICATION_NOTE.md','APPLICATION_MESSAGE.md','PRODUCT_ARCHITECT_STORY.md','WALKTHROUGH.md']
-          for name in required:
-              assert (root / name).exists(), name
+          assert (root / 'index.html').exists()
           case = json.loads(Path('safetrace/venatic_challenge/case_v002.json').read_text(encoding='utf-8'))
           assert len(case['source_records']) == 28
           assert sum(s['availability'] == 'initial' for s in case['source_records']) == 18
           assert sum(s['availability'] == 'optional' for s in case['source_records']) == 10
           html = (root / 'index.html').read_text(encoding='utf-8')
-          for phrase in ['95 → 100','zero critical failures','Only five more sources','Problem → system → verified outcome']:
+          for phrase in ['Try three investigations.','Who really owns this company?','Is this sanctions hit real?','Who owns the warehouse?','95/100','100/100']:
               assert phrase in html, phrase
-          print('Application package contract: OK')
+          assert 'APPLICATION_MESSAGE.md' not in html
+          assert "I didn't want to tell you I could do the work" not in html
+          print('Simplified application contract: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify the one-link experience
+      - name: Browser-verify three-case HR journey
         run: |
           mkdir -p artifacts/venatic-application
           python - <<'PY'
           import subprocess, time
-          from pathlib import Path
           from playwright.sync_api import sync_playwright
 
           server = subprocess.Popen(['python','-m','http.server','8765'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -62,26 +61,33 @@ jobs:
                   page.on('pageerror', lambda error: errors.append(str(error)))
                   page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
                   assert not errors, errors
-                  assert "I didn't want to tell you I could do the work" in page.locator('h1').inner_text()
-                  assert page.locator('.metric').count() == 4
-                  assert '95 → 100' in page.locator('.metrics').inner_text()
-                  assert page.locator('.stage').count() == 4
-                  assert page.locator('.hit').count() >= 3
-                  page.screenshot(path='artifacts/venatic-application/application-overview.png', full_page=True)
+                  assert page.locator('h1').inner_text() == 'Try three investigations.'
+                  assert page.locator('.case-card').count() == 3
+                  assert page.locator('.pane.active').get_attribute('id') == 'ownership'
+                  page.screenshot(path='artifacts/venatic-application/01-overview.png', full_page=True)
 
-                  page.locator('.stage[data-stage="first"]').click()
-                  page.locator('.hit[data-edge="mihailo"]').click(force=True)
-                  assert '36.4%' in page.locator('#evidence').inner_text()
-                  page.screenshot(path='artifacts/venatic-application/application-evidence.png', full_page=True)
+                  page.locator('#ownership .choice[data-answer="correct"]').click()
+                  assert '36.4%' in page.locator('#result-ownership').inner_text()
+                  assert page.locator('#d1').evaluate('(el) => el.classList.contains("done")')
+                  page.screenshot(path='artifacts/venatic-application/02-ownership-aha.png', full_page=True)
 
-                  page.locator('.stage[data-stage="research"]').click()
-                  assert page.locator('.source-pick').count() == 6
-                  assert 'circular reporting' in page.locator('#pane-research').inner_text()
+                  page.locator('#result-ownership [data-next="sanctions"]').click()
+                  assert page.locator('.pane.active').get_attribute('id') == 'sanctions'
+                  page.locator('#sanctions .choice[data-answer="correct"]').click()
+                  assert 'NOT SAME PERSON' in page.locator('#result-sanctions').inner_text()
+                  assert page.locator('#d2').evaluate('(el) => el.classList.contains("done")')
 
-                  page.locator('.stage[data-stage="final"]').click()
-                  assert '100' in page.locator('#pane-final').inner_text()
-                  assert 'Still open' in page.locator('#pane-final').inner_text()
-                  page.screenshot(path='artifacts/venatic-application/application-final.png', full_page=True)
+                  page.locator('#result-sanctions [data-next="asset"]').click()
+                  assert page.locator('.pane.active').get_attribute('id') == 'asset'
+                  page.locator('#asset .choice[data-answer="correct"]').click()
+                  assert 'land register' in page.locator('#asset').inner_text().lower()
+                  assert page.locator('#d3').evaluate('(el) => el.classList.contains("done")')
+
+                  page.locator('#result-asset [data-finish]').click()
+                  assert page.locator('#complete').evaluate('(el) => el.classList.contains("show")')
+                  final = page.locator('#complete').inner_text()
+                  assert '95/100' in final and '100/100' in final and 'critical overclaims' in final
+                  page.screenshot(path='artifacts/venatic-application/03-finish.png', full_page=True)
                   browser.close()
           finally:
               server.terminate()
