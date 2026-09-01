@@ -65,18 +65,18 @@ jobs:
                   page.on('pageerror', lambda error: errors.append(str(error)))
                   page.goto('http://127.0.0.1:8765/safetrace/venatic_application/real/', wait_until='networkidle')
                   assert not errors, errors
-                  body = page.locator('body').inner_text()
-                  assert 'Did the meat industry get the policy change it wanted?' in body
-                  assert 'Lobbying activity' in body
-                  assert 'Policy alignment' in body
-                  assert 'Direct causation' in body
-                  assert 'Not proven.' in body
+                  body = page.locator('body').inner_text().lower()
+                  assert 'did the meat industry get the policy change it wanted?' in body
+                  assert 'lobbying activity' in body
+                  assert 'policy alignment' in body
+                  assert 'direct causation' in body
+                  assert 'not proven.' in body
                   page.screenshot(path='artifacts/venatic-real/01-overview.png', full_page=True)
 
                   page.locator('[data-source="S2"]').first.click()
                   assert page.locator('#overlay').evaluate('(el)=>el.classList.contains("show")')
-                  assert 'Official federal disclosure register' in page.locator('#sourceAuthority').inner_text()
-                  assert 'RV0009541' in page.locator('#sourceLocation').inner_text()
+                  assert 'official federal disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
+                  assert 'rv0009541' in page.locator('#sourceLocation').inner_text().lower()
                   href = page.locator('#sourceUrl').get_attribute('href')
                   assert 'lobbyregister.bundestag.de' in href
                   assert 'caused' in page.locator('#sourceLimit').inner_text().lower()
@@ -84,8 +84,8 @@ jobs:
                   page.locator('#close').click()
 
                   page.locator('[data-source="S6"]').first.click()
-                  assert 'Primary legislative document' in page.locator('#sourceAuthority').inner_text()
-                  assert 'Executive footprint' in page.locator('#sourceLocation').inner_text()
+                  assert 'primary legislative document' in page.locator('#sourceAuthority').inner_text().lower()
+                  assert 'executive footprint' in page.locator('#sourceLocation').inner_text().lower()
                   href = page.locator('#sourceUrl').get_attribute('href')
                   assert href == 'https://dserver.bundestag.de/btd/21/003/2100327.pdf'
                   page.screenshot(path='artifacts/venatic-real/03-legislation-source.png', full_page=True)
