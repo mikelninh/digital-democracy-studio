@@ -1,0 +1,108 @@
+{
+  "case": {
+    "id": "LIVE-VENATIC-001",
+    "title": "Venatic Intelligence GmbH — public-source company profile",
+    "question": "What can be established about Venatic Intelligence GmbH from reviewed live public sources, and what remains unknown?",
+    "executive_judgement_template": "The live pipeline established {claims} bounded company facts from reviewed public sources. It detected {contradictions} cross-source contradiction(s) and left {unresolved} required question(s) unresolved rather than inferring beyond the available evidence."
+  },
+  "sources": [
+    {
+      "id": "venatic-official",
+      "title": "Venatic Intelligence — official website",
+      "publisher": "Venatic Intelligence GmbH",
+      "url": "https://venatic-intelligence.com/",
+      "source_type": "company_official_website",
+      "source_rank": "primary_official",
+      "authority": 0.95,
+      "jurisdiction": "DE",
+      "update_cadence": "weekly",
+      "browser_rendered": true,
+      "extract": [
+        {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "required": true, "confidence": 0.95},
+        {"field": "address", "pattern": "(Neustädtische Kirchstraße 6\\s+10117 Berlin(?:, Germany)?)", "required": true, "confidence": 0.95},
+        {"field": "service_forensic_analysis", "pattern": "(Forensic Analysis)", "confidence": 0.95},
+        {"field": "service_asset_tracing", "pattern": "(Asset Tracing)", "confidence": 0.95},
+        {"field": "service_enhanced_due_diligence", "pattern": "(Enhanced Due Diligence)", "confidence": 0.95},
+        {"field": "open_role", "pattern": "(Junior Intelligence Analyst[^\\n]*)", "confidence": 0.9}
+      ]
+    },
+    {
+      "id": "online-register-profile",
+      "title": "Venatic Intelligence GmbH register profile",
+      "publisher": "online-handelsregister.de",
+      "url": "https://www.online-handelsregister.de/handelsregisterauszug/be/Berlin-Charlottenburg/HRB/285675/Venatic-Intelligence-GmbH",
+      "source_type": "public_register_aggregator",
+      "source_rank": "reputable_secondary",
+      "authority": 0.78,
+      "jurisdiction": "DE",
+      "update_cadence": "monthly",
+      "extract": [
+        {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "required": true, "confidence": 0.78},
+        {"field": "register_id", "pattern": "(HRB\\s*285675)", "required": true, "confidence": 0.78},
+        {"field": "address", "pattern": "(Neustädtische Kirchstraße 6\\s*[•|,]?\\s*10117 Berlin)", "confidence": 0.78},
+        {"field": "incorporation_date", "pattern": "(31\\.03\\.2026)", "confidence": 0.78},
+        {"field": "share_capital_eur", "pattern": "(25\\.000,00 EUR)", "confidence": 0.78}
+      ]
+    },
+    {
+      "id": "openregister-manager",
+      "title": "David Nikolai Müller management profile",
+      "publisher": "OpenRegister",
+      "url": "https://openregister.de/person/f55953b4-5f46-49d4-81a1-8fad9b23e86c",
+      "source_type": "public_register_aggregator",
+      "source_rank": "reputable_secondary",
+      "authority": 0.72,
+      "jurisdiction": "DE",
+      "update_cadence": "monthly",
+      "notes": "Used only to corroborate public management identity and company association; unrelated placeholder participation data on the page is intentionally ignored.",
+      "extract": [
+        {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "confidence": 0.72},
+        {"field": "managing_director", "pattern": "(David Nikolai Müller)", "required": true, "confidence": 0.72}
+      ]
+    },
+    {
+      "id": "companyhouse-profile",
+      "title": "Venatic Intelligence GmbH company profile",
+      "publisher": "CompanyHouse",
+      "url": "https://www.companyhouse.de/Venatic-Intelligence-GmbH-Berlin",
+      "source_type": "commercial_register_aggregator",
+      "source_rank": "reputable_secondary",
+      "authority": 0.72,
+      "jurisdiction": "DE",
+      "update_cadence": "monthly",
+      "extract": [
+        {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "confidence": 0.72},
+        {"field": "register_id", "pattern": "(HRB\\s*285675)", "confidence": 0.72},
+        {"field": "address", "pattern": "(Neustädtische Kirchstr(?:aße|asse|\\.) 6,?\\s*10117 Berlin)", "confidence": 0.72},
+        {"field": "managing_director", "pattern": "(David Nikolai Müller)", "confidence": 0.72},
+        {"field": "share_capital_eur", "pattern": "(25\\.000,00 EUR)", "confidence": 0.72}
+      ]
+    }
+  ],
+  "required_questions": [
+    {
+      "field": "legal_name",
+      "title": "Legal identity",
+      "reason": "A company investigation needs a resolved legal entity before any network analysis.",
+      "next_step": "Verify against the latest official Handelsregister excerpt if the public sources diverge."
+    },
+    {
+      "field": "register_id",
+      "title": "Commercial-register identifier",
+      "reason": "The register identifier anchors later filings and shareholder-document collection.",
+      "next_step": "Retrieve the current official Handelsregister record."
+    },
+    {
+      "field": "managing_director",
+      "title": "Current management",
+      "reason": "Management should be established from current registry evidence rather than inferred from websites or search results.",
+      "next_step": "Cross-check the current Handelsregister filing and representation rules."
+    },
+    {
+      "field": "shareholders",
+      "title": "Shareholder and beneficial-ownership chain",
+      "reason": "The reviewed freely accessible sources do not establish the current shareholder list or ultimate beneficial ownership.",
+      "next_step": "Obtain the current Gesellschafterliste and trace each shareholder through authoritative company records."
+    }
+  ]
+}

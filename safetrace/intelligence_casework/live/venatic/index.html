@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SafeTrace verified live public-source investigation result for Venatic Intelligence GmbH, with evidence receipts, source failures and unresolved gaps.">
+  <title>SafeTrace — Venatic live investigation</title>
+  <style>
+    :root{--bg:#07100f;--panel:#0e1917;--panel2:#13211f;--line:#263a36;--text:#f1f7f5;--muted:#9bb0aa;--accent:#96e8c4;--warn:#f4c36a;--bad:#ff938a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}main{max-width:1120px;margin:auto;padding:52px 24px 90px}header{border-bottom:1px solid var(--line);padding-bottom:30px}.kicker,.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;color:var(--accent)}h1{font-size:clamp(40px,7vw,74px);line-height:.96;letter-spacing:-.055em;margin:10px 0 20px;max-width:950px}h2{font-size:27px;letter-spacing:-.025em;margin:52px 0 18px}h3{margin:7px 0 10px}.lead{font-size:19px;max-width:920px;color:#dce9e5}.muted,small{color:var(--muted)}.run{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.badge{border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:12px}.badge.good{color:var(--accent)}.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px}.metric,.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}.metric b{font-size:29px;display:block}.metric span{color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.value{font-size:23px;font-weight:760;letter-spacing:-.025em}.confidence{margin:5px 0 14px;color:var(--muted)}details{border-top:1px solid var(--line);padding:9px 0}summary{cursor:pointer;color:var(--accent)}details p{font-size:13px;color:var(--muted)}ul.gaps{list-style:none;padding:0;display:grid;gap:10px}.gaps li{background:var(--panel2);border-left:3px solid var(--warn);padding:16px 18px;display:grid;gap:5px}.gaps em{font-style:normal;color:var(--warn)}table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:14px;overflow:hidden}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}td small{display:block;margin-top:3px}.status{font-size:10px;font-weight:800;letter-spacing:.08em}.good{color:var(--accent)}.warn{color:var(--warn)}.bad{color:var(--bad)}code{font-size:11px;color:#c9ddd7;word-break:break-all}a{color:var(--accent)}.bottom{border:1px solid var(--line);border-radius:14px;padding:22px;background:linear-gradient(135deg,var(--panel),#10201c)}@media(max-width:850px){.metrics{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}table{display:block;overflow:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">SafeTrace · verified live public-source investigation</div>
+    <h1>Venatic Intelligence GmbH</h1>
+    <p class="lead">A real network run, not a hand-authored case. SafeTrace used browser rendering only for the explicitly reviewed client-side official site, retried transient server failures, preserved acquired bytes with cryptographic receipts, and refused to bypass HTTP 403 sources.</p>
+    <div class="run">
+      <span class="badge good">✓ Live investigation gate passed</span>
+      <span class="badge">Verified run · 1 Sep 2026 · 08:47 UTC</span>
+      <a class="badge" href="https://github.com/mikelninh/digital-democracy-studio/actions/runs/33488850757">Reproduce / inspect CI run ↗</a>
+      <a class="badge" href="https://github.com/mikelninh/digital-democracy-studio/pull/77">Implementation PR ↗</a>
+    </div>
+  </header>
+
+  <div class="metrics">
+    <div class="metric"><b>2/4</b><span>sources acquired</span></div>
+    <div class="metric"><b>11</b><span>facts extracted</span></div>
+    <div class="metric"><b>9</b><span>bounded claims</span></div>
+    <div class="metric"><b>0</b><span>contradictions</span></div>
+    <div class="metric"><b>0</b><span>parser gaps</span></div>
+    <div class="metric"><b>4</b><span>open items</span></div>
+  </div>
+
+  <h2>What the investigation established</h2>
+  <div class="grid">
+    <article class="card"><div class="eyebrow">corroborated · 95%</div><h3>Legal name</h3><div class="value">Venatic Intelligence GmbH</div><p class="confidence">Corroborated across the official website and acquired register profile.</p><details><summary>Evidence</summary><p>Official site identifies “Venatic Intelligence GmbH”; the live register profile separately identifies “Venatic Intelligence GmbH … HRB 285675”.</p></details></article>
+    <article class="card"><div class="eyebrow">corroborated · 95%</div><h3>Registered address</h3><div class="value">Neustädtische Kirchstraße 6, 10117 Berlin</div><p class="confidence">Two differently formatted live sources normalise to the same substantive address.</p><details><summary>Evidence</summary><p>Official: “Neustädtische Kirchstraße 6 10117 Berlin, Germany”. Register profile: “Neustädtische Kirchstraße 6 • 10117 Berlin”.</p></details></article>
+    <article class="card"><div class="eyebrow">single source · 78%</div><h3>Commercial register</h3><div class="value">HRB 285675</div><p class="confidence">Berlin-Charlottenburg register identifier extracted from the acquired register profile.</p></article>
+    <article class="card"><div class="eyebrow">single source · 78%</div><h3>Registration date</h3><div class="value">31.03.2026</div><p class="confidence">Reported by the acquired register profile.</p></article>
+    <article class="card"><div class="eyebrow">single source · 78%</div><h3>Share capital</h3><div class="value">€25,000</div><p class="confidence">Extracted as “25.000,00 EUR”; German currency parsing is regression-tested to prevent the earlier 100× parsing error.</p></article>
+    <article class="card"><div class="eyebrow">official source · 90%</div><h3>Open role</h3><div class="value">Junior Intelligence Analyst (m/w/d)</div><p class="confidence">Extracted from the browser-rendered official careers section.</p></article>
+    <article class="card"><div class="eyebrow">official source · 95%</div><h3>Forensic Analysis</h3><div class="value">Service confirmed</div><p class="confidence">Official site describes methodical investigations to uncover facts and mitigate risk.</p></article>
+    <article class="card"><div class="eyebrow">official source · 95%</div><h3>Asset Tracing</h3><div class="value">Service confirmed</div><p class="confidence">Extracted directly from the official service list.</p></article>
+    <article class="card"><div class="eyebrow">official source · 95%</div><h3>Enhanced Due Diligence</h3><div class="value">Service confirmed</div><p class="confidence">Extracted directly from the official service list.</p></article>
+  </div>
+
+  <h2>Still unknown — deliberately not guessed</h2>
+  <ul class="gaps">
+    <li><b>Current management</b><span>Not established inside the reproducible Evidence Vault run because the reviewed management-source endpoint returned HTTP 403.</span><em>Next: acquire the current official Handelsregister filing and representation rules through an approved path.</em></li>
+    <li><b>Shareholder / beneficial-ownership chain</b><span>The acquired sources do not establish the current shareholder list or ultimate beneficial ownership.</span><em>Next: obtain the current Gesellschafterliste and recursively resolve each shareholder through authoritative records.</em></li>
+    <li><b>OpenRegister management profile</b><span>HTTP 403. SafeTrace did not retry endlessly or switch to a bypass strategy; no receipt was fabricated.</span><em>Next: approved connector or controlled manual acquisition.</em></li>
+    <li><b>CompanyHouse profile</b><span>HTTP 403. Kept as an explicit source-access gap.</span><em>Next: approved connector or controlled manual acquisition.</em></li>
+  </ul>
+
+  <h2>Evidence acquisition</h2>
+  <table>
+    <thead><tr><th>Source</th><th>Status</th><th>Evidence receipt</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td><b>Venatic official website</b><small>browser-rendered because the reviewed case marks it client-side</small></td><td><span class="status good">ACQUIRED · HTTP 200</span></td><td><code>sha256 e0a4243b6da67b225fc1b3efd7aee5965062ff4c5713fcb3847a48722b8469f0</code><small>receipt 90162dd3ef41261283c3a6436117b440c431ffb42135bb8fc97eddc761c14b69</small></td><td><span class="good">6 facts · 0 parser gaps</span></td></tr>
+      <tr><td><b>Online Handelsregister profile</b><small>direct HTTP with retry for transient 429 / 5xx only</small></td><td><span class="status good">ACQUIRED · HTTP 200</span></td><td><code>sha256 729f8b6160fce94e61063e54ba77231b9a9757165d92d1591e0a02753831f6b2</code><small>receipt 97e0641b0ac46fcd1f3663b912802659635b17370cb424c523992ac25b0e8b2e</small></td><td><span class="good">5 facts · 0 parser gaps</span></td></tr>
+      <tr><td><b>OpenRegister management profile</b><small>openregister.de</small></td><td><span class="status bad">UNAVAILABLE · HTTP 403</span></td><td><span class="bad">No receipt created</span></td><td>Explicit source-access gap</td></tr>
+      <tr><td><b>CompanyHouse profile</b><small>companyhouse.de</small></td><td><span class="status bad">UNAVAILABLE · HTTP 403</span></td><td><span class="bad">No receipt created</span></td><td>Explicit source-access gap</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Investigation judgement</h2>
+  <div class="bottom"><p class="lead">This run establishes nine bounded facts and zero substantive contradictions. It does <b>not</b> establish current management, shareholders, beneficial ownership, de-facto control, sanctions exposure or misconduct. Missing evidence remains a collection task rather than becoming a conclusion.</p><p class="muted">Boundary: public-source research only. The result is a reproducible research work product, not an accusation, automated compliance decision, or substitute for paid/official registry documents.</p></div>
+</main>
+</body>
+</html>
