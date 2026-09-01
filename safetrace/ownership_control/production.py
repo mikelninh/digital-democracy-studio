@@ -123,13 +123,35 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+def _render_workspace(result: dict[str, Any], data: dict[str, Any]) -> str:
+    """Render the analyst workspace and guard against browser-global name collisions.
+
+    `window.top` is a browser-provided global. Earlier UI code declared `const top`,
+    which parses in non-browser checks but fails in Chromium. Keep this compatibility
+    shim until the renderer itself is split into smaller assets.
+    """
+    page = render_workspace_html(result, data)
+    page = page.replace("const top=economic[0];", "const topOwner=economic[0];")
+    page = page.replace(
+        "['Top economic path',top?`${top.owner_name} · ${pct(top.aggregate_pct)}`:'None']",
+        "['Top economic path',topOwner?`${topOwner.owner_name} · ${pct(topOwner.aggregate_pct)}`:'None']",
+    )
+    page = page.replace(
+        "const findings=[];if(top)findings.push([false,`${top.owner_name} · ${pct(top.aggregate_pct)} economic`,`Highest aggregated economic position in the computed graph.`]);",
+        "const findings=[];if(topOwner)findings.push([false,`${topOwner.owner_name} · ${pct(topOwner.aggregate_pct)} economic`,`Highest aggregated economic position in the computed graph.`]);",
+    )
+    if "const top=" in page:
+        raise RuntimeError("Analyst workspace contains browser-global `top` redeclaration")
+    return page
+
+
 def run_case(case_path: Path, out_dir: Path) -> dict[str, Any]:
     data = json.loads(case_path.read_text(encoding="utf-8"))
     result = investigate(data)
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "result.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (out_dir / "report.md").write_text(engine.render_markdown(result), encoding="utf-8")
-    (out_dir / "index.html").write_text(render_workspace_html(result, data), encoding="utf-8")
+    (out_dir / "index.html").write_text(_render_workspace(result, data), encoding="utf-8")
     return result
 
 
