@@ -29,7 +29,7 @@ jobs:
           python -m safetrace.ownership_control.production \
             --case safetrace/ownership_control/fixtures/golden_case.json \
             --out artifacts/ownership-control/golden
-      - name: Validate golden result contract
+      - name: Validate golden result and analyst workspace
         run: |
           python - <<'PY'
           import json
@@ -40,6 +40,7 @@ jobs:
           voting = {x["owner_id"]: x for x in result["voting_rights"]}
           candidates = {x["entity_id"]: x for x in result["ubo_candidates"]}
           screening = {x["entity_id"]: x for x in result["screening_handoff"]}
+          page = Path("artifacts/ownership-control/golden/index.html").read_text()
 
           assert result["schema_version"] == "safetrace.ownership-control/1.1"
           assert economic["alice"]["aggregate_pct"] == 0.48
@@ -52,7 +53,9 @@ jobs:
           assert all(x["handoff_status"] == "ready_for_authoritative_screening" for x in screening.values())
           assert result["metrics"]["cycles"] == 0
           assert all(path["evidence"] for row in result["economic_ownership"] for path in row["paths"])
-          assert "Show me why" in Path("artifacts/ownership-control/golden/index.html").read_text()
+          for phrase in ("SafeTrace", "Executive answer", "Ownership map", "Analyst brief", "Evidence", "Click any relationship"):
+              assert phrase in page, phrase
+          assert "application/json" in page
           print(json.dumps(result["metrics"], indent=2))
           PY
       - name: Upload deterministic work product
@@ -96,6 +99,7 @@ jobs:
 
           case = json.loads(Path("artifacts/ownership-control/venatic-case.json").read_text())
           result = json.loads(Path("artifacts/ownership-control/venatic-analysis/result.json").read_text())
+          page = Path("artifacts/ownership-control/venatic-analysis/index.html").read_text()
           assert result["schema_version"] == "safetrace.ownership-control/1.1"
           assert case["ownership_edges"] == []
           assert result["economic_ownership"] == []
@@ -104,6 +108,8 @@ jobs:
           assert result["screening_handoff"] == []
           assert result["decision_boundary"]["ownership_established"] is False
           assert any(x.get("type") == "shareholder_and_beneficial_ownership_not_established" for x in result["unresolved"])
+          assert "No ownership edge is supported yet" in page
+          assert "Analyst brief" in page
           print(json.dumps(result["metrics"], indent=2))
           PY
       - name: Upload live boundary work product
