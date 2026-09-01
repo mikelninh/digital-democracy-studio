@@ -2,6 +2,14 @@
 
 **Open, evidence-grounded tools that help people understand and use their rights—and hold power accountable.**
 
+## Venatic Intelligence application proof
+
+**Start here:** [Try the investigation](https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/)
+
+**Then go deeper:** [Technical architecture & verification](https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/technical/)
+
+The application proof is a synthetic corporate-intelligence investigation covering ownership/control, sanctions identity, asset attribution, uncertainty and source inspection. The technical page links every headline claim to the underlying engine, benchmark, tests and CI.
+
 ## Projects
 
 - [Impact-Mission 001 — Arbeit. Teilhabe. Energie.](impact-mission/)  
