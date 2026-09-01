@@ -16,6 +16,7 @@
       "authority": 0.95,
       "jurisdiction": "DE",
       "update_cadence": "weekly",
+      "browser_rendered": true,
       "extract": [
         {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "required": true, "confidence": 0.95},
         {"field": "address", "pattern": "(Neustädtische Kirchstraße 6\\s+10117 Berlin(?:, Germany)?)", "required": true, "confidence": 0.95},
