@@ -22,36 +22,34 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate application and challenge contracts
+      - name: Validate minimal HR experience contract
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          root = Path('safetrace/venatic_application')
-          assert (root / 'index.html').exists()
+          html = Path('safetrace/venatic_application/index.html').read_text(encoding='utf-8')
           case = json.loads(Path('safetrace/venatic_challenge/case_v002.json').read_text(encoding='utf-8'))
           assert len(case['source_records']) == 28
-          assert sum(s['availability'] == 'initial' for s in case['source_records']) == 18
-          assert sum(s['availability'] == 'optional' for s in case['source_records']) == 10
-          html = (root / 'index.html').read_text(encoding='utf-8')
           for phrase in [
-              'Solve three tiny investigations.',
-              '80% × 70% × 65%',
-              '36.4% indirect economic interest',
-              'Natural-person principal: UNKNOWN',
-              'View source',
-              'Facts used in this case',
-              '95 → 100'
+              'Who really owns Meridian Atlas?',
+              '36.4% indirect ownership',
+              'Same person?',
+              'Not the same person.',
+              'Who owns the warehouse?',
+              'Atlas Property SPV GmbH owns it.',
+              'Find the answer. Show the proof. Keep unknowns unknown.',
+              '0</b><span>critical overclaims'
           ]:
               assert phrase in html, phrase
-          assert 'APPLICATION_MESSAGE.md' not in html
-          print('Visual detective application contract: OK')
+          for forbidden in ['choice', 'case-tab', 'APPLICATION_MESSAGE.md', '95 → 100']:
+              assert forbidden not in html, forbidden
+          print('Minimal HR experience contract: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify detective evidence journey
+      - name: Browser-verify minimal evidence journey
         run: |
           mkdir -p artifacts/venatic-application
           python - <<'PY'
@@ -64,51 +62,49 @@ jobs:
               with sync_playwright() as p:
                   browser = p.chromium.launch(headless=True)
                   page = browser.new_page(viewport={'width': 1440, 'height': 1000})
-                  errors = []
+                  errors=[]
                   page.on('pageerror', lambda error: errors.append(str(error)))
                   page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
                   assert not errors, errors
-                  assert page.locator('h1').inner_text() == 'Solve three tiny investigations.'
-                  assert page.locator('.case-tab').count() == 3
-                  assert page.locator('.pane.active').get_attribute('id') == 'ownership'
-                  assert '80% × 70% × 65%' in page.locator('#ownership .equation').inner_text()
-                  assert '36.4%' in page.locator('#ownership .equation').inner_text()
-                  assert 'UNKNOWN' in page.locator('#ownership').inner_text()
-                  page.screenshot(path='artifacts/venatic-application/01-overview.png', full_page=True)
+                  assert page.locator('.case.active').get_attribute('id') == 'case1'
+                  assert page.locator('#case1 h1').inner_text() == 'Who really owns Meridian Atlas?'
+                  assert page.locator('#case1 .relation').count() == 3
+                  assert '36.4% indirect ownership' in page.locator('#case1 .answer').inner_text()
+                  assert '15% nominee stake' in page.locator('#case1').inner_text()
+                  page.screenshot(path='artifacts/venatic-application/01-minimal-case.png', full_page=True)
 
-                  page.locator('#ownership .proof[data-source="S06"]').click()
-                  assert page.locator('#drawer').evaluate('(el) => el.classList.contains("show")')
-                  assert 'Aurora Meridian FZE ownership certificate' in page.locator('#sourceTitle').inner_text()
-                  assert 'Mihailo Petrović owns 80%' in page.locator('#sourceFacts').inner_text()
-                  page.screenshot(path='artifacts/venatic-application/02-source-proof.png', full_page=True)
+                  page.locator('#case1 [data-proof="S06"]').click()
+                  assert page.locator('#overlay').evaluate('(el)=>el.classList.contains("show")')
+                  assert 'Mihailo Petrović owns 80%' in page.locator('#proofFact').inner_text()
+                  page.screenshot(path='artifacts/venatic-application/02-proof-modal.png', full_page=True)
                   page.locator('#close').click()
 
-                  page.locator('#ownership .choice[data-answer="correct"]').click()
-                  assert 'every ownership edge has a source' in page.locator('#result-ownership').inner_text()
-                  page.locator('#result-ownership [data-next="sanctions"]').click()
-
-                  assert page.locator('.pane.active').get_attribute('id') == 'sanctions'
-                  assert '19 Apr 1984' in page.locator('#sanctions').inner_text()
-                  assert '03 Jan 1972' in page.locator('#sanctions').inner_text()
-                  page.locator('#sanctions .proof[data-source="S08"]').click()
-                  assert 'Mikhail Petrovich' in page.locator('#sourceFacts').inner_text()
+                  page.locator('#case1 [data-next="2"]').click()
+                  page.wait_for_timeout(450)
+                  assert page.locator('.case.active').get_attribute('id') == 'case2'
+                  assert 'Not the same person.' in page.locator('#case2 .answer').inner_text()
+                  assert page.locator('#case2 .neq').count() == 3
+                  page.locator('#case2 [data-proof="S08"]').click()
+                  assert 'Russian nationality' in page.locator('#proofFact').inner_text()
                   page.locator('#close').click()
-                  page.locator('#sanctions .choice[data-answer="correct"]').click()
-                  assert 'reject the match' in page.locator('#result-sanctions').inner_text().lower()
-                  page.locator('#result-sanctions [data-next="asset"]').click()
 
-                  assert page.locator('.pane.active').get_attribute('id') == 'asset'
-                  assert 'LEGAL OWNER' in page.locator('#asset').inner_text()
-                  page.locator('#asset .proof[data-source="S17"]').first.click()
-                  assert 'Atlas Property SPV GmbH' in page.locator('#sourceFacts').inner_text()
-                  assert 'Helios Handelsbank AG' in page.locator('#sourceFacts').inner_text()
+                  page.locator('#case2 [data-next="3"]').click()
+                  page.wait_for_timeout(450)
+                  assert page.locator('.case.active').get_attribute('id') == 'case3'
+                  text = page.locator('#case3').inner_text()
+                  for role in ['LEGAL OWNER','OPERATES','HAS SECURITY']:
+                      assert role in text
+                  assert 'Atlas Property SPV GmbH owns it.' in page.locator('#case3 .answer').inner_text()
+                  page.locator('#case3 [data-proof="S17_O"]').click()
+                  assert 'Legal owner' in page.locator('#proofFact').inner_text()
                   page.locator('#close').click()
-                  page.locator('#asset .choice[data-answer="correct"]').click()
-                  page.locator('#result-asset [data-finish]').click()
 
-                  assert page.locator('#done').evaluate('(el) => el.classList.contains("show")')
+                  page.locator('#case3 [data-finish]').click()
+                  page.wait_for_timeout(450)
+                  assert page.locator('#done').evaluate('(el)=>el.classList.contains("active")')
                   final = page.locator('#done').inner_text()
-                  assert '28 records' in final and '95 → 100' in final and 'critical overclaims' in final
+                  assert 'Find the answer. Show the proof. Keep unknowns unknown.' in final
+                  assert '28' in final and '5' in final and 'critical overclaims' in final
                   page.screenshot(path='artifacts/venatic-application/03-finish.png', full_page=True)
                   browser.close()
           finally:
