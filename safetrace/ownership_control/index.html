@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SafeTrace Intelligence Desk — evidence-first ownership and control investigations.">
+<title>SafeTrace Intelligence Desk</title>
+<style>
+:root{
+  --bg:#f4f5f1;--surface:#ffffff;--surface2:#f8f9f6;--ink:#101310;--muted:#68706a;
+  --line:#dfe3dc;--line2:#cbd1c9;--green:#126b50;--green2:#e7f3ed;--amber:#9a5b08;
+  --amber2:#fff4df;--red:#9f3b32;--red2:#fff0ee;--blue:#315e82;--blue2:#edf5fb;
+  --shadow:0 18px 45px rgba(30,45,36,.08);--radius:18px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.shell{min-height:100vh}.topbar{height:64px;border-bottom:1px solid var(--line);background:rgba(244,245,241,.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}.mark{width:28px;height:28px;border:1px solid var(--ink);border-radius:9px;display:grid;place-items:center;font-size:13px;background:var(--surface)}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:0}.topmeta{display:flex;align-items:center;gap:10px}.proof{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:var(--surface)}.status-dot{width:7px;height:7px;border-radius:50%;background:#2f9b70;display:inline-block;margin-right:6px}
+.hero{max-width:1480px;margin:0 auto;padding:42px 28px 24px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}h1{font-size:clamp(36px,5.2vw,66px);line-height:.98;letter-spacing:-.052em;margin:10px 0 16px;max-width:980px}.hero-copy{font-size:18px;line-height:1.55;color:#485049;max-width:860px;margin:0}.uses{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.use{font-size:12px;color:#3c4640;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 10px}
+.search-wrap{max-width:1480px;margin:0 auto;padding:0 28px 24px}.searchbox{display:grid;grid-template-columns:1fr auto;gap:10px;background:var(--surface);border:1px solid var(--line2);border-radius:17px;padding:8px;box-shadow:0 8px 28px rgba(28,41,34,.05)}.searchbox input{border:0;outline:0;padding:12px 14px;font-size:16px;background:transparent;color:var(--ink)}.searchbox button{border:0;background:var(--ink);color:#fff;border-radius:12px;padding:0 18px;font-weight:750}.quickcases{display:flex;gap:8px;margin-top:9px;align-items:center;flex-wrap:wrap}.quickcases span{font-size:11px;color:var(--muted)}.case-btn{border:1px solid var(--line);background:transparent;color:#455047;border-radius:999px;padding:6px 10px;font-size:11px}.case-btn.active{background:var(--surface);border-color:var(--line2);color:var(--ink);box-shadow:0 3px 10px rgba(24,35,29,.05)}
+.workspace{max-width:1480px;margin:0 auto;padding:0 28px 72px;display:grid;grid-template-columns:260px minmax(520px,1fr) 330px;gap:14px;align-items:start}.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 28px rgba(28,41,34,.035)}.left{padding:18px;position:sticky;top:78px}.section-label{font-size:10px;font-weight:850;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}.subject{display:flex;align-items:center;gap:10px;margin-bottom:16px}.subject-icon{width:42px;height:42px;border-radius:12px;background:var(--ink);color:white;display:grid;place-items:center;font-weight:800}.subject h2{font-size:17px;line-height:1.15;margin:0;letter-spacing:-.02em}.subject p{margin:4px 0 0;color:var(--muted);font-size:11px}.verdict{padding:13px;border-radius:13px;background:var(--green2);border:1px solid #cfe5d9;margin-bottom:16px}.verdict b{display:block;color:#0d5c43;margin-bottom:4px}.verdict p{font-size:12px;margin:0;color:#365b4c}.fact-list{display:grid;gap:1px;border-top:1px solid var(--line);padding-top:8px}.fact{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #edf0eb}.fact span{color:var(--muted);font-size:11px}.fact b{font-size:12px;text-align:right}.tiny-note{font-size:11px;color:var(--muted);margin:14px 0 0}.live-tag{display:inline-flex;align-items:center;gap:5px;color:#0e6548;background:#edf8f2;border:1px solid #d3eadf;border-radius:999px;padding:4px 7px;font-size:10px;font-weight:750}.synthetic-tag{display:inline-flex;color:#805108;background:#fff6e7;border:1px solid #f2dfbb;border-radius:999px;padding:4px 7px;font-size:10px;font-weight:750}
+.center{overflow:hidden}.answer{padding:20px 22px 18px;border-bottom:1px solid var(--line)}.answer-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.answer h2{font-size:22px;margin:5px 0 8px;letter-spacing:-.032em}.answer p{font-size:14px;color:#505a53;max-width:820px;margin:0}.answer-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.mini{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:11px;color:#4e5952;background:var(--surface2)}.mini.warn{color:var(--amber);border-color:#edd9b4;background:#fff9ef}.graph-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 6px}.graph-head h3{font-size:13px;margin:0}.legend{display:flex;gap:12px;color:var(--muted);font-size:10px}.legend i{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px}.graph-stage{height:470px;position:relative;background:radial-gradient(circle at 50% 40%,#fff 0,#fbfcf9 50%,#f7f8f5 100%);overflow:hidden}.graph-stage svg{width:100%;height:100%;display:block}.edge{stroke:#aab4ac;stroke-width:1.7;fill:none}.edge.unresolved{stroke:#d19b4d;stroke-dasharray:6 6}.edge-hit{stroke:transparent;stroke-width:18;fill:none;cursor:pointer}.edge-label{font-size:11px;font-weight:800;fill:#29332c}.edge-sub{font-size:9px;fill:#7c857f}.node{cursor:pointer}.node rect{fill:#fff;stroke:#cfd5ce;stroke-width:1.2;rx:12;filter:url(#nodeShadow)}.node.target rect{stroke:#161a17;stroke-width:1.6}.node.person rect{stroke:#9bbdab}.node.nominee rect{stroke:#d5ae6c}.node text.title{font-size:11px;font-weight:800;fill:#121512}.node text.sub{font-size:9px;fill:#737d76}.node text.value{font-size:10px;font-weight:800;fill:#126b50}.node text.warning{fill:#98600e}.unknown-node rect{fill:#fff9ef;stroke:#d9aa62;stroke-dasharray:5 4}.empty-graph{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}.empty-graph div{max-width:520px}.empty-graph .empty-icon{width:54px;height:54px;border-radius:16px;background:var(--amber2);display:grid;place-items:center;margin:0 auto 14px;font-size:23px}.empty-graph h3{font-size:20px;margin:0 0 8px}.empty-graph p{color:var(--muted);margin:0 0 16px}.outline-btn{border:1px solid var(--line2);background:var(--surface);border-radius:10px;padding:9px 12px;font-weight:700;color:var(--ink)}
+.right{position:sticky;top:78px;overflow:hidden}.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}.tab{border:0;background:transparent;padding:13px;font-size:12px;font-weight:750;color:var(--muted)}.tab.active{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}.tabpane{padding:18px}.brief-block{margin-bottom:20px}.brief-block h3{font-size:13px;margin:0 0 9px}.finding{padding:11px 12px;border-radius:11px;background:var(--surface2);border:1px solid #e8ebe6;margin-bottom:8px}.finding strong{display:block;font-size:12px;margin-bottom:3px}.finding p{font-size:11px;color:var(--muted);margin:0}.finding.alert{background:var(--amber2);border-color:#efdcb8}.finding.good{background:var(--green2);border-color:#d0e5da}.next{border-radius:14px;background:var(--ink);color:#fff;padding:15px}.next .section-label{color:#aeb7b0;margin-bottom:7px}.next strong{display:block;font-size:14px;line-height:1.35}.next p{font-size:11px;color:#cbd2cd;margin:6px 0 12px}.next button{width:100%;border:0;border-radius:9px;background:white;color:var(--ink);padding:9px;font-weight:800;font-size:11px}.evidence-empty{text-align:center;padding:34px 8px;color:var(--muted)}.evidence-empty .cursor{font-size:26px;margin-bottom:8px}.evidence-card .relation{display:inline-block;background:var(--blue2);color:var(--blue);border-radius:999px;padding:4px 7px;font-size:10px;font-weight:800}.evidence-card h3{font-size:17px;line-height:1.25;margin:10px 0 6px}.evidence-card .calc{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f6f8f5;border:1px solid var(--line);border-radius:10px;padding:10px;margin:12px 0}.source-card{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:9px}.source-card .source-top{display:flex;justify-content:space-between;gap:8px}.source-card b{font-size:11px}.source-card span{font-size:10px;color:var(--muted)}.quote{font-size:11px;color:#4f5952;border-left:2px solid var(--line2);padding-left:9px;margin-top:9px}.confidence{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:12px}.confidence-bar{height:5px;background:#edf0ec;border-radius:99px;margin-top:5px;overflow:hidden}.confidence-bar i{display:block;height:100%;background:var(--green);border-radius:99px}.hidden{display:none!important}
+.method{max-width:1480px;margin:-48px auto 72px;padding:0 28px}.method details{background:transparent;border-top:1px solid var(--line2);padding-top:14px;color:var(--muted)}.method summary{cursor:pointer;font-weight:750;color:#424c45}.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.method-card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:14px}.method-card b{display:block;color:var(--ink);font-size:12px;margin-bottom:4px}.method-card span{font-size:11px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#151a16;color:#fff;border-radius:11px;padding:10px 14px;font-size:11px;transition:.2s;z-index:30;box-shadow:var(--shadow)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:1120px){.workspace{grid-template-columns:230px 1fr}.right{position:static;grid-column:1/-1}.graph-stage{height:430px}.tabs{max-width:330px}.tabpane{max-width:none}.right-content{display:grid;grid-template-columns:1fr 1fr;gap:18px}}@media(max-width:760px){.topbar{padding:0 16px}.proof{display:none}.hero,.search-wrap,.workspace,.method{padding-left:16px;padding-right:16px}.hero{padding-top:30px}.workspace{grid-template-columns:1fr}.left,.right{position:static}.left{order:2}.center{order:1}.right{order:3}.graph-stage{height:390px}.right-content,.method-grid{grid-template-columns:1fr}.legend{display:none}.answer-top{align-items:flex-start}.searchbox{grid-template-columns:1fr}.searchbox button{padding:11px}.subject h2{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand"><div class="mark">S</div><div>SafeTrace <small>Intelligence Desk</small></div></div>
+  <div class="topmeta"><span class="proof">Proof of work · Intelligence analysis</span><span class="proof"><span class="status-dot"></span>Evidence-first</span></div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Corporate investigations · Ownership & control</div>
+  <h1>Find who really owns and controls a company.</h1>
+  <p class="hero-copy">Corporate ownership evidence is fragmented across registries, filings and documents. SafeTrace turns it into a defensible ownership map, shows the evidence behind every relationship, and tells an analyst exactly what is still missing.</p>
+  <div class="uses"><span class="use">Enhanced due diligence</span><span class="use">Asset tracing</span><span class="use">Sanctions investigations</span><span class="use">Corporate intelligence</span></div>
+</section>
+
+<section class="search-wrap">
+  <div class="searchbox"><input id="companySearch" aria-label="Company to investigate" value="Northstar Components GmbH" placeholder="Enter a company, registry ID or website…"><button id="investigateBtn">Investigate →</button></div>
+  <div class="quickcases"><span>Try:</span><button class="case-btn active" data-case="northstar">Northstar Components · synthetic hard case</button><button class="case-btn" data-case="venatic">Venatic Intelligence GmbH · live sources</button></div>
+</section>
+
+<main class="workspace">
+  <aside class="panel left">
+    <div class="section-label">Target</div>
+    <div class="subject"><div class="subject-icon" id="subjectIcon">NC</div><div><h2 id="subjectName">Northstar Components GmbH</h2><p id="subjectMeta">Germany · corporate target</p></div></div>
+    <div id="caseTag" class="synthetic-tag">SYNTHETIC TRAINING CASE</div>
+    <div class="verdict"><b id="verdictTitle">Ownership partly established</b><p id="verdictText">The majority chain is documented. One nominee path still ends before a natural person.</p></div>
+    <div class="section-label">At a glance</div>
+    <div class="fact-list" id="facts"></div>
+    <p class="tiny-note">No relationship appears here unless the reviewed evidence establishes it. Unknown stays unknown.</p>
+  </aside>
+
+  <section class="panel center">
+    <div class="answer">
+      <div class="answer-top"><div><div class="section-label">Executive answer</div><h2 id="answerTitle">What matters in this case</h2></div><span id="answerCaseTag" class="synthetic-tag">SYNTHETIC</span></div>
+      <p id="answerText">Northstar is 70% owned by Meridian Ventures and 30% by Alder Ventures. Asterion holds a documented 42% indirect economic interest through Meridian. The natural person behind Helix Nominees’ 28% path remains unresolved, so full beneficial ownership and voting control are not established.</p>
+      <div class="answer-stats" id="answerStats"></div>
+    </div>
+    <div class="graph-head"><h3>Ownership map</h3><div class="legend"><span><i style="background:#126b50"></i>established</span><span><i style="background:#d09a48"></i>unresolved</span><span>Click a relationship for proof</span></div></div>
+    <div class="graph-stage" id="graphStage"></div>
+  </section>
+
+  <aside class="panel right">
+    <div class="tabs"><button class="tab active" data-tab="brief">Analyst brief</button><button class="tab" data-tab="evidence">Evidence</button></div>
+    <div class="right-content">
+      <div class="tabpane" id="briefPane">
+        <div class="brief-block"><div class="section-label">What matters</div><div id="findings"></div></div>
+        <div class="next"><div class="section-label">Best next action</div><strong id="nextTitle">Resolve the nominee ownership path</strong><p id="nextText">Obtain the current beneficial-ownership declaration / shareholder evidence behind Helix Nominees before making a full UBO conclusion.</p><button id="nextBtn">Show collection plan</button></div>
+      </div>
+      <div class="tabpane hidden" id="evidencePane"><div class="evidence-empty" id="evidenceEmpty"><div class="cursor">↗</div><b>Select any relationship</b><p>We’ll show the exact source, anchor, calculation and limitation behind it.</p></div><div class="evidence-card hidden" id="evidenceCard"></div></div>
+    </div>
+  </aside>
+</main>
+
+<section class="method"><details><summary>How SafeTrace reaches a conclusion</summary><div class="method-grid"><div class="method-card"><b>1 · Acquire</b><span>Preserve reviewed public-source material and provenance.</span></div><div class="method-card"><b>2 · Resolve</b><span>Confirm identities before entities can propagate through the graph.</span></div><div class="method-card"><b>3 · Calculate</b><span>Keep economic ownership, voting rights and control rights separate.</span></div><div class="method-card"><b>4 · Bound</b><span>Surface contradictions and missing evidence instead of guessing.</span></div></div></details></section>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const cases={
+ northstar:{
+  search:'Northstar Components GmbH', initials:'NC', name:'Northstar Components GmbH', meta:'Germany · corporate target', live:false,
+  verdictTitle:'Ownership partly established', verdictText:'The majority chain is documented. One nominee path still ends before a natural person.',
+  facts:[['Direct owners','2 established'],['Indirect economic interest','42% Asterion'],['Ownership gap','1 nominee path'],['Voting control','Not established']],
+  answer:'Northstar is 70% owned by Meridian Ventures and 30% by Alder Ventures. Asterion holds a documented 42% indirect economic interest through Meridian. The natural person behind Helix Nominees’ 28% path remains unresolved, so full beneficial ownership and voting control are not established.',
+  stats:['4 established ownership edges','1 material ownership gap','Human review required'],
+  findings:[
+   {kind:'good',title:'42% indirect interest established',text:'Asterion Capital FZE owns 60% of Meridian, which owns 70% of Northstar: 60% × 70% = 42%.'},
+   {kind:'alert',title:'28% path stops at a nominee',text:'Helix Nominees holds 40% of Meridian. The natural person behind that stake is not established.'},
+   {kind:'',title:'Control is still a separate question',text:'Economic ownership does not establish voting rights, board appointment rights or dominant influence.'}
+  ],
+  nextTitle:'Resolve the nominee ownership path', nextText:'Obtain current beneficial-ownership / shareholder evidence behind Helix Nominees before making a full UBO conclusion.',
+  nodes:[
+   {id:'target',x:365,y:350,w:190,h:62,title:'Northstar Components GmbH',sub:'TARGET · DE',type:'target'},
+   {id:'meridian',x:220,y:220,w:170,h:62,title:'Meridian Ventures Ltd',sub:'GB · direct owner',value:'70%'},
+   {id:'alder',x:500,y:220,w:170,h:62,title:'Alder Ventures GmbH',sub:'DE · direct owner',value:'30%'},
+   {id:'asterion',x:90,y:82,w:170,h:62,title:'Asterion Capital FZE',sub:'AE · upstream owner',value:'60%'},
+   {id:'helix',x:330,y:82,w:170,h:62,title:'Helix Nominees Ltd',sub:'GB · nominee',value:'40%',type:'nominee'},
+   {id:'unknown',x:565,y:82,w:170,h:62,title:'Natural person',sub:'behind nominee stake',value:'UNRESOLVED',type:'unknown'}
+  ],
+  edges:[
+   {id:'e1',from:'meridian',to:'target',pct:'70%',sub:'direct economic',relation:'DIRECT OWNERSHIP',calc:'Meridian Ventures Ltd → 70% → Northstar Components GmbH',confidence:98,source:'German shareholder filing · synthetic fixture S1',anchor:'Shareholder row · Meridian Ventures Ltd · 70%',quote:'Meridian Ventures Ltd — 70% of issued share capital.',limitation:'Establishes economic ownership in this bounded case. Voting/control rights require separate evidence.'},
+   {id:'e2',from:'alder',to:'target',pct:'30%',sub:'direct economic',relation:'DIRECT OWNERSHIP',calc:'Alder Ventures GmbH → 30% → Northstar Components GmbH',confidence:98,source:'German shareholder filing · synthetic fixture S1',anchor:'Shareholder row · Alder Ventures GmbH · 30%',quote:'Alder Ventures GmbH — 30% of issued share capital.',limitation:'Economic ownership only.'},
+   {id:'e3',from:'asterion',to:'meridian',pct:'60%',sub:'42% effective',relation:'INDIRECT OWNERSHIP PATH',calc:'60% × 70% = 42% indirect economic interest in Northstar',confidence:96,source:'Meridian shareholder filing · synthetic fixture S2',anchor:'Asterion Capital FZE · 60%',quote:'Asterion Capital FZE — 60% of Meridian Ventures Ltd.',limitation:'42% is an indirect economic interest. It is not automatically a finding of legal control.'},
+   {id:'e4',from:'helix',to:'meridian',pct:'40%',sub:'28% effective',relation:'NOMINEE OWNERSHIP PATH',calc:'40% × 70% = 28% indirect economic path in Northstar',confidence:94,source:'Meridian shareholder filing · synthetic fixture S2',anchor:'Helix Nominees Ltd · 40%',quote:'Helix Nominees Ltd — 40% of Meridian Ventures Ltd.',limitation:'The record stops at a nominee entity; the natural person behind this stake is unresolved.'},
+   {id:'e5',from:'unknown',to:'helix',pct:'?',sub:'not established',relation:'UNRESOLVED BENEFICIAL OWNERSHIP',calc:'No percentage or identity propagated',confidence:0,source:'No sufficient source acquired',anchor:'Collection gap',quote:'No reviewed evidence establishes the natural person behind Helix Nominees Ltd.',limitation:'Do not infer or screen a natural person until authoritative identity evidence is acquired.',unresolved:true}
+  ]
+ },
+ venatic:{
+  search:'Venatic Intelligence GmbH',initials:'VI',name:'Venatic Intelligence GmbH',meta:'Berlin, Germany · live public sources',live:true,
+  verdictTitle:'Company identity established',verdictText:'Live public-source acquisition establishes the legal entity, but not its shareholder / beneficial-ownership chain.',
+  facts:[['Register ID','HRB 285675'],['Registered','31 Mar 2026'],['Share capital','€25,000'],['Shareholders','Not established']],
+  answer:'Live evidence establishes Venatic Intelligence GmbH, HRB 285675, its Berlin address and €25,000 share capital. The reviewed source set does not establish a shareholder list or beneficial-ownership chain, so SafeTrace creates no ownership edges, no UBO candidates and no screening handoff.',
+  stats:['Live public sources','0 inferred ownership edges','1 collection gap'],
+  findings:[
+   {kind:'good',title:'Legal identity corroborated',text:'The live source run establishes Venatic Intelligence GmbH and its Berlin registration details.'},
+   {kind:'alert',title:'Shareholder evidence not acquired',text:'The current reviewed source set does not establish who owns the company.'},
+   {kind:'',title:'No inference is the correct result',text:'The graph intentionally stays empty rather than converting management, website mentions or company metadata into ownership.'}
+  ],
+  nextTitle:'Acquire authoritative shareholder evidence',nextText:'Obtain the current Gesellschafterliste / equivalent authoritative shareholder record, preserve it, then re-run ownership resolution.',
+  nodes:[{id:'target',x:365,y:205,w:210,h:66,title:'Venatic Intelligence GmbH',sub:'HRB 285675 · Berlin',type:'target'}],edges:[]
+ }
+};
+let current='northstar';let selectedEdge=null;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function renderCase(id){current=id;selectedEdge=null;const c=cases[id];$('#companySearch').value=c.search;$('#subjectIcon').textContent=c.initials;$('#subjectName').textContent=c.name;$('#subjectMeta').textContent=c.meta;$('#verdictTitle').textContent=c.verdictTitle;$('#verdictText').textContent=c.verdictText;$('#answerText').textContent=c.answer;$('#nextTitle').textContent=c.nextTitle;$('#nextText').textContent=c.nextText;$('#caseTag').className=c.live?'live-tag':'synthetic-tag';$('#caseTag').textContent=c.live?'LIVE PUBLIC SOURCES':'SYNTHETIC TRAINING CASE';$('#answerCaseTag').className=c.live?'live-tag':'synthetic-tag';$('#answerCaseTag').textContent=c.live?'LIVE':'SYNTHETIC';$('#facts').innerHTML=c.facts.map(f=>`<div class="fact"><span>${esc(f[0])}</span><b>${esc(f[1])}</b></div>`).join('');$('#answerStats').innerHTML=c.stats.map((s,i)=>`<span class="mini ${i===1&&id==='northstar'?'warn':''}">${esc(s)}</span>`).join('');$('#findings').innerHTML=c.findings.map(f=>`<div class="finding ${f.kind}"><strong>${esc(f.title)}</strong><p>${esc(f.text)}</p></div>`).join('');$$('.case-btn').forEach(b=>b.classList.toggle('active',b.dataset.case===id));showTab('brief');renderGraph(c);}
+function renderGraph(c){const stage=$('#graphStage');if(!c.edges.length){stage.innerHTML=`<div class="empty-graph"><div><div class="empty-icon">⌁</div><h3>No ownership conclusion yet</h3><p>This is a useful result: the live source set establishes the company, but not who owns it. SafeTrace refuses to draw unsupported edges.</p><button class="outline-btn" id="emptyAction">See what evidence is needed →</button></div></div>`;setTimeout(()=>{const b=$('#emptyAction');if(b)b.onclick=()=>showCollectionPlan();},0);return;}
+ const W=760,H=450;const map=Object.fromEntries(c.nodes.map(n=>[n.id,n]));
+ const defs=`<defs><filter id="nodeShadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#24352a" flood-opacity=".08"/></filter><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#aab4ac"/></marker></defs>`;
+ const edges=c.edges.map(e=>{const a=map[e.from],b=map[e.to];const x1=a.x+a.w/2,y1=a.y+a.h,x2=b.x+b.w/2,y2=b.y;const mx=(x1+x2)/2,my=(y1+y2)/2;return `<g data-edge="${e.id}"><path class="edge ${e.unresolved?'unresolved':''}" d="M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}" marker-end="url(#arrow)"/><path class="edge-hit" data-edgehit="${e.id}" d="M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}"/><rect x="${mx-39}" y="${my-18}" width="78" height="31" rx="8" fill="#fff" stroke="#e0e4de"/><text class="edge-label" x="${mx}" y="${my-3}" text-anchor="middle">${e.pct}</text><text class="edge-sub" x="${mx}" y="${my+8}" text-anchor="middle">${esc(e.sub)}</text></g>`}).join('');
+ const nodes=c.nodes.map(n=>{const cls=n.type==='target'?'target':n.type==='unknown'?'unknown-node':n.type==='nominee'?'nominee':'';return `<g class="node ${cls}" transform="translate(${n.x},${n.y})"><rect width="${n.w}" height="${n.h}"/><text class="title" x="14" y="22">${esc(n.title)}</text><text class="sub" x="14" y="39">${esc(n.sub)}</text>${n.value?`<text class="value ${n.type==='unknown'?'warning':''}" x="${n.w-14}" y="22" text-anchor="end">${esc(n.value)}</text>`:''}</g>`}).join('');stage.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Ownership graph">${defs}${edges}${nodes}</svg>`;$$('[data-edgehit]').forEach(p=>p.onclick=()=>openEvidence(c.edges.find(e=>e.id===p.dataset.edgehit)));}
+function openEvidence(e){selectedEdge=e;showTab('evidence');$('#evidenceEmpty').classList.add('hidden');const card=$('#evidenceCard');card.classList.remove('hidden');card.innerHTML=`<span class="relation">${esc(e.relation)}</span><h3>${esc(e.calc)}</h3><div class="calc">${esc(e.calc)}</div><div class="section-label">Evidence</div><div class="source-card"><div class="source-top"><b>${esc(e.source)}</b><span>${esc(e.anchor)}</span></div><div class="quote">“${esc(e.quote)}”</div></div><div class="section-label" style="margin-top:15px">Analytical boundary</div><p style="font-size:11px;color:var(--muted);margin:0">${esc(e.limitation)}</p><div class="confidence"><span>Evidence confidence</span><b>${e.confidence?e.confidence+'%':'Not established'}</b></div><div class="confidence-bar"><i style="width:${e.confidence}%"></i></div>`;}
+function showTab(id){$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));$('#briefPane').classList.toggle('hidden',id!=='brief');$('#evidencePane').classList.toggle('hidden',id!=='evidence');}
+function showCollectionPlan(){showTab('brief');const c=cases[current];toast(current==='northstar'?'Collection plan: beneficial-ownership declaration → shareholder register → nominee/agency documentation → verify voting/control rights.':'Collection plan: current Gesellschafterliste → preserve source → resolve shareholders → calculate indirect ownership → screen confirmed natural-person candidates.');}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),5200);}
+$$('.tab').forEach(t=>t.onclick=()=>showTab(t.dataset.tab));$$('.case-btn').forEach(b=>b.onclick=()=>renderCase(b.dataset.case));$('#nextBtn').onclick=showCollectionPlan;$('#investigateBtn').onclick=()=>{const q=$('#companySearch').value.toLowerCase();if(q.includes('venatic'))renderCase('venatic');else if(q.includes('northstar'))renderCase('northstar');else toast('Public acquisition backend accepts new targets; this portfolio page exposes the two reproducible proof cases.');};$('#companySearch').addEventListener('keydown',e=>{if(e.key==='Enter')$('#investigateBtn').click();});renderCase('northstar');
+</script>
+</body>
+</html>
