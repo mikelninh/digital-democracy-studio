@@ -15,7 +15,7 @@
       "source_rank": "primary_official",
       "authority": 0.95,
       "jurisdiction": "DE",
-      "update_cadence": "unknown",
+      "update_cadence": "weekly",
       "extract": [
         {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "required": true, "confidence": 0.95},
         {"field": "address", "pattern": "(Neustädtische Kirchstraße 6\\s+10117 Berlin(?:, Germany)?)", "required": true, "confidence": 0.95},
@@ -34,7 +34,7 @@
       "source_rank": "secondary_public_record",
       "authority": 0.78,
       "jurisdiction": "DE",
-      "update_cadence": "periodic",
+      "update_cadence": "monthly",
       "extract": [
         {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "required": true, "confidence": 0.78},
         {"field": "register_id", "pattern": "(HRB\\s*285675)", "required": true, "confidence": 0.78},
@@ -52,7 +52,7 @@
       "source_rank": "secondary_public_record",
       "authority": 0.72,
       "jurisdiction": "DE",
-      "update_cadence": "periodic",
+      "update_cadence": "monthly",
       "extract": [
         {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "confidence": 0.72},
         {"field": "register_id", "pattern": "(HRB\\s*285675)", "confidence": 0.72},
