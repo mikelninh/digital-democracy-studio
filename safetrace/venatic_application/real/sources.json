@@ -1,0 +1,145 @@
+{
+  "case_id": "REAL-DE-MEAT-LOBBY-001",
+  "title": "Meat industry lobbying and Germany's animal-husbandry labelling law",
+  "retrieved_at": "2026-09-01",
+  "scope_note": "Public-source investigation. The case maps documented advocacy, affiliations and legislative changes. It does not infer corruption, improper influence or causation without evidence.",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "PFG Central Services GmbH & Co.KG — Lobbyregister entry",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "primary self-disclosure hosted by official authority",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
+      "exact_location": "Financial expenditure; persons engaged; memberships",
+      "supports": [
+        "PFG reports lobbying expenditure of EUR 190,001–200,000 for FY2025 and 3.00 FTE.",
+        "PFG lists membership in the meat-industry association and Wirtschaftsrat der CDU among four memberships."
+      ],
+      "does_not_prove": "Membership or expenditure does not prove policy outcomes or improper influence."
+    },
+    {
+      "id": "S2",
+      "title": "PFG regulatory project — revision of TierHaltKennzG",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "primary self-disclosure hosted by official authority",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0009541",
+      "exact_location": "Regelungsvorhaben RV0009541 · registered 28 Jun 2024",
+      "supports": [
+        "PFG disclosed that it wanted the planned 1 August 2025 labelling obligation not to take effect before a practical revision of the law."
+      ],
+      "does_not_prove": "This proves an advocacy objective, not that PFG caused any later amendment."
+    },
+    {
+      "id": "S3",
+      "title": "Verband der Fleischwirtschaft e.V. (VDF) — Lobbyregister entry",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "primary self-disclosure hosted by official authority",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R001757",
+      "exact_location": "Financial expenditure; members; memberships; concrete regulatory projects",
+      "supports": [
+        "VDF reports EUR 140,001–150,000 in lobbying expenditure for FY2025 and 1.40 FTE.",
+        "VDF reports 120 members and nine concrete regulatory projects.",
+        "VDF lists memberships including Wirtschaftsrat der CDU and Wirtschaftsforum der SPD."
+      ],
+      "does_not_prove": "Association membership does not establish direction, control, donations or improper political influence."
+    },
+    {
+      "id": "S4",
+      "title": "VDF position on amendment of TierHaltKennzG",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "registered advocacy record",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0026526/475642",
+      "exact_location": "Regelungsvorhaben RV0026526 · statements SG2606300402 and SG2606300404",
+      "supports": [
+        "VDF registered a project seeking a practical, EU-law-compatible amendment of the animal-husbandry labelling law.",
+        "The linked statements were sent to Bundestag actors and/or the federal government."
+      ],
+      "does_not_prove": "Sending a position paper proves access/advocacy, not adoption of its proposals."
+    },
+    {
+      "id": "S5",
+      "title": "VDF statement SG2606300402",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "registered statement metadata",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/stellungnahmengutachtensuche/SG2606300402",
+      "exact_location": "Addressed 30 Apr 2026 to Bundestag parliamentary groups/members, Federal Chancellery and BMLEH",
+      "supports": [
+        "A VDF position on the law was sent to named categories of federal decision-makers."
+      ],
+      "does_not_prove": "Receipt does not prove persuasion, agreement or legislative causation."
+    },
+    {
+      "id": "S6",
+      "title": "Bundestag printed paper 21/327 — proposed first amendment",
+      "publisher": "German Bundestag",
+      "authority": "Official legislative document",
+      "source_type": "primary legislative proposal",
+      "url": "https://dserver.bundestag.de/btd/21/003/2100327.pdf",
+      "exact_location": "p.1 Problem/Solution; printed p.5 §40(2); printed p.7 Executive footprint",
+      "supports": [
+        "The bill proposed extending the transition deadline from 1 Aug 2025 to 1 Mar 2026.",
+        "The explanatory text refers to signals/reactions from affected economic actors and the Länder agriculture ministers.",
+        "The executive footprint says interest representatives did not materially contribute to the bill's content."
+      ],
+      "does_not_prove": "A proposal is not enactment, and policy alignment is not proof that a lobbyist caused the change."
+    },
+    {
+      "id": "S7",
+      "title": "VDF member overview",
+      "publisher": "Verband der Fleischwirtschaft e.V.",
+      "authority": "Industry association first-party source",
+      "source_type": "first-party membership directory",
+      "url": "https://www.v-d-f.de/mitglieder-uebersicht/mitglieder/mg-export/_lALL",
+      "exact_location": "Member list includes Premium Food Group, Westfleisch and Vion entities",
+      "supports": [
+        "Major meat-sector companies are listed by the association as members."
+      ],
+      "does_not_prove": "Membership does not mean every member directed or endorsed every VDF lobbying position."
+    },
+    {
+      "id": "S8",
+      "title": "PFG position on third amendment of TierHaltKennzG",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "registered advocacy record",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0027248/495320",
+      "exact_location": "Regelungsvorhaben RV0027248 · PFG · 20 Jul 2026 · statement SG2607200004",
+      "supports": [
+        "PFG disclosed objectives including downgrading and labelling of imported goods in the next amendment."
+      ],
+      "does_not_prove": "The registered request does not establish that those requested provisions will be adopted."
+    },
+    {
+      "id": "S9",
+      "title": "DIP procedure — First Act amending TierHaltKennzG",
+      "publisher": "German Bundestag",
+      "authority": "Official parliamentary procedure database",
+      "source_type": "primary legislative procedure record",
+      "url": "https://dip.bundestag.de/vorgang/erstes-gesetz-zur-%C3%A4nderung-des-tierhaltungskennzeichnungsgesetzes/322257",
+      "exact_location": "Beratungsstand: Verkündet · law dated 17 Jul 2025 · BGBl. I 2025 No. 165 · effective 23 Jul 2025",
+      "supports": [
+        "The First Act amending the TierHaltKennzG was promulgated.",
+        "The procedure record describes the enacted measure as extending implementation deadlines by seven months to 1 Mar 2026."
+      ],
+      "does_not_prove": "Enactment proves the policy change happened; it does not prove which stakeholder caused the legislature to adopt it."
+    },
+    {
+      "id": "S10",
+      "title": "Current TierHaltKennzG §40",
+      "publisher": "Gesetze im Internet",
+      "authority": "Official consolidated federal-law portal",
+      "source_type": "current consolidated statutory text",
+      "url": "https://www.gesetze-im-internet.de/tierhaltkennzg/__40.html",
+      "exact_location": "§40(2) · current consolidated text checked 1 Sep 2026",
+      "supports": [
+        "The current consolidated §40(2) now uses 1 Jan 2027, showing that the statutory timeline changed again after the July 2025 first amendment."
+      ],
+      "does_not_prove": "The current date does not erase the earlier enacted 2025 extension; it shows why time/version must be explicit in an investigation."
+    }
+  ]
+}
