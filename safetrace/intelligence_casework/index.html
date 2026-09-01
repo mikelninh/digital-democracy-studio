@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SafeTrace Intelligence Casework — evidence-first corporate investigations, entity resolution and analyst judgement." />
+  <title>SafeTrace · Intelligence Casework</title>
+  <style>
+    :root{--bg:#081018;--panel:#0d1823;--panel2:#111f2c;--line:#263747;--text:#edf5fb;--muted:#9fb0bf;--soft:#c9d8e4;--good:#79e2b7;--warn:#ffd37a;--risk:#ff9b8f;--blue:#8cc8ff;--violet:#bdadff;--shadow:0 18px 60px rgba(0,0,0,.28)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 12% -5%,#15304a 0,transparent 34%),radial-gradient(circle at 88% 3%,#251d43 0,transparent 28%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit} button{font:inherit} .wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:20;background:rgba(8,16,24,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:18px}.brand{font-weight:800;letter-spacing:.01em}.brand span{color:var(--blue)}.navlinks{display:flex;gap:18px;color:var(--muted);font-size:13px}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--text)}
+    .hero{padding:72px 0 42px}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--soft);background:rgba(255,255,255,.025);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 14px var(--good)}h1{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-.055em;margin:22px 0 24px;max-width:960px}.gradient{background:linear-gradient(110deg,#fff 5%,#a9d9ff 50%,#c7baff);-webkit-background-clip:text;background-clip:text;color:transparent}.lede{font-size:clamp(18px,2.2vw,24px);line-height:1.45;color:var(--soft);max-width:850px;margin:0}.heroMeta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.pill{border:1px solid var(--line);background:rgba(255,255,255,.025);padding:8px 11px;border-radius:999px;color:var(--muted);font-size:12px}.pill strong{color:var(--text)}
+    .notice{margin:22px 0 0;padding:14px 16px;border:1px solid rgba(255,211,122,.35);background:rgba(255,211,122,.06);border-radius:14px;color:#ffe6ad;font-size:13px}.grid{display:grid;gap:16px}.metrics{grid-template-columns:repeat(4,1fr);margin:28px 0 56px}.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.018));border-radius:18px;box-shadow:var(--shadow)}.metric{padding:20px}.metric .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.metric .value{font-size:31px;font-weight:820;letter-spacing:-.04em;margin:5px 0 2px}.metric .sub{font-size:12px;color:var(--muted)}
+    section{padding:34px 0}.sectionHead{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:18px}.sectionHead h2{font-size:30px;letter-spacing:-.035em;margin:0}.sectionHead p{margin:0;color:var(--muted);max-width:660px}.assessment{padding:24px}.assessmentTop{display:flex;justify-content:space-between;align-items:start;gap:20px}.score{border:1px solid rgba(121,226,183,.32);background:rgba(121,226,183,.07);color:var(--good);padding:8px 11px;border-radius:10px;font-weight:750;font-size:12px}.assessment h3{font-size:25px;margin:8px 0 12px}.assessment p{color:var(--soft);max-width:920px}.decision{margin-top:18px;padding:16px;border-left:3px solid var(--good);background:rgba(121,226,183,.055);color:#d8f8eb;border-radius:0 12px 12px 0}
+    .two{grid-template-columns:1.25fr .75fr}.graph{padding:18px;min-height:440px;overflow:hidden}.graph svg{width:100%;height:390px}.edge{stroke:#536c80;stroke-width:2}.edge-dash{stroke:#805f64;stroke-dasharray:6 5}.node circle,.node rect{fill:#132535;stroke:#557087;stroke-width:1.3}.node.target circle{stroke:var(--blue);stroke-width:2.5}.node.unresolved rect{stroke:var(--warn);stroke-dasharray:5 4}.node text{fill:var(--text);font-size:11px;font-weight:650}.node .small{fill:var(--muted);font-size:9px;font-weight:500}.edgeLabel{fill:#a8bac8;font-size:9px}.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin:4px 0 0}.legend b{color:var(--text)}
+    .stack{display:grid;gap:12px}.finding{padding:16px}.finding .kicker{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.075em}.finding h4{margin:7px 0 5px;font-size:16px}.finding p{margin:0;color:var(--muted);font-size:13px}.status{border-radius:999px;padding:4px 7px;font-size:10px;font-weight:800;letter-spacing:.03em}.supported{background:rgba(121,226,183,.1);color:var(--good)}.gap{background:rgba(255,211,122,.1);color:var(--warn)}.contradicted{background:rgba(255,155,143,.1);color:var(--risk)}
+    .screen{padding:22px}.screenGrid{display:grid;grid-template-columns:1fr 48px 1fr;gap:14px;align-items:center}.person{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}.person small{color:var(--muted)}.notSame{text-align:center;color:var(--risk);font-weight:900}.reasons{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.reason{font-size:11px;border:1px solid rgba(255,155,143,.28);color:#ffc0b8;background:rgba(255,155,143,.055);padding:6px 8px;border-radius:999px}.rule{margin-top:15px;color:var(--soft);font-size:13px}.rule strong{color:var(--text)}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.filter{cursor:pointer;border:1px solid var(--line);color:var(--muted);background:transparent;border-radius:999px;padding:7px 10px;font-size:11px}.filter.active,.filter:hover{color:var(--text);border-color:#52718b;background:#122130}.tableWrap{overflow:auto;border:1px solid var(--line);border-radius:16px}table{width:100%;border-collapse:collapse;min-width:850px;background:rgba(255,255,255,.015)}th,td{padding:12px 13px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top}th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em;background:#0d1924;position:sticky;top:64px}td{font-size:12px;color:var(--soft)}td strong{color:var(--text)}.grade{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:7px;border:1px solid var(--line);color:var(--text);font-weight:800}.claimText{max-width:520px}.hiddenRow{display:none}
+    .contradictionGrid{grid-template-columns:repeat(2,1fr)}.xcard{padding:20px}.xcard .versus{display:grid;grid-template-columns:1fr auto 1fr;gap:9px;margin:13px 0}.srcBox{border:1px solid var(--line);padding:11px;border-radius:11px;color:var(--soft);font-size:12px}.vs{align-self:center;color:var(--risk);font-weight:900}.next{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--blue)}
+    .queue{counter-reset:q;display:grid;gap:10px}.q{counter-increment:q;display:grid;grid-template-columns:42px 1fr auto;gap:14px;align-items:center;padding:15px 17px}.q:before{content:counter(q);width:30px;height:30px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;color:var(--blue);font-weight:800}.q b{display:block}.q span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.q .source{font-size:11px;color:var(--soft);max-width:280px;text-align:right}.bench{grid-template-columns:1fr 1fr}.benchCard{padding:22px}.benchCard h3{margin:0}.benchVals{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:15px}.benchVal{border:1px solid var(--line);border-radius:12px;padding:13px}.benchVal small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.benchVal strong{font-size:23px}.honesty{margin-top:13px;color:var(--muted);font-size:12px}.failures{margin-top:12px;display:grid;gap:7px}.failure{font-size:11px;padding:9px 10px;border-radius:10px;background:rgba(255,155,143,.055);border:1px solid rgba(255,155,143,.18);color:#f4c3bd}
+    .memo{padding:27px;display:flex;justify-content:space-between;align-items:center;gap:24px}.memo h3{margin:0 0 5px;font-size:24px}.memo p{margin:0;color:var(--muted);max-width:720px}.cta{white-space:nowrap;text-decoration:none;padding:11px 15px;border-radius:11px;background:var(--text);color:#081018;font-weight:800;font-size:12px}.footer{padding:52px 0 70px;color:var(--muted);font-size:12px}.error{padding:20px;border:1px solid rgba(255,155,143,.35);background:rgba(255,155,143,.07);border-radius:14px;color:#ffd0ca}
+    @media(max-width:900px){.metrics{grid-template-columns:1fr 1fr}.two,.bench,.contradictionGrid{grid-template-columns:1fr}.navlinks{display:none}.screenGrid{grid-template-columns:1fr}.notSame{transform:rotate(90deg)}.q{grid-template-columns:40px 1fr}.q .source{grid-column:2;text-align:left}.memo{align-items:flex-start;flex-direction:column}}@media(max-width:520px){.wrap{width:min(100% - 22px,1180px)}.hero{padding-top:46px}.metrics{grid-template-columns:1fr 1fr}.metric{padding:15px}.metric .value{font-size:25px}h1{font-size:46px}.assessmentTop{flex-direction:column}.graph{padding:8px}.graph svg{height:330px}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><div class="brand">SafeTrace <span>Intelligence Casework</span></div><nav class="navlinks"><a href="#assessment">Assessment</a><a href="#ownership">Ownership</a><a href="#claims">Claims</a><a href="#sources">Sources</a><a href="#benchmark">Benchmark</a></nav></div></header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow"><span class="dot"></span> Analyst proof · Case V-001</div>
+    <h1><span class="gradient">From fragmented records to defensible intelligence.</span></h1>
+    <p class="lede">A synthetic cross-jurisdiction corporate investigation showing entity resolution, ownership analysis, screening triage, contradictions, source quality, written judgement and the next best investigative action.</p>
+    <div class="heroMeta"><div class="pill"><strong>4</strong> jurisdictions</div><div class="pill"><strong>9</strong> entities</div><div class="pill"><strong>9</strong> source records</div><div class="pill"><strong>9</strong> atomic claims</div><div class="pill"><strong>0</strong> auto-accusations</div></div>
+    <div class="notice"><strong>Synthetic training case.</strong> Names, identifiers, records and risk signals are fixtures. This demo makes no allegation about any real person or company.</div>
+  </section>
+
+  <div class="grid metrics">
+    <div class="card metric"><div class="label">Holdout precision</div><div class="value" id="precision">92.31%</div><div class="sub">frozen 30-case ER holdout</div></div>
+    <div class="card metric"><div class="label">Holdout recall</div><div class="value" id="recall">85.71%</div><div class="sub">failures shown, not hidden</div></div>
+    <div class="card metric"><div class="label">Open material gaps</div><div class="value" id="gaps">4</div><div class="sub">prioritised research queue</div></div>
+    <div class="card metric"><div class="label">Current assessment</div><div class="value" style="font-size:22px;color:var(--warn)">EDD</div><div class="sub">verify before consequential decision</div></div>
+  </div>
+
+  <section id="assessment">
+    <div class="sectionHead"><div><h2>Executive assessment</h2><p>What an analyst would tell the case team—not what a similarity model happens to score.</p></div></div>
+    <article class="card assessment"><div class="assessmentTop"><div><div style="color:var(--muted);font-size:12px">CLIENT QUESTION</div><h3 id="question">Who controls Northstar Components GmbH, what material risks are visible, and what should we verify next?</h3></div><div class="score">CONFIDENCE · MODERATE–HIGH</div></div><p id="assessmentText"></p><div class="decision" id="decision"></div></article>
+  </section>
+
+  <section id="ownership">
+    <div class="sectionHead"><div><h2>Ownership & relationship graph</h2><p>Legal entities stay distinct. Ownership is sourced edge-by-edge. A nominee gap remains a gap instead of being guessed away.</p></div></div>
+    <div class="grid two">
+      <article class="card graph">
+        <svg viewBox="0 0 690 390" role="img" aria-label="Synthetic Northstar ownership and payment relationship graph">
+          <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#536c80"/></marker><marker id="riskarrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><polygon points="0 0,7 3.5,0 7" fill="#805f64"/></marker></defs>
+          <line class="edge" x1="235" y1="90" x2="335" y2="165" marker-end="url(#arrow)"/><text class="edgeLabel" x="265" y="120">70% owns</text>
+          <line class="edge" x1="455" y1="90" x2="360" y2="165" marker-end="url(#arrow)"/><text class="edgeLabel" x="407" y="120">30% owns</text>
+          <line class="edge" x1="130" y1="28" x2="220" y2="78" marker-end="url(#arrow)"/><text class="edgeLabel" x="157" y="48">60%</text>
+          <line class="edge" x1="325" y1="28" x2="250" y2="78" marker-end="url(#arrow)"/><text class="edgeLabel" x="280" y="48">40%</text>
+          <line class="edge" x1="350" y1="245" x2="350" y2="204" marker-end="url(#arrow)"/><text class="edgeLabel" x="358" y="228">supplier</text>
+          <line class="edge edge-dash" x1="515" y1="300" x2="405" y2="264" marker-end="url(#riskarrow)"/><text class="edgeLabel" x="453" y="278">payment route</text>
+          <g class="node"><rect x="55" y="5" rx="11" width="150" height="45"/><text x="70" y="24">Asterion Capital FZE</text><text class="small" x="70" y="39">AE · upstream shareholder</text></g>
+          <g class="node unresolved"><rect x="250" y="5" rx="11" width="155" height="45"/><text x="264" y="24">Helix Nominees Ltd</text><text class="small" x="264" y="39">GB · UBO unresolved</text></g>
+          <g class="node"><rect x="170" y="72" rx="11" width="155" height="45"/><text x="184" y="91">Meridian Ventures Ltd</text><text class="small" x="184" y="106">GB · 70% shareholder</text></g>
+          <g class="node"><rect x="440" y="72" rx="11" width="145" height="45"/><text x="454" y="91">Alder Ventures GmbH</text><text class="small" x="454" y="106">DE · 30% shareholder</text></g>
+          <g class="node target"><circle cx="350" cy="184" r="54"/><text x="291" y="181">Northstar Components</text><text x="328" y="196">GmbH</text><text class="small" x="319" y="212">DE · target</text></g>
+          <g class="node"><rect x="260" y="244" rx="11" width="180" height="45"/><text x="275" y="263">Eastbridge Logistics</text><text class="small" x="275" y="278">PL · contract supplier</text></g>
+          <g class="node"><rect x="485" y="296" rx="11" width="185" height="45"/><text x="500" y="315">Oriole Settlement Services</text><text class="small" x="500" y="330">AE · later beneficiary</text></g>
+        </svg>
+        <div class="legend"><span><b>solid</b> documented relationship</span><span><b style="color:var(--warn)">dashed node</b> unresolved UBO</span><span><b style="color:var(--risk)">dashed edge</b> anomalous route requiring verification</span></div>
+      </article>
+      <div class="stack" id="findings"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sectionHead"><div><h2>Screening triage: similar name ≠ same person</h2><p>The highest-cost entity-resolution error in this case would be turning a fuzzy name hit into a consequential sanctions conclusion.</p></div></div>
+    <article class="card screen"><div class="screenGrid"><div class="person"><small>TARGET</small><strong style="display:block;font-size:18px">Marek Vostrik</strong><small>DOB 1983-04-12 · NAT DE</small></div><div class="notSame">≠</div><div class="person"><small>SCREENING CANDIDATE</small><strong style="display:block;font-size:18px">Marek Vostryk</strong><small>DOB 1971-09-02 · NAT XX</small></div></div><div class="reasons"><span class="reason">DOB mismatch</span><span class="reason">nationality mismatch</span><span class="reason">no stable identifier overlap</span></div><div class="rule"><strong>Analyst rule:</strong> A fuzzy-name hit is a research lead, never a sanctions conclusion. Candidate stays <code>RELATED_TO</code>, not <code>SAME_AS</code>.</div></article>
+  </section>
+
+  <section id="claims">
+    <div class="sectionHead"><div><h2>Claim ledger</h2><p>Every material sentence has an evidence state, confidence, source references and a limitation.</p></div></div>
+    <div class="toolbar" id="claimFilters"><button class="filter active" data-filter="all">All claims</button><button class="filter" data-filter="supported">Supported</button><button class="filter" data-filter="supported_with_gap">With gap</button><button class="filter" data-filter="contradicted">Contradicted</button><button class="filter" data-filter="negative_evidence">Negative evidence</button></div>
+    <div class="tableWrap"><table><thead><tr><th>ID</th><th>Claim</th><th>State</th><th>Confidence</th><th>Evidence</th><th>Limitation</th></tr></thead><tbody id="claimsBody"></tbody></table></div>
+  </section>
+
+  <section>
+    <div class="sectionHead"><div><h2>Contradiction desk</h2><p>Conflicts are not quietly overwritten by whichever source arrived last.</p></div></div>
+    <div class="grid contradictionGrid" id="contradictions"></div>
+  </section>
+
+  <section id="sources">
+    <div class="sectionHead"><div><h2>Source map</h2><p>Authority, relevance and freshness are separate judgements. Every record also carries an anchor and preservation hash.</p></div></div>
+    <div class="tableWrap"><table><thead><tr><th>ID</th><th>Source</th><th>Kind / jurisdiction</th><th>Authority</th><th>Relevance</th><th>Freshness</th><th>Anchor</th></tr></thead><tbody id="sourcesBody"></tbody></table></div>
+  </section>
+
+  <section>
+    <div class="sectionHead"><div><h2>Next-best collection plan</h2><p>The system's useful output is not merely “risk”. It is the shortest defensible path from uncertainty to a better decision.</p></div></div>
+    <div class="queue" id="queue"></div>
+  </section>
+
+  <section id="benchmark">
+    <div class="sectionHead"><div><h2>Entity-resolution benchmark</h2><p>Development performance and unseen holdout performance are deliberately kept separate.</p></div></div>
+    <div class="grid bench">
+      <article class="card benchCard"><div style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Development benchmark · 40 cases</div><h3>Regression repaired</h3><div class="benchVals"><div class="benchVal"><small>Precision</small><strong id="devP">1.000</strong></div><div class="benchVal"><small>Recall</small><strong id="devR">1.000</strong></div><div class="benchVal"><small>F1</small><strong id="devF">1.000</strong></div></div><div class="honesty">This set was inspected during resolver repair. It proves the regression was fixed—not production accuracy.</div></article>
+      <article class="card benchCard"><div style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em">Frozen holdout · 30 cases</div><h3>Unseen evaluation</h3><div class="benchVals"><div class="benchVal"><small>Precision</small><strong id="holdP">.923</strong></div><div class="benchVal"><small>Recall</small><strong id="holdR">.857</strong></div><div class="benchVal"><small>F1</small><strong id="holdF">.889</strong></div></div><div class="failures" id="failures"></div><div class="honesty">After inspecting these failures, the next unbiased score requires a fresh holdout-v2. No victory-lap data leakage. 🙂</div></article>
+    </div>
+  </section>
+
+  <section><article class="card memo"><div><h3>Read the finished analyst memo</h3><p>Concise executive assessment, key findings, source evaluation, alternative explanations, collection plan and analytical caveats.</p></div><a class="cta" href="./ANALYST_MEMO_V001.md">Open assessment →</a></article></section>
+</main>
+<footer class="wrap footer">SafeTrace Intelligence Casework · Evidence first · Ambiguity preserved · Consequential conclusions human-reviewable</footer>
+<script>
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=n=>`${(Number(n)*100).toFixed(0)}%`;
+async function json(path){const r=await fetch(path);if(!r.ok)throw new Error(`${path}: ${r.status}`);return r.json()}
+function stateBadge(state){const cls=state==='supported'?'supported':state==='contradicted'?'contradicted':state==='negative_evidence'?'supported':'gap';return `<span class="status ${cls}">${esc(state.replaceAll('_',' '))}</span>`}
+function render(caseData,dev,hold){
+  $('#question').textContent=caseData.client_question;
+  $('#assessmentText').textContent=`${caseData.executive_assessment.control} ${caseData.executive_assessment.screening} ${caseData.executive_assessment.risk}`;
+  $('#decision').innerHTML=`<strong>Recommended decision:</strong> ${esc(caseData.executive_assessment.decision)}`;
+  $('#gaps').textContent=caseData.questions_remaining.length;
+  const highlights=[
+    ['Ownership','42% indirect interest documented','Asterion → Meridian → Northstar is supported by the supplied filing chain.','supported'],
+    ['Beneficial ownership','28% indirect chain unresolved','Helix Nominees is identified; the natural-person owner behind its stake is not.','gap'],
+    ['Payment route','Beneficiary changed','Later payment instruction points to a different legal entity. Verify authority; do not infer fraud.','contradicted'],
+    ['Director status','Sources conflict','Official filing and archived company page disagree on current status.','contradicted']
+  ];
+  $('#findings').innerHTML=highlights.map(x=>`<article class="card finding"><div class="kicker"><span>${esc(x[0])}</span>${stateBadge(x[3]==='gap'?'supported_with_gap':x[3])}</div><h4>${esc(x[1])}</h4><p>${esc(x[2])}</p></article>`).join('');
+  $('#claimsBody').innerHTML=caseData.claims.map(c=>`<tr data-state="${esc(c.state)}"><td><strong>${esc(c.id)}</strong></td><td class="claimText">${esc(c.text)}</td><td>${stateBadge(c.state)}</td><td>${pct(c.confidence)}</td><td>${esc([...c.support,...c.contradict].join(', '))}</td><td>${esc(c.limitation)}</td></tr>`).join('');
+  $('#sourcesBody').innerHTML=caseData.sources.map(s=>`<tr><td><strong>${esc(s.id)}</strong></td><td><strong>${esc(s.title)}</strong></td><td>${esc(s.kind)}<br><span style="color:var(--muted)">${esc(s.jurisdiction)}</span></td><td><span class="grade">${esc(s.authority)}</span></td><td><span class="grade">${esc(s.relevance)}</span></td><td><span class="grade">${esc(s.freshness)}</span></td><td>${esc(s.anchor)}</td></tr>`).join('');
+  const sourceMap=Object.fromEntries(caseData.sources.map(s=>[s.id,s]));
+  $('#contradictions').innerHTML=caseData.contradictions.map(x=>`<article class="card xcard"><div style="color:var(--risk);font-size:11px;text-transform:uppercase;letter-spacing:.08em">${esc(x.topic)}</div><div class="versus"><div class="srcBox"><strong>${esc(x.source_a)}</strong><br>${esc(sourceMap[x.source_a]?.title)}</div><div class="vs">VS</div><div class="srcBox"><strong>${esc(x.source_b)}</strong><br>${esc(sourceMap[x.source_b]?.title)}</div></div><div style="color:var(--soft);font-size:13px">${esc(x.assessment)}</div><div class="next"><strong>Next:</strong> ${esc(x.next_step)}</div></article>`).join('');
+  $('#queue').innerHTML=caseData.questions_remaining.map(q=>`<article class="card q"><div><b>${esc(q.question)}</b><span>${esc(q.why)}</span></div><div class="source">Best source: ${esc(q.best_source)}</div></article>`).join('');
+  if(dev?.metrics){$('#devP').textContent=dev.metrics.precision.toFixed(3);$('#devR').textContent=dev.metrics.recall.toFixed(3);$('#devF').textContent=dev.metrics.f1.toFixed(3)}
+  if(hold?.metrics){$('#precision').textContent=(hold.metrics.precision*100).toFixed(2)+'%';$('#recall').textContent=(hold.metrics.recall*100).toFixed(2)+'%';$('#holdP').textContent=hold.metrics.precision.toFixed(3);$('#holdR').textContent=hold.metrics.recall.toFixed(3);$('#holdF').textContent=hold.metrics.f1.toFixed(3)}
+  $('#failures').innerHTML=(hold?.errors||[]).map(e=>`<div class="failure"><strong>${esc(e.case_id)}</strong> · expected ${esc(e.expected)}, predicted ${esc(e.predicted)} — ${esc(e.record_a)} ↔ ${esc(e.record_b)}</div>`).join('');
+  document.querySelectorAll('#claimFilters .filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('#claimFilters .filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('#claimsBody tr').forEach(row=>row.classList.toggle('hiddenRow',f!=='all'&&row.dataset.state!==f))}));
+}
+Promise.all([json('./data/case_v001.json'),json('../../zero-suffering-intelligence/entity-resolution/results-v11.json'),json('../../zero-suffering-intelligence/entity-resolution/results-holdout-v1.json')]).then(([c,d,h])=>render(c,d,h)).catch(err=>{console.error(err);$('#assessmentText').innerHTML=`<div class="error">Could not load case data. Serve the repository through a static HTTP server rather than opening this file directly.<br><small>${esc(err.message)}</small></div>`});
+</script>
+</body>
+</html>
