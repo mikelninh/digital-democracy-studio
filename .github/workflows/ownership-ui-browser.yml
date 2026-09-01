@@ -43,10 +43,14 @@ jobs:
 
               assert not runtime_errors, runtime_errors
               assert 'Who owns and controls' in page.locator('h1').inner_text()
+              assert 'fragmented' in page.locator('.hero p').inner_text().lower()
+              assert 'EDD' in page.locator('.hero p').inner_text()
               assert page.locator('[data-edge]').count() >= 1
               assert page.locator('#graph svg').count() == 1
               assert page.locator('#answer').inner_text().strip()
               assert page.locator('#findings .finding').count() >= 1
+
+              page.screenshot(path='artifacts/ownership-ui-browser/workspace-overview.png', full_page=True)
 
               page.locator('[data-edge]').first.click(force=True)
               page.wait_for_timeout(100)
@@ -55,7 +59,7 @@ jobs:
               assert page.locator('#evidence .relation').count() == 1
               assert page.locator('#evidence .source').count() >= 1
 
-              page.screenshot(path='artifacts/ownership-ui-browser/workspace.png', full_page=True)
+              page.screenshot(path='artifacts/ownership-ui-browser/workspace-evidence.png', full_page=True)
               browser.close()
           PY
       - name: Exercise fail-closed empty state in Chromium
@@ -95,6 +99,7 @@ jobs:
               assert page.locator('[data-edge]').count() == 0
               assert 'No ownership edge is supported yet' in page.locator('#graph').inner_text()
               assert 'Authoritative shareholder evidence has not been acquired.' in page.locator('#nextText').inner_text()
+              page.screenshot(path='artifacts/ownership-ui-browser/workspace-empty.png', full_page=True)
               browser.close()
           PY
       - name: Upload browser-verified work product
