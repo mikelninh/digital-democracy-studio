@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/real_case.schema.json",
+  "title": "SafeTrace Real Investigation Case",
+  "type": "object",
+  "required": ["case_id", "title", "retrieved_at", "scope_note", "sources"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "retrieved_at": {"type": "string", "format": "date"},
+    "scope_note": {"type": "string", "minLength": 1},
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "publisher", "authority", "source_type", "url", "exact_location", "supports", "does_not_prove"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "publisher": {"type": "string", "minLength": 1},
+          "authority": {"type": "string", "minLength": 1},
+          "source_type": {"type": "string", "minLength": 1},
+          "url": {"type": "string", "pattern": "^https://"},
+          "exact_location": {"type": "string", "minLength": 1},
+          "supports": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "does_not_prove": {"type": "string", "minLength": 1},
+          "retrieved_at": {"type": "string", "format": "date"},
+          "independence_group": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
