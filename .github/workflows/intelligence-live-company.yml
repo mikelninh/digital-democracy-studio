@@ -8,6 +8,7 @@ on:
       - 'safetrace/intelligence_casework/fixtures/venatic_live.json'
       - 'safetrace/intelligence_casework/tests/test_company_live.py'
       - 'safetrace/intelligence_casework/tests/test_company_live_resilient.py'
+      - 'safetrace/intelligence_casework/live/**'
       - '.github/workflows/intelligence-live-company.yml'
   workflow_dispatch:
   schedule:
@@ -42,13 +43,20 @@ jobs:
           r = json.loads(p.read_text())
           assert r['schema_version'] == 'safetrace.live-company-investigation/2.2'
           assert r['integrity']['status'] == 'pass'
-          assert r['metrics']['sources_requested'] == 3
+          assert r['metrics']['sources_requested'] == 4
           assert r['metrics']['sources_acquired'] >= 2
+          assert r['metrics']['claims'] >= 2
           assert r['metrics']['extraction_gaps'] == sum(len(s['required_not_found']) for s in r['sources'])
           assert any(c['field'] == 'legal_name' for c in r['claims'])
-          assert any(c['field'] == 'register_id' for c in r['claims'])
-          capital = next(c for c in r['claims'] if c['field'] == 'share_capital_eur')
-          assert capital['value'] == '25000', capital
+          assert any(c['field'] == 'managing_director' for c in r['claims'])
+          capital_claims = [c for c in r['claims'] if c['field'] == 'share_capital_eur']
+          assert all(c['value'] == '25000' for c in capital_claims), capital_claims
+          register_source = next(s for s in r['sources'] if s['id'] == 'online-register-profile')
+          if register_source['acquisition_status'] == 'acquired':
+              assert any(c['field'] == 'register_id' for c in r['claims'])
+              assert capital_claims
+          else:
+              assert any(g['field'] == 'register_id' and g['status'] == 'not_established' for g in r['unresolved_questions'])
           assert any(g['field'] == 'shareholders' for g in r['unresolved_questions'])
           assert all(s['sha256'] and s['receipt_hash'] for s in r['sources'] if s['acquisition_status'] == 'acquired')
           assert all(s['error'] for s in r['sources'] if s['acquisition_status'] != 'acquired')
