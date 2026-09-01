@@ -43,10 +43,16 @@ def _compare(system_ids: list[str]) -> dict[str, Any]:
     systems=[_get_system(item) for item in system_ids]
     return {"systems":[{"system_id":s["system_id"],"title":s["title"],"status":s["status"],"beneficiaries":s["beneficiaries"],"payers":s["payers"],"risks":s["risks"],"metric":s["outcome_contract"]["metric"]} for s in systems],"warning":"This is a structured comparison, not a single score or policy recommendation."}
 
+# MCP Python SDK v2 renamed the high-level server from FastMCP to MCPServer.
+# Keep a v1 fallback so existing local environments do not break while CI and
+# fresh installs follow the current stable SDK line.
 try:
-    from mcp.server.fastmcp import FastMCP
-except ImportError:  # Allows offline validation of the pure query layer.
-    FastMCP = None
+    from mcp.server import MCPServer as FastMCP  # MCP Python SDK v2
+except ImportError:
+    try:
+        from mcp.server.fastmcp import FastMCP  # MCP Python SDK v1
+    except ImportError:  # Allows offline validation of the pure query layer.
+        FastMCP = None
 
 mcp = FastMCP("SafeTrace Open Policy") if FastMCP else None
 
@@ -94,7 +100,8 @@ if mcp:
 def main() -> None:
     if mcp is None:
         raise SystemExit('Install the official MCP Python SDK: pip install "mcp[cli]"')
-    mcp.run(transport="stdio")
+    # Both SDK lines default to stdio when no transport is supplied.
+    mcp.run()
 
 if __name__ == "__main__":
     main()
