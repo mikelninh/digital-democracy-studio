@@ -25,7 +25,7 @@ SafeTrace converts reviewed evidence into a defensible ownership/control work pr
 
 ## Who would use it
 
-The workflow is designed as proof-of-work for analyst tasks such as:
+Designed as proof-of-work for:
 
 - enhanced due diligence;
 - corporate and individual investigations;
@@ -69,16 +69,13 @@ Missing evidence stays missing.
 
 ## Browser verification
 
-GitHub Actions opens the generated production workspace in Chromium and verifies that an analyst can:
+GitHub Actions opens the generated production workspace in Chromium and verifies that an analyst can see the computed ownership graph, read the executive answer, click a relationship, open its evidence view and inspect the supporting source/anchor. It separately verifies the fail-closed empty state when ownership is not established.
 
-- see the computed ownership graph;
-- read the executive answer and analyst brief;
-- click a relationship;
-- open its evidence view;
-- see the source and anchor supporting the relationship;
-- see a clear empty state when ownership is not established.
+The browser proof captures three states as CI artifacts:
 
-The browser proof captures overview, evidence-open and fail-closed screenshots as CI artifacts.
+- investigation overview;
+- relationship evidence opened;
+- fail-closed empty ownership state.
 
 ## Run locally
 
@@ -88,11 +85,7 @@ python -m safetrace.ownership_control.production \
   --out artifacts/ownership-control/golden
 ```
 
-Then open:
-
-```text
-artifacts/ownership-control/golden/index.html
-```
+Then open `artifacts/ownership-control/golden/index.html`.
 
 ## Analytical boundary
 
