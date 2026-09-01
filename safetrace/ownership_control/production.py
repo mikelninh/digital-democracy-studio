@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from . import engine
+from .workspace import render_html as render_workspace_html
 
 
 def _target_identity_gap(data: dict[str, Any]) -> dict[str, Any] | None:
@@ -128,7 +129,7 @@ def run_case(case_path: Path, out_dir: Path) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "result.json").write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (out_dir / "report.md").write_text(engine.render_markdown(result), encoding="utf-8")
-    (out_dir / "index.html").write_text(engine.render_html(result), encoding="utf-8")
+    (out_dir / "index.html").write_text(render_workspace_html(result, data), encoding="utf-8")
     return result
 
 
