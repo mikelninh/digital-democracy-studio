@@ -24,10 +24,15 @@ EXPECTED_CONTENT_TYPES = (
     "application/vnd.ms-excel",
     "text/plain",
 )
+_REQUIRED_HEADER_KEYS = {"uniqueid", "name6", "nametype", "individualentityship"}
 
 
 def _norm(value: str) -> str:
     return " ".join(re.sub(r"[^a-z0-9]+", " ", (value or "").lower()).split())
+
+
+def _field_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", (value or "").lower().lstrip("\ufeff"))
 
 
 def _content_type(header: str | None) -> str:
@@ -57,7 +62,7 @@ def build_registry(*, reviewed_at: str, reviewed_by: str = "portfolio-maintainer
         connector_id="safetrace.http-public-source",
         connector_version="1.0",
         parser_id="safetrace.uksl-csv",
-        parser_version="1.0",
+        parser_version="1.1",
         expected_content_types=EXPECTED_CONTENT_TYPES,
         retention_policy_id=policy.policy_id,
         reviewed_by=reviewed_by,
@@ -71,7 +76,7 @@ def fetch_public_source(url: str = UKSL_URL, *, timeout: int = 25, max_bytes: in
     parsed = urlparse(url)
     if parsed.scheme != "https" or parsed.hostname not in ALLOWED_HOSTS:
         raise ValueError("source URL is not on the reviewed HTTPS allowlist")
-    req = urllib.request.Request(url, headers={"User-Agent": "SafeTrace-Intelligence-Casework/1.0 (+public-source-research)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "SafeTrace-Intelligence-Casework/1.1 (+public-source-research)"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         final_url = response.geturl()
         final = urlparse(final_url)
@@ -91,40 +96,68 @@ def fetch_public_source(url: str = UKSL_URL, *, timeout: int = 25, max_bytes: in
         return payload, content_type, final_url
 
 
+def _locate_header(text: str) -> tuple[int, str, list[str]]:
+    lines = text.splitlines()
+    for line_no, line in enumerate(lines[:100]):
+        for delimiter in (",", "\t", ";", "|"):
+            try:
+                fields = next(csv.reader([line], delimiter=delimiter))
+            except csv.Error:
+                continue
+            keys = {_field_key(field) for field in fields}
+            if _REQUIRED_HEADER_KEYS.issubset(keys):
+                return line_no, delimiter, [field.strip().lstrip("\ufeff") for field in fields]
+    preview = " | ".join(line[:160] for line in lines[:3])
+    raise ValueError(f"UKSL CSV header row not found in first 100 lines; preview={preview!r}")
+
+
 def parse_uksl_csv(payload: bytes) -> list[dict]:
     text = payload.decode("utf-8-sig", errors="strict")
-    reader = csv.DictReader(io.StringIO(text))
+    header_line, delimiter, _ = _locate_header(text)
+    body = "\n".join(text.splitlines()[header_line:])
+    reader = csv.DictReader(io.StringIO(body), delimiter=delimiter)
     if not reader.fieldnames:
         raise ValueError("UKSL CSV has no header")
-    fields = {str(x).strip().lstrip("\ufeff") for x in reader.fieldnames if x}
-    required = {"Unique ID", "Name 6", "Name type", "Individual, Entity, Ship"}
-    missing = required - fields
+    actual_keys = {_field_key(field) for field in reader.fieldnames if field}
+    missing = _REQUIRED_HEADER_KEYS - actual_keys
     if missing:
-        raise ValueError(f"UKSL CSV missing required fields: {sorted(missing)}")
+        raise ValueError(f"UKSL CSV missing required fields after normalisation: {sorted(missing)}")
     records = []
     for raw in reader:
-        row = {(k or "").strip().lstrip("\ufeff"): (v or "").strip() for k, v in raw.items()}
-        unique_id = row.get("Unique ID", "")
+        row = {_field_key(k or ""): (v or "").strip() for k, v in raw.items() if k is not None}
+        unique_id = row.get("uniqueid", "")
         if not unique_id:
             continue
-        parts = [row.get(f"Name {i}", "") for i in range(1, 6)] + [row.get("Name 6", "")]
+        parts = [row.get(f"name{i}", "") for i in range(1, 6)] + [row.get("name6", "")]
         full_name = " ".join(x for x in parts if x and x.lower() not in {"n/a", "na"}).strip()
         if not full_name:
             continue
         records.append({
             "unique_id": unique_id,
             "name": full_name,
-            "name_type": row.get("Name type", ""),
-            "record_type": row.get("Individual, Entity, Ship", ""),
-            "dob": row.get("D.O.B", ""),
-            "nationality": row.get("Nationality(/ies)", ""),
-            "regime": row.get("Regime Name", ""),
-            "sanctions_imposed": row.get("Sanctions Imposed", ""),
-            "last_updated": row.get("Last Updated", ""),
+            "name_type": row.get("nametype", ""),
+            "record_type": row.get("individualentityship", ""),
+            "dob": row.get("dob", ""),
+            "nationality": row.get("nationalityies", ""),
+            "regime": row.get("regimename", ""),
+            "sanctions_imposed": row.get("sanctionsimposed", ""),
+            "last_updated": row.get("lastupdated", ""),
         })
     if not records:
         raise ValueError("UKSL CSV produced no designation records")
     return records
+
+
+def parser_metadata(payload: bytes) -> dict:
+    text = payload.decode("utf-8-sig", errors="strict")
+    header_line, delimiter, fields = _locate_header(text)
+    return {
+        "parser_version": "1.1",
+        "header_line_zero_based": header_line,
+        "delimiter": {",": "comma", "\t": "tab", ";": "semicolon", "|": "pipe"}[delimiter],
+        "field_count": len(fields),
+        "normalised_field_keys": [_field_key(field) for field in fields],
+    }
 
 
 def name_score(query: str, candidate: str) -> float:
@@ -178,34 +211,50 @@ def acquire_live_uksl(*, query: str, vault_root: Path, reviewed_at: str, dob: st
         metadata={"purpose": "intelligence_casework_live_screening", "query": query},
     )
     records = parse_uksl_csv(payload)
-    parsed_payload = (json.dumps(records, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
-    manifest = vault.transform(
+    parse_info = {**parser_metadata(payload), "records_parsed": len(records)}
+    parse_payload = (json.dumps(parse_info, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
+    parse_manifest = vault.transform(
         operation="parse",
         input_receipt_ids=[receipt.receipt_id],
         input_object_hashes=[receipt.object.sha256],
-        outputs=[(parsed_payload, "application/json", "parsed", "public")],
+        outputs=[(parse_payload, "application/json", "parsed", "public")],
         tool_id="safetrace.uksl-csv",
-        tool_version="1.0",
-        parameters={"records": len(records)},
+        tool_version="1.1",
+        parameters=parse_info,
         case_id="LIVE-UKSL-SCREEN",
     )
     candidates = screen_records(records, query, dob=dob, nationality=nationality)
+    extraction = {"query": {"name": query, "dob": dob, "nationality": nationality}, "candidates": candidates}
+    extraction_payload = (json.dumps(extraction, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
+    extraction_manifest = vault.transform(
+        operation="extract",
+        input_receipt_ids=[receipt.receipt_id],
+        input_object_hashes=[receipt.object.sha256],
+        outputs=[(extraction_payload, "application/json", "extraction", "public")],
+        tool_id="safetrace.uksl-candidate-screen",
+        tool_version="1.1",
+        parameters={"query": query, "dob_supplied": bool(dob), "nationality_supplied": bool(nationality), "threshold": 0.65, "limit": 10},
+        case_id="LIVE-UKSL-SCREEN",
+    )
     integrity = vault.verify_integrity()
     return {
-        "schema": "safetrace.live-source-screening/1.0",
+        "schema": "safetrace.live-source-screening/1.1",
         "source": {
             "source_id": UKSL_SOURCE_ID,
             "publisher": "Foreign, Commonwealth & Development Office",
             "canonical_url": UKSL_URL,
             "resolved_url": resolved_url,
             "content_type": content_type,
+            "byte_length": receipt.object.byte_length,
             "object_sha256": receipt.object.sha256,
             "receipt_id": receipt.receipt_id,
             "receipt_hash": receipt.receipt_hash,
             "material_change_state": alert.kind,
             "registry_revision": receipt.registry_revision,
-            "parser_manifest_id": manifest.manifest_id,
+            "parser_manifest_id": parse_manifest.manifest_id,
+            "extraction_manifest_id": extraction_manifest.manifest_id,
         },
+        "parser": parse_info,
         "query": {"name": query, "dob": dob, "nationality": nationality},
         "records_parsed": len(records),
         "candidates": candidates,
