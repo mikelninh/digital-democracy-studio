@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import copy
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
-from safetrace.ownership_control.production import investigate
+from safetrace.ownership_control.production import investigate, run_case
 
 HERE = Path(__file__).resolve().parents[1]
 GOLDEN = json.loads((HERE / "fixtures" / "golden_case.json").read_text(encoding="utf-8"))
@@ -45,6 +46,23 @@ class OwnershipControlProductionTests(unittest.TestCase):
         result = investigate(copy.deepcopy(GOLDEN))
         ids = {item["entity_id"] for item in result["screening_handoff"]}
         self.assertNotIn("bob", ids)
+
+    def test_production_work_product_is_task_first_interactive_workspace(self):
+        with tempfile.TemporaryDirectory() as td:
+            case_path = Path(td) / "case.json"
+            case_path.write_text(json.dumps(GOLDEN), encoding="utf-8")
+            out = Path(td) / "out"
+            run_case(case_path, out)
+            page = (out / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn("Intelligence Desk", page)
+        self.assertIn("Executive answer", page)
+        self.assertIn("Ownership map", page)
+        self.assertIn("Analyst brief", page)
+        self.assertIn("Evidence", page)
+        self.assertIn("Click any relationship", page)
+        self.assertIn("application/json", page)
+        self.assertIn("OWNCTRL-GOLD-001", page)
 
 
 if __name__ == "__main__":
