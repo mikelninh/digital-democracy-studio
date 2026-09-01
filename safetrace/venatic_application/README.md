@@ -2,33 +2,64 @@
 
 One-link proof-of-work package for the **Junior Intelligence Analyst** application.
 
-## Information architecture
+## Front door — real investigation hub
 
-The application deliberately separates **real-world investigation** from **synthetic evaluation**.
+`index.html`
 
-### 1. Flagship — real public-source investigation
+The reviewer now chooses between three genuine public-source investigations:
 
-`index.html` redirects directly to `real/index.html` so the application URL opens the real case first.
+1. `real/` — **Meat industry & policy influence**
+   - advocacy objective: documented
+   - requested delay: enacted
+   - lobbying causation: not established
 
-**Question:** Did the German meat industry get the policy change it wanted — and can the public record prove why?
+2. `defence/` — **Defence Money Map**
+   - Bundeswehr / Rheinmetall 155mm framework ceiling: up to €8.5bn
+   - disclosed initial call-off: around €880m
+   - company economics, public-market ownership and lobbying mapped separately
+   - no claim that lobbying caused the award or that the full framework ceiling has been spent
 
-The real case uses official Bundestag lobbying disclosures, official legislative material and clearly-labelled first-party records. Every material conclusion follows the same reviewer-visible chain:
+3. `shadow-fleet/` — **Shadow Fleet temporal entity resolution**
+   - same tankers resolved across changing UK/EU/Ukrainian names by stable IMO identifiers
+   - ownership and management records kept time-bounded rather than collapsed into one timeless fact
+   - current natural-person UBO remains unresolved from the selected sources
 
-**Conclusion → Reason → Evidence → Original source → Authority/exact location → Gap → Next move**
+## Information architecture — product correctness
 
-The core conclusion is intentionally bounded:
+Every investigation presents information in this order:
 
-- documented lobbying activity: **supported**;
-- policy alignment: **supported**;
-- direct lobbying causation: **not established**.
+**Conclusion → Reason → Evidence → Original source → Confidence / gap → Next move**
 
-A reviewer never has to trust an AI-generated finding: each evidence drawer links to the original public source and states what that source does **not** prove.
+The reviewer should understand the main answer before seeing deep metadata. Source IDs, authority metadata, limitations and exact record locations stay one click away in the evidence drawer.
 
-### 2. Benchmark lab — synthetic adversarial investigation
+Shared UI rules live in:
+
+- `/AGENTS.md`
+- `/docs/FRONTEND_INFORMATION_ARCHITECTURE.md`
+- `assets/investigation.css`
+
+Readability is tested in Chromium on desktop and mobile. The product rule is explicit: **reduce simultaneous information before reducing font size.**
+
+## Source contract
+
+`real_case.schema.json` defines the minimum evidence record:
+
+- publisher
+- authority
+- source type
+- original URL
+- exact location
+- what the source establishes
+- what it does not establish
+- retrieval date
+
+The shared `assets/source-drawer.js` renders this contract consistently across real cases.
+
+## Benchmark lab — synthetic adversarial investigation
 
 `benchmark/index.html` and `safetrace/venatic_challenge/`
 
-The Meridian Atlas challenge remains synthetic by design so the system can be tested against a known hidden answer and deliberately adversarial edge cases.
+The Meridian Atlas challenge remains synthetic by design so the system can be scored against a known hidden answer and deliberately adversarial edge cases.
 
 - Initial sources: 18
 - Optional sources: 10
@@ -39,7 +70,7 @@ The Meridian Atlas challenge remains synthetic by design so the system can be te
 
 These are synthetic benchmark scores, not claims of production analyst performance.
 
-### 3. Technical proof
+## Technical proof
 
 `technical/index.html`
 
@@ -62,12 +93,24 @@ For real investigations:
 
 ## Quality gates
 
-- `.github/workflows/venatic-real-investigation.yml` browser-tests the real case, evidence drawers, authority/location metadata and original-source links.
-- `.github/workflows/venatic-application.yml` browser-tests the synthetic benchmark at its separate route.
-- the broader SafeTrace release workflow protects the shared evidence infrastructure.
+`.github/workflows/venatic-real-investigation.yml` now browser-tests:
 
-## Boundary
+- the three-case hub;
+- each real case's conclusion-first hierarchy;
+- evidence-drawer links and limitation language;
+- minimum readable typography;
+- desktop screenshots;
+- mobile screenshots;
+- source-registry integrity.
 
-Lobbying is a lawful and routine part of democratic policymaking. A disclosed lobbying project, expenditure, membership, meeting, statement or policy overlap is not evidence by itself of corruption, quid-pro-quo conduct, political control or improper influence.
+`.github/workflows/venatic-application.yml` separately protects the synthetic benchmark.
 
-The real case is designed to make that distinction visible rather than imply more than public records establish.
+The broader SafeTrace release workflow protects the shared evidence infrastructure.
+
+## Boundaries
+
+Lobbying is lawful and routine democratic activity. Expenditure, membership, access, timing or policy overlap do not by themselves establish corruption, quid-pro-quo conduct, political control or procurement causation.
+
+A framework contract ceiling is not money already spent. Company-wide revenue, profit and dividends are not automatically attributable to one public contract.
+
+A vessel name is not a stable asset identity. Historical owner/manager records are not automatically the current state.

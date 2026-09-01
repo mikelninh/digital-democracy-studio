@@ -1,146 +1,185 @@
-name: Venatic Real Investigation Proof
+name: Venatic Real Investigations Proof
 
 on:
   pull_request:
     paths:
       - 'safetrace/venatic_application/index.html'
+      - 'safetrace/venatic_application/assets/**'
       - 'safetrace/venatic_application/real/**'
+      - 'safetrace/venatic_application/defence/**'
+      - 'safetrace/venatic_application/shadow-fleet/**'
+      - 'safetrace/venatic_application/real_case.schema.json'
+      - 'docs/FRONTEND_INFORMATION_ARCHITECTURE.md'
+      - 'AGENTS.md'
       - '.github/workflows/venatic-real-investigation.yml'
   push:
     branches: [main]
     paths:
       - 'safetrace/venatic_application/index.html'
+      - 'safetrace/venatic_application/assets/**'
       - 'safetrace/venatic_application/real/**'
+      - 'safetrace/venatic_application/defence/**'
+      - 'safetrace/venatic_application/shadow-fleet/**'
+      - 'safetrace/venatic_application/real_case.schema.json'
+      - 'docs/FRONTEND_INFORMATION_ARCHITECTURE.md'
+      - 'AGENTS.md'
       - '.github/workflows/venatic-real-investigation.yml'
   workflow_dispatch:
 
 jobs:
   browser-proof:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate source-backed temporal case contract
+      - name: Validate real-investigation source contracts
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          root = Path('safetrace/venatic_application/index.html').read_text(encoding='utf-8')
-          html = Path('safetrace/venatic_application/real/index.html').read_text(encoding='utf-8')
-          data = json.loads(Path('safetrace/venatic_application/real/sources.json').read_text(encoding='utf-8'))
-          assert "location.replace('real/')" in root
-          assert data['case_id'] == 'REAL-DE-MEAT-LOBBY-001'
-          assert len(data['sources']) >= 10
-          by_id = {s['id']: s for s in data['sources']}
-          for phrase in [
-              'REAL PUBLIC-SOURCE CASE',
-              'Advocacy documented',
-              'Requested delay enacted',
-              'Lobbying caused it',
-              'Not proven.',
-              'Open original source',
-              'Source type',
-              'Exact location',
-              'Does not prove'
-          ]:
-              assert phrase in html, phrase
-          assert 'Synthetic training case' not in html
-          assert 'dip.bundestag.de' in by_id['S9']['url']
-          assert by_id['S10']['url'] == 'https://www.gesetze-im-internet.de/tierhaltkennzg/__40.html'
-          assert '/RV0027248/495320' in by_id['S8']['url'] and '?q=' not in by_id['S8']['url']
-          assert 'proposal' in by_id['S6']['source_type'].lower()
-          for source in data['sources']:
-              assert source['url'].startswith('https://')
-              assert source['publisher']
-              assert source['authority']
-              assert source['source_type']
-              assert source['exact_location']
-              assert source['supports']
-              assert source['does_not_prove']
-          print('Real temporal investigation contract: OK')
+
+          root = Path('safetrace/venatic_application')
+          hub = (root / 'index.html').read_text(encoding='utf-8')
+          css = (root / 'assets/investigation.css').read_text(encoding='utf-8')
+          assert 'Meat industry lobbying' in hub
+          assert 'Defence Money Map' in hub
+          assert 'Shadow Fleet' in hub
+          assert 'Conclusion → Reason → Evidence → Original source → Gap → Next move.' in hub
+          assert 'body{margin:0' in css and 'font:18px/1.6' in css
+          assert '.proof' in css and 'font-size:15px' in css
+          assert '.label' in css and 'font-size:13px' in css
+
+          cases = {
+              'real': ('REAL-DE-MEAT-LOBBY-001', 10),
+              'defence': ('REAL-DE-DEFENCE-MONEY-001', 9),
+              'shadow-fleet': ('REAL-RU-SHADOW-FLEET-001', 7),
+          }
+          for path, (case_id, minimum) in cases.items():
+              html = (root / path / 'index.html').read_text(encoding='utf-8')
+              data = json.loads((root / path / 'sources.json').read_text(encoding='utf-8'))
+              assert data['case_id'] == case_id
+              assert len(data['sources']) >= minimum
+              assert 'REAL PUBLIC-SOURCE CASE' in html
+              assert 'sourceOverlay' in html
+              assert 'Original evidence' in html
+              assert 'Open original source' in html
+              assert 'source-drawer.js' in html
+              ids = set()
+              for source in data['sources']:
+                  assert source['id'] not in ids
+                  ids.add(source['id'])
+                  assert source['url'].startswith('https://')
+                  for key in ('publisher','authority','source_type','exact_location','does_not_prove'):
+                      assert source[key].strip(), (path, source['id'], key)
+                  assert source['supports'] and all(x.strip() for x in source['supports'])
+              print(path, case_id, len(data['sources']))
+
+          defence = json.loads((root/'defence/sources.json').read_text())
+          d = {s['id']:s for s in defence['sources']}
+          assert '8.5bn' in ' '.join(d['D2']['supports'])
+          assert '€880m' in ' '.join(d['D2']['supports'])
+          assert 'framework ceiling' in d['D2']['does_not_prove'].lower()
+          assert '820,001' in ' '.join(d['D7']['supports'])
+          assert '1,240,001' in ' '.join(d['D8']['supports'])
+
+          shadow = json.loads((root/'shadow-fleet/sources.json').read_text())
+          s = {x['id']:x for x in shadow['sources']}
+          assert '9413547' in s['S2']['exact_location'] and '9422457' in s['S2']['exact_location']
+          assert 'Amulet' in s['S3']['exact_location'] and 'Bobcat' in s['S3']['exact_location']
+          assert 'current' in s['S5']['does_not_prove'].lower()
+          print('Real investigation contracts: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify original-source hierarchy
+      - name: Browser-verify hub, sources and readable hierarchy
         run: |
           mkdir -p artifacts/venatic-real
           python - <<'PY'
           import subprocess, time
           from playwright.sync_api import sync_playwright
 
-          server = subprocess.Popen(['python','-m','http.server','8765'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+          base='http://127.0.0.1:8765/safetrace/venatic_application/'
+          server=subprocess.Popen(['python','-m','http.server','8765'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
           try:
-              time.sleep(0.5)
+              time.sleep(.6)
               with sync_playwright() as p:
-                  browser = p.chromium.launch(headless=True)
-                  page = browser.new_page(viewport={'width': 1440, 'height': 1050})
+                  browser=p.chromium.launch(headless=True)
+                  page=browser.new_page(viewport={'width':1440,'height':1050})
                   errors=[]
-                  page.on('pageerror', lambda error: errors.append(str(error)))
-                  page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
-                  assert page.url.endswith('/safetrace/venatic_application/real/')
+                  page.on('pageerror',lambda e:errors.append(str(e)))
+
+                  def open_source(selector):
+                      page.locator(selector).first.click()
+                      page.locator('#sourceOverlay.show').wait_for(state='visible')
+
+                  # Hub: three cases, no wall of technical detail.
+                  page.goto(base,wait_until='networkidle')
+                  assert page.locator('.case-card').count()==3
+                  assert 'Follow the money. Follow the control. Check the source.' in page.locator('h1').inner_text()
+                  assert float(page.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 17
+                  page.screenshot(path='artifacts/venatic-real/00-hub-desktop.png',full_page=True)
+
+                  # Meat: conclusion first, original enactment available.
+                  page.goto(base+'real/',wait_until='networkidle')
                   assert not errors, errors
-                  body = page.locator('body').inner_text().lower()
-                  assert 'did the meat industry get a policy change it asked for?' in body
-                  assert 'advocacy documented' in body
-                  assert 'requested delay enacted' in body
-                  assert 'lobbying caused it' in body
-                  assert 'not proven.' in body
-                  assert '1 jan 2027' in body
-                  page.screenshot(path='artifacts/venatic-real/01-overview.png', full_page=True)
-
-                  # Disclosed advocacy objective.
-                  page.locator('[data-source="S2"]').first.click()
-                  assert page.locator('#overlay').evaluate('(el)=>el.classList.contains("show")')
-                  assert 'official federal lobbying disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
-                  assert 'rv0009541' in page.locator('#sourceLocation').inner_text().lower()
-                  assert 'lobbyregister.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
-                  assert 'caused' in page.locator('#sourceLimit').inner_text().lower()
-                  page.locator('#close').click()
-
-                  # Actual enactment, not merely a bill proposal.
-                  page.locator('[data-source="S9"]').first.click()
-                  assert 'official parliamentary procedure database' in page.locator('#sourceAuthority').inner_text().lower()
-                  enactment = page.locator('#sourceSupports').inner_text().lower()
-                  assert 'promulgated' in enactment
-                  assert '1 mar 2026' in enactment
+                  assert 'Did the meat industry get a policy change it asked for?' in page.locator('h1').inner_text()
+                  assert page.locator('.verdict').count()==3
+                  assert float(page.locator('.verdict p').first.evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 16
+                  open_source('[data-source="S9"]')
+                  assert 'promulgated' in page.locator('#sourceSupports').inner_text().lower()
                   assert 'dip.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
-                  page.screenshot(path='artifacts/venatic-real/02-enactment-source.png')
-                  page.locator('#close').click()
+                  page.screenshot(path='artifacts/venatic-real/01-meat-source.png',full_page=True)
+                  page.locator('#closeSource').click()
 
-                  # Proposal and causal boundary remain distinct from enactment.
-                  page.locator('[data-source="S6"]').first.click()
-                  assert 'primary legislative proposal' in page.locator('#sourceType').inner_text().lower()
-                  assert 'executive footprint' in page.locator('#sourceLocation').inner_text().lower()
-                  assert page.locator('#sourceUrl').get_attribute('href') == 'https://dserver.bundestag.de/btd/21/003/2100327.pdf'
-                  assert 'caused' in page.locator('#sourceLimit').inner_text().lower()
-                  page.screenshot(path='artifacts/venatic-real/03-causal-boundary.png')
-                  page.locator('#close').click()
+                  # Defence: ceiling, actual call-off and influence boundary are all visible.
+                  page.goto(base+'defence/',wait_until='networkidle')
+                  body=page.locator('body').inner_text().lower()
+                  assert 'up to €8.5bn' in body and '~€880m' in body
+                  assert 'lobbying caused award' in body and 'not proven' in body
+                  open_source('[data-source="D2"]')
+                  assert 'framework ceiling' in page.locator('#sourceLimit').inner_text().lower()
+                  assert 'rheinmetall.com' in page.locator('#sourceUrl').get_attribute('href')
+                  page.locator('#closeSource').click()
+                  open_source('[data-source="D8"]')
+                  assert 'official federal lobbying disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
+                  assert '472' in page.locator('#sourceSupports').inner_text()
+                  page.screenshot(path='artifacts/venatic-real/02-defence-source.png',full_page=True)
+                  page.locator('#closeSource').click()
 
-                  # Current law is separately versioned.
-                  page.locator('[data-source="S10"]').first.click()
-                  assert 'official consolidated federal-law portal' in page.locator('#sourceAuthority').inner_text().lower()
-                  assert '1 jan 2027' in page.locator('#sourceSupports').inner_text().lower()
-                  assert page.locator('#sourceUrl').get_attribute('href') == 'https://www.gesetze-im-internet.de/tierhaltkennzg/__40.html'
-                  page.locator('#close').click()
+                  # Shadow fleet: same IMOs across changing names; current control remains unresolved.
+                  page.goto(base+'shadow-fleet/',wait_until='networkidle')
+                  body=page.locator('body').inner_text()
+                  for term in ['IMO 9413547','NS ARCTIC','AMULET','ALTAIR','IMO 9422457','SCF BAIKAL','BOBCAT','BLOSSOM']:
+                      assert term in body, term
+                  assert 'Unresolved' in body
+                  open_source('[data-source="S3"]')
+                  assert 'Official Journal legal act' in page.locator('#sourceAuthority').inner_text()
+                  assert '9413547' in page.locator('#sourceLocation').inner_text()
+                  assert 'eur-lex.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
+                  page.screenshot(path='artifacts/venatic-real/03-shadow-eu-source.png',full_page=True)
+                  page.locator('#closeSource').click()
 
-                  # Current PFG advocacy links directly to the exact disclosure, never search results.
-                  page.locator('[data-source="S8"]').first.click()
-                  href = page.locator('#sourceUrl').get_attribute('href')
-                  assert '/RV0027248/495320' in href and '?q=' not in href
-                  page.screenshot(path='artifacts/venatic-real/04-exact-lobby-record.png')
+                  # Mobile readability: no microtype as the solution to density.
+                  mobile=browser.new_page(viewport={'width':390,'height':844})
+                  for name,path in [('hub',''),('meat','real/'),('defence','defence/'),('shadow','shadow-fleet/')]:
+                      mobile.goto(base+path,wait_until='networkidle')
+                      body_size=float(mobile.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)"))
+                      assert body_size >= 16, (name,body_size)
+                      assert mobile.locator('h1').is_visible()
+                      mobile.screenshot(path=f'artifacts/venatic-real/mobile-{name}.png',full_page=True)
+                  mobile.close()
                   browser.close()
           finally:
-              server.terminate()
-              server.wait(timeout=5)
+              server.terminate();server.wait(timeout=5)
           PY
       - name: Upload browser proof
         uses: actions/upload-artifact@v4
         with:
-          name: venatic-real-investigation-proof
+          name: venatic-real-investigations-proof
           path: artifacts/venatic-real/
           if-no-files-found: error

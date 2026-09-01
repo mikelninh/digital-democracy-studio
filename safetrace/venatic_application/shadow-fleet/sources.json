@@ -1,0 +1,119 @@
+{
+  "case_id": "REAL-RU-SHADOW-FLEET-001",
+  "title": "Shadow Fleet — same ship, changing names and managers",
+  "retrieved_at": "2026-09-01",
+  "scope_note": "Public-source sanctions and asset-resolution case. Stable IMO identifiers are used to link vessel records across changing names. Historical ownership/management records are not presented as current without time-bounded verification.",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "UK sanctions package — Russian oil tankers",
+      "publisher": "UK Government / FCDO",
+      "authority": "Official UK government sanctions announcement",
+      "source_type": "government sanctions publication",
+      "url": "https://www.gov.uk/government/news/uk-strikes-at-the-heart-of-russian-energy-revenues-funding-putins-war",
+      "exact_location": "17 Oct 2024 list including NS ARCTIC (IMO 9413547) and SCF BAIKAL (IMO 9422457)",
+      "supports": [
+        "The UK named NS ARCTIC with IMO 9413547 and SCF BAIKAL with IMO 9422457 in its 17 October 2024 shadow-fleet sanctions package."
+      ],
+      "does_not_prove": "A 2024 vessel name is not a permanent identity field and does not establish the vessel's current name, owner or manager.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "uk-sanctions"
+    },
+    {
+      "id": "S2",
+      "title": "UK Sanctions List — ship designations",
+      "publisher": "UK Foreign, Commonwealth & Development Office",
+      "authority": "Official UK sanctions list",
+      "source_type": "primary sanctions list",
+      "url": "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.pdf",
+      "exact_location": "RUS2231 NS ARCTIC, IMO 9413547; RUS2234 SCF BAIKAL, IMO 9422457",
+      "supports": [
+        "The UK sanctions list ties the ship designations to stable IMO numbers rather than names alone.",
+        "RUS2231 identifies NS ARCTIC as IMO 9413547 and RUS2234 identifies SCF BAIKAL as IMO 9422457."
+      ],
+      "does_not_prove": "The sanctions list does not by itself establish current beneficial ownership or every subsequent change of vessel name and management.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "uk-sanctions"
+    },
+    {
+      "id": "S3",
+      "title": "Council Implementing Regulation (EU) 2025/2588",
+      "publisher": "European Union / EUR-Lex",
+      "authority": "Official Journal legal act",
+      "source_type": "primary sanctions legislation",
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2025/2588/oj/eng",
+      "exact_location": "Entities 684–685: Nova Shipmanagement LLC-FZ and Citrine Marine SPC; vessels include Amulet IMO 9413547 and Bobcat IMO 9422457",
+      "supports": [
+        "The EU listed Nova Shipmanagement LLC-FZ and Citrine Marine SPC on 15 December 2025.",
+        "The legal act says Nova manages tankers including Amulet (IMO 9413547) and Bobcat (IMO 9422457), and describes Citrine as a UAE company owning tankers and associated with Nova.",
+        "The same IMO numbers connect the EU names Amulet/Bobcat to the UK names NS ARCTIC/SCF BAIKAL."
+      ],
+      "does_not_prove": "The act is a dated legal record. It should not be treated as proof that the same owner or manager remains current after later transfers or name changes, and it does not identify a natural-person ultimate beneficial owner for the vessels.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "eu-sanctions"
+    },
+    {
+      "id": "S4",
+      "title": "EU Council — shadow-fleet enablers sanctions",
+      "publisher": "Council of the European Union",
+      "authority": "Official EU Council press release",
+      "source_type": "government sanctions announcement",
+      "url": "https://www.consilium.europa.eu/en/press/press-releases/2025/12/15/russia-s-war-of-aggression-against-ukraine-council-sanctions-9-shadow-fleet-enablers/",
+      "exact_location": "15 Dec 2025 announcement explaining four listed shipping entities in UAE, Vietnam and Russia",
+      "supports": [
+        "The Council said the listed shipping companies own or manage tankers subject to restrictive measures and transporting Russian crude or petroleum products while using irregular and high-risk shipping practices."
+      ],
+      "does_not_prove": "The press release is a summary; exact entity and vessel relationships should be checked in the underlying legal act.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "eu-sanctions"
+    },
+    {
+      "id": "S5",
+      "title": "Ukraine War & Sanctions — IMO 9413547",
+      "publisher": "Defence Intelligence of Ukraine (GUR) — War & Sanctions",
+      "authority": "Official Ukrainian government OSINT/sanctions portal",
+      "source_type": "government asset intelligence record",
+      "url": "https://war-sanctions.gur.gov.ua/en/transport/ships/400",
+      "exact_location": "Vessel IMO 9413547; current portal title ALTAIR; former name NS Arctic; owner/manager fields dated in the record",
+      "supports": [
+        "The portal identifies the vessel by IMO 9413547 and records former name NS Arctic.",
+        "The displayed record lists Celestine Navigation Inc as ship owner dated 8 Nov 2024, Stream Ship Management FZCO as commercial manager dated 16 Mar 2024, and Sterling Ship Management LLC-FZ as safety manager dated 21 Feb 2025."
+      ],
+      "does_not_prove": "Those owner/manager fields carry their own dates and differ from the later EU legal act. They cannot be presented as the vessel's current ownership/management on 1 Sep 2026 without a fresh authoritative registry check.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "ukraine-gur"
+    },
+    {
+      "id": "S6",
+      "title": "Ukraine War & Sanctions — IMO 9422457",
+      "publisher": "Defence Intelligence of Ukraine (GUR) — War & Sanctions",
+      "authority": "Official Ukrainian government OSINT/sanctions portal",
+      "source_type": "government asset intelligence record",
+      "url": "https://war-sanctions.gur.gov.ua/en/transport/ships/402",
+      "exact_location": "Vessel IMO 9422457; current portal title BLOSSOM; former names SCF Vankor / SCF BAIKAL; owner/manager fields dated 11 Nov 2024",
+      "supports": [
+        "The portal identifies the vessel by IMO 9422457 and records former name SCF BAIKAL.",
+        "The displayed record lists Cuper Marine LTD c/o Avebury Shipmanagement LLC-FZ as owner and Avebury Shipmanagement LLC-FZ as commercial and safety manager, dated 11 Nov 2024."
+      ],
+      "does_not_prove": "These dated fields precede the December 2025 EU record referring to Bobcat and Nova/Citrine. The selected records therefore show a changing/contested temporal picture rather than a single timeless ownership fact.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "ukraine-gur"
+    },
+    {
+      "id": "S7",
+      "title": "Ukraine War & Sanctions — ARROW, IMO 9413561",
+      "publisher": "Defence Intelligence of Ukraine (GUR) — War & Sanctions",
+      "authority": "Official Ukrainian government OSINT/sanctions portal",
+      "source_type": "government asset intelligence record",
+      "url": "https://war-sanctions.gur.gov.ua/en/transport/ships/332",
+      "exact_location": "ARROW, IMO 9413561; owner Citrine Marine SPC dated 7 May 2025; Nova Shipmanagement commercial manager dated 24 Aug 2025",
+      "supports": [
+        "The GUR record independently links ARROW IMO 9413561 to Citrine Marine SPC as ship owner and Nova Shipmanagement LLC-FZ as commercial manager on dated records in 2025.",
+        "This relationship is consistent with the companies later named in the EU legal act."
+      ],
+      "does_not_prove": "One corroborated vessel relationship does not establish identical ownership and management for every vessel in the wider network or a natural-person beneficial owner behind Citrine/Nova.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "ukraine-gur"
+    }
+  ]
+}
