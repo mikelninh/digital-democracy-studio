@@ -1,0 +1,70 @@
+{
+  "schema_version": "safetrace.venatic-challenge.gold/1.0",
+  "case_id": "VENATIC-CHALLENGE-002",
+  "classification": "BENCHMARK GOLD — DO NOT EXPOSE IN BLIND MODE",
+  "ownership": {
+    "direct": [
+      {"owner": "Northbridge Holdings Ltd", "economic_pct": 65.0, "voting_pct": 55.0},
+      {"owner": "Danube Industrial GmbH", "economic_pct": 20.0, "voting_pct": 20.0},
+      {"owner": "Cedar Nominees Ltd", "economic_pct": 15.0, "voting_pct": 25.0, "nominee": true}
+    ],
+    "indirect": [
+      {"owner": "Aurora Meridian FZE", "economic_pct": 45.5, "voting_pct": 38.5, "calculation": "70% × 65% economic; 70% × 55% voting"},
+      {"owner": "Mihailo Petrović", "economic_pct": 36.4, "voting_pct": 30.8, "calculation": "80% × 70% × 65% economic; 80% × 70% × 55% voting"},
+      {"owner": "Lydia Karst", "economic_pct": 20.0, "voting_pct": 20.0, "calculation": "100% × 20%"}
+    ],
+    "rule_scoped_ubo_candidates": ["Mihailo Petrović"],
+    "beneficial_ownership_complete": false,
+    "unresolved_reason": "Cedar Nominees Ltd holds 15% economic / 25% voting rights for an undisclosed principal; the natural-person principal is not established.",
+    "control_signal": "Cedar may appoint two of five board members; report separately from equity/voting ownership and do not convert it automatically into a final legal control conclusion.",
+    "evidence": ["S02", "S03", "S05", "S06", "S10", "S11", "S12"]
+  },
+  "sanctions": {
+    "candidate": "Mikhail Petrovich",
+    "subject": "Mihailo Petrović",
+    "decision": "NOT_SAME_AS",
+    "reason": "Name/transliteration similarity is outweighed by conflicting DOB, nationality and passport identifiers.",
+    "no_sanctions_linkage_established": true,
+    "evidence": ["S07", "S08", "S09"]
+  },
+  "assets": {
+    "asset": "Leipzig Logistics Site — Am Hafen 44",
+    "legal_owner": "Atlas Property SPV GmbH",
+    "security_interest_holder": "Helios Handelsbank AG",
+    "operator_lessee": "Meridian Atlas Trading GmbH",
+    "boundary": "Operation/lease and lender security must not be collapsed into legal ownership.",
+    "evidence": ["S17", "S18", "S19", "S20"]
+  },
+  "payment_route": {
+    "finding": "Payment beneficiary changed from Balkan Components DOO to Adria Settlement Services FZE.",
+    "severity_before_optional_collection": "medium",
+    "allowed_conclusion": "verification trigger",
+    "forbidden_conclusions_without_more_evidence": ["fraud", "money laundering", "sanctions evasion"],
+    "best_optional_source": "S25",
+    "after_S25": "Supplier callback confirms authorization; residual risk falls but the audit trail should still be preserved.",
+    "evidence": ["S13", "S14", "S15", "S24", "S25"]
+  },
+  "director_timeline": {
+    "initial_state": "apparent contradiction",
+    "records": ["S01", "S16"],
+    "best_optional_source": "S28",
+    "resolved_answer": "Markus Stein ceased 2026-01-31; Anna Keller appointed 2026-02-01. The archived page is stale, not evidence of concurrent directors.",
+    "evidence": ["S01", "S16", "S28"]
+  },
+  "litigation": {
+    "germany_no_hit_boundary": "S21 is bounded negative evidence only; it does not prove no litigation exists.",
+    "uk_finding": "Northbridge was defendant in a contractual dispute settled in 2024 without admission of liability.",
+    "evidence": ["S21", "S22", "S23"]
+  },
+  "preferred_optional_collection": ["S25", "S28", "S19", "S22", "S24"],
+  "critical_failures": [
+    "sanctions_match_claimed",
+    "fraud_or_evasion_claimed_from_payment_change",
+    "cedar_principal_invented",
+    "target_claimed_as_property_owner",
+    "bank_claimed_as_property_owner",
+    "court_no_hit_treated_as_no_litigation_proof",
+    "beneficial_ownership_marked_complete",
+    "director_conflict_silently_discarded"
+  ]
+}
