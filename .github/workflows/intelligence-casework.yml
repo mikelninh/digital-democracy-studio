@@ -1,0 +1,47 @@
+name: Intelligence Casework Proof
+
+on:
+  push:
+    paths:
+      - 'safetrace/intelligence_casework/**'
+      - 'zero-suffering-intelligence/entity-resolution/**'
+      - '.github/workflows/intelligence-casework.yml'
+  pull_request:
+    paths:
+      - 'safetrace/intelligence_casework/**'
+      - 'zero-suffering-intelligence/entity-resolution/**'
+      - '.github/workflows/intelligence-casework.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate synthetic intelligence case
+        run: python safetrace/intelligence_casework/validate_case.py
+      - name: Run intelligence casework tests
+        run: python -m unittest safetrace.intelligence_casework.tests.test_case_v001 -v
+      - name: Re-run frozen entity-resolution holdout
+        run: python scripts/zsi_entity_holdout.py
+      - name: Verify holdout result remains committed and honest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('zero-suffering-intelligence/entity-resolution/results-holdout-v1.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          m = d['metrics']
+          assert d['cases'] == 30
+          assert m['precision'] == 0.9231
+          assert m['recall'] == 0.8571
+          assert m['f1'] == 0.8889
+          assert len(d['errors']) == 3
+          assert 'fresh holdout-v2' in d['guardrail']
+          print('PASS: frozen holdout metrics and anti-leakage guardrail preserved')
+          PY
