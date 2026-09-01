@@ -39,7 +39,7 @@ class CompanyLiveTests(unittest.TestCase):
             "sources": [
                 {
                     "id": "official", "title": "Official", "publisher": "Acme", "url": "https://example.com/",
-                    "source_type": "company_official_website", "source_rank": "primary_official", "authority": 0.95, "jurisdiction": "DE",
+                    "source_type": "company_official_website", "source_rank": "primary_official", "authority": 0.95, "jurisdiction": "DE", "update_cadence": "manual",
                     "extract": [
                         {"field": "legal_name", "pattern": "(Acme GmbH)", "required": True},
                         {"field": "address", "pattern": "(Main Street 1 10115 Berlin)", "required": True}
@@ -47,7 +47,7 @@ class CompanyLiveTests(unittest.TestCase):
                 },
                 {
                     "id": "registry", "title": "Registry", "publisher": "Registry mirror", "url": "https://registry.example/record",
-                    "source_type": "public_register_aggregator", "source_rank": "secondary_public_record", "authority": 0.8, "jurisdiction": "DE",
+                    "source_type": "public_register_aggregator", "source_rank": "secondary_public_record", "authority": 0.8, "jurisdiction": "DE", "update_cadence": "manual",
                     "extract": [
                         {"field": "legal_name", "pattern": "(Acme GmbH)"},
                         {"field": "register_id", "pattern": "(HRB 12345)", "required": True}
