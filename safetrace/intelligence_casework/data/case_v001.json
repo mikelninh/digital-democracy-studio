@@ -1,0 +1,88 @@
+{
+  "schema": "safetrace.intelligence-casework/1.0",
+  "case_id": "V-001",
+  "title": "Northstar Components — ownership, payment-route and screening review",
+  "classification": "SYNTHETIC TRAINING CASE — NO REAL-WORLD ALLEGATIONS",
+  "client_question": "Who controls Northstar Components GmbH, what material risks are visible in the supplied public-source record, and what should an analyst verify next?",
+  "scope": {
+    "jurisdictions": ["DE", "GB", "AE", "PL"],
+    "methods": ["public-record research", "corporate-structure analysis", "entity resolution", "sanctions-screening triage", "contradiction analysis", "source grading"],
+    "prohibited": ["intrusion", "pretexting", "credential use", "private-data acquisition", "automated accusation"]
+  },
+  "executive_assessment": {
+    "control": "Meridian Ventures Ltd holds 70% of Northstar. Asterion Capital FZE therefore has a documented 42% indirect economic interest. The natural person behind Helix Nominees Ltd's indirect 28% interest is unresolved in the supplied record.",
+    "screening": "No confirmed sanctions match is established by the synthetic screening fixture. A high-name-similarity candidate is rejected because date of birth and nationality conflict.",
+    "risk": "Two issues warrant enhanced due diligence rather than accusation: unresolved beneficial ownership behind part of the chain, and a payment instruction directing funds to an entity not named in the underlying supply contract.",
+    "confidence": "moderate-high",
+    "decision": "Proceed only after targeted verification of beneficial ownership, bank-change authority and current director status. Refresh sanctions screening against authoritative live lists before any real decision."
+  },
+  "entities": [
+    {"id":"E1","name":"Northstar Components GmbH","type":"company","jurisdiction":"DE","role":"target","status":"resolved","identifiers":["HRB-SYN-10421"]},
+    {"id":"E2","name":"Meridian Ventures Ltd","type":"company","jurisdiction":"GB","role":"shareholder","status":"resolved","identifiers":["GB-SYN-8821041"]},
+    {"id":"E3","name":"Asterion Capital FZE","type":"company","jurisdiction":"AE","role":"upstream shareholder","status":"resolved","identifiers":["AE-SYN-7718"]},
+    {"id":"E4","name":"Helix Nominees Ltd","type":"company","jurisdiction":"GB","role":"nominee shareholder","status":"resolved","identifiers":["GB-SYN-5529031"]},
+    {"id":"E5","name":"Alder Ventures GmbH","type":"company","jurisdiction":"DE","role":"minority shareholder","status":"resolved","identifiers":["HRB-SYN-22018"]},
+    {"id":"E6","name":"Eastbridge Logistics Sp. z o.o.","type":"company","jurisdiction":"PL","role":"supplier","status":"resolved","identifiers":["KRS-SYN-771902"]},
+    {"id":"E7","name":"Oriole Settlement Services FZE","type":"company","jurisdiction":"AE","role":"payment beneficiary","status":"resolved","identifiers":["AE-SYN-9184"]},
+    {"id":"P1","name":"Marek Vostrik","type":"person","jurisdiction":"DE","role":"director candidate","status":"resolved","identifiers":["DOB-1983-04-12","NAT-DE"]},
+    {"id":"P2","name":"Marek Vostryk","type":"person","jurisdiction":"XX","role":"screening candidate","status":"separate","identifiers":["DOB-1971-09-02","NAT-XX"]}
+  ],
+  "relationships": [
+    {"from":"E2","to":"E1","type":"OWNS","value":"70%","confidence":0.99,"claim_id":"C1","evidence":["S1"]},
+    {"from":"E5","to":"E1","type":"OWNS","value":"30%","confidence":0.99,"claim_id":"C2","evidence":["S1"]},
+    {"from":"E3","to":"E2","type":"OWNS","value":"60%","confidence":0.97,"claim_id":"C3","evidence":["S2"]},
+    {"from":"E4","to":"E2","type":"OWNS","value":"40%","confidence":0.97,"claim_id":"C4","evidence":["S2"]},
+    {"from":"P1","to":"E1","type":"DIRECTOR_OF","value":"registry filing date","confidence":0.95,"claim_id":"C5","evidence":["S1","S5"]},
+    {"from":"E6","to":"E1","type":"SUPPLIES","value":"contract counterparty","confidence":0.96,"claim_id":"C6","evidence":["S6"]},
+    {"from":"E7","to":"E6","type":"PAYMENT_ROUTE_FOR","value":"bank-change instruction only","confidence":0.78,"claim_id":"C7","evidence":["S7"]},
+    {"from":"P1","to":"P2","type":"RELATED_TO","value":"name-screening candidate only — NOT SAME_AS","confidence":0.18,"claim_id":"C8","evidence":["S8"]}
+  ],
+  "sources": [
+    {"id":"S1","title":"German commercial-register extract — Northstar Components GmbH","kind":"official corporate filing","jurisdiction":"DE","authority":"A","relevance":"A","freshness":"A","retrieved":"2026-08-28","anchor":"shareholders + managing director","hash":"sha256:synthetic-s1","status":"synthetic_fixture"},
+    {"id":"S2","title":"UK confirmation statement — Meridian Ventures Ltd","kind":"official corporate filing","jurisdiction":"GB","authority":"A","relevance":"A","freshness":"A","retrieved":"2026-08-28","anchor":"statement of capital + shareholders","hash":"sha256:synthetic-s2","status":"synthetic_fixture"},
+    {"id":"S3","title":"Asterion Capital FZE licence extract","kind":"official registry extract","jurisdiction":"AE","authority":"A","relevance":"B","freshness":"B","retrieved":"2026-08-28","anchor":"company identity","hash":"sha256:synthetic-s3","status":"synthetic_fixture"},
+    {"id":"S4","title":"Helix Nominees Ltd filing","kind":"official corporate filing","jurisdiction":"GB","authority":"A","relevance":"A","freshness":"B","retrieved":"2026-08-28","anchor":"nominee company identity; no natural-person beneficial owner in supplied record","hash":"sha256:synthetic-s4","status":"synthetic_fixture"},
+    {"id":"S5","title":"Archived Northstar leadership page","kind":"company self-report","jurisdiction":"DE","authority":"C","relevance":"B","freshness":"C","retrieved":"2026-08-28","anchor":"lists Marek Vostrik as managing director after registry resignation date","hash":"sha256:synthetic-s5","status":"synthetic_fixture"},
+    {"id":"S6","title":"Supply agreement — Eastbridge Logistics / Northstar","kind":"supplied business record","jurisdiction":"PL/DE","authority":"B","relevance":"A","freshness":"A","retrieved":"2026-08-28","anchor":"contract counterparty and agreed beneficiary account","hash":"sha256:synthetic-s6","status":"synthetic_fixture"},
+    {"id":"S7","title":"Payment-change instruction","kind":"supplied business record","jurisdiction":"AE/PL","authority":"C","relevance":"A","freshness":"A","retrieved":"2026-08-28","anchor":"requests payment to Oriole Settlement Services FZE; authority not independently verified","hash":"sha256:synthetic-s7","status":"synthetic_fixture"},
+    {"id":"S8","title":"Sanctions screening test fixture","kind":"screening fixture","jurisdiction":"MULTI","authority":"A-test","relevance":"A","freshness":"A-test","retrieved":"2026-08-28","anchor":"near-name candidate Marek Vostryk; DOB/nationality mismatch","hash":"sha256:synthetic-s8","status":"synthetic_fixture_not_live_list"},
+    {"id":"S9","title":"Synthetic court docket summary","kind":"court record fixture","jurisdiction":"DE","authority":"A-test","relevance":"B","freshness":"B","retrieved":"2026-08-28","anchor":"no adverse finding against target; demonstrates negative-evidence recording","hash":"sha256:synthetic-s9","status":"synthetic_fixture"}
+  ],
+  "claims": [
+    {"id":"C1","text":"Meridian Ventures Ltd owns 70% of Northstar Components GmbH.","state":"supported","confidence":0.99,"support":["S1"],"contradict":[],"limitation":"Synthetic fixture; verify current filing in a live engagement."},
+    {"id":"C2","text":"Alder Ventures GmbH owns 30% of Northstar Components GmbH.","state":"supported","confidence":0.99,"support":["S1"],"contradict":[],"limitation":"Synthetic fixture."},
+    {"id":"C3","text":"Asterion Capital FZE owns 60% of Meridian Ventures Ltd, creating a 42% indirect economic interest in Northstar.","state":"supported","confidence":0.97,"support":["S2","S3"],"contradict":[],"limitation":"Economic interest is not automatically equivalent to legal or practical control."},
+    {"id":"C4","text":"Helix Nominees Ltd owns 40% of Meridian Ventures Ltd; the natural person behind that stake is not established in the supplied record.","state":"supported_with_gap","confidence":0.94,"support":["S2","S4"],"contradict":[],"limitation":"Absence from supplied records is not proof that beneficial ownership information does not exist elsewhere."},
+    {"id":"C5","text":"The current status of Marek Vostrik as Northstar managing director is contradictory across supplied sources.","state":"contradicted","confidence":0.93,"support":["S1"],"contradict":["S5"],"limitation":"Confirm latest authoritative registry entry and effective date."},
+    {"id":"C6","text":"Eastbridge Logistics is the named supplier and original payment counterparty under the supplied contract.","state":"supported","confidence":0.96,"support":["S6"],"contradict":[],"limitation":"Contract authenticity is assumed for this synthetic exercise."},
+    {"id":"C7","text":"A later instruction redirects payment to Oriole Settlement Services FZE, an entity not named in the supply agreement.","state":"supported_with_gap","confidence":0.91,"support":["S6","S7"],"contradict":[],"limitation":"The instruction may have a legitimate commercial explanation; authority and bank ownership remain unverified."},
+    {"id":"C8","text":"The near-name screening candidate Marek Vostryk is not established as the same person as director Marek Vostrik.","state":"supported","confidence":0.98,"support":["S8"],"contradict":[],"limitation":"Synthetic screening only. A real engagement requires current authoritative sanctions datasets and documented matching criteria."},
+    {"id":"C9","text":"The supplied court-record fixture contains no adverse finding against Northstar Components GmbH.","state":"negative_evidence","confidence":0.85,"support":["S9"],"contradict":[],"limitation":"No-hit results are source- and time-bounded and do not establish absence of litigation elsewhere."}
+  ],
+  "contradictions": [
+    {"id":"X1","topic":"director status","source_a":"S1","source_b":"S5","assessment":"Official registry evidence outranks company self-report, but the latest effective date must be rechecked before a definitive current-status statement.","next_step":"Obtain current registry extract and filing history."},
+    {"id":"X2","topic":"payment beneficiary","source_a":"S6","source_b":"S7","assessment":"The later payment instruction conflicts with the contractual beneficiary. This is an anomaly, not proof of fraud.","next_step":"Verify instruction through a known contact channel; verify beneficiary-account ownership and commercial rationale."}
+  ],
+  "screening": {
+    "candidate":"P2",
+    "target":"P1",
+    "name_similarity":0.94,
+    "same_as":false,
+    "reasons_against_merge":["date of birth mismatch","nationality mismatch","no stable identifier overlap"],
+    "analyst_rule":"A fuzzy-name hit is a research lead, never a sanctions conclusion."
+  },
+  "questions_remaining": [
+    {"priority":1,"question":"Who is the natural-person beneficial owner behind Helix Nominees Ltd's stake?","why":"Completes the ownership/control analysis.","best_source":"current official beneficial-ownership/PSC filings or client-authorised KYC documentation"},
+    {"priority":2,"question":"Who authorised the bank-account change and who owns the beneficiary account?","why":"Resolves the most immediate transaction-risk anomaly.","best_source":"verified counterparty contact + bank/account documentation"},
+    {"priority":3,"question":"Is Marek Vostrik currently a managing director?","why":"Resolves contradictory current-status evidence.","best_source":"fresh authoritative registry filing history"},
+    {"priority":4,"question":"Does a current authoritative sanctions refresh change the screening result?","why":"Synthetic fixture is not a live compliance check.","best_source":"EU, UK, UN and relevant national authoritative lists as of decision time"}
+  ],
+  "quality_controls": {
+    "source_anchoring":"required",
+    "same_as_requires":"stable identifiers or documented analyst approval",
+    "consequential_claims":"human review required",
+    "contradictions_visible":true,
+    "negative_evidence_bounded":true,
+    "accusation_from_risk_signal":false
+  }
+}
