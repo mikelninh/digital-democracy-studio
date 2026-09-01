@@ -1,0 +1,110 @@
+name: Ownership and Control Proof
+
+on:
+  pull_request:
+    paths:
+      - 'safetrace/ownership_control/**'
+      - 'safetrace/intelligence_casework/**'
+      - '.github/workflows/ownership-control.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '31 5 * * 1'
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run ownership and control tests
+        run: python -m unittest safetrace.ownership_control.tests.test_engine -v
+      - name: Build golden ownership case
+        run: |
+          rm -rf artifacts/ownership-control/golden
+          python -m safetrace.ownership_control.engine \
+            --case safetrace/ownership_control/fixtures/golden_case.json \
+            --out artifacts/ownership-control/golden
+      - name: Validate golden result contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("artifacts/ownership-control/golden/result.json").read_text())
+          economic = {x["owner_id"]: x for x in result["economic_ownership"]}
+          voting = {x["owner_id"]: x for x in result["voting_rights"]}
+          candidates = {x["entity_id"]: x for x in result["ubo_candidates"]}
+
+          assert result["schema_version"] == "safetrace.ownership-control/1.0"
+          assert economic["alice"]["aggregate_pct"] == 0.48
+          assert economic["alice"]["path_count"] == 2
+          assert voting["alice"]["aggregate_pct"] == 0.5
+          assert "economic_ownership_threshold" in candidates["alice"]["grounds"]
+          assert "documented_control_right" in candidates["carol"]["grounds"]
+          assert result["metrics"]["cycles"] == 0
+          assert all(path["evidence"] for row in result["economic_ownership"] for path in row["paths"])
+          assert "Show me why" in Path("artifacts/ownership-control/golden/index.html").read_text()
+          print(json.dumps(result["metrics"], indent=2))
+          PY
+      - name: Upload deterministic work product
+        uses: actions/upload-artifact@v4
+        with:
+          name: ownership-control-golden
+          path: artifacts/ownership-control/golden/
+          if-no-files-found: error
+
+  live-venatic-boundary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser acquisition dependency
+        run: |
+          python -m pip install --disable-pip-version-check playwright
+          python -m playwright install chromium
+      - name: Re-run live Venatic public-source investigation
+        run: |
+          rm -rf artifacts/ownership-control/live-company
+          python -m safetrace.intelligence_casework.company_live_production \
+            --case safetrace/intelligence_casework/fixtures/venatic_live.json \
+            --out artifacts/ownership-control/live-company \
+            --minimum-sources 1 \
+            --minimum-claims 4
+      - name: Convert live result into fail-closed ownership case
+        run: |
+          python -m safetrace.ownership_control.from_live_company \
+            --live-result artifacts/ownership-control/live-company/result.json \
+            --case-out artifacts/ownership-control/venatic-case.json \
+            --analysis-out artifacts/ownership-control/venatic-analysis
+      - name: Assert no shareholder or UBO inference without evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          case = json.loads(Path("artifacts/ownership-control/venatic-case.json").read_text())
+          result = json.loads(Path("artifacts/ownership-control/venatic-analysis/result.json").read_text())
+          assert case["ownership_edges"] == []
+          assert result["economic_ownership"] == []
+          assert result["voting_rights"] == []
+          assert result["ubo_candidates"] == []
+          assert result["decision_boundary"]["ownership_established"] is False
+          assert any(x.get("type") == "shareholder_and_beneficial_ownership_not_established" for x in result["unresolved"])
+          print(json.dumps(result["metrics"], indent=2))
+          PY
+      - name: Upload live boundary work product
+        uses: actions/upload-artifact@v4
+        with:
+          name: venatic-ownership-control-boundary
+          path: |
+            artifacts/ownership-control/venatic-case.json
+            artifacts/ownership-control/venatic-analysis/
+            artifacts/ownership-control/live-company/result.json
+            artifacts/ownership-control/live-company/report.md
+          if-no-files-found: error
