@@ -68,7 +68,7 @@ jobs:
                   page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
                   assert not errors, errors
                   assert page.locator('.case.active').get_attribute('id') == 'case1'
-                  assert page.locator('h1').inner_text() == 'Who really owns Meridian Atlas?'
+                  assert page.locator('#case1 h1').inner_text() == 'Who really owns Meridian Atlas?'
                   assert '36.4%' in page.locator('#case1 .answer').inner_text()
                   assert page.locator('.case').count() == 3
                   assert page.locator('.choice').count() == 0
