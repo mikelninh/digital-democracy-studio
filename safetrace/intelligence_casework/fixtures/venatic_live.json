@@ -44,6 +44,22 @@
       ]
     },
     {
+      "id": "openregister-manager",
+      "title": "David Nikolai Müller management profile",
+      "publisher": "OpenRegister",
+      "url": "https://openregister.de/person/f55953b4-5f46-49d4-81a1-8fad9b23e86c",
+      "source_type": "public_register_aggregator",
+      "source_rank": "reputable_secondary",
+      "authority": 0.72,
+      "jurisdiction": "DE",
+      "update_cadence": "monthly",
+      "notes": "Used only to corroborate public management identity and company association; unrelated placeholder participation data on the page is intentionally ignored.",
+      "extract": [
+        {"field": "legal_name", "pattern": "(Venatic Intelligence GmbH)", "confidence": 0.72},
+        {"field": "managing_director", "pattern": "(David Nikolai Müller)", "required": true, "confidence": 0.72}
+      ]
+    },
+    {
       "id": "companyhouse-profile",
       "title": "Venatic Intelligence GmbH company profile",
       "publisher": "CompanyHouse",
