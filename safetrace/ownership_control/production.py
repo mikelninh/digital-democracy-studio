@@ -124,8 +124,10 @@ def investigate(data: dict[str, Any]) -> dict[str, Any]:
 
 
 def _render_workspace(result: dict[str, Any], data: dict[str, Any]) -> str:
-    """Render the analyst workspace with browser-safe interaction guards."""
+    """Render the analyst workspace with browser-safe, low-clutter interaction guards."""
     page = render_workspace_html(result, data)
+
+    # Browser-safe global name: window.top already exists.
     page = page.replace("const top=economic[0];", "const topOwner=economic[0];")
     page = page.replace(
         "['Top economic path',top?`${top.owner_name} · ${pct(top.aggregate_pct)}`:'None']",
@@ -135,11 +137,27 @@ def _render_workspace(result: dict[str, Any], data: dict[str, Any]) -> str:
         "const findings=[];if(top)findings.push([false,`${top.owner_name} · ${pct(top.aggregate_pct)} economic`,`Highest aggregated economic position in the computed graph.`]);",
         "const findings=[];if(topOwner)findings.push([false,`${topOwner.owner_name} · ${pct(topOwner.aggregate_pct)} economic`,`Highest aggregated economic position in the computed graph.`]);",
     )
-    # SVG percentage badges sit above the intentionally wide transparent edge hit
-    # target. They are display-only and must not steal the analyst's click.
+
+    # Product framing: explain the problem, the solution and the analyst use in one line.
+    page = page.replace(
+        "SafeTrace separates economic ownership, voting rights and other control, preserves the evidence behind each relationship, and keeps missing evidence visibly unresolved.",
+        "Corporate ownership evidence is fragmented. SafeTrace turns reviewed records into a source-backed ownership map for EDD, asset tracing and sanctions investigations — while keeping unknowns unresolved.",
+    )
+
+    # Keep the investigation, not the marketing headline, visually dominant. Dense edge
+    # badges appear only while hovering/selecting a relationship so crossing paths stay calm.
     page = page.replace(
         "</style>",
-        "#graph svg rect,#graph svg text{pointer-events:none}</style>",
+        """
+#graph svg rect,#graph svg text{pointer-events:none}
+.hero{padding-top:22px;padding-bottom:15px}
+.hero h1{font-size:clamp(30px,3.6vw,48px);max-width:1050px;margin-top:6px;margin-bottom:8px}
+.hero p{font-size:13px;max-width:930px;line-height:1.48}
+.workspace{padding-top:0}
+#graph svg g:not(.node)>rect,#graph svg g:not(.node)>.elabel,#graph svg g:not(.node)>.esub{opacity:0;transition:opacity .14s ease}
+#graph svg g:not(.node):hover>rect,#graph svg g:not(.node):hover>.elabel,#graph svg g:not(.node):hover>.esub{opacity:1}
+#graph svg g:not(.node):hover>.edge{stroke:#607269;stroke-width:2.2}
+</style>""",
         1,
     )
     if "const top=" in page:
