@@ -1,0 +1,45 @@
+{
+  "case_id": "OWNCTRL-GOLD-001",
+  "classification": "SYNTHETIC REFERENCE CASE",
+  "target_entity_id": "target",
+  "policy": {
+    "ubo_threshold": 0.25,
+    "ubo_threshold_operator": "gt",
+    "control_rights_establish_candidate": true,
+    "control_rights": [
+      "board_appointment",
+      "board_majority",
+      "veto",
+      "dominant_influence",
+      "contractual_control"
+    ]
+  },
+  "sources": [
+    {"id": "src-target-list", "title": "Synthetic Target shareholder list", "authority": "A"},
+    {"id": "src-h1-list", "title": "Synthetic H1 shareholder list", "authority": "A"},
+    {"id": "src-h2-list", "title": "Synthetic H2 shareholder list", "authority": "A"},
+    {"id": "src-control", "title": "Synthetic shareholder agreement extract", "authority": "A"}
+  ],
+  "entities": [
+    {"id": "target", "name": "Northstar Analytics GmbH", "kind": "company", "resolution_status": "confirmed", "identifiers": {"register_id": "HRB 100001"}},
+    {"id": "h1", "name": "Harbour One GmbH", "kind": "company", "resolution_status": "confirmed", "identifiers": {"register_id": "HRB 100002"}},
+    {"id": "h2", "name": "Harbour Two GmbH", "kind": "company", "resolution_status": "confirmed", "identifiers": {"register_id": "HRB 100003"}},
+    {"id": "alice", "name": "Alice Example", "kind": "person", "resolution_status": "confirmed", "identifiers": {"dob": "1980-01-01"}},
+    {"id": "bob", "name": "Bob Example", "kind": "person", "resolution_status": "confirmed", "identifiers": {"dob": "1975-02-02"}},
+    {"id": "carol", "name": "Carol Example", "kind": "person", "resolution_status": "confirmed", "identifiers": {"dob": "1985-03-03"}}
+  ],
+  "ownership_edges": [
+    {"id": "E-H1-T", "owner_id": "h1", "target_id": "target", "economic_pct": 0.70, "voting_pct": 0.80, "status": "established", "control_rights": [], "evidence": [{"source_id": "src-target-list", "anchor": "p1#row-h1"}]},
+    {"id": "E-H2-T", "owner_id": "h2", "target_id": "target", "economic_pct": 0.20, "voting_pct": 0.15, "status": "established", "control_rights": [], "evidence": [{"source_id": "src-target-list", "anchor": "p1#row-h2"}]},
+    {"id": "E-C-T", "owner_id": "carol", "target_id": "target", "economic_pct": 0.05, "voting_pct": 0.05, "status": "established", "control_rights": ["board_appointment"], "evidence": [{"source_id": "src-control", "anchor": "clause-7.2"}]},
+    {"id": "E-A-H1", "owner_id": "alice", "target_id": "h1", "economic_pct": 0.60, "voting_pct": 0.55, "status": "established", "control_rights": [], "evidence": [{"source_id": "src-h1-list", "anchor": "p1#row-alice"}]},
+    {"id": "E-B-H1", "owner_id": "bob", "target_id": "h1", "economic_pct": 0.20, "voting_pct": 0.20, "status": "established", "control_rights": [], "evidence": [{"source_id": "src-h1-list", "anchor": "p1#row-bob"}]},
+    {"id": "E-A-H2", "owner_id": "alice", "target_id": "h2", "economic_pct": 0.30, "voting_pct": 0.40, "status": "established", "control_rights": [], "evidence": [{"source_id": "src-h2-list", "anchor": "p1#row-alice"}]}
+  ],
+  "collection_gaps": [
+    {
+      "type": "remaining_shareholder_gap",
+      "reason": "Five percent of the target's economic ownership is not represented in this bounded synthetic fixture; no owner is inferred for the missing stake."
+    }
+  ]
+}
