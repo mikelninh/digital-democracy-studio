@@ -1,0 +1,69 @@
+{
+  "case": {
+    "id": "case:venatic-live-001",
+    "title": "Northstar Components supplier and ownership review",
+    "question": "Who owns and controls Northstar Components GmbH, what material risk indicators exist, and which conclusions are supported by the evidence?",
+    "executive_judgement": "Northstar Components GmbH is majority-owned through a documented two-layer corporate chain. A minority holding remains traced only to a nominee company, so the ultimate beneficial owner behind that stake is unresolved. A sanctions homonym is rejected on conflicting identity attributes. A changed payment beneficiary and contradictory director records require follow-up, but neither supports an allegation of fraud, sanctions evasion or misconduct on the current evidence.",
+    "priority_collection_plan": [
+      "Obtain current shareholder agreements, voting-right schedules and board appointment rights for Meridian Industrial Holdings Ltd and Northstar Components GmbH.",
+      "Obtain the beneficial ownership declaration or equivalent underlying documentation for Helix Nominees FZE.",
+      "Verify the changed payment beneficiary directly with the contractual supplier using an independently sourced contact channel.",
+      "Obtain the latest official director filing and filing history to resolve the director-status contradiction.",
+      "Re-screen all relevant natural persons after identity attributes are verified from authoritative records."
+    ]
+  },
+  "sources": [
+    {"id":"src:de-registry","title":"Northstar Components GmbH registry extract","publisher":"German commercial registry (synthetic)","source_type":"official_registry","authority":1.0,"freshness":0.95,"text":"Northstar Components GmbH shareholders: Meridian Industrial Holdings Ltd 70%; Helix Nominees FZE 30%. Managing director: Anna Keller.","anchor":"shareholders/director"},
+    {"id":"src:uk-registry","title":"Meridian Industrial Holdings Ltd filing","publisher":"UK corporate registry (synthetic)","source_type":"official_registry","authority":1.0,"freshness":0.9,"text":"Asterion Capital Partners Ltd owns 60% of Meridian Industrial Holdings Ltd.","anchor":"persons-with-significant-control"},
+    {"id":"src:helix","title":"Helix Nominees FZE certificate","publisher":"Free-zone registry (synthetic)","source_type":"official_registry","authority":0.9,"freshness":0.8,"text":"Helix Nominees FZE is registered as a corporate shareholder. No natural-person beneficial owner is stated in this record.","anchor":"shareholder-record"},
+    {"id":"src:supplier-contract","title":"Supplier master agreement","publisher":"Northstar Components GmbH (synthetic)","source_type":"contract","authority":0.85,"freshness":0.75,"text":"Contractual supplier and payment recipient: Baltic Precision Sp. z o.o., Poland.","anchor":"payment-clause"},
+    {"id":"src:invoice","title":"Invoice 2026-117","publisher":"Baltic Precision Sp. z o.o. (synthetic)","source_type":"commercial_document","authority":0.7,"freshness":1.0,"text":"Invoice instructs payment to Volna Trading LLC, account ending 8891.","anchor":"bank-details"},
+    {"id":"src:web-archive","title":"Archived Northstar leadership page","publisher":"Northstar Components GmbH website archive (synthetic)","source_type":"web_archive","authority":0.45,"freshness":0.5,"text":"Leadership page lists Markus Stein as Managing Director.","anchor":"leadership"},
+    {"id":"src:sanctions","title":"Sanctions screening dataset snapshot","publisher":"Sanctions source (synthetic)","source_type":"sanctions_dataset","authority":0.95,"freshness":1.0,"text":"Listed person: Marek Vostryk, DOB 1971-02-14, nationality RU, passport RU998811.","anchor":"record-778"},
+    {"id":"src:kyc","title":"Supplier director identity record","publisher":"Verified KYC record (synthetic)","source_type":"identity_record","authority":0.9,"freshness":0.9,"text":"Marek Vostrik, DOB 1984-09-08, nationality PL, passport PL441122.","anchor":"identity"},
+    {"id":"src:asset-registry","title":"Leipzig property extract","publisher":"Land registry (synthetic)","source_type":"official_registry","authority":1.0,"freshness":0.85,"text":"Owner: Northstar Property GmbH. Security interest: Europa Bank AG. Operator at site: Northstar Components GmbH.","anchor":"ownership/security"}
+  ],
+  "entities": [
+    {"id":"ent:northstar","name":"Northstar Components GmbH","entity_type":"company","jurisdiction":"DE","identifiers":{"registry_id":"HRB-NS-001"}},
+    {"id":"ent:meridian","name":"Meridian Industrial Holdings Ltd","entity_type":"company","jurisdiction":"GB","identifiers":{"registry_id":"GB-MER-778"}},
+    {"id":"ent:asterion","name":"Asterion Capital Partners Ltd","entity_type":"company","jurisdiction":"GB","identifiers":{"registry_id":"GB-AST-114"}},
+    {"id":"ent:helix","name":"Helix Nominees FZE","entity_type":"company","jurisdiction":"AE","identifiers":{"registry_id":"AE-HLX-990"}},
+    {"id":"ent:baltic","name":"Baltic Precision Sp. z o.o.","entity_type":"company","jurisdiction":"PL","identifiers":{"registry_id":"PL-BP-190"}},
+    {"id":"ent:volna","name":"Volna Trading LLC","entity_type":"company","jurisdiction":"AE","identifiers":{"registry_id":"AE-VOL-718"}},
+    {"id":"ent:marek-local","name":"Marek Vostrik","entity_type":"person","jurisdiction":"PL","identifiers":{"dob":"1984-09-08","nationality":"PL","passport":"PL441122"}},
+    {"id":"ent:marek-sanctioned","name":"Marek Vostryk","entity_type":"person","jurisdiction":"RU","identifiers":{"dob":"1971-02-14","nationality":"RU","passport":"RU998811"}},
+    {"id":"ent:anna","name":"Anna Keller","entity_type":"person","jurisdiction":"DE","identifiers":{}},
+    {"id":"ent:markus","name":"Markus Stein","entity_type":"person","jurisdiction":"DE","identifiers":{}},
+    {"id":"ent:property","name":"Northstar Property GmbH","entity_type":"company","jurisdiction":"DE","identifiers":{"registry_id":"HRB-NP-440"}},
+    {"id":"ent:bank","name":"Europa Bank AG","entity_type":"company","jurisdiction":"DE","identifiers":{"registry_id":"HRB-EB-001"}},
+    {"id":"ent:site","name":"Leipzig Industrial Site","entity_type":"asset","jurisdiction":"DE","identifiers":{"asset_id":"LIP-22"}}
+  ],
+  "alias_candidates": [
+    {"left":"ent:marek-local","right":"ent:marek-sanctioned","evidence":["src:kyc","src:sanctions"]}
+  ],
+  "ownership": [
+    {"owner":"ent:meridian","owned":"ent:northstar","percent":70,"evidence":["src:de-registry"]},
+    {"owner":"ent:helix","owned":"ent:northstar","percent":30,"evidence":["src:de-registry","src:helix"]},
+    {"owner":"ent:asterion","owned":"ent:meridian","percent":60,"evidence":["src:uk-registry"]}
+  ],
+  "relationships": [
+    {"source":"ent:meridian","target":"ent:northstar","kind":"OWNS","confidence":0.99,"evidence":["src:de-registry"],"status":"verified"},
+    {"source":"ent:helix","target":"ent:northstar","kind":"OWNS","confidence":0.99,"evidence":["src:de-registry","src:helix"],"status":"verified"},
+    {"source":"ent:asterion","target":"ent:meridian","kind":"OWNS","confidence":0.99,"evidence":["src:uk-registry"],"status":"verified"},
+    {"source":"ent:baltic","target":"ent:northstar","kind":"SUPPLIES","confidence":0.95,"evidence":["src:supplier-contract"],"status":"verified"},
+    {"source":"ent:volna","target":"ent:baltic","kind":"PAYMENT_BENEFICIARY_FOR_INVOICE","confidence":0.9,"evidence":["src:invoice"],"status":"observed","note":"Observed on one invoice; commercial rationale not established."},
+    {"source":"ent:property","target":"ent:site","kind":"OWNS_ASSET","confidence":0.99,"evidence":["src:asset-registry"],"status":"verified"},
+    {"source":"ent:bank","target":"ent:site","kind":"SECURITY_INTEREST","confidence":0.99,"evidence":["src:asset-registry"],"status":"verified"},
+    {"source":"ent:northstar","target":"ent:site","kind":"OPERATES_AT","confidence":0.95,"evidence":["src:asset-registry"],"status":"verified"}
+  ],
+  "sanctions_screening": [
+    {"subject":"ent:marek-local","candidate":"ent:marek-sanctioned","name_similarity":0.94,"evidence":["src:kyc","src:sanctions"]}
+  ],
+  "contradictions": [
+    {"subject":"ent:northstar","field":"managing_director","values":["Anna Keller","Markus Stein"],"evidence":["src:de-registry","src:web-archive"],"next_step":"Obtain the latest official director filing plus filing history and date the web archive snapshot."}
+  ],
+  "finding_rules": [
+    {"id":"finding:payment-route","rule":"payment_route_changed","title":"Payment beneficiary differs from contractual supplier","assessment":"A recent invoice redirects payment from Baltic Precision Sp. z o.o. to Volna Trading LLC.","evidence":["src:supplier-contract","src:invoice"],"next_step":"Verify the beneficiary change independently with Baltic Precision and inspect amendment, banking and invoice history."},
+    {"id":"finding:ubo-gap","rule":"unresolved_ubo","title":"Minority beneficial ownership remains unresolved","assessment":"Helix Nominees FZE holds 30% of Northstar, but the supplied registry record does not identify the natural-person beneficial owner behind Helix.","evidence":["src:de-registry","src:helix"],"next_step":"Obtain beneficial ownership declaration, shareholder register and nominee/agency documentation."}
+  ]
+}

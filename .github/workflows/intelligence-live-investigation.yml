@@ -1,0 +1,52 @@
+name: Intelligence Live Investigation
+
+on:
+  pull_request:
+    paths:
+      - "safetrace/intelligence_casework/**"
+      - ".github/workflows/intelligence-live-investigation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "safetrace/intelligence_casework/**"
+      - ".github/workflows/intelligence-live-investigation.yml"
+  workflow_dispatch:
+
+jobs:
+  investigate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run investigation
+        run: |
+          python -m safetrace.intelligence_casework.live_investigator \
+            --case safetrace/intelligence_casework/fixtures/live_case.json \
+            --out safetrace/intelligence_casework/artifacts/live_investigation
+      - name: Run regression suite
+        run: python -m unittest safetrace.intelligence_casework.tests.test_live_investigator -v
+      - name: Print analyst report
+        run: cat safetrace/intelligence_casework/artifacts/live_investigation/report.md
+      - name: Validate result contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("safetrace/intelligence_casework/artifacts/live_investigation/result.json")
+          r = json.loads(p.read_text())
+          assert r["schema_version"] == "safetrace.live-investigation/1.0"
+          assert r["metrics"]["sources_reviewed"] >= 8
+          assert r["metrics"]["material_findings"] >= 3
+          assert r["metrics"]["sanctions_false_positives_rejected"] == 1
+          assert all(f["evidence"] for f in r["findings"])
+          assert all(f["caveat"] for f in r["findings"])
+          print(json.dumps(r["metrics"], indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: intelligence-live-investigation
+          path: safetrace/intelligence_casework/artifacts/live_investigation/
