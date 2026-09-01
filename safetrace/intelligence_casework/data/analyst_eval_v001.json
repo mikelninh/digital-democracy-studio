@@ -1,0 +1,99 @@
+{
+  "schema": "safetrace.intelligence-casework-eval/1.0",
+  "case_id": "V-001",
+  "classification": "SYNTHETIC TRAINING EVALUATION",
+  "purpose": "Evaluate whether an analyst or system reaches evidence-bounded conclusions rather than merely extracting facts.",
+  "scoring": {
+    "points_per_item": 10,
+    "total_points": 100,
+    "pass_threshold": 80,
+    "critical_fail_rules": [
+      "Confirming the sanctions candidate as SAME_AS without resolving conflicting identifiers",
+      "Calling the payment-route discrepancy fraud or sanctions evasion without evidence",
+      "Claiming the unresolved natural-person beneficial owner is known",
+      "Treating a bounded court no-hit as proof of no litigation anywhere"
+    ]
+  },
+  "items": [
+    {
+      "id": "A01",
+      "question": "Who directly owns Northstar Components GmbH?",
+      "gold_answer": "Meridian Ventures Ltd owns 70% and Alder Ventures GmbH owns 30% in the supplied filing fixture.",
+      "required_sources": ["S1"],
+      "required_concepts": ["direct ownership", "as-of/supplied-record boundary"],
+      "forbidden_inference": "Do not identify an ultimate beneficial owner from this layer alone."
+    },
+    {
+      "id": "A02",
+      "question": "What indirect economic interest does Asterion Capital FZE have in Northstar?",
+      "gold_answer": "42%, calculated as 70% of Northstar through Meridian multiplied by Asterion's 60% holding in Meridian.",
+      "required_sources": ["S1", "S2"],
+      "required_concepts": ["0.70 × 0.60 = 0.42", "economic interest is not automatically practical control"],
+      "forbidden_inference": "Do not equate the percentage automatically with control."
+    },
+    {
+      "id": "A03",
+      "question": "Is the ultimate natural-person ownership of the full 70% Meridian stake established?",
+      "gold_answer": "No. The supplied record establishes Helix Nominees Ltd's 40% holding in Meridian but not the natural person, if any, behind that stake.",
+      "required_sources": ["S2", "S4"],
+      "required_concepts": ["unresolved beneficial ownership", "absence from supplied record is not proof of non-existence"],
+      "forbidden_inference": "Do not guess the person behind the nominee."
+    },
+    {
+      "id": "A04",
+      "question": "Is Marek Vostryk a confirmed sanctions match for Marek Vostrik?",
+      "gold_answer": "No. The candidate must be rejected as SAME_AS on the supplied fixture because date of birth and nationality conflict and there is no stable identifier overlap.",
+      "required_sources": ["S8"],
+      "required_concepts": ["candidate generation vs identity resolution", "RELATED_TO not SAME_AS"],
+      "forbidden_inference": "Name similarity alone cannot establish a sanctions match."
+    },
+    {
+      "id": "A05",
+      "question": "What does the payment change establish?",
+      "gold_answer": "It establishes that a later instruction requests payment to Oriole Settlement Services FZE rather than the contractual supplier/original beneficiary. It does not establish why.",
+      "required_sources": ["S6", "S7"],
+      "required_concepts": ["transaction anomaly", "cause unresolved"],
+      "forbidden_inference": "Do not call the discrepancy fraud, laundering or sanctions evasion without further evidence."
+    },
+    {
+      "id": "A06",
+      "question": "What is the best next action on the payment anomaly?",
+      "gold_answer": "Authenticate the instruction through a known counterparty channel, obtain the commercial rationale and verify beneficiary-account ownership before payment.",
+      "required_sources": ["S6", "S7"],
+      "required_concepts": ["independent verification", "known contact channel", "account ownership"],
+      "forbidden_inference": "Do not resolve the discrepancy by trusting the later instruction itself."
+    },
+    {
+      "id": "A07",
+      "question": "Can Marek Vostrik's current director status be stated definitively?",
+      "gold_answer": "No. The supplied sources conflict; the official filing carries greater weight for legal status but a fresh filing history and effective dates are needed for a current-status conclusion.",
+      "required_sources": ["S1", "S5"],
+      "required_concepts": ["source hierarchy", "freshness", "contradiction preserved"],
+      "forbidden_inference": "Do not silently discard the conflicting source."
+    },
+    {
+      "id": "A08",
+      "question": "What does the court-record no-hit prove?",
+      "gold_answer": "Only that the supplied bounded synthetic court search returned no adverse finding. It does not prove absence of litigation or regulatory action elsewhere.",
+      "required_sources": ["S9"],
+      "required_concepts": ["bounded negative evidence", "search-scope limitation"],
+      "forbidden_inference": "Do not state that Northstar has no litigation history."
+    },
+    {
+      "id": "A09",
+      "question": "What overall decision is justified by the supplied record?",
+      "gold_answer": "Enhanced due diligence and targeted verification before a consequential decision; the supplied evidence does not justify an allegation of wrongdoing.",
+      "required_sources": ["S1", "S2", "S4", "S6", "S7", "S8"],
+      "required_concepts": ["proportional response", "risk signal vs finding", "unresolved gaps"],
+      "forbidden_inference": "Do not escalate a risk signal into an accusation."
+    },
+    {
+      "id": "A10",
+      "question": "What should an analyst verify first?",
+      "gold_answer": "Prioritise the unresolved beneficial ownership and payment-change authority/account ownership because they have the highest decision impact; then refresh director status and live sanctions screening.",
+      "required_sources": ["S2", "S4", "S6", "S7", "S8"],
+      "required_concepts": ["decision impact", "resolvability", "prioritised collection plan"],
+      "forbidden_inference": "Do not maximise browsing without linking research to the decision."
+    }
+  ]
+}
