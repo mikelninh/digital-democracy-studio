@@ -1,0 +1,83 @@
+name: Intelligence Live Evidence
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * *'
+  push:
+    paths:
+      - 'safetrace/intelligence_casework/live_evidence.py'
+      - 'safetrace/intelligence_casework/run_live_source.py'
+      - 'safetrace/intelligence_casework/data/uksl_fixture.csv'
+      - 'safetrace/intelligence_casework/tests/test_live_evidence.py'
+      - '.github/workflows/intelligence-live-evidence.yml'
+  pull_request:
+    paths:
+      - 'safetrace/intelligence_casework/live_evidence.py'
+      - 'safetrace/intelligence_casework/run_live_source.py'
+      - 'safetrace/intelligence_casework/data/uksl_fixture.csv'
+      - 'safetrace/intelligence_casework/tests/test_live_evidence.py'
+      - '.github/workflows/intelligence-live-evidence.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test UKSL parser and safe candidate matching
+        run: python -m unittest safetrace.intelligence_casework.tests.test_live_evidence -v
+
+  live-uksl-smoke:
+    needs: deterministic
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire current FCDO UK Sanctions List and screen known list record
+        run: |
+          python -m safetrace.intelligence_casework.run_live_source \
+            --query 'Vladimir Putin' \
+            --dob '07/10/1952' \
+            --nationality 'Russia' \
+            --vault artifacts/intelligence-casework/live-vault \
+            --output artifacts/intelligence-casework/live-screening.json
+      - name: Verify live result remains evidence-bounded
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('artifacts/intelligence-casework/live-screening.json').read_text(encoding='utf-8'))
+          assert r['integrity']['status']=='pass'
+          assert r['records_parsed'] > 100
+          assert len(r['source']['object_sha256']) == 64
+          assert len(r['source']['receipt_hash']) == 64
+          matches=[x for x in r['candidates'] if x['unique_id']=='RUS0251']
+          assert matches, 'Expected current FCDO list record RUS0251 was not retrieved'
+          candidate=matches[0]
+          assert candidate['identity_status']=='REVIEW_REQUIRED'
+          assert 'dob' in candidate['identifier_support']
+          assert 'nationality' in candidate['identifier_support']
+          assert r['identity_decision']=='HUMAN_REVIEW_REQUIRED'
+          print('PASS: live FCDO evidence acquired, vaulted, parsed and returned only for human identity review')
+          print('source_sha256=',r['source']['object_sha256'])
+          print('records_parsed=',r['records_parsed'])
+          print('candidate=',candidate['unique_id'],candidate['name'],candidate['name_score'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-uksl-screening-proof
+          path: |
+            artifacts/intelligence-casework/live-screening.json
+            artifacts/intelligence-casework/live-vault/receipts
+            artifacts/intelligence-casework/live-vault/manifests
+          if-no-files-found: error
+          retention-days: 14
