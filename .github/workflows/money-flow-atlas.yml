@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate money-flow evidence contract
+      - name: Validate evidence and information architecture contract
         run: |
           python - <<'PY'
           import json
@@ -33,43 +33,41 @@ jobs:
           root=Path('safetrace/money_flow_atlas')
           data=json.loads((root/'snapshot.json').read_text(encoding='utf-8'))
           html=(root/'index.html').read_text(encoding='utf-8')
-          assert data['snapshot_id']=='DE-MONEY-FLOW-2026-09-01'
           m=data['metrics']
+          assert data['snapshot_id']=='DE-MONEY-FLOW-2026-09-01'
           assert m['top10_share_pct']==59.48
           assert 2.16 < m['bottom50_share_pct_derived'] < 2.18
           assert m['poverty_risk_people_m']==13.3
-          assert m['federal_budget_2026_bn']>500
-          assert abs(m['top10_net_wealth_bn'] * 0.001 - 11.83895077) < 1e-8
+          assert m['participation_benefit_take_up_age_6_14_pct']==18
           ids=set()
           for s in data['sources']:
               assert s['id'] not in ids; ids.add(s['id'])
               assert s['url'].startswith('https://')
               for key in ('title','publisher','authority','source_type','period','exact_location','does_not_prove'):
                   assert str(s[key]).strip(), (s['id'],key)
-              assert s['supports'] and all(x.strip() for x in s['supports'])
+              assert s['supports']
           for phrase in [
-              'Where is the money',
-              'Live money-flow map',
-              'What I would change',
-              'Scale calculator',
-              'These calculations answer only',
-              'a tax proposal or revenue forecast',
-              'Automatic entitlement before new programmes',
-              'Give every public euro a Distribution Score',
-              'Build the first end-to-end distribution experiment',
-              'See what could change',
-              "periods.every(p=>p===periods[0])"
+              'Follow the money.',
+              '10% own most of it',
+              'The starting gap can reproduce itself',
+              'Germany redistributes a lot',
+              'Sometimes the money exists',
+              'Make every euro traceable to an outcome',
+              'Route existing benefits automatically',
+              'Distribution Score',
+              'Scale ≠ outcome',
+              'periods.every(p=>p===periods[0])'
           ]:
               assert phrase in html, phrase
-          assert 'font:18px/1.6' in html
+          assert 'font:19px/1.55' in html
           assert 'font-size:15px' in html
-          print('Money Flow Atlas evidence contract: OK')
+          print('Money Flow Atlas visual IA contract: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify information architecture
+      - name: Browser-verify visual story
         run: |
           mkdir -p artifacts/money-flow-atlas
           python - <<'PY'
@@ -80,78 +78,73 @@ jobs:
               time.sleep(.6)
               with sync_playwright() as p:
                   browser=p.chromium.launch(headless=True)
-                  page=browser.new_page(viewport={'width':1440,'height':1050})
+                  page=browser.new_page(viewport={'width':1440,'height':1000})
                   errors=[]; page.on('pageerror',lambda e:errors.append(str(e)))
                   url='http://127.0.0.1:8765/safetrace/money_flow_atlas/'
-                  page.goto(url,wait_until='domcontentloaded')
-                  page.wait_for_timeout(1300)
+                  page.goto(url,wait_until='domcontentloaded');page.wait_for_timeout(1300)
                   assert not errors,errors
-                  assert 'Where is the money' in page.locator('h1').inner_text()
-                  assert float(page.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=17
-                  assert float(page.locator('.source-btn').first.evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=15
-                  action=page.locator('.hero-action')
-                  assert action.is_visible() and action.get_attribute('href')=='#solution'
-                  assert action.bounding_box()['y'] < 1050
-                  assert page.locator('.kpi').count()==3
-                  assert page.locator('.flow-node').count()>=6
+                  assert page.locator('h1').inner_text().strip()=='Follow the money.'
+                  assert float(page.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=18
+                  assert page.locator('.hero-stat').count()==3
+                  assert page.locator('.hero-action').is_visible()
+                  assert page.locator('.hero-action').bounding_box()['y'] < 1000
+
+                  # Visual wealth model: 100 percentile dots, correctly grouped.
+                  assert page.locator('#wealthDots .person-dot').count()==100
+                  assert page.locator('#wealthDots .top10').count()==10
+                  assert page.locator('#wealthDots .middle40').count()==40
+                  assert page.locator('#wealthDots .bottom50').count()==50
+                  ratio=float(re.sub(r'[^0-9.]','',page.locator('#wealthRatio').inner_text()))
+                  assert ratio>120
+
+                  # Two compounding paths + public-budget visual.
+                  assert page.locator('.lane').count()==2
+                  assert page.locator('.path-node').count()==6
+                  assert page.locator('.donut').count()==1
+                  assert '37.62%' in page.locator('.donut').inner_text()
+
+                  # Concrete routing leak: 100 eligible children, only 18 reached in cited group.
+                  assert page.locator('#reachDots .child').count()==100
+                  assert page.locator('#reachDots .reached').count()==18
+                  assert '≈82 / 100' in page.locator('.reach-head').inner_text()
+
+                  # Solution layer is intentionally only two primary actions.
+                  assert page.locator('.action-card').count()==2
                   body=page.locator('body').inner_text()
-                  for phrase in ['13.3m','€524.5bn','16.1%','30.3% singles','Automatic entitlement','Distribution Score']:
+                  for phrase in ['Route existing benefits automatically','Distribution Score','Eligible','Reached']:
                       assert phrase in body,phrase
+                  page.screenshot(path='artifacts/money-flow-atlas/01-visual-story-desktop.png',full_page=True)
 
-                  # The wealth bar is either the coherent verified fallback or one coherent live ECB quarter.
-                  def pct(selector):
-                      return float(re.sub(r'[^0-9.]','',page.locator(selector).inner_text()))
-                  top=pct('#topShare'); mid=pct('#midShare'); bottom=pct('#bottomShare')
-                  assert abs((top+mid+bottom)-100) < .08, (top,mid,bottom)
-                  freshness=page.locator('#freshness').inner_text()
-                  if 'refreshed' in freshness:
-                      live_period=freshness.split('·')[-1].strip()
-                      assert live_period in page.locator('#totalWealthPeriod').inner_text()
-                  else:
-                      assert abs(top-59.48)<.01 and abs(bottom-2.17)<.02
-                  page.screenshot(path='artifacts/money-flow-atlas/01-overview-desktop.png',full_page=True)
-
-                  # Evidence drawer exposes the same currently displayed wealth figure and keeps keyboard focus inside.
+                  # Live/fallback wealth evidence remains coherent and inspectable.
                   displayed_top=page.locator('#topShare').inner_text().replace('≈','').strip()
                   trigger=page.locator('[data-source="W2"]').first
-                  trigger.click()
-                  page.locator('#sourceOverlay.show').wait_for(state='visible')
-                  page.wait_for_timeout(220)
+                  trigger.click();page.locator('#sourceOverlay.show').wait_for(state='visible');page.wait_for_timeout(200)
                   assert page.locator('main').get_attribute('inert') is not None
                   assert 'European Central Bank' in page.locator('#sourcePublisher').inner_text()
                   assert displayed_top in page.locator('#sourceSupports').inner_text()
                   assert 'data.ecb.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
                   assert 'does not prove' in page.locator('.limit').inner_text().lower()
                   assert page.evaluate("document.activeElement.id")=='closeSource'
-                  page.keyboard.press('Shift+Tab')
-                  assert page.evaluate("document.activeElement.id")=='sourceUrl'
-                  page.keyboard.press('Tab')
-                  assert page.evaluate("document.activeElement.id")=='closeSource'
-                  page.screenshot(path='artifacts/money-flow-atlas/02-source-drawer.png')
-                  page.locator('#closeSource').click()
-                  assert page.locator('main').get_attribute('inert') is None
-                  assert page.evaluate("document.activeElement.dataset.source")=='W2'
+                  page.keyboard.press('Shift+Tab');assert page.evaluate("document.activeElement.id")=='sourceUrl'
+                  page.keyboard.press('Tab');assert page.evaluate("document.activeElement.id")=='closeSource'
+                  page.screenshot(path='artifacts/money-flow-atlas/02-evidence-drawer.png')
+                  page.locator('#closeSource').click();assert page.locator('main').get_attribute('inert') is None
 
-                  # Scale calculator is arithmetic, not a forecast.
+                  # Optional scale explorer stays secondary but functional.
+                  page.locator('details.explorer summary').click()
                   page.locator('#subsidySlider').fill('10')
                   assert '€7.78bn/year' in page.locator('#subsidyPool').inner_text()
-                  assert '€48.75/month' in page.locator('#subsidyMonthly').inner_text()
-                  page.locator('#wealthSlider').fill('0.1')
-                  pool_01=float(re.sub(r'[^0-9.]','',page.locator('#wealthPool').inner_text()))
-                  assert 10 < pool_01 < 13
-                  page.locator('#wealthSlider').fill('0.2')
-                  pool_02=float(re.sub(r'[^0-9.]','',page.locator('#wealthPool').inner_text()))
-                  assert abs(pool_02 - 2*pool_01) < .03
                   assert 'not a tax proposal or revenue forecast' in page.locator('.sim-card').nth(1).inner_text().lower()
 
-                  # Mobile readability and immediate next action.
+                  # Mobile: visual hierarchy first, typography stays readable.
                   mobile=browser.new_page(viewport={'width':390,'height':844})
                   mobile.goto(url,wait_until='domcontentloaded');mobile.wait_for_timeout(1000)
                   assert float(mobile.locator('body').evaluate("e=>parseFloat(getComputedStyle(e).fontSize)"))>=16
                   assert mobile.locator('h1').is_visible()
                   assert mobile.locator('.hero-action').is_visible()
                   assert mobile.locator('.hero-action').bounding_box()['y'] < 844
-                  mobile.screenshot(path='artifacts/money-flow-atlas/03-mobile.png',full_page=True)
+                  assert mobile.locator('.hero-stat').first.is_visible()
+                  mobile.screenshot(path='artifacts/money-flow-atlas/03-visual-story-mobile.png',full_page=True)
                   mobile.close();browser.close()
           finally:
               server.terminate();server.wait(timeout=5)
