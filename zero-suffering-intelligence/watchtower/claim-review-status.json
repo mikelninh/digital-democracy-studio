@@ -1,6 +1,6 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-08-31T22:48:34+00:00",
+  "generated_at": "2026-09-01T05:04:15+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
@@ -17,8 +17,8 @@
     "ZSI-C-0015": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-FY2024",
-      "detected_at": "2026-08-31T22:48:34+00:00",
-      "event_id": "799f38692a307898"
+      "detected_at": "2026-09-01T05:04:15+00:00",
+      "event_id": "ce09bb42cc4262e3"
     },
     "ZSI-C-0018": {
       "status": "needs_review",
