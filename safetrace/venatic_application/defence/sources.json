@@ -1,0 +1,155 @@
+{
+  "case_id": "REAL-DE-DEFENCE-MONEY-001",
+  "title": "Defence Money Map — Bundeswehr artillery ammunition and Rheinmetall",
+  "retrieved_at": "2026-09-01",
+  "scope_note": "Public-source investigation into a defence procurement, company economics, ownership and documented lobbying. A contract, lobbying relationship or policy objective does not by itself establish improper influence or causation.",
+  "sources": [
+    {
+      "id": "D1",
+      "title": "Bundestag — Defence budget 2024",
+      "publisher": "German Bundestag",
+      "authority": "Official parliamentary budget record",
+      "source_type": "primary public budget record",
+      "url": "https://www.bundestag.de/dokumente/textarchiv/2024/kw05-de-verteidigung-977670",
+      "exact_location": "2024 defence budget: €51.95bn regular budget plus around €20bn planned from the Bundeswehr special fund for military equipment",
+      "supports": [
+        "The Bundestag described around €72bn of German defence spending for 2024, including €51.95bn in the regular defence budget and around €20bn from the Bundeswehr special fund for military equipment."
+      ],
+      "does_not_prove": "This does not identify the exact budget title, payment schedule or partner-country funding used for each call-off under the Rheinmetall ammunition framework contract.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "bundestag-budget"
+    },
+    {
+      "id": "D2",
+      "title": "Rheinmetall — 155mm ammunition framework contract",
+      "publisher": "Rheinmetall AG",
+      "authority": "Contract recipient first-party disclosure",
+      "source_type": "company press release",
+      "url": "https://www.rheinmetall.com/en/media/news-watch/news/2024/06/2024-06-20-rheinmetall-receives-framework-contract-for-155mm-ammunition",
+      "exact_location": "Press release dated 20 Jun 2024 · framework ceiling up to €8.5bn gross · initial call-off around €880m · BAAINBw signature",
+      "supports": [
+        "Rheinmetall states that the Bundeswehr expanded an existing 155mm artillery-ammunition framework contract to a gross ceiling of up to €8.5bn.",
+        "The contract was signed on 20 June 2024 by the BAAINBw president and Rheinmetall representatives.",
+        "Rheinmetall disclosed an initial call-off of around €880m, with deliveries scheduled to begin in 2025."
+      ],
+      "does_not_prove": "The €8.5bn figure is a framework ceiling, not proof that €8.5bn has been paid or will all be called off. This first-party release does not establish the procurement's full competitive record or exact public funding allocation.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "rheinmetall-contract"
+    },
+    {
+      "id": "D3",
+      "title": "Bundeswehr — parliamentary approval for major procurements",
+      "publisher": "Bundeswehr / BAAINBw",
+      "authority": "Official Bundeswehr procurement publication",
+      "source_type": "primary government explanation",
+      "url": "https://www.bundeswehr.de/de/organisation/ausruestung-baainbw/aktuelles/knapp-millionen-nebelhandgranaten-bundeswehr-5786190",
+      "exact_location": "Procurement note explaining that Bundeswehr investments from €25m require prior Bundestag Budget Committee approval",
+      "supports": [
+        "The Bundeswehr states that each Bundeswehr procurement from an investment volume of €25m requires prior approval by the Bundestag Budget Committee."
+      ],
+      "does_not_prove": "This page concerns a different procurement and establishes the general approval rule, not the specific approval file for the €8.5bn artillery-ammunition framework.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "bundeswehr-procurement-rule"
+    },
+    {
+      "id": "D4",
+      "title": "Rheinmetall — financial figures FY2025",
+      "publisher": "Rheinmetall AG",
+      "authority": "Public company financial disclosure",
+      "source_type": "company financial results",
+      "url": "https://www.rheinmetall.com/en/media/news-watch/news/2026/03/2026-03-11-rheinmetall-presents-annual-report-for-2025",
+      "exact_location": "FY2025 group figures and Weapon & Ammunition segment",
+      "supports": [
+        "Rheinmetall reported 2025 group sales of €9.935bn and operating result of €1.841bn.",
+        "Weapon & Ammunition reported €3.532bn sales and €1.037bn operating result in 2025.",
+        "Rheinmetall says the prior-year Weapon & Ammunition nomination was influenced by a significant artillery-ammunition framework agreement.",
+        "The company proposed a dividend of €11.50 per share for FY2025."
+      ],
+      "does_not_prove": "These are company-wide and segment-wide figures. They do not show how much revenue, profit or dividend arose from this single ammunition framework contract.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "rheinmetall-financials"
+    },
+    {
+      "id": "D5",
+      "title": "Rheinmetall — shareholder structure",
+      "publisher": "Rheinmetall AG",
+      "authority": "Issuer investor-relations disclosure",
+      "source_type": "shareholder structure disclosure",
+      "url": "https://www.rheinmetall.com/en/investor-relations/intern/share/shareholder-structure",
+      "exact_location": "Shareholder structure as at 31 Dec 2025",
+      "supports": [
+        "Rheinmetall reports 58% institutional investors, 28% private shareholders and 14% other shareholders as at 31 December 2025."
+      ],
+      "does_not_prove": "Aggregate shareholder categories do not identify a single ultimate beneficiary of public procurement spending, nor do they show which investor economically received any particular contract euro.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "rheinmetall-ownership"
+    },
+    {
+      "id": "D6",
+      "title": "Rheinmetall — voting-rights notifications",
+      "publisher": "Rheinmetall AG",
+      "authority": "Issuer publication of statutory voting-rights notifications",
+      "source_type": "regulated ownership disclosure",
+      "url": "https://ir.rheinmetall.com/de/investor-relations/veroeffentlichungen/stimmrechtsmitteilungen",
+      "exact_location": "Voting-right holdings above 3% · latest displayed notifications through Aug 2026",
+      "supports": [
+        "The issuer page lists BlackRock at 7.33% in a 4 March 2026 notification and other institutions above the statutory reporting threshold."
+      ],
+      "does_not_prove": "A disclosed voting-right percentage is not the same as day-to-day operational control and can change over time; it also does not trace contract proceeds to a specific investor.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "rheinmetall-ownership"
+    },
+    {
+      "id": "D7",
+      "title": "Rheinmetall AG — Bundestag Lobbyregister",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "primary self-disclosure hosted by official authority",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R002018",
+      "exact_location": "FY2025 lobbying expenditure, Berlin representation, memberships and activity description",
+      "supports": [
+        "Rheinmetall disclosed €820,001–830,000 of lobbying expenditure for FY2025 and 1.80 FTE.",
+        "The register lists Rheinmetall as a member of BDSV and the Wirtschaftsrat der CDU among other organisations.",
+        "Rheinmetall states that its Berlin representation maintains direct exchange with government and parliament.",
+        "The current entry lists zero concrete legislative projects."
+      ],
+      "does_not_prove": "Lobbying expenditure, memberships or access do not prove that Rheinmetall influenced the ammunition contract, the procurement criteria or any political decision improperly.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "bundestag-lobbyregister-rheinmetall"
+    },
+    {
+      "id": "D8",
+      "title": "BDSV — Bundestag Lobbyregister",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "primary association self-disclosure hosted by official authority",
+      "url": "https://www.lobbyregister.bundestag.de/suche/R001623",
+      "exact_location": "FY2025 expenditure, 472 members, board and nine concrete regulatory projects",
+      "supports": [
+        "BDSV disclosed €1,240,001–1,250,000 of lobbying expenditure for FY2025 and 4.37 FTE.",
+        "BDSV reported 472 organisational members as at 1 January 2026.",
+        "The register identifies Rheinmetall CEO Armin Papperger as BDSV president/board member.",
+        "BDSV describes direct exchanges with Bundestag members, ministries and subordinate authorities."
+      ],
+      "does_not_prove": "The association's size, spending or leadership does not prove that any member dictated BDSV positions or that BDSV caused a procurement award.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "bundestag-lobbyregister-bdsv"
+    },
+    {
+      "id": "D9",
+      "title": "BDSV regulatory project — defence procurement resilience",
+      "publisher": "German Bundestag",
+      "authority": "Official federal lobbying disclosure register",
+      "source_type": "registered advocacy objective",
+      "url": "https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0009304",
+      "exact_location": "Regelungsvorhaben RV0009304, first published 28 Jun 2024",
+      "supports": [
+        "BDSV disclosed an objective to improve supply security and supply-chain resilience in military procurement and accelerate defence-related review and approval processes.",
+        "The project identifies federal budget and procurement-adjacent laws among the rules to review and contains multiple statements sent to government ministries."
+      ],
+      "does_not_prove": "This advocacy objective is broader than the Rheinmetall ammunition contract. Timing or thematic overlap does not establish that it affected the award, price, framework ceiling or call-offs.",
+      "retrieved_at": "2026-09-01",
+      "independence_group": "bundestag-lobbyregister-bdsv"
+    }
+  ]
+}
