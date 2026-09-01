@@ -3,11 +3,13 @@ name: Venatic Real Investigation Proof
 on:
   pull_request:
     paths:
+      - 'safetrace/venatic_application/index.html'
       - 'safetrace/venatic_application/real/**'
       - '.github/workflows/venatic-real-investigation.yml'
   push:
     branches: [main]
     paths:
+      - 'safetrace/venatic_application/index.html'
       - 'safetrace/venatic_application/real/**'
       - '.github/workflows/venatic-real-investigation.yml'
   workflow_dispatch:
@@ -21,34 +23,50 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate source-backed case contract
+      - name: Validate source-backed temporal case contract
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          root = Path('safetrace/venatic_application/index.html').read_text(encoding='utf-8')
           html = Path('safetrace/venatic_application/real/index.html').read_text(encoding='utf-8')
           data = json.loads(Path('safetrace/venatic_application/real/sources.json').read_text(encoding='utf-8'))
+          assert "location.replace('real/')" in root
           assert data['case_id'] == 'REAL-DE-MEAT-LOBBY-001'
-          assert len(data['sources']) >= 8
-          assert 'REAL PUBLIC-SOURCE CASE' in html
-          assert 'Lobbying activity' in html and 'Policy alignment' in html and 'Direct causation' in html
-          assert 'Not proven.' in html
-          assert 'Open original source' in html
-          assert 'German Bundestag' in html
+          assert len(data['sources']) >= 10
+          by_id = {s['id']: s for s in data['sources']}
+          for phrase in [
+              'REAL PUBLIC-SOURCE CASE',
+              'Advocacy documented',
+              'Requested delay enacted',
+              'Lobbying caused it',
+              'Not proven.',
+              'Open original source',
+              'Source type',
+              'Exact location',
+              'Does not prove'
+          ]:
+              assert phrase in html, phrase
           assert 'Synthetic training case' not in html
+          assert 'dip.bundestag.de' in by_id['S9']['url']
+          assert by_id['S10']['url'] == 'https://www.gesetze-im-internet.de/tierhaltkennzg/__40.html'
+          assert '/RV0027248/495320' in by_id['S8']['url'] and '?q=' not in by_id['S8']['url']
+          assert 'proposal' in by_id['S6']['source_type'].lower()
           for source in data['sources']:
               assert source['url'].startswith('https://')
+              assert source['publisher']
               assert source['authority']
+              assert source['source_type']
               assert source['exact_location']
               assert source['supports']
               assert source['does_not_prove']
-          print('Real investigation source contract: OK')
+          print('Real temporal investigation contract: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify source hierarchy
+      - name: Browser-verify original-source hierarchy
         run: |
           mkdir -p artifacts/venatic-real
           python - <<'PY'
@@ -63,32 +81,58 @@ jobs:
                   page = browser.new_page(viewport={'width': 1440, 'height': 1050})
                   errors=[]
                   page.on('pageerror', lambda error: errors.append(str(error)))
-                  page.goto('http://127.0.0.1:8765/safetrace/venatic_application/real/', wait_until='networkidle')
+                  page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
+                  assert page.url.endswith('/safetrace/venatic_application/real/')
                   assert not errors, errors
                   body = page.locator('body').inner_text().lower()
-                  assert 'did the meat industry get the policy change it wanted?' in body
-                  assert 'lobbying activity' in body
-                  assert 'policy alignment' in body
-                  assert 'direct causation' in body
+                  assert 'did the meat industry get a policy change it asked for?' in body
+                  assert 'advocacy documented' in body
+                  assert 'requested delay enacted' in body
+                  assert 'lobbying caused it' in body
                   assert 'not proven.' in body
+                  assert '1 jan 2027' in body
                   page.screenshot(path='artifacts/venatic-real/01-overview.png', full_page=True)
 
+                  # Disclosed advocacy objective.
                   page.locator('[data-source="S2"]').first.click()
                   assert page.locator('#overlay').evaluate('(el)=>el.classList.contains("show")')
-                  assert 'official federal disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
+                  assert 'official federal lobbying disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
                   assert 'rv0009541' in page.locator('#sourceLocation').inner_text().lower()
-                  href = page.locator('#sourceUrl').get_attribute('href')
-                  assert 'lobbyregister.bundestag.de' in href
+                  assert 'lobbyregister.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
                   assert 'caused' in page.locator('#sourceLimit').inner_text().lower()
-                  page.screenshot(path='artifacts/venatic-real/02-pfg-source.png', full_page=True)
                   page.locator('#close').click()
 
+                  # Actual enactment, not merely a bill proposal.
+                  page.locator('[data-source="S9"]').first.click()
+                  assert 'official parliamentary procedure database' in page.locator('#sourceAuthority').inner_text().lower()
+                  enactment = page.locator('#sourceSupports').inner_text().lower()
+                  assert 'promulgated' in enactment
+                  assert '1 mar 2026' in enactment
+                  assert 'dip.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
+                  page.screenshot(path='artifacts/venatic-real/02-enactment-source.png')
+                  page.locator('#close').click()
+
+                  # Proposal and causal boundary remain distinct from enactment.
                   page.locator('[data-source="S6"]').first.click()
-                  assert 'primary legislative document' in page.locator('#sourceAuthority').inner_text().lower()
+                  assert 'primary legislative proposal' in page.locator('#sourceType').inner_text().lower()
                   assert 'executive footprint' in page.locator('#sourceLocation').inner_text().lower()
+                  assert page.locator('#sourceUrl').get_attribute('href') == 'https://dserver.bundestag.de/btd/21/003/2100327.pdf'
+                  assert 'caused' in page.locator('#sourceLimit').inner_text().lower()
+                  page.screenshot(path='artifacts/venatic-real/03-causal-boundary.png')
+                  page.locator('#close').click()
+
+                  # Current law is separately versioned.
+                  page.locator('[data-source="S10"]').first.click()
+                  assert 'official consolidated federal-law portal' in page.locator('#sourceAuthority').inner_text().lower()
+                  assert '1 jan 2027' in page.locator('#sourceSupports').inner_text().lower()
+                  assert page.locator('#sourceUrl').get_attribute('href') == 'https://www.gesetze-im-internet.de/tierhaltkennzg/__40.html'
+                  page.locator('#close').click()
+
+                  # Current PFG advocacy links directly to the exact disclosure, never search results.
+                  page.locator('[data-source="S8"]').first.click()
                   href = page.locator('#sourceUrl').get_attribute('href')
-                  assert href == 'https://dserver.bundestag.de/btd/21/003/2100327.pdf'
-                  page.screenshot(path='artifacts/venatic-real/03-legislation-source.png', full_page=True)
+                  assert '/RV0027248/495320' in href and '?q=' not in href
+                  page.screenshot(path='artifacts/venatic-real/04-exact-lobby-record.png')
                   browser.close()
           finally:
               server.terminate()
