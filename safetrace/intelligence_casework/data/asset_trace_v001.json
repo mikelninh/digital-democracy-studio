@@ -1,0 +1,106 @@
+{
+  "schema": "safetrace.asset-trace/1.0",
+  "case_id": "V-001",
+  "classification": "SYNTHETIC TRAINING FIXTURE",
+  "question": "Which material asset interests can be attributed to Northstar from the supplied record, and what type of interest does each record actually establish?",
+  "assets": [
+    {
+      "asset_id": "AS1",
+      "name": "Leipzig Distribution Centre",
+      "asset_type": "real_property",
+      "jurisdiction": "DE",
+      "identifier": "LAND-SYN-L-44219",
+      "status": "resolved"
+    },
+    {
+      "asset_id": "AS2",
+      "name": "CNC Production Line 7",
+      "asset_type": "industrial_equipment",
+      "jurisdiction": "DE",
+      "identifier": "SERIAL-SYN-CNC7-1108",
+      "status": "resolved"
+    }
+  ],
+  "parties": [
+    {"id":"E1","name":"Northstar Components GmbH","type":"company"},
+    {"id":"E10","name":"Borealis Bank AG","type":"company"},
+    {"id":"E11","name":"Northstar Operations GmbH","type":"company"},
+    {"id":"E12","name":"Arcadia Leasing GmbH","type":"company"}
+  ],
+  "interests": [
+    {
+      "from":"E1",
+      "to":"AS1",
+      "type":"LEGAL_OWNER_OF",
+      "confidence":0.99,
+      "evidence":["AT1"],
+      "assessment":"The supplied land-register fixture records Northstar Components GmbH as legal owner of the property."
+    },
+    {
+      "from":"E10",
+      "to":"AS1",
+      "type":"SECURITY_INTEREST_IN",
+      "confidence":0.97,
+      "evidence":["AT1"],
+      "assessment":"The same fixture records a synthetic mortgage/security interest in favour of Borealis Bank AG. A security interest is not ownership."
+    },
+    {
+      "from":"E11",
+      "to":"AS1",
+      "type":"OPERATES_AT",
+      "confidence":0.92,
+      "evidence":["AT2"],
+      "assessment":"An operating-permit fixture places Northstar Operations GmbH at the site. Occupation/use is not legal ownership."
+    },
+    {
+      "from":"E12",
+      "to":"AS2",
+      "type":"LEGAL_OWNER_OF",
+      "confidence":0.96,
+      "evidence":["AT3"],
+      "assessment":"The lease schedule records Arcadia Leasing GmbH as owner of the production line."
+    },
+    {
+      "from":"E1",
+      "to":"AS2",
+      "type":"LESSEE_OF",
+      "confidence":0.96,
+      "evidence":["AT3"],
+      "assessment":"Northstar has contractual use of the production line but is not established as its legal owner."
+    }
+  ],
+  "sources": [
+    {
+      "id":"AT1",
+      "title":"Synthetic land-register extract — Leipzig Distribution Centre",
+      "kind":"official property-record fixture",
+      "authority":"A-test",
+      "anchor":"registered owner + security interest",
+      "hash":"sha256:synthetic-at1"
+    },
+    {
+      "id":"AT2",
+      "title":"Synthetic operating-permit extract — Leipzig site",
+      "kind":"regulatory-record fixture",
+      "authority":"A-test",
+      "anchor":"operator at premises",
+      "hash":"sha256:synthetic-at2"
+    },
+    {
+      "id":"AT3",
+      "title":"Synthetic equipment lease schedule",
+      "kind":"supplied business-record fixture",
+      "authority":"B-test",
+      "anchor":"equipment owner + lessee + serial number",
+      "hash":"sha256:synthetic-at3"
+    }
+  ],
+  "analyst_assessment": "The supplied record establishes legal ownership of the Leipzig property by Northstar, subject to a security interest, while a related operating company uses the site. For the production line, the evidence establishes use through a lease rather than ownership. These distinctions prevent asset tracing from inflating a subject's asset base by treating occupation, use, financing or group association as ownership.",
+  "guardrails": [
+    "Do not infer beneficial ownership of an asset from use or possession alone.",
+    "Do not treat a lender's security interest as legal ownership.",
+    "Do not attribute assets across a corporate group without an evidenced relationship to the specific asset.",
+    "Preserve asset identifiers and as-of dates so later transfers can be distinguished from current ownership.",
+    "For real engagements, confirm current authoritative records and lawful access before consequential use."
+  ]
+}
