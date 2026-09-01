@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate investigation-workspace contract
+      - name: Validate clean guided experience contract
         run: |
           python - <<'PY'
           import json
@@ -31,25 +31,25 @@ jobs:
           case = json.loads(Path('safetrace/venatic_challenge/case_v002.json').read_text(encoding='utf-8'))
           assert len(case['source_records']) == 28
           for phrase in [
-              'Explore the network yourself.',
-              'Ownership network',
-              'I’m ready to decide',
-              'Natural-person principal',
-              'Identity comparison',
-              'Asset relationship map',
-              'LEGAL OWNER · inspect',
-              '95 → 100',
-              'Research first. Decide second. Show exactly why.'
+              'Three messy investigations. Three clear answers.',
+              '80% × 70% × 65% =',
+              '36.4%',
+              'Still unknown',
+              'Reject the match.',
+              'Atlas Property SPV GmbH owns it.',
+              'Next best research step',
+              'Make the conclusion obvious. Keep the evidence one click away.'
           ]:
               assert phrase in html, phrase
-          assert 'APPLICATION_MESSAGE.md' not in html
-          print('Self-directed investigation workspace contract: OK')
+          for removed in ['I’m ready to decide', 'Sources opened:', 'What can you safely conclude?', 'data-case-choice']:
+              assert removed not in html, removed
+          print('Clean guided investigation contract: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify research then decide journey
+      - name: Browser-verify obvious visual answers and source proof
         run: |
           mkdir -p artifacts/venatic-application
           python - <<'PY'
@@ -67,68 +67,44 @@ jobs:
                   page.goto('http://127.0.0.1:8765/safetrace/venatic_application/', wait_until='networkidle')
                   assert not errors, errors
 
-                  # Case 1 starts as a real evidence workspace: relationships visible, answer hidden.
-                  assert page.locator('.case.active').get_attribute('id') == 'case1'
-                  assert page.locator('#case1 .network .node').count() == 6
-                  assert page.locator('#case1 .edge-label').count() == 5
-                  assert '36.4%' not in page.locator('#case1').inner_text()
-                  assert not page.locator('#decision1').evaluate('(el)=>el.classList.contains("show")')
-                  page.screenshot(path='artifacts/venatic-application/01-ownership-workspace.png', full_page=True)
+                  # First impression is simple and answer-led.
+                  assert page.locator('h1').inner_text() == 'Three messy investigations. Three clear answers.'
+                  ownership = page.locator('#ownership').inner_text()
+                  assert '80% × 70% × 65% =' in ownership
+                  assert '36.4%' in ownership
+                  assert 'Still unknown' in ownership
+                  assert 'I’m ready to decide' not in page.locator('body').inner_text()
+                  page.screenshot(path='artifacts/venatic-application/01-clean-overview.png', full_page=True)
 
-                  # Research is user-directed and updates the research meter.
-                  page.locator('#case1 [data-proof="S06"]').click()
+                  # Source proof remains one click away.
+                  page.locator('#ownership [data-proof="S06"]').click()
                   assert page.locator('#overlay').evaluate('(el)=>el.classList.contains("show")')
-                  assert 'Mihailo Petrović owns 80%' in page.locator('#evidenceFact').inner_text()
-                  assert page.locator('[data-meter="1"]').inner_text() == '1 / 5'
-                  page.screenshot(path='artifacts/venatic-application/02-evidence-open.png', full_page=True)
+                  assert 'Mihailo Petrović owns 80%' in page.locator('#proofFact').inner_text()
+                  page.screenshot(path='artifacts/venatic-application/02-source-proof.png', full_page=True)
                   page.locator('#close').click()
 
-                  # Only after the user is ready does the decision surface appear.
-                  page.locator('#case1 [data-ready="1"]').click()
-                  assert page.locator('#decision1').evaluate('(el)=>el.classList.contains("show")')
-                  page.locator('#decision1 [data-value="a"]').click()
-                  assert '36.4%' in page.locator('#feedback1').inner_text()
-                  assert page.locator('#next1').evaluate('(el)=>el.classList.contains("show")')
-                  page.locator('#next1').click()
-                  page.wait_for_timeout(350)
-
-                  # Case 2 is an identity comparison, not a pre-written conclusion.
-                  assert page.locator('.case.active').get_attribute('id') == 'case2'
-                  assert page.locator('#case2 .identity-card').count() == 2
-                  assert page.locator('#case2 .mismatch-item').count() == 3
-                  assert not page.locator('#decision2').evaluate('(el)=>el.classList.contains("show")')
-                  page.locator('#case2 [data-proof="S08"]').click()
-                  assert 'DOB 03 Jan 1972' in page.locator('#evidenceFact').inner_text()
-                  assert page.locator('[data-meter="2"]').inner_text() == '1 / 2'
+                  # Sanctions case is a visual mismatch, conclusion already obvious.
+                  sanctions = page.locator('#sanctions').inner_text()
+                  assert 'Reject the match.' in sanctions
+                  assert sanctions.count('Mismatch') == 3
+                  page.locator('#sanctions [data-proof="S08"]').click()
+                  assert 'DOB 03 Jan 1972' in page.locator('#proofFact').inner_text()
                   page.locator('#close').click()
-                  page.locator('#case2 [data-ready="2"]').click()
-                  page.locator('#decision2 [data-value="b"]').click()
-                  assert 'Reject the match' in page.locator('#feedback2').inner_text()
-                  page.screenshot(path='artifacts/venatic-application/03-sanctions-decision.png', full_page=True)
-                  page.locator('#next2').click()
-                  page.wait_for_timeout(350)
 
-                  # Case 3 renders the asset as a relationship map around one central object.
-                  assert page.locator('.case.active').get_attribute('id') == 'case3'
-                  assert page.locator('#case3 .asset-node').count() == 4
-                  assert page.locator('#case3 .asset-edge').count() == 3
-                  assert not page.locator('#decision3').evaluate('(el)=>el.classList.contains("show")')
-                  page.locator('#case3 [data-proof="S17_O"]').click()
-                  assert 'Registered legal owner: Atlas Property SPV GmbH.' in page.locator('#evidenceFact').inner_text()
-                  assert page.locator('[data-meter="3"]').inner_text() == '1 / 3'
+                  # Asset case separates legal owner, operator and security holder visually.
+                  asset = page.locator('#asset').inner_text()
+                  assert 'Atlas Property SPV GmbH owns it.' in asset
+                  assert 'LEGAL TITLE' in asset
+                  assert 'OPERATOR / TENANT' in asset
+                  assert 'LENDER / SECURITY' in asset
+                  page.locator('#asset [data-proof="S17_O"]').click()
+                  assert 'Registered legal owner: Atlas Property SPV GmbH.' in page.locator('#proofFact').inner_text()
                   page.locator('#close').click()
-                  page.locator('#case3 [data-ready="3"]').click()
-                  page.locator('#decision3 [data-value="c"]').click()
-                  assert 'registered legal owner' in page.locator('#feedback3').inner_text()
-                  page.screenshot(path='artifacts/venatic-application/04-asset-map.png', full_page=True)
-                  page.locator('#next3').click()
-                  page.wait_for_timeout(350)
+                  page.screenshot(path='artifacts/venatic-application/03-asset-answer.png', full_page=True)
 
-                  assert page.locator('#done').evaluate('(el)=>el.classList.contains("active")')
-                  final = page.locator('#done').inner_text()
-                  assert 'Research first. Decide second. Show exactly why.' in final
-                  assert '95 → 100' in final and 'zero critical overclaims' in final.lower()
-                  page.screenshot(path='artifacts/venatic-application/05-finish.png', full_page=True)
+                  # Supporting benchmark stays secondary, after the aha.
+                  payoff = page.locator('.payoff').inner_text()
+                  assert '95 → 100' in payoff and '0' in payoff
                   browser.close()
           finally:
               server.terminate()
