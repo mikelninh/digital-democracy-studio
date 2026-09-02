@@ -1,238 +1,52 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="SafeTrace macht öffentliche Probleme prüfbar: Primärquellen, klare Evidenzgrenzen, offene Lücken und nachvollziehbare nächste Schritte." />
-  <meta name="theme-color" content="#f3eee3" />
-  <title>SafeTrace · Öffentliche Probleme prüfbar machen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f3eee3;
-      --surface:#fbf8f1;
-      --surface2:#f8f2e8;
-      --ink:#111410;
-      --muted:#686c65;
-      --line:rgba(17,20,16,.13);
-      --line-strong:rgba(17,20,16,.20);
-      --forest:#294d3b;
-      --forest2:#1e3d2f;
-      --forest-soft:#e8efe8;
-      --warm:#e9dece;
-      --coral:#b7644c;
-      --shadow:0 24px 70px rgba(57,45,31,.09);
-      --radius:28px;
-      --max:1180px;
-      --serif:"DM Serif Display",Georgia,serif;
-      --sans:"Manrope",system-ui,sans-serif;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#f1eadf);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    a{color:inherit}
-    a,button{outline-offset:4px}
-    a:focus-visible,button:focus-visible{outline:3px solid rgba(41,77,59,.22)}
-    .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
-    .top{position:sticky;top:0;z-index:30;background:rgba(243,238,227,.88);backdrop-filter:blur(22px) saturate(125%);border-bottom:1px solid var(--line)}
-    .top .wrap{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{text-decoration:none;font-weight:800;letter-spacing:-.02em}
-    .brand:before{content:'✦';color:var(--forest);margin-right:8px}
-    .nav{display:flex;gap:22px;align-items:center}
-    .nav a{text-decoration:none;color:var(--muted);font-size:12px;font-weight:700}
-    .nav a:hover{color:var(--ink)}
-    .nav .cta{background:var(--forest);color:#fffaf1;border-radius:999px;padding:9px 14px;box-shadow:0 7px 20px rgba(41,77,59,.14)}
-    .hero{padding:92px 0 66px}
-    .eyebrow{font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--forest)}
-    h1,h2,h3,p{margin-top:0}
-    h1{font-family:var(--serif);font-weight:400;font-size:clamp(62px,8.2vw,108px);line-height:.91;letter-spacing:-.045em;max-width:980px;margin:18px 0 28px}
-    h1 em{font-style:normal;color:var(--forest)}
-    .lead{font-size:clamp(20px,2vw,24px);line-height:1.5;letter-spacing:-.015em;color:#454941;max-width:820px;margin:0}
-    .actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:32px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:750;transition:.2s ease}
-    .btn.primary{background:var(--forest);color:#fffaf1;box-shadow:0 10px 28px rgba(41,77,59,.16)}
-    .btn.primary:hover{transform:translateY(-1px);background:var(--forest2)}
-    .btn.text{padding:0;color:var(--ink)}
-    .btn.text:hover{text-decoration:underline;text-underline-offset:4px}
-    .promise{margin-top:28px;color:var(--muted);font-size:12px;font-weight:650}
-    .metrics{margin-top:58px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .metric{padding:25px 22px;border-right:1px solid var(--line)}
-    .metric:last-child{border-right:0}
-    .metric strong{display:block;font-family:var(--serif);font-weight:400;font-size:42px;line-height:1;color:var(--forest);margin-bottom:7px}
-    .metric span{font-size:11px;font-weight:700;color:var(--muted)}
-    .section{padding:92px 0;border-top:1px solid var(--line)}
-    .sectionHead{display:grid;grid-template-columns:1.15fr .85fr;gap:58px;align-items:end;margin-bottom:30px}
-    .sectionHead h2{font-family:var(--serif);font-size:clamp(44px,5vw,68px);line-height:.99;letter-spacing:-.035em;font-weight:400;margin:8px 0 0}
-    .sectionHead p{margin:0;color:var(--muted);font-size:15px;line-height:1.7;max-width:460px}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-    .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;text-decoration:none;min-height:210px;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;box-shadow:0 10px 32px rgba(57,45,31,.035)}
-    .card:hover{transform:translateY(-2px);border-color:rgba(41,77,59,.28);box-shadow:0 18px 44px rgba(57,45,31,.07)}
-    .card.featured{background:linear-gradient(145deg,var(--surface),#f4eee3)}
-    .card small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--forest)}
-    .card h3{font-family:var(--serif);font-size:30px;line-height:1.05;letter-spacing:-.025em;font-weight:400;margin:16px 0 12px}
-    .card p{color:var(--muted);font-size:14px;line-height:1.65;margin:0;max-width:540px}
-    .card .open{margin-top:auto;padding-top:22px;color:var(--forest);font-size:12px;font-weight:800}
-    .method{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-    .step{padding:30px 26px;border-right:1px solid var(--line);min-height:250px}
-    .step:last-child{border-right:0}
-    .stepNum{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--warm);font-size:10px;font-weight:800;margin-bottom:34px}
-    .step h3{font-family:var(--sans);font-size:17px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
-    .step p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
-    .boundaryGrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-    .boundaryCard{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px}
-    .boundaryCard h3{font-family:var(--serif);font-size:30px;line-height:1.08;font-weight:400;margin:8px 0 18px}
-    .rules{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-    .rules li{display:flex;gap:11px;align-items:flex-start;color:#3f443d;font-size:13px}
-    .dot{width:20px;height:20px;border-radius:50%;background:var(--forest-soft);color:var(--forest);display:grid;place-items:center;flex:0 0 auto;font-size:10px;font-weight:900;margin-top:1px}
-    .boundaryCard p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}
-    .closing{margin-top:15px;background:var(--forest);color:#fffaf1;border-radius:28px;padding:38px 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:28px;box-shadow:0 18px 50px rgba(41,77,59,.14)}
-    .closing small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#c9d5cc}
-    .closing strong{display:block;font-family:var(--serif);font-size:clamp(34px,4vw,52px);line-height:1.02;font-weight:400;max-width:760px;margin-top:10px}
-    .closing a{color:#fffaf1;font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap}
-    .closing a:hover{text-decoration:underline;text-underline-offset:4px}
-    .footer{padding:36px 0 48px;color:var(--muted);font-size:11px}
-    .footer .wrap{display:flex;justify-content:space-between;gap:20px}
-    @media(max-width:900px){.sectionHead{grid-template-columns:1fr;gap:22px}.method{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}.boundaryGrid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-    @media(max-width:620px){.wrap{width:calc(100% - 28px)}.top .wrap{height:62px}.nav a:not(.cta){display:none}.hero{padding:66px 0 52px}h1{font-size:58px}.lead{font-size:19px}.metrics{margin-top:44px}.metric{padding:21px 17px}.metric strong{font-size:36px}.section{padding:68px 0}.grid{grid-template-columns:1fr}.card{min-height:0;padding:24px}.method{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line);min-height:0;padding:24px}.step:nth-child(2){border-right:0}.step:last-child{border-bottom:0}.stepNum{margin-bottom:22px}.closing{padding:30px 26px;align-items:flex-start;flex-direction:column}.footer .wrap{display:block}.footer span:last-child{display:block;margin-top:6px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SafeTrace turns messy public-source questions into inspectable cases with source trails, visible uncertainty and concrete next moves.">
+<meta name="theme-color" content="#f3eee3">
+<title>SafeTrace · Make public problems traceable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3eee3;--surface:#fbf8f1;--surface2:#f8f2e8;--ink:#111410;--muted:#686c65;--line:rgba(17,20,16,.13);--lineStrong:rgba(17,20,16,.2);--forest:#294d3b;--forest2:#1e3d2f;--forestSoft:#e8efe8;--warm:#e9dece;--coral:#b7644c;--coralSoft:#f4e7df;--sage:#dfe9e1;--blueSoft:#e9edf1;--amberSoft:#f3ead4;--shadow:0 24px 70px rgba(57,45,31,.09);--max:1180px;--radius:30px;--serif:"DM Serif Display",Georgia,serif;--sans:"Manrope",system-ui,sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,var(--bg),#f1eadf);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}a,button{outline-offset:4px}a:focus-visible,button:focus-visible{outline:3px solid rgba(41,77,59,.22)}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.top{position:sticky;top:0;z-index:30;background:rgba(243,238,227,.88);backdrop-filter:blur(22px) saturate(125%);border-bottom:1px solid var(--line)}.top .wrap{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{text-decoration:none;font-weight:800;letter-spacing:-.02em}.brand:before{content:'✦';color:var(--forest);margin-right:8px}.nav{display:flex;gap:22px;align-items:center}.nav a{text-decoration:none;color:var(--muted);font-size:12px;font-weight:700}.nav a:hover{color:var(--ink)}.nav .cta{background:var(--forest);color:#fffaf1;border-radius:999px;padding:9px 14px;box-shadow:0 7px 20px rgba(41,77,59,.14)}.hero{padding:92px 0 72px}.eyebrow{font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--forest)}h1,h2,h3,p{margin-top:0}h1{font-family:var(--serif);font-weight:400;font-size:clamp(62px,8.2vw,108px);line-height:.91;letter-spacing:-.045em;max-width:980px;margin:18px 0 28px}h1 em{font-style:normal;color:var(--forest)}.lead{font-size:clamp(20px,2vw,24px);line-height:1.5;letter-spacing:-.015em;color:#454941;max-width:820px;margin:0}.actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:750;transition:.2s ease}.btn.primary{background:var(--forest);color:#fffaf1;box-shadow:0 10px 28px rgba(41,77,59,.16)}.btn.primary:hover{transform:translateY(-1px);background:var(--forest2)}.btn.text{padding:0;color:var(--ink)}.btn.text:hover{text-decoration:underline;text-underline-offset:4px}.promise{margin-top:28px;color:var(--muted);font-size:12px;font-weight:650}.metrics{margin-top:58px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.metric{padding:25px 22px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric strong{display:block;font-family:var(--serif);font-weight:400;font-size:42px;line-height:1;color:var(--forest);margin-bottom:7px}.metric span{font-size:11px;font-weight:700;color:var(--muted)}.section{padding:96px 0;border-top:1px solid var(--line)}.sectionHead{display:grid;grid-template-columns:1.15fr .85fr;gap:58px;align-items:end;margin-bottom:34px}.sectionHead h2{font-family:var(--serif);font-size:clamp(44px,5vw,68px);line-height:.99;letter-spacing:-.035em;font-weight:400;margin:8px 0 0}.sectionHead p{margin:0;color:var(--muted);font-size:15px;line-height:1.7;max-width:460px}
+/* experience bento */
+.bento{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch}.feature{grid-row:span 2;background:linear-gradient(145deg,var(--surface),#edf2ec);border:1px solid rgba(41,77,59,.18);border-radius:30px;padding:34px;min-height:610px;display:grid;grid-template-rows:auto 1fr auto;box-shadow:var(--shadow);text-decoration:none;overflow:hidden;position:relative}.feature:after{content:'';position:absolute;width:360px;height:360px;border-radius:50%;right:-130px;top:-130px;background:rgba(41,77,59,.06);pointer-events:none}.featureTop{position:relative;z-index:1}.micro{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--forest)}.feature h3,.panel h3,.miniCard h3{font-family:var(--serif);font-weight:400;letter-spacing:-.028em}.feature h3{font-size:48px;line-height:1.02;margin:14px 0 14px}.feature p{max-width:560px;color:#4d534d;font-size:15px;line-height:1.7}.featurePreview{align-self:center;margin:32px 0 24px;background:rgba(251,248,241,.9);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 18px 40px rgba(57,45,31,.06);position:relative;z-index:1}.caseLine{display:grid;grid-template-columns:74px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}.caseLine:last-child{border-bottom:0}.caseId{font-size:10px;font-weight:800;color:var(--muted)}.caseTitle{font-size:12px;font-weight:750}.status{font-size:9px;font-weight:800;padding:6px 8px;border-radius:999px;background:var(--forestSoft);color:var(--forest)}.status.attn{background:var(--amberSoft);color:#795d21}.nextAction{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:18px;padding:14px 16px;background:var(--forest);color:#fffaf1;border-radius:16px}.nextAction small{font-size:9px;text-transform:uppercase;letter-spacing:.11em;color:#cbd7cf;font-weight:800}.nextAction b{font-size:13px}.featureFoot{display:flex;justify-content:space-between;align-items:center;gap:18px;position:relative;z-index:1}.openLink{font-size:12px;font-weight:800;color:var(--forest)}.time{font-size:10px;color:var(--muted);font-weight:700}.panel{border:1px solid var(--line);border-radius:26px;padding:28px;text-decoration:none;min-height:295px;display:flex;flex-direction:column;overflow:hidden;position:relative;transition:.2s ease}.panel:hover,.miniCard:hover{transform:translateY(-2px);border-color:rgba(41,77,59,.28);box-shadow:0 18px 44px rgba(57,45,31,.07)}.panel.money{background:linear-gradient(145deg,var(--surface),var(--blueSoft))}.panel.roles{background:linear-gradient(145deg,var(--surface),var(--coralSoft))}.panel h3{font-size:31px;line-height:1.05;margin:13px 0 10px}.panel p{font-size:13px;color:var(--muted);line-height:1.62;max-width:420px}.flowViz{margin-top:auto;padding-top:18px;display:grid;grid-template-columns:auto 1fr auto 1fr auto;align-items:center;gap:8px}.node{width:52px;height:52px;border-radius:15px;background:rgba(255,255,255,.7);border:1px solid var(--line);display:grid;place-items:center;font-size:10px;text-align:center;font-weight:800}.line{height:1px;background:rgba(41,77,59,.3);position:relative}.line:after{content:'›';position:absolute;right:-1px;top:-9px;color:var(--forest);font-size:17px}.moneyValue{margin-top:12px;font-size:11px;font-weight:750;color:var(--forest)}.roleViz{margin-top:auto;padding-top:18px}.roleRow{display:flex;gap:8px;flex-wrap:wrap}.role{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.68);border:1px solid var(--line);font-size:10px;font-weight:800;color:#4d514b}.role.active{background:var(--forest);color:#fffaf1;border-color:var(--forest)}.roleNote{margin-top:12px;font-size:11px;color:var(--muted)}.secondaryGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}.miniCard{border:1px solid var(--line);background:var(--surface);border-radius:22px;padding:24px;text-decoration:none;min-height:260px;display:flex;flex-direction:column;transition:.2s ease}.miniCard.tracks{background:linear-gradient(145deg,var(--surface),#f1eee7)}.miniCard.welfare{background:linear-gradient(145deg,var(--surface),var(--sage))}.miniCard.readiness{background:linear-gradient(145deg,var(--surface),#efeae1)}.miniCard h3{font-size:27px;line-height:1.06;margin:12px 0 10px}.miniCard p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px}.previewTiny{margin-top:auto}.trackRows{display:grid;gap:8px}.trackRow{display:grid;grid-template-columns:8px 1fr auto;gap:8px;align-items:center;font-size:10px}.trackDot{width:8px;height:8px;border-radius:50%;background:var(--coral)}.trackState{font-size:9px;color:var(--muted);font-weight:800}.animalViz{display:flex;gap:8px;align-items:end;height:60px}.bar{width:22%;border-radius:8px 8px 3px 3px;background:rgba(41,77,59,.22)}.bar:nth-child(1){height:38%}.bar:nth-child(2){height:72%}.bar:nth-child(3){height:52%}.bar:nth-child(4){height:88%;background:rgba(41,77,59,.45)}.reviewViz{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.reviewMetric{padding:10px;border:1px solid var(--line);background:rgba(255,255,255,.55);border-radius:12px}.reviewMetric strong{display:block;font-family:var(--serif);font-size:23px;font-weight:400;line-height:1;color:var(--forest)}.reviewMetric span{font-size:8px;color:var(--muted);font-weight:700}.miniOpen{margin-top:18px;font-size:11px;font-weight:800;color:var(--forest)}
+/* method */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}.step{padding:30px 26px;border-right:1px solid var(--line);min-height:250px}.step:last-child{border-right:0}.stepNum{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--warm);font-size:10px;font-weight:800;margin-bottom:34px}.step h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}.boundaryGrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.boundaryCard{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px}.boundaryCard h3{font-family:var(--serif);font-size:30px;line-height:1.08;font-weight:400;margin:8px 0 18px}.rules{list-style:none;margin:0;padding:0;display:grid;gap:12px}.rules li{display:flex;gap:11px;align-items:flex-start;color:#3f443d;font-size:13px}.dot{width:20px;height:20px;border-radius:50%;background:var(--forestSoft);color:var(--forest);display:grid;place-items:center;flex:0 0 auto;font-size:10px;font-weight:900;margin-top:1px}.boundaryCard p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}.closing{margin-top:15px;background:var(--forest);color:#fffaf1;border-radius:28px;padding:38px 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:28px;box-shadow:0 18px 50px rgba(41,77,59,.14)}.closing small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#c9d5cc}.closing strong{display:block;font-family:var(--serif);font-size:clamp(34px,4vw,52px);line-height:1.02;font-weight:400;max-width:760px;margin-top:10px}.closing a{color:#fffaf1;font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap}.closing a:hover{text-decoration:underline;text-underline-offset:4px}.footer{padding:36px 0 48px;color:var(--muted);font-size:11px}.footer .wrap{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:900px){.sectionHead{grid-template-columns:1fr;gap:22px}.bento{grid-template-columns:1fr}.feature{grid-row:auto;min-height:560px}.secondaryGrid{grid-template-columns:1fr 1fr}.miniCard:last-child{grid-column:1/-1}.method{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}.boundaryGrid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:620px){.wrap{width:calc(100% - 28px)}.top .wrap{height:62px}.nav a:not(.cta){display:none}.hero{padding:66px 0 52px}h1{font-size:58px}.lead{font-size:19px}.metrics{margin-top:44px}.metric{padding:21px 17px}.metric strong{font-size:36px}.section{padding:68px 0}.feature{padding:24px;min-height:0}.feature h3{font-size:40px}.caseLine{grid-template-columns:60px 1fr}.caseLine .status{grid-column:2}.panel{min-height:260px;padding:24px}.secondaryGrid{grid-template-columns:1fr}.miniCard:last-child{grid-column:auto}.method{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line);min-height:0;padding:24px}.step:last-child{border-bottom:0}.stepNum{margin-bottom:22px}.closing{padding:30px 26px;align-items:flex-start;flex-direction:column}.footer .wrap{display:block}.footer span:last-child{display:block;margin-top:6px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#top">Digital Democracy Studio · SafeTrace</a>
-    <nav class="nav">
-      <a href="#explore">Explore</a>
-      <a href="#method">How it works</a>
-      <a href="#boundaries">Boundaries</a>
-      <a class="cta" href="citizen_portal/">Open SafeTrace</a>
-    </nav>
-  </div>
-</header>
-
+<header class="top"><div class="wrap"><a class="brand" href="#top">Digital Democracy Studio · SafeTrace</a><nav class="nav"><a href="#explore">Explore</a><a href="#method">How it works</a><a href="#boundaries">Boundaries</a><a class="cta" href="citizen_portal/">Open SafeTrace</a></nav></div></header>
 <main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">Public evidence · fair review · action</div>
-      <h1>Make public problems <em>traceable.</em></h1>
-      <p class="lead">SafeTrace turns messy public-source questions into inspectable cases: primary evidence, explicit uncertainty, fair review and a concrete next move — without jumping from fragments to accusations.</p>
-      <div class="actions">
-        <a class="btn primary" href="citizen_portal/">Explore SafeTrace →</a>
-        <a class="btn text" href="#method">See how it works ↓</a>
-      </div>
-      <div class="promise">Public-source alpha · no confidential uploads · no autonomous accusations · human review stays explicit</div>
+<section class="hero"><div class="wrap"><div class="eyebrow">Public evidence · fair review · action</div><h1>Make public problems <em>traceable.</em></h1><p class="lead">SafeTrace turns messy public-source questions into inspectable cases: primary evidence, explicit uncertainty, fair review and a concrete next move — without jumping from fragments to accusations.</p><div class="actions"><a class="btn primary" href="#explore">Choose your way in ↓</a><a class="btn text" href="https://github.com/mikelninh/digital-democracy-studio/tree/main/safetrace">Inspect the code ↗</a></div><div class="promise">Source-first · review-first · no automatic accusations</div><div class="metrics"><div class="metric"><strong>4</strong><span>active tracks</span></div><div class="metric"><strong>39</strong><span>radar candidates</span></div><div class="metric"><strong>6</strong><span>TRACE dimensions</span></div><div class="metric"><strong>0</strong><span>automatic guilt verdicts</span></div></div></div></section>
 
-      <div class="metrics" aria-label="SafeTrace status">
-        <div class="metric"><strong>4</strong><span>aktive Staffeln</span></div>
-        <div class="metric"><strong>39</strong><span>Radar-Kandidaten</span></div>
-        <div class="metric"><strong>6</strong><span>TRACE-Dimensionen</span></div>
-        <div class="metric"><strong>0</strong><span>automatische Schuldurteile</span></div>
-      </div>
-    </div>
-  </section>
+<section class="section" id="explore"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">Explore</div><h2>Choose your way in.</h2></div><p>Not six equal modules. Six different ways to inspect the same system — from one public case to money flows, role changes and governance boundaries.</p></div>
+<div class="bento">
+<a class="feature" href="citizen_portal/"><div class="featureTop"><div class="micro">Start here · most direct</div><h3>Citizen Portal</h3><p>Start with one public problem and follow it from question to evidence, review state and next action. This is the fastest way to understand how SafeTrace thinks.</p></div><div class="featurePreview"><div class="caseLine"><div class="caseId">CASE 014</div><div class="caseTitle">Public claim needs source check</div><span class="status attn">Needs evidence</span></div><div class="caseLine"><div class="caseId">SOURCE</div><div class="caseTitle">Primary record attached</div><span class="status">Verified</span></div><div class="caseLine"><div class="caseId">BOUNDARY</div><div class="caseTitle">Causation remains unresolved</div><span class="status attn">Open</span></div><div class="nextAction"><div><small>Recommended next move</small><br><b>Request the missing decision trail</b></div><span>→</span></div></div><div class="featureFoot"><span class="openLink">Open one case →</span><span class="time">Best first click · ~60 sec</span></div></a>
 
-  <section class="section" id="explore">
-    <div class="wrap">
-      <div class="sectionHead">
-        <div><div class="eyebrow">Explore</div><h2>What do you want to inspect?</h2></div>
-        <p>Start with the question closest to you. Each surface keeps sources, uncertainty and the next meaningful action one click away.</p>
-      </div>
+<a class="panel money" href="money_flow_atlas/"><div class="micro">Follow the money</div><h3>Money Flow Atlas</h3><p>Track public money, ownership and asset paths while separating headline numbers from money that actually moved.</p><div class="flowViz"><div class="node">Public<br>fund</div><div class="line"></div><div class="node">Entity</div><div class="line"></div><div class="node">Asset</div></div><div class="moneyValue">€ ceiling ≠ € paid ≠ € profit</div></a>
 
-      <div class="grid">
-        <a class="card featured" href="citizen_portal/">
-          <small>Start a case</small>
-          <h3>Citizen Portal</h3>
-          <p>Priorisiere öffentliche Fälle, teste eine Spur strukturiert und sieh nachvollziehbar, warum ein Fall angenommen, eingegrenzt oder abgelehnt wird.</p>
-          <span class="open">Open portal →</span>
-        </a>
-        <a class="card" href="money_flow_atlas/">
-          <small>Follow the money</small>
-          <h3>Money Flow Atlas</h3>
-          <p>Verfolge öffentliche Gelder, Besitz- und Vermögenspfade und trenne große Schlagzeilenzahlen von tatsächlich belegten Geldflüssen.</p>
-          <span class="open">Explore money flows →</span>
-        </a>
-        <a class="card" href="role_simulator/">
-          <small>Interactive lab</small>
-          <h3>TRACE Role Simulator</h3>
-          <p>Spiele denselben Fall aus unterschiedlichen Rollen durch — Bürger:in, Ermittler:in, Reviewer oder Publisher — und sieh, wie sich Verantwortung verändert.</p>
-          <span class="open">Try the lab →</span>
-        </a>
-        <a class="card" href="citizen_portal/seasons.html">
-          <small>Parallel radar</small>
-          <h3>Current tracks</h3>
-          <p>Kinder im System, Schutzlücken und Menschen zwischen Wohnungslosigkeit, Migration und Pflege — mit klar sichtbarem Status statt fertiger Story.</p>
-          <span class="open">Open tracks →</span>
-        </a>
-        <a class="card" href="animal_welfare_series/">
-          <small>Season 1</small>
-          <h3>Spuren im System · Tierwohl</h3>
-          <p>Öffentliche Fälle zu Haltungsdaten, Transporten, Kontrollen und Gesetzgebung — mit Primärquellen, Gegenbelegen und Korrekturwegen.</p>
-          <span class="open">Inspect the series →</span>
-        </a>
-        <a class="card" href="review_readiness/">
-          <small>Governance</small>
-          <h3>Review Readiness</h3>
-          <p>Welche Blocker sind noch offen? Welche externe Prüfung fehlt? Welche Grenze darf nicht durch Produktoptimismus übersprungen werden?</p>
-          <span class="open">Inspect readiness →</span>
-        </a>
-      </div>
-    </div>
-  </section>
+<a class="panel roles" href="role_simulator/"><div class="micro">Change perspective</div><h3>TRACE Role Simulator</h3><p>Run the same case through different responsibilities and see how the allowed action changes with the role.</p><div class="roleViz"><div class="roleRow"><span class="role">Citizen</span><span class="role active">Investigator</span><span class="role">Reviewer</span><span class="role">Publisher</span></div><div class="roleNote">Same evidence. Different authority.</div></div></a>
+</div>
 
-  <section class="section" id="method">
-    <div class="wrap">
-      <div class="sectionHead">
-        <div><div class="eyebrow">How it works</div><h2>From a claim to a defensible next move.</h2></div>
-        <p>SafeTrace is deliberately question-first. The goal is not to make a story sound certain. The goal is to make the evidence boundary visible.</p>
-      </div>
+<div class="secondaryGrid">
+<a class="miniCard tracks" href="citizen_portal/seasons.html"><div class="micro">Parallel radar</div><h3>Current tracks</h3><p>See where investigations are open, narrowed, blocked or waiting for better evidence.</p><div class="previewTiny trackRows"><div class="trackRow"><span class="trackDot"></span><b>Children in systems</b><span class="trackState">OPEN</span></div><div class="trackRow"><span class="trackDot"></span><b>Protection gaps</b><span class="trackState">REVIEW</span></div><div class="trackRow"><span class="trackDot"></span><b>Housing / migration / care</b><span class="trackState">RADAR</span></div></div><div class="miniOpen">Open tracks →</div></a>
 
-      <div class="method">
-        <article class="step"><div class="stepNum">01</div><h3>Ask the exact question</h3><p>Define what would count as an answer before collecting convenient fragments.</p></article>
-        <article class="step"><div class="stepNum">02</div><h3>Build the source trail</h3><p>Keep publisher, authority, date, entity identity and original evidence attached.</p></article>
-        <article class="step"><div class="stepNum">03</div><h3>Separate evidence from inference</h3><p>Facts, allegations, analytical indicators and unresolved gaps remain visibly different.</p></article>
-        <article class="step"><div class="stepNum">04</div><h3>Move the case forward</h3><p>Request evidence, compare records, escalate review, correct the case or publish the next justified step.</p></article>
-      </div>
-    </div>
-  </section>
+<a class="miniCard welfare" href="animal_welfare_series/"><div class="micro">Season 1</div><h3>Spuren im System · Tierwohl</h3><p>A themed investigation series across husbandry data, transport, controls and legislation.</p><div class="previewTiny animalViz"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><div class="miniOpen">Inspect the series →</div></a>
 
-  <section class="section" id="boundaries">
-    <div class="wrap">
-      <div class="sectionHead">
-        <div><div class="eyebrow">Trust by design</div><h2>Useful without pretending certainty.</h2></div>
-        <p>SafeTrace should make careful investigation easier — not make unsupported conclusions easier to generate.</p>
-      </div>
+<a class="miniCard readiness" href="review_readiness/"><div class="micro">Governance</div><h3>Review Readiness</h3><p>See what remains blocked instead of hiding it behind a polished release label.</p><div class="previewTiny reviewViz"><div class="reviewMetric"><strong>7</strong><span>review disciplines</span></div><div class="reviewMetric"><strong>7</strong><span>open review slots</span></div><div class="reviewMetric"><strong>0</strong><span>external approvals</span></div></div><div class="miniOpen">Inspect readiness →</div></a>
+</div>
+</div></section>
 
-      <div class="boundaryGrid">
-        <article class="boundaryCard">
-          <div class="eyebrow">Non-negotiables</div>
-          <h3>What the system protects</h3>
-          <ul class="rules">
-            <li><span class="dot">✓</span><span>Primary-source provenance stays attached to material claims.</span></li>
-            <li><span class="dot">✓</span><span>Unresolved gaps remain visible instead of being smoothed away.</span></li>
-            <li><span class="dot">✓</span><span>Accusations are never generated automatically from weak signals.</span></li>
-            <li><span class="dot">✓</span><span>Corrections, counter-evidence and right of reply remain first-class.</span></li>
-            <li><span class="dot">✓</span><span>Consequential publication and restricted-data use remain human-authorised.</span></li>
-          </ul>
-        </article>
+<section class="section" id="method"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">Method</div><h2>Every case moves through the same discipline.</h2></div><p>The interface can change. The analytical contract should not.</p></div><div class="method"><div class="step"><div class="stepNum">01</div><h3>Ask the exact question</h3><p>Define what must actually be verified before collecting more material.</p></div><div class="step"><div class="stepNum">02</div><h3>Build the source trail</h3><p>Keep publisher, date, authority, exact location and entity identity attached.</p></div><div class="step"><div class="stepNum">03</div><h3>Separate evidence from inference</h3><p>Show what a source establishes, what it does not and which uncertainty remains.</p></div><div class="step"><div class="stepNum">04</div><h3>Move the case forward</h3><p>Request evidence, compare records, escalate review, correct or publish the next justified step.</p></div></div></div></section>
 
-        <article class="boundaryCard">
-          <div class="eyebrow">Current boundary</div>
-          <h3>Public-source alpha, not a truth machine.</h3>
-          <p>SafeTrace is designed for public and synthetic evaluation. Restricted partner data, real victim data and consequential publication require explicit authority, privacy/security controls and qualified review. A green test can prove software behaviour; it cannot turn an unresolved analytical claim into a fact.</p>
-        </article>
-      </div>
-
-      <div class="closing">
-        <div><small>North star</small><strong>Welche überprüfbare Veränderung schafft mehr Schutz, Würde, Fairness und weniger Leiden?</strong></div>
-        <a href="impact_missions/mission_001/">See Impact Mission 001 →</a>
-      </div>
-    </div>
-  </section>
+<section class="section" id="boundaries"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">Trust by design</div><h2>Make the boundary visible.</h2></div><p>SafeTrace is useful only if a reviewer can see where the evidence ends and judgement begins.</p></div><div class="boundaryGrid"><div class="boundaryCard"><div class="micro">Always preserved</div><h3>Evidence stays attached.</h3><ul class="rules"><li><span class="dot">✓</span><span>Primary-source provenance and retrieval context.</span></li><li><span class="dot">✓</span><span>Open gaps, contradictions and time-bounded claims.</span></li><li><span class="dot">✓</span><span>Counter-evidence and correction paths.</span></li><li><span class="dot">✓</span><span>Human analytical and publishing authority.</span></li></ul></div><div class="boundaryCard"><div class="micro">Not the product</div><h3>No accusation engine.</h3><p>SafeTrace does not turn a red flag, sequence or model confidence into guilt. Restricted data, real victim data and consequential publication require separate authority, privacy/security controls and human review.</p></div></div><div class="closing"><div><small>North star</small><strong>Which verifiable change creates more protection, dignity and fairness — with less suffering?</strong></div><a href="impact_missions/mission_001/">See an impact mission →</a></div></div></section>
 </main>
-
-<footer class="footer">
-  <div class="wrap"><span>Digital Democracy Studio · SafeTrace</span><span>Built in Berlin · open source wherever possible</span></div>
-</footer>
+<footer class="footer"><div class="wrap"><span>Digital Democracy Studio · SafeTrace</span><span>Built in Berlin · source-first, review-first</span></div></footer>
 </body>
 </html>
