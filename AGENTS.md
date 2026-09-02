@@ -42,6 +42,24 @@ The preferred reviewer journey is:
 
 **Challenge → Explore → Decide → Reveal → Verify → Find the gap → Choose the next move.**
 
+### 30–60 second hiring rule
+
+Hiring proofs are not full research reports.
+
+A recruiter should be able to understand the question and value in **30 seconds**, and complete the primary experience in **60 seconds**.
+
+Default hiring-proof structure:
+
+**Question → one decision → reveal assessment → one visual explanation → original source → biggest gap → best next move.**
+
+Hard rules:
+- one primary interaction;
+- no more than 2–3 meaningful screenfuls on the default path;
+- no architecture section before the proof is understood;
+- no wall of secondary findings;
+- deeper records, ownership detail, schemas, CI and methodology remain available behind explicit links;
+- if a page takes more than one minute to understand, simplify the default path rather than shrinking typography.
+
 The technical architecture should be available, but secondary to the experience.
 
 ### Readability minimums
@@ -67,6 +85,7 @@ Before declaring a UI complete, verify:
 - A first-time user can state the research question within 5 seconds.
 - The current assessment is clearly bounded and labelled.
 - There is something meaningful to click, inspect, compare or decide.
+- The primary hiring experience can be completed in about 60 seconds.
 - There is one obvious highest-value next research action.
 - Important content is comfortably readable without zooming.
 - Evidence is inspectable down to the original source.
@@ -78,4 +97,4 @@ If the page feels overloaded, **do not solve it by shrinking typography**. Reduc
 
 ## Final proof rule
 
-**Do not tell the reviewer I can investigate. Let them investigate with me.**
+**Do not tell the reviewer I can investigate. Let them investigate with me — then let them leave within a minute.**
