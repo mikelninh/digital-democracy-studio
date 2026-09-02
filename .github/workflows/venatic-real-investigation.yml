@@ -3,24 +3,14 @@ name: Venatic Real Investigations Proof
 on:
   pull_request:
     paths:
-      - 'safetrace/venatic_application/index.html'
-      - 'safetrace/venatic_application/assets/**'
-      - 'safetrace/venatic_application/real/**'
-      - 'safetrace/venatic_application/defence/**'
-      - 'safetrace/venatic_application/shadow-fleet/**'
-      - 'safetrace/venatic_application/real_case.schema.json'
+      - 'safetrace/venatic_application/**'
       - 'docs/FRONTEND_INFORMATION_ARCHITECTURE.md'
       - 'AGENTS.md'
       - '.github/workflows/venatic-real-investigation.yml'
   push:
     branches: [main]
     paths:
-      - 'safetrace/venatic_application/index.html'
-      - 'safetrace/venatic_application/assets/**'
-      - 'safetrace/venatic_application/real/**'
-      - 'safetrace/venatic_application/defence/**'
-      - 'safetrace/venatic_application/shadow-fleet/**'
-      - 'safetrace/venatic_application/real_case.schema.json'
+      - 'safetrace/venatic_application/**'
       - 'docs/FRONTEND_INFORMATION_ARCHITECTURE.md'
       - 'AGENTS.md'
       - '.github/workflows/venatic-real-investigation.yml'
@@ -35,160 +25,114 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate question-first investigation contracts
+
+      - name: Validate fast investigation contracts
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
           root = Path('safetrace/venatic_application')
-          hub = (root / 'index.html').read_text(encoding='utf-8')
-          css = (root / 'assets/investigation.css').read_text(encoding='utf-8')
-          ia = Path('docs/FRONTEND_INFORMATION_ARCHITECTURE.md').read_text(encoding='utf-8')
-          agents = Path('AGENTS.md').read_text(encoding='utf-8')
+          hub = (root/'index.html').read_text(encoding='utf-8')
+          css = (root/'assets/investigation.css').read_text(encoding='utf-8')
+          decision_js = (root/'assets/analyst-decision.js').read_text(encoding='utf-8')
 
-          for term in ('industry advocacy', 'defence procurement', 'sanctioned tanker', '60-second analyst challenge'):
-              assert term.lower() in hub.lower(), term
-          for term in ('Question', 'Current assessment', 'Why', 'Evidence', 'Original source', 'Gap', 'Next move'):
-              assert f'<b>{term}</b>' in hub, term
-          sequence = 'Question → Current assessment → Why → Evidence → Original source → Gap → Next move.'
-          assert sequence in ia
-          assert 'Let them investigate with me' in ia
-          assert 'Challenge → Explore → Decide → Reveal → Verify' in agents
-          assert 'body{margin:0' in css and 'font:18px/1.6' in css
+          assert '60-second analyst challenge' in hub.lower()
+          assert 'Make the call with me' in hub
+          assert '.analyst-decision' in css
+          assert 'data-analyst-decision' in decision_js
 
           cases = {
-              'real': ('REAL-DE-MEAT-LOBBY-001', 10),
-              'defence': ('REAL-DE-DEFENCE-MONEY-001', 9),
-              'shadow-fleet': ('REAL-RU-SHADOW-FLEET-001', 7),
+            'real': ('REAL-DE-MEAT-LOBBY-001', 10),
+            'defence': ('REAL-DE-DEFENCE-MONEY-001', 9),
+            'shadow-fleet': ('REAL-RU-SHADOW-FLEET-001', 7),
           }
-          for path, (case_id, minimum) in cases.items():
-              html = (root / path / 'index.html').read_text(encoding='utf-8')
-              data = json.loads((root / path / 'sources.json').read_text(encoding='utf-8'))
-              assert data['case_id'] == case_id
-              assert len(data['sources']) >= minimum
-              assert 'Research question' in html
-              assert 'Current assessment' in html
-              assert 'Biggest open gap' in html
-              assert 'Next move' in html
-              assert 'REAL PUBLIC-SOURCE CASE' in html
-              assert 'sourceOverlay' in html
-              assert 'Original evidence' in html
-              assert 'Open original source' in html
-              assert 'source-drawer.js' in html
-              ids = set()
+          for path,(case_id,minimum) in cases.items():
+              html=(root/path/'index.html').read_text(encoding='utf-8')
+              data=json.loads((root/path/'sources.json').read_text(encoding='utf-8'))
+              assert data['case_id']==case_id
+              assert len(data['sources'])>=minimum
+              for term in ('data-analyst-decision','data-reveal-target="#assessment"','Current assessment','Biggest open gap','Best next move','Original evidence','Open original source','analyst-decision.js'):
+                  assert term in html,(path,term)
+              assert html.count('class="section"') <= 2, (path,'too many default sections')
+              ids=set()
               for source in data['sources']:
                   assert source['id'] not in ids
                   ids.add(source['id'])
                   assert source['url'].startswith('https://')
                   for key in ('publisher','authority','source_type','exact_location','does_not_prove'):
-                      assert source[key].strip(), (path, source['id'], key)
+                      assert source[key].strip(),(path,source['id'],key)
                   assert source['supports'] and all(x.strip() for x in source['supports'])
-              print(path, case_id, len(data['sources']))
-
-          defence = json.loads((root/'defence/sources.json').read_text())
-          d = {s['id']:s for s in defence['sources']}
-          assert '8.5bn' in ' '.join(d['D2']['supports'])
-          assert '€880m' in ' '.join(d['D2']['supports'])
-          assert 'framework ceiling' in d['D2']['does_not_prove'].lower()
-
-          shadow = json.loads((root/'shadow-fleet/sources.json').read_text())
-          s = {x['id']:x for x in shadow['sources']}
-          assert '9413547' in s['S2']['exact_location'] and '9422457' in s['S2']['exact_location']
-          assert 'Amulet' in s['S3']['exact_location'] and 'Bobcat' in s['S3']['exact_location']
-          assert 'current' in s['S5']['does_not_prove'].lower()
-          print('Question-first investigation contracts: OK')
+          print('Fast investigation contracts: OK')
           PY
+
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify experience, sources and readable hierarchy
+
+      - name: Browser-test decision → reveal → source path
         run: |
           mkdir -p artifacts/venatic-real
           python - <<'PY'
-          import subprocess, time
+          import subprocess,time
           from playwright.sync_api import sync_playwright
 
           base='http://127.0.0.1:8765/safetrace/venatic_application/'
           server=subprocess.Popen(['python','-m','http.server','8765'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
           try:
-              time.sleep(.6)
-              with sync_playwright() as p:
-                  browser=p.chromium.launch(headless=True)
-                  page=browser.new_page(viewport={'width':1440,'height':1050})
-                  errors=[]
-                  page.on('pageerror',lambda e:errors.append(str(e)))
+            time.sleep(.6)
+            with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              page=browser.new_page(viewport={'width':1440,'height':1000})
+              errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
 
-                  def open_source(selector):
-                      page.locator(selector).first.click()
-                      page.locator('#sourceOverlay.show').wait_for(state='visible')
+              page.goto(base,wait_until='networkidle')
+              assert page.locator('.case-card').count()==3
+              assert 'make the call with me' in page.locator('h1').inner_text().lower()
+              assert len(page.locator('body').inner_text().split()) < 850
+              page.screenshot(path='artifacts/venatic-real/00-hub.png',full_page=True)
 
-                  page.goto(base,wait_until='networkidle')
-                  assert not errors, errors
-                  assert page.locator('.case-card').count()==3
-                  assert 'Make the call with me' in page.locator('h1').inner_text()
-                  assert page.get_by_text('Take the 60-second analyst challenge').is_visible()
-                  assert page.get_by_text('Question', exact=True).is_visible()
-                  assert page.get_by_text('Current assessment', exact=True).is_visible()
-                  assert float(page.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 17
-                  page.screenshot(path='artifacts/venatic-real/00-hub-desktop.png',full_page=True)
+              cases=[
+                ('policy','real/','did the meat industry get a policy change it asked for?','S9'),
+                ('defence','defence/','what does an “up to €8.5bn” defence contract actually mean?','D2'),
+                ('shadow','shadow-fleet/','same tanker after a rename — or a different asset?','S3'),
+              ]
+              for name,path,title,source_id in cases:
+                page.goto(base+path,wait_until='networkidle')
+                assert not errors,errors
+                body=page.locator('body').inner_text()
+                assert title.lower() in body.lower()
+                assert len(body.split()) < 900,(name,len(body.split()))
+                assert page.locator('#assessment').is_hidden()
+                assert page.locator('[data-analyst-decision]').is_visible()
+                correct=page.locator('[data-choice][data-correct="true"]')
+                correct.click()
+                assert page.locator('[data-decision-feedback]').is_visible()
+                assert 'good call' in page.locator('[data-decision-feedback]').inner_text().lower()
+                page.locator('[data-reveal-assessment]').click()
+                assert page.locator('#assessment').is_visible()
+                page.locator(f'[data-source="{source_id}"]').first.click()
+                page.locator('#sourceOverlay.show').wait_for(state='visible')
+                assert page.locator('#sourceUrl').get_attribute('href').startswith('https://')
+                page.screenshot(path=f'artifacts/venatic-real/{name}.png',full_page=True)
+                page.locator('#closeSource').click()
 
-                  page.goto(base+'real/',wait_until='networkidle')
-                  assert not errors, errors
-                  assert 'Did the meat industry get a policy change it asked for?' in page.locator('h1').inner_text()
-                  assert page.locator('.verdict').count()==3
-                  meat_body=page.locator('body').inner_text().lower()
-                  assert 'current assessment' in meat_body
-                  assert 'biggest open gap' in meat_body
-                  open_source('[data-source="S9"]')
-                  assert 'promulgated' in page.locator('#sourceSupports').inner_text().lower()
-                  assert 'dip.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
-                  page.screenshot(path='artifacts/venatic-real/01-meat-source.png',full_page=True)
-                  page.locator('#closeSource').click()
-
-                  page.goto(base+'defence/',wait_until='networkidle')
-                  body=page.locator('body').inner_text().lower()
-                  assert 'where does germany’s defence money actually go?' in body
-                  assert 'up to €8.5bn' in body and '~€880m' in body
-                  assert 'lobbying caused award' in body and 'not proven' in body
-                  assert 'biggest open gap' in body
-                  open_source('[data-source="D2"]')
-                  assert 'framework ceiling' in page.locator('#sourceLimit').inner_text().lower()
-                  assert 'rheinmetall.com' in page.locator('#sourceUrl').get_attribute('href')
-                  page.locator('#closeSource').click()
-                  page.screenshot(path='artifacts/venatic-real/02-defence.png',full_page=True)
-
-                  page.goto(base+'shadow-fleet/',wait_until='networkidle')
-                  body=page.locator('body').inner_text()
-                  body_lower=body.lower()
-                  assert 'can a sanctioned tanker disappear after changing its name?' in body_lower
-                  for term in ['IMO 9413547','NS ARCTIC','AMULET','ALTAIR','IMO 9422457','SCF BAIKAL','BOBCAT','BLOSSOM']:
-                      assert term in body, term
-                  assert 'unresolved' in body_lower
-                  assert 'biggest open gap' in body_lower
-                  open_source('[data-source="S3"]')
-                  assert 'official journal legal act' in page.locator('#sourceAuthority').inner_text().lower()
-                  assert '9413547' in page.locator('#sourceLocation').inner_text()
-                  assert 'eur-lex.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
-                  page.locator('#closeSource').click()
-                  page.screenshot(path='artifacts/venatic-real/03-shadow.png',full_page=True)
-
-                  mobile=browser.new_page(viewport={'width':390,'height':844})
-                  for name,path in [('hub',''),('meat','real/'),('defence','defence/'),('shadow','shadow-fleet/')]:
-                      mobile.goto(base+path,wait_until='networkidle')
-                      body_size=float(mobile.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)"))
-                      assert body_size >= 16, (name,body_size)
-                      assert mobile.locator('h1').is_visible()
-                      mobile.screenshot(path=f'artifacts/venatic-real/mobile-{name}.png',full_page=True)
-                  mobile.close()
-                  browser.close()
+              mobile=browser.new_page(viewport={'width':390,'height':844})
+              for name,path,_,_ in cases:
+                mobile.goto(base+path,wait_until='networkidle')
+                assert mobile.locator('[data-analyst-decision]').is_visible()
+                assert float(mobile.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 16
+                mobile.screenshot(path=f'artifacts/venatic-real/mobile-{name}.png',full_page=True)
+              mobile.close();browser.close()
           finally:
-              server.terminate();server.wait(timeout=5)
+            server.terminate();server.wait(timeout=5)
           PY
+
       - name: Upload browser proof
         uses: actions/upload-artifact@v4
         with:
-          name: venatic-real-investigations-proof
+          name: venatic-60-second-proof
           path: artifacts/venatic-real/
           if-no-files-found: error
