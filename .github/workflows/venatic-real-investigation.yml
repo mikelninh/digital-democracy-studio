@@ -47,10 +47,11 @@ jobs:
           ia = Path('docs/FRONTEND_INFORMATION_ARCHITECTURE.md').read_text(encoding='utf-8')
           agents = Path('AGENTS.md').read_text(encoding='utf-8')
 
-          for term in ('Meat industry', 'Defence', 'sanctioned tanker', '60-second analyst challenge'):
+          for term in ('industry advocacy', 'defence procurement', 'sanctioned tanker', '60-second analyst challenge'):
               assert term.lower() in hub.lower(), term
+          for term in ('Question', 'Current assessment', 'Why', 'Evidence', 'Original source', 'Gap', 'Next move'):
+              assert f'<b>{term}</b>' in hub, term
           sequence = 'Question → Current assessment → Why → Evidence → Original source → Gap → Next move.'
-          assert sequence in hub
           assert sequence in ia
           assert 'Let them investigate with me' in ia
           assert 'Challenge → Explore → Decide → Reveal → Verify' in agents
