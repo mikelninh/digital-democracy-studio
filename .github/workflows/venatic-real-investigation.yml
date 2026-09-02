@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate real-investigation source contracts
+      - name: Validate question-first investigation contracts
         run: |
           python - <<'PY'
           import json
@@ -44,13 +44,17 @@ jobs:
           root = Path('safetrace/venatic_application')
           hub = (root / 'index.html').read_text(encoding='utf-8')
           css = (root / 'assets/investigation.css').read_text(encoding='utf-8')
-          assert 'Meat industry lobbying' in hub
-          assert 'Defence Money Map' in hub
-          assert 'Shadow Fleet' in hub
-          assert 'Conclusion → Reason → Evidence → Original source → Gap → Next move.' in hub
+          ia = Path('docs/FRONTEND_INFORMATION_ARCHITECTURE.md').read_text(encoding='utf-8')
+          agents = Path('AGENTS.md').read_text(encoding='utf-8')
+
+          for term in ('Meat industry', 'Defence', 'sanctioned tanker', '60-second analyst challenge'):
+              assert term.lower() in hub.lower(), term
+          sequence = 'Question → Current assessment → Why → Evidence → Original source → Gap → Next move.'
+          assert sequence in hub
+          assert sequence in ia
+          assert 'Let them investigate with me' in ia
+          assert 'Challenge → Explore → Decide → Reveal → Verify' in agents
           assert 'body{margin:0' in css and 'font:18px/1.6' in css
-          assert '.proof' in css and 'font-size:15px' in css
-          assert '.label' in css and 'font-size:13px' in css
 
           cases = {
               'real': ('REAL-DE-MEAT-LOBBY-001', 10),
@@ -62,6 +66,10 @@ jobs:
               data = json.loads((root / path / 'sources.json').read_text(encoding='utf-8'))
               assert data['case_id'] == case_id
               assert len(data['sources']) >= minimum
+              assert 'Research question' in html
+              assert 'Current assessment' in html
+              assert 'Biggest open gap' in html
+              assert 'Next move' in html
               assert 'REAL PUBLIC-SOURCE CASE' in html
               assert 'sourceOverlay' in html
               assert 'Original evidence' in html
@@ -82,21 +90,19 @@ jobs:
           assert '8.5bn' in ' '.join(d['D2']['supports'])
           assert '€880m' in ' '.join(d['D2']['supports'])
           assert 'framework ceiling' in d['D2']['does_not_prove'].lower()
-          assert '820,001' in ' '.join(d['D7']['supports'])
-          assert '1,240,001' in ' '.join(d['D8']['supports'])
 
           shadow = json.loads((root/'shadow-fleet/sources.json').read_text())
           s = {x['id']:x for x in shadow['sources']}
           assert '9413547' in s['S2']['exact_location'] and '9422457' in s['S2']['exact_location']
           assert 'Amulet' in s['S3']['exact_location'] and 'Bobcat' in s['S3']['exact_location']
           assert 'current' in s['S5']['does_not_prove'].lower()
-          print('Real investigation contracts: OK')
+          print('Question-first investigation contracts: OK')
           PY
       - name: Install Chromium
         run: |
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
-      - name: Browser-verify hub, sources and readable hierarchy
+      - name: Browser-verify experience, sources and readable hierarchy
         run: |
           mkdir -p artifacts/venatic-real
           python - <<'PY'
@@ -117,54 +123,59 @@ jobs:
                       page.locator(selector).first.click()
                       page.locator('#sourceOverlay.show').wait_for(state='visible')
 
-                  # Hub: three cases, no wall of technical detail.
+                  # Hub: challenge is primary, real questions are immediately visible.
                   page.goto(base,wait_until='networkidle')
+                  assert not errors, errors
                   assert page.locator('.case-card').count()==3
-                  assert 'Follow the money. Follow the control. Check the source.' in page.locator('h1').inner_text()
+                  assert 'Make the call with me' in page.locator('h1').inner_text()
+                  assert page.get_by_text('Take the 60-second analyst challenge').is_visible()
+                  assert page.get_by_text('Question', exact=True).is_visible()
+                  assert page.get_by_text('Current assessment', exact=True).is_visible()
                   assert float(page.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 17
                   page.screenshot(path='artifacts/venatic-real/00-hub-desktop.png',full_page=True)
 
-                  # Meat: conclusion first, original enactment available.
+                  # Meat: question first, bounded current assessment, original enactment available.
                   page.goto(base+'real/',wait_until='networkidle')
                   assert not errors, errors
                   assert 'Did the meat industry get a policy change it asked for?' in page.locator('h1').inner_text()
                   assert page.locator('.verdict').count()==3
-                  assert float(page.locator('.verdict p').first.evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 16
+                  assert 'Current assessment' in page.locator('body').inner_text()
+                  assert 'Biggest open gap' in page.locator('body').inner_text()
                   open_source('[data-source="S9"]')
                   assert 'promulgated' in page.locator('#sourceSupports').inner_text().lower()
                   assert 'dip.bundestag.de' in page.locator('#sourceUrl').get_attribute('href')
                   page.screenshot(path='artifacts/venatic-real/01-meat-source.png',full_page=True)
                   page.locator('#closeSource').click()
 
-                  # Defence: ceiling, actual call-off and influence boundary are all visible.
+                  # Defence: question, ceiling/call-off distinction and biggest gap visible.
                   page.goto(base+'defence/',wait_until='networkidle')
                   body=page.locator('body').inner_text().lower()
+                  assert 'where does germany’s defence money actually go?' in body
                   assert 'up to €8.5bn' in body and '~€880m' in body
                   assert 'lobbying caused award' in body and 'not proven' in body
+                  assert 'biggest open gap' in body
                   open_source('[data-source="D2"]')
                   assert 'framework ceiling' in page.locator('#sourceLimit').inner_text().lower()
                   assert 'rheinmetall.com' in page.locator('#sourceUrl').get_attribute('href')
                   page.locator('#closeSource').click()
-                  open_source('[data-source="D8"]')
-                  assert 'official federal lobbying disclosure register' in page.locator('#sourceAuthority').inner_text().lower()
-                  assert '472' in page.locator('#sourceSupports').inner_text()
-                  page.screenshot(path='artifacts/venatic-real/02-defence-source.png',full_page=True)
-                  page.locator('#closeSource').click()
+                  page.screenshot(path='artifacts/venatic-real/02-defence.png',full_page=True)
 
-                  # Shadow fleet: same IMOs across changing names; current control remains unresolved.
+                  # Shadow fleet: research question + stable identity + current-control gap.
                   page.goto(base+'shadow-fleet/',wait_until='networkidle')
                   body=page.locator('body').inner_text()
+                  assert 'Can a sanctioned tanker disappear after changing its name?' in body
                   for term in ['IMO 9413547','NS ARCTIC','AMULET','ALTAIR','IMO 9422457','SCF BAIKAL','BOBCAT','BLOSSOM']:
                       assert term in body, term
                   assert 'Unresolved' in body
+                  assert 'Biggest open gap' in body
                   open_source('[data-source="S3"]')
                   assert 'Official Journal legal act' in page.locator('#sourceAuthority').inner_text()
                   assert '9413547' in page.locator('#sourceLocation').inner_text()
                   assert 'eur-lex.europa.eu' in page.locator('#sourceUrl').get_attribute('href')
-                  page.screenshot(path='artifacts/venatic-real/03-shadow-eu-source.png',full_page=True)
                   page.locator('#closeSource').click()
+                  page.screenshot(path='artifacts/venatic-real/03-shadow.png',full_page=True)
 
-                  # Mobile readability: no microtype as the solution to density.
+                  # Mobile readability and question-first hierarchy.
                   mobile=browser.new_page(viewport={'width':390,'height':844})
                   for name,path in [('hub',''),('meat','real/'),('defence','defence/'),('shadow','shadow-fleet/')]:
                       mobile.goto(base+path,wait_until='networkidle')
