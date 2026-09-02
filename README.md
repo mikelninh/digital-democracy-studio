@@ -2,18 +2,18 @@
 
 **Open, evidence-grounded tools for understanding rights, money, influence and public power.**
 
-This repository is a studio for public-interest investigation and civic systems. The strongest current proof is **SafeTrace**: a question-first investigation workflow that keeps evidence, inference, uncertainty and the next research move separate.
+Digital Democracy Studio is an independent public-interest research and product studio. It explores how evidence, software and careful human judgement can make public systems more understandable, accountable and useful.
 
-**[Try the SafeTrace investigation →](https://mikelninh.github.io/venatic/)** · **[Inspect the technical proof →](https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/technical/)**
+One of the studio's strongest projects is **SafeTrace**: a question-first investigation workflow that keeps evidence, inference, uncertainty and the next research move separate.
+
+**[Explore SafeTrace →](https://mikelninh.github.io/digital-democracy-studio/safetrace/)** · **[Open the studio →](https://mikelninh.github.io/digital-democracy-studio/)**
 
 ## SafeTrace in 60 seconds
 
-The reviewer does not read a case study first. They make the analytical call.
+The reviewer does not start with a generated conclusion. They inspect the question, evidence boundary and unresolved gap.
 
 ```text
 question
-   ↓
-your judgement
    ↓
 current assessment
    ↓
@@ -24,13 +24,7 @@ what remains unresolved
 best next research move
 ```
 
-Three public cases demonstrate the pattern:
-
-- **Policy & lobbying** — an industry asks for a delay and a delay later becomes law. Alignment is visible; causation is not automatically inferred.
-- **Defence money** — an “up to €8.5bn” framework is separated from disclosed initial call-offs and realised business.
-- **Vessel identity** — a tanker changes name while a stable IMO identifier preserves asset identity; current control remains a separate question.
-
-## What SafeTrace is designed to preserve
+SafeTrace is designed to preserve:
 
 - original-source provenance
 - evidence vs. inference
@@ -55,7 +49,7 @@ The repository contains:
 - source contracts and provenance rules
 - pilot/release gates
 
-The public application proof includes both real public-source examples and clearly labelled synthetic technical evaluation. A green test does not convert an unresolved analytical claim into a fact.
+Some targeted hiring proofs built from SafeTrace live in separate portfolio routes. They are **applications of the project**, not the identity or purpose of Digital Democracy Studio itself.
 
 ## SafeTrace boundary
 
