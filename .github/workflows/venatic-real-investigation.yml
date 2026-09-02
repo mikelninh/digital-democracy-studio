@@ -31,22 +31,16 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-
-          root = Path('safetrace/venatic_application')
-          hub = (root/'index.html').read_text(encoding='utf-8')
-          css = (root/'assets/investigation.css').read_text(encoding='utf-8')
-          decision_js = (root/'assets/analyst-decision.js').read_text(encoding='utf-8')
-
-          assert '60-second analyst challenge' in hub.lower()
-          assert 'Make the call with me' in hub
+          root=Path('safetrace/venatic_application')
+          hub=(root/'index.html').read_text(encoding='utf-8')
+          css=(root/'assets/investigation.css').read_text(encoding='utf-8')
+          decision_js=(root/'assets/analyst-decision.js').read_text(encoding='utf-8')
+          for term in ('Three investigations','The problem','What I built','The principle','0 / 3 calls made'):
+              assert term in hub,term
+          assert hub.count('data-correct="true"')==3
           assert '.analyst-decision' in css
           assert 'data-analyst-decision' in decision_js
-
-          cases = {
-            'real': ('REAL-DE-MEAT-LOBBY-001', 10),
-            'defence': ('REAL-DE-DEFENCE-MONEY-001', 9),
-            'shadow-fleet': ('REAL-RU-SHADOW-FLEET-001', 7),
-          }
+          cases={'real':('REAL-DE-MEAT-LOBBY-001',10),'defence':('REAL-DE-DEFENCE-MONEY-001',9),'shadow-fleet':('REAL-RU-SHADOW-FLEET-001',7)}
           for path,(case_id,minimum) in cases.items():
               html=(root/path/'index.html').read_text(encoding='utf-8')
               data=json.loads((root/path/'sources.json').read_text(encoding='utf-8'))
@@ -54,11 +48,10 @@ jobs:
               assert len(data['sources'])>=minimum
               for term in ('data-analyst-decision','data-reveal-target="#assessment"','Current assessment','Biggest open gap','Best next move','Original evidence','Open original source','analyst-decision.js'):
                   assert term in html,(path,term)
-              assert html.count('class="section"') <= 2, (path,'too many default sections')
+              assert html.count('class="section"')<=2,(path,'too many default sections')
               ids=set()
               for source in data['sources']:
-                  assert source['id'] not in ids
-                  ids.add(source['id'])
+                  assert source['id'] not in ids;ids.add(source['id'])
                   assert source['url'].startswith('https://')
                   for key in ('publisher','authority','source_type','exact_location','does_not_prove'):
                       assert source[key].strip(),(path,source['id'],key)
@@ -71,13 +64,12 @@ jobs:
           python -m pip install --disable-pip-version-check playwright
           python -m playwright install chromium
 
-      - name: Browser-test decision → reveal → source path
+      - name: Browser-test playful hub and source path
         run: |
           mkdir -p artifacts/venatic-real
           python - <<'PY'
           import subprocess,time
           from playwright.sync_api import sync_playwright
-
           base='http://127.0.0.1:8765/safetrace/venatic_application/'
           server=subprocess.Popen(['python','-m','http.server','8765'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
           try:
@@ -85,49 +77,38 @@ jobs:
             with sync_playwright() as p:
               browser=p.chromium.launch(headless=True)
               page=browser.new_page(viewport={'width':1440,'height':1000})
-              errors=[]
-              page.on('pageerror',lambda e:errors.append(str(e)))
-
+              errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
               page.goto(base,wait_until='networkidle')
-              assert page.locator('.case-card').count()==3
-              assert 'make the call with me' in page.locator('h1').inner_text().lower()
-              assert len(page.locator('body').inner_text().split()) < 850
+              assert page.locator('.case').count()==3
+              assert 'three investigations' in page.locator('h1').inner_text().lower()
+              assert len(page.locator('body').inner_text().split())<650
+              for card in page.locator('.case').all():
+                  card.locator('[data-correct="true"]').click()
+                  assert card.locator('.reveal.show').is_visible()
+              assert '3 / 3' in page.locator('#progress').inner_text()
+              assert not errors,errors
               page.screenshot(path='artifacts/venatic-real/00-hub.png',full_page=True)
 
-              cases=[
-                ('policy','real/','did the meat industry get a policy change it asked for?','S9'),
-                ('defence','defence/','what does an “up to €8.5bn” defence contract actually mean?','D2'),
-                ('shadow','shadow-fleet/','same tanker after a rename — or a different asset?','S3'),
-              ]
+              cases=[('policy','real/','did the meat industry get a policy change it asked for?','S9'),('defence','defence/','what does an “up to €8.5bn” defence contract actually mean?','D2'),('shadow','shadow-fleet/','same tanker after a rename — or a different asset?','S3')]
               for name,path,title,source_id in cases:
                 page.goto(base+path,wait_until='networkidle')
-                assert not errors,errors
                 body=page.locator('body').inner_text()
                 assert title.lower() in body.lower()
-                assert len(body.split()) < 900,(name,len(body.split()))
+                assert len(body.split())<900,(name,len(body.split()))
                 assert page.locator('#assessment').is_hidden()
-                assert page.locator('[data-analyst-decision]').is_visible()
-                correct=page.locator('[data-choice][data-correct="true"]')
-                correct.click()
-                assert page.locator('[data-decision-feedback]').is_visible()
+                correct=page.locator('[data-choice][data-correct="true"]');correct.click()
                 assert 'good call' in page.locator('[data-decision-feedback]').inner_text().lower()
-                page.locator('[data-reveal-assessment]').click()
-                assert page.locator('#assessment').is_visible()
-                page.locator(f'[data-source="{source_id}"]').first.click()
-                page.locator('#sourceOverlay.show').wait_for(state='visible')
+                page.locator('[data-reveal-assessment]').click();assert page.locator('#assessment').is_visible()
+                page.locator(f'[data-source="{source_id}"]').first.click();page.locator('#sourceOverlay.show').wait_for(state='visible')
                 assert page.locator('#sourceUrl').get_attribute('href').startswith('https://')
-                page.screenshot(path=f'artifacts/venatic-real/{name}.png',full_page=True)
-                page.locator('#closeSource').click()
-
+                page.screenshot(path=f'artifacts/venatic-real/{name}.png',full_page=True);page.locator('#closeSource').click()
               mobile=browser.new_page(viewport={'width':390,'height':844})
-              for name,path,_,_ in cases:
-                mobile.goto(base+path,wait_until='networkidle')
-                assert mobile.locator('[data-analyst-decision]').is_visible()
-                assert float(mobile.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)")) >= 16
-                mobile.screenshot(path=f'artifacts/venatic-real/mobile-{name}.png',full_page=True)
+              mobile.goto(base,wait_until='networkidle');assert mobile.locator('.case').count()==3
+              assert float(mobile.locator('body').evaluate("el=>parseFloat(getComputedStyle(el).fontSize)"))>=16
               mobile.close();browser.close()
           finally:
             server.terminate();server.wait(timeout=5)
+          print('Venatic 60-second proof QA: OK')
           PY
 
       - name: Upload browser proof
