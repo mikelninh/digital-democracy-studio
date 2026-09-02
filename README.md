@@ -4,7 +4,7 @@
 
 This repository is a studio for public-interest investigation and civic systems. The strongest current proof is **SafeTrace**: a question-first investigation workflow that keeps evidence, inference, uncertainty and the next research move separate.
 
-**[Try the SafeTrace investigation →](https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/)** · **[Inspect the technical proof →](https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/technical/)**
+**[Try the SafeTrace investigation →](https://mikelninh.github.io/venatic/)** · **[Inspect the technical proof →](https://mikelninh.github.io/digital-democracy-studio/safetrace/venatic_application/technical/)**
 
 ## SafeTrace in 60 seconds
 
