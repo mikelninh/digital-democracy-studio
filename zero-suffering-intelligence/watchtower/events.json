@@ -2,6 +2,67 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "49f74832b45337d1",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-09-04T04:28:50+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -213,2 +213,3 @@",
+        " Keine Benachrichtigung",
+        "+Keine Benachrichtigung",
+        " Täglich",
+        "@@ -216,4 +217,11 @@",
+        " Wöchentlich",
+        "+Täglich",
+        " Wöchentlich - bei Änderungen",
+        "+Täglich - bei Änderungen",
+        " Monatlich",
+        "+Wöchentlich",
+        "+Monatlich - bei Änderungen",
+        "+Wöchentlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Vierteljährlich - bei Änderungen",
+        " Monatlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "da6ae4aa73137c7e",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-09-04T04:28:50+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -238,2 +238,3 @@",
+        " Keine Benachrichtigung",
+        "+Keine Benachrichtigung",
+        " Täglich",
+        "@@ -241,4 +242,11 @@",
+        " Wöchentlich",
+        "+Täglich",
+        " Wöchentlich - bei Änderungen",
+        "+Täglich - bei Änderungen",
+        " Monatlich",
+        "+Wöchentlich",
+        "+Monatlich - bei Änderungen",
+        "+Wöchentlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Vierteljährlich - bei Änderungen",
+        " Monatlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "ce09bb42cc4262e3",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
