@@ -1,6 +1,6 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-09-04T16:19:22+00:00",
+  "generated_at": "2026-09-04T20:43:59+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
@@ -43,6 +43,18 @@
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "detected_at": "2026-08-20T18:57:59+00:00",
       "event_id": "3afc3eeecd28667d"
+    },
+    "ZSI-C-0007": {
+      "status": "needs_review",
+      "source_id": "SRC-BFR-KONTRED",
+      "detected_at": "2026-09-04T20:43:59+00:00",
+      "event_id": "9f761d7a2df9d5cb"
+    },
+    "ZSI-C-0008": {
+      "status": "needs_review",
+      "source_id": "SRC-BFR-KONTRED",
+      "detected_at": "2026-09-04T20:43:59+00:00",
+      "event_id": "9f761d7a2df9d5cb"
     }
   }
 }

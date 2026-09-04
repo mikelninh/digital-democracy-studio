@@ -2,6 +2,25 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "9f761d7a2df9d5cb",
+      "source_id": "SRC-BFR-KONTRED",
+      "title": "BfR — KontRed",
+      "detected_at": "2026-09-04T20:43:59+00:00",
+      "claim_ids": [
+        "ZSI-C-0007",
+        "ZSI-C-0008"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -172,3 +172,2 @@",
+        " Angereicherte Lebensmittel",
+        "-Diätetische Lebensmittel",
+        " Nahrungsergänzungsmittel"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "cd6805e519f7d864",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
