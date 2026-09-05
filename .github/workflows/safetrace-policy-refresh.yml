@@ -33,3 +33,6 @@ jobs:
           path: safetrace/policy_platform/artifacts/source-monitor/
           if-no-files-found: error
           retention-days: 90
+      - name: Confirm review condition
+        if: steps.refresh.outputs.review_required == 'true'
+        run: echo "Source review required"
