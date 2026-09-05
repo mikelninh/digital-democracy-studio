@@ -1,0 +1,66 @@
+{
+  "version": "0.2.0",
+  "note": "All people, organisations, payments and case facts below are synthetic. Official-source snapshots are real dated evidence routes; synthetic facts never become claims about real entities.",
+  "experiences": {
+    "citizen-wohngeld-rejection": {
+      "title": "Why was my Wohngeld rejected?",
+      "sample_inputs": {"city": "Berlin", "document": "synthetic rejection notice", "stated_reason": "income evidence incomplete"},
+      "success_conditions": ["extract stated reason", "identify responsible district office route", "show current source snapshot", "do not invent objection deadline", "list missing evidence", "prepare only a reviewable draft"]
+    },
+    "citizen-benefits-gap": {
+      "title": "Am I missing support my family could check?",
+      "sample_inputs": {"city": "Berlin", "household": "single parent + 2 children", "gross_income_eur": 2000, "warm_rent_eur": 1100},
+      "success_conditions": ["rank Wohngeld and Kinderzuschlag as checks rather than guaranteed entitlements", "show official pre-check/application routes", "show required facts/documents", "minimise sensitive data collection"]
+    },
+    "citizen-rent-increase": {
+      "title": "What should I check before accepting a rent increase?",
+      "sample_inputs": {"city": "Berlin", "old_net_rent_eur": 800, "requested_net_rent_eur": 920, "document": "synthetic rent increase letter"},
+      "success_conditions": ["extract landlord's stated basis", "surface BGB § 558 checks when relevant", "separate facts from legal conclusion", "ask for missing dates/property facts", "prepare reviewable response only"]
+    },
+    "citizen-digital-harassment": {
+      "title": "How do I preserve online harassment evidence safely?",
+      "sample_inputs": {"platform": "synthetic social network", "evidence": ["message screenshot", "profile URL", "timestamp"]},
+      "success_conditions": ["preserve context, username, date/time and URLs", "hash evidence metadata", "prioritise acute-threat escalation", "avoid offender identification as fact", "never externally report without approval"]
+    },
+    "citizen-authority-responsibility": {
+      "title": "Who is actually responsible?",
+      "sample_inputs": {"city": "Berlin", "problem": "tree-protection permission for a property project"},
+      "success_conditions": ["route through official ServicePortal", "use location/service to resolve authority", "show Why? path", "expose ambiguity instead of guessing"]
+    },
+    "citizen-information-request": {
+      "title": "How was this public decision made?",
+      "sample_inputs": {"city": "Berlin", "topic": "synthetic procurement decision", "records_sought": "decision file, evaluation criteria and correspondence"},
+      "success_conditions": ["identify likely record-holding authority", "prepare a narrow request", "show IFG source snapshot", "warn that exceptions/costs may apply", "do not promise disclosure"]
+    },
+    "investigator-supplier-links": {
+      "title": "Are these suppliers the same company or merely connected?",
+      "sample_inputs": {"suppliers": ["Nordlicht Energie GmbH", "NORDLICHT ENERGIE GMBH", "Nordlicht Solar Solutions GmbH"]},
+      "success_conditions": ["canonicalise true aliases", "keep subsidiary/related entity separate", "show register routes", "show confidence/evidence", "send ambiguity to human review", "never infer wrongdoing from relationship alone"]
+    },
+    "investigator-public-money": {
+      "title": "Where did this programme's money go?",
+      "sample_inputs": {"programme": "Synthetic Civic Infrastructure Fund", "year": 2026, "budget_amount_eur": 5000000},
+      "success_conditions": ["start from official budget structure", "show machine-readable budget route", "separate budget authority from recipient-level payment evidence", "attach audit context separately", "mark missing recipient evidence explicitly"]
+    },
+    "investigator-procurement-pattern": {
+      "title": "Does one vendor keep winning similar contracts?",
+      "sample_inputs": {"authority": "Synthetic District Office", "category": "IT services", "date_range": "2024-2026", "awards": 8},
+      "success_conditions": ["normalise vendor identities", "compare awards over time", "show official procurement sources", "surface concentration as a lead only", "include counterevidence/missing data", "never label pattern as corruption"]
+    },
+    "investigator-contradictory-records": {
+      "title": "Two records disagree about company control — what is actually known?",
+      "sample_inputs": {"company": "Synthetic Mobility Labs GmbH", "record_a": "Director A effective 2025-01-01", "record_b": "Director B effective 2025-01-01"},
+      "success_conditions": ["retain both claims", "compare effective dates", "use chronological/historical register route", "create contradiction object", "require review until resolved"]
+    },
+    "operator-permit-routing": {
+      "title": "Which permission is required and what is blocking the case?",
+      "sample_inputs": {"city": "Berlin", "project": "construction access affecting a protected tree and public sidewalk", "documents_received": ["site plan"]},
+      "success_conditions": ["identify tree-protection and street-special-use service bundle", "show district responsibility", "show source-backed document requirements", "identify first missing requirement", "never approve/reject autonomously"]
+    },
+    "operator-policy-change-impact": {
+      "title": "A rule changed — which workflows might be affected?",
+      "sample_inputs": {"change_event": "synthetic federal provision update", "effective_date": "2026-09-01", "open_cases": 120},
+      "success_conditions": ["verify change through official update route", "preserve promulgation/effective dates", "diff provisions before impact inference", "map candidate services/cases", "prioritise human review", "never change outcomes automatically"]
+    }
+  }
+}

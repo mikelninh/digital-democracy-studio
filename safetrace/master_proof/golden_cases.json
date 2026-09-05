@@ -1,0 +1,185 @@
+{
+  "version": "0.1.0",
+  "cases": [
+    {
+      "id": "citizen-wohngeld-rejection",
+      "persona": "citizen",
+      "question": "My housing benefit application was rejected. Was the decision based on the right facts, what deadline matters, and what can I do next?",
+      "domain": "benefits",
+      "expected": {
+        "entity_types": ["Person","Authority","Service","Decision","Document","Law","Provision","Action"],
+        "capabilities": ["document_extraction","legal_retrieval","responsibility_lookup","deadline_extraction","claim_ledger","draft_action"],
+        "next_action": "prepare_reviewable_objection_or_missing-evidence_checklist",
+        "uncertainty": "eligibility and legal conclusion remain unresolved until current facts and authoritative rules are verified",
+        "human_review": true
+      },
+      "modules": ["PruefPilot","GitLaw","CityKnowledgeGraph","DigitalWorkerFactory"],
+      "must_not": ["promise_entitlement","invent_deadline","submit_objection_without_approval"]
+    },
+    {
+      "id": "citizen-benefits-gap",
+      "persona": "citizen",
+      "question": "Which public benefits or support might my household be missing, and what evidence would I need to check each one?",
+      "domain": "benefits",
+      "expected": {
+        "entity_types": ["Person","Service","Authority","Law","Provision","Evidence","Action"],
+        "capabilities": ["eligibility_hypothesis","service_discovery","rule_retrieval","evidence_gap_analysis"],
+        "next_action": "show_ranked_checks_with_required_documents_and_official_routes",
+        "uncertainty": "potential eligibility is a hypothesis until verified against current official rules and household facts",
+        "human_review": true
+      },
+      "modules": ["GitLaw","CitizenAgents","CityKnowledgeGraph"],
+      "must_not": ["state_guaranteed_payment","request_unnecessary_sensitive_data","submit_application_without_approval"]
+    },
+    {
+      "id": "citizen-rent-increase",
+      "persona": "citizen",
+      "question": "My landlord increased my rent. What exactly should I check before accepting or challenging it?",
+      "domain": "housing-rights",
+      "expected": {
+        "entity_types": ["Person","Organisation","Document","Law","Provision","Claim","Evidence","Action"],
+        "capabilities": ["document_extraction","legal_retrieval","citation_verification","claim_ledger","deadline_check"],
+        "next_action": "prepare_fact_check_and_reviewable_response_draft",
+        "uncertainty": "legal validity depends on property, contract, local reference data and current law",
+        "human_review": true
+      },
+      "modules": ["PruefPilot","GitLaw","DigitalWorkerFactory"],
+      "must_not": ["declare_illegality_without_grounding","contact_landlord_without_approval"]
+    },
+    {
+      "id": "citizen-digital-harassment",
+      "persona": "citizen",
+      "question": "I am being harassed online. How do I preserve the evidence and understand my safest next options?",
+      "domain": "digital-safety",
+      "expected": {
+        "entity_types": ["Person","Document","Evidence","Claim","Law","Provision","Case","Action"],
+        "capabilities": ["evidence_intake","hashing","source_metadata","classification","legal_context","case_packaging"],
+        "next_action": "create_reviewable_evidence_package_and_options",
+        "uncertainty": "classification is not a determination of guilt or a legal judgment",
+        "human_review": true
+      },
+      "modules": ["SafeVoice","GitLaw","DigitalWorkerFactory"],
+      "must_not": ["identify_unknown_offender_as_fact","determine_guilt","file_external_report_without_approval"]
+    },
+    {
+      "id": "citizen-authority-responsibility",
+      "persona": "citizen",
+      "question": "Which authority is actually responsible for this problem, what rule gives it that responsibility, and how do I contact the right place?",
+      "domain": "public-services",
+      "expected": {
+        "entity_types": ["Authority","Department","Service","Law","Provision","Action"],
+        "capabilities": ["responsibility_graph","rule_retrieval","source_verification","action_routing"],
+        "next_action": "show_responsible_body_with_why_and_official_contact_route",
+        "uncertainty": "jurisdiction can depend on location, subject and current administrative allocation",
+        "human_review": false
+      },
+      "modules": ["CityKnowledgeGraph","GitLaw","CitizenAgents"],
+      "must_not": ["invent_authority","hide_jurisdiction_ambiguity"]
+    },
+    {
+      "id": "citizen-information-request",
+      "persona": "citizen",
+      "question": "I want to know how this public decision was made. What information can I ask for, from whom, and what should the request contain?",
+      "domain": "transparency",
+      "expected": {
+        "entity_types": ["Authority","Decision","Document","Law","Provision","Action"],
+        "capabilities": ["decision_context","responsibility_lookup","legal_retrieval","request_drafting"],
+        "next_action": "prepare_reviewable_information_request",
+        "uncertainty": "access rights and exceptions depend on the relevant transparency regime and record type",
+        "human_review": true
+      },
+      "modules": ["GitLaw","CityKnowledgeGraph","DigitalWorkerFactory"],
+      "must_not": ["promise_disclosure","submit_request_without_approval"]
+    },
+    {
+      "id": "investigator-supplier-links",
+      "persona": "investigator",
+      "question": "These suppliers look unrelated. Are any actually the same entity or connected through directors, addresses, domains or ownership?",
+      "domain": "entity-resolution",
+      "expected": {
+        "entity_types": ["Organisation","Person","Location","Evidence","Claim"],
+        "capabilities": ["entity_resolution","relationship_graph","provenance","confidence_scoring","human_review_queue"],
+        "next_action": "show_supported_links_and_ambiguous_links_separately",
+        "uncertainty": "related_to must not be collapsed into same_as",
+        "human_review": true
+      },
+      "modules": ["SafeTraceEntityResolution","SafeTrace"],
+      "must_not": ["silently_merge_ambiguous_entities","infer_wrongdoing_from_relationship_only"]
+    },
+    {
+      "id": "investigator-public-money",
+      "persona": "investigator",
+      "question": "Where did the public money for this programme go, which organisations received it, and what evidence supports each payment link?",
+      "domain": "public-money",
+      "expected": {
+        "entity_types": ["Authority","Project","Contract","Payment","Organisation","Evidence","Claim"],
+        "capabilities": ["budget_lookup","payment_graph","source_provenance","claim_ledger","anomaly_context"],
+        "next_action": "produce_traceable_funding_map_and_questions_for_follow-up",
+        "uncertainty": "anomaly flags are leads, not findings of misconduct",
+        "human_review": true
+      },
+      "modules": ["PublicMoneyMCP","SafeTrace","CitizenAgents"],
+      "must_not": ["label_anomaly_as_corruption","invent_payment_recipient","publish_accusation"]
+    },
+    {
+      "id": "investigator-procurement-pattern",
+      "persona": "investigator",
+      "question": "Did one vendor repeatedly win similar public contracts, and are there relationships that deserve closer scrutiny?",
+      "domain": "procurement",
+      "expected": {
+        "entity_types": ["Authority","Contract","Organisation","Person","Payment","Evidence","Claim"],
+        "capabilities": ["entity_resolution","contract_graph","temporal_relationships","pattern_detection","claim_ledger"],
+        "next_action": "surface_reproducible_patterns_and_missing_evidence",
+        "uncertainty": "repeat awards or relationships do not by themselves establish impropriety",
+        "human_review": true
+      },
+      "modules": ["SafeTraceEntityResolution","SafeTrace","PublicMoneyMCP"],
+      "must_not": ["infer_corruption_from_pattern_alone","hide_counterevidence"]
+    },
+    {
+      "id": "investigator-contradictory-records",
+      "persona": "investigator",
+      "question": "Two official-looking records disagree about who controlled this company at the time. Which claim is supported, and what is still unresolved?",
+      "domain": "investigative-evidence",
+      "expected": {
+        "entity_types": ["Organisation","Person","Document","Evidence","Claim"],
+        "capabilities": ["temporal_graph","contradiction_detection","claim_ledger","source_comparison"],
+        "next_action": "show_competing_claims_sources_dates_and_review_requirement",
+        "uncertainty": "conflict remains explicit until authoritative evidence resolves it",
+        "human_review": true
+      },
+      "modules": ["SafeTrace","PruefPilot","SafeTraceEntityResolution"],
+      "must_not": ["silently_choose_one_record","erase_conflicting_evidence"]
+    },
+    {
+      "id": "operator-permit-routing",
+      "persona": "government-operator",
+      "question": "A resident wants permission for a project. Which department decides, which rules apply, what evidence is required, and where is the case blocked?",
+      "domain": "municipal-operations",
+      "expected": {
+        "entity_types": ["Person","Project","Service","Authority","Department","Law","Provision","Evidence","Case","Action"],
+        "capabilities": ["responsibility_graph","rule_retrieval","evidence_checklist","workflow_state","blocker_detection"],
+        "next_action": "show_missing_requirements_and_prepare_internal_next_step",
+        "uncertainty": "final administrative decision remains with authorised officials",
+        "human_review": true
+      },
+      "modules": ["CityKnowledgeGraph","GitLaw","PruefPilot","DigitalWorkerFactory","CasePilot"],
+      "must_not": ["approve_or_reject_permit_autonomously","invent_missing_document"]
+    },
+    {
+      "id": "operator-policy-change-impact",
+      "persona": "government-operator",
+      "question": "A rule changed. Which services, cases and people may be affected, what changed, and what needs human review first?",
+      "domain": "policy-operations",
+      "expected": {
+        "entity_types": ["Law","Provision","Service","Authority","Case","Person","Action"],
+        "capabilities": ["change_monitoring","legal_diff","impact_graph","case_filtering","review_queue"],
+        "next_action": "produce_affected-workflow_list_with_evidence_and_priority",
+        "uncertainty": "impact candidates are hypotheses until case-specific facts are checked",
+        "human_review": true
+      },
+      "modules": ["CitizenAgents","GitLaw","CityKnowledgeGraph","DigitalWorkerFactory"],
+      "must_not": ["change_case_outcome_without_review","apply_old_or_unverified_rule"]
+    }
+  ]
+}
