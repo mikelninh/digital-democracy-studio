@@ -33,6 +33,19 @@ jobs:
           path: safetrace/policy_platform/artifacts/source-monitor/
           if-no-files-found: error
           retention-days: 90
-      - name: Confirm review condition
+      - name: Open human-review issue
         if: steps.refresh.outputs.review_required == 'true'
-        run: echo "Source review required"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          title='SafeTrace source change requires review'
+          body_file='safetrace/policy_platform/artifacts/source-monitor/review.md'
+          run_url="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          printf '\n\nActions evidence packet: %s\n' "$run_url" >> "$body_file"
+          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [[ -n "$existing" ]]; then
+            gh issue comment "$existing" --body-file "$body_file"
+          else
+            gh issue create --title "$title" --body-file "$body_file"
+          fi
