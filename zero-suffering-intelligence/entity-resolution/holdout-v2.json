@@ -1,0 +1,533 @@
+{
+  "schema": "zsi.entity-resolution/holdout-2.0",
+  "frozen_at": "2026-09-05",
+  "status": "frozen_before_first_v12_evaluation",
+  "purpose": "Fresh 40-case developer-authored holdout for the v12 resolver after retiring holdout-v1. It stresses punctuation, transliteration, group-vs-legal identity, subsidiaries, conflicting addresses, legal-form conflicts, stable identifiers, typos and deliberate ambiguity.",
+  "guardrail": "Do not tune v12 and then re-report this same holdout as unseen. Any resolver change after inspecting v2 outcomes requires holdout-v3 for the next fresh score. This set is developer-authored and is not independent external validation.",
+  "cases": [
+    {
+      "case_id": "ER2-001",
+      "record_a": {
+        "name": "Nordlicht Energy GmbH",
+        "address": "Am Hafen 12, 20457 Hamburg"
+      },
+      "record_b": {
+        "name": "Nordlicht Energy G.m.b.H.",
+        "address": "20457 Hamburg"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Punctuation variation of the same legal entity."
+    },
+    {
+      "case_id": "ER2-002",
+      "record_a": {
+        "name": "Nordlicht Energy GmbH",
+        "address": "Hamburg"
+      },
+      "record_b": {
+        "name": "Nordlicht Energy Group",
+        "address": "Hamburg"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Operating company and group identity are distinct."
+    },
+    {
+      "case_id": "ER2-003",
+      "record_a": {
+        "name": "Nordlicht Energy Services GmbH",
+        "address": "Hamburg"
+      },
+      "record_b": {
+        "name": "Nordlicht Energy GmbH",
+        "address": "Hamburg"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Subsidiary/service entity is distinct from the operating company."
+    },
+    {
+      "case_id": "ER2-004",
+      "record_a": {
+        "name": "Nordlicht Energy GmbH",
+        "address": "Hamburg"
+      },
+      "record_b": {
+        "name": "Nordlicht Energy GmbH",
+        "address": "Bremen"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Identical company labels with conflicting location evidence should not auto-merge."
+    },
+    {
+      "case_id": "ER2-005",
+      "record_a": {
+        "name": "Grünwerk Anlagenbau GmbH",
+        "address": "Werkstr. 9, Köln"
+      },
+      "record_b": {
+        "name": "Gruenwerk Anlagenbau",
+        "address": "Köln"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Umlaut transliteration plus legal-suffix omission with compatible address."
+    },
+    {
+      "case_id": "ER2-006",
+      "record_a": {
+        "name": "Grünwerk Gruppe",
+        "address": "Köln"
+      },
+      "record_b": {
+        "name": "Gruenwerk Unternehmensgruppe",
+        "address": "Köln"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Long/short group-label variants denote the same reviewed group identity."
+    },
+    {
+      "case_id": "ER2-007",
+      "record_a": {
+        "name": "Grünwerk Gruppe",
+        "address": "Köln"
+      },
+      "record_b": {
+        "name": "Grünwerk Anlagenbau GmbH",
+        "address": "Köln"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Group identity and operating legal entity remain distinct."
+    },
+    {
+      "case_id": "ER2-008",
+      "record_a": {
+        "name": "Grünwerk Anlagenbau GmbH",
+        "address": "Köln"
+      },
+      "record_b": {
+        "name": "Grunwerk Anlagenbau GmbH",
+        "address": "Köln"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Diacritic loss with matching location."
+    },
+    {
+      "case_id": "ER2-009",
+      "record_a": {
+        "name": "Aster Data AG",
+        "address": "Zürich"
+      },
+      "record_b": {
+        "name": "Aster Data A.G.",
+        "address": "Zürich"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Punctuation variation of the same legal form."
+    },
+    {
+      "case_id": "ER2-010",
+      "record_a": {
+        "name": "Aster Data AG",
+        "address": "Zürich"
+      },
+      "record_b": {
+        "name": "Aster Data GmbH",
+        "address": "Zürich"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Same base label but conflicting legal forms require registry/temporal evidence; do not auto-merge."
+    },
+    {
+      "case_id": "ER2-011",
+      "record_a": {
+        "name": "Aster Data AG",
+        "address": "Zürich"
+      },
+      "record_b": {
+        "name": "Aster Data Solutions AG",
+        "address": "Zürich"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Closely named operating entities remain distinct."
+    },
+    {
+      "case_id": "ER2-012",
+      "record_a": {
+        "name": "Aster Data AG",
+        "address": "Zürich"
+      },
+      "record_b": {
+        "name": "Aster Dat AG",
+        "address": "Zürich"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Single-character omission with compatible address."
+    },
+    {
+      "case_id": "ER2-013",
+      "record_a": {
+        "name": "Rheinbrücke Logistics GmbH & Co. KG",
+        "address": "Düsseldorf"
+      },
+      "record_b": {
+        "name": "Rheinbruecke Logistics GmbH Co KG",
+        "address": "Düsseldorf"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Transliteration and punctuation/legal-suffix formatting variation."
+    },
+    {
+      "case_id": "ER2-014",
+      "record_a": {
+        "name": "Rheinbrücke Logistics GmbH & Co. KG",
+        "address": "Düsseldorf"
+      },
+      "record_b": {
+        "name": "Rheinbrücke Logistics Holding GmbH",
+        "address": "Düsseldorf"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Operating company and holding company are distinct legal entities."
+    },
+    {
+      "case_id": "ER2-015",
+      "record_a": {
+        "name": "Rheinbrücke Group",
+        "address": "Düsseldorf"
+      },
+      "record_b": {
+        "name": "Rheinbrücke Logistics GmbH & Co. KG",
+        "address": "Düsseldorf"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Group label is not the operating legal entity."
+    },
+    {
+      "case_id": "ER2-016",
+      "record_a": {
+        "name": "Rheinbrücke Logistics GmbH & Co. KG",
+        "address": "Düsseldorf"
+      },
+      "record_b": {
+        "name": "Rheinbrücke Logistik GmbH & Co. KG",
+        "address": "Düsseldorf"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Translation-like wording alone is insufficient to establish legal identity without an alias source."
+    },
+    {
+      "case_id": "ER2-017",
+      "record_a": {
+        "name": "Velora Mobility B.V.",
+        "address": "Amsterdam"
+      },
+      "record_b": {
+        "name": "Velora Mobility BV",
+        "address": "Amsterdam"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Punctuation variation of the same Dutch legal form."
+    },
+    {
+      "case_id": "ER2-018",
+      "record_a": {
+        "name": "Velora Mobility BV",
+        "address": "Amsterdam"
+      },
+      "record_b": {
+        "name": "Velora Mobility NV",
+        "address": "Amsterdam"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Different legal forms are not auto-merged without registry evidence."
+    },
+    {
+      "case_id": "ER2-019",
+      "record_a": {
+        "name": "Velora Mobility BV",
+        "address": "Amsterdam"
+      },
+      "record_b": {
+        "name": "Velora Mobility Services BV",
+        "address": "Amsterdam"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Service subsidiary is distinct from the parent operating company."
+    },
+    {
+      "case_id": "ER2-020",
+      "record_a": {
+        "name": "Velora Mobility BV",
+        "address": "Amsterdam"
+      },
+      "record_b": {
+        "name": "Velora Mobilty BV",
+        "address": "Amsterdam"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Single-character typo with compatible location."
+    },
+    {
+      "case_id": "ER2-021",
+      "record_a": {
+        "name": "Blue Harbor Technologies Ltd",
+        "address": "London",
+        "stable_id": "GB-991122"
+      },
+      "record_b": {
+        "name": "Blue Harbour Systems Limited",
+        "address": "London",
+        "stable_id": "GB-991122"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Matching stable registry identifier outweighs a renamed trading/legal label."
+    },
+    {
+      "case_id": "ER2-022",
+      "record_a": {
+        "name": "Blue Harbor Technologies Ltd",
+        "address": "London",
+        "stable_id": "GB-991122"
+      },
+      "record_b": {
+        "name": "Blue Harbor Technologies Ltd",
+        "address": "Manchester",
+        "stable_id": "GB-887744"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Conflicting stable identifiers prove distinct legal entities despite identical names."
+    },
+    {
+      "case_id": "ER2-023",
+      "record_a": {
+        "name": "Blue Harbor Group",
+        "address": "London"
+      },
+      "record_b": {
+        "name": "Blue Harbour Group",
+        "address": "London"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Common spelling variant of the same group identity with compatible address."
+    },
+    {
+      "case_id": "ER2-024",
+      "record_a": {
+        "name": "Blue Harbor Group",
+        "address": "London"
+      },
+      "record_b": {
+        "name": "Blue Harbor Technologies Ltd",
+        "address": "London"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Group identity and operating company are distinct."
+    },
+    {
+      "case_id": "ER2-025",
+      "record_a": {
+        "name": "Südtor Maschinenbau GmbH",
+        "address": "Nürnberg"
+      },
+      "record_b": {
+        "name": "Suedtor Maschinenbau GmbH",
+        "address": "Nuernberg"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "German transliteration in both name and location."
+    },
+    {
+      "case_id": "ER2-026",
+      "record_a": {
+        "name": "Südtor Maschinenbau GmbH",
+        "address": "Nürnberg"
+      },
+      "record_b": {
+        "name": "Südtor Maschinenbau GmbH",
+        "address": "Stuttgart"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Same label with conflicting city evidence."
+    },
+    {
+      "case_id": "ER2-027",
+      "record_a": {
+        "name": "Südtor Maschinenbau GmbH",
+        "address": "Nürnberg"
+      },
+      "record_b": {
+        "name": "Südtor Maschinenbau Service GmbH",
+        "address": "Nürnberg"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Service entity is distinct even at the same address."
+    },
+    {
+      "case_id": "ER2-028",
+      "record_a": {
+        "name": "Südtor Gruppe",
+        "address": "Nürnberg"
+      },
+      "record_b": {
+        "name": "Suedtor Unternehmensgruppe",
+        "address": "Nürnberg"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Equivalent group markers with transliteration."
+    },
+    {
+      "case_id": "ER2-029",
+      "record_a": {
+        "name": "Orbis Conseil S.A.R.L.",
+        "address": "Luxembourg"
+      },
+      "record_b": {
+        "name": "Orbis Conseil SARL",
+        "address": "Luxembourg"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Dotted legal-designator variation."
+    },
+    {
+      "case_id": "ER2-030",
+      "record_a": {
+        "name": "Orbis Conseil SARL",
+        "address": "Luxembourg"
+      },
+      "record_b": {
+        "name": "Orbis Conseil SA",
+        "address": "Luxembourg"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Different legal forms need stronger registry/temporal evidence."
+    },
+    {
+      "case_id": "ER2-031",
+      "record_a": {
+        "name": "Orbis Conseil SARL",
+        "address": "Luxembourg"
+      },
+      "record_b": {
+        "name": "Orbis Consulting SARL",
+        "address": "Luxembourg"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Translation-like near-name is not enough to establish legal identity."
+    },
+    {
+      "case_id": "ER2-032",
+      "record_a": {
+        "name": "Orbis Conseil SARL",
+        "address": "Luxembourg"
+      },
+      "record_b": {
+        "name": "Orbis Consel SARL",
+        "address": "Luxembourg"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Single-character typo with compatible address."
+    },
+    {
+      "case_id": "ER2-033",
+      "record_a": {
+        "name": "Atlas Infrastructure Partners GmbH",
+        "address": ""
+      },
+      "record_b": {
+        "name": "Atlas Infrastructure Partners",
+        "address": ""
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Distinctive same legal name with omitted suffix but no address evidence; human review is acceptable if automation abstains."
+    },
+    {
+      "case_id": "ER2-034",
+      "record_a": {
+        "name": "Atlas Infrastructure Partners GmbH",
+        "address": "Berlin"
+      },
+      "record_b": {
+        "name": "Atlas Infrastructure Partner GmbH",
+        "address": ""
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Near-name match lacks address corroboration; expected identity is same but safe abstention is acceptable."
+    },
+    {
+      "case_id": "ER2-035",
+      "record_a": {
+        "name": "Atlas Infrastructure Partners GmbH",
+        "address": "Berlin"
+      },
+      "record_b": {
+        "name": "Atlas Infrastructure Projects GmbH",
+        "address": "Berlin"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Closely named sister entities are distinct."
+    },
+    {
+      "case_id": "ER2-036",
+      "record_a": {
+        "name": "Atlas Group",
+        "address": "Berlin"
+      },
+      "record_b": {
+        "name": "Atlas Infrastructure Partners GmbH",
+        "address": "Berlin"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Group identity and operating company remain distinct."
+    },
+    {
+      "case_id": "ER2-037",
+      "record_a": {
+        "name": "Central Services GmbH",
+        "address": "Leipzig"
+      },
+      "record_b": {
+        "name": "Central Services GmbH",
+        "address": "Dresden"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Identical generic names in different cities must stay separate."
+    },
+    {
+      "case_id": "ER2-038",
+      "record_a": {
+        "name": "Nova Systems GmbH",
+        "address": "Berlin"
+      },
+      "record_b": {
+        "name": "NOVA Systems GmbH",
+        "address": "Berlin"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Case-only variation with compatible address."
+    },
+    {
+      "case_id": "ER2-039",
+      "record_a": {
+        "name": "Nova Systems GmbH",
+        "address": "Berlin"
+      },
+      "record_b": {
+        "name": "Nova System GmbH",
+        "address": "Berlin"
+      },
+      "ground_truth": "merge",
+      "ground_truth_reason": "Minor singular/plural name variation with same address is treated as the same reviewed entity."
+    },
+    {
+      "case_id": "ER2-040",
+      "record_a": {
+        "name": "Nova Systems Group",
+        "address": "Berlin"
+      },
+      "record_b": {
+        "name": "Nova Systems GmbH",
+        "address": "Berlin"
+      },
+      "ground_truth": "separate",
+      "ground_truth_reason": "Group label and legal company are distinct identities."
+    }
+  ]
+}

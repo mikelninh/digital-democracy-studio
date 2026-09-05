@@ -1,0 +1,39 @@
+name: SafeTrace Entity Resolution v12
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/zsi_entity_resolver_v12.py
+      - scripts/test_zsi_entity_resolver_v12.py
+      - scripts/zsi_entity_holdout_v2.py
+      - zero-suffering-intelligence/entity-resolution/holdout-v2.json
+      - .github/workflows/zsi-entity-holdout-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  holdout-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run resolver regression tests
+        run: python scripts/test_zsi_entity_resolver_v12.py
+      - name: Evaluate frozen holdout v2
+        run: python scripts/zsi_entity_holdout_v2.py
+      - name: Commit evaluation receipt to current branch
+        run: |
+          git config user.name safetrace-eval
+          git config user.email actions@users.noreply.github.com
+          git add zero-suffering-intelligence/entity-resolution/results-holdout-v2.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore(safetrace): publish holdout v2 receipt'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
