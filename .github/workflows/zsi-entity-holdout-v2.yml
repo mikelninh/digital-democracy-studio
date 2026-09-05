@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - scripts/zsi_entity_resolver_v12.py
+      - scripts/test_zsi_entity_resolver_v12.py
       - scripts/zsi_entity_holdout_v2.py
       - zero-suffering-intelligence/entity-resolution/holdout-v2.json
       - .github/workflows/zsi-entity-holdout-v2.yml
@@ -23,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Run resolver regression tests
+        run: python scripts/test_zsi_entity_resolver_v12.py
       - name: Evaluate frozen holdout v2
         run: python scripts/zsi_entity_holdout_v2.py
       - name: Commit evaluation receipt to current branch
