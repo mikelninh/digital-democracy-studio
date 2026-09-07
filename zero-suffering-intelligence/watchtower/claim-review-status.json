@@ -1,24 +1,24 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-09-07T04:36:38+00:00",
+  "generated_at": "2026-09-07T12:27:22+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "detected_at": "2026-09-04T11:14:41+00:00",
-      "event_id": "29f27a7e940e1ab6"
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "event_id": "e5f5464e3cfeeae4"
     },
     "ZSI-C-0025": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "detected_at": "2026-09-04T11:14:41+00:00",
-      "event_id": "29f27a7e940e1ab6"
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "event_id": "e5f5464e3cfeeae4"
     },
     "ZSI-C-0015": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-FY2024",
-      "detected_at": "2026-09-07T04:36:38+00:00",
-      "event_id": "e2ac5b9ea7bd6d4a"
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "event_id": "0edc900e3e7afc76"
     },
     "ZSI-C-0018": {
       "status": "needs_review",
@@ -55,6 +55,24 @@
       "source_id": "SRC-BFR-KONTRED",
       "detected_at": "2026-09-04T20:43:59+00:00",
       "event_id": "9f761d7a2df9d5cb"
+    },
+    "ZSI-C-0009": {
+      "status": "needs_review",
+      "source_id": "SRC-PFG-HOME",
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "event_id": "ebc3cd2a137dbb8a"
+    },
+    "ZSI-C-0010": {
+      "status": "needs_review",
+      "source_id": "SRC-PFG-HOME",
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "event_id": "ebc3cd2a137dbb8a"
+    },
+    "ZSI-C-0011": {
+      "status": "needs_review",
+      "source_id": "SRC-PFG-HOME",
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "event_id": "ebc3cd2a137dbb8a"
     }
   }
 }

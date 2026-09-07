@@ -213,20 +213,18 @@ Meine Benachrichtigungen
 Keine Benachrichtigung
 Keine Benachrichtigung
 Täglich
-Täglich
-Täglich - bei Änderungen
 Täglich - bei Änderungen
 Wöchentlich
+Täglich - bei Änderungen
+Wöchentlich - bei Änderungen
 Wöchentlich
-Wöchentlich - bei Änderungen
-Wöchentlich - bei Änderungen
-Monatlich
 Monatlich
 Monatlich - bei Änderungen
+Vierteljährlich
+Monatlich
 Monatlich - bei Änderungen
-Vierteljährlich
-Vierteljährlich
 Vierteljährlich - bei Änderungen
+Vierteljährlich
 Vierteljährlich - bei Änderungen
 Keine Benachrichtigung
 Täglich

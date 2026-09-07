@@ -2,6 +2,101 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "0edc900e3e7afc76",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -215,16 +215,14 @@",
+        " Täglich",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        " Täglich - bei Änderungen",
+        " Wöchentlich",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich - bei Änderungen",
+        " Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        " Monatlich",
+        " Monatlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Monatlich",
+        " Monatlich - bei Änderungen",
+        "+Vierteljährlich - bei Änderungen",
+        " Vierteljährlich",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Vierteljährlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "e5f5464e3cfeeae4",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -238,2 +238,18 @@",
+        " Keine Benachrichtigung",
+        "+Keine Benachrichtigung",
+        "+Täglich",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich - bei Änderungen",
+        "+Wöchentlich",
+        "+Monatlich",
+        "+Monatlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Monatlich",
+        "+Monatlich - bei Änderungen",
+        "+Vierteljährlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Vierteljährlich - bei Änderungen",
+        "+Keine Benachrichtigung",
+        " Täglich"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "ebc3cd2a137dbb8a",
+      "source_id": "SRC-PFG-HOME",
+      "title": "Premium Food Group — Homepage / facts",
+      "detected_at": "2026-09-07T12:27:22+00:00",
+      "claim_ids": [
+        "ZSI-C-0009",
+        "ZSI-C-0010",
+        "ZSI-C-0011"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -90,5 +90,5 @@",
+        " Hochmotivierte und qualifizierte Kolleginnen und Kollegen sind das höchste Gut. Weltweit beschäftigen wir 21.000 Mitarbeiterinnen und Mitarbeiter, davon rund 17.000 in Deutschland.",
+        "-4. August 2026",
+        "-Erneut mehr als 100 neue Auszubildende innerhalb der Premium Food Group",
+        "-Die positive Entwicklung bei den Ausbildungs-Zahlen innerhalb der Premium Food Group halten weiter an: Zum zweiten Mal in Folge knackt das Familienunternehmen die Zahl von 100 neuen Azubis an den Standorten Rheda, Weißenfels, Sögel, Badbergen und Kellinghusen. Die Auszubildenden wurden am Montag am Stammsitz in Rheda-Wiedenbrück von Chief Transformation Officer Gabriele Beckmann in Empfang genommen.",
+        "+28. August 2026",
+        "+Alois Rainer bekräftigt in Rheda Export-Strategie für deutsches Fleisch",
+        "+Alois Rainer, Bundesminister für Landwirtschaft, Ernährung und Heimat, war am Donnerstag erstmals in seiner Funktion bei der Premium Food Group in Rheda-Wiedenbrück zu Gast. Clemens, Robert und Maximilian Tönnies führten den Minister durch die Produktion. Sie stellten dem CSU-Politiker die modernen Produktionsprozesse, Automatisierungslösungen und Nachhaltigkeitsmaßnahmen des Familienunternehmens vor. Am Rande der Veranstaltung bekräftigte Alois Rainer seine Export-Strategie im Sinne der Ganztiervermarktung: „Agrarexport hat für mich höchste Priorität.“",
+        " Weiterlesen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "e2ac5b9ea7bd6d4a",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
