@@ -1,9 +1,9 @@
 {
   "schema": "zsi.watchtower/status-0.9",
-  "generated_at": "2026-09-07T12:27:22+00:00",
+  "generated_at": "2026-09-07T21:29:13+00:00",
   "sources_total": 14,
-  "unchanged": 11,
-  "changed": 3,
+  "unchanged": 13,
+  "changed": 1,
   "baselines_created": 0,
   "fetch_suspect": 0,
   "fetch_failed": 0,
@@ -27,30 +27,18 @@
       "title": "Premium Food Group — Homepage / facts",
       "category": "company",
       "url": "https://premiumfoodgroup.de/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0009",
         "ZSI-C-0010",
         "ZSI-C-0011"
       ],
-      "previous_sha256": "8d10f23e61f02c66f69a83b248092e670fd4b0e08e2d87c026e1b6666df9b283",
+      "previous_sha256": "c2bb9787a74dc907ba23fb1826ede3a30710e5cebe3022f284419d681c412940",
       "http_status": 200,
       "content_type": "text/html",
       "sha256": "c2bb9787a74dc907ba23fb1826ede3a30710e5cebe3022f284419d681c412940",
-      "status": "changed",
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -90,5 +90,5 @@",
-        " Hochmotivierte und qualifizierte Kolleginnen und Kollegen sind das höchste Gut. Weltweit beschäftigen wir 21.000 Mitarbeiterinnen und Mitarbeiter, davon rund 17.000 in Deutschland.",
-        "-4. August 2026",
-        "-Erneut mehr als 100 neue Auszubildende innerhalb der Premium Food Group",
-        "-Die positive Entwicklung bei den Ausbildungs-Zahlen innerhalb der Premium Food Group halten weiter an: Zum zweiten Mal in Folge knackt das Familienunternehmen die Zahl von 100 neuen Azubis an den Standorten Rheda, Weißenfels, Sögel, Badbergen und Kellinghusen. Die Auszubildenden wurden am Montag am Stammsitz in Rheda-Wiedenbrück von Chief Transformation Officer Gabriele Beckmann in Empfang genommen.",
-        "+28. August 2026",
-        "+Alois Rainer bekräftigt in Rheda Export-Strategie für deutsches Fleisch",
-        "+Alois Rainer, Bundesminister für Landwirtschaft, Ernährung und Heimat, war am Donnerstag erstmals in seiner Funktion bei der Premium Food Group in Rheda-Wiedenbrück zu Gast. Clemens, Robert und Maximilian Tönnies führten den Minister durch die Produktion. Sie stellten dem CSU-Politiker die modernen Produktionsprozesse, Automatisierungslösungen und Nachhaltigkeitsmaßnahmen des Familienunternehmens vor. Am Rande der Veranstaltung bekräftigte Alois Rainer seine Export-Strategie im Sinne der Ganztiervermarktung: „Agrarexport hat für mich höchste Priorität.“",
-        " Weiterlesen"
-      ],
+      "status": "unchanged",
+      "diff": [],
       "character_count": 7935
     },
     {
@@ -58,7 +46,7 @@
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0012"
       ],
@@ -75,7 +63,7 @@
       "title": "Premium Food Group — Holding rename announcement",
       "category": "company",
       "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0013"
       ],
@@ -92,7 +80,7 @@
       "title": "Premium Food Group — History",
       "category": "company",
       "url": "https://premiumfoodgroup.de/en/group/history/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0004",
         "ZSI-C-0005"
@@ -110,7 +98,7 @@
       "title": "Tönnies Livestock — Landwirtschaft im Dialog",
       "category": "company",
       "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0001",
         "ZSI-C-0002"
@@ -128,7 +116,7 @@
       "title": "Tönnies Livestock — Über uns",
       "category": "company",
       "url": "https://toennies-livestock.de/ueber-uns/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0003",
         "ZSI-C-0014"
@@ -146,81 +134,56 @@
       "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
       "category": "official_register",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0006",
         "ZSI-C-0025"
       ],
-      "previous_sha256": "bbc4f97f74f0ad36fb777bbc0523dea03d1fb65b3bfb993a3a8d341f59087aef",
+      "previous_sha256": "053ba095f481a2cb6ee86fde0d42d6b5b5b8b0e4bfabab0cfc953336e5126f8c",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "053ba095f481a2cb6ee86fde0d42d6b5b5b8b0e4bfabab0cfc953336e5126f8c",
+      "sha256": "bbc4f97f74f0ad36fb777bbc0523dea03d1fb65b3bfb993a3a8d341f59087aef",
       "status": "changed",
       "diff": [
         "--- previous",
         "+++ current",
-        "@@ -238,2 +238,18 @@",
+        "@@ -238,18 +238,2 @@",
         " Keine Benachrichtigung",
-        "+Keine Benachrichtigung",
-        "+Täglich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich - bei Änderungen",
-        "+Wöchentlich",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
-        "+Keine Benachrichtigung",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich - bei Änderungen",
+        "-Wöchentlich",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
         " Täglich"
       ],
-      "character_count": 9364
+      "character_count": 9035
     },
     {
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
       "category": "official_register_historical",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0015"
       ],
-      "previous_sha256": "f5e83540911d6a0c319d14754a3cec297e2085ae04274095c172e55c091ee039",
+      "previous_sha256": "e79deac668cdc541f455dc00c68130ad2d90f9d60827a06e6575e84e3fb0593c",
       "http_status": 200,
       "content_type": "text/html",
       "sha256": "e79deac668cdc541f455dc00c68130ad2d90f9d60827a06e6575e84e3fb0593c",
-      "status": "changed",
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -215,16 +215,14 @@",
-        " Täglich",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        " Täglich - bei Änderungen",
-        " Wöchentlich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich - bei Änderungen",
-        " Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        " Monatlich",
-        " Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Monatlich",
-        " Monatlich - bei Änderungen",
-        "+Vierteljährlich - bei Änderungen",
-        " Vierteljährlich",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
-        " Vierteljährlich - bei Änderungen"
-      ],
+      "status": "unchanged",
+      "diff": [],
       "character_count": 8634
     },
     {
@@ -228,7 +191,7 @@
       "title": "BfR — KontRed",
       "category": "public_research",
       "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0007",
         "ZSI-C-0008"
@@ -246,7 +209,7 @@
       "title": "Bundeskartellamt — Vion/Tönnies decision",
       "category": "authority",
       "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0016",
         "ZSI-C-0017"
@@ -264,7 +227,7 @@
       "title": "Westfleisch — Unternehmensgruppe",
       "category": "company",
       "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0018",
         "ZSI-C-0019",
@@ -284,7 +247,7 @@
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0022",
         "ZSI-C-0023"
@@ -302,7 +265,7 @@
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [
         "ZSI-C-0024"
       ],
@@ -319,7 +282,7 @@
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "checked_at": "2026-09-07T12:27:22+00:00",
+      "checked_at": "2026-09-07T21:29:13+00:00",
       "claim_ids": [],
       "previous_sha256": "1ab481e83dc5f504bdf05c711c39b673bb5eed446230855b5bc56022655d5d41",
       "http_status": 200,
