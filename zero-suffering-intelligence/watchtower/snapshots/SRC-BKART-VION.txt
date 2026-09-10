@@ -182,7 +182,7 @@ Allgemeines
 Eintragung
 Registrierung
 Abfrage
-Auskunft
+Selbstauskunft
 Löschung
 Selbstreinigung
 Rechtsweg

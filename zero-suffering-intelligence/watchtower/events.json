@@ -2,6 +2,55 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "2de7629c57516049",
+      "source_id": "SRC-PHW-POULTRY",
+      "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
+      "detected_at": "2026-09-10T11:15:44+00:00",
+      "claim_ids": [
+        "ZSI-C-0024"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -57,11 +57,9 @@",
+        " Vollständige Rückverfolgbarkeit der Produkte",
+        "-WIESENHOF steht schon immer für 100 Prozent Geflügel aus Deutschland. 1995 haben wir als erstes Unternehmen der Lebensmittelwirtschaft die Herkunfts-Garantie eingeführt und alle Produkte entsprechend gekennzeichnet (Bild rechts: historische Abbildung von 1995). Die WIESENHOF Herkunfts-Garantie gewährleistet bis heute die vollständige Rückverfolgbarkeit der Produkte. Jede Hähnchenverpackung mit frischem und tiefgefrorenem Hähnchenfleisch mit Handelsklassenangabe enthält Informationen, von welchem Landwirt bzw. welcher Erzeugergemeinschaft das Tier aufgezogen wurde. Bei WIESENHOF befinden sich sämtliche Herstellungsstufen für Hähnchen- und Putenspezialitäten in Deutschland. Wir waren der erste Geflügelhersteller in Deutschland, der bereits seit 2000 auf GVO-freies Sojaschrot im Hähnchenfutter setzte. Schon seit vielen Jahren beziehen wir für unsere WIESENHOF-Hähnchenprodukte ausschließlich nachhaltiges und ressourcenschonendes GVO-freies Sojaschrot (z.B. ProTerra, RTRS) beispielsweise aus Brasilien und Europa. Das Überseesoja aus Brasilien ist nachhaltigkeitszertifiziert und entspricht zu 100% dem ProTerra-Standard.",
+        "+WIESENHOF steht schon immer für 100 Prozent Geflügel aus Deutschland. 1995 haben wir als erstes Unternehmen der Lebensmittelwirtschaft die Herkunfts-Garantie eingeführt und alle Produkte entsprechend gekennzeichnet (Bild rechts: historische Abbildung von 1995). Die WIESENHOF Herkunfts-Garantie gewährleistet bis heute die vollständige Rückverfolgbarkeit der Produkte. Jede Hähnchenverpackung mit frischem und tiefgefrorenem Hähnchenfleisch mit Handelsklassenangabe enthält Informationen, von welchem Landwirt bzw. welcher Erzeugergemeinschaft das Tier aufgezogen wurde. Bei WIESENHOF befinden sich sämtliche Herstellungsstufen für Hähnchen- und Putenspezialitäten in Deutschland. Wir waren der erste Geflügelhersteller in Deutschland, der bereits seit 2000 auf GVO-freies Sojaschrot im Hähnchenfutter setzte. Schon seit vielen Jahren beziehen wir für unsere WIESENHOF-Hähnchenprodukte ausschließlich GVO-freies Sojaschrot (z.B. ProTerra, RTRS) beispielsweise aus Brasilien und Europa. Das Überseesoja aus Brasilien ist zertifiziert und entspricht zu 100% dem ProTerra-Standard.",
+        " Kontinuierliche Steigerung des Tierwohls",
+        " Nach wie vor ist das Thema Tierwohl im Blickpunkt unseres Unternehmens und unserer Gesellschaft. 100% unserer deutschen Hähnchenproduktion stammt aus Tierwohlprogrammen, die in der Haltungsform 2 des Lebensmitteleinzelhandels oder höher einzustufen sind. Schon vor Jahren haben wir integrierte Systeme für eine deutsche Herkunft von WIESENHOF-Geflügelfleisch entlang der gesamten Wertschöpfungskette geschaffen. Wir beschäftigen uns schon seit mehr als 25 Jahren mit der Entwicklung alternativer Tierhaltungsformen und nehmen in der Geflügelbranche damit eine Vorreiterrolle ein.",
+        "-Ein wesentlicherer Meilenstein ist der Start unseres Privathof-Konzeptes (Haltungsform 3) für Hähnchen 2011 gewesen. In diesem Segment sind wir führender Anbieter. Unser Ziel ist der strukturelle Ausbau der Haltungsstufe 3 bis Ende 2040 auf 100% Anteil am Gesamtportfolio der PHW-Gruppe für Hähnchen im Frischebereich (Deutschland). Unser Privathof-Konzept erfüllt auch alle Kriterien der Europäischen Masthuhn-Initiative.",
+        "-Grundsätzlich sind wir bestrebt, unseren Anteil an Haltungsform 3 beim Hähnchen langfristig auszubauen. Dieses Ziel steht in Abhängigkeit der entsprechenden Marktnachfrage sowie einer angemessenen Mehrpreishonorierung und Stallgenehmigungsthematiken. Unser aktueller Anteil in Deutschland an Haltungsform 3 im Hähnchenbereich beträgt rund 12 %.",
+        "+Ein wesentlicherer Meilenstein ist der Start unseres Privathof-Konzeptes (Haltungsform 3) für Hähnchen 2011 gewesen. Unser Privathof-Konzept erfüllt auch alle Kriterien der Europäischen Masthuhn-Initiative.",
+        "+Wir möchten unsere Postion als einer der führenden Anbieter der Haltungsform 3 beibehalten und sind grundsätzlich bestrebt, unseren Anteil an Haltungsform 3 beim Hähnchen langfristig auszubauen. Dies steht in Abhängigkeit der entsprechenden Marktnachfrage sowie einer angemessenen Mehrpreishonorierung und Stallgenehmigungsthematiken. Unser aktueller Anteil in Deutschland an Haltungsform 3 im Hähnchenbereich beträgt rund 12 %.",
+        " Seit 2024 vermarkten wir auch Putenprodukte aus Haltungsstufe 3. Derzeit stammen ca. 80% unserer deutschen Putenproduktion aus Haltungsform 2 und höher. Dabei stammt 100% unserer deutschen Putenware im LEH aus Haltungsform 2 und Haltungsform 3. Wir fordern auch weiterhin eine verbindliche Herkunftskennzeichnung für die Gastronomie und den Außer Haus-Verzehr.",
+        " 100% unserer deutschen Entenproduktion stammt aus der Haltungsform 2. Wir haben 2025 den Standard für Haltungsform 3 für die Entenproduktion entwickelt. Derzeit suchen wir aktiv Handelspartner, die gewillt sind, gemeinsam mit uns den Markt für Entenprodukte aus Haltungsform 3 zu testen.",
+        "-Weitere detaillierte Informationen zu unserem Engagement im Bereich Tierwohl finden Sie hier:",
+        "-NACHHALTIGKEITSBERICHT 2023",
+        " WIESENHOF Privathof Geflügel"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "f1f57b398ecdfa88",
+      "source_id": "SRC-BKART-VION",
+      "title": "Bundeskartellamt — Vion/Tönnies decision",
+      "detected_at": "2026-09-10T11:15:44+00:00",
+      "claim_ids": [
+        "ZSI-C-0016",
+        "ZSI-C-0017"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -184,3 +184,3 @@",
+        " Abfrage",
+        "-Auskunft",
+        "+Selbstauskunft",
+        " Löschung"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "f30f233f866fc9cf",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
