@@ -2,6 +2,25 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "032d4a99d50de5dc",
+      "source_id": "SRC-PHW-POULTRY",
+      "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
+      "detected_at": "2026-09-10T16:21:55+00:00",
+      "claim_ids": [
+        "ZSI-C-0024"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -49,3 +49,3 @@",
+        " Unsere selbstständigen Vertragslandwirte – eine erfolgreich gelebte Partnerschaft",
+        "-Um den Wirtschaftsstandort Deutschland weiter nachhaltig zu stärken, setzen wir uns für den Erhalt und die Weiterentwicklung der Geflügelhaltung ein. Unsere Marke WIESENHOF steht für 100 Prozent Geflügel aus Deutschland – ein zentrales Ziel auf unserer Nachhaltigkeitsagenda.",
+        "+Um den Wirtschaftsstandort Deutschland weiter nachhaltig zu stärken, setzen wir uns für den Erhalt und die Weiterentwicklung der Geflügelhaltung ein. Unsere Marke WIESENHOF steht für 100 Prozent Geflügel aus Deutschland.",
+        " Sichere Herkunft und vertikale Integration"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "2de7629c57516049",
       "source_id": "SRC-PHW-POULTRY",
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",

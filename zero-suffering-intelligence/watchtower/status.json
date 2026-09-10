@@ -1,9 +1,9 @@
 {
   "schema": "zsi.watchtower/status-0.9",
-  "generated_at": "2026-09-10T11:15:44+00:00",
+  "generated_at": "2026-09-10T16:21:55+00:00",
   "sources_total": 14,
-  "unchanged": 12,
-  "changed": 2,
+  "unchanged": 13,
+  "changed": 1,
   "baselines_created": 0,
   "fetch_suspect": 0,
   "fetch_failed": 0,
@@ -30,7 +30,7 @@
       "title": "Premium Food Group — Homepage / facts",
       "category": "company",
       "url": "https://premiumfoodgroup.de/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0009",
         "ZSI-C-0010",
@@ -49,7 +49,7 @@
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0012"
       ],
@@ -66,7 +66,7 @@
       "title": "Premium Food Group — Holding rename announcement",
       "category": "company",
       "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0013"
       ],
@@ -83,7 +83,7 @@
       "title": "Premium Food Group — History",
       "category": "company",
       "url": "https://premiumfoodgroup.de/en/group/history/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0004",
         "ZSI-C-0005"
@@ -101,7 +101,7 @@
       "title": "Tönnies Livestock — Landwirtschaft im Dialog",
       "category": "company",
       "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0001",
         "ZSI-C-0002"
@@ -119,7 +119,7 @@
       "title": "Tönnies Livestock — Über uns",
       "category": "company",
       "url": "https://toennies-livestock.de/ueber-uns/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0003",
         "ZSI-C-0014"
@@ -137,7 +137,7 @@
       "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
       "category": "official_register",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0006",
         "ZSI-C-0025"
@@ -155,7 +155,7 @@
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
       "category": "official_register_historical",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0015"
       ],
@@ -172,7 +172,7 @@
       "title": "BfR — KontRed",
       "category": "public_research",
       "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0007",
         "ZSI-C-0008"
@@ -190,25 +190,17 @@
       "title": "Bundeskartellamt — Vion/Tönnies decision",
       "category": "authority",
       "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0016",
         "ZSI-C-0017"
       ],
-      "previous_sha256": "e128fd96c84b102a8956424c81d826ded817a24c2baf3c140b30eaa254961626",
+      "previous_sha256": "66b9ff1ec8303465c6f6e463197696ef36a39f97a82b613538206144d5e471a7",
       "http_status": 200,
       "content_type": "text/html",
       "sha256": "66b9ff1ec8303465c6f6e463197696ef36a39f97a82b613538206144d5e471a7",
-      "status": "changed",
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -184,3 +184,3 @@",
-        " Abfrage",
-        "-Auskunft",
-        "+Selbstauskunft",
-        " Löschung"
-      ],
+      "status": "unchanged",
+      "diff": [],
       "character_count": 12378
     },
     {
@@ -216,7 +208,7 @@
       "title": "Westfleisch — Unternehmensgruppe",
       "category": "company",
       "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0018",
         "ZSI-C-0019",
@@ -236,7 +228,7 @@
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0022",
         "ZSI-C-0023"
@@ -254,42 +246,32 @@
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [
         "ZSI-C-0024"
       ],
-      "previous_sha256": "34e96aeffc2093e224f2ec0043b40c2fb81123f7157eb7a81b6ca66c4bb15962",
+      "previous_sha256": "986f16f68912e82f31ca910e94f99b3524fb874ceb8d6de3a543f88a9e0b7e07",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "986f16f68912e82f31ca910e94f99b3524fb874ceb8d6de3a543f88a9e0b7e07",
+      "sha256": "c115d22901e64ad3cda0583f1563a072b253242a685135d151de9dd73ca681f3",
       "status": "changed",
       "diff": [
         "--- previous",
         "+++ current",
-        "@@ -57,11 +57,9 @@",
-        " Vollständige Rückverfolgbarkeit der Produkte",
-        "-WIESENHOF steht schon immer für 100 Prozent Geflügel aus Deutschland. 1995 haben wir als erstes Unternehmen der Lebensmittelwirtschaft die Herkunfts-Garantie eingeführt und alle Produkte entsprechend gekennzeichnet (Bild rechts: historische Abbildung von 1995). Die WIESENHOF Herkunfts-Garantie gewährleistet bis heute die vollständige Rückverfolgbarkeit der Produkte. Jede Hähnchenverpackung mit frischem und tiefgefrorenem Hähnchenfleisch mit Handelsklassenangabe enthält Informationen, von welchem Landwirt bzw. welcher Erzeugergemeinschaft das Tier aufgezogen wurde. Bei WIESENHOF befinden sich sämtliche Herstellungsstufen für Hähnchen- und Putenspezialitäten in Deutschland. Wir waren der erste Geflügelhersteller in Deutschland, der bereits seit 2000 auf GVO-freies Sojaschrot im Hähnchenfutter setzte. Schon seit vielen Jahren beziehen wir für unsere WIESENHOF-Hähnchenprodukte ausschließlich nachhaltiges und ressourcenschonendes GVO-freies Sojaschrot (z.B. ProTerra, RTRS) beispielsweise aus Brasilien und Europa. Das Überseesoja aus Brasilien ist nachhaltigkeitszertifiziert und entspricht zu 100% dem ProTerra-Standard.",
-        "+WIESENHOF steht schon immer für 100 Prozent Geflügel aus Deutschland. 1995 haben wir als erstes Unternehmen der Lebensmittelwirtschaft die Herkunfts-Garantie eingeführt und alle Produkte entsprechend gekennzeichnet (Bild rechts: historische Abbildung von 1995). Die WIESENHOF Herkunfts-Garantie gewährleistet bis heute die vollständige Rückverfolgbarkeit der Produkte. Jede Hähnchenverpackung mit frischem und tiefgefrorenem Hähnchenfleisch mit Handelsklassenangabe enthält Informationen, von welchem Landwirt bzw. welcher Erzeugergemeinschaft das Tier aufgezogen wurde. Bei WIESENHOF befinden sich sämtliche Herstellungsstufen für Hähnchen- und Putenspezialitäten in Deutschland. Wir waren der erste Geflügelhersteller in Deutschland, der bereits seit 2000 auf GVO-freies Sojaschrot im Hähnchenfutter setzte. Schon seit vielen Jahren beziehen wir für unsere WIESENHOF-Hähnchenprodukte ausschließlich GVO-freies Sojaschrot (z.B. ProTerra, RTRS) beispielsweise aus Brasilien und Europa. Das Überseesoja aus Brasilien ist zertifiziert und entspricht zu 100% dem ProTerra-Standard.",
-        " Kontinuierliche Steigerung des Tierwohls",
-        " Nach wie vor ist das Thema Tierwohl im Blickpunkt unseres Unternehmens und unserer Gesellschaft. 100% unserer deutschen Hähnchenproduktion stammt aus Tierwohlprogrammen, die in der Haltungsform 2 des Lebensmitteleinzelhandels oder höher einzustufen sind. Schon vor Jahren haben wir integrierte Systeme für eine deutsche Herkunft von WIESENHOF-Geflügelfleisch entlang der gesamten Wertschöpfungskette geschaffen. Wir beschäftigen uns schon seit mehr als 25 Jahren mit der Entwicklung alternativer Tierhaltungsformen und nehmen in der Geflügelbranche damit eine Vorreiterrolle ein.",
-        "-Ein wesentlicherer Meilenstein ist der Start unseres Privathof-Konzeptes (Haltungsform 3) für Hähnchen 2011 gewesen. In diesem Segment sind wir führender Anbieter. Unser Ziel ist der strukturelle Ausbau der Haltungsstufe 3 bis Ende 2040 auf 100% Anteil am Gesamtportfolio der PHW-Gruppe für Hähnchen im Frischebereich (Deutschland). Unser Privathof-Konzept erfüllt auch alle Kriterien der Europäischen Masthuhn-Initiative.",
-        "-Grundsätzlich sind wir bestrebt, unseren Anteil an Haltungsform 3 beim Hähnchen langfristig auszubauen. Dieses Ziel steht in Abhängigkeit der entsprechenden Marktnachfrage sowie einer angemessenen Mehrpreishonorierung und Stallgenehmigungsthematiken. Unser aktueller Anteil in Deutschland an Haltungsform 3 im Hähnchenbereich beträgt rund 12 %.",
-        "+Ein wesentlicherer Meilenstein ist der Start unseres Privathof-Konzeptes (Haltungsform 3) für Hähnchen 2011 gewesen. Unser Privathof-Konzept erfüllt auch alle Kriterien der Europäischen Masthuhn-Initiative.",
-        "+Wir möchten unsere Postion als einer der führenden Anbieter der Haltungsform 3 beibehalten und sind grundsätzlich bestrebt, unseren Anteil an Haltungsform 3 beim Hähnchen langfristig auszubauen. Dies steht in Abhängigkeit der entsprechenden Marktnachfrage sowie einer angemessenen Mehrpreishonorierung und Stallgenehmigungsthematiken. Unser aktueller Anteil in Deutschland an Haltungsform 3 im Hähnchenbereich beträgt rund 12 %.",
-        " Seit 2024 vermarkten wir auch Putenprodukte aus Haltungsstufe 3. Derzeit stammen ca. 80% unserer deutschen Putenproduktion aus Haltungsform 2 und höher. Dabei stammt 100% unserer deutschen Putenware im LEH aus Haltungsform 2 und Haltungsform 3. Wir fordern auch weiterhin eine verbindliche Herkunftskennzeichnung für die Gastronomie und den Außer Haus-Verzehr.",
-        " 100% unserer deutschen Entenproduktion stammt aus der Haltungsform 2. Wir haben 2025 den Standard für Haltungsform 3 für die Entenproduktion entwickelt. Derzeit suchen wir aktiv Handelspartner, die gewillt sind, gemeinsam mit uns den Markt für Entenprodukte aus Haltungsform 3 zu testen.",
-        "-Weitere detaillierte Informationen zu unserem Engagement im Bereich Tierwohl finden Sie hier:",
-        "-NACHHALTIGKEITSBERICHT 2023",
-        " WIESENHOF Privathof Geflügel"
+        "@@ -49,3 +49,3 @@",
+        " Unsere selbstständigen Vertragslandwirte – eine erfolgreich gelebte Partnerschaft",
+        "-Um den Wirtschaftsstandort Deutschland weiter nachhaltig zu stärken, setzen wir uns für den Erhalt und die Weiterentwicklung der Geflügelhaltung ein. Unsere Marke WIESENHOF steht für 100 Prozent Geflügel aus Deutschland – ein zentrales Ziel auf unserer Nachhaltigkeitsagenda.",
+        "+Um den Wirtschaftsstandort Deutschland weiter nachhaltig zu stärken, setzen wir uns für den Erhalt und die Weiterentwicklung der Geflügelhaltung ein. Unsere Marke WIESENHOF steht für 100 Prozent Geflügel aus Deutschland.",
+        " Sichere Herkunft und vertikale Integration"
       ],
-      "character_count": 7312
+      "character_count": 7257
     },
     {
       "source_id": "SRC-PHW-SUBSIDIARIES",
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "checked_at": "2026-09-10T11:15:44+00:00",
+      "checked_at": "2026-09-10T16:21:55+00:00",
       "claim_ids": [],
       "previous_sha256": "1ab481e83dc5f504bdf05c711c39b673bb5eed446230855b5bc56022655d5d41",
       "http_status": 200,

@@ -1,6 +1,6 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-09-10T11:15:44+00:00",
+  "generated_at": "2026-09-10T16:21:55+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
@@ -89,8 +89,8 @@
     "ZSI-C-0024": {
       "status": "needs_review",
       "source_id": "SRC-PHW-POULTRY",
-      "detected_at": "2026-09-10T11:15:44+00:00",
-      "event_id": "2de7629c57516049"
+      "detected_at": "2026-09-10T16:21:55+00:00",
+      "event_id": "032d4a99d50de5dc"
     }
   }
 }
