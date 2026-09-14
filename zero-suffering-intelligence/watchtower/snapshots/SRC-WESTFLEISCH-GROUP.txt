@@ -85,11 +85,6 @@ Info für Landwirte
 2025
 2024
 ASP Spezial
-ASP Spezial
-Für Landwirte
-Für Viehhandel & Logistik
-Für Lebensmittel-Handel
-Für Verbraucher
 Beirat für Kooperationsfragen
 Ansprechpartner
 Verkauf / Export
@@ -393,7 +388,6 @@ Dialog
 Karriere
 Westfleisch informiert
 Info für Landwirte
-ASP Spezial
 Impressum
 Datenschutz
 AGB

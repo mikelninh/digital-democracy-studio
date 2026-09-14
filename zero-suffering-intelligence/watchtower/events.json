@@ -2,6 +2,70 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "0859a3f0738ae8e1",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-09-14T21:47:35+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -87,7 +87,2 @@",
+        " ASP Spezial",
+        "-ASP Spezial",
+        "-Für Landwirte",
+        "-Für Viehhandel & Logistik",
+        "-Für Lebensmittel-Handel",
+        "-Für Verbraucher",
+        " Beirat für Kooperationsfragen",
+        "@@ -395,3 +390,2 @@",
+        " Info für Landwirte",
+        "-ASP Spezial",
+        " Impressum"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "f30a6481ff839d7a",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-09-14T21:47:35+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -213,20 +213,2 @@",
+        " Keine Benachrichtigung",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        "-Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        " Täglich"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "032d4a99d50de5dc",
       "source_id": "SRC-PHW-POULTRY",
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
