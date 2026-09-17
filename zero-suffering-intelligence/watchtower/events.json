@@ -2,6 +2,31 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "2d37c7de79c46aa5",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-09-17T11:38:45+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -73,5 +73,5 @@",
+        " Bauernliebe",
+        "+Gute Haltung",
+        "+Strohwohl",
+        " Mehr Tierwohl",
+        "-Strohwohl",
+        "-Gute Haltung",
+        " Hof-Rind"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "0859a3f0738ae8e1",
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "title": "Westfleisch — Unternehmensgruppe",
