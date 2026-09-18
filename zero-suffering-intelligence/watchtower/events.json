@@ -2,6 +2,59 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "7273b1fcd20784f5",
+      "source_id": "SRC-BFR-KONTRED",
+      "title": "BfR — KontRed",
+      "detected_at": "2026-09-18T20:52:37+00:00",
+      "claim_ids": [
+        "ZSI-C-0007",
+        "ZSI-C-0008"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -357,3 +357,3 @@",
+        " BfR-Kinderbuch",
+        "-Wissens-Comic",
+        "+BfR-Wissens-Comic",
+        " Jahresberichte"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "21bfc55e789f6b96",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-09-18T20:52:37+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -238,2 +238,4 @@",
+        " Keine Benachrichtigung",
+        "+Keine Benachrichtigung",
+        "+Täglich",
+        " Täglich",
+        "@@ -241,5 +243,12 @@",
+        " Wöchentlich",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich - bei Änderungen",
+        "+Wöchentlich",
+        " Wöchentlich - bei Änderungen",
+        " Monatlich",
+        "+Monatlich",
+        " Monatlich - bei Änderungen",
+        "+Monatlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Vierteljährlich - bei Änderungen",
+        " Vierteljährlich"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "2d37c7de79c46aa5",
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "title": "Westfleisch — Unternehmensgruppe",

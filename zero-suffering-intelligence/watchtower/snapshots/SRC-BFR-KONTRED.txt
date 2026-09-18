@@ -355,7 +355,7 @@ Wissenschaftsberichte
 Fachpublikationen
 BfR2GO
 BfR-Kinderbuch
-Wissens-Comic
+BfR-Wissens-Comic
 Jahresberichte
 Broschüren
 Verbrauchermonitor
