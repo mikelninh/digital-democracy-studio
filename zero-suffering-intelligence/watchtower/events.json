@@ -2,6 +2,71 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "031b78bcc49f4825",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-09-21T21:57:03+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -217,12 +217,13 @@",
+        " Täglich - bei Änderungen",
+        "+Wöchentlich",
+        " Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich",
+        " Wöchentlich - bei Änderungen",
+        " Monatlich",
+        "+Wöchentlich",
+        " Monatlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Wöchentlich - bei Änderungen",
+        "+Vierteljährlich - bei Änderungen",
+        " Monatlich",
+        "-Vierteljährlich",
+        " Monatlich - bei Änderungen",
+        "-Vierteljährlich - bei Änderungen",
+        " Vierteljährlich"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "d08b0ffb405b3365",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-09-21T21:57:03+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -242,12 +242,13 @@",
+        " Täglich - bei Änderungen",
+        "+Wöchentlich",
+        " Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich",
+        " Wöchentlich - bei Änderungen",
+        " Monatlich",
+        "+Wöchentlich",
+        " Monatlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Wöchentlich - bei Änderungen",
+        "+Vierteljährlich - bei Änderungen",
+        " Monatlich",
+        "-Vierteljährlich",
+        " Monatlich - bei Änderungen",
+        "-Vierteljährlich - bei Änderungen",
+        " Vierteljährlich"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "a1f01bf936971310",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
