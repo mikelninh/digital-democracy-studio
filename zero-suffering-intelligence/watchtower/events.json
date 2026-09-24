@@ -2,6 +2,45 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "d5748e2ddeed92d1",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-09-24T17:07:40+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -39,3 +39,3 @@",
+        " Partnervertrag Färse",
+        "-HF3 Partnervertrag Rind",
+        "+ITW3 Partnervertrag Rind",
+        " Nutzvieh",
+        "@@ -45,6 +45,6 @@",
+        " Vermarktungspartner",
+        "-HF3 Mäster gesucht",
+        "-HF3 Mäster gesucht",
+        "-HF3 Rind",
+        "-HF3 Schwein",
+        "+ITW3 Mäster gesucht",
+        "+ITW3 Mäster gesucht",
+        "+IT3 Rind",
+        "+ITW3 Schwein",
+        " Ihr Kompetenzteam",
+        "@@ -70,2 +70,5 @@",
+        " ITW-Formulare Allgemein",
+        "+Tierwohlprogramme",
+        "+Tierwohlprogramme",
+        "+Schlachtkühe Haltungsform 3",
+        " Westfleisch informiert"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "f0e145722dde5e14",
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "title": "Westfleisch — Unternehmensgruppe",

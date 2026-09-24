@@ -37,16 +37,16 @@ Rind
 Partnervertrag Rind-Plus
 Partnervertrag Rind Direkt
 Partnervertrag Färse
-HF3 Partnervertrag Rind
+ITW3 Partnervertrag Rind
 Nutzvieh
 Nutzvieh
 BestFerkel
 Kälber/ Fresser
 Vermarktungspartner
-HF3 Mäster gesucht
-HF3 Mäster gesucht
-HF3 Rind
-HF3 Schwein
+ITW3 Mäster gesucht
+ITW3 Mäster gesucht
+IT3 Rind
+ITW3 Schwein
 Ihr Kompetenzteam
 Westfleisch-Notierung Schlachtsauen
 Westfleisch als Bündler
@@ -68,6 +68,9 @@ Initiative Tierwohl
 ITW-Formulare Schweinehalter
 ITW-Formulare Rinderhalter
 ITW-Formulare Allgemein
+Tierwohlprogramme
+Tierwohlprogramme
+Schlachtkühe Haltungsform 3
 Westfleisch informiert
 Westfleisch informiert
 Xtranet (Extranet 2.0)
