@@ -2,6 +2,34 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "f0e145722dde5e14",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-09-24T11:41:34+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -70,10 +70,2 @@",
+        " ITW-Formulare Allgemein",
+        "-Tierwohlprogramme",
+        "-Tierwohlprogramme",
+        "-Bauernliebe",
+        "-Gute Haltung",
+        "-Strohwohl",
+        "-Mehr Tierwohl",
+        "-Hof-Rind",
+        "-Schlachtkühe Haltungsform 3",
+        " Westfleisch informiert"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "287c09e5ee9315b2",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
