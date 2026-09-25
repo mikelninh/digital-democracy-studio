@@ -18,9 +18,9 @@ Pflanzliche Alternativen
 Tiernahrung
 Wurst
 Verantwortung
-Premium Impact Report
+Premium Impact Report_alt
 Zukunftsgerechte Ernährung
-Klimaschutz
+Klimaschutz_alt
 Soziale Sorgfalt
 Tierschutz
 Organisation
@@ -118,9 +118,9 @@ Pflanzliche Alternativen
 Tiernahrung
 Wurst
 Verantwortung
-Premium Impact Report
+Premium Impact Report_alt
 Zukunftsgerechte Ernährung
-Klimaschutz
+Klimaschutz_alt
 Soziale Sorgfalt
 Tierschutz
 Organisation
@@ -149,9 +149,9 @@ Pflanzliche Alternativen
 Tiernahrung
 Wurst
 Verantwortung
-Premium Impact Report
+Premium Impact Report_alt
 Zukunftsgerechte Ernährung
-Klimaschutz
+Klimaschutz_alt
 Soziale Sorgfalt
 Tierschutz
 Organisation
