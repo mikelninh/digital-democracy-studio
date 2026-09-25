@@ -2,6 +2,122 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "8617fa6d9984f669",
+      "source_id": "SRC-PHW-SUBSIDIARIES",
+      "title": "PHW-Gruppe — Tochterunternehmen / Integration",
+      "detected_at": "2026-09-25T17:08:00+00:00",
+      "claim_ids": [],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -31,3 +31,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt",
+        "@@ -74,3 +74,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "69661201f3dad06e",
+      "source_id": "SRC-PHW-POULTRY",
+      "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
+      "detected_at": "2026-09-25T17:08:00+00:00",
+      "claim_ids": [
+        "ZSI-C-0024"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -31,3 +31,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt",
+        "@@ -99,3 +99,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "cbe4f3e278a632f9",
+      "source_id": "SRC-PHW-ABOUT",
+      "title": "PHW-Gruppe — Über uns",
+      "detected_at": "2026-09-25T17:08:00+00:00",
+      "claim_ids": [
+        "ZSI-C-0022",
+        "ZSI-C-0023"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -31,3 +31,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt",
+        "@@ -81,3 +81,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "36ed98dab3f64a71",
+      "source_id": "SRC-PFG-ABOUT",
+      "title": "Premium Food Group — Über uns",
+      "detected_at": "2026-09-25T17:08:00+00:00",
+      "claim_ids": [
+        "ZSI-C-0012"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -37,3 +37,3 @@",
+        " Die Gruppe liefert darüber hinaus Rohstoffe für die Pharma-Industrie und für Bio-Kraftstoff, betreibt eigene Kühlhäuser sowie einen Frische- und Ultrafrische-Logistiker und hat in viele weitere Felder entlang der Wertschöpfungskette investiert.",
+        "-Wir richten die Produktion unserer Lebensmittel auf die Bedürfnisse der Verbraucher aus und achten dabei auf innovative und nachhaltige Produktionsprozesse.",
+        "+Wir richten die Produktion unserer Lebensmittel auf die Bedürfnisse der Verbraucher aus und achten dabei auf innovative Produktionsprozesse und einen effizienten Einsatz von Ressourcen.",
+        " Clemens Tönnies",
+        "@@ -41,3 +41,3 @@",
+        " Breite Ausrichtung",
+        "-Die Premium Food Group agiert zukunftsgerecht und ist damit ein wertvoller Marktteilnehmer, Partner und Wirtschaftsfaktor in der Region. Die Produkte bieten hochwertige Qualität und ein genussvolles Geschmackserlebnis, während gleichzeitig durch innovative und nachhaltige Prozesse ein positiver Einfluss auf Mensch, Tier und Umwelt sichergestellt wird.",
+        "+Die Premium Food Group agiert zukunftsgerecht und ist damit ein wertvoller Marktteilnehmer, Partner und Wirtschaftsfaktor in der Region. Die Produkte bieten hochwertige Qualität und ein genussvolles Geschmackserlebnis, während gleichzeitig durch innovative Prozesse daran gearbeitet wird, Auswirkungen auf Mensch, Tier und Umwelt zu berücksichtigen und kontinuierlich zu verbessern.",
+        " Unsere langjährige Erfahrung und Fachkompetenz machen uns zu einem verlässlichen Partner und modernen Versorger. Als Brücke zwischen Landwirtschaft sowie Verbraucherinnen und Verbrauchern nehmen wir unsere Verantwortung ernst und suchen den Ausgleich zum Nutzen aller beteiligten Seiten."
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "cca06d7a44614821",
+      "source_id": "SRC-PFG-HOME",
+      "title": "Premium Food Group — Homepage / facts",
+      "detected_at": "2026-09-25T17:08:00+00:00",
+      "claim_ids": [
+        "ZSI-C-0009",
+        "ZSI-C-0010",
+        "ZSI-C-0011"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -77,3 +77,3 @@",
+        " Ingredients",
+        "-Allein schon aus Nachhaltigkeitsgründen ist die Ganztiervermarktung ein wichtiges Themenfeld. Und tatsächlich gibt es weltweit enorm viele Produkte, die tierische Bestandteile enthalten. Kerosin für Schiffe, Flugzeuge und Co. sowie Öle werden ebenso aus Nebenprodukten gewonnen wie Zahnbürsten, Zahnpasta oder Medikamenten-Kapseln. Auch in der Fischzucht setzen die Firmen auf tierische Proteine.",
+        "+Auch unter Nachhaltigkeitsaspekten ist die Ganztiervermarktung für uns ein wichtiges Themenfeld. Dabei geht es darum, möglichst viele Bestandteile eines Tieres zu nutzen und anfallende Nebenprodukte weiteren Verwendungszwecken zuzuführen. Tatsächlich gibt es weltweit zahlreiche Produkte, die tierische Bestandteile enthalten. Kraftstoffe und Öle können ebenso aus tierischen Nebenprodukten gewonnen werden wie Bestandteile von Zahnbürsten, Zahnpasta oder Medikamentenkapseln. Auch in der Fischzucht werden tierische Proteine eingesetzt.",
+        " Mehr erfahren"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "b2ffbb6868e7244d",
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "title": "Westfleisch — Unternehmensgruppe",

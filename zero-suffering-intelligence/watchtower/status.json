@@ -1,9 +1,9 @@
 {
   "schema": "zsi.watchtower/status-0.9",
-  "generated_at": "2026-09-25T11:47:32+00:00",
+  "generated_at": "2026-09-25T17:08:00+00:00",
   "sources_total": 14,
-  "unchanged": 12,
-  "changed": 2,
+  "unchanged": 8,
+  "changed": 6,
   "baselines_created": 0,
   "fetch_suspect": 0,
   "fetch_failed": 0,
@@ -14,6 +14,7 @@
     "ZSI-C-0009",
     "ZSI-C-0010",
     "ZSI-C-0011",
+    "ZSI-C-0012",
     "ZSI-C-0015",
     "ZSI-C-0016",
     "ZSI-C-0017",
@@ -21,6 +22,8 @@
     "ZSI-C-0019",
     "ZSI-C-0020",
     "ZSI-C-0021",
+    "ZSI-C-0022",
+    "ZSI-C-0023",
     "ZSI-C-0024",
     "ZSI-C-0025"
   ],
@@ -30,70 +33,64 @@
       "title": "Premium Food Group — Homepage / facts",
       "category": "company",
       "url": "https://premiumfoodgroup.de/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0009",
         "ZSI-C-0010",
         "ZSI-C-0011"
       ],
-      "previous_sha256": "b22afef9d04d3931a98ab057b054e9b5b497592e5e68a58d0f0b1f27c11a8577",
+      "previous_sha256": "c2bb9787a74dc907ba23fb1826ede3a30710e5cebe3022f284419d681c412940",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "c2bb9787a74dc907ba23fb1826ede3a30710e5cebe3022f284419d681c412940",
+      "sha256": "0036343271edd88669e7dc75dc0a00ece9c85ced40c196375a2c7c07bc386e90",
       "status": "changed",
       "diff": [
         "--- previous",
         "+++ current",
-        "@@ -20,5 +20,5 @@",
-        " Verantwortung",
-        "-Premium Impact Report_alt",
-        "+Premium Impact Report",
-        " Zukunftsgerechte Ernährung",
-        "-Klimaschutz_alt",
-        "+Klimaschutz",
-        " Soziale Sorgfalt",
-        "@@ -120,5 +120,5 @@",
-        " Verantwortung",
-        "-Premium Impact Report_alt",
-        "+Premium Impact Report",
-        " Zukunftsgerechte Ernährung",
-        "-Klimaschutz_alt",
-        "+Klimaschutz",
-        " Soziale Sorgfalt",
-        "@@ -151,5 +151,5 @@",
-        " Verantwortung",
-        "-Premium Impact Report_alt",
-        "+Premium Impact Report",
-        " Zukunftsgerechte Ernährung",
-        "-Klimaschutz_alt",
-        "+Klimaschutz",
-        " Soziale Sorgfalt"
+        "@@ -77,3 +77,3 @@",
+        " Ingredients",
+        "-Allein schon aus Nachhaltigkeitsgründen ist die Ganztiervermarktung ein wichtiges Themenfeld. Und tatsächlich gibt es weltweit enorm viele Produkte, die tierische Bestandteile enthalten. Kerosin für Schiffe, Flugzeuge und Co. sowie Öle werden ebenso aus Nebenprodukten gewonnen wie Zahnbürsten, Zahnpasta oder Medikamenten-Kapseln. Auch in der Fischzucht setzen die Firmen auf tierische Proteine.",
+        "+Auch unter Nachhaltigkeitsaspekten ist die Ganztiervermarktung für uns ein wichtiges Themenfeld. Dabei geht es darum, möglichst viele Bestandteile eines Tieres zu nutzen und anfallende Nebenprodukte weiteren Verwendungszwecken zuzuführen. Tatsächlich gibt es weltweit zahlreiche Produkte, die tierische Bestandteile enthalten. Kraftstoffe und Öle können ebenso aus tierischen Nebenprodukten gewonnen werden wie Bestandteile von Zahnbürsten, Zahnpasta oder Medikamentenkapseln. Auch in der Fischzucht werden tierische Proteine eingesetzt.",
+        " Mehr erfahren"
       ],
-      "character_count": 7935
+      "character_count": 8076
     },
     {
       "source_id": "SRC-PFG-ABOUT",
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0012"
       ],
       "previous_sha256": "c09ecbb85461625732bcfd4bec90cbabdb4aa866e312810999ae4b6564e9813e",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "c09ecbb85461625732bcfd4bec90cbabdb4aa866e312810999ae4b6564e9813e",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 3254
+      "sha256": "0f778bdc0ac14e660bc838fcc1e55a931ea3df5f1a087c426702586c59b037ab",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -37,3 +37,3 @@",
+        " Die Gruppe liefert darüber hinaus Rohstoffe für die Pharma-Industrie und für Bio-Kraftstoff, betreibt eigene Kühlhäuser sowie einen Frische- und Ultrafrische-Logistiker und hat in viele weitere Felder entlang der Wertschöpfungskette investiert.",
+        "-Wir richten die Produktion unserer Lebensmittel auf die Bedürfnisse der Verbraucher aus und achten dabei auf innovative und nachhaltige Produktionsprozesse.",
+        "+Wir richten die Produktion unserer Lebensmittel auf die Bedürfnisse der Verbraucher aus und achten dabei auf innovative Produktionsprozesse und einen effizienten Einsatz von Ressourcen.",
+        " Clemens Tönnies",
+        "@@ -41,3 +41,3 @@",
+        " Breite Ausrichtung",
+        "-Die Premium Food Group agiert zukunftsgerecht und ist damit ein wertvoller Marktteilnehmer, Partner und Wirtschaftsfaktor in der Region. Die Produkte bieten hochwertige Qualität und ein genussvolles Geschmackserlebnis, während gleichzeitig durch innovative und nachhaltige Prozesse ein positiver Einfluss auf Mensch, Tier und Umwelt sichergestellt wird.",
+        "+Die Premium Food Group agiert zukunftsgerecht und ist damit ein wertvoller Marktteilnehmer, Partner und Wirtschaftsfaktor in der Region. Die Produkte bieten hochwertige Qualität und ein genussvolles Geschmackserlebnis, während gleichzeitig durch innovative Prozesse daran gearbeitet wird, Auswirkungen auf Mensch, Tier und Umwelt zu berücksichtigen und kontinuierlich zu verbessern.",
+        " Unsere langjährige Erfahrung und Fachkompetenz machen uns zu einem verlässlichen Partner und modernen Versorger. Als Brücke zwischen Landwirtschaft sowie Verbraucherinnen und Verbrauchern nehmen wir unsere Verantwortung ernst und suchen den Ausgleich zum Nutzen aller beteiligten Seiten."
+      ],
+      "character_count": 3312
     },
     {
       "source_id": "SRC-PFG-RENAME",
       "title": "Premium Food Group — Holding rename announcement",
       "category": "company",
       "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0013"
       ],
@@ -110,7 +107,7 @@
       "title": "Premium Food Group — History",
       "category": "company",
       "url": "https://premiumfoodgroup.de/en/group/history/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0004",
         "ZSI-C-0005"
@@ -128,7 +125,7 @@
       "title": "Tönnies Livestock — Landwirtschaft im Dialog",
       "category": "company",
       "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0001",
         "ZSI-C-0002"
@@ -146,7 +143,7 @@
       "title": "Tönnies Livestock — Über uns",
       "category": "company",
       "url": "https://toennies-livestock.de/ueber-uns/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0003",
         "ZSI-C-0014"
@@ -164,7 +161,7 @@
       "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
       "category": "official_register",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0006",
         "ZSI-C-0025"
@@ -172,17 +169,32 @@
       "previous_sha256": "ff874231353ebec2b8d4b5454481cb0d7bd1630ff714976b9e0d4130ab2f42ed",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "ff874231353ebec2b8d4b5454481cb0d7bd1630ff714976b9e0d4130ab2f42ed",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 9218
+      "sha256": "bbc4f97f74f0ad36fb777bbc0523dea03d1fb65b3bfb993a3a8d341f59087aef",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -246,11 +246,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "character_count": 9035
     },
     {
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
       "category": "official_register_historical",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0015"
       ],
@@ -199,7 +211,7 @@
       "title": "BfR — KontRed",
       "category": "public_research",
       "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0007",
         "ZSI-C-0008"
@@ -217,7 +229,7 @@
       "title": "Bundeskartellamt — Vion/Tönnies decision",
       "category": "authority",
       "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0016",
         "ZSI-C-0017"
@@ -235,27 +247,19 @@
       "title": "Westfleisch — Unternehmensgruppe",
       "category": "company",
       "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0018",
         "ZSI-C-0019",
         "ZSI-C-0020",
         "ZSI-C-0021"
       ],
-      "previous_sha256": "57be36bf611999ba250c31b9bdc4982e0d824c770bb2db59c668ec78397cc5f1",
+      "previous_sha256": "21db596dc9e3947d4389e3a64703711d89b1dc8f688c9f86e58d583a247b9db0",
       "http_status": 200,
       "content_type": "text/html",
       "sha256": "21db596dc9e3947d4389e3a64703711d89b1dc8f688c9f86e58d583a247b9db0",
-      "status": "changed",
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -47,3 +47,3 @@",
-        " ITW3 Mäster gesucht",
-        "-IT3 Rind",
-        "+ITW3 Rind",
-        " ITW3 Schwein"
-      ],
+      "status": "unchanged",
+      "diff": [],
       "character_count": 15864
     },
     {
@@ -263,7 +267,7 @@
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0022",
         "ZSI-C-0023"
@@ -271,42 +275,81 @@
       "previous_sha256": "e94b6b9a47a602e94595ac876f11f060838d861712691f821946faac52d1763f",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "e94b6b9a47a602e94595ac876f11f060838d861712691f821946faac52d1763f",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 3661
+      "sha256": "e9cf6cb070c08e5c37fdce217c02cd7a2c0e96fbdc60127b0a68157e9a101efe",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -31,3 +31,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt",
+        "@@ -81,3 +81,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt"
+      ],
+      "character_count": 3659
     },
     {
       "source_id": "SRC-PHW-POULTRY",
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [
         "ZSI-C-0024"
       ],
       "previous_sha256": "c115d22901e64ad3cda0583f1563a072b253242a685135d151de9dd73ca681f3",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "c115d22901e64ad3cda0583f1563a072b253242a685135d151de9dd73ca681f3",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 7257
+      "sha256": "d7a09f760dfaa651cbea25d920a4d0a8807f3179362cba41284852357832506b",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -31,3 +31,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt",
+        "@@ -99,3 +99,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt"
+      ],
+      "character_count": 7255
     },
     {
       "source_id": "SRC-PHW-SUBSIDIARIES",
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "checked_at": "2026-09-25T11:47:32+00:00",
+      "checked_at": "2026-09-25T17:08:00+00:00",
       "claim_ids": [],
       "previous_sha256": "1ab481e83dc5f504bdf05c711c39b673bb5eed446230855b5bc56022655d5d41",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "1ab481e83dc5f504bdf05c711c39b673bb5eed446230855b5bc56022655d5d41",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 3870
+      "sha256": "582b99ddc44b5da4a000c8a668cf831c664896bb568ff575b5568686d70291cc",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -31,3 +31,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt",
+        "@@ -74,3 +74,3 @@",
+        " Gesundheit",
+        "-Nachhaltigkeit",
+        "+Verantwortung",
+        " Environment/ Umwelt"
+      ],
+      "character_count": 3868
     }
   ]
 }
