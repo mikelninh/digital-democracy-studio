@@ -1,6 +1,6 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-09-25T04:54:09+00:00",
+  "generated_at": "2026-09-25T11:47:32+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
@@ -23,26 +23,26 @@
     "ZSI-C-0018": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-24T17:07:40+00:00",
-      "event_id": "d5748e2ddeed92d1"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "b2ffbb6868e7244d"
     },
     "ZSI-C-0019": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-24T17:07:40+00:00",
-      "event_id": "d5748e2ddeed92d1"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "b2ffbb6868e7244d"
     },
     "ZSI-C-0020": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-24T17:07:40+00:00",
-      "event_id": "d5748e2ddeed92d1"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "b2ffbb6868e7244d"
     },
     "ZSI-C-0021": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-24T17:07:40+00:00",
-      "event_id": "d5748e2ddeed92d1"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "b2ffbb6868e7244d"
     },
     "ZSI-C-0007": {
       "status": "needs_review",
@@ -59,20 +59,20 @@
     "ZSI-C-0009": {
       "status": "needs_review",
       "source_id": "SRC-PFG-HOME",
-      "detected_at": "2026-09-25T04:54:09+00:00",
-      "event_id": "7250dacc070bb4b8"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "65ad0b36b097cb8a"
     },
     "ZSI-C-0010": {
       "status": "needs_review",
       "source_id": "SRC-PFG-HOME",
-      "detected_at": "2026-09-25T04:54:09+00:00",
-      "event_id": "7250dacc070bb4b8"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "65ad0b36b097cb8a"
     },
     "ZSI-C-0011": {
       "status": "needs_review",
       "source_id": "SRC-PFG-HOME",
-      "detected_at": "2026-09-25T04:54:09+00:00",
-      "event_id": "7250dacc070bb4b8"
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "event_id": "65ad0b36b097cb8a"
     },
     "ZSI-C-0016": {
       "status": "needs_review",

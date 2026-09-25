@@ -2,6 +2,68 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "b2ffbb6868e7244d",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -47,3 +47,3 @@",
+        " ITW3 Mäster gesucht",
+        "-IT3 Rind",
+        "+ITW3 Rind",
+        " ITW3 Schwein"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "65ad0b36b097cb8a",
+      "source_id": "SRC-PFG-HOME",
+      "title": "Premium Food Group — Homepage / facts",
+      "detected_at": "2026-09-25T11:47:32+00:00",
+      "claim_ids": [
+        "ZSI-C-0009",
+        "ZSI-C-0010",
+        "ZSI-C-0011"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -20,5 +20,5 @@",
+        " Verantwortung",
+        "-Premium Impact Report_alt",
+        "+Premium Impact Report",
+        " Zukunftsgerechte Ernährung",
+        "-Klimaschutz_alt",
+        "+Klimaschutz",
+        " Soziale Sorgfalt",
+        "@@ -120,5 +120,5 @@",
+        " Verantwortung",
+        "-Premium Impact Report_alt",
+        "+Premium Impact Report",
+        " Zukunftsgerechte Ernährung",
+        "-Klimaschutz_alt",
+        "+Klimaschutz",
+        " Soziale Sorgfalt",
+        "@@ -151,5 +151,5 @@",
+        " Verantwortung",
+        "-Premium Impact Report_alt",
+        "+Premium Impact Report",
+        " Zukunftsgerechte Ernährung",
+        "-Klimaschutz_alt",
+        "+Klimaschutz",
+        " Soziale Sorgfalt"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "7250dacc070bb4b8",
       "source_id": "SRC-PFG-HOME",
       "title": "Premium Food Group — Homepage / facts",
