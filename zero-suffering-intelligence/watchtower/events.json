@@ -2,6 +2,73 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "6ddf357f404b548b",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -72,3 +72,3 @@",
+        " Tierwohlprogramme",
+        "-Schlachtkühe Haltungsform 3",
+        "+Schlachtkühe ITW 3",
+        " Westfleisch informiert"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "e3fae084d72f8199",
+      "source_id": "SRC-PFG-HISTORY",
+      "title": "Premium Food Group — History",
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "claim_ids": [
+        "ZSI-C-0004",
+        "ZSI-C-0005"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -64,3 +64,3 @@",
+        " 2020 – Introduction of Agenda t30",
+        "-In a drive for greater sustainability, Tönnies introduced Agenda t30, outlining the company’s goals and commitments for the future. These included meeting societal demands for responsible meat production, ensuring the company’s economic viability alongside that of its agricultural partners, and safeguarding jobs sustainably.",
+        "+In a drive for greater sustainability, Tönnies introduced Agenda t30, outlining the company’s goals and commitments for the future. These included meeting societal demands for responsible meat production, ensuring the company’s economic viability alongside that of its agricultural partners, and safeguarding jobs.",
+        " 2020 – Joint Venture in China"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "9e1b5280eafffda6",
+      "source_id": "SRC-PFG-HOME",
+      "title": "Premium Food Group — Homepage / facts",
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "claim_ids": [
+        "ZSI-C-0009",
+        "ZSI-C-0010",
+        "ZSI-C-0011"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -90,5 +90,5 @@",
+        " Hochmotivierte und qualifizierte Kolleginnen und Kollegen sind das höchste Gut. Weltweit beschäftigen wir 21.000 Mitarbeiterinnen und Mitarbeiter, davon rund 17.000 in Deutschland.",
+        "-28. August 2026",
+        "-Alois Rainer bekräftigt in Rheda Export-Strategie für deutsches Fleisch",
+        "-Alois Rainer, Bundesminister für Landwirtschaft, Ernährung und Heimat, war am Donnerstag erstmals in seiner Funktion bei der Premium Food Group in Rheda-Wiedenbrück zu Gast. Clemens, Robert und Maximilian Tönnies führten den Minister durch die Produktion. Sie stellten dem CSU-Politiker die modernen Produktionsprozesse, Automatisierungslösungen und Nachhaltigkeitsmaßnahmen des Familienunternehmens vor. Am Rande der Veranstaltung bekräftigte Alois Rainer seine Export-Strategie im Sinne der Ganztiervermarktung: „Agrarexport hat für mich höchste Priorität.“",
+        "+28. September 2026",
+        "+Azubis und berufsbegleitende Studenten bleiben dem Unternehmen erhalten",
+        "+Margit und Clemens Tönnies haben jetzt persönlich den Auszubildenden und berufsbegleitend Studierenden des Unternehmens am Standort Rheda zu ihren erfolgreichen Abschlüssen gratuliert. Der überwiegende Teil von ihnen setzt die berufliche Karriere beim Rheda-Wiedenbrücker Lebensmittelproduzenten in verschiedenen Positionen und Abteilungen fort.",
+        " Weiterlesen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "8617fa6d9984f669",
       "source_id": "SRC-PHW-SUBSIDIARIES",
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",

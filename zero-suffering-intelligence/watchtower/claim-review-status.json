@@ -1,18 +1,18 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-09-28T05:19:51+00:00",
+  "generated_at": "2026-09-28T13:49:07+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "detected_at": "2026-09-28T05:19:51+00:00",
-      "event_id": "6e2b4bf232355c82"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "1d2334e047ff98b4"
     },
     "ZSI-C-0025": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "detected_at": "2026-09-28T05:19:51+00:00",
-      "event_id": "6e2b4bf232355c82"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "1d2334e047ff98b4"
     },
     "ZSI-C-0015": {
       "status": "needs_review",
@@ -23,26 +23,26 @@
     "ZSI-C-0018": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-25T11:47:32+00:00",
-      "event_id": "b2ffbb6868e7244d"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "6ddf357f404b548b"
     },
     "ZSI-C-0019": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-25T11:47:32+00:00",
-      "event_id": "b2ffbb6868e7244d"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "6ddf357f404b548b"
     },
     "ZSI-C-0020": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-25T11:47:32+00:00",
-      "event_id": "b2ffbb6868e7244d"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "6ddf357f404b548b"
     },
     "ZSI-C-0021": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-25T11:47:32+00:00",
-      "event_id": "b2ffbb6868e7244d"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "6ddf357f404b548b"
     },
     "ZSI-C-0007": {
       "status": "needs_review",
@@ -59,20 +59,20 @@
     "ZSI-C-0009": {
       "status": "needs_review",
       "source_id": "SRC-PFG-HOME",
-      "detected_at": "2026-09-25T17:08:00+00:00",
-      "event_id": "cca06d7a44614821"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "9e1b5280eafffda6"
     },
     "ZSI-C-0010": {
       "status": "needs_review",
       "source_id": "SRC-PFG-HOME",
-      "detected_at": "2026-09-25T17:08:00+00:00",
-      "event_id": "cca06d7a44614821"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "9e1b5280eafffda6"
     },
     "ZSI-C-0011": {
       "status": "needs_review",
       "source_id": "SRC-PFG-HOME",
-      "detected_at": "2026-09-25T17:08:00+00:00",
-      "event_id": "cca06d7a44614821"
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "9e1b5280eafffda6"
     },
     "ZSI-C-0016": {
       "status": "needs_review",
@@ -109,6 +109,18 @@
       "source_id": "SRC-PHW-ABOUT",
       "detected_at": "2026-09-25T17:08:00+00:00",
       "event_id": "cbe4f3e278a632f9"
+    },
+    "ZSI-C-0004": {
+      "status": "needs_review",
+      "source_id": "SRC-PFG-HISTORY",
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "e3fae084d72f8199"
+    },
+    "ZSI-C-0005": {
+      "status": "needs_review",
+      "source_id": "SRC-PFG-HISTORY",
+      "detected_at": "2026-09-28T13:49:07+00:00",
+      "event_id": "e3fae084d72f8199"
     }
   }
 }

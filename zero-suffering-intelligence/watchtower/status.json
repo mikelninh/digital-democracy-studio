@@ -1,13 +1,15 @@
 {
   "schema": "zsi.watchtower/status-0.9",
-  "generated_at": "2026-09-28T05:19:51+00:00",
+  "generated_at": "2026-09-28T13:49:07+00:00",
   "sources_total": 14,
-  "unchanged": 13,
-  "changed": 1,
+  "unchanged": 10,
+  "changed": 4,
   "baselines_created": 0,
   "fetch_suspect": 0,
   "fetch_failed": 0,
   "claims_needing_review": [
+    "ZSI-C-0004",
+    "ZSI-C-0005",
     "ZSI-C-0006",
     "ZSI-C-0007",
     "ZSI-C-0008",
@@ -33,7 +35,7 @@
       "title": "Premium Food Group — Homepage / facts",
       "category": "company",
       "url": "https://premiumfoodgroup.de/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0009",
         "ZSI-C-0010",
@@ -42,17 +44,29 @@
       "previous_sha256": "0036343271edd88669e7dc75dc0a00ece9c85ced40c196375a2c7c07bc386e90",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "0036343271edd88669e7dc75dc0a00ece9c85ced40c196375a2c7c07bc386e90",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 8076
+      "sha256": "c3653010ce5658fdbbdc2e54edce6ae7ea5faf4d045e20f77fee9a3c0832c3f9",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -90,5 +90,5 @@",
+        " Hochmotivierte und qualifizierte Kolleginnen und Kollegen sind das höchste Gut. Weltweit beschäftigen wir 21.000 Mitarbeiterinnen und Mitarbeiter, davon rund 17.000 in Deutschland.",
+        "-28. August 2026",
+        "-Alois Rainer bekräftigt in Rheda Export-Strategie für deutsches Fleisch",
+        "-Alois Rainer, Bundesminister für Landwirtschaft, Ernährung und Heimat, war am Donnerstag erstmals in seiner Funktion bei der Premium Food Group in Rheda-Wiedenbrück zu Gast. Clemens, Robert und Maximilian Tönnies führten den Minister durch die Produktion. Sie stellten dem CSU-Politiker die modernen Produktionsprozesse, Automatisierungslösungen und Nachhaltigkeitsmaßnahmen des Familienunternehmens vor. Am Rande der Veranstaltung bekräftigte Alois Rainer seine Export-Strategie im Sinne der Ganztiervermarktung: „Agrarexport hat für mich höchste Priorität.“",
+        "+28. September 2026",
+        "+Azubis und berufsbegleitende Studenten bleiben dem Unternehmen erhalten",
+        "+Margit und Clemens Tönnies haben jetzt persönlich den Auszubildenden und berufsbegleitend Studierenden des Unternehmens am Standort Rheda zu ihren erfolgreichen Abschlüssen gratuliert. Der überwiegende Teil von ihnen setzt die berufliche Karriere beim Rheda-Wiedenbrücker Lebensmittelproduzenten in verschiedenen Positionen und Abteilungen fort.",
+        " Weiterlesen"
+      ],
+      "character_count": 7865
     },
     {
       "source_id": "SRC-PFG-ABOUT",
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0012"
       ],
@@ -69,7 +83,7 @@
       "title": "Premium Food Group — Holding rename announcement",
       "category": "company",
       "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0013"
       ],
@@ -86,7 +100,7 @@
       "title": "Premium Food Group — History",
       "category": "company",
       "url": "https://premiumfoodgroup.de/en/group/history/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0004",
         "ZSI-C-0005"
@@ -94,17 +108,25 @@
       "previous_sha256": "055df6e9f153e09289f0e50678b41c6a9216a9a05d5783d07f861b5329aad4b4",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "055df6e9f153e09289f0e50678b41c6a9216a9a05d5783d07f861b5329aad4b4",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 7317
+      "sha256": "b19227b559b692208a259d28e1aa647a3090b2e2ca931ed0210aa196e0e3d9c8",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -64,3 +64,3 @@",
+        " 2020 – Introduction of Agenda t30",
+        "-In a drive for greater sustainability, Tönnies introduced Agenda t30, outlining the company’s goals and commitments for the future. These included meeting societal demands for responsible meat production, ensuring the company’s economic viability alongside that of its agricultural partners, and safeguarding jobs sustainably.",
+        "+In a drive for greater sustainability, Tönnies introduced Agenda t30, outlining the company’s goals and commitments for the future. These included meeting societal demands for responsible meat production, ensuring the company’s economic viability alongside that of its agricultural partners, and safeguarding jobs.",
+        " 2020 – Joint Venture in China"
+      ],
+      "character_count": 7305
     },
     {
       "source_id": "SRC-LIVESTOCK-DIALOG",
       "title": "Tönnies Livestock — Landwirtschaft im Dialog",
       "category": "company",
       "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0001",
         "ZSI-C-0002"
@@ -122,7 +144,7 @@
       "title": "Tönnies Livestock — Über uns",
       "category": "company",
       "url": "https://toennies-livestock.de/ueber-uns/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0003",
         "ZSI-C-0014"
@@ -140,40 +162,40 @@
       "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
       "category": "official_register",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0006",
         "ZSI-C-0025"
       ],
-      "previous_sha256": "ff874231353ebec2b8d4b5454481cb0d7bd1630ff714976b9e0d4130ab2f42ed",
+      "previous_sha256": "bbc4f97f74f0ad36fb777bbc0523dea03d1fb65b3bfb993a3a8d341f59087aef",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "bbc4f97f74f0ad36fb777bbc0523dea03d1fb65b3bfb993a3a8d341f59087aef",
+      "sha256": "ff874231353ebec2b8d4b5454481cb0d7bd1630ff714976b9e0d4130ab2f42ed",
       "status": "changed",
       "diff": [
         "--- previous",
         "+++ current",
-        "@@ -246,11 +246,2 @@",
+        "@@ -246,2 +246,11 @@",
         " Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
+        "+Keine Benachrichtigung",
+        "+Täglich",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich",
+        "+Wöchentlich - bei Änderungen",
+        "+Monatlich",
+        "+Monatlich - bei Änderungen",
+        "+Vierteljährlich",
+        "+Vierteljährlich - bei Änderungen",
         " Login Benachrichtigungskonto"
       ],
-      "character_count": 9035
+      "character_count": 9218
     },
     {
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
       "category": "official_register_historical",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0015"
       ],
@@ -190,7 +212,7 @@
       "title": "BfR — KontRed",
       "category": "public_research",
       "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0007",
         "ZSI-C-0008"
@@ -208,7 +230,7 @@
       "title": "Bundeskartellamt — Vion/Tönnies decision",
       "category": "authority",
       "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0016",
         "ZSI-C-0017"
@@ -226,7 +248,7 @@
       "title": "Westfleisch — Unternehmensgruppe",
       "category": "company",
       "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0018",
         "ZSI-C-0019",
@@ -236,17 +258,25 @@
       "previous_sha256": "21db596dc9e3947d4389e3a64703711d89b1dc8f688c9f86e58d583a247b9db0",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "21db596dc9e3947d4389e3a64703711d89b1dc8f688c9f86e58d583a247b9db0",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 15864
+      "sha256": "8c7812616a1f221e9540cab25c6feab59c15ba49d998c78b368f999d07011e94",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -72,3 +72,3 @@",
+        " Tierwohlprogramme",
+        "-Schlachtkühe Haltungsform 3",
+        "+Schlachtkühe ITW 3",
+        " Westfleisch informiert"
+      ],
+      "character_count": 15855
     },
     {
       "source_id": "SRC-PHW-ABOUT",
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0022",
         "ZSI-C-0023"
@@ -264,7 +294,7 @@
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [
         "ZSI-C-0024"
       ],
@@ -281,7 +311,7 @@
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "checked_at": "2026-09-28T05:19:51+00:00",
+      "checked_at": "2026-09-28T13:49:07+00:00",
       "claim_ids": [],
       "previous_sha256": "582b99ddc44b5da4a000c8a668cf831c664896bb568ff575b5568686d70291cc",
       "http_status": 200,
