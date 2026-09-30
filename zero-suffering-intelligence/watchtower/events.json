@@ -2,6 +2,35 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "441daa45fca32443",
+      "source_id": "SRC-LIVESTOCK-DIALOG",
+      "title": "Tönnies Livestock — Landwirtschaft im Dialog",
+      "detected_at": "2026-09-30T22:12:44+00:00",
+      "claim_ids": [
+        "ZSI-C-0001",
+        "ZSI-C-0002"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -40,5 +40,5 @@",
+        " Du findest uns auf den großen Agrarmessen, wo wir Dich gerne an unserem Stand begrüßen und zum regen Austausch einladen. Für Feedback zu unserem Service und Fachvorträgen sind wir immer dankbar – denn nur so können wir uns noch besser für Dich und unsere Branche einsetzen.",
+        "-AGRAR Unternehmertage",
+        "+Dutch Pork & Poultry Expo",
+        " ,",
+        "-03.02.-06.02.2026, Münster",
+        "+14.10.+15.10.2026, Hardenberg, NL",
+        " EuroTier",
+        "@@ -46,2 +46,5 @@",
+        " 10.11.-13.11.2026, Hannover",
+        "+Agromek",
+        "+,",
+        "+24.11. – 27.11.2026, Herning, DK",
+        " © 2026 Tönnies Livestock"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "6ddf357f404b548b",
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "title": "Westfleisch — Unternehmensgruppe",
