@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SafeTrace — Entity Resolution Mode</title>
+<style>
+:root{--bg:#07110f;--panel:#0d1b18;--ink:#eef9f4;--muted:#9bb4aa;--line:#1e3a33;--accent:#8cf0bf;--warn:#ffd38a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#123228 0,transparent 35%),var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui}
+main{max-width:1120px;margin:auto;padding:56px 24px 80px}.eyebrow{color:var(--accent);letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(40px,7vw,78px);line-height:.96;max-width:900px;margin:14px 0 22px}.lede{font-size:19px;max-width:760px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:34px 0}.card,.case{background:linear-gradient(180deg,#10221e,#0b1714);border:1px solid var(--line);border-radius:18px;padding:18px}
+.metric{font-size:34px;font-weight:700}.label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+section{margin-top:52px}h2{font-size:28px}.flow{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted)}.arrow{padding:8px 2px;color:var(--accent)}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:12px}.score{font-size:26px;font-weight:700;color:var(--accent)}.review{color:var(--warn)}footer{margin-top:60px;color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
+@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}.cases{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<div class="eyebrow">SafeTrace / Investigation OS / Proof 01</div>
+<h1>Entity resolution with receipts.</h1>
+<p class="lede">40 noisy organisation records. 10 ground-truth entities. Subsidiaries that look like parents. OCR mistakes. Abbreviations. Conflicting formatting. SafeTrace merges only when the evidence clears a conservative threshold — and exposes why.</p>
+<div class="grid">
+<div class="card"><div class="label">Precision</div><div class="metric">100%</div></div>
+<div class="card"><div class="label">Recall</div><div class="metric">90%</div></div>
+<div class="card"><div class="label">F1</div><div class="metric">0.947</div></div>
+<div class="card"><div class="label">False auto-merges</div><div class="metric">0</div></div>
+</div>
+<section><h2>Decision path</h2><div class="flow">
+<span class="pill">Noisy source record</span><span class="arrow">→</span><span class="pill">Normalise</span><span class="arrow">→</span><span class="pill">Compare evidence</span><span class="arrow">→</span><span class="pill">Score</span><span class="arrow">→</span><span class="pill">Merge / Review / Reject</span>
+</div></section>
+<section><h2>Inspectable decisions</h2><div class="cases">
+<div class="case"><div class="label">Auto merge</div><h3>Nordlicht Energie GmbH ↔ NORDLICHT ENERGIE GMBH</h3><div class="score">1.000</div><p>Name, domain, address, postcode and director evidence agree. Safe to canonicalise.</p></div>
+<div class="case"><div class="label">Human review</div><h3>Tempelhof Data Trust gGmbH ↔ TDT Berlin</h3><div class="score review">0.640</div><p>The abbreviation is weak on name evidence, while domain/address clues suggest a match. SafeTrace refuses to guess.</p></div>
+<div class="case"><div class="label">Relationship ≠ identity</div><h3>Nordlicht Energie GmbH ↔ Nordlicht Solar Solutions GmbH</h3><p>Shared corporate root signals a relationship, not sameness. Parent and subsidiary remain separate legal entities.</p></div>
+<div class="case"><div class="label">Benchmark</div><h3>780 candidate pairs</h3><p>54 true-positive auto-merges, 0 false-positive auto-merges, 6 matching pairs retained for review/rejection. Synthetic, versioned and reproducible.</p></div>
+</div></section>
+<section><h2>Evidence, not vibes.</h2><p class="lede">Every decision emits the contributing signals: name similarity, exact/root domain, address similarity, postcode, director overlap and source provenance. Production next steps: registry IDs, temporal features, graph edges and reviewer-feedback loops.</p></section>
+<footer><strong>SafeTrace principle:</strong> No merge without evidence. No uncertainty hidden.<br>Dataset is synthetic; all organisations are fictional.</footer>
+</main></body></html>
