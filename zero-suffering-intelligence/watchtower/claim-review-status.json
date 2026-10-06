@@ -1,6 +1,6 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-10-06T13:21:25+00:00",
+  "generated_at": "2026-10-06T22:38:17+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
