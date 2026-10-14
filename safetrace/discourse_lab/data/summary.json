@@ -1,0 +1,79 @@
+{
+  "case_id": "SYN-DL-001",
+  "fixture_type": "fully_synthetic",
+  "claim_count": 5,
+  "organisation_count": 7,
+  "source_count": 9,
+  "message_count": 20,
+  "claims": [
+    {
+      "claim_id": "c1",
+      "claim": "€8.4m already spent",
+      "message_count": 4,
+      "distinct_organisations": 3,
+      "distinct_cited_document_ids": 2,
+      "cited_document_ids": [
+        "s1",
+        "s2"
+      ],
+      "evidence_state": "contested",
+      "needs_human_review": true,
+      "limitation": "Final spending after Q2 is outside this corpus."
+    },
+    {
+      "claim_id": "c2",
+      "claim": "42% fewer near misses",
+      "message_count": 5,
+      "distinct_organisations": 4,
+      "distinct_cited_document_ids": 2,
+      "cited_document_ids": [
+        "s3",
+        "s9"
+      ],
+      "evidence_state": "unverified",
+      "needs_human_review": true,
+      "limitation": "Raw counts, protocol and confounders are not available. A causal improvement is not established."
+    },
+    {
+      "claim_id": "c3",
+      "claim": "No accessibility provision",
+      "message_count": 5,
+      "distinct_organisations": 4,
+      "distinct_cited_document_ids": 2,
+      "cited_document_ids": [
+        "s5",
+        "s6"
+      ],
+      "evidence_state": "contested",
+      "needs_human_review": true,
+      "limitation": "Survey selection bias and no independent as-built access audit."
+    },
+    {
+      "claim_id": "c4",
+      "claim": "68% backed safer crossings",
+      "message_count": 3,
+      "distinct_organisations": 3,
+      "distinct_cited_document_ids": 1,
+      "cited_document_ids": [
+        "s7"
+      ],
+      "evidence_state": "qualified",
+      "needs_human_review": true,
+      "limitation": "Cannot extrapolate to all residents or infer approval of every design choice."
+    },
+    {
+      "claim_id": "c5",
+      "claim": "Travel times cut by 60%",
+      "message_count": 3,
+      "distinct_organisations": 3,
+      "distinct_cited_document_ids": 1,
+      "cited_document_ids": [
+        "s8"
+      ],
+      "evidence_state": "unverified",
+      "needs_human_review": true,
+      "limitation": "No validated comparator, sample or method in the available material."
+    }
+  ],
+  "interpretation_warning": "Document-count and message-count do not indicate independent measurements, coordination or causation."
+}

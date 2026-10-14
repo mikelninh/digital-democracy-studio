@@ -1,0 +1,50 @@
+{
+  "benchmark": "developer-authored synthetic sanity set",
+  "samples": 7,
+  "top_1_match_rate": 1.0,
+  "external_validation": false,
+  "rows": [
+    {
+      "query": "42% near misses",
+      "expected": "s3",
+      "top_1": "s3",
+      "pass": true
+    },
+    {
+      "query": "\u20ac1.9 million disbursed",
+      "expected": "s2",
+      "top_1": "s2",
+      "pass": true
+    },
+    {
+      "query": "kerb ramps",
+      "expected": "s6",
+      "top_1": "s6",
+      "pass": true
+    },
+    {
+      "query": "68% calmer pedestrian crossings",
+      "expected": "s7",
+      "top_1": "s7",
+      "pass": true
+    },
+    {
+      "query": "60% faster travellers",
+      "expected": "s8",
+      "top_1": "s8",
+      "pass": true
+    },
+    {
+      "query": "self-selected respondents",
+      "expected": "s5",
+      "top_1": "s5",
+      "pass": true
+    },
+    {
+      "query": "raw counts sampling details",
+      "expected": "s3",
+      "top_1": "s3",
+      "pass": true
+    }
+  ]
+}
