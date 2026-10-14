@@ -10,6 +10,12 @@ SafeTrace helps citizens and qualified investigators understand fragmented publi
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/**
 
+## Discourse Investigation Lab — portfolio work sample
+
+- [Interactive fictional claim-tracing demo](discourse_lab/) — evidence graph, analyst review, source lineage and deterministic Python tests. All organisations are fictional.
+- [Berlin Parliamentary Source Atlas](discourse_lab/public_sources/) — verified official PARDOK and open-data documentation, exact source links, provenance limits and attribution. **No live parliamentary records were fetched.**
+- [Source, reproducible tests and scope](discourse_lab/README.md).
+
 ## Citizen Portal — public-source alpha
 
 **https://mikelninh.github.io/digital-democracy-studio/safetrace/citizen_portal/**
