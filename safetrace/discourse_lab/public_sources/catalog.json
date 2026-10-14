@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Berlin parliamentary data · source verification",
+    "updated": "2026-10-14",
+    "scope": "Public official web documentation only; not a downloaded parliamentary-record dataset",
+    "source_mode": "human-curated summaries of verified official pages",
+    "api_fetch_executed": false,
+    "real_parliamentary_documents_ingested": 0,
+    "attribution": "Parlamentsdokumentation, Abgeordnetenhaus von Berlin · dl-de/by-2-0 (https://www.govdata.de/dl-de/by-2-0). Descriptions in this project are modified/reworded summaries, not official statements."
+  },
+  "sources": [
+    {
+      "id": "P1", "organisation": "Abgeordnetenhaus Berlin", "title": "Open Data overview", "type": "Official publisher", "url": "https://www.parlament-berlin.de/dokumente/open-data",
+      "anchor": "Open Data — introductory paragraphs", "checked": "2026-10-14", "description": "The house advertises PARDOK parliamentary-document metadata back to 1989, as XML, and describes daily updates and a beta API.",
+      "limit": "This landing page is not itself a download of parliamentary documents; availability is a publisher statement."
+    },
+    {
+      "id": "P2", "organisation": "PARDOK / Abgeordnetenhaus Berlin", "title": "PARDOK Open Data and API", "type": "Primary technical documentation", "url": "https://pardok.parlament-berlin.de/portala/opendata.tt.html",
+      "anchor": "API (Schnittstelle)", "checked": "2026-10-14", "description": "The publisher describes a read-only API for procedural records, activities, metadata and linked parliamentary documents, requiring an API key.",
+      "limit": "Documentation alone does not establish present uptime, response completeness or correctness. The example fetch in this project is not executed."
+    },
+    {
+      "id": "P3", "organisation": "PARDOK / Abgeordnetenhaus Berlin", "title": "PARDOK REST API OpenAPI specification", "type": "Primary machine-readable interface contract", "url": "https://pardok.parlament-berlin.de/api/v1/openapi.json",
+      "anchor": "paths./vorgang.get.parameters", "checked": "2026-10-14", "description": "The published OpenAPI contract includes a GET /vorgang endpoint with cursor pagination, page-size cap 200 and title/date/legislature filtering.",
+      "limit": "A contract is not proof that every documented response has been successfully retrieved."
+    },
+    {
+      "id": "P4", "organisation": "PARDOK / Abgeordnetenhaus Berlin", "title": "Open Data usage terms", "type": "Primary licensing terms", "url": "https://pardok.parlament-berlin.de/portala/local/OpenData_Nutzungsbedingungen.pdf",
+      "anchor": "Pages 1–3, licensing and supplementary conditions", "checked": "2026-10-14", "description": "The terms specify Germany's Attribution 2.0 data licence, attribution/link/change-notice rules, and additional limits concerning alteration of official PDFs.",
+      "limit": "Rights of third parties and use of official documents need separate consideration."
+    },
+    {
+      "id": "P5", "organisation": "Deutscher Bundestag", "title": "Federal parliament Open Data overview", "type": "Official publisher", "url": "https://www.bundestag.de/services/opendata",
+      "anchor": "Open Data — first paragraph", "checked": "2026-10-14", "description": "The Bundestag offers machine-readable plenary proceedings, parliamentary printed papers, MP biographies and roll-call vote lists in multiple formats.",
+      "limit": "Bundestag and Berlin PARDOK are different institutions and datasets; they do not independently validate each other's records."
+    },
+    {
+      "id": "P6", "organisation": "Berlin Open Data", "title": "Dataset catalogue — Abgeordnetenhaus tag", "type": "Official discovery catalogue", "url": "https://daten.berlin.de/datensaetze?tags=Abgeordnetenhaus",
+      "anchor": "Dataset search results and facets", "checked": "2026-10-14", "description": "The Berlin data catalogue lists parliamentary-election and constituency geography datasets with formats and licensing labels.",
+      "limit": "Search-tag presence is not proof of the data's contents, latest status or publisher independence."
+    }
+  ],
+  "claims": [
+    {"id":"C1","title":"Berlin parliamentary metadata reaches back to 1989","status":"publisher-confirmed","sources":["P1"],"finding":"The parliament's own site describes the PARDOK metadata coverage as beginning with the 11th legislative period in 1989.","boundary":"No historical completeness audit has been performed.","next":"Acquire a small date-bounded export, log record count and compare document identifiers against the official search interface."},
+    {"id":"C2","title":"A read-only Berlin parliamentary API is documented","status":"publisher-confirmed","sources":["P1","P2","P3"],"finding":"The primary publisher publishes API documentation and a machine-readable endpoint specification. These sources describe the same underlying PARDOK service.","boundary":"Three URLs do not constitute three independent datasets or successful API calls.","next":"Run a bounded authenticated GET /vorgang, hash the response, validate pagination and review licence obligations."},
+    {"id":"C3","title":"PARDOK data can be reused with attribution","status":"qualified","sources":["P4"],"finding":"The publisher's usage terms describe the dl-de/by-2-0 licence and state attribution and modification-notice requirements.","boundary":"Official PDFs and third-party rights carry additional caveats. This interface is an independent summary, not a reproduction of an official parliamentary document.","next":"Check the record-specific rights, show provider name, licence URL, dataset URI and modification marker on public outputs."},
+    {"id":"C4","title":"Berlin and federal parliaments are separate evidence origins","status":"qualified","sources":["P1","P5"],"finding":"The Berlin Abgeordnetenhaus and Deutscher Bundestag publish different documentary collections.","boundary":"Institutional difference does not mean observations within each dataset are independent confirmations of any claim.","next":"Preserve publisher ID, jurisdiction, document type, document ID, legislative period and upstream source URI."},
+    {"id":"C5","title":"A real-time public-discourse network is already measured","status":"not-supported","sources":["P1","P2","P3","P6"],"finding":"Not established by this source review. Only documentation pages were checked; no social posts, speech corpus or PARDOK records were collected here.","boundary":"The adjacent 42% investigation is entirely fictional. No AI extraction, coordination detection or political risk score has run on real people.","next":"After rights and safety review, acquire a small public document set; establish a source-to-document-to-statement graph and independent evaluation."}
+  ]
+}
