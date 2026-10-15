@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "entity_types": ["Person","Organisation","Authority","Department","Service","Law","Provision","Case","Claim","Evidence","Decision","Contract","Payment","Project","Action","Document","Location"],
+  "relationship_types": ["SAME_AS","RELATED_TO","PART_OF","DIRECTOR_OF","RESPONSIBLE_FOR","GOVERNED_BY","SUPPORTED_BY","CONTRADICTS","FUNDED_BY","PAID_TO","CONTRACTED_TO","REQUIRES","DECIDED_BY","AFFECTS","LOCATED_AT","APPLIES_TO"],
+  "required_entity_fields": ["id","type","label","source","valid_from","valid_to","confidence","review_state"],
+  "required_relationship_fields": ["id","from","to","type","evidence_ids","valid_from","valid_to","confidence","review_state"],
+  "claim_status": ["supported","disputed","unresolved","withdrawn"],
+  "review_state": ["machine_proposed","human_review_required","human_verified","rejected"],
+  "action_policy": {
+    "allowed_without_human": ["search_public_sources","retrieve_rules","extract_structured_fields","compute_transparent_scores","draft_internal_summary"],
+    "requires_human_approval": ["send_external_message","submit_application","submit_objection","publish_investigative_claim","flag_person_or_company_for_enforcement","make_payment_or_binding_commitment"],
+    "forbidden": ["determine_guilt","fabricate_missing_evidence","silently_merge_ambiguous_entities","hide_conflicting_evidence","present_synthetic_facts_as_real"]
+  }
+}

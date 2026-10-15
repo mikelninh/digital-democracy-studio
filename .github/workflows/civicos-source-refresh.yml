@@ -1,0 +1,47 @@
+name: CivicOS Source Refresh
+
+on:
+  push:
+    paths:
+      - "safetrace/master_proof/connectors.py"
+      - "safetrace/master_proof/source_registry.json"
+      - "safetrace/master_proof/refresh_sources.py"
+      - ".github/workflows/civicos-source-refresh.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  refresh-reviewed-public-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch allowlisted official sources and create evidence receipts
+        working-directory: safetrace/master_proof
+        run: python refresh_sources.py --output artifacts/source-refresh
+      - name: Verify refresh report is non-promoting
+        working-directory: safetrace/master_proof
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path('artifacts/source-refresh/refresh-report.json').read_text())
+          assert report['promotion_policy'] == 'never automatic'
+          assert report['human_review_required_for_snapshot_update'] is True
+          assert all(item.get('promoted') is False for item in report['results'])
+          print(f"fetched={report['fetched']} failed={report['failed']} skipped={report['skipped']}")
+          PY
+      - name: Upload source refresh evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: civicos-source-refresh-${{ github.run_id }}
+          path: safetrace/master_proof/artifacts/source-refresh/
+          if-no-files-found: error
+          retention-days: 30

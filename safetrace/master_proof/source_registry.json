@@ -1,0 +1,169 @@
+{
+  "version": "0.2.0",
+  "verified_at": "2026-08-28",
+  "contract": {
+    "verified_route": "An authoritative source route was manually verified as reachable/relevant on verified_at. This does not mean its current contents were fetched during a CivicOS run.",
+    "live_fetch": "A connector fetched current source content during the run and produced an evidence receipt.",
+    "rule": "CivicOS must never present verified_route as live_fetch."
+  },
+  "sources": {
+    "berlin_wohngeld": {
+      "title": "Wohngeld - Mietzuschuss beantragen",
+      "publisher": "ServicePortal Berlin",
+      "url": "https://service.berlin.de/dienstleistung/120656/",
+      "kind": "official_service",
+      "jurisdiction": "Berlin",
+      "supports": ["application route", "eligibility factors", "responsible office", "legal bases", "required documents"]
+    },
+    "familienportal_kiz": {
+      "title": "Kinderzuschlag",
+      "publisher": "Familienportal des Bundes",
+      "url": "https://familienportal.de/familienportal/familienleistungen/kinderzuschlag",
+      "kind": "official_service_guidance",
+      "jurisdiction": "Germany",
+      "supports": ["eligibility hypotheses", "required evidence", "application route", "benefit interactions"]
+    },
+    "familienportal_kiz_digital": {
+      "title": "Kinderzuschlag Digital",
+      "publisher": "Familienportal des Bundes",
+      "url": "https://familienportal.de/familienportal/rechner-antraege/kinderzuschlag-digital-144632",
+      "kind": "official_service_tool",
+      "jurisdiction": "Germany",
+      "supports": ["official pre-check route", "online application route"]
+    },
+    "bgb_558": {
+      "title": "BGB § 558 - Mieterhöhung bis zur ortsüblichen Vergleichsmiete",
+      "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz",
+      "url": "https://www.gesetze-im-internet.de/bgb/__558.html",
+      "kind": "official_consolidated_law",
+      "jurisdiction": "Germany",
+      "supports": ["rent increase timing", "local comparative rent", "capping limit"]
+    },
+    "police_cybercrime": {
+      "title": "Cybercrime - Was können Sie tun, wenn Sie Opfer geworden sind?",
+      "publisher": "Polizeiliche Kriminalprävention der Länder und des Bundes",
+      "url": "https://www.polizei-beratung.de/infos-fuer-betroffene/cybercrime/",
+      "kind": "official_police_guidance",
+      "jurisdiction": "Germany",
+      "supports": ["preserve evidence", "police reporting route", "acute threat guidance"]
+    },
+    "police_digital_evidence": {
+      "title": "Digitale Beweise sichern: rechtssichere Screenshots",
+      "publisher": "Polizeiliche Kriminalprävention der Länder und des Bundes",
+      "url": "https://www.polizei-beratung.de/aktuelles/detailansicht/digitale-beweissicherung-rechtssichere-screenshots-erstellen/",
+      "kind": "official_police_guidance",
+      "jurisdiction": "Germany",
+      "supports": ["screenshot completeness", "context", "platform", "URL preservation"]
+    },
+    "berlin_service_portal": {
+      "title": "ServicePortal Berlin",
+      "publisher": "Land Berlin",
+      "url": "https://service.berlin.de/",
+      "kind": "official_service_directory",
+      "jurisdiction": "Berlin",
+      "supports": ["service discovery", "authority lookup", "official contact routes"]
+    },
+    "berlin_ifg": {
+      "title": "Informationen zum Informationsfreiheitsgesetz",
+      "publisher": "Land Berlin",
+      "url": "https://www.berlin.de/ba-tempelhof-schoeneberg/politik-und-verwaltung/beauftragte/datenschutz/artikel.344386.php",
+      "kind": "official_transparency_guidance",
+      "jurisdiction": "Berlin",
+      "supports": ["right to request records", "request route", "record description guidance", "exceptions warning"]
+    },
+    "unternehmensregister": {
+      "title": "Unternehmensregister - Registerinformationen",
+      "publisher": "Unternehmensregister",
+      "url": "https://www.unternehmensregister.de/de/so-gehts/registerinformationen?language=de",
+      "kind": "official_register_portal",
+      "jurisdiction": "Germany",
+      "supports": ["current register extract", "chronological register extract", "historical register extract"]
+    },
+    "transparenzregister": {
+      "title": "Transparenzregister HilfeCenter",
+      "publisher": "Transparenzregister",
+      "url": "https://www.transparenzregister.de/hilfe-center/",
+      "kind": "official_register_portal",
+      "jurisdiction": "Germany",
+      "supports": ["beneficial ownership concepts", "access conditions", "control/ownership verification route"]
+    },
+    "bundeshaushalt": {
+      "title": "Bundeshaushalt digital",
+      "publisher": "Bundesministerium der Finanzen",
+      "url": "https://www.bundeshaushalt.de/DE/Bundeshaushalt-digital/bundeshaushalt-digital.html",
+      "kind": "official_budget_data",
+      "jurisdiction": "Germany",
+      "supports": ["federal expenditure", "federal revenue", "year comparison", "budget-title drilldown"]
+    },
+    "bundeshaushalt_download": {
+      "title": "Bundeshaushalt Download-Portal",
+      "publisher": "Bundesministerium der Finanzen",
+      "url": "https://www.bundeshaushalt.de/DE/Download-Portal/download-portal.html",
+      "kind": "official_machine_readable_data",
+      "jurisdiction": "Germany",
+      "supports": ["CSV budget data", "XML budget data", "official budget documents"]
+    },
+    "bundesrechnungshof_reports": {
+      "title": "Bundesrechnungshof - Veröffentlichungen",
+      "publisher": "Bundesrechnungshof",
+      "url": "https://www.bundesrechnungshof.de/DE/2_veroeffentlichungen/veroeffentlichungen_node.html",
+      "kind": "official_audit_reports",
+      "jurisdiction": "Germany",
+      "supports": ["audit findings", "special reports", "published audit communications"]
+    },
+    "berlin_procurement": {
+      "title": "Vergabeplattform des Landes Berlin",
+      "publisher": "Land Berlin",
+      "url": "https://www.berlin.de/vergabeplattform/",
+      "kind": "official_procurement_portal",
+      "jurisdiction": "Berlin",
+      "supports": ["current tenders", "award publications", "market consultations", "procurement notices"]
+    },
+    "berlin_procurement_awards": {
+      "title": "Vergabeplattform Berlin - Veröffentlichungen",
+      "publisher": "Land Berlin",
+      "url": "https://www.berlin.de/vergabeplattform/veroeffentlichungen/",
+      "kind": "official_procurement_publications",
+      "jurisdiction": "Berlin",
+      "supports": ["awarded contracts", "restricted tender notices", "public procurement records"]
+    },
+    "berlin_tree_permit": {
+      "title": "Baumschutz - Ausnahmegenehmigung beantragen",
+      "publisher": "ServicePortal Berlin",
+      "url": "https://service.berlin.de/dienstleistung/330487/",
+      "kind": "official_service",
+      "jurisdiction": "Berlin",
+      "supports": ["responsible environmental office", "required documents", "legal bases", "fees"]
+    },
+    "berlin_special_use": {
+      "title": "Straßensondernutzung - Baustelleneinrichtung",
+      "publisher": "ServicePortal Berlin",
+      "url": "https://service.berlin.de/dienstleistung/325651/",
+      "kind": "official_service",
+      "jurisdiction": "Berlin",
+      "supports": ["special-use permit", "required documents", "fees", "BerlStrG § 11"]
+    },
+    "gii_currentness": {
+      "title": "Gesetze im Internet - Aktualitätendienst",
+      "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz",
+      "url": "https://www.gesetze-im-internet.de/aktuDienst.html",
+      "kind": "official_change_feed",
+      "jurisdiction": "Germany",
+      "supports": ["newly promulgated federal provisions", "change monitoring", "RSS update route"]
+    }
+  },
+  "case_sources": {
+    "citizen-wohngeld-rejection": ["berlin_wohngeld"],
+    "citizen-benefits-gap": ["berlin_wohngeld", "familienportal_kiz", "familienportal_kiz_digital"],
+    "citizen-rent-increase": ["bgb_558"],
+    "citizen-digital-harassment": ["police_cybercrime", "police_digital_evidence"],
+    "citizen-authority-responsibility": ["berlin_service_portal"],
+    "citizen-information-request": ["berlin_ifg"],
+    "investigator-supplier-links": ["unternehmensregister", "transparenzregister"],
+    "investigator-public-money": ["bundeshaushalt", "bundeshaushalt_download", "bundesrechnungshof_reports"],
+    "investigator-procurement-pattern": ["berlin_procurement", "berlin_procurement_awards", "unternehmensregister", "transparenzregister"],
+    "investigator-contradictory-records": ["unternehmensregister", "transparenzregister"],
+    "operator-permit-routing": ["berlin_tree_permit", "berlin_special_use", "berlin_service_portal"],
+    "operator-policy-change-impact": ["gii_currentness"]
+  }
+}
