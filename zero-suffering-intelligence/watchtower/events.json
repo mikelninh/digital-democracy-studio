@@ -2,6 +2,38 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "b7a927d590d6af92",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-10-15T04:33:57+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -239,16 +239,8 @@",
+        " Täglich",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        " Täglich - bei Änderungen",
+        " Wöchentlich",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        " Wöchentlich - bei Änderungen",
+        " Monatlich",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        " Monatlich - bei Änderungen",
+        " Vierteljährlich",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Vierteljährlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "c53debf5f1fc54df",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
