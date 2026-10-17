@@ -1,18 +1,18 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-10-16T21:04:03+00:00",
+  "generated_at": "2026-10-17T04:21:19+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "detected_at": "2026-10-16T21:04:03+00:00",
-      "event_id": "65153cc9cbd8fbe7"
+      "detected_at": "2026-10-17T04:21:19+00:00",
+      "event_id": "807dd3422359b1f5"
     },
     "ZSI-C-0025": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "detected_at": "2026-10-16T21:04:03+00:00",
-      "event_id": "65153cc9cbd8fbe7"
+      "detected_at": "2026-10-17T04:21:19+00:00",
+      "event_id": "807dd3422359b1f5"
     },
     "ZSI-C-0015": {
       "status": "needs_review",
