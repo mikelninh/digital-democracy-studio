@@ -211,6 +211,14 @@ aktive E-Mail-Benachrichtigungen gespeichert haben. Um zu diesem Benachrichtigun
 Meine Benachrichtigungen
 .
 Keine Benachrichtigung
+Täglich
+Täglich - bei Änderungen
+Wöchentlich
+Wöchentlich - bei Änderungen
+Monatlich
+Monatlich - bei Änderungen
+Vierteljährlich
+Vierteljährlich - bei Änderungen
 Keine Benachrichtigung
 Täglich
 Täglich - bei Änderungen
@@ -220,6 +228,34 @@ Monatlich
 Monatlich - bei Änderungen
 Vierteljährlich
 Vierteljährlich - bei Änderungen
+Keine Benachrichtigung
+Täglich
+Täglich - bei Änderungen
+Wöchentlich
+Wöchentlich - bei Änderungen
+Monatlich
+Monatlich - bei Änderungen
+Vierteljährlich
+Vierteljährlich - bei Änderungen
+Keine Benachrichtigung
+Täglich
+Täglich - bei Änderungen
+Wöchentlich
+Wöchentlich - bei Änderungen
+Monatlich
+Monatlich - bei Änderungen
+Vierteljährlich
+Vierteljährlich - bei Änderungen
+Keine Benachrichtigung
+Täglich
+Täglich - bei Änderungen
+Wöchentlich
+Wöchentlich - bei Änderungen
+Monatlich
+Monatlich - bei Änderungen
+Vierteljährlich
+Vierteljährlich - bei Änderungen
+Keine Benachrichtigung
 Täglich
 Täglich - bei Änderungen
 Wöchentlich
