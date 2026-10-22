@@ -244,6 +244,24 @@ Monatlich
 Monatlich - bei Änderungen
 Vierteljährlich
 Vierteljährlich - bei Änderungen
+Keine Benachrichtigung
+Keine Benachrichtigung
+Täglich
+Täglich - bei Änderungen
+Wöchentlich
+Täglich
+Wöchentlich - bei Änderungen
+Täglich - bei Änderungen
+Monatlich
+Wöchentlich
+Monatlich - bei Änderungen
+Wöchentlich - bei Änderungen
+Vierteljährlich
+Monatlich
+Vierteljährlich - bei Änderungen
+Monatlich - bei Änderungen
+Vierteljährlich
+Vierteljährlich - bei Änderungen
 Login Benachrichtigungskonto
 Login Admin-Konto
 Abbrechen
