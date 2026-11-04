@@ -1,6 +1,6 @@
 {
   "schema": "zsi.watchtower/claim-review-status-0.9",
-  "generated_at": "2026-11-04T06:12:39+00:00",
+  "generated_at": "2026-11-04T14:28:27+00:00",
   "claims": {
     "ZSI-C-0006": {
       "status": "needs_review",
@@ -17,32 +17,32 @@
     "ZSI-C-0015": {
       "status": "needs_review",
       "source_id": "SRC-LOBBY-PFG-FY2024",
-      "detected_at": "2026-11-03T23:18:16+00:00",
-      "event_id": "554605cade4c7adc"
+      "detected_at": "2026-11-04T14:28:27+00:00",
+      "event_id": "e4381599cbbec497"
     },
     "ZSI-C-0018": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-28T13:49:07+00:00",
-      "event_id": "6ddf357f404b548b"
+      "detected_at": "2026-11-04T14:28:27+00:00",
+      "event_id": "74f80e9453765d19"
     },
     "ZSI-C-0019": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-28T13:49:07+00:00",
-      "event_id": "6ddf357f404b548b"
+      "detected_at": "2026-11-04T14:28:27+00:00",
+      "event_id": "74f80e9453765d19"
     },
     "ZSI-C-0020": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-28T13:49:07+00:00",
-      "event_id": "6ddf357f404b548b"
+      "detected_at": "2026-11-04T14:28:27+00:00",
+      "event_id": "74f80e9453765d19"
     },
     "ZSI-C-0021": {
       "status": "needs_review",
       "source_id": "SRC-WESTFLEISCH-GROUP",
-      "detected_at": "2026-09-28T13:49:07+00:00",
-      "event_id": "6ddf357f404b548b"
+      "detected_at": "2026-11-04T14:28:27+00:00",
+      "event_id": "74f80e9453765d19"
     },
     "ZSI-C-0007": {
       "status": "needs_review",
