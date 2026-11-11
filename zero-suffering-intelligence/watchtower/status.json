@@ -1,9 +1,9 @@
 {
   "schema": "zsi.watchtower/status-0.9",
-  "generated_at": "2026-11-11T06:08:53+00:00",
+  "generated_at": "2026-11-11T14:15:04+00:00",
   "sources_total": 14,
-  "unchanged": 14,
-  "changed": 0,
+  "unchanged": 13,
+  "changed": 1,
   "baselines_created": 0,
   "fetch_suspect": 0,
   "fetch_failed": 0,
@@ -37,7 +37,7 @@
       "title": "Premium Food Group — Homepage / facts",
       "category": "company",
       "url": "https://premiumfoodgroup.de/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0009",
         "ZSI-C-0010",
@@ -46,17 +46,29 @@
       "previous_sha256": "c3653010ce5658fdbbdc2e54edce6ae7ea5faf4d045e20f77fee9a3c0832c3f9",
       "http_status": 200,
       "content_type": "text/html",
-      "sha256": "c3653010ce5658fdbbdc2e54edce6ae7ea5faf4d045e20f77fee9a3c0832c3f9",
-      "status": "unchanged",
-      "diff": [],
-      "character_count": 7865
+      "sha256": "0b516689021e0f57970646e75fbfd35801fcc838a5b8d57b3603df9b3502dcd3",
+      "status": "changed",
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -90,5 +90,5 @@",
+        " Hochmotivierte und qualifizierte Kolleginnen und Kollegen sind das höchste Gut. Weltweit beschäftigen wir 21.000 Mitarbeiterinnen und Mitarbeiter, davon rund 17.000 in Deutschland.",
+        "-28. September 2026",
+        "-Azubis und berufsbegleitende Studenten bleiben dem Unternehmen erhalten",
+        "-Margit und Clemens Tönnies haben jetzt persönlich den Auszubildenden und berufsbegleitend Studierenden des Unternehmens am Standort Rheda zu ihren erfolgreichen Abschlüssen gratuliert. Der überwiegende Teil von ihnen setzt die berufliche Karriere beim Rheda-Wiedenbrücker Lebensmittelproduzenten in verschiedenen Positionen und Abteilungen fort.",
+        "+11. November 2026",
+        "+Lebensmittelzeitung zeichnet Clemens Tönnies mit dem„Branchen-Oscar“ aus",
+        "+Die Lebensmittelzeitung hat Clemens Tönnies am Freitagabend den „Goldenen Zuckerhut“ verliehen. Mit dem „Branchen-Oscar“ würdigte der Deutsche Fachverlag (DFV) die jahrzehntelange Arbeit des Rheda-Wiedenbrücker Familienunternehmers.",
+        " Weiterlesen"
+      ],
+      "character_count": 7752
     },
     {
       "source_id": "SRC-PFG-ABOUT",
       "title": "Premium Food Group — Über uns",
       "category": "company",
       "url": "https://premiumfoodgroup.de/gruppe/ueber-uns/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0012"
       ],
@@ -73,7 +85,7 @@
       "title": "Premium Food Group — Holding rename announcement",
       "category": "company",
       "url": "https://premiumfoodgroup.de/toennies-holding-firmiert-ab-1-januar-2025-als-premium-food-group/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0013"
       ],
@@ -90,7 +102,7 @@
       "title": "Premium Food Group — History",
       "category": "company",
       "url": "https://premiumfoodgroup.de/en/group/history/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0004",
         "ZSI-C-0005"
@@ -108,7 +120,7 @@
       "title": "Tönnies Livestock — Landwirtschaft im Dialog",
       "category": "company",
       "url": "https://toennies-livestock.de/landwirtschaft-im-dialog/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0001",
         "ZSI-C-0002"
@@ -126,7 +138,7 @@
       "title": "Tönnies Livestock — Über uns",
       "category": "company",
       "url": "https://toennies-livestock.de/ueber-uns/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0003",
         "ZSI-C-0014"
@@ -144,7 +156,7 @@
       "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
       "category": "official_register",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0006",
         "ZSI-C-0025"
@@ -162,7 +174,7 @@
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
       "category": "official_register_historical",
       "url": "https://www.lobbyregister.bundestag.de/suche/R000472/72658",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0015"
       ],
@@ -179,7 +191,7 @@
       "title": "BfR — KontRed",
       "category": "public_research",
       "url": "https://www.bfr.bund.de/projekt/entwicklung-und-implementierung-technologischer-verfahren-zur-reduktion-von-mikrobiellen-kontaminanten-im-gefluegel-und-schweineschlachtprozess/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0007",
         "ZSI-C-0008"
@@ -197,7 +209,7 @@
       "title": "Bundeskartellamt — Vion/Tönnies decision",
       "category": "authority",
       "url": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2025/06_12_2025_Vion_Toennies.html",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0016",
         "ZSI-C-0017"
@@ -215,7 +227,7 @@
       "title": "Westfleisch — Unternehmensgruppe",
       "category": "company",
       "url": "https://www.westfleisch.de/unternehmen/unternehmensgruppe/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0018",
         "ZSI-C-0019",
@@ -235,7 +247,7 @@
       "title": "PHW-Gruppe — Über uns",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/ueber-uns/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0022",
         "ZSI-C-0023"
@@ -253,7 +265,7 @@
       "title": "PHW-Gruppe — Geflügel / Vertragslandwirte",
       "category": "company",
       "url": "https://phw-gruppe.de/ernaehrungsmix-der-zukunft/gefluegel/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [
         "ZSI-C-0024"
       ],
@@ -270,7 +282,7 @@
       "title": "PHW-Gruppe — Tochterunternehmen / Integration",
       "category": "company",
       "url": "https://phw-gruppe.de/unternehmen/tochterunternehmen/",
-      "checked_at": "2026-11-11T06:08:53+00:00",
+      "checked_at": "2026-11-11T14:15:04+00:00",
       "claim_ids": [],
       "previous_sha256": "582b99ddc44b5da4a000c8a668cf831c664896bb568ff575b5568686d70291cc",
       "http_status": 200,
