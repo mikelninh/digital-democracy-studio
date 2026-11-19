@@ -2,6 +2,33 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "6e2b4bf232355c82",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-11-19T07:19:25+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -246,11 +246,2 @@",
+        " Vierteljährlich - bei Änderungen",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        " Login Benachrichtigungskonto"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "850b179e094690c9",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
@@ -3774,49 +3801,6 @@
         "+Wöchentlich",
         "+Wöchentlich - bei Änderungen",
         " Monatlich"
-      ],
-      "review_status": "needs_review"
-    },
-    {
-      "event_id": "7b8501baf922190c",
-      "source_id": "SRC-LOBBY-PFG-FY2024",
-      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
-      "detected_at": "2026-08-17T18:55:38+00:00",
-      "claim_ids": [
-        "ZSI-C-0015"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -213,2 +213,28 @@",
-        " Keine Benachrichtigung",
-        "+Keine Benachrichtigung",
-        "+Täglich",
-        "+Täglich",
-        "+Täglich - bei Änderungen",
-        "+Täglich - bei Änderungen",
-        "+Keine Benachrichtigung",
-        "+Wöchentlich",
-        "+Wöchentlich",
-        "+Wöchentlich - bei Änderungen",
-        "+Wöchentlich - bei Änderungen",
-        "+Monatlich",
-        "+Täglich",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Täglich - bei Änderungen",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
-        "+Wöchentlich - bei Änderungen",
-        "+Vierteljährlich - bei Änderungen",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
-        "+Keine Benachrichtigung",
-        " Täglich"
       ],
       "review_status": "needs_review"
     }
