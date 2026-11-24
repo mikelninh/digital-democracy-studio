@@ -2,6 +2,46 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "893d2b3883dd06bc",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-11-24T22:22:17+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -213,25 +213,9 @@",
+        " Keine Benachrichtigung",
+        "-Keine Benachrichtigung",
+        "-Täglich",
+        "-Täglich",
+        " Täglich",
+        " Täglich - bei Änderungen",
+        "-Täglich - bei Änderungen",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        " Wöchentlich",
+        " Wöchentlich - bei Änderungen",
+        "-Wöchentlich - bei Änderungen",
+        "-Wöchentlich - bei Änderungen",
+        "-Monatlich",
+        "-Monatlich",
+        " Monatlich",
+        " Monatlich - bei Änderungen",
+        "-Monatlich - bei Änderungen",
+        "-Monatlich - bei Änderungen",
+        " Vierteljährlich",
+        "-Vierteljährlich",
+        "-Vierteljährlich",
+        "-Vierteljährlich - bei Änderungen",
+        "-Vierteljährlich - bei Änderungen",
+        " Vierteljährlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "786c2b7b452334b5",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
@@ -3681,41 +3721,6 @@
         "+Monatlich - bei Änderungen",
         "+Vierteljährlich",
         "+Vierteljährlich - bei Änderungen",
-        " Login Benachrichtigungskonto"
-      ],
-      "review_status": "needs_review"
-    },
-    {
-      "event_id": "bd12cd291cc50611",
-      "source_id": "SRC-LOBBY-PFG-FY2024",
-      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
-      "detected_at": "2026-08-18T07:02:32+00:00",
-      "claim_ids": [
-        "ZSI-C-0015"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -239,20 +239,2 @@",
-        " Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
         " Login Benachrichtigungskonto"
       ],
       "review_status": "needs_review"
