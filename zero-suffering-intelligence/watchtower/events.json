@@ -2,6 +2,29 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "3b8288735e7ccd02",
+      "source_id": "SRC-WESTFLEISCH-GROUP",
+      "title": "Westfleisch — Unternehmensgruppe",
+      "detected_at": "2026-11-26T21:27:29+00:00",
+      "claim_ids": [
+        "ZSI-C-0018",
+        "ZSI-C-0019",
+        "ZSI-C-0020",
+        "ZSI-C-0021"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -72,2 +72,5 @@",
+        " Tierwohlprogramme",
+        "+Bauernliebe",
+        "+Gute Haltung",
+        "+Strohwohl",
+        " Schlachtkühe ITW 3"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "893d2b3883dd06bc",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
@@ -3667,41 +3690,6 @@
         "--- previous",
         "+++ current",
         "@@ -264,2 +264,20 @@",
-        " Vierteljährlich - bei Änderungen",
-        "+Keine Benachrichtigung",
-        "+Täglich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich",
-        "+Wöchentlich - bei Änderungen",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
-        "+Keine Benachrichtigung",
-        "+Täglich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich",
-        "+Wöchentlich - bei Änderungen",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
-        " Login Benachrichtigungskonto"
-      ],
-      "review_status": "needs_review"
-    },
-    {
-      "event_id": "2de6e6f11a5b8519",
-      "source_id": "SRC-LOBBY-PFG-FY2024",
-      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
-      "detected_at": "2026-08-18T13:06:04+00:00",
-      "claim_ids": [
-        "ZSI-C-0015"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -239,2 +239,20 @@",
         " Vierteljährlich - bei Änderungen",
         "+Keine Benachrichtigung",
         "+Täglich",
