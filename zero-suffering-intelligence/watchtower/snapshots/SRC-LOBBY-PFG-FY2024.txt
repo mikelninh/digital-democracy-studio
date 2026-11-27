@@ -211,13 +211,22 @@ aktive E-Mail-Benachrichtigungen gespeichert haben. Um zu diesem Benachrichtigun
 Meine Benachrichtigungen
 .
 Keine Benachrichtigung
+Keine Benachrichtigung
+Täglich
 Täglich
 Täglich - bei Änderungen
 Wöchentlich
 Wöchentlich - bei Änderungen
+Täglich - bei Änderungen
+Wöchentlich
+Monatlich
+Wöchentlich - bei Änderungen
+Monatlich - bei Änderungen
 Monatlich
 Monatlich - bei Änderungen
 Vierteljährlich
+Vierteljährlich
+Vierteljährlich - bei Änderungen
 Vierteljährlich - bei Änderungen
 Login Benachrichtigungskonto
 Login Admin-Konto

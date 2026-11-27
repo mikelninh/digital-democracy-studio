@@ -2,6 +2,38 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "1da87c96db9477bc",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-11-27T08:22:00+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -213,2 +213,4 @@",
+        " Keine Benachrichtigung",
+        "+Keine Benachrichtigung",
+        "+Täglich",
+        " Täglich",
+        "@@ -217,2 +219,7 @@",
+        " Wöchentlich - bei Änderungen",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich",
+        "+Monatlich",
+        "+Wöchentlich - bei Änderungen",
+        "+Monatlich - bei Änderungen",
+        " Monatlich",
+        "@@ -220,2 +227,4 @@",
+        " Vierteljährlich",
+        "+Vierteljährlich",
+        "+Vierteljährlich - bei Änderungen",
+        " Vierteljährlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "3b8288735e7ccd02",
       "source_id": "SRC-WESTFLEISCH-GROUP",
       "title": "Westfleisch — Unternehmensgruppe",
@@ -3673,42 +3705,6 @@
         "-Monatlich - bei Änderungen",
         "-Vierteljährlich",
         "-Vierteljährlich - bei Änderungen",
-        " Login Benachrichtigungskonto"
-      ],
-      "review_status": "needs_review"
-    },
-    {
-      "event_id": "164c743e2f52ed9e",
-      "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
-      "detected_at": "2026-08-18T18:54:51+00:00",
-      "claim_ids": [
-        "ZSI-C-0006",
-        "ZSI-C-0025"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -264,2 +264,20 @@",
-        " Vierteljährlich - bei Änderungen",
-        "+Keine Benachrichtigung",
-        "+Täglich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich",
-        "+Wöchentlich - bei Änderungen",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
-        "+Keine Benachrichtigung",
-        "+Täglich",
-        "+Täglich - bei Änderungen",
-        "+Wöchentlich",
-        "+Wöchentlich - bei Änderungen",
-        "+Monatlich",
-        "+Monatlich - bei Änderungen",
-        "+Vierteljährlich",
-        "+Vierteljährlich - bei Änderungen",
         " Login Benachrichtigungskonto"
       ],
       "review_status": "needs_review"
