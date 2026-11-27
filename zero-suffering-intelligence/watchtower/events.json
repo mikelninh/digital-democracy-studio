@@ -2,6 +2,65 @@
   "schema": "zsi.watchtower/events-0.9",
   "events": [
     {
+      "event_id": "4b6387f2b0d3a8d0",
+      "source_id": "SRC-LOBBY-PFG-FY2024",
+      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
+      "detected_at": "2026-11-27T21:12:28+00:00",
+      "claim_ids": [
+        "ZSI-C-0015"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -217,10 +217,10 @@",
+        " Täglich - bei Änderungen",
+        "+Täglich - bei Änderungen",
+        "+Wöchentlich",
+        " Wöchentlich",
+        " Wöchentlich - bei Änderungen",
+        "-Täglich - bei Änderungen",
+        "-Wöchentlich",
+        "+Wöchentlich - bei Änderungen",
+        " Monatlich",
+        "-Wöchentlich - bei Änderungen",
+        "+Monatlich",
+        " Monatlich - bei Änderungen",
+        "-Monatlich",
+        " Monatlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
+      "event_id": "18010327ea5a2f5a",
+      "source_id": "SRC-LOBBY-PFG-CURRENT",
+      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
+      "detected_at": "2026-11-27T21:12:28+00:00",
+      "claim_ids": [
+        "ZSI-C-0006",
+        "ZSI-C-0025"
+      ],
+      "diff": [
+        "--- previous",
+        "+++ current",
+        "@@ -242,10 +242,10 @@",
+        " Täglich - bei Änderungen",
+        "+Wöchentlich",
+        "+Wöchentlich - bei Änderungen",
+        " Täglich - bei Änderungen",
+        " Wöchentlich",
+        "-Wöchentlich",
+        "+Monatlich",
+        " Wöchentlich - bei Änderungen",
+        "-Wöchentlich - bei Änderungen",
+        "+Monatlich - bei Änderungen",
+        " Monatlich",
+        "-Monatlich",
+        "-Monatlich - bei Änderungen",
+        " Monatlich - bei Änderungen"
+      ],
+      "review_status": "needs_review"
+    },
+    {
       "event_id": "1da87c96db9477bc",
       "source_id": "SRC-LOBBY-PFG-FY2024",
       "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
@@ -3635,77 +3694,6 @@
         "-Telefon:+49 251 493-1160",
         "+Telefon:+49 251 493-1165",
         " E-Mail:"
-      ],
-      "review_status": "needs_review"
-    },
-    {
-      "event_id": "3fb6e2302167cb57",
-      "source_id": "SRC-LOBBY-PFG-FY2024",
-      "title": "Bundestag Lobbyregister — PFG Central Services FY2024 version",
-      "detected_at": "2026-08-19T13:07:06+00:00",
-      "claim_ids": [
-        "ZSI-C-0015"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -221,20 +221,2 @@",
-        " Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
-        " Login Benachrichtigungskonto"
-      ],
-      "review_status": "needs_review"
-    },
-    {
-      "event_id": "e9e84abfdbb7ea74",
-      "source_id": "SRC-LOBBY-PFG-CURRENT",
-      "title": "Bundestag Lobbyregister — PFG Central Services R000472 current",
-      "detected_at": "2026-08-19T13:07:06+00:00",
-      "claim_ids": [
-        "ZSI-C-0006",
-        "ZSI-C-0025"
-      ],
-      "diff": [
-        "--- previous",
-        "+++ current",
-        "@@ -246,20 +246,2 @@",
-        " Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
-        "-Keine Benachrichtigung",
-        "-Täglich",
-        "-Täglich - bei Änderungen",
-        "-Wöchentlich",
-        "-Wöchentlich - bei Änderungen",
-        "-Monatlich",
-        "-Monatlich - bei Änderungen",
-        "-Vierteljährlich",
-        "-Vierteljährlich - bei Änderungen",
-        " Login Benachrichtigungskonto"
       ],
       "review_status": "needs_review"
     }

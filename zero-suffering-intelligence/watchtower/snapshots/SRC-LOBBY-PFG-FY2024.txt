@@ -215,14 +215,14 @@ Keine Benachrichtigung
 Täglich
 Täglich
 Täglich - bei Änderungen
-Wöchentlich
-Wöchentlich - bei Änderungen
 Täglich - bei Änderungen
 Wöchentlich
-Monatlich
+Wöchentlich
 Wöchentlich - bei Änderungen
-Monatlich - bei Änderungen
+Wöchentlich - bei Änderungen
 Monatlich
+Monatlich
+Monatlich - bei Änderungen
 Monatlich - bei Änderungen
 Vierteljährlich
 Vierteljährlich
